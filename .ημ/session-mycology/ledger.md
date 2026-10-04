@@ -548,3 +548,12 @@
   spore: none
   receipt-refs: Eta340/fresh fatal UTF8 admission RED GREEN; Eta340/bounded lint diagnostic and frozen scope
   note: Move validation to the earliest shared admission boundary and reproduce it with actual Git bytes, not a guessed transport shape. Preserve immutable predecessor RED and genuine compiler/tool GREEN separately from native successor qualification. Stop stalled tools within the authorized scope, retain their actual signal/time outcome, and label a parser-only diagnostic with external checks disabled precisely. Unknown lint cause stays unknown; no new spore or promotion, and parent owns independent lint/publication.
+
+- ts: "2026-10-04T09:20:20.550Z"
+  origin: OpenCode-Proxx/reuse-planning
+  p-efficiency: 0.55
+  p-friction: 0.65
+  p-skill-candidate: 0.35
+  spore: none
+  receipt-refs: 4bf722c8a18ce4ed8745c82fe2cee38083e2f3b9bdd10f03b9f5d0cf55a0ba42
+  note: Verify the intended consumer before choosing transport. Reuse OpenCode's configuration seam and Proxx's existing EDN interpreter; keep the executor, requested model, actual upstream and authenticated approval channel distinct. Current local Pi alias and OpenCode version cannot qualify another pinned distribution. No new spore or promotion.
