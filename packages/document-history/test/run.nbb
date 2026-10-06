@@ -1,0 +1,10 @@
+(ns document-history.test-runner
+  (:require [cljs.test :as test]
+            [clio.extern.js.process :as process]
+            [document-history.infra.store-test]
+            [document-history.law.storage-test]))
+
+(defmethod test/report [:cljs.test/default :end-run-tests] [summary]
+  (when-not (test/successful? summary) (process/exit! 1)))
+(test/run-tests 'document-history.law.storage-test
+                'document-history.infra.store-test)
