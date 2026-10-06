@@ -1,0 +1,30 @@
+{
+  "personal_main": "084cd150b8d5b9848d026e9ef8717747964dcd6d",
+  "accepted_origin": "09a4454480baa67f6fdc40f6f73f5e48ef0457d1",
+  "ancestry": "personal main is ancestor",
+  "fork_only_commits": 0,
+  "accepted_commits_behind": 7,
+  "accepted_delta_paths": [
+    ".github/scripts/opencode-code-review-workflow.test.mjs",
+    ".github/scripts/opencode-review-tool-recovery.test.mjs",
+    ".github/scripts/run-opencode-review-recovery.mjs",
+    ".github/workflows/opencode-code-review.yml",
+    ".\u03b7\u03bc/session-mycology/ledger.md",
+    "docs/agent-workflows.md",
+    "kanban/tasks/bound-review-discord-batches-4985bd7d.md",
+    "kanban/tasks/recover-unavailable-review-tool-loop.md",
+    "receipts.edn",
+    "scripts/test.bb"
+  ],
+  "accepted_log": [
+    "09a4454480baa67f6fdc40f6f73f5e48ef0457d1 Merge pull request #342 from open-hax/codex/mimo-tool-recovery",
+    "c79628021aeae967eefd3783df42591ffd7e5a25 test(review): cover all reported recovery rejection gaps",
+    "2defda1a447ebaf6e52bf2130f25b0fcf06e0351 test(review): reject recovery for unexposed corrected tools",
+    "7ad3a472c56beeb98f9ef000a2d89a4dc413b13b docs(review): document recovery runner helpers",
+    "32a04cf6f0c63680dc734fbd030006083f71fca7 fix: recover unfinished review tool loops once",
+    "f348ae8ec71ad10a25d0564b705d706d123e2f62 Merge pull request #341 from open-hax/codex/review-discord-batches",
+    "45ec644c2d15ed511e9bc1e797d1b4073b63dbfc Bound Discord review batches by combined embed text"
+  ],
+  "current_owner_api_source": "154440f3c997aa9208194bba59b5edbef3654f78",
+  "purpose": "terminal accepted upstream synchronization; no feature deployment"
+}

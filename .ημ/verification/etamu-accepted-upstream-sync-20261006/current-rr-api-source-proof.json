@@ -1,0 +1,37 @@
+{
+  "head": "154440f3c997aa9208194bba59b5edbef3654f78",
+  "namespace_files": [
+    {
+      "path": "eta_mu/receipt_river/api.cljs",
+      "sha256": "c027fff0ef9dcbb2b3fa7b2ab77bf9afd0b240a6e8304661fcb2e4be332a0812",
+      "byte_equal": true
+    },
+    {
+      "path": "eta_mu/receipt_river/domain/event.cljs",
+      "sha256": "bd284edccb1e355b19a6b356593a7daa2cb1f52055024f8efc4aca9d90762253",
+      "byte_equal": true
+    },
+    {
+      "path": "eta_mu/receipt_river/extern/bus.cljs",
+      "sha256": "068f93ced2662e2493e5b6f42ce47b566b02b21eab225aab994b71de2e2a99fe",
+      "byte_equal": true
+    },
+    {
+      "path": "eta_mu/receipt_river/extern/fs.cljs",
+      "sha256": "1d6cc5136f40231c6926ef9f16602cd27361df15f80b0f60af78db196bcdf2cb",
+      "byte_equal": true
+    },
+    {
+      "path": "eta_mu/receipt_river/law/receipt.cljs",
+      "sha256": "a40dd843cf298926dfbe229d5544470dbd51682fd538e841a0fad62d29bed320",
+      "byte_equal": true
+    },
+    {
+      "path": "eta_mu/receipt_river/shape/edn.cljs",
+      "sha256": "0e06bef509eda4cf3aa63e53577d14b74e780563608aa52d6161ae296ceb3914",
+      "byte_equal": true
+    }
+  ],
+  "initial_path_lookup": "Initialsrc/noncljsAPIpath404 retainedprivate; correctedsrc/cljs ownerpathverified, no remote changes.",
+  "provenance": "Six namespace private copies from prior native GitHub source captures; parent independently matched current owner source154440. Fresh owner-main capture retained separately."
+}
