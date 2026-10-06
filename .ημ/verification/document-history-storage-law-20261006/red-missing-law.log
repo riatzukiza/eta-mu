@@ -1,0 +1,10 @@
+----- Error --------------------------------------
+Message:  Could not find namespace: document-history.law.storage
+file:///home/err/.codex/worktrees/etamu-personal-pr336-20261006/node_modules/.pnpm/nbb@1.5.211/node_modules/nbb/lib/nbb_main.js:13
+$APP.wC),$APP.VZ);return g.A?g.A():g.call(null)}):null).then(function(g){$APP.k($APP.k(d)?g!=null:d)&&$APP.Dy.o($APP.x([g],0));return g}).catch(function(g){$APP.nma(g,b);$APP.k($APP.Ey.h(b))&&console.error(g);throw Error($APP.Ik(g));})})):console.error("Usage: "+$APP.G.h("nbb")+" \x3cscript\x3e or nbb -e \x3cexpr\x3e.")})();
+                                                                                                                                                                                                                       ^
+
+Error: Could not find namespace: document-history.law.storage
+    at file:///home/err/.codex/worktrees/etamu-personal-pr336-20261006/node_modules/.pnpm/nbb@1.5.211/node_modules/nbb/lib/nbb_main.js:13:216
+
+Node.js v24.14.1

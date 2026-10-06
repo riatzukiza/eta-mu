@@ -575,3 +575,12 @@
   spore: none
   receipt-refs: none
   note: A duplicated UUID regex made accepted imported ledger heads unextendable. Reusing the canonical Clio predicate preserves existing identities and aligns command admission with replay. A real finalized-partition regression failed before repair and passed under both runtimes afterward. Existing falsify-every-new-test spore covers the reusable proof discipline; no new spore.
+- ts: 2026-10-06T15:24:29.260204135Z
+  session: /home/err/.codex/worktrees/etamu-336-storage-replacement-20261006
+  task: Reconstruct verified storage law candidate with local consumer-valid receipt
+  p-efficiency: 0.6
+  p-friction: 0.6
+  p-skill-candidate: 0.4
+  spore: none
+  receipt-refs: 2026-10-06T15:23:52.461Z
+  note: Published code and tests remain byte-identical; preserve invalid receipt and historical commits as archive, use canonical envelope with repo on new branch. Old PR remains blocked and immutable. Validate current child consumer as well as global required shape before publication; no new spore or promotion.

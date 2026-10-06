@@ -1,0 +1,7 @@
+shadow-cljs - config: /home/err/.codex/worktrees/etamu-personal-pr336-20261006/packages/document-history/shadow-cljs.edn
+Picked up JAVA_TOOL_OPTIONS: -Duser.home=/tmp/etamu-pr336-private-java-20261006 -Dmaven.repo.local=/tmp/etamu-pr336-private-java-20261006/.m2/repository
+shadow-cljs - updating dependencies
+shadow-cljs - dependencies updated
+Picked up JAVA_TOOL_OPTIONS: -Duser.home=/tmp/etamu-pr336-private-java-20261006 -Dmaven.repo.local=/tmp/etamu-pr336-private-java-20261006/.m2/repository
+[:test] Compiling ...
+[:test] Build completed. (103 files, 102 compiled, 0 warnings, 5.04s)
