@@ -41,6 +41,9 @@ or live service/database changes. PR342 belongs to a separate active lane.
 - One explicit approved contract owner and migration decision precede code.
 - Red tests reproduce forged actor/profile, out-of-lane artifact, excessive
   findings, malformed catalog collections, and missing producer fields.
+- Each of the three expert lane profiles is tested through the accepted result
+  producer and `eta-mu.domain.evidence/aggregate-verdict`; profile-specific
+  result producers or aggregation folds are rejected.
 - Legal catalog/results at the exact finding limit pass; one over the limit is
   refused before deduplication. Reordered completions preserve the verdict.
 - Accepted existing evidence tests remain green, including exact retained

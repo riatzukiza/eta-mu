@@ -557,3 +557,12 @@
   spore: none
   receipt-refs: 2026-10-06T15:23:18.184Z
   note: Global schema validation missed repository-local required repo. Verify actual consumer before publication; preserve invalid published row and commit, rebuild from verified clean base instead of rewriting immutable history. Known consumer-boundary guidance covers this; no new spore or promotion.
+- ts: 2026-10-06T17:16:56.067366405Z
+  session: /home/err/.codex/worktrees/etamu4-planning-ac-20261006
+  task: EtaMu4 single-authority planning acceptance criterion
+  p-efficiency: 0.94
+  p-friction: 0.15
+  p-skill-candidate: 0.2
+  spore: none
+  receipt-refs: review5432004666 cr-comment:v1:d04d7f3837af356601136077
+  note: Applied exact native three-line planning criterion; distinguish recovered donor profiles from accepted producer schema/fold. Actual Rheos read-task and canonical full-file receipt API verified owned suffix while preserving inherited56 invalid rows. No implementation or board transition.
