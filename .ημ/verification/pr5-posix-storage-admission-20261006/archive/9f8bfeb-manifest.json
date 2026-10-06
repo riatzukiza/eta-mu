@@ -4,24 +4,15 @@
   "native_review": 5431876321,
   "native_inline": 4198142815,
   "sha256": {
-    "README.md": "0e8024f710af1f55366319f237016eee8e7dba65270e694f991b62d81d5cd1d2",
-    "archive/9f8bfeb-manifest.json": "a6edcd374d13d0dcb123b7629a76787d21daeaf9cb6af9c80f97860d9d3578fe",
+    "README.md": "81c610cc8e2340ec68007fc6e00bf8e3e6c1ac397f4a3ecac6e01b23f87ebad8",
     "green-nbb.raw.txt": "c6ec301c8ff387600769cc8b53d6c7685794e84abd22f83c56577d969e35c78f",
     "green-root-lint.raw.txt": "e89206ac73daef9f8d8b0e61f4847a78deae22d2dc57e1da330b3ec9d8a9ce09",
     "green-root-test.raw.txt": "ce142f76ba12d92c58376f6e65a747892f4cc692022ac3b82bac35442b8e494b",
-    "green-shadow-compile.raw.base64.json": "c19897c1c198c6366d1e879620da7b11b00fb3ac2b7fee3a462652cb13e189e0",
+    "green-shadow-compile.raw.txt": "870bc936613592c4314cd52390c5aaf1e45f8112983b98f989883aebe15fed86",
     "initial-root-test-harness-error.raw.txt": "dc9793d702dca646797dbc965b33143964994d7d54b73e3aa9ee37d04cfdc624",
     "preservation-proof.json": "35429c10d1ed446b4d87caef407620a9c8af67d4d6f4de6fd77a1e64b91b969f",
     "receipt-api-verification.json": "d8bd9f65d0f25a163ab31f0abfdb4e1892ae3dcafd370f913cc7ce26c0b30964",
     "red-nbb.raw.txt": "fa0d822b033c042050b00fb95e1e6fa7e29c9be43a26ab75f5c8f0f725c42dde"
   },
-  "qualification": "local preparation only; unpublished; historical withdrawal remains unsettled",
-  "capture_format_correction": {
-    "source_commit": "9f8bfeb1c85ca1a394a2048861c4b45775d11756",
-    "source_manifest": "archive/9f8bfeb-manifest.json",
-    "original_path": "green-shadow-compile.raw.txt",
-    "current_wrapper": "green-shadow-compile.raw.base64.json",
-    "decoded_sha256": "870bc936613592c4314cd52390c5aaf1e45f8112983b98f989883aebe15fed86",
-    "decoded_size_bytes": 8113
-  }
+  "qualification": "local preparation only; unpublished; historical withdrawal remains unsettled"
 }

@@ -23,3 +23,15 @@ The Node extern decodes its actual separator into a keyword. Infra obtains that 
 Independent clone/worktree, pnpm store, Maven cache copy, XDG cache and temp paths are privately owned. Shadow source/output/cache paths are under this worktree. No global installs, configuration, runtime services, workflow, provider, credentials or foreign source were changed. Original board ledger, card and root receipt bytes are preserved; `.ημ` receipts and reflection gain only owned suffixes.
 
 Native current-head approvals and cohort convergence remain separate gates. Historical source-path withdrawal is preserved and remains without a final canonical writer disposition; this repair does not turn it into Handled or Rejected. Parent owns peer inspection, publication, settlement, reviewer invitations and the current PR description correction. No push or native successor qualification is claimed by this preparation.
+
+## Lossless raw Maven output packaging
+
+The original `green-shadow-compile.raw.txt` had a trailing space emitted by Maven.
+Its exact blob and commit remain in `9f8bfeb1c85ca1a394a2048861c4b45775d11756`.
+The current `green-shadow-compile.raw.base64.json` wrapper carries those exact
+bytes in base64, their decoded size and SHA-256, and their original path/blob/commit.
+Decode `data_base64` with the standard base64 codec to recover the original stream;
+no whitespace was stripped or normalized. The source manifest is retained byte-for-byte
+at `archive/9f8bfeb-manifest.json`, explicitly describing its original revision's
+paths and hashes rather than the wrapper's current bytes. The current manifest hashes
+the wrapper and archive independently. This changes only a newly owned evidence format.
