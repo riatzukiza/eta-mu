@@ -606,3 +606,12 @@
   p-skill-candidate: 0.18
   spore: none
   receipt-refs: etamu-accepted-upstream-sync-20261006
+
+- ts: 2026-10-06T22:44:51.768334Z
+  owner: codex/child-prs
+  lesson: Preserve existing outcome and history while refining a fail-closed native-adapter contract; status visibility is not admission.
+  p-efficiency: 0.89
+  p-friction: 0.23
+  p-skill-candidate: 0.22
+  spore: none
+  receipt-refs: ultra-workflow-failure-plan-20261006

@@ -1,0 +1,321 @@
+{
+  "group_count": 12,
+  "stream_count": 24,
+  "groups": [
+    {
+      "group": "fork",
+      "operation_metadata": {
+        "argv": [
+          "gh",
+          "api",
+          "repos/riatzukiza/eta-mu"
+        ],
+        "exit": 0
+      },
+      "streams": [
+        {
+          "stream": "stdout",
+          "wrapper": "fork.stdout.b64",
+          "decoded_size": 15727,
+          "decoded_sha256": "900ea2190e8f029f8d0c4eb6c3dfcb2d20b8c5a5f2113e039cd089f10b1b56db"
+        },
+        {
+          "stream": "stderr",
+          "wrapper": "fork.stderr.b64",
+          "decoded_size": 0,
+          "decoded_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "group": "origin-main",
+      "operation_metadata": {
+        "argv": [
+          "gh",
+          "api",
+          "repos/open-hax/eta-mu/commits/main"
+        ],
+        "exit": 0
+      },
+      "streams": [
+        {
+          "stream": "stdout",
+          "wrapper": "origin-main.stdout.b64",
+          "decoded_size": 92493,
+          "decoded_sha256": "9a0f0818ea7eb1a772ac09be87abef3fa3a30a85f9d03a014a5782109b0ece20"
+        },
+        {
+          "stream": "stderr",
+          "wrapper": "origin-main.stderr.b64",
+          "decoded_size": 0,
+          "decoded_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "group": "fork-main",
+      "operation_metadata": {
+        "argv": [
+          "gh",
+          "api",
+          "repos/riatzukiza/eta-mu/commits/main"
+        ],
+        "exit": 0
+      },
+      "streams": [
+        {
+          "stream": "stdout",
+          "wrapper": "fork-main.stdout.b64",
+          "decoded_size": 167487,
+          "decoded_sha256": "2a4bbd36c6b34c6c788fed1e646583e91ef2235442520b9ae8a623e24c4e6416"
+        },
+        {
+          "stream": "stderr",
+          "wrapper": "fork-main.stderr.b64",
+          "decoded_size": 0,
+          "decoded_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "group": "rheos-owner",
+      "operation_metadata": {
+        "argv": [
+          "gh",
+          "api",
+          "repos/open-hax/rheos/commits/main"
+        ],
+        "exit": 0
+      },
+      "streams": [
+        {
+          "stream": "stdout",
+          "wrapper": "rheos-owner.stdout.b64",
+          "decoded_size": 68775,
+          "decoded_sha256": "5add13d8056cb2ef72957a7299d9599e60f03e8090e98b1d971446a025cfa284"
+        },
+        {
+          "stream": "stderr",
+          "wrapper": "rheos-owner.stderr.b64",
+          "decoded_size": 0,
+          "decoded_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "group": "rr-owner-main",
+      "operation_metadata": {
+        "argv": [
+          "gh",
+          "api",
+          "repos/open-hax/receipt-river/commits/main"
+        ],
+        "exit": 0
+      },
+      "streams": [
+        {
+          "stream": "stdout",
+          "wrapper": "rr-owner-main.stdout.b64",
+          "decoded_size": 7054,
+          "decoded_sha256": "97c814ddfbf28478a43dbda1ea680a8d47aac441b0cc930b1165a8c9581ec0d7"
+        },
+        {
+          "stream": "stderr",
+          "wrapper": "rr-owner-main.stderr.b64",
+          "decoded_size": 0,
+          "decoded_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "group": "accepted-rheos-help",
+      "operation_metadata": {
+        "argv": [
+          "node",
+          "/home/err/.codex/parallel-goal/child-prs-20261006/etamu258-failure-plan-20261006/runtime/cli.cjs",
+          "--help"
+        ],
+        "exit": 0,
+        "artifact_sha256": "33efe2e97202abe7df28b65fb20fbabb78fd910049ed60f301d112a895c7633b",
+        "accepted_owner": "open-hax/rheos@ef3c4abf1ea75199486f693e9470df3fec88dd49",
+        "qualification": "diagnostic accepted artifact; no cold Node22/release qualification"
+      },
+      "streams": [
+        {
+          "stream": "stdout",
+          "wrapper": "accepted-rheos-help.stdout.b64",
+          "decoded_size": 2667,
+          "decoded_sha256": "fd00e6c7da9b4303f1477b6877316600ee7ff461b49d2c4ea7def9866937e21b"
+        },
+        {
+          "stream": "stderr",
+          "wrapper": "accepted-rheos-help.stderr.b64",
+          "decoded_size": 0,
+          "decoded_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "group": "accepted-rheos-task258",
+      "operation_metadata": {
+        "argv": [
+          "node",
+          "/home/err/.codex/parallel-goal/child-prs-20261006/etamu258-failure-plan-20261006/runtime/cli.cjs",
+          "read-task",
+          "ultra-workflow-failure-signalling",
+          "--config",
+          "openhax.kanban.edn"
+        ],
+        "exit": 0,
+        "artifact_sha256": "33efe2e97202abe7df28b65fb20fbabb78fd910049ed60f301d112a895c7633b",
+        "accepted_owner": "open-hax/rheos@ef3c4abf1ea75199486f693e9470df3fec88dd49",
+        "qualification": "diagnostic accepted artifact; no cold Node22/release qualification"
+      },
+      "streams": [
+        {
+          "stream": "stdout",
+          "wrapper": "accepted-rheos-task258.stdout.b64",
+          "decoded_size": 6406,
+          "decoded_sha256": "1961a02cf953f1a30d074f6434ee26ad6dc65f3abe3b9bc1dbe3cc4ef97941b7"
+        },
+        {
+          "stream": "stderr",
+          "wrapper": "accepted-rheos-task258.stderr.b64",
+          "decoded_size": 0,
+          "decoded_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "group": "issue258-comments",
+      "operation_metadata": {
+        "argv": [
+          "gh",
+          "api",
+          "--paginate",
+          "--slurp",
+          "repos/open-hax/eta-mu/issues/258/comments?per_page=100"
+        ],
+        "exit": 0
+      },
+      "streams": [
+        {
+          "stream": "stdout",
+          "wrapper": "issue258-comments.stdout.b64",
+          "decoded_size": 4,
+          "decoded_sha256": "cf1cbb66a638b4860a516671fb74850e6ccf787fe6c4c8d29e9c04efe880bd05"
+        },
+        {
+          "stream": "stderr",
+          "wrapper": "issue258-comments.stderr.b64",
+          "decoded_size": 0,
+          "decoded_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "group": "issue258",
+      "operation_metadata": {
+        "operation": "Lossless issue258 object extraction from complete paginated native open issue array",
+        "source_capture": "/home/err/.codex/parallel-goal/child-prs-20261006/etamu-uncovered-intake-20261006-223248/captures/issues.stdout",
+        "source_sha256": "d2007171c5d43c08cd0c0668bf1c555e85a28ffd49f5e128af4cf7f22fb9dc61",
+        "source_exit": 0,
+        "exit": 0
+      },
+      "streams": [
+        {
+          "stream": "stdout",
+          "wrapper": "issue258.stdout.b64",
+          "decoded_size": 7529,
+          "decoded_sha256": "823bb8fa0304f5f6d06874fca59c61e940b58fc2f7c60c7c631572114ebd42ae"
+        },
+        {
+          "stream": "stderr",
+          "wrapper": "issue258.stderr.b64",
+          "decoded_size": 0,
+          "decoded_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "group": "pr-scope-guards",
+      "operation_metadata": {
+        "operation": "Native personal PR identity/head/base projection, no body or reviewer state transformed",
+        "source_capture": "/home/err/.codex/parallel-goal/child-prs-20261006/etamu-uncovered-intake-20261006-223248/captures/personal-prs.stdout",
+        "source_sha256": "e6ad288aacbb2f56c46e3d7631e1d4a1f36d1df25b13c804028c8c6dba45b529",
+        "source_exit": 0,
+        "exit": 0
+      },
+      "streams": [
+        {
+          "stream": "stdout",
+          "wrapper": "pr-scope-guards.stdout.b64",
+          "decoded_size": 1319,
+          "decoded_sha256": "3dda818c2ee6454a303ac5871794cfe21fa5f53bf7924af0d5b0fde2e43c2426"
+        },
+        {
+          "stream": "stderr",
+          "wrapper": "pr-scope-guards.stderr.b64",
+          "decoded_size": 0,
+          "decoded_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "group": "import-own-sync",
+      "streams": [
+        {
+          "stream": "stdout",
+          "wrapper": "import-own-sync.stdout.b64",
+          "decoded_size": 0,
+          "decoded_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "stream": "stderr",
+          "wrapper": "import-own-sync.stderr.b64",
+          "decoded_size": 165,
+          "decoded_sha256": "f12708e5d451df8d8f9dbb40bd7e7c872870b61afc69e0b8ebc9766067fe2e82"
+        }
+      ],
+      "operation_metadata": {
+        "argv": [
+          "git",
+          "--git-dir",
+          "/home/err/.codex/parallel-goal/child-prs-20261006/etamu258-failure-plan-20261006/personal.git",
+          "fetch",
+          "/home/err/.codex/parallel-goal/child-prs-20261006/etamu258-sync-20261006/personal.git",
+          "codex/eta-mu-accepted-upstream-sync:refs/remotes/own-sync/accepted"
+        ],
+        "exit": 0
+      }
+    },
+    {
+      "group": "ff-own-sync",
+      "streams": [
+        {
+          "stream": "stdout",
+          "wrapper": "ff-own-sync.stdout.b64",
+          "decoded_size": 3458,
+          "decoded_sha256": "979bef0ee130c2bb908785ece559da1b1ef1828625dd46a5edad6b7f009c6b0e"
+        },
+        {
+          "stream": "stderr",
+          "wrapper": "ff-own-sync.stderr.b64",
+          "decoded_size": 0,
+          "decoded_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "operation_metadata": {
+        "argv": [
+          "git",
+          "-C",
+          "/home/err/.codex/parallel-goal/child-prs-20261006/etamu258-failure-plan-20261006/worktree",
+          "merge",
+          "--ff-only",
+          "093a6dbf00fcfadea26f07ac7e3db29bc627a533"
+        ],
+        "exit": 0
+      }
+    }
+  ]
+}
