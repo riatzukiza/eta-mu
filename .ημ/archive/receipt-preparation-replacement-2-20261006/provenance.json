@@ -1,0 +1,17 @@
+{
+  "personal/base": "084cd150b8d5b9848d026e9ef8717747964dcd6d",
+  "old/pr": "https://github.com/riatzukiza/eta-mu/pull/2",
+  "old/head": "c28ab572ee5eb7478f2ce9cb30e3973014bb1a2f",
+  "old/ledger": "receipts.edn",
+  "old/invalid-row-sha256": "06278df13054a1eac17c7e2a0c3db618918cfc725e8ea76b521fd37634f99e16",
+  "copied/source-file-sha256": {
+    ".\u03b7\u03bc/archive/etamu325-triage-20261006/native-pr-metadata.json": "8d299218fd40bff96f5a401d3388f556b044828829a3e500ffa3ba8429175200",
+    ".\u03b7\u03bc/archive/etamu325-triage-20261006/native-threads.json": "f972e77accdad9a9d61ba16f6af2ba1d619278d882334072020c0619a19c7777",
+    "docs/verification/evidence-lane-catalog-reconciliation.md": "306d5254403bb7f37cc71f975477b0ea6e1670caab29288d7b2b0e11512578e5",
+    "kanban/tasks/reconcile-evidence-lane-catalog-with-accepted-fold.md": "ed8a69b9c43bbbce46f1d6346fa5bd32509c7bda6329fb1b8242c9a7c7b50716"
+  },
+  "preserved/commit-ids": [
+    "c28ab572ee5eb7478f2ce9cb30e3973014bb1a2f"
+  ],
+  "receipt/correction": "New candidate from clean personal main; old published row and PR remain immutable. Archive is provenance, not admitted river input."
+}

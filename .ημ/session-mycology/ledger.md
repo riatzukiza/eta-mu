@@ -548,3 +548,12 @@
   spore: none
   receipt-refs: Eta340/fresh fatal UTF8 admission RED GREEN; Eta340/bounded lint diagnostic and frozen scope
   note: Move validation to the earliest shared admission boundary and reproduce it with actual Git bytes, not a guessed transport shape. Preserve immutable predecessor RED and genuine compiler/tool GREEN separately from native successor qualification. Stop stalled tools within the authorized scope, retain their actual signal/time outcome, and label a parser-only diagnostic with external checks disabled precisely. Unknown lint cause stays unknown; no new spore or promotion, and parent owns independent lint/publication.
+- ts: 2026-10-06T15:23:49.988633811Z
+  session: /home/err/.codex/worktrees/etamu-325-plan-replacement-20261006
+  task: Preserve published invalid receipt and reconstruct bounded planning candidate
+  p-efficiency: 0.55
+  p-friction: 0.6
+  p-skill-candidate: 0.4
+  spore: none
+  receipt-refs: 2026-10-06T15:23:18.184Z
+  note: Global schema validation missed repository-local required repo. Verify actual consumer before publication; preserve invalid published row and commit, rebuild from verified clean base instead of rewriting immutable history. Known consumer-boundary guidance covers this; no new spore or promotion.
