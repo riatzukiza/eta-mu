@@ -28,6 +28,13 @@ Move generic document revision storage, causal replay, and disposable EDN/Markdo
 ## Scope
 Specialized document-history package; Knoxx owns authorization and CMS/publication policy. Rheos canonical task fold remains separately owned.
 
+## Current review repair scope
+Move the reusable normalized storage-path admission into portable law.storage;
+keep path resolution, ancestor inspection and mkdir in extern, composed by infra.
+Verify the pure law without Node and retain real symlink/no-mutation, creation,
+concurrency and replay regressions under NBB and compiled CLJS. This is a review
+repair of the accepted storage contract; no board-state transition is claimed.
+
 ---
 Implemented packages/document-history over Clio with independent finalized partitions, EDN metadata, immutable Markdown snapshots, explicit causal heads, per-revision reads, and single-genesis migration seeds. Root-selected tests pass under NBB and compiled CLJS: 8 tests/54 assertions each, 0 failures; compiler and package/root-script lint have 0 warnings. Real process writers preserve same-parent/equal-timestamp edits; 1/10/100 partitions, duplicates, snapshot rebuild, stale output, explicit resolution, and invalid-write refusal pass. Rheos remains a future runtime adopter through its existing canonical-fold cards; Knoxx integration is independently underway.
 
