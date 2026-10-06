@@ -1,0 +1,169 @@
+{
+  "groups": [
+    {
+      "group": "fork",
+      "streams": [
+        {
+          "stream": "stdout",
+          "wrapper": "fork.stdout.b64",
+          "decoded_size": 15727,
+          "decoded_sha256": "900ea2190e8f029f8d0c4eb6c3dfcb2d20b8c5a5f2113e039cd089f10b1b56db"
+        },
+        {
+          "stream": "stderr",
+          "wrapper": "fork.stderr.b64",
+          "decoded_size": 0,
+          "decoded_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "operation_metadata": {
+        "argv": [
+          "gh",
+          "api",
+          "repos/riatzukiza/eta-mu"
+        ],
+        "exit": 0
+      }
+    },
+    {
+      "group": "origin-main",
+      "streams": [
+        {
+          "stream": "stdout",
+          "wrapper": "origin-main.stdout.b64",
+          "decoded_size": 92493,
+          "decoded_sha256": "9a0f0818ea7eb1a772ac09be87abef3fa3a30a85f9d03a014a5782109b0ece20"
+        },
+        {
+          "stream": "stderr",
+          "wrapper": "origin-main.stderr.b64",
+          "decoded_size": 0,
+          "decoded_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "operation_metadata": {
+        "argv": [
+          "gh",
+          "api",
+          "repos/open-hax/eta-mu/commits/main"
+        ],
+        "exit": 0
+      }
+    },
+    {
+      "group": "fork-main",
+      "streams": [
+        {
+          "stream": "stdout",
+          "wrapper": "fork-main.stdout.b64",
+          "decoded_size": 167487,
+          "decoded_sha256": "2a4bbd36c6b34c6c788fed1e646583e91ef2235442520b9ae8a623e24c4e6416"
+        },
+        {
+          "stream": "stderr",
+          "wrapper": "fork-main.stderr.b64",
+          "decoded_size": 0,
+          "decoded_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "operation_metadata": {
+        "argv": [
+          "gh",
+          "api",
+          "repos/riatzukiza/eta-mu/commits/main"
+        ],
+        "exit": 0
+      }
+    },
+    {
+      "group": "rr-owner-main",
+      "streams": [
+        {
+          "stream": "stdout",
+          "wrapper": "rr-owner-main.stdout.b64",
+          "decoded_size": 7054,
+          "decoded_sha256": "97c814ddfbf28478a43dbda1ea680a8d47aac441b0cc930b1165a8c9581ec0d7"
+        },
+        {
+          "stream": "stderr",
+          "wrapper": "rr-owner-main.stderr.b64",
+          "decoded_size": 0,
+          "decoded_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "operation_metadata": {
+        "argv": [
+          "gh",
+          "api",
+          "repos/open-hax/receipt-river/commits/main"
+        ],
+        "exit": 0
+      }
+    },
+    {
+      "group": "clone",
+      "streams": [
+        {
+          "stream": "stdout",
+          "wrapper": "clone.stdout.b64",
+          "decoded_size": 0,
+          "decoded_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "stream": "stderr",
+          "wrapper": "clone.stderr.b64",
+          "decoded_size": 120,
+          "decoded_sha256": "c520d66be914d9b46cc5d72f2fbcfead2734a7169e011ae79971649a1bf9aacf"
+        }
+      ],
+      "operation_metadata": {
+        "operation": "private Git clone/fetch/worktree; raw diagnostics retained",
+        "exit": 0
+      }
+    },
+    {
+      "group": "fetch-upstream",
+      "streams": [
+        {
+          "stream": "stdout",
+          "wrapper": "fetch-upstream.stdout.b64",
+          "decoded_size": 0,
+          "decoded_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "stream": "stderr",
+          "wrapper": "fetch-upstream.stderr.b64",
+          "decoded_size": 89,
+          "decoded_sha256": "dfe66ad33d1961f2d70baa4186b15d1d583897261e232b53beeba5ed07a529b6"
+        }
+      ],
+      "operation_metadata": {
+        "operation": "private Git clone/fetch/worktree; raw diagnostics retained",
+        "exit": 0
+      }
+    },
+    {
+      "group": "worktree",
+      "streams": [
+        {
+          "stream": "stdout",
+          "wrapper": "worktree.stdout.b64",
+          "decoded_size": 86,
+          "decoded_sha256": "788269c6e2ff5bad38cb10b9098e304c585518d4da38f55330d55518ed2026d2"
+        },
+        {
+          "stream": "stderr",
+          "wrapper": "worktree.stderr.b64",
+          "decoded_size": 3388,
+          "decoded_sha256": "338eb0e3f7a1e3378ac4703bdba9f9aecc4f8bc72677c63511323dc89750bc61"
+        }
+      ],
+      "operation_metadata": {
+        "operation": "private Git clone/fetch/worktree; raw diagnostics retained",
+        "exit": 0
+      }
+    }
+  ],
+  "group_count": 7,
+  "stream_count": 14
+}

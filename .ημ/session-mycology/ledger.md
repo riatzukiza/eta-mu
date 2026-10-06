@@ -597,3 +597,12 @@
   spore: none
   receipt-refs: eta342-all-native-rejection-test-source-20261006T1534Z/new-source-receipt.edn
   note: Read the whole completed review before publishing a pending test successor. Include all genuine rejection gaps in one publication, retain each prior passing/failing observation literally, and qualify the new native head independently. No spore or promotion.
+
+- ts: 2026-10-06T22:42:18.509810Z
+  owner: codex/child-prs
+  lesson: Synchronize accepted upstream history as an independent terminal purpose before bounded development; no live foreign worker adoption.
+  p-efficiency: 0.88
+  p-friction: 0.20
+  p-skill-candidate: 0.18
+  spore: none
+  receipt-refs: etamu-accepted-upstream-sync-20261006
