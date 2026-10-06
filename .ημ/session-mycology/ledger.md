@@ -548,3 +548,30 @@
   spore: none
   receipt-refs: Eta340/fresh fatal UTF8 admission RED GREEN; Eta340/bounded lint diagnostic and frozen scope
   note: Move validation to the earliest shared admission boundary and reproduce it with actual Git bytes, not a guessed transport shape. Preserve immutable predecessor RED and genuine compiler/tool GREEN separately from native successor qualification. Stop stalled tools within the authorized scope, retain their actual signal/time outcome, and label a parser-only diagnostic with external checks disabled precisely. Unknown lint cause stays unknown; no new spore or promotion, and parent owns independent lint/publication.
+- ts: 2026-09-13T05:37:07.974707155Z
+  session: /home/err/Documents/Codex/2026-09-11/operator-in-clojure/work/eta-mu-document-history
+  task: Implement reusable Clio document history and causal snapshots
+  p-efficiency: 0.85
+  p-friction: 0.4
+  p-skill-candidate: 0.55
+  spore: none
+  receipt-refs: none
+  note: Real partition/process tests caught an unanchored Malli regex before the consumer cutover. Parent revisions must come from the editor, canonical ordering is display order only, and snapshots need immutable source addresses. Existing falsify-every-new-test and extraction-adoption spores cover the reusable lessons; no new spore.
+- ts: 2026-09-13T06:14:41.987956939Z
+  session: /home/err/Documents/Codex/2026-09-11/operator-in-clojure/work/eta-mu-document-history
+  task: Repair reviewed document history initialization and verification boundaries
+  p-efficiency: 0.88
+  p-friction: 0.48
+  p-skill-candidate: 0.65
+  spore: none
+  receipt-refs: none
+  note: A review with an incorrect explanation still exposed a real gate failure: compiled assertions executed, but the compiler returned zero. Deliberate failure probes distinguish printed evidence from exit authority. Async fixture supervision also needs to await terminal callbacks before deleting fixture directories. Existing terminal-truth and falsify-every-new-test spores cover these lessons.
+- ts: 2026-09-13T06:36:46.546193230Z
+  session: /home/err/Documents/Codex/2026-09-11/operator-in-clojure/work/eta-mu-document-history
+  task: Align public document revision identity with Clio ledger admission
+  p-efficiency: 0.92
+  p-friction: 0.22
+  p-skill-candidate: 0.4
+  spore: none
+  receipt-refs: none
+  note: A duplicated UUID regex made accepted imported ledger heads unextendable. Reusing the canonical Clio predicate preserves existing identities and aligns command admission with replay. A real finalized-partition regression failed before repair and passed under both runtimes afterward. Existing falsify-every-new-test spore covers the reusable proof discipline; no new spore.
