@@ -575,3 +575,12 @@
   spore: none
   receipt-refs: none
   note: A duplicated UUID regex made accepted imported ledger heads unextendable. Reusing the canonical Clio predicate preserves existing identities and aligns command admission with replay. A real finalized-partition regression failed before repair and passed under both runtimes afterward. Existing falsify-every-new-test spore covers the reusable proof discipline; no new spore.
+- ts: 2026-10-06T15:03:43.601403395Z
+  session: /home/err/.codex/worktrees/etamu-personal-pr336-20261006
+  task: Repair document history portable storage admission boundary
+  p-efficiency: 0.5
+  p-friction: 0.38
+  p-skill-candidate: 0.5
+  spore: none
+  receipt-refs: none
+  note: Current native architecture finding remained after all hosted checks passed. Move policy to pure CLJC law and compose real-path checks in infra; verify both runtimes and real independent-process fixtures. Package-cwd verification matters because workers resolve package-relative paths. Existing CWD and boundary skills cover this lesson; no new spore.

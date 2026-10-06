@@ -11,9 +11,6 @@
   (fs/mkdirSync directory #js {:recursive true})
   directory)
 
-(defn- eta-mu-path? [value]
-  (boolean (some #{".ημ"} (str/split value #"[/\\]+"))))
-
 (defn- existing-ancestor [root]
   (loop [candidate root]
     (let [present? (try
@@ -23,23 +20,21 @@
                        (if (= "ENOENT" (.-code cause)) false (throw cause))))]
       (if present? candidate (recur (path/dirname candidate))))))
 
-(defn root! [root]
-  (when-not (and (string? root) (eta-mu-path? (path/resolve root)))
-    (throw (ex-info "Document histories and snapshots must reside under .ημ"
-                    {:document-history/error :invalid-root})))
-  (let [absolute (path/resolve root)
-        ancestor (existing-ancestor absolute)
-        intended (path/resolve (fs/realpathSync ancestor) (path/relative ancestor absolute))]
-    ;; A pre-existing .ημ symlink must be validated before mkdir can follow it.
-    (when-not (eta-mu-path? intended)
-      (throw (ex-info "Resolved document history root escapes .ημ"
-                      {:document-history/error :invalid-root})))
-    (directory! intended)
-    (let [resolved (fs/realpathSync intended)]
-      (when-not (eta-mu-path? resolved)
-        (throw (ex-info "Resolved document history root escapes .ημ"
-                        {:document-history/error :invalid-root})))
-      resolved)))
+(defn absolute-path
+  "Normalize a host path without creating it."
+  [root]
+  (path/resolve root))
+
+(defn intended-path
+  "Resolve the nearest existing ancestor before any descendant is created."
+  [absolute]
+  (let [ancestor (existing-ancestor absolute)]
+    (path/resolve (fs/realpathSync ancestor) (path/relative ancestor absolute))))
+
+(defn real-path
+  "Return the host-resolved path of an existing filesystem entry."
+  [root]
+  (fs/realpathSync root))
 
 (defn exists? [file] (boolean (fs/existsSync file)))
 (defn read-text [file] (fs/readFileSync file "utf8"))

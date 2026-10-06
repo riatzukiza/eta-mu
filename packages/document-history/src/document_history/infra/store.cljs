@@ -9,13 +9,19 @@
             [clio.shape.edn :as edn]
             [document-history.domain.history :as history]
             [document-history.extern.fs :as fs]
-            [document-history.law.revision :as law]))
+            [document-history.law.revision :as law]
+            [document-history.law.storage :as storage]))
 
 (defn open!
   "Open an operator-owned root beneath .ημ. Functions are synchronous like
    Clio's filesystem API; every returned commit has been appended and sealed."
   [root]
-  (let [root (fs/root! root)]
+  (storage/require-root! root)
+  (let [absolute (storage/require-root! (fs/absolute-path root))
+        intended (storage/require-root! (fs/intended-path absolute))
+        ;; Validate the resolved ancestor before mkdir follows any symlink.
+        _ (fs/directory! intended)
+        root (storage/require-root! (fs/real-path intended))]
     {:store/root root
      :store/ledgers (fs/directory! (fs/join root "ledgers"))
      :store/seeds (fs/directory! (fs/join root "seeds"))
