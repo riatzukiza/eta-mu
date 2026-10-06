@@ -351,6 +351,203 @@
   spore: none
   receipt-refs: 2026-08-30T05:20:31.845Z
   note: Keeping implementation H and activation A as separate immutable revisions prevents a reusable workflow from loading repaired source while still executing its predecessor. The activation changes only the internal checkout pin, preserves the review card through later consumer proof, and verifies the exact repository/path/credential contract plus the full 25-test GitHub package. Local CLI compilation was bounded by Maven network denial, so hosted exact-head gates remain the authority. No new spore; the existing exact-head and separate-evidence-retention spores already cover this revision topology.
+
+- ts: 2026-09-11T23:59:52.105992+00:00
+  session: foresight-sandbox-clio-local-providers
+  task: Canonical Clio JVM adapters, EDN service protocols, Sol deprecated ledger cutover
+  p-efficiency: 0.8
+  p-friction: 0.4
+  p-skill-candidate: 0.6
+  spore: none
+  receipt-refs: implementation receipt for feat/clio-local-providers
+  note: Protocol suites passed before artifact checks exposed empty ESM exports and namespace loss at clj->js; direct Node artifact verification closed both. Frozen offline lock validation reused native dependencies after unlocked regeneration hit unrelated missing metadata. Cross-host locks and typed replay were tested against the actual Clio kernel.
+
+- ts: 2026-09-12T00:13:24.789835+00:00
+  session: foresight-sandbox-clio-docs-followup
+  task: Reconcile current Clio ownership and Rheos migration guidance
+  p-efficiency: 0.95
+  p-friction: 0.15
+  p-skill-candidate: 0.3
+  spore: none
+  receipt-refs: Clio documentation reconciliation observation
+  note: Preserved dated August survey facts while replacing current ledger adoption guidance; actual Rheos package and BB manifests disagree on build targets, so documented both rather than silently treating them as equivalent.
+
+- ts: 2026-09-12T00:22:11.482392+00:00
+  session: foresight-sandbox-receipt-fixture
+  task: Repair stale Receipt River multi-arity discovery fixture
+  p-efficiency: 0.95
+  p-friction: 0.2
+  p-skill-candidate: 0.6
+  spore: none
+  receipt-refs: receipt-river-fixture-repro/test/build/lint
+  note: Compiled CLJS calls a known multi-arity var through arity dispatch properties; with-redefs fixtures must preserve that shape. Reproduced the exact original failure, restored the supported arities without changing assertions, and verified full package test/build/lint.
+
+- ts: 2026-09-12T17:12:51.568Z
+  session: /workspace/scratch/3655842e43cf/eta-clio-restored
+  task: Recover Clio public append identity and protocol query/subscription contracts
+  p-efficiency: 0.8
+  p-friction: 0.65
+  p-skill-candidate: 0.75
+  spore: none
+  receipt-refs: final Clio recovery receipt for source a9328801
+  note: Restored exact reviewed source after maintenance pruned tools and checkouts. Native failure-first tests exposed missing generated retry identity, NBB stdout error routing, and lexical symbolic-link parent-path redirection. RealpathSync.native was required because Node realpathSync still chose the lexical target. Final Clio BB29/182 JVM77/355 NBB and Shadow75/362 plus protocols76/282 and19native pass; strict gates are clean. Existing binary-verification and absolute-path spores cover the reusable lesson. Actual hosted successor reviews remain required.
+
+- ts: 2026-09-12T17:53:13Z
+  session: foresight-sandbox-protocol-membership-range
+  task: Repair false/null membership and scalar/vector NaN range queries
+  p-efficiency: 0.85
+  p-friction: 0.5
+  p-skill-candidate: 0.75
+  spore: none
+  receipt-refs: 6221a3f7-e2fa-4026-8f47-06a24e91a314
+  note: Real portable and compiled consumer failures preceded the pure query correction. Generic equality was unsafe as a numeric NaN guard on a boxed host; numeric equality plus supported vector recursion passes both hosts. Preserving an unexpected subscription failure led to a native FIFO barrier proving a real missed-event startup gap. Query gates are green; watcher recovery follows separately, with no lucky-rerun dismissal. Existing verification lessons reused.
+
+- ts: 2026-09-12T18:00:01Z
+  session: foresight-sandbox-protocol-watch-startup
+  task: Close the real subscription initial-stat delivery gap
+  p-efficiency: 0.9
+  p-friction: 0.5
+  p-skill-candidate: 0.8
+  spore: none
+  receipt-refs: bf3b2de5-2c74-42a9-a09b-eb9a5c557cca
+  note: A controlled FIFO/native-worker barrier converted the intermittent subscription observation into an actual missed-event reproduction. The owned canonical polling timer passes first-write delivery without a second write, deduplication, unsubscribe and existing error-closure contracts. Full provider78/332 plus22native and strict gates pass. Idle full-history read cost is explicit; no fixture sleeps or hidden retries were added. Existing mechanism-verification lesson reused.
+
+- ts: 2026-09-12T18:42:37Z
+  session: foresight-sandbox-clio-alias-parent
+  task: Repair Codex3997117083 canonical target parent durability on Node and JVM
+  p-efficiency: 0.9
+  p-friction: 0.3
+  p-skill-candidate: 0.7
+  spore: none
+  receipt-refs: 9aff7874-6812-4984-9c0b-a5ac1d027b4c
+  note: Native Node12/101 and JVM10/93 each produced11 actual failures before repair, including symlink retarget after lock. Canonical resolution before open now binds the later inode and parent fences while retaining caller returns. All four host suites and zero-warning gates pass; root independent adapter review clear. Existing native-mechanism and explicit-worktree lessons reused. The receipt CLI refused unsupported verification kind without writing; the declared test-run kind succeeded. Source30090a67 and verification document retain scope and evidence. No remote writes.
+- ts: 2026-10-02T22:04:36.013544946Z
+  session: /home/err/spaces/review-repair/eta-mu
+  task: Resume evidence review rollout and unblock generated catalog build
+  p-efficiency: 0.7
+  p-friction: 0.5
+  p-skill-candidate: 0.3
+  spore: none
+  receipt-refs: none
+  note: Provider support is not proof of catalog membership; compile omission fixtures to preserve absent-provider behavior.
+- ts: 2026-10-02T22:45:09.098576250Z
+  session: /home/err/spaces/review-repair/eta-mu
+  task: eta-mu#339 repair three verified CodeRabbit findings
+  p-efficiency: 0.75
+  p-friction: 0.35
+  p-skill-candidate: 0.3
+  spore: none
+  receipt-refs: eta-mu#339 comments4170384835,4170384852,4170384866
+  note: Conditional return types preserve present-provider precision while unions remain optional. Synthetic catalogs must not depend on live catalogs. Use vitest run with direct file filters; pnpm test -- launched the network suite and was stopped. Main receipt bytes preserved, only authorized unmerged suffix repaired. No spore; review quota and dependency merge hold remain.
+- ts: 2026-10-02T23:20:35.250054052Z
+  session: /home/err/spaces/review-repair/eta-mu
+  task: eta-mu#339 settle new evidence reviewer threads
+  p-efficiency: 0.9
+  p-friction: 0.15
+  p-skill-candidate: 0.2
+  spore: none
+  receipt-refs: 4170488366,4170488373
+  note: Verify reviewer commit before repairing stale findings. Catalog fixture now runs through root deterministic gate and coverage CI, without network provider tests. Stale Muse default docs reconciled. No spore; caller pin and merge hold preserved.
+
+- ts: 2026-10-03T02:37:45.397512+00:00
+  session: coderabbit-pr339-docstring-coverage
+  task: Document PR339 catalog functions and regression test
+  p-efficiency: 0.9
+  p-friction: 0.1
+  p-skill-candidate: 0.0
+  spore: none
+  receipt-refs: none
+  note: Verified PR head867da5c5 before edits. Added JSDoc only; scanner confirms unchanged executable tokens and seven documented declarations. Offline catalog contract passes1/1. Hosted coverage needs rerun. Session CLI is unavailable in this sandbox; reflection recorded directly.
+
+- ts: 2026-10-03T23:21:12.317331Z
+  task: Prepare complete immutable review input
+  p-efficiency: 0.85
+  p-friction: 0.25
+  p-skill-candidate: 0.2
+  spore: none
+  receipt-refs: full-input-repair/preparation
+  note: Keep preview and full source distinct; preserve delivery versus assessment, source hashes and historical prefixes. Extend the existing reviewer instead of adding an alternate engine. User hold keeps all source uncommitted; no provider retry or native approval claimed.
+
+- ts: "2026-10-04T00:14:27.593028+00:00"
+  origin: Muse19/native-review-followup
+  p-efficiency: 0.85
+  p-friction: 0.2
+  p-skill-candidate: 0.2
+  spore: none
+  receipt-refs: Muse19/native-review-followup
+  note: Guard the transition that closes candidate admission, retain the submission guard, and verify actual producer-to-compiled-consumer recovery. Candidate commits can qualify together before merge; caller activation waits for both qualified merges. No source installation, provider request or native approval fabricated.
+
+- ts: "2026-10-04T00:28:37.838205+00:00"
+  origin: full-input-repair/immutable-Muse-selection
+  p-efficiency: 0.9
+  p-friction: 0.1
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: full-input-repair/immutable-Muse-selection
+  note: Require the same exact committed source at workflow default, checkout fallback and artifact provenance, then test actual producer and compiled consumer. Local immutable-source proof remains separate from pending native qualification and caller activation. Parent retains publication.
+
+- ts: "2026-10-04T01:20:11.369816+00:00"
+  origin: Eta340/independent-full-input-verification
+  p-efficiency: 0.85
+  p-friction: 0.25
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: Eta340/independent-full-input-verification
+  note: Gate-controlled bytes and a matching digest do not establish Git authority. Verify in a fresh job before source-dependent review, exercise a successful malicious gate in RED, retain exact native artifact truth without qualification credit, and freeze a bounded local handoff. Existing spore covers falsifying every new test; no promotion or global skill write.
+
+- ts: "2026-10-04T01:42:38.682649+00:00"
+  origin: Eta340/companion-source-alignment
+  p-efficiency: 0.9
+  p-friction: 0.15
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: Eta340/companion-source-alignment
+  note: A native review caught a stale diagnostic and operator-facing default after the main pin moved. Align the actual compiler source and state its subset boundary; preserve earlier frozen handoff evidence separately from publication and hosted qualification.
+
+- ts: "2026-10-04T01:57:51.319019+00:00"
+  origin: Eta340/current-immutable-Muse-selection
+  p-efficiency: 0.9
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: Eta340/current-immutable-Muse-selection
+  note: Verify reviewer arithmetic against immutable source before claiming a defect. Preserve actual baseline pass and mutation RED as different evidence, align every active immutable source selector, and requalify the candidate pair before production activation.
+
+- ts: "2026-10-04T02:10:00.350294+00:00"
+  origin: Eta340/current-pair-publication
+  p-efficiency: 0.85
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: Eta340/current-pair-publication
+  note: Keep initial missing test-runner dependency separate from executed tests; use a scoped existing dependency path and verify current source. Allow an exact caller Node patch while retaining default behavior and unchanged Bash semantics. Native proof and production activation remain separate.
+
+- ts: "2026-10-04T04:27:09.182348915Z"
+  origin: Eta340/final-publication-binding
+  p-efficiency: 0.9
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: Eta340/shared final-publication verification boundary; Eta340/final-publication actual Muse RED GREEN
+  note: Carry initial verification authority outside mutable evidence, reuse the actual Git guard at publication, and freeze the unchanged submitted bytes. Validate real immutable producer/tool output rather than guessed fixture keys; full transport closure is separate from cognitive review and native qualification. Preserve bootstrap errors, mutation RED, every historical prefix and frozen neighboring handoff. No new spore or promotion; parent owns publication.
+
+- ts: "2026-10-04T04:42:01.390226472Z"
+  origin: Eta340/native-dc4-final-boundary-fixture
+  p-efficiency: 0.9
+  p-friction: 0.1
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: Eta340/native-dc4 final-boundary fixture correction
+  note: Prefer the newly available genuine current-head tool output over a prior native shape excerpt. Reconstruct its actual Git input and prove unchanged-byte acceptance through the production guard while retaining previous frozen evidence. Native dc4 completion, local retrospective gate proof and future successor qualification are separate facts. Preserve every received receipt/reflection prefix and frozen Agents source; no operational action or new spore.
+
+- ts: "2026-10-04T05:31:36.343874134Z"
+  origin: Eta340/fresh-fatal-UTF8-admission
+  p-efficiency: 0.85
+  p-friction: 0.25
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: Eta340/fresh fatal UTF8 admission RED GREEN; Eta340/bounded lint diagnostic and frozen scope
+  note: Move validation to the earliest shared admission boundary and reproduce it with actual Git bytes, not a guessed transport shape. Preserve immutable predecessor RED and genuine compiler/tool GREEN separately from native successor qualification. Stop stalled tools within the authorized scope, retain their actual signal/time outcome, and label a parser-only diagnostic with external checks disabled precisely. Unknown lint cause stays unknown; no new spore or promotion, and parent owns independent lint/publication.
 - ts: 2026-09-13T05:37:07.974707155Z
   session: /home/err/Documents/Codex/2026-09-11/operator-in-clojure/work/eta-mu-document-history
   task: Implement reusable Clio document history and causal snapshots
