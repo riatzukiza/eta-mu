@@ -7,7 +7,8 @@
             [clio.shape.edn :as edn]
             [document-history.extern.fs :as fs]
             [document-history.extern.process :as process]
-            [document-history.infra.store :as store]))
+            [document-history.infra.store :as store]
+            [document-history.law.storage :as storage]))
 
 (defn temporary-root [] (str "/tmp/document-history-" (fs/unique-name) "/.ημ/documents"))
 (defn command
@@ -319,3 +320,32 @@
           (is (= "backslash allowed" (:document/markdown
                                     (store/commit! db (command "literal" "backslash allowed"))))))
         (finally (fs/remove-tree! base))))))
+
+(deftest host-dialect-is-applied-at-every-open-boundary
+  (let [root (temporary-root)
+        dialect (fs/path-dialect)
+        observed (atom [])
+        require-root! storage/require-root!]
+    (try
+      (with-redefs [storage/require-root! (fn
+                                          ([value]
+                                           (swap! observed conj [value :missing-host-dialect])
+                                           (require-root! value))
+                                          ([value actual-dialect]
+                                           (swap! observed conj [value actual-dialect])
+                                           (require-root! value actual-dialect)))]
+        (let [db (store/open! root)]
+          (is (= [[root dialect] [(fs/absolute-path root) dialect]
+                  [(fs/intended-path (fs/absolute-path root)) dialect]
+                  [(:store/root db) dialect]]
+                 @observed))))
+      (is (= (if (= "a/b" (fs/join "a" "b")) :posix :windows) dialect))
+      (finally (fs/remove-tree! root)))))
+
+(deftest unknown-host-dialect-is-refused-before-creation
+  (let [root (temporary-root)]
+    (try
+      (with-redefs [fs/path-dialect (constantly :unknown)]
+        (is (= :invalid-root (error-type #(store/open! root)))))
+      (is (not (fs/exists? root)))
+      (finally (fs/remove-tree! root)))))

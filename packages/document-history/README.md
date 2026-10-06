@@ -86,6 +86,20 @@ history and sibling heads remain available through `read!`.
 
 The resolved storage root must be beneath a `.ημ` path component:
 
+`open!` obtains the host path dialect from the Node adapter and passes it to the
+pure storage law at the raw, absolute, intended and real-path boundaries. POSIX
+backslashes are literal filename characters; `/tmp/back\.ημ/documents` therefore
+has no `.ημ` component and is refused before creating directories. A literal
+backslash below a real `.ημ` directory remains legal. Windows admission recognizes
+both slash and backslash separators, including mixed, drive and UNC paths.
+
+The pure `document-history.law.storage/admissible-root?` and `require-root!` APIs
+take an explicit second argument, `:posix` or `:windows`, when checking host path
+strings. Their one-argument form checks slash-normalized paths, using POSIX
+component boundaries; it no longer interprets raw Windows backslashes implicitly.
+Unknown dialects fail closed. This contract introduces no host dependency into
+the portable `.cljc` law.
+
 ```text
 .ημ/documents/
   schemas/<Clio-schema-root>.edn

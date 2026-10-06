@@ -7,6 +7,11 @@
             [clojure.string :as str]))
 
 (defn join [& pieces] (apply path/join pieces))
+(defn path-dialect
+  "Decode Node's host separator as portable path-admission data."
+  []
+  (case (.-sep path) "/" :posix "\\" :windows :unknown))
+
 (defn directory! [directory]
   (fs/mkdirSync directory #js {:recursive true})
   directory)

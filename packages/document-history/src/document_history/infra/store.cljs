@@ -16,12 +16,13 @@
   "Open an operator-owned root beneath .ημ. Functions are synchronous like
    Clio's filesystem API; every returned commit has been appended and sealed."
   [root]
-  (storage/require-root! root)
-  (let [absolute (storage/require-root! (fs/absolute-path root))
-        intended (storage/require-root! (fs/intended-path absolute))
+  (let [dialect (fs/path-dialect)
+        _ (storage/require-root! root dialect)
+        absolute (storage/require-root! (fs/absolute-path root) dialect)
+        intended (storage/require-root! (fs/intended-path absolute) dialect)
         ;; Validate the resolved ancestor before mkdir follows any symlink.
         _ (fs/directory! intended)
-        root (storage/require-root! (fs/real-path intended))]
+        root (storage/require-root! (fs/real-path intended) dialect)]
     {:store/root root
      :store/ledgers (fs/directory! (fs/join root "ledgers"))
      :store/seeds (fs/directory! (fs/join root "seeds"))

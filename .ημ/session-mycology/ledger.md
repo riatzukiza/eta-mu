@@ -593,3 +593,13 @@
   spore: none
   receipt-refs: review5431267699
   note: Review suggestions may target immutable runtime-emitted historical facts. Verify source ancestry before changes, repair mutable docs/config directly, and keep rejected rewrites open until authenticated independent assessment; no new spore.
+
+- ts: 2026-10-06T17:11:52.712588Z
+  session: /home/err/.codex/parallel-goal/child-prs-20261006/eta5-posix-storage-repair-20261006/worktree
+  task: Repair native POSIX storage-component admission finding
+  p-efficiency: 0.88
+  p-friction: 0.18
+  p-skill-candidate: 0.15
+  spore: none
+  receipt-refs: review5431876321 / inline4198142815 / red95d29c8
+  note: Ambiguous path strings require explicit host dialect facts, not a universal separator regex. Prove both actual refused mutation and legal literal filenames. Preserve compiled multi-arity dispatch when instrumenting a public function; retain failed harness evidence separately from defect RED. Local gates do not supply native successor approval. No spore or promotion.

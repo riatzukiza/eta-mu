@@ -1,0 +1,22 @@
+
+============================================================
+Running: clj-kondo (@eta-mu/document-history)
+============================================================
+
+
+> @eta-mu/document-history@0.1.0 lint:kondo /home/err/.codex/parallel-goal/child-prs-20261006/eta5-posix-storage-repair-20261006/worktree/packages/document-history
+> clj-kondo --lint src test
+
+linting took 116ms, errors: 0, warnings: 0
+
+✓ clj-kondo (@eta-mu/document-history) passed
+
+============================================================
+LINT SUMMARY
+============================================================
+
+  ✓ clj-kondo (@eta-mu/document-history)
+
+  (TypeScript-era checks skipped)
+
+All checks passed!
