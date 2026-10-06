@@ -548,3 +548,12 @@
   spore: none
   receipt-refs: Eta340/fresh fatal UTF8 admission RED GREEN; Eta340/bounded lint diagnostic and frozen scope
   note: Move validation to the earliest shared admission boundary and reproduce it with actual Git bytes, not a guessed transport shape. Preserve immutable predecessor RED and genuine compiler/tool GREEN separately from native successor qualification. Stop stalled tools within the authorized scope, retain their actual signal/time outcome, and label a parser-only diagnostic with external checks disabled precisely. Unknown lint cause stays unknown; no new spore or promotion, and parent owns independent lint/publication.
+- ts: 2026-10-06T14:55:12.960398109Z
+  session: /home/err/.codex/worktrees/etamu-personal-325-plan-20261006
+  task: Reconcile obsolete EtaMu325 candidate with accepted evidence authority
+  p-efficiency: 0.5
+  p-friction: 0.42
+  p-skill-candidate: 0.55
+  spore: none
+  receipt-refs: none
+  note: Fresh main integration revealed that327 already owns the same first slice through incompatible schemas. Stop before repairing a second authority; preserve native findings and plan a narrow catalog extension to the accepted fold. Existing verification-of-main and anomaly rules cover this learning; no new spore.
