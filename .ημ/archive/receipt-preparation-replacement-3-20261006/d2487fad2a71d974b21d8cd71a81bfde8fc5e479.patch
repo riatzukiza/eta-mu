@@ -1,0 +1,370 @@
+commit d2487fad2a71d974b21d8cd71a81bfde8fc5e479
+Author:     err <foamy125@gmail.com>
+AuthorDate: Tue Oct 6 10:03:43 2026 -0500
+Commit:     err <foamy125@gmail.com>
+CommitDate: Tue Oct 6 10:03:43 2026 -0500
+
+    Move document storage admission into portable law and infra
+
+diff --git "a/.\316\267\316\274/receipts.edn" "b/.\316\267\316\274/receipts.edn"
+index 5c885fe..872e38f 100644
+--- "a/.\316\267\316\274/receipts.edn"
++++ "b/.\316\267\316\274/receipts.edn"
+@@ -1,3 +1,4 @@
+ {:pi "document-history/causal-projection", :tests "Root-selected NBB and Shadow CLJS: 8 tests/54 assertions each, zero failures/errors; compiled 100 files with zero warnings. Package and individual root-script clj-kondo: zero errors/warnings. actionlint and git diff --check passed.", :refs ["main 476b07bd66efb84566a4159556deacb1e9407e6f" "Knoxx PR 306 integration"], :dod "Generic document histories retain concurrent edits and rebuild disposable EDN/Markdown projections through Clio", :manifest ["packages/document-history" "scripts/test.bb" "scripts/lint.bb" ".github/workflows/document-history-ci.yml" "docs/notes/design/rheos-ledger-authority-and-branch-projections.md"], :note "Actual independent writers and seed importers exercised Clio filesystem locks; causal siblings survive identical timestamps, 1/10/100 ledger partitions and duplicates yield the same state, deleted/stale snapshots cannot decide authority, per-revision snapshots preserve each branch, and invalid inputs fail before publication. NBB 1.5.211 removes the older runtime deprecation warning. Ledger and snapshot state lives beneath .ημ. The existing Rheos board CLI still writes its legacy audit ledger; that runtime is explicitly not cut over here.", :ts "2026-09-13T05:37:07.954836302Z", :host "stealth/local-worktree", :kind :test-run, :origin "reusable-clio-document-history", :repo "https://github.com/open-hax/eta-mu", :owner "codex/document-history-clio"}
+ {:pi "document-history/causal-projection", :tests "Root-selected NBB and compiled CLJS each pass 11 tests/71 assertions; compiler and clj-kondo zero warnings. Controlled independent-process lock interleavings cover seed-first and normal-first. Deliberate failing compiled assertion: prior autorun compile exit 0, explicit Node/script exit 1. Probe removed before final green suite. git diff --check passed.", :refs ["PR 336 comments 3998863118,3998874825,3998874829,3998874820,3998874816" "base 61a60f0e9d19768475ef5abd5251bbdccf1d3015"], :dod "Review fixes preserve independent claims while making initialization linearizable, root setup nonmutating on refused paths, worker failures bounded, and compiled test failure authoritative", :manifest ["packages/document-history" "pnpm-lock.yaml" "kanban/tasks/reusable-clio-document-history-and-edn-projections--history.md"], :note "Parentless normal commits retain independent root claims; the shared lock makes only the seed point-in-time empty check linearizable. Parent harness timers keep spawn/close callbacks runnable and await worker closure before removing fixtures. The card projection received only a blank line before its final delimiter after canonical CLI updates.", :ts "2026-09-13T06:14:41.968726652Z", :host "stealth/local-worktree", :kind :test-run, :origin "reusable-clio-document-history-review-fixes", :repo "https://github.com/open-hax/eta-mu", :owner "codex/document-history-clio"}
+ {:pi "document-history/causal-projection", :tests "Root-selected NBB and compiled CLJS each pass 12 tests/86 assertions, zero failures/errors; compiler and clj-kondo zero warnings. The new real-finalized-partition regression produces 3 failures/0 errors with the previous parent validator. git diff --check passed.", :refs ["PR 336 comments 3998921310,3998921311" "base 2a7ca613a179520f3fd693c34e3cf4b19c79c8c9"], :dod "Every lawful Clio revision remains extendable through the document API without identity rewriting", :manifest ["packages/document-history/src/document_history/law/revision.cljc" "packages/document-history/test/document_history/infra/store_test.cljs" "packages/document-history/README.md"], :note "Parent schemas now reuse clio.law.event/uuid-string? directly. Imported uppercase version-8 UUID history replays, extends, retains original event identity and causes, and resolves with independent concurrent roots. Invalid versions/variants fail before publication. New receipt records remain under .ημ per the explicit user instruction overriding the root-river default; no existing receipt history is moved or rewritten.", :ts "2026-09-13T06:36:46.518621532Z", :host "stealth/local-worktree", :kind :test-run, :origin "document-history-clio-identity-review", :repo "https://github.com/open-hax/eta-mu", :owner "codex/document-history-clio"}
++{:pi "eta-mu/document-history", :refs ["open-hax/eta-mu#336" "a2f428afd7623dcd188d535512525ee521a5ba61" "a2fbf57" "3998970657" "084cd150b8d5b9848d026e9ef8717747964dcd6d"], :dod "portable storage admission with original Clio semantics", :manifest ["packages/document-history/src/document_history/law/storage.cljc" "packages/document-history/src/document_history/extern/fs.cljs" "packages/document-history/src/document_history/infra/store.cljs" "packages/document-history/test/document_history/law/storage_test.cljs" ".ημ/verification/document-history-storage-law-20261006"], :note "Red missing portable law; green extracted product storage rule from extern into CLJC law and infra composition. Full root-selected NBB and compiled suites each13tests97assertions0fail/error, compile0warnings, packagekondo0errors/warnings; Babashka lawPASS. Private wrong-cwd preparation failures retained; no service, boardstate, originalPR source or globalconfig mutated.", :ts "2026-10-06T15:03:43.574164492Z", :host "local", :kind :test-run, :origin "eta-mu336-storage-law", :owner "foresight_prs"}
+diff --git "a/.\316\267\316\274/session-mycology/ledger.md" "b/.\316\267\316\274/session-mycology/ledger.md"
+index e4cd908..306678b 100644
+--- "a/.\316\267\316\274/session-mycology/ledger.md"
++++ "b/.\316\267\316\274/session-mycology/ledger.md"
+@@ -575,3 +575,12 @@
+   spore: none
+   receipt-refs: none
+   note: A duplicated UUID regex made accepted imported ledger heads unextendable. Reusing the canonical Clio predicate preserves existing identities and aligns command admission with replay. A real finalized-partition regression failed before repair and passed under both runtimes afterward. Existing falsify-every-new-test spore covers the reusable proof discipline; no new spore.
++- ts: 2026-10-06T15:03:43.601403395Z
++  session: /home/err/.codex/worktrees/etamu-personal-pr336-20261006
++  task: Repair document history portable storage admission boundary
++  p-efficiency: 0.5
++  p-friction: 0.38
++  p-skill-candidate: 0.5
++  spore: none
++  receipt-refs: none
++  note: Current native architecture finding remained after all hosted checks passed. Move policy to pure CLJC law and compose real-path checks in infra; verify both runtimes and real independent-process fixtures. Package-cwd verification matters because workers resolve package-relative paths. Existing CWD and boundary skills cover this lesson; no new spore.
+diff --git "a/.\316\267\316\274/verification/document-history-storage-law-20261006/README.md" "b/.\316\267\316\274/verification/document-history-storage-law-20261006/README.md"
+new file mode 100644
+index 0000000..f87517e
+--- /dev/null
++++ "b/.\316\267\316\274/verification/document-history-storage-law-20261006/README.md"
+@@ -0,0 +1,41 @@
++# Document storage law repair
++
++Original EtaMu PR336 head `a2f428afd7623dcd188d535512525ee521a5ba61`
++is preserved in this branch's ordinary ancestry. Personal main
++`084cd150b8d5b9848d026e9ef8717747964dcd6d` was integrated without rewriting
++any old event or receipt; both independent append sequences are retained.
++The scoped source repair addresses native Codex finding3998970657,
++thread `PRRT_kwDORu27H86h3DZs`.
++
++Portable `document-history.law.storage` now owns normalized .ημ path-component
++admission. Node extern functions expose only absolute, intended ancestor-resolved,
++and existing real paths. Infra applies the pure law before creation and after
++resolution, then creates Clio directories. Clio still owns schema admission,
++locking, appends, causal identity, replay and projection. The original package
++scope is retained; this does not migrate or implement Rheos board state.
++
++Red commit `a2fbf57` adds portable law tests and fails because that law namespace
++is absent, as retained in red-missing-law.log. The green portable law also loads
++under Babashka without Node. Actual root-selected document-history gate executes
++the full NBB suite and compiled Node suite: each 13 tests /97 assertions with
++zero failures or errors. Shadow compilation reports zero warnings, and actual
++package lint:kondo reports zero errors/warnings. Root-gate.log retains executed
++commands and both runtime results.
++
++Preparation-wrong-cwd.log truthfully retains an earlier failed experiment:
++invoking the package tests from the repository root broke the existing worker's
++package-relative paths and produced18 failures. Using the declared package
++command corrected this private preparation mistake without changing the worker
++harness or tests. A direct root-cwd kondo invocation likewise missed the
++package's macro configuration; the required package lint command passed.
++Neither experiment is represented as source verification success.
++
++Node106 dependencies were installed with scripts disabled and a task-private
++pnpm store/cache. Compilation uses a private copied Maven repository and Java
++user directory, with force-spawn/ephemeral nREPL for the initial compilation.
++NBB initially materialized its own package-local .nbb cache. No services,
++database, provider worker, signing credentials, global configuration, controller,
++branch protection or live workflow activation was changed.
++
++This local preparation does not supply native current-head review approval or
++Rheos readiness. Original approvals remain bound to their original heads.
+diff --git "a/.\316\267\316\274/verification/document-history-storage-law-20261006/compiled.log" "b/.\316\267\316\274/verification/document-history-storage-law-20261006/compiled.log"
+new file mode 100644
+index 0000000..502fbf5
+--- /dev/null
++++ "b/.\316\267\316\274/verification/document-history-storage-law-20261006/compiled.log"
+@@ -0,0 +1,7 @@
++shadow-cljs - config: /home/err/.codex/worktrees/etamu-personal-pr336-20261006/packages/document-history/shadow-cljs.edn
++Picked up JAVA_TOOL_OPTIONS: -Duser.home=/tmp/etamu-pr336-private-java-20261006 -Dmaven.repo.local=/tmp/etamu-pr336-private-java-20261006/.m2/repository
++shadow-cljs - updating dependencies
++shadow-cljs - dependencies updated
++Picked up JAVA_TOOL_OPTIONS: -Duser.home=/tmp/etamu-pr336-private-java-20261006 -Dmaven.repo.local=/tmp/etamu-pr336-private-java-20261006/.m2/repository
++[:test] Compiling ...
++[:test] Build completed. (103 files, 102 compiled, 0 warnings, 5.04s)
+diff --git "a/.\316\267\316\274/verification/document-history-storage-law-20261006/nbb-package.log" "b/.\316\267\316\274/verification/document-history-storage-law-20261006/nbb-package.log"
+new file mode 100644
+index 0000000..3f6461c
+--- /dev/null
++++ "b/.\316\267\316\274/verification/document-history-storage-law-20261006/nbb-package.log"
+@@ -0,0 +1,11 @@
++
++> @eta-mu/document-history@0.1.0 test:nbb /home/err/.codex/worktrees/etamu-personal-pr336-20261006/packages/document-history
++> nbb -cp test test/run.nbb
++
++
++Testing document-history.law.storage-test
++
++Testing document-history.infra.store-test
++
++Ran 13 tests containing 97 assertions.
++0 failures, 0 errors.
+diff --git "a/.\316\267\316\274/verification/document-history-storage-law-20261006/preparation-wrong-cwd.log" "b/.\316\267\316\274/verification/document-history-storage-law-20261006/preparation-wrong-cwd.log"
+new file mode 100644
+index 0000000..63878d9
+--- /dev/null
++++ "b/.\316\267\316\274/verification/document-history-storage-law-20261006/preparation-wrong-cwd.log"
+@@ -0,0 +1,83 @@
++
++Testing document-history.law.storage-test
++
++Testing document-history.infra.store-test
++
++FAIL in (real-processes-keep-concurrent-writes-and-identical-timestamps) (:116)
++[{:error "Worker exited without a result", :code 1, :signal nil} {:error "Worker exited without a result", :code 1, :signal nil}]
++expected: (every? :commit/revision results)
++  actual: (not (every? :commit/revision [{:error "Worker exited without a result", :code 1, :signal nil} {:error "Worker exited without a result", :code 1, :signal nil}]))
++
++FAIL in (real-processes-keep-concurrent-writes-and-identical-timestamps) (:117)
++expected: (= 2 (count (:revision/heads value)))
++  actual: (not (= 2 1))
++
++FAIL in (real-processes-keep-concurrent-writes-and-identical-timestamps) (:118)
++expected: (:revision/conflicted? value)
++  actual: false
++
++FAIL in (real-processes-keep-concurrent-writes-and-identical-timestamps) (:119)
++expected: (= #{"worker A" "worker B"} (set (map :document/markdown children)))
++  actual: (not (= #{"worker A" "worker B"} #{}))
++
++FAIL in (real-processes-keep-concurrent-writes-and-identical-timestamps) (:120)
++expected: (= ["2026-09-13T12:00:00.000Z"] (vec (distinct (map :revision/at children))))
++  actual: (not (= ["2026-09-13T12:00:00.000Z"] []))
++
++FAIL in (real-processes-keep-concurrent-writes-and-identical-timestamps) (:121)
++expected: (= (set parents) (set (mapcat :revision/parents children)))
++  actual: (not (= #{"9e8a7d2f-d9ec-4a3d-a9c3-6bb3146f4d57"} #{}))
++
++FAIL in (concurrent-seeds-import-exactly-once) (:137)
++[{:error "Worker exited without a result", :code 1, :signal nil} {:error "Worker exited without a result", :code 1, :signal nil}]
++expected: (= #{true false} (set (map :seed/created? results)))
++  actual: (not (= #{true false} #{nil}))
++
++FAIL in (concurrent-seeds-import-exactly-once) (:138)
++expected: (= 1 (count (:revision/history value)))
++  actual: (not (= 1 0))
++
++FAIL in (concurrent-seeds-import-exactly-once) (:139)
++expected: (= 1 (count (fs/finalized-ledgers (:store/ledgers db))))
++  actual: (not (= 1 0))
++
++FAIL in (concurrent-seeds-import-exactly-once) (:140)
++expected: (fs/exists? (fs/join (:store/seeds db) "legacy.lock"))
++  actual: (not (fs/exists? "/tmp/document-history-8f1158ce-001f-4898-b5e9-fe6def9b5c06/.ημ/documents/seeds/legacy.lock"))
++
++FAIL in (seed-and-normal-genesis-have-linearizable-empty-checks) (:241)
++[{:error "Worker exited without a result", :code 1, :signal nil} {:error "Worker exited without a result", :code 1, :signal nil}]
++expected: (true? (:seed/created? (first first-results)))
++  actual: (not (true? nil))
++
++FAIL in (seed-and-normal-genesis-have-linearizable-empty-checks) (:242)
++expected: (true? (:test/observed-publication? (second first-results)))
++  actual: (not (true? nil))
++
++FAIL in (seed-and-normal-genesis-have-linearizable-empty-checks) (:243)
++expected: (= #{"imported" "independent normal root"} (set (map :document/markdown (:revision/history first-value))))
++  actual: (not (= #{"imported" "independent normal root"} #{}))
++
++FAIL in (seed-and-normal-genesis-have-linearizable-empty-checks) (:245)
++expected: (:revision/conflicted? first-value)
++  actual: nil
++
++FAIL in (seed-and-normal-genesis-have-linearizable-empty-checks) (:252)
++[{:error "Worker exited without a result", :code 1, :signal nil} {:error "Worker exited without a result", :code 1, :signal nil}]
++expected: (:commit/revision (first second-results))
++  actual: nil
++
++FAIL in (seed-and-normal-genesis-have-linearizable-empty-checks) (:253)
++expected: (false? (:seed/created? (second second-results)))
++  actual: (not (false? nil))
++
++FAIL in (seed-and-normal-genesis-have-linearizable-empty-checks) (:254)
++expected: (true? (:test/observed-publication? (second second-results)))
++  actual: (not (true? nil))
++
++FAIL in (seed-and-normal-genesis-have-linearizable-empty-checks) (:255)
++expected: (= ["normal creation"] (mapv :document/markdown (:revision/history second-value)))
++  actual: (not (= ["normal creation"] []))
++
++Ran 13 tests containing 97 assertions.
++18 failures, 0 errors.
+diff --git "a/.\316\267\316\274/verification/document-history-storage-law-20261006/red-missing-law.log" "b/.\316\267\316\274/verification/document-history-storage-law-20261006/red-missing-law.log"
+new file mode 100644
+index 0000000..3710d0b
+--- /dev/null
++++ "b/.\316\267\316\274/verification/document-history-storage-law-20261006/red-missing-law.log"
+@@ -0,0 +1,10 @@
++----- Error --------------------------------------
++Message:  Could not find namespace: document-history.law.storage
++file:///home/err/.codex/worktrees/etamu-personal-pr336-20261006/node_modules/.pnpm/nbb@1.5.211/node_modules/nbb/lib/nbb_main.js:13
++$APP.wC),$APP.VZ);return g.A?g.A():g.call(null)}):null).then(function(g){$APP.k($APP.k(d)?g!=null:d)&&$APP.Dy.o($APP.x([g],0));return g}).catch(function(g){$APP.nma(g,b);$APP.k($APP.Ey.h(b))&&console.error(g);throw Error($APP.Ik(g));})})):console.error("Usage: "+$APP.G.h("nbb")+" \x3cscript\x3e or nbb -e \x3cexpr\x3e.")})();
++                                                                                                                                                                                                                       ^
++
++Error: Could not find namespace: document-history.law.storage
++    at file:///home/err/.codex/worktrees/etamu-personal-pr336-20261006/node_modules/.pnpm/nbb@1.5.211/node_modules/nbb/lib/nbb_main.js:13:216
++
++Node.js v24.14.1
+diff --git "a/.\316\267\316\274/verification/document-history-storage-law-20261006/root-gate.log" "b/.\316\267\316\274/verification/document-history-storage-law-20261006/root-gate.log"
+new file mode 100644
+index 0000000..a1523c2
+--- /dev/null
++++ "b/.\316\267\316\274/verification/document-history-storage-law-20261006/root-gate.log"
+@@ -0,0 +1,45 @@
++
++============================================================
++Testing: document-history
++============================================================
++
++
++> @eta-mu/document-history@0.1.0 test /home/err/.codex/worktrees/etamu-personal-pr336-20261006/packages/document-history
++> pnpm run test:nbb && pnpm run test:shadow
++
++
++> @eta-mu/document-history@0.1.0 test:nbb /home/err/.codex/worktrees/etamu-personal-pr336-20261006/packages/document-history
++> nbb -cp test test/run.nbb
++
++
++Testing document-history.law.storage-test
++
++Testing document-history.infra.store-test
++
++Ran 13 tests containing 97 assertions.
++0 failures, 0 errors.
++
++> @eta-mu/document-history@0.1.0 test:shadow /home/err/.codex/worktrees/etamu-personal-pr336-20261006/packages/document-history
++> shadow-cljs compile test && node target/test.cjs
++
++shadow-cljs - config: /home/err/.codex/worktrees/etamu-personal-pr336-20261006/packages/document-history/shadow-cljs.edn
++Picked up JAVA_TOOL_OPTIONS: -Duser.home=/tmp/etamu-pr336-private-java-20261006 -Dmaven.repo.local=/tmp/etamu-pr336-private-java-20261006/.m2/repository
++[:test] Compiling ...
++[:test] Build completed. (103 files, 1 compiled, 0 warnings, 2.82s)
++
++Testing document-history.infra.store-test
++
++Testing document-history.law.storage-test
++
++Ran 13 tests containing 97 assertions.
++0 failures, 0 errors.
++
++✓ document-history passed (30.6s)
++
++============================================================
++TEST SUMMARY
++============================================================
++
++  ✓ document-history (30.6s)
++
++All suites passed!
+diff --git a/packages/document-history/src/document_history/extern/fs.cljs b/packages/document-history/src/document_history/extern/fs.cljs
+index 951a800..f7a7228 100644
+--- a/packages/document-history/src/document_history/extern/fs.cljs
++++ b/packages/document-history/src/document_history/extern/fs.cljs
+@@ -11,9 +11,6 @@
+   (fs/mkdirSync directory #js {:recursive true})
+   directory)
+ 
+-(defn- eta-mu-path? [value]
+-  (boolean (some #{".ημ"} (str/split value #"[/\\]+"))))
+-
+ (defn- existing-ancestor [root]
+   (loop [candidate root]
+     (let [present? (try
+@@ -23,23 +20,21 @@
+                        (if (= "ENOENT" (.-code cause)) false (throw cause))))]
+       (if present? candidate (recur (path/dirname candidate))))))
+ 
+-(defn root! [root]
+-  (when-not (and (string? root) (eta-mu-path? (path/resolve root)))
+-    (throw (ex-info "Document histories and snapshots must reside under .ημ"
+-                    {:document-history/error :invalid-root})))
+-  (let [absolute (path/resolve root)
+-        ancestor (existing-ancestor absolute)
+-        intended (path/resolve (fs/realpathSync ancestor) (path/relative ancestor absolute))]
+-    ;; A pre-existing .ημ symlink must be validated before mkdir can follow it.
+-    (when-not (eta-mu-path? intended)
+-      (throw (ex-info "Resolved document history root escapes .ημ"
+-                      {:document-history/error :invalid-root})))
+-    (directory! intended)
+-    (let [resolved (fs/realpathSync intended)]
+-      (when-not (eta-mu-path? resolved)
+-        (throw (ex-info "Resolved document history root escapes .ημ"
+-                        {:document-history/error :invalid-root})))
+-      resolved)))
++(defn absolute-path
++  "Normalize a host path without creating it."
++  [root]
++  (path/resolve root))
++
++(defn intended-path
++  "Resolve the nearest existing ancestor before any descendant is created."
++  [absolute]
++  (let [ancestor (existing-ancestor absolute)]
++    (path/resolve (fs/realpathSync ancestor) (path/relative ancestor absolute))))
++
++(defn real-path
++  "Return the host-resolved path of an existing filesystem entry."
++  [root]
++  (fs/realpathSync root))
+ 
+ (defn exists? [file] (boolean (fs/existsSync file)))
+ (defn read-text [file] (fs/readFileSync file "utf8"))
+diff --git a/packages/document-history/src/document_history/infra/store.cljs b/packages/document-history/src/document_history/infra/store.cljs
+index 3f9784d..8b0879b 100644
+--- a/packages/document-history/src/document_history/infra/store.cljs
++++ b/packages/document-history/src/document_history/infra/store.cljs
+@@ -9,13 +9,19 @@
+             [clio.shape.edn :as edn]
+             [document-history.domain.history :as history]
+             [document-history.extern.fs :as fs]
+-            [document-history.law.revision :as law]))
++            [document-history.law.revision :as law]
++            [document-history.law.storage :as storage]))
+ 
+ (defn open!
+   "Open an operator-owned root beneath .ημ. Functions are synchronous like
+    Clio's filesystem API; every returned commit has been appended and sealed."
+   [root]
+-  (let [root (fs/root! root)]
++  (storage/require-root! root)
++  (let [absolute (storage/require-root! (fs/absolute-path root))
++        intended (storage/require-root! (fs/intended-path absolute))
++        ;; Validate the resolved ancestor before mkdir follows any symlink.
++        _ (fs/directory! intended)
++        root (storage/require-root! (fs/real-path intended))]
+     {:store/root root
+      :store/ledgers (fs/directory! (fs/join root "ledgers"))
+      :store/seeds (fs/directory! (fs/join root "seeds"))
+diff --git a/packages/document-history/src/document_history/law/storage.cljc b/packages/document-history/src/document_history/law/storage.cljc
+new file mode 100644
+index 0000000..05fe4c5
+--- /dev/null
++++ b/packages/document-history/src/document_history/law/storage.cljc
+@@ -0,0 +1,18 @@
++(ns document-history.law.storage
++  "Portable admission for normalized document history storage paths."
++  (:require [clojure.string :as str]))
++
++(defn admissible-root?
++  "A storage path must contain .ημ as a complete component. Host adapters
++   normalize and resolve paths before applying this policy at each boundary."
++  [value]
++  (and (string? value)
++       (boolean (some #{".ημ"} (str/split value #"[/\\]+")))))
++
++(defn require-root!
++  "Refuse a storage path outside .ημ without performing host operations."
++  [value]
++  (when-not (admissible-root? value)
++    (throw (ex-info "Document histories and snapshots must reside under .ημ"
++                    {:document-history/error :invalid-root})))
++  value)

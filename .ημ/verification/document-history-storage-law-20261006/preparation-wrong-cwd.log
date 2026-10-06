@@ -1,0 +1,83 @@
+
+Testing document-history.law.storage-test
+
+Testing document-history.infra.store-test
+
+FAIL in (real-processes-keep-concurrent-writes-and-identical-timestamps) (:116)
+[{:error "Worker exited without a result", :code 1, :signal nil} {:error "Worker exited without a result", :code 1, :signal nil}]
+expected: (every? :commit/revision results)
+  actual: (not (every? :commit/revision [{:error "Worker exited without a result", :code 1, :signal nil} {:error "Worker exited without a result", :code 1, :signal nil}]))
+
+FAIL in (real-processes-keep-concurrent-writes-and-identical-timestamps) (:117)
+expected: (= 2 (count (:revision/heads value)))
+  actual: (not (= 2 1))
+
+FAIL in (real-processes-keep-concurrent-writes-and-identical-timestamps) (:118)
+expected: (:revision/conflicted? value)
+  actual: false
+
+FAIL in (real-processes-keep-concurrent-writes-and-identical-timestamps) (:119)
+expected: (= #{"worker A" "worker B"} (set (map :document/markdown children)))
+  actual: (not (= #{"worker A" "worker B"} #{}))
+
+FAIL in (real-processes-keep-concurrent-writes-and-identical-timestamps) (:120)
+expected: (= ["2026-09-13T12:00:00.000Z"] (vec (distinct (map :revision/at children))))
+  actual: (not (= ["2026-09-13T12:00:00.000Z"] []))
+
+FAIL in (real-processes-keep-concurrent-writes-and-identical-timestamps) (:121)
+expected: (= (set parents) (set (mapcat :revision/parents children)))
+  actual: (not (= #{"9e8a7d2f-d9ec-4a3d-a9c3-6bb3146f4d57"} #{}))
+
+FAIL in (concurrent-seeds-import-exactly-once) (:137)
+[{:error "Worker exited without a result", :code 1, :signal nil} {:error "Worker exited without a result", :code 1, :signal nil}]
+expected: (= #{true false} (set (map :seed/created? results)))
+  actual: (not (= #{true false} #{nil}))
+
+FAIL in (concurrent-seeds-import-exactly-once) (:138)
+expected: (= 1 (count (:revision/history value)))
+  actual: (not (= 1 0))
+
+FAIL in (concurrent-seeds-import-exactly-once) (:139)
+expected: (= 1 (count (fs/finalized-ledgers (:store/ledgers db))))
+  actual: (not (= 1 0))
+
+FAIL in (concurrent-seeds-import-exactly-once) (:140)
+expected: (fs/exists? (fs/join (:store/seeds db) "legacy.lock"))
+  actual: (not (fs/exists? "/tmp/document-history-8f1158ce-001f-4898-b5e9-fe6def9b5c06/.ημ/documents/seeds/legacy.lock"))
+
+FAIL in (seed-and-normal-genesis-have-linearizable-empty-checks) (:241)
+[{:error "Worker exited without a result", :code 1, :signal nil} {:error "Worker exited without a result", :code 1, :signal nil}]
+expected: (true? (:seed/created? (first first-results)))
+  actual: (not (true? nil))
+
+FAIL in (seed-and-normal-genesis-have-linearizable-empty-checks) (:242)
+expected: (true? (:test/observed-publication? (second first-results)))
+  actual: (not (true? nil))
+
+FAIL in (seed-and-normal-genesis-have-linearizable-empty-checks) (:243)
+expected: (= #{"imported" "independent normal root"} (set (map :document/markdown (:revision/history first-value))))
+  actual: (not (= #{"imported" "independent normal root"} #{}))
+
+FAIL in (seed-and-normal-genesis-have-linearizable-empty-checks) (:245)
+expected: (:revision/conflicted? first-value)
+  actual: nil
+
+FAIL in (seed-and-normal-genesis-have-linearizable-empty-checks) (:252)
+[{:error "Worker exited without a result", :code 1, :signal nil} {:error "Worker exited without a result", :code 1, :signal nil}]
+expected: (:commit/revision (first second-results))
+  actual: nil
+
+FAIL in (seed-and-normal-genesis-have-linearizable-empty-checks) (:253)
+expected: (false? (:seed/created? (second second-results)))
+  actual: (not (false? nil))
+
+FAIL in (seed-and-normal-genesis-have-linearizable-empty-checks) (:254)
+expected: (true? (:test/observed-publication? (second second-results)))
+  actual: (not (true? nil))
+
+FAIL in (seed-and-normal-genesis-have-linearizable-empty-checks) (:255)
+expected: (= ["normal creation"] (mapv :document/markdown (:revision/history second-value)))
+  actual: (not (= ["normal creation"] []))
+
+Ran 13 tests containing 97 assertions.
+18 failures, 0 errors.

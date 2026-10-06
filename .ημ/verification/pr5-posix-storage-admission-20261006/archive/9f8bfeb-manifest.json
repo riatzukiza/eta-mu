@@ -1,0 +1,18 @@
+{
+  "baseline": "d2b40bb45ab0038bd149bec8f219922e95bf2a55",
+  "red_commit": "95d29c812164c36482c3a58aa9867e2ae3fd4ef2",
+  "native_review": 5431876321,
+  "native_inline": 4198142815,
+  "sha256": {
+    "README.md": "81c610cc8e2340ec68007fc6e00bf8e3e6c1ac397f4a3ecac6e01b23f87ebad8",
+    "green-nbb.raw.txt": "c6ec301c8ff387600769cc8b53d6c7685794e84abd22f83c56577d969e35c78f",
+    "green-root-lint.raw.txt": "e89206ac73daef9f8d8b0e61f4847a78deae22d2dc57e1da330b3ec9d8a9ce09",
+    "green-root-test.raw.txt": "ce142f76ba12d92c58376f6e65a747892f4cc692022ac3b82bac35442b8e494b",
+    "green-shadow-compile.raw.txt": "870bc936613592c4314cd52390c5aaf1e45f8112983b98f989883aebe15fed86",
+    "initial-root-test-harness-error.raw.txt": "dc9793d702dca646797dbc965b33143964994d7d54b73e3aa9ee37d04cfdc624",
+    "preservation-proof.json": "35429c10d1ed446b4d87caef407620a9c8af67d4d6f4de6fd77a1e64b91b969f",
+    "receipt-api-verification.json": "d8bd9f65d0f25a163ab31f0abfdb4e1892ae3dcafd370f913cc7ce26c0b30964",
+    "red-nbb.raw.txt": "fa0d822b033c042050b00fb95e1e6fa7e29c9be43a26ab75f5c8f0f725c42dde"
+  },
+  "qualification": "local preparation only; unpublished; historical withdrawal remains unsettled"
+}

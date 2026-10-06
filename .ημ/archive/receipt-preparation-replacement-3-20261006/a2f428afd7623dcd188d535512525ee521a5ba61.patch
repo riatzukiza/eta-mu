@@ -1,0 +1,170 @@
+commit a2f428afd7623dcd188d535512525ee521a5ba61
+Author:     err <foamy125@gmail.com>
+AuthorDate: Sun Sep 13 01:36:57 2026 -0500
+Commit:     err <foamy125@gmail.com>
+CommitDate: Sun Sep 13 01:36:57 2026 -0500
+
+    Align document revision parents with Clio identity law
+
+diff --git "a/.\316\267\316\274/receipts.edn" "b/.\316\267\316\274/receipts.edn"
+index d482cda..5c885fe 100644
+--- "a/.\316\267\316\274/receipts.edn"
++++ "b/.\316\267\316\274/receipts.edn"
+@@ -1,2 +1,3 @@
+ {:pi "document-history/causal-projection", :tests "Root-selected NBB and Shadow CLJS: 8 tests/54 assertions each, zero failures/errors; compiled 100 files with zero warnings. Package and individual root-script clj-kondo: zero errors/warnings. actionlint and git diff --check passed.", :refs ["main 476b07bd66efb84566a4159556deacb1e9407e6f" "Knoxx PR 306 integration"], :dod "Generic document histories retain concurrent edits and rebuild disposable EDN/Markdown projections through Clio", :manifest ["packages/document-history" "scripts/test.bb" "scripts/lint.bb" ".github/workflows/document-history-ci.yml" "docs/notes/design/rheos-ledger-authority-and-branch-projections.md"], :note "Actual independent writers and seed importers exercised Clio filesystem locks; causal siblings survive identical timestamps, 1/10/100 ledger partitions and duplicates yield the same state, deleted/stale snapshots cannot decide authority, per-revision snapshots preserve each branch, and invalid inputs fail before publication. NBB 1.5.211 removes the older runtime deprecation warning. Ledger and snapshot state lives beneath .ημ. The existing Rheos board CLI still writes its legacy audit ledger; that runtime is explicitly not cut over here.", :ts "2026-09-13T05:37:07.954836302Z", :host "stealth/local-worktree", :kind :test-run, :origin "reusable-clio-document-history", :repo "https://github.com/open-hax/eta-mu", :owner "codex/document-history-clio"}
+ {:pi "document-history/causal-projection", :tests "Root-selected NBB and compiled CLJS each pass 11 tests/71 assertions; compiler and clj-kondo zero warnings. Controlled independent-process lock interleavings cover seed-first and normal-first. Deliberate failing compiled assertion: prior autorun compile exit 0, explicit Node/script exit 1. Probe removed before final green suite. git diff --check passed.", :refs ["PR 336 comments 3998863118,3998874825,3998874829,3998874820,3998874816" "base 61a60f0e9d19768475ef5abd5251bbdccf1d3015"], :dod "Review fixes preserve independent claims while making initialization linearizable, root setup nonmutating on refused paths, worker failures bounded, and compiled test failure authoritative", :manifest ["packages/document-history" "pnpm-lock.yaml" "kanban/tasks/reusable-clio-document-history-and-edn-projections--history.md"], :note "Parentless normal commits retain independent root claims; the shared lock makes only the seed point-in-time empty check linearizable. Parent harness timers keep spawn/close callbacks runnable and await worker closure before removing fixtures. The card projection received only a blank line before its final delimiter after canonical CLI updates.", :ts "2026-09-13T06:14:41.968726652Z", :host "stealth/local-worktree", :kind :test-run, :origin "reusable-clio-document-history-review-fixes", :repo "https://github.com/open-hax/eta-mu", :owner "codex/document-history-clio"}
++{:pi "document-history/causal-projection", :tests "Root-selected NBB and compiled CLJS each pass 12 tests/86 assertions, zero failures/errors; compiler and clj-kondo zero warnings. The new real-finalized-partition regression produces 3 failures/0 errors with the previous parent validator. git diff --check passed.", :refs ["PR 336 comments 3998921310,3998921311" "base 2a7ca613a179520f3fd693c34e3cf4b19c79c8c9"], :dod "Every lawful Clio revision remains extendable through the document API without identity rewriting", :manifest ["packages/document-history/src/document_history/law/revision.cljc" "packages/document-history/test/document_history/infra/store_test.cljs" "packages/document-history/README.md"], :note "Parent schemas now reuse clio.law.event/uuid-string? directly. Imported uppercase version-8 UUID history replays, extends, retains original event identity and causes, and resolves with independent concurrent roots. Invalid versions/variants fail before publication. New receipt records remain under .ημ per the explicit user instruction overriding the root-river default; no existing receipt history is moved or rewritten.", :ts "2026-09-13T06:36:46.518621532Z", :host "stealth/local-worktree", :kind :test-run, :origin "document-history-clio-identity-review", :repo "https://github.com/open-hax/eta-mu", :owner "codex/document-history-clio"}
+diff --git "a/.\316\267\316\274/session-mycology/ledger.md" "b/.\316\267\316\274/session-mycology/ledger.md"
+index a9bc753..72f90f2 100644
+--- "a/.\316\267\316\274/session-mycology/ledger.md"
++++ "b/.\316\267\316\274/session-mycology/ledger.md"
+@@ -369,3 +369,12 @@
+   spore: none
+   receipt-refs: none
+   note: A review with an incorrect explanation still exposed a real gate failure: compiled assertions executed, but the compiler returned zero. Deliberate failure probes distinguish printed evidence from exit authority. Async fixture supervision also needs to await terminal callbacks before deleting fixture directories. Existing terminal-truth and falsify-every-new-test spores cover these lessons.
++- ts: 2026-09-13T06:36:46.546193230Z
++  session: /home/err/Documents/Codex/2026-09-11/operator-in-clojure/work/eta-mu-document-history
++  task: Align public document revision identity with Clio ledger admission
++  p-efficiency: 0.92
++  p-friction: 0.22
++  p-skill-candidate: 0.4
++  spore: none
++  receipt-refs: none
++  note: A duplicated UUID regex made accepted imported ledger heads unextendable. Reusing the canonical Clio predicate preserves existing identities and aligns command admission with replay. A real finalized-partition regression failed before repair and passed under both runtimes afterward. Existing falsify-every-new-test spore covers the reusable proof discipline; no new spore.
+diff --git a/kanban/.events/ledger.edn b/kanban/.events/ledger.edn
+index 4cacc9d..b0217ce 100644
+--- a/kanban/.events/ledger.edn
++++ b/kanban/.events/ledger.edn
+@@ -3232,3 +3232,8 @@
+ {:event/type "kanban.comment", :event/id "kanban-reusable-clio-document-history-1789280081248", :event/time "2026-09-13T06:14:41.248Z", :session/id "kanban", :delivery/mode "tell", :payload {:task-id "reusable-clio-document-history", :text "Addressed PR #336 review findings: seed empty-check and append now coordinate with parentless normal commits through the same Clio initialization lock; later independent roots remain preserved. Existing symlink ancestors are resolved before any descendant mkdir. Async worker supervision handles early result, spawn failure, and exit markers without blocking callbacks. A deliberate compiled failing assertion proved that automatic Shadow execution printed failure but returned zero; explicit Node execution with autorun disabled now runs once and returns exit 1. Final root gates: NBB and compiled CLJS each 11 tests/71 assertions passed, compiler/lint zero warnings.", :source "cli", :agent "eta-mu", :write-id "1789280081246-0.bq5ujihj7wshxina8cn", :type "comment"}, :causal/root "1af5b9ea-3ab2-4091-b81d-012cef731471"}
+ {:event/type "kanban.status-change", :event/id "kanban-reusable-clio-document-history-1789280081604", :event/time "2026-09-13T06:14:41.604Z", :session/id "kanban", :delivery/mode "tell", :payload {:task-id "reusable-clio-document-history", :from "in_progress", :to "testing", :source "cli", :agent "eta-mu", :write-id "1789280081603-0.c4idm2xalub6kd8nzv", :type "status-change"}, :causal/root "19f2ca93-bc8e-41c3-ab80-9114941968ea"}
+ {:event/type "kanban.status-change", :event/id "kanban-reusable-clio-document-history-1789280081933", :event/time "2026-09-13T06:14:41.933Z", :session/id "kanban", :delivery/mode "tell", :payload {:task-id "reusable-clio-document-history", :from "testing", :to "review", :source "cli", :agent "eta-mu", :write-id "1789280081931-0.mn01ir8p06mv360fc3i", :type "status-change"}, :causal/root "2f670f90-d193-4b05-a524-82f92ba7c0d1"}
++{:event/type "kanban.status-change", :event/id "kanban-reusable-clio-document-history-1789281199817", :event/time "2026-09-13T06:33:19.817Z", :session/id "kanban", :delivery/mode "tell", :payload {:task-id "reusable-clio-document-history", :from "review", :to "in_progress", :source "cli", :agent "eta-mu", :write-id "1789281199815-0.6xotbhtbddjqwk7sxg0", :type "status-change"}, :causal/root "e3ec28a8-6b9c-4b31-a46e-c42c4895595d"}
++{:event/type "kanban.comment", :event/id "kanban-reusable-clio-document-history-1789281207395", :event/time "2026-09-13T06:33:27.395Z", :session/id "kanban", :delivery/mode "tell", :payload {:task-id "reusable-clio-document-history", :text "Review r3998921310 identifies duplicate identity rules: Clio accepts case-preserving UUID strings, while document-history parents reject uppercase. Reuse Clio law directly and verify a finalized external partition remains readable, extendable, and explicitly resolvable without rewriting identity. Receipt location r3998921311 remains .ημ by the explicit user requirement.", :source "cli", :agent "eta-mu", :write-id "1789281207392-0.sd7cosrqxvy00nqb14", :type "comment"}, :causal/root "82b31af9-bd36-4408-a6c9-9c9fde9110d0"}
++{:event/type "kanban.comment", :event/id "kanban-reusable-clio-document-history-1789281383348", :event/time "2026-09-13T06:36:23.348Z", :session/id "kanban", :delivery/mode "tell", :payload {:task-id "reusable-clio-document-history", :text "Fixed imported revision identity drift by reusing clio.law.event/uuid-string? in public parent validation. A real finalized Clio partition with an uppercase version-8 UUID now replays, extends, and resolves alongside an independent root while preserving exact original event identity and causes. The regression failed with the prior law (3 failures, 0 errors). Final root-selected NBB and compiled CLJS each pass 12 tests/86 assertions; compiler and clj-kondo report zero warnings. Malformed UUID versions and variants fail as invalid commands before publication. Receipt records stay under .ημ as explicitly requested by the user.", :source "cli", :agent "eta-mu", :write-id "1789281383345-0.041igqoxc6l36y1p0saq", :type "comment"}, :causal/root "128fb40c-7daa-436b-81e3-212807007824"}
++{:event/type "kanban.status-change", :event/id "kanban-reusable-clio-document-history-1789281383762", :event/time "2026-09-13T06:36:23.762Z", :session/id "kanban", :delivery/mode "tell", :payload {:task-id "reusable-clio-document-history", :from "in_progress", :to "testing", :source "cli", :agent "eta-mu", :write-id "1789281383760-0.hfigdaxhazekitu3b78", :type "status-change"}, :causal/root "0bbbd85c-642d-43e5-a3bf-69d261c53914"}
++{:event/type "kanban.status-change", :event/id "kanban-reusable-clio-document-history-1789281384149", :event/time "2026-09-13T06:36:24.149Z", :session/id "kanban", :delivery/mode "tell", :payload {:task-id "reusable-clio-document-history", :from "testing", :to "review", :source "cli", :agent "eta-mu", :write-id "1789281384147-0.hedn7i00l6ieo9r7ijf", :type "status-change"}, :causal/root "95823014-591a-4d30-bb80-1b5d269f6d35"}
+diff --git a/kanban/tasks/reusable-clio-document-history-and-edn-projections--history.md b/kanban/tasks/reusable-clio-document-history-and-edn-projections--history.md
+index 6331f02..9030147 100644
+--- a/kanban/tasks/reusable-clio-document-history-and-edn-projections--history.md
++++ b/kanban/tasks/reusable-clio-document-history-and-edn-projections--history.md
+@@ -2,7 +2,7 @@
+ category: "tasks"
+ labels: "clio, rheos, knoxx, document-history"
+ type: "task"
+-write-id: "1789280081931-0.mn01ir8p06mv360fc3i"
++write-id: "1789281384147-0.hedn7i00l6ieo9r7ijf"
+ points: "5"
+ title: "Reusable Clio document history and EDN projections"
+ priority: "P0"
+@@ -33,4 +33,8 @@ Implemented packages/document-history over Clio with independent finalized parti
+ 
+ Addressed PR #336 review findings: seed empty-check and append now coordinate with parentless normal commits through the same Clio initialization lock; later independent roots remain preserved. Existing symlink ancestors are resolved before any descendant mkdir. Async worker supervision handles early result, spawn failure, and exit markers without blocking callbacks. A deliberate compiled failing assertion proved that automatic Shadow execution printed failure but returned zero; explicit Node execution with autorun disabled now runs once and returns exit 1. Final root gates: NBB and compiled CLJS each 11 tests/71 assertions passed, compiler/lint zero warnings.
+ 
++Review r3998921310 identifies duplicate identity rules: Clio accepts case-preserving UUID strings, while document-history parents reject uppercase. Reuse Clio law directly and verify a finalized external partition remains readable, extendable, and explicitly resolvable without rewriting identity. Receipt location r3998921311 remains .ημ by the explicit user requirement.
++
++Fixed imported revision identity drift by reusing clio.law.event/uuid-string? in public parent validation. A real finalized Clio partition with an uppercase version-8 UUID now replays, extends, and resolves alongside an independent root while preserving exact original event identity and causes. The regression failed with the prior law (3 failures, 0 errors). Final root-selected NBB and compiled CLJS each pass 12 tests/86 assertions; compiler and clj-kondo report zero warnings. Malformed UUID versions and variants fail as invalid commands before publication. Receipt records stay under .ημ as explicitly requested by the user.
++
+ ---
+diff --git a/packages/document-history/README.md b/packages/document-history/README.md
+index 29d556e..a926835 100644
+--- a/packages/document-history/README.md
++++ b/packages/document-history/README.md
+@@ -119,6 +119,10 @@ sequences, keywords, symbols, strings, booleans, nil, and supported finite numbe
+ Host objects, functions, tagged records, and unsupported numeric values are refused.
+ Applications should enforce their own content-size and field-level policies.
+ 
++Revision parents use Clio's UUID identity predicate directly, matching finalized
++ledger admission. Accepted uppercase or mixed-case identity strings are preserved
++exactly in history and causal references; document-history does not normalize them.
++
+ ## Rheos and Knoxx ownership
+ 
+ Rheos already describes canonical lifecycle events and disposable EDN snapshots in
+@@ -149,6 +153,6 @@ rather than trusting compiler output that can print failed tests and still exit
+ independent writer processes, including equal timestamp siblings and concurrent
+ initial imports. It also verifies 1/10/100 partitions, duplicate records, explicit
+ resolution, immutable branch snapshots, deleted snapshots, stale projection writes,
+-invalid command refusal, interrupted unpublished files, initialization-lock interleavings,
++invalid command refusal, imported UUID extension and resolution, interrupted unpublished files, initialization-lock interleavings,
+ symlink refusal before directory creation, and bounded worker startup failures. `.github/workflows/document-history-ci.yml`
+ runs the root-selected package gates on relevant PRs and main/staging changes.
+diff --git a/packages/document-history/src/document_history/law/revision.cljc b/packages/document-history/src/document_history/law/revision.cljc
+index b01300c..f763e51 100644
+--- a/packages/document-history/src/document_history/law/revision.cljc
++++ b/packages/document-history/src/document_history/law/revision.cljc
+@@ -1,9 +1,10 @@
+ (ns document-history.law.revision
+-  (:require [clio.law.schema :as schema]
++  (:require [clio.law.event :as event]
++            [clio.law.schema :as schema]
+             [malli.core :as m]))
+ 
+ (def document-id [:re #"^[A-Za-z0-9][A-Za-z0-9_-]{0,99}$"])
+-(def revision-id [:re #"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"])
++(def revision-id [:fn event/uuid-string?])
+ (def content [:map {:closed true}
+               [:document/metadata :map]
+               [:document/markdown :string]])
+diff --git a/packages/document-history/test/document_history/infra/store_test.cljs b/packages/document-history/test/document_history/infra/store_test.cljs
+index 24d95d9..51056a9 100644
+--- a/packages/document-history/test/document_history/infra/store_test.cljs
++++ b/packages/document-history/test/document_history/infra/store_test.cljs
+@@ -1,5 +1,6 @@
+ (ns document-history.infra.store-test
+   (:require [cljs.test :refer [async deftest is testing]]
++            [clio.infra.event :as event]
+             [clio.infra.ledger :as ledger]
+             [clio.infra.projection :as projection]
+             [clio.infra.runtime :as runtime]
+@@ -25,6 +26,50 @@
+     (:schema/revisions (runtime/refresh (:store/runtime db)))
+     (fs/finalized-ledgers (:store/ledgers db)))))
+ 
++(deftest finalized-clio-identities-remain-extendable-without-case-rewriting
++  (let [root (temporary-root)]
++    (try
++      (let [db (store/open! root)
++            rt (runtime/refresh (:store/runtime db))
++            imported-id "ABCDEF01-2345-8ABC-BDEF-0123456789AB"
++            imported (assoc (event/make-event
++                             (:schema/current rt) :document-history/revision-recorded
++                             {:event/stream "external:document-revision" :event/seq 1
++                              :event/actor "test:external-editor" :event/subject "doc"
++                              :event/data {:document/metadata {:title "external"}
++                                           :document/markdown "external"}})
++                            :event/id imported-id)
++            partition (fs/join (:store/ledgers db) "external.edn")]
++        (ledger/create-ledger! partition)
++        (ledger/append-event! (:schema/revisions rt) partition imported)
++        (is (= [imported-id] (:revision/heads (store/read! db "doc"))))
++        (is (= "external" (:document/markdown (store/read-revision! db "doc" imported-id))))
++        (let [sibling (store/commit! db (command "doc" "independent root"))
++              child (try
++                      (store/commit! db (command "doc" "extended imported root" [imported-id]))
++                      (catch :default cause
++                        {:test/error (:document-history/error (ex-data cause))}))]
++          (is (:commit/revision child) (pr-str child))
++          (when-let [child-id (:commit/revision child)]
++            (let [branch (store/read-revision! db "doc" child-id)]
++              (is (= #{(:commit/revision sibling) child-id} (set (:revision/heads child))))
++              (is (:revision/conflicted? child))
++              (is (= [imported-id child-id] (mapv :revision/id (:revision/history branch))))
++              (is (= [imported-id] (:revision/parents (last (:revision/history branch)))))
++              (is (= imported (first (filter #(= imported-id (:event/id %)) (accepted-events db)))))
++              (let [resolved (store/commit! db (command "doc" "resolved" (:revision/heads child)))]
++                (is (false? (:revision/conflicted? resolved)))
++                (is (= 4 (count (:revision/history resolved))))
++                (is (= (set (:revision/heads child))
++                       (set (:revision/parents (last (:revision/history resolved))))))))))
++        (let [before (accepted-events db)]
++          (doseq [invalid-id ["aaaaaaaa-aaaa-0aaa-8aaa-aaaaaaaaaaaa"
++                             "aaaaaaaa-aaaa-4aaa-0aaa-aaaaaaaaaaaa"]]
++            (is (= :invalid-command
++                   (error-type #(store/commit! db (command "doc" "invalid" [invalid-id])))))
++            (is (= before (accepted-events db))))))
++      (finally (fs/remove-tree! root)))))
++
+ (deftest revisions-preserve-both-siblings-and-explicit-resolution
+   (let [root (temporary-root)]
+     (try

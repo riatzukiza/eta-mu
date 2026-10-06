@@ -1,0 +1,1 @@
+{:ledger ".ημ/receipts.edn", :rows 4, :new-suffix-valid true, :full-history-failures []}

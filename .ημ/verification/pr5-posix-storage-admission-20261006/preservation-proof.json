@@ -1,0 +1,16 @@
+{
+  "baseline": "d2b40bb45ab0038bd149bec8f219922e95bf2a55",
+  "byte_identical": {
+    "kanban/.events/ledger.edn": "b7a51e7a92170aa82dd9ed420d3c6e6947bc405a358236a8d75ae19d201d218b",
+    "receipts.edn": "f5341346f4cb00187782b077b62bc8e6389f00632b4bbc8aad1a2a556d3ada10",
+    "kanban/tasks/reusable-clio-document-history-and-edn-projections--history.md": "d215aa359470612930bef40885543e6ccd4ea11fadf8f949b86f4f0889162da9",
+    "AGENTS.md": "a97f8c440de539dbe74103aa231972505e66a91202e03b325d7e9c6dac2ad415",
+    "pnpm-lock.yaml": "e495573f4d1f32be197c64750126b98f5165895fbbc8f125c8a9a9a36b1b7630",
+    ".github/workflows/opencode-code-review.yml": "58203c0309193c9e5cd24c3d6147cd5328f2744147635fab2ff55e36a1ec3b66",
+    ".github/workflows/document-history-ci.yml": "22e9a5a0f275d8ac3a245517683cd9636314ca9fa073f9066737bf45303d99bf"
+  },
+  "preserved_prefixes": {
+    ".\u03b7\u03bc/receipts.edn": "104e54f822cecf4dd5d77326a9a0150a6c3424fcf2e9a87d207bd42e86fa4851",
+    ".\u03b7\u03bc/session-mycology/ledger.md": "aa1612172b276ad993dbb60dd14fa6a5f725cdb9452c08e541846cd108b235c6"
+  }
+}

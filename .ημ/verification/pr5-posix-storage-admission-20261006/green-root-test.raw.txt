@@ -1,0 +1,45 @@
+
+============================================================
+Testing: document-history
+============================================================
+
+
+> @eta-mu/document-history@0.1.0 test /home/err/.codex/parallel-goal/child-prs-20261006/eta5-posix-storage-repair-20261006/worktree/packages/document-history
+> pnpm run test:nbb && pnpm run test:shadow
+
+
+> @eta-mu/document-history@0.1.0 test:nbb /home/err/.codex/parallel-goal/child-prs-20261006/eta5-posix-storage-repair-20261006/worktree/packages/document-history
+> nbb -cp test test/run.nbb
+
+
+Testing document-history.law.storage-test
+
+Testing document-history.infra.store-test
+
+Ran 20 tests containing 141 assertions.
+0 failures, 0 errors.
+
+> @eta-mu/document-history@0.1.0 test:shadow /home/err/.codex/parallel-goal/child-prs-20261006/eta5-posix-storage-repair-20261006/worktree/packages/document-history
+> shadow-cljs compile test && node target/test.cjs
+
+shadow-cljs - config: /home/err/.codex/parallel-goal/child-prs-20261006/eta5-posix-storage-repair-20261006/worktree/packages/document-history/shadow-cljs.edn
+Picked up JAVA_TOOL_OPTIONS: -Duser.home=/home/err/.codex/parallel-goal/child-prs-20261006/eta5-posix-storage-repair-20261006/runtime/java-home
+[:test] Compiling ...
+[:test] Build completed. (103 files, 2 compiled, 0 warnings, 3.02s)
+
+Testing document-history.infra.store-test
+
+Testing document-history.law.storage-test
+
+Ran 20 tests containing 141 assertions.
+0 failures, 0 errors.
+
+✓ document-history passed (32.2s)
+
+============================================================
+TEST SUMMARY
+============================================================
+
+  ✓ document-history (32.2s)
+
+All suites passed!

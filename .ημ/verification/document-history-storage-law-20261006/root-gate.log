@@ -1,0 +1,45 @@
+
+============================================================
+Testing: document-history
+============================================================
+
+
+> @eta-mu/document-history@0.1.0 test /home/err/.codex/worktrees/etamu-personal-pr336-20261006/packages/document-history
+> pnpm run test:nbb && pnpm run test:shadow
+
+
+> @eta-mu/document-history@0.1.0 test:nbb /home/err/.codex/worktrees/etamu-personal-pr336-20261006/packages/document-history
+> nbb -cp test test/run.nbb
+
+
+Testing document-history.law.storage-test
+
+Testing document-history.infra.store-test
+
+Ran 13 tests containing 97 assertions.
+0 failures, 0 errors.
+
+> @eta-mu/document-history@0.1.0 test:shadow /home/err/.codex/worktrees/etamu-personal-pr336-20261006/packages/document-history
+> shadow-cljs compile test && node target/test.cjs
+
+shadow-cljs - config: /home/err/.codex/worktrees/etamu-personal-pr336-20261006/packages/document-history/shadow-cljs.edn
+Picked up JAVA_TOOL_OPTIONS: -Duser.home=/tmp/etamu-pr336-private-java-20261006 -Dmaven.repo.local=/tmp/etamu-pr336-private-java-20261006/.m2/repository
+[:test] Compiling ...
+[:test] Build completed. (103 files, 1 compiled, 0 warnings, 2.82s)
+
+Testing document-history.infra.store-test
+
+Testing document-history.law.storage-test
+
+Ran 13 tests containing 97 assertions.
+0 failures, 0 errors.
+
+✓ document-history passed (30.6s)
+
+============================================================
+TEST SUMMARY
+============================================================
+
+  ✓ document-history (30.6s)
+
+All suites passed!

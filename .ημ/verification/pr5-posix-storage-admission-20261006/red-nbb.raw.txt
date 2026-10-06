@@ -1,0 +1,48 @@
+
+> @eta-mu/document-history@0.1.0 test:nbb /home/err/.codex/parallel-goal/child-prs-20261006/eta5-posix-storage-repair-20261006/worktree/packages/document-history
+> nbb -cp test test/run.nbb
+
+
+Testing document-history.law.storage-test
+
+FAIL in (posix-backslash-is-not-a-component-separator) (/home/err/.codex/parallel-goal/child-prs-20261006/eta5-posix-storage-repair-20261006/worktree/packages/document-history/test/run.nbb:19)
+expected: (not (storage/admissible-root? "/tmp/back\\.ημ/documents"))
+  actual: (not (not true))
+
+FAIL in (posix-backslash-is-not-a-component-separator) (/home/err/.codex/parallel-goal/child-prs-20261006/eta5-posix-storage-repair-20261006/worktree/packages/document-history/test/run.nbb:20)
+expected: (not (storage/admissible-root? "/tmp/.ημ\\documents"))
+  actual: (not (not true))
+
+Testing document-history.infra.store-test
+
+FAIL in (posix-backslash-component-is-refused-before-creation) (:294)
+expected: (= :invalid-root (error-type (fn* [] (store/open! root))))
+  actual: (not (= :invalid-root nil))
+
+FAIL in (posix-backslash-component-is-refused-before-creation) (:295)
+expected: (not (fs/exists? base))
+  actual: (not (not true))
+
+FAIL in (posix-backslash-component-is-refused-before-creation) (:294)
+expected: (= :invalid-root (error-type (fn* [] (store/open! root))))
+  actual: (not (= :invalid-root nil))
+
+FAIL in (posix-backslash-component-is-refused-before-creation) (:295)
+expected: (not (fs/exists? base))
+  actual: (not (not true))
+
+FAIL in (posix-resolved-backslash-component-is-refused-before-creation) (:306)
+expected: (= :invalid-root (error-type (fn* [] (store/open! (fs/join alias "must-not-exist")))))
+  actual: (not (= :invalid-root nil))
+
+FAIL in (posix-resolved-backslash-component-is-refused-before-creation) (:307)
+expected: (= [] (process/directory-names outside))
+  actual: (not (= [] ["must-not-exist"]))
+
+FAIL in (posix-resolved-backslash-component-is-refused-before-creation) (:308)
+expected: (not (fs/exists? (fs/join outside "must-not-exist")))
+  actual: (not (not true))
+
+Ran 17 tests containing 110 assertions.
+9 failures, 0 errors.
+ ELIFECYCLE  Command failed with exit code 1.
