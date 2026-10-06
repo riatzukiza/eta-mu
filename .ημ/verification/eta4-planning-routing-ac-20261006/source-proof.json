@@ -1,0 +1,12 @@
+{
+  "source-head": "63c989f380862a89b51c9bf50d3a1701528208f3",
+  "card-frontmatter-byte-identical": true,
+  "card-body-exact-native-suggestion-only": true,
+  "event-ledger-byte-identical": true,
+  "existing-design-byte-identical": true,
+  "published-256-row-receipt-prefix-preserved": true,
+  "published-prefix-sha256": "8c9e970a93c9a325fb126399dc5454278ceff6cdc972fc79fbc432a630362118",
+  "inherited-254-row-prefix-sha256": "f5341346f4cb00187782b077b62bc8e6389f00632b4bbc8aad1a2a556d3ada10",
+  "donor-profile-count": 3,
+  "accepted-profile-wiring-claimed": false
+}
