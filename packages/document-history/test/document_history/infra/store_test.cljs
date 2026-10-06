@@ -284,3 +284,38 @@
                (is (< (- (process/now-ms) started) 10000))))
            (catch :default cause (is false (str cause)))
            (finally (fs/remove-tree! root) (done))))))))
+
+(deftest posix-backslash-component-is-refused-before-creation
+  (when (= "a/b" (fs/join "a" "b"))
+    (doseq [component ["back\\.ημ" ".ημ\\documents"]]
+      (let [base (str "/tmp/document-history-posix-" (fs/unique-name))
+            root (fs/join base component "history")]
+        (try
+          (is (= :invalid-root (error-type #(store/open! root))))
+          (is (not (fs/exists? base)))
+          (finally (fs/remove-tree! base)))))))
+
+(deftest posix-resolved-backslash-component-is-refused-before-creation
+  (when (= "a/b" (fs/join "a" "b"))
+    (let [base (str "/tmp/document-history-posix-alias-" (fs/unique-name))
+          outside (fs/join base "back\\.ημ")
+          alias (fs/join base ".ημ")]
+      (try
+        (fs/directory! outside)
+        (process/symbolic-link! outside alias)
+        (is (= :invalid-root (error-type #(store/open! (fs/join alias "must-not-exist")))))
+        (is (= [] (process/directory-names outside)))
+        (is (not (fs/exists? (fs/join outside "must-not-exist"))))
+        (finally (fs/remove-tree! base))))))
+
+(deftest posix-literal-backslash-under-real-eta-mu-remains-admissible
+  (when (= "a/b" (fs/join "a" "b"))
+    (let [base (str "/tmp/document-history-posix-legal-" (fs/unique-name))
+          root (fs/join base ".ημ" "back\\slash" "documents")]
+      (try
+        (let [db (store/open! root)]
+          (is (= root (:store/root db)))
+          (is (fs/exists? (:store/ledgers db)))
+          (is (= "backslash allowed" (:document/markdown
+                                    (store/commit! db (command "literal" "backslash allowed"))))))
+        (finally (fs/remove-tree! base))))))

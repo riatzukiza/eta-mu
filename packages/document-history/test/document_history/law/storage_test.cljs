@@ -14,3 +14,8 @@
     (is (= :invalid-root
            (try (storage/require-root! "/tmp/outside")
                 (catch :default cause (:document-history/error (ex-data cause))))))))
+
+(deftest posix-backslash-is-not-a-component-separator
+  (is (not (storage/admissible-root? "/tmp/back\\.ημ/documents")))
+  (is (not (storage/admissible-root? "/tmp/.ημ\\documents")))
+  (is (storage/admissible-root? "/tmp/.ημ/back\\slash/documents")))
