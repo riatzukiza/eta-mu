@@ -584,3 +584,12 @@
   spore: none
   receipt-refs: 2026-10-06T15:23:52.461Z
   note: Published code and tests remain byte-identical; preserve invalid receipt and historical commits as archive, use canonical envelope with repo on new branch. Old PR remains blocked and immutable. Validate current child consumer as well as global required shape before publication; no new spore or promotion.
+- ts: 2026-10-06T16:13:24.695998771Z
+  session: /home/err/.codex/worktrees/etamu-336-storage-replacement-20261006
+  task: Settle verified PR5 summary defects and preserve creation provenance
+  p-efficiency: 0.9
+  p-friction: 0.25
+  p-skill-candidate: 0.3
+  spore: none
+  receipt-refs: review5431267699
+  note: Review suggestions may target immutable runtime-emitted historical facts. Verify source ancestry before changes, repair mutable docs/config directly, and keep rejected rewrites open until authenticated independent assessment; no new spore.

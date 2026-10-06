@@ -17,14 +17,14 @@ scope is retained; this does not migrate or implement Rheos board state.
 Red commit `a2fbf57` adds portable law tests and fails because that law namespace
 is absent, as retained in red-missing-law.log. The green portable law also loads
 under Babashka without Node. Actual root-selected document-history gate executes
-the full NBB suite and compiled Node suite: each 13 tests /97 assertions with
+the full NBB suite and compiled Node suite: each 13 tests / 97 assertions with
 zero failures or errors. Shadow compilation reports zero warnings, and actual
 package lint:kondo reports zero errors/warnings. Root-gate.log retains executed
 commands and both runtime results.
 
 Preparation-wrong-cwd.log truthfully retains an earlier failed experiment:
 invoking the package tests from the repository root broke the existing worker's
-package-relative paths and produced18 failures. Using the declared package
+package-relative paths and produced 18 failures. Using the declared package
 command corrected this private preparation mistake without changing the worker
 harness or tests. A direct root-cwd kondo invocation likewise missed the
 package's macro configuration; the required package lint command passed.
