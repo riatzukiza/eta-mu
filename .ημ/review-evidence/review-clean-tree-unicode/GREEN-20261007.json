@@ -1,0 +1,314 @@
+{
+  "head": "5255f9563b7a70ed46d40eccab4cabdbbc606796",
+  "branch": "codex/cephalon-review-receiver-plan",
+  "worker_changed_paths": [
+    ".github/workflows/opencode-code-review.yml"
+  ],
+  "patch": {
+    "changed_path": "/home/err/spaces/cephalon-review-receiver/receiver-plan/.github/workflows/opencode-code-review.yml",
+    "changed_lines": [
+      468,
+      1155,
+      1255
+    ],
+    "old_sha256": "58203c0309193c9e5cd24c3d6147cd5328f2744147635fab2ff55e36a1ec3b66",
+    "new_sha256": "a863c87944119fa619a39f432237f862327bb28cfe8285211386f1ef85531927",
+    "new_bytes": 78237,
+    "exact_changes": [
+      {
+        "line": 468,
+        "before": "          completion_status=\"$(git status --porcelain --untracked-files=all | grep -v -e '^?? \\.opencode/review-evidence/' || true)\"",
+        "after": "          completion_status=\"$(git status --porcelain --untracked-files=all | grep -v -e '^?? \"\\?\\.opencode/review-evidence/' || true)\""
+      },
+      {
+        "line": 1155,
+        "before": "            | grep -v -e '^?? \\.opencode/review-evidence/' -e '^?? \\.review-context/' \\",
+        "after": "            | grep -v -e '^?? \"\\?\\.opencode/review-evidence/' -e '^?? \"\\?\\.review-context/' \\"
+      },
+      {
+        "line": 1255,
+        "before": "            | grep -v -e '^?? \\.opencode/review-evidence/' -e '^?? \\.review-context/' || true)\"",
+        "after": "            | grep -v -e '^?? \"\\?\\.opencode/review-evidence/' -e '^?? \"\\?\\.review-context/' || true)\""
+      }
+    ],
+    "restore_only_five_prefix_edits_matches_original": true,
+    "mutants": {
+      "deterministic-completion": {
+        "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receiver-unicode-green-20261007T210656Z-o4jgml_7/revert-deterministic-completion.yml",
+        "reverted_line": 468,
+        "sha256": "9910bd022f349afb5f0bb732f2eb32183e6a20e5c1c776997671837780ffa1a7"
+      },
+      "review-setup": {
+        "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receiver-unicode-green-20261007T210656Z-o4jgml_7/revert-review-setup.yml",
+        "reverted_line": 1155,
+        "sha256": "83809ddd5f78f48ac55137889c2082c47f1395ca8e6496ea6f8cf412fe3605fb"
+      },
+      "review-completion": {
+        "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receiver-unicode-green-20261007T210656Z-o4jgml_7/revert-review-completion.yml",
+        "reverted_line": 1255,
+        "sha256": "5a403b34e4089fadf81259bedceebe2011009cddc9aa18508f005361e5d30b00"
+      }
+    }
+  },
+  "test_results": {
+    "primary": [
+      {
+        "label": "green",
+        "command": [
+          "/home/err/.volta/tools/image/node/22.20.0/bin/node",
+          "--test",
+          "--test-reporter=tap",
+          ".github/scripts/opencode-code-review-workflow.test.mjs"
+        ],
+        "cwd": "/home/err/spaces/cephalon-review-receiver/receiver-plan",
+        "env_overrides": {
+          "PATH_prefix": "/home/err/.volta/tools/image/node/22.20.0/bin",
+          "ETA_MU_REVIEW_WORKFLOW_PATH": null
+        },
+        "node": "v22.20.0",
+        "child_node": "v22.20.0",
+        "transport_fixture": "existing default synthetic mode; no actual Muse execution",
+        "exit_code": 0,
+        "seconds": 31.998,
+        "counts": {
+          "tests": 200,
+          "pass": 200,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "failure_names": [],
+        "stdout": "/home/err/.local/share/codex/cephalon-review-artifacts/receiver-unicode-green-20261007T210656Z-o4jgml_7/green.tap",
+        "stderr": "/home/err/.local/share/codex/cephalon-review-artifacts/receiver-unicode-green-20261007T210656Z-o4jgml_7/green.stderr",
+        "stderr_bytes": 0
+      },
+      {
+        "label": "retrospective-red",
+        "command": [
+          "/home/err/.volta/tools/image/node/22.20.0/bin/node",
+          "--test",
+          "--test-reporter=tap",
+          ".github/scripts/opencode-code-review-workflow.test.mjs"
+        ],
+        "cwd": "/home/err/spaces/cephalon-review-receiver/receiver-plan",
+        "env_overrides": {
+          "PATH_prefix": "/home/err/.volta/tools/image/node/22.20.0/bin",
+          "ETA_MU_REVIEW_WORKFLOW_PATH": "/home/err/.local/share/codex/cephalon-review-artifacts/receiver-unicode-green-20261007T210656Z-o4jgml_7/baseline-opencode-code-review.yml"
+        },
+        "node": "v22.20.0",
+        "child_node": "v22.20.0",
+        "transport_fixture": "existing default synthetic mode; no actual Muse execution",
+        "exit_code": 1,
+        "seconds": 31.918,
+        "counts": {
+          "tests": 200,
+          "pass": 190,
+          "fail": 10,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "failure_names": [
+          "clean-tree review setup: generated Unicode filename under .opencode/review-evidence/ (quotePath=true)",
+          "clean-tree review setup: generated Unicode directory under .opencode/review-evidence/ (quotePath=true)",
+          "clean-tree review setup: generated Unicode filename under .review-context/ (quotePath=true)",
+          "clean-tree review setup: generated Unicode directory under .review-context/ (quotePath=true)",
+          "clean-tree review completion: generated Unicode filename under .opencode/review-evidence/ (quotePath=true)",
+          "clean-tree review completion: generated Unicode directory under .opencode/review-evidence/ (quotePath=true)",
+          "clean-tree review completion: generated Unicode filename under .review-context/ (quotePath=true)",
+          "clean-tree review completion: generated Unicode directory under .review-context/ (quotePath=true)",
+          "clean-tree deterministic completion: generated Unicode filename under .opencode/review-evidence/ (quotePath=true)",
+          "clean-tree deterministic completion: generated Unicode directory under .opencode/review-evidence/ (quotePath=true)"
+        ],
+        "stdout": "/home/err/.local/share/codex/cephalon-review-artifacts/receiver-unicode-green-20261007T210656Z-o4jgml_7/retrospective-red.tap",
+        "stderr": "/home/err/.local/share/codex/cephalon-review-artifacts/receiver-unicode-green-20261007T210656Z-o4jgml_7/retrospective-red.stderr",
+        "stderr_bytes": 0
+      },
+      {
+        "label": "baseline-lint",
+        "command": [
+          "/home/err/go/bin/actionlint",
+          "-color=false",
+          "-shellcheck=/usr/bin/shellcheck",
+          "/home/err/.local/share/codex/cephalon-review-artifacts/receiver-unicode-green-20261007T210656Z-o4jgml_7/baseline-opencode-code-review.yml"
+        ],
+        "cwd": "/home/err/spaces/cephalon-review-receiver/receiver-plan",
+        "exit_code": 0,
+        "seconds": 0.347,
+        "stdout": "/home/err/.local/share/codex/cephalon-review-artifacts/receiver-unicode-green-20261007T210656Z-o4jgml_7/baseline-lint.stdout",
+        "stderr": "/home/err/.local/share/codex/cephalon-review-artifacts/receiver-unicode-green-20261007T210656Z-o4jgml_7/baseline-lint.stderr",
+        "stdout_bytes": 0,
+        "stderr_bytes": 0
+      },
+      {
+        "label": "green-lint",
+        "command": [
+          "/home/err/go/bin/actionlint",
+          "-color=false",
+          "-shellcheck=/usr/bin/shellcheck",
+          "/home/err/spaces/cephalon-review-receiver/receiver-plan/.github/workflows/opencode-code-review.yml"
+        ],
+        "cwd": "/home/err/spaces/cephalon-review-receiver/receiver-plan",
+        "exit_code": 0,
+        "seconds": 0.316,
+        "stdout": "/home/err/.local/share/codex/cephalon-review-artifacts/receiver-unicode-green-20261007T210656Z-o4jgml_7/green-lint.stdout",
+        "stderr": "/home/err/.local/share/codex/cephalon-review-artifacts/receiver-unicode-green-20261007T210656Z-o4jgml_7/green-lint.stderr",
+        "stdout_bytes": 0,
+        "stderr_bytes": 0
+      }
+    ],
+    "guard_falsification": [
+      {
+        "label": "revert-review-setup",
+        "command": [
+          "/home/err/.volta/tools/image/node/22.20.0/bin/node",
+          "--test",
+          "--test-reporter=tap",
+          ".github/scripts/opencode-code-review-workflow.test.mjs"
+        ],
+        "cwd": "/home/err/spaces/cephalon-review-receiver/receiver-plan",
+        "env_overrides": {
+          "PATH_prefix": "/home/err/.volta/tools/image/node/22.20.0/bin",
+          "ETA_MU_REVIEW_WORKFLOW_PATH": "/home/err/.local/share/codex/cephalon-review-artifacts/receiver-unicode-green-20261007T210656Z-o4jgml_7/revert-review-setup.yml"
+        },
+        "node": "v22.20.0",
+        "child_node": "v22.20.0",
+        "transport_fixture": "existing default synthetic mode; no actual Muse execution",
+        "exit_code": 1,
+        "seconds": 32.68,
+        "counts": {
+          "tests": 200,
+          "pass": 196,
+          "fail": 4,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "failure_names": [
+          "clean-tree review setup: generated Unicode filename under .opencode/review-evidence/ (quotePath=true)",
+          "clean-tree review setup: generated Unicode directory under .opencode/review-evidence/ (quotePath=true)",
+          "clean-tree review setup: generated Unicode filename under .review-context/ (quotePath=true)",
+          "clean-tree review setup: generated Unicode directory under .review-context/ (quotePath=true)"
+        ],
+        "stdout": "/home/err/.local/share/codex/cephalon-review-artifacts/receiver-unicode-green-20261007T210656Z-o4jgml_7/revert-review-setup.tap",
+        "stderr": "/home/err/.local/share/codex/cephalon-review-artifacts/receiver-unicode-green-20261007T210656Z-o4jgml_7/revert-review-setup.stderr",
+        "stderr_bytes": 0
+      },
+      {
+        "label": "revert-review-completion",
+        "command": [
+          "/home/err/.volta/tools/image/node/22.20.0/bin/node",
+          "--test",
+          "--test-reporter=tap",
+          ".github/scripts/opencode-code-review-workflow.test.mjs"
+        ],
+        "cwd": "/home/err/spaces/cephalon-review-receiver/receiver-plan",
+        "env_overrides": {
+          "PATH_prefix": "/home/err/.volta/tools/image/node/22.20.0/bin",
+          "ETA_MU_REVIEW_WORKFLOW_PATH": "/home/err/.local/share/codex/cephalon-review-artifacts/receiver-unicode-green-20261007T210656Z-o4jgml_7/revert-review-completion.yml"
+        },
+        "node": "v22.20.0",
+        "child_node": "v22.20.0",
+        "transport_fixture": "existing default synthetic mode; no actual Muse execution",
+        "exit_code": 1,
+        "seconds": 32.603,
+        "counts": {
+          "tests": 200,
+          "pass": 196,
+          "fail": 4,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "failure_names": [
+          "clean-tree review completion: generated Unicode filename under .opencode/review-evidence/ (quotePath=true)",
+          "clean-tree review completion: generated Unicode directory under .opencode/review-evidence/ (quotePath=true)",
+          "clean-tree review completion: generated Unicode filename under .review-context/ (quotePath=true)",
+          "clean-tree review completion: generated Unicode directory under .review-context/ (quotePath=true)"
+        ],
+        "stdout": "/home/err/.local/share/codex/cephalon-review-artifacts/receiver-unicode-green-20261007T210656Z-o4jgml_7/revert-review-completion.tap",
+        "stderr": "/home/err/.local/share/codex/cephalon-review-artifacts/receiver-unicode-green-20261007T210656Z-o4jgml_7/revert-review-completion.stderr",
+        "stderr_bytes": 0
+      },
+      {
+        "label": "revert-deterministic-completion",
+        "command": [
+          "/home/err/.volta/tools/image/node/22.20.0/bin/node",
+          "--test",
+          "--test-reporter=tap",
+          ".github/scripts/opencode-code-review-workflow.test.mjs"
+        ],
+        "cwd": "/home/err/spaces/cephalon-review-receiver/receiver-plan",
+        "env_overrides": {
+          "PATH_prefix": "/home/err/.volta/tools/image/node/22.20.0/bin",
+          "ETA_MU_REVIEW_WORKFLOW_PATH": "/home/err/.local/share/codex/cephalon-review-artifacts/receiver-unicode-green-20261007T210656Z-o4jgml_7/revert-deterministic-completion.yml"
+        },
+        "node": "v22.20.0",
+        "child_node": "v22.20.0",
+        "transport_fixture": "existing default synthetic mode; no actual Muse execution",
+        "exit_code": 1,
+        "seconds": 32.624,
+        "counts": {
+          "tests": 200,
+          "pass": 198,
+          "fail": 2,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "failure_names": [
+          "clean-tree deterministic completion: generated Unicode filename under .opencode/review-evidence/ (quotePath=true)",
+          "clean-tree deterministic completion: generated Unicode directory under .opencode/review-evidence/ (quotePath=true)"
+        ],
+        "stdout": "/home/err/.local/share/codex/cephalon-review-artifacts/receiver-unicode-green-20261007T210656Z-o4jgml_7/revert-deterministic-completion.tap",
+        "stderr": "/home/err/.local/share/codex/cephalon-review-artifacts/receiver-unicode-green-20261007T210656Z-o4jgml_7/revert-deterministic-completion.stderr",
+        "stderr_bytes": 0
+      }
+    ],
+    "versions": {
+      "node": "v22.20.0",
+      "actionlint": "v1.7.11\ninstalled by building from source\nbuilt with go1.25.8 compiler for linux/amd64",
+      "shellcheck": "ShellCheck - shell script analysis tool\nversion: 0.9.0\nlicense: GNU General Public License, version 3\nwebsite: https://www.shellcheck.net"
+    }
+  },
+  "preservation": {
+    ".github/scripts/opencode-code-review-workflow.test.mjs": {
+      "bytes": 99602,
+      "sha256": "80533ccdafa542bcc8dc437cc62546d2409413fccee3e3982c8f94a23ba40661",
+      "whole_file_unchanged": true,
+      "original_prefix_preserved": true
+    },
+    "kanban/tasks/review-clean-tree-unicode-path-filter.md": {
+      "bytes": 6316,
+      "sha256": "c656185c28c16adf18f0621302df682a88d4a1c5d7ce4b4b3282a29109f96b20",
+      "whole_file_unchanged": true,
+      "original_prefix_preserved": true
+    },
+    "kanban/.events/ledger.edn": {
+      "bytes": 1727559,
+      "sha256": "f07edd36e1b643ba8f99aeaa1f6bb7ebe0a28e156a42834e61d22b62abe69173",
+      "whole_file_unchanged": true,
+      "original_prefix_preserved": true
+    },
+    "receipts.edn": {
+      "bytes": 317027,
+      "sha256": "6a62137c8b13ba544e673b0dc116f56b82f0448630d45fc6f9f998f69ec4974e",
+      "whole_file_unchanged": true,
+      "original_prefix_preserved": true
+    },
+    ".ημ/session-mycology/ledger.md": {
+      "bytes": 43804,
+      "sha256": "edc261c6248205db0db84760f9f4a6b73bc7e5181d26e5b8195758ec2086e183",
+      "whole_file_unchanged": true,
+      "original_prefix_preserved": true
+    }
+  },
+  "concurrent_external_appends": {},
+  "all_other_workflow_bytes_unchanged": true,
+  "tests_unchanged": true,
+  "diff_check": "PASS",
+  "staged_changes": false,
+  "lint_existing_notices": [],
+  "lint_new_notices": [],
+  "scope_limitations": [
+    "Local workflow/transport verification; existing default synthetic transport fixtures, no actual Muse execution",
+    "No native hosted review, approval, board transition, publication or receiver consumption claimed",
+    "No stage/commit/push/GitHub/model/board/PM2/runtime/ledger/secret operation by this worker"
+  ]
+}

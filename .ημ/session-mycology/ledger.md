@@ -576,3 +576,12 @@
   spore: none
   receipt-refs: review-clean-tree-unicode-path-filter/RED-20261007T2104
   note: Reproduce representation bugs through native Git and actual production shell boundaries. Ten precise positive-case failures and136 passing negative/control regressions keep Unicode tolerance separate from dirt admission. Preserve RED before GREEN and keep synthetic transport metadata distinct from real Muse or provider review. Existing falsification/mechanism lessons suffice; no spore or promotion.
+
+- ts: "2026-10-07T21:14:58.388652Z"
+  origin: review-clean-tree-unicode-path-filter/GREEN-20261007T2114
+  p-efficiency: 0.9
+  p-friction: 0.15
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: review-clean-tree-unicode-path-filter/GREEN-20261007T2114
+  note: Test production guards through real Git and falsify each boundary separately. A minimal representation repair preserves strict refusal predicates; unchanged baseline and independent reversions establish causality. Native board movement, local tests, hosted full gates and provider qualification remain separate facts. Retain exact bytes and private logs, then publish a coherent code head without transferring planning approvals. Existing lessons suffice; no spore or promotion.

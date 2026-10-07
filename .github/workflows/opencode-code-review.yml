@@ -465,7 +465,7 @@ jobs:
           evidence_dir="$GITHUB_WORKSPACE/.opencode/review-evidence"
           mkdir -p "$evidence_dir"
           completion_sha="$(git rev-parse HEAD 2>/dev/null || true)"
-          completion_status="$(git status --porcelain --untracked-files=all | grep -v -e '^?? \.opencode/review-evidence/' || true)"
+          completion_status="$(git status --porcelain --untracked-files=all | grep -v -e '^?? "\?\.opencode/review-evidence/' || true)"
           completion_clean=false
           [[ -z "$completion_status" ]] && completion_clean=true
           printf '%s\n' "$completion_status" > "$evidence_dir/completion-status.txt"
@@ -1152,7 +1152,7 @@ jobs:
           # (.opencode/review-evidence/, .review-context/), which caller
           # repositories are not required to gitignore.
           if git status --porcelain --untracked-files=all \
-            | grep -v -e '^?? \.opencode/review-evidence/' -e '^?? \.review-context/' \
+            | grep -v -e '^?? "\?\.opencode/review-evidence/' -e '^?? "\?\.review-context/' \
             | grep -q .; then
             echo "::error::Review-context setup left the working tree dirty before model execution."
             git status --short
@@ -1252,7 +1252,7 @@ jobs:
           set -euo pipefail
           completion_sha="$(git rev-parse HEAD)"
           unexpected_status="$(git status --porcelain --untracked-files=all \
-            | grep -v -e '^?? \.opencode/review-evidence/' -e '^?? \.review-context/' || true)"
+            | grep -v -e '^?? "\?\.opencode/review-evidence/' -e '^?? "\?\.review-context/' || true)"
           exact_head=false
           clean=false
           if [[ "$INITIAL_EXACT_HEAD" == true && "$EXPECTED_SHA" == "$EXECUTED_SHA" && "$EXPECTED_SHA" == "$completion_sha" ]]; then

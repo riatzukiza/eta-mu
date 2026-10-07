@@ -2,11 +2,11 @@
 category: "tasks"
 labels: "workflow, review, unicode, provisional"
 type: "task"
-write-id: "1791406181178-0.pifpqdg94kba846fe7"
+write-id: "1791407653354-0.8mex2yg550cilj47b6q"
 points: "2"
 title: "Make shared review clean-tree filters handle Unicode paths"
 priority: "P1"
-status: "in_progress"
+status: "review"
 uuid: "5f487c2f-ca40-49c1-b6eb-c28d00707732"
 created_at: "2026-10-07T20:07:38Z"
 ---
@@ -114,3 +114,8 @@ Parent owns commits, PR publication, native reviews and lawful transitions.
   must not import the review job's second directory exemption.
 - The two-point estimate remains provisional until executable RED and planning
   review confirm the bounded scope; consumer mitigation is not shared-fix proof.
+
+---
+Local RED committed in 5255f9563b7a70ed46d40eccab4cabdbbc606796: 200 tests,190 pass,10 expected Unicode acceptance failures. GREEN changes only five quoted-path patterns on three shared workflow lines; workflow SHA256 a863c87944119fa619a39f432237f862327bb28cfe8285211386f1ef85531927. Actual full 200-test harness passes on Node22.20.0; baseline still190/10, independent guard reversions196/4,196/4,198/2. Actionlint1.7.11/ShellCheck0.9.0 both baseline and GREEN zero warnings. Strict tracked/unrelated/lookalike/mixed dirt and deterministic review-context refusal retained. Exact evidence .ημ/review-evidence/review-clean-tree-unicode/GREEN-20261007.json. Local tests use default synthetic transport fixtures, not actual Muse execution. Code-stage hosted deterministic/reviewer qualification and caller receiver-pin consumption remain pending; planning approvals on f7 do not transfer. Entering Testing and then Review through the documented standard native hops after scoped tests; no direct build-gated shortcut claimed.
+
+---
