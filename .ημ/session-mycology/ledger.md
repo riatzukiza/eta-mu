@@ -558,3 +558,12 @@
   spore: none
   receipt-refs: review-clean-tree-unicode-path-filter/planning @ 2026-10-07T20:07:38Z
   note: Parent-verified native finding stays distinct from local inspection and future behavioral RED. Both receiver45ec644 and base084 retain literal porcelain-prefix filters; deterministic completion shares the representation issue but keeps its one-directory allowance. A provisional incoming two-point card owns the shared repair; caller ignore mitigation and historical cards do not establish completion. Future real-Git quoting and strict dirty-tree fixtures must precede GREEN. Explicit user scope authorizes initial Markdown and appends in this worktree; parent retains commits, PR and native reviews. Original receipt/reflection byte prefixes are preserved. Existing worktree-write-targeting, mechanism-verification and plan-as-hypothesis lessons suffice; no spore or promotion. No board operation or behavioral/native qualification claimed.
+
+- ts: "2026-10-07T20:53:17.309954Z"
+  origin: cephalon-review-receiver-native-ready-20261007T2049
+  p-efficiency: 0.85
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-review-receiver-native-ready-20261007T2049
+  note: Native edited quota prose and stale check labels are separate evidence. One concrete full new-head review completed; explicit receiver planning request received a genuine quota exception, so current canonical available-agent rules admitted one actual MiMo cohort. Build current native artifacts, verify true input/body hashes, then walk Rheos hops before delegated RED. Do not publish raw scoped review links, relabel planning as code, or disturb the active maker. Earlier failed operator reads/shape assumptions were corrected, not counted as production failures. Existing lessons suffice; no spore or promotion.

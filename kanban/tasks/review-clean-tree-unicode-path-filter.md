@@ -1,12 +1,13 @@
 ---
-uuid: "5f487c2f-ca40-49c1-b6eb-c28d00707732"
-title: "Make shared review clean-tree filters handle Unicode paths"
-status: "incoming"
-type: "task"
-priority: "P1"
-points: "2"
-labels: "workflow, review, unicode, provisional"
 category: "tasks"
+labels: "workflow, review, unicode, provisional"
+type: "task"
+write-id: "1791406181178-0.pifpqdg94kba846fe7"
+points: "2"
+title: "Make shared review clean-tree filters handle Unicode paths"
+priority: "P1"
+status: "in_progress"
+uuid: "5f487c2f-ca40-49c1-b6eb-c28d00707732"
 created_at: "2026-10-07T20:07:38Z"
 ---
 
