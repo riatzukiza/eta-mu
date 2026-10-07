@@ -585,3 +585,12 @@
   spore: none
   receipt-refs: review-clean-tree-unicode-path-filter/GREEN-20261007T2114
   note: Test production guards through real Git and falsify each boundary separately. A minimal representation repair preserves strict refusal predicates; unchanged baseline and independent reversions establish causality. Native board movement, local tests, hosted full gates and provider qualification remain separate facts. Retain exact bytes and private logs, then publish a coherent code head without transferring planning approvals. Existing lessons suffice; no spore or promotion.
+
+- ts: "2026-10-07T21:38:16.984255Z"
+  origin: receiver-receipt-repo-append-only-correction-20261007
+  p-efficiency: 0.78
+  p-friction: 0.35
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: receiver-receipt-repo-append-only-correction-20261007; CodeRabbit4212096853
+  note: Missing metadata on an immutable receipt is handled by an appended, explicitly bound correction or by preserving the original. The direct user instruction resolved the proposed rewrite exception in favor of append-only history; no further approval question is needed. Keep containing-repository inference separate from the current record-local validator, and never claim an appended correction made old maps validate. Preserve original byte hashes, actual evidence and Git history. Existing ledger/provenance lessons suffice; no spore or promotion.
