@@ -567,3 +567,12 @@
   spore: none
   receipt-refs: cephalon-review-receiver-native-ready-20261007T2049
   note: Native edited quota prose and stale check labels are separate evidence. One concrete full new-head review completed; explicit receiver planning request received a genuine quota exception, so current canonical available-agent rules admitted one actual MiMo cohort. Build current native artifacts, verify true input/body hashes, then walk Rheos hops before delegated RED. Do not publish raw scoped review links, relabel planning as code, or disturb the active maker. Earlier failed operator reads/shape assumptions were corrected, not counted as production failures. Existing lessons suffice; no spore or promotion.
+
+- ts: "2026-10-07T21:04:25.059237Z"
+  origin: review-clean-tree-unicode-path-filter/RED-20261007T2104
+  p-efficiency: 0.9
+  p-friction: 0.15
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: review-clean-tree-unicode-path-filter/RED-20261007T2104
+  note: Reproduce representation bugs through native Git and actual production shell boundaries. Ten precise positive-case failures and136 passing negative/control regressions keep Unicode tolerance separate from dirt admission. Preserve RED before GREEN and keep synthetic transport metadata distinct from real Muse or provider review. Existing falsification/mechanism lessons suffice; no spore or promotion.
