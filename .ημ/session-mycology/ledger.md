@@ -548,3 +548,13 @@
   spore: none
   receipt-refs: Eta340/fresh fatal UTF8 admission RED GREEN; Eta340/bounded lint diagnostic and frozen scope
   note: Move validation to the earliest shared admission boundary and reproduce it with actual Git bytes, not a guessed transport shape. Preserve immutable predecessor RED and genuine compiler/tool GREEN separately from native successor qualification. Stop stalled tools within the authorized scope, retain their actual signal/time outcome, and label a parser-only diagnostic with external checks disabled precisely. Unknown lint cause stays unknown; no new spore or promotion, and parent owns independent lint/publication.
+
+- ts: "2026-10-07T20:07:38Z"
+  session: /home/err/spaces/cephalon-review-receiver/receiver-plan
+  task: Plan the shared eta-mu Unicode clean-tree filter repair (5f487c2f-ca40-49c1-b6eb-c28d00707732)
+  p-efficiency: 0.85
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: review-clean-tree-unicode-path-filter/planning @ 2026-10-07T20:07:38Z
+  note: Parent-verified native finding stays distinct from local inspection and future behavioral RED. Both receiver45ec644 and base084 retain literal porcelain-prefix filters; deterministic completion shares the representation issue but keeps its one-directory allowance. A provisional incoming two-point card owns the shared repair; caller ignore mitigation and historical cards do not establish completion. Future real-Git quoting and strict dirty-tree fixtures must precede GREEN. Explicit user scope authorizes initial Markdown and appends in this worktree; parent retains commits, PR and native reviews. Original receipt/reflection byte prefixes are preserved. Existing worktree-write-targeting, mechanism-verification and plan-as-hypothesis lessons suffice; no spore or promotion. No board operation or behavioral/native qualification claimed.
