@@ -594,3 +594,12 @@
   spore: none
   receipt-refs: receiver-receipt-repo-append-only-correction-20261007; CodeRabbit4212096853
   note: Missing metadata on an immutable receipt is handled by an appended, explicitly bound correction or by preserving the original. The direct user instruction resolved the proposed rewrite exception in favor of append-only history; no further approval question is needed. Keep containing-repository inference separate from the current record-local validator, and never claim an appended correction made old maps validate. Preserve original byte hashes, actual evidence and Git history. Existing ledger/provenance lessons suffice; no spore or promotion.
+
+- ts: "2026-10-08T11:15:02.535Z"
+  origin: receiver-receipt-corrected-copies-20261008
+  p-efficiency: 0.88
+  p-friction: 0.20
+  p-skill-candidate: 0.10
+  spore: none
+  receipt-refs: receipts.edn ordinals260-262 correcting immutable ordinals256-258; adjudication259; MiMo4212734252
+  note: Append actual corrected maps with explicit repo and raw-line provenance; keep the original event claims and timestamps distinct from correction time. Use the owning record-errors API directly, retain historical note/reference prefixes and every existing ledger byte, and verify the index separately. Initial read-only preparation had a trailing delimiter after its JSON output; corrected before mutation. This scoped worker leaves publication and native description/settlement to the parent; no consumer folding, historical validation pass, spore or promotion.
