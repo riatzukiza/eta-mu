@@ -612,3 +612,12 @@
   spore: none
   receipt-refs: receiver-containing-repository-consumption-RED-20261009
   note: Freeze the consumer originalprefix and use actual Git/compiled routing; a qualified source does not update an old compiled donor. All20 realRED failures identify absentcontext, no testerrors. Preserve oldledger errors separately; never claim wholejournalPASS. Existing lessons suffice; no spore or promotion.
+
+- ts: "2026-10-09T07:53:25.254224Z"
+  origin: receiver-containing-repository-consumption-GREEN-20261009
+  p-efficiency: 0.85
+  p-friction: 0.15
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: receiver-containing-repository-consumption-GREEN-20261009
+  note: Consume qualified owning bytes and prove actual compiled routes; preserve invalid history as history. Same20 RED gaps now GREEN without local law changes. Source qualification, local integration, hosted gates and character behavior are separate evidence. Existing lessons suffice; no spore or promotion.

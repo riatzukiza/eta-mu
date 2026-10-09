@@ -55,7 +55,7 @@
   (let [lines (read-lines file)]
     (subvec lines (max 0 (- (count lines) n)))))
 
-(defn- validate-file [file n]
+(defn- validate-file [file n containing-repository-path]
   (if-not (fs/path-exists? file)
     {:ok false
      :file file
@@ -65,7 +65,8 @@
     (let [all-lines (read-lines file)
           tail (subvec all-lines (max 0 (- (count all-lines) n)))
           offset (- (count all-lines) (count tail))
-          rows (map-indexed #(api/validate-line %2 (+ offset (inc %1)))
+          rows (map-indexed #(api/validate-line %2 (+ offset (inc %1))
+                                               containing-repository-path)
                             tail)
           failures (remove :ok rows)]
       {:ok (empty? failures)
@@ -196,7 +197,8 @@
 (defn- ^:async validate! [args]
   (let [repo-root (await (resolve-repo))
         result (validate-file (receipt-file repo-root)
-                              (clamp-lines (first args) default-validate))]
+                              (clamp-lines (first args) default-validate)
+                              repo-root)]
     (if (:ok result)
       (do
         (println (str "receipts valid: " (:count result) " event"
