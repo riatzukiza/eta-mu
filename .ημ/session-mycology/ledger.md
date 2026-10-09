@@ -630,3 +630,12 @@
   spore: none
   receipt-refs: receiver-no-git-context-RED-20261009
   note: Nil context preserves the original complete result rather than adding contextual diagnostics. Actual noGitdefaultwindow negative complements positive; consumer follows qualified owning bytes. No spore/promotion.
+
+- ts: "2026-10-09T09:04:34.636293Z"
+  origin: receiver-no-git-context-GREEN-20261009
+  p-efficiency: 0.85
+  p-friction: 0.15
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: receiver-no-git-context-GREEN-20261009
+  note: Qualify upstream, preserve exact source bytes and test both actual Git outcomes in the existing default-window consumer. Local preparation and native source acceptance are distinct; no spore/promotion.

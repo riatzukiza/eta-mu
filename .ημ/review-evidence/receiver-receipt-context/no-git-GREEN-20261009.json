@@ -1,0 +1,162 @@
+{
+  "representation": "observed-command-output-transcription; not raw REST/provider approval",
+  "source": {
+    "pr": "https://github.com/riatzukiza/receipt-river/pull/2",
+    "reviewedHead": "47cfcc831d31838abc7f86a196391f8ab53014de",
+    "base": "5eeb77e035c17160416d0a092415b39b3de55133",
+    "merge": "e8673f46fd96065ef6b14228b6eb217b7bb47ce7",
+    "mergedAt": "2026-10-09T09:00:01Z",
+    "treeEqualsReviewed": true,
+    "review": 5467947120,
+    "run": 37903692776,
+    "attempt": 2,
+    "gate": "PASS1availableMiMocohort/3PASS/0threads"
+  },
+  "receiver": {
+    "red": "deac742dd495dfe5a523d2f92f9d16d285e34b72",
+    "redResult": "196/708/13failures0errors",
+    "findingRoot": 4227957554,
+    "findingThread": "PRRT_kwDOU4VdxM6qsijM",
+    "cliBytes": 10348,
+    "cliSHA256": "56fa6e0b8c83f337b673a0debdfdbb741ef9c00b9e378d41612a945d0dd67b0b",
+    "exactQualifiedOwnerBytes": true,
+    "testsExecutedBeforeSourceMerge": true,
+    "preparationWasNotSourceQualification": true,
+    "receiverHostedReviewMerge": "owed"
+  },
+  "commands": {
+    "receiver-no-git-green-test": {
+      "command": [
+        "/home/err/.volta/tools/image/node/22.20.0/bin/node",
+        "/home/err/.volta/tools/image/packages/pnpm/bin/pnpm",
+        "-C",
+        "packages/eta-mu",
+        "test"
+      ],
+      "receiverHeadBeforeCandidate": "deac742dd495dfe5a523d2f92f9d16d285e34b72",
+      "candidateSource": "47cfcc831d31838abc7f86a196391f8ab53014de",
+      "candidateSourceNotYetMerged": true,
+      "exit": 0,
+      "elapsedSeconds": 16.37401997501729,
+      "logBytes": 15241,
+      "logSHA256": "f64ce21cab3d1140a54fcbff746017ce3e6079bd19ece50adef83864523acad8"
+    },
+    "receiver-no-git-green-own-receipt-test": {
+      "command": [
+        "/home/err/.volta/tools/image/node/22.20.0/bin/node",
+        "/home/err/.volta/tools/image/packages/pnpm/bin/pnpm",
+        "-C",
+        "packages/receipt-river",
+        "test"
+      ],
+      "receiverHeadBeforeCandidate": "deac742dd495dfe5a523d2f92f9d16d285e34b72",
+      "candidateSource": "47cfcc831d31838abc7f86a196391f8ab53014de",
+      "candidateSourceNotYetMerged": true,
+      "exit": 0,
+      "elapsedSeconds": 13.970996358984848,
+      "logBytes": 899,
+      "logSHA256": "4b7f8fc1b5021b33041474c5da87210690bfd0e096d0df8f92076a27a867ba59"
+    },
+    "receiver-no-git-green-build": {
+      "command": [
+        "/home/err/.volta/tools/image/node/22.20.0/bin/node",
+        "/home/err/.volta/tools/image/packages/pnpm/bin/pnpm",
+        "-C",
+        "packages/eta-mu",
+        "build"
+      ],
+      "exit": 0,
+      "elapsedSeconds": 14.409988059982425,
+      "logBytes": 528,
+      "logSHA256": "31bca46adcb1e13c4b212a9a7eff09f3fa2905012bd5ea3ae1ccd6f29f40151d",
+      "candidateLocalPreparation": true
+    },
+    "receiver-no-git-green-lint": {
+      "command": [
+        "/home/err/.volta/tools/image/node/22.20.0/bin/node",
+        "/home/err/.volta/tools/image/packages/pnpm/bin/pnpm",
+        "-C",
+        "packages/eta-mu",
+        "lint:kondo"
+      ],
+      "exit": 0,
+      "elapsedSeconds": 1.3170483330031857,
+      "logBytes": 631,
+      "logSHA256": "e5376e3f284cd529ce14f3fd0f46dd724a1d6e9eb86094415dca910e16201924",
+      "candidateLocalPreparation": true
+    },
+    "receiver-no-git-green-own-lint": {
+      "command": [
+        "/home/err/.volta/tools/image/node/22.20.0/bin/node",
+        "/home/err/.volta/tools/image/packages/pnpm/bin/pnpm",
+        "-C",
+        "packages/receipt-river",
+        "lint:kondo"
+      ],
+      "exit": 0,
+      "elapsedSeconds": 0.7157091000117362,
+      "logBytes": 519,
+      "logSHA256": "ecac50ceb323afa06cccba911edf936cc71a026252955d4be59e6e99abeec889",
+      "candidateLocalPreparation": true
+    }
+  },
+  "builtCLI": {
+    "kind": "observed-command-output-transcription",
+    "candidateSource": "47cfcc831d31838abc7f86a196391f8ab53014de",
+    "candidatePreparationBeforeSourceMerge": true,
+    "bundleSHA256": "be2547a0a8c677521951e2a62aed2b52ffb6122c65d0b9e3111ef1c2a2357cdc",
+    "prefixBytes": 320957,
+    "prefixSHA256": "9e9929aed4c42265f6ff24bf655576dfe10729c3aeb3b4270fe68d8142e8d6ff",
+    "wholeJournalPass": false,
+    "cases": [
+      {
+        "mode": "real-git",
+        "gitExit": 0,
+        "default200Window": "59-258",
+        "exit": 1,
+        "failureCount": 34,
+        "original256_258Errors": {
+          "256": null,
+          "257": null,
+          "258": null
+        },
+        "allOriginalBytesPreserved": true,
+        "stdoutSHA256": "c12eee0cfb30cf295153791a914c0cf6d455ea2c4a1b489048d5ff0a8d965aad",
+        "stderrSHA256": "65d4d41845ff75209587027c1bff6f20f08c804df97d5b0b1ef5adb9ae9aa046",
+        "cleanup": "ownedTemporaryDirectory-finally"
+      },
+      {
+        "mode": "no-git",
+        "gitExit": 128,
+        "default200Window": "59-258",
+        "exit": 1,
+        "failureCount": 59,
+        "original256_258Errors": {
+          "256": "missing required key: repo",
+          "257": "missing required key: repo",
+          "258": "missing required key: repo"
+        },
+        "allOriginalBytesPreserved": true,
+        "stdoutSHA256": "e72fc56de21307b3f9f1f0f945fb07469ad9a04901181b4a5291e4bcaa73ebec",
+        "stderrSHA256": "65d4d41845ff75209587027c1bff6f20f08c804df97d5b0b1ef5adb9ae9aa046",
+        "cleanup": "ownedTemporaryDirectory-finally"
+      }
+    ]
+  },
+  "provenance": {
+    "nativeReceiverPreviousReview": 5467658997,
+    "oldHostedRun": 37901742042,
+    "previousNativeExplanation": 6077607840,
+    "sourceInitialJSReadbackIncident": "Compared ok instead of :ok keyword; corrected actual strict validation row24=true/errors[]; no receipt edited",
+    "receiptsBeforeBytes": 344762,
+    "receiptsBeforeSHA256": "5e9391b715cc5bf9f43ab4334ad2b794755e16484a9b08335b062f088e67dc63",
+    "reflectionBeforeBytes": 47801,
+    "reflectionBeforeSHA256": "52684ca65022dc5f0f1790f8efabf26bd73d652a1a96540e6b1c472f36f3eb4a"
+  },
+  "limits": [
+    "Old7cc review approval does not transfer to new receiver head",
+    "Actual local GREEN not native consumer qualification",
+    "Package/compiler warnings0; existing missingNPM_TOKEN notice remains",
+    "No wholejournalPASS, runtime, board, B1B2B3 completion or spore"
+  ]
+}

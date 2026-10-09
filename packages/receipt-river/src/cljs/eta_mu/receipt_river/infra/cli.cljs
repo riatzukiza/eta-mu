@@ -37,10 +37,16 @@
 (defn- absolute-path [value]
   (fs/resolve-path (expand-home value)))
 
+(defn- ^:async resolve-repository-context []
+  (let [directory (runtime/current-directory)
+        {:keys [exit stdout]} (await (git/exec-at directory
+                                                ["rev-parse" "--show-toplevel"]))]
+    (if (zero? exit)
+      {:root stdout :containing-repository-path stdout}
+      {:root directory :containing-repository-path nil})))
+
 (defn- ^:async resolve-repo []
-  (let [{:keys [exit stdout]} (await (git/exec-at (runtime/current-directory)
-                                                  ["rev-parse" "--show-toplevel"]))]
-    (if (zero? exit) stdout (runtime/current-directory))))
+  (:root (await (resolve-repository-context))))
 
 (defn- receipt-file [repo-root]
   (fs/join repo-root "receipts.edn"))
@@ -195,10 +201,11 @@
     (exit! 0)))
 
 (defn- ^:async validate! [args]
-  (let [repo-root (await (resolve-repo))
-        result (validate-file (receipt-file repo-root)
+  (let [{:keys [root containing-repository-path]}
+        (await (resolve-repository-context))
+        result (validate-file (receipt-file root)
                               (clamp-lines (first args) default-validate)
-                              repo-root)]
+                              containing-repository-path)]
     (if (:ok result)
       (do
         (println (str "receipts valid: " (:count result) " event"
