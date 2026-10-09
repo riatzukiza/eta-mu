@@ -214,3 +214,59 @@
               (is (= (str prefix suffix) (.readFileSync fs ledger "utf8")))))))
       (finally
         (.rmSync fs root #js {:recursive true :force true})))))
+
+(deftest ^:async receipt-route-without-containing-checkout-test
+  ;; No inherited metadata, work tree, or config may redirect the real Git probe.
+  (doseq [variable ["GIT_DIR" "GIT_WORK_TREE" "GIT_COMMON_DIR" "GIT_INDEX_FILE"
+                    "GIT_OBJECT_DIRECTORY" "GIT_ALTERNATE_OBJECT_DIRECTORIES"
+                    "GIT_CONFIG" "GIT_CONFIG_SYSTEM" "GIT_CONFIG_GLOBAL"
+                    "GIT_CONFIG_PARAMETERS" "GIT_CONFIG_COUNT"
+                    "GIT_CEILING_DIRECTORIES" "GIT_DISCOVERY_ACROSS_FILESYSTEM"]]
+    (when (some? (aget js/process.env variable))
+      (throw (ex-info "Fixture refuses Git repository redirection" {:variable variable}))))
+  ;; Reuse the anchored source prefix; do not synthesize or reserialize its rows.
+  (let [prefix (await (frozen-receiver-prefix))
+        lines (str/split-lines prefix)
+        window (subvec lines 58 258)
+        originals (subvec lines 255 258)
+        baselines (mapv (fn [index line]
+                          (receipt-api/validate-line line (+ 256 index)))
+                        (range 3) originals)
+        root (.mkdtempSync fs (path/join (.tmpdir os) "eta-mu-receipt-route-no-git-"))
+        ledger (path/join root "receipts.edn")]
+    (try
+      (.writeFileSync fs ledger prefix "utf8")
+      (let [resolved (await (git/exec-at root ["rev-parse" "--show-toplevel"]))]
+        (when-not (and (not (.existsSync fs (path/join root ".git")))
+                       (= 128 (:exit resolved))
+                       (str/blank? (:stdout resolved))
+                       (str/includes? (:stderr resolved) "not a git repository"))
+          (throw (ex-info "Owned fixture must have no containing Git repository"
+                          {:exit (:exit resolved)})))
+        (let [observed (await (observe-receipt-route root))
+              rows (:rows observed)]
+          (testing "actual no-Git working directory and default200 window"
+            (is (= 200 (count rows)))
+            (is (= (vec (range 59 259)) (mapv :ordinal rows)))
+            (is (= window (mapv :line rows)))
+            (is (= #{nil} (set (map :containing rows))))
+            (is (= [1] (:exits observed)))
+            (is (= prefix (.readFileSync fs ledger "utf8")))
+            (is (not (.existsSync fs (path/join root ".git")))))
+          (testing "original256-258 retain missing-repo errors and no derived repository"
+            (doseq [index (range 3)]
+              (let [baseline (nth baselines index)
+                    result (:result (nth rows (+ 197 index)))]
+                (is (= ["missing required key: repo"] (:errors baseline)))
+                (is (false? (:ok result)))
+                (is (= (:errors baseline) (:errors result)))
+                (is (= baseline result))
+                (is (not (contains? result :source/repository)))
+                (is (= (nth originals index) (:line result)))
+                (is (= (+ 256 index) (:line-number result)))
+                (is (= (:event baseline) (:event result)))
+                (is (= {:status :unversioned} (:source/schema result)))
+                (is (not (contains? (:event result) :repo)))
+                (is (not (contains? (:event result) :event/schema))))))))
+      (finally
+        (.rmSync fs root #js {:recursive true :force true})))))

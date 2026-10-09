@@ -621,3 +621,12 @@
   spore: none
   receipt-refs: receiver-containing-repository-consumption-GREEN-20261009
   note: Consume qualified owning bytes and prove actual compiled routes; preserve invalid history as history. Same20 RED gaps now GREEN without local law changes. Source qualification, local integration, hosted gates and character behavior are separate evidence. Existing lessons suffice; no spore or promotion.
+
+- ts: "2026-10-09T08:17:36.876214Z"
+  origin: receiver-no-git-context-RED-20261009
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: receiver-no-git-context-RED-20261009
+  note: Nil context preserves the original complete result rather than adding contextual diagnostics. Actual noGitdefaultwindow negative complements positive; consumer follows qualified owning bytes. No spore/promotion.
