@@ -639,3 +639,12 @@
   spore: none
   receipt-refs: receiver-no-git-context-GREEN-20261009
   note: Qualify upstream, preserve exact source bytes and test both actual Git outcomes in the existing default-window consumer. Local preparation and native source acceptance are distinct; no spore/promotion.
+
+- ts: "2026-10-09T09:18:12.418382Z"
+  origin: receiver-evidence-spacing-4228545549-20261009
+  p-efficiency: 0.9
+  p-friction: 0.1
+  p-skill-candidate: 0.0
+  spore: none
+  receipt-refs: receiver-evidence-spacing-4228545549-20261009
+  note: Keep review evidence readable without changing the observation or receipt history. A passing incremental review check does not prove complete full-diff review. No spore or promotion.
