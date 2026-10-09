@@ -603,3 +603,12 @@
   spore: none
   receipt-refs: receipts.edn ordinals260-262 correcting immutable ordinals256-258; adjudication259; MiMo4212734252
   note: Append actual corrected maps with explicit repo and raw-line provenance; keep the original event claims and timestamps distinct from correction time. Use the owning record-errors API directly, retain historical note/reference prefixes and every existing ledger byte, and verify the index separately. Initial read-only preparation had a trailing delimiter after its JSON output; corrected before mutation. This scoped worker leaves publication and native description/settlement to the parent; no consumer folding, historical validation pass, spore or promotion.
+
+- ts: "2026-10-09T07:49:29.144398Z"
+  origin: receiver-containing-repository-consumption-RED-20261009
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: receiver-containing-repository-consumption-RED-20261009
+  note: Freeze the consumer originalprefix and use actual Git/compiled routing; a qualified source does not update an old compiled donor. All20 realRED failures identify absentcontext, no testerrors. Preserve oldledger errors separately; never claim wholejournalPASS. Existing lessons suffice; no spore or promotion.
