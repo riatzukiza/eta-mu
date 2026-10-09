@@ -37,10 +37,16 @@
 (defn- absolute-path [value]
   (fs/resolve-path (expand-home value)))
 
+(defn- ^:async resolve-repository-context []
+  (let [directory (runtime/current-directory)
+        {:keys [exit stdout]} (await (git/exec-at directory
+                                                ["rev-parse" "--show-toplevel"]))]
+    (if (zero? exit)
+      {:root stdout :containing-repository-path stdout}
+      {:root directory :containing-repository-path nil})))
+
 (defn- ^:async resolve-repo []
-  (let [{:keys [exit stdout]} (await (git/exec-at (runtime/current-directory)
-                                                  ["rev-parse" "--show-toplevel"]))]
-    (if (zero? exit) stdout (runtime/current-directory))))
+  (:root (await (resolve-repository-context))))
 
 (defn- receipt-file [repo-root]
   (fs/join repo-root "receipts.edn"))
@@ -55,7 +61,7 @@
   (let [lines (read-lines file)]
     (subvec lines (max 0 (- (count lines) n)))))
 
-(defn- validate-file [file n]
+(defn- validate-file [file n containing-repository-path]
   (if-not (fs/path-exists? file)
     {:ok false
      :file file
@@ -65,7 +71,8 @@
     (let [all-lines (read-lines file)
           tail (subvec all-lines (max 0 (- (count all-lines) n)))
           offset (- (count all-lines) (count tail))
-          rows (map-indexed #(api/validate-line %2 (+ offset (inc %1)))
+          rows (map-indexed #(api/validate-line %2 (+ offset (inc %1))
+                                               containing-repository-path)
                             tail)
           failures (remove :ok rows)]
       {:ok (empty? failures)
@@ -194,9 +201,11 @@
     (exit! 0)))
 
 (defn- ^:async validate! [args]
-  (let [repo-root (await (resolve-repo))
-        result (validate-file (receipt-file repo-root)
-                              (clamp-lines (first args) default-validate))]
+  (let [{:keys [root containing-repository-path]}
+        (await (resolve-repository-context))
+        result (validate-file (receipt-file root)
+                              (clamp-lines (first args) default-validate)
+                              containing-repository-path)]
     (if (:ok result)
       (do
         (println (str "receipts valid: " (:count result) " event"

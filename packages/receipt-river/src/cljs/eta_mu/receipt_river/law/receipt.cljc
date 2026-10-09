@@ -1,5 +1,6 @@
 (ns eta-mu.receipt-river.law.receipt
-  "Authoritative schema facts and validation laws for Receipt River.")
+  "Authoritative schema facts and validation laws for Receipt River."
+  (:require [clojure.string :as str]))
 
 (def receipt-recorded-schema
   :eta-mu.receipt-river/receipt-recorded)
@@ -144,8 +145,35 @@
       (seq (legacy-errors payload))
       (into (map #(str "payload " %) (legacy-errors payload))))))
 
+(defn containing-repository-context?
+  "A closed attribution input, not authenticated repository identity."
+  [context]
+  (and (map? context)
+       (= #{:repository/path} (set (keys context)))
+       (string? (:repository/path context))
+       (not (str/blank? (:repository/path context)))))
+
+(defn containing-repository-attribution
+  "Derive context only for unversioned maps with an absent repo key.
+
+  Explicit values, including nil, and every declared schema retain their
+  original validation contract. Attribution does not attest receipt truth."
+  [record context]
+  (when (and (containing-repository-context? context)
+             (map? record)
+             (not (contains? record :event/schema))
+             (not (contains? record :repo)))
+    {:path (:repository/path context)
+     :basis :containing-repository
+     :tier :derived}))
+
 (defn record-errors
-  [record]
-  (if (contains? record :event/schema)
-    (envelope-errors record)
-    (legacy-errors record)))
+  ([record]
+   (if (contains? record :event/schema)
+     (envelope-errors record)
+     (legacy-errors record)))
+  ([record context]
+   (let [errors (record-errors record)]
+     (if (containing-repository-attribution record context)
+       (filterv #(not= "missing required key: repo" %) errors)
+       errors))))

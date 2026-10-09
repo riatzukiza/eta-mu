@@ -1708,6 +1708,201 @@ test("review completion rejects untracked files outside bounded artifacts", (t) 
   assert.equal(parseOutput(output).clean, "false");
 });
 
+// Exercise pathname admission with native Git output, never a second filter.
+const cleanTreeGuards = [
+  { name: "review setup", kind: "setup", allowed: [".opencode/review-evidence", ".review-context"] },
+  { name: "review completion", kind: "review", allowed: [".opencode/review-evidence", ".review-context"] },
+  { name: "deterministic completion", kind: "deterministic", allowed: [".opencode/review-evidence"] },
+];
+
+/** Select the verbatim setup guard without executing package or global-config setup. */
+function reviewSetupCleanTreeScript() {
+  const setup = namedStep("review", "Verify and install the bounded review context").run;
+  const start = setup.indexOf("# The reviewer must read the PR's tree");
+  const end = setup.indexOf("\nskill_count=", start);
+  assert.ok(start >= 0 && end > start, "missing bounded production setup guard");
+  assert.ok(setup.startsWith("set -euo pipefail\n"), "setup shell options changed");
+  return setup.slice(0, setup.indexOf("\n") + 1) + setup.slice(start, end);
+}
+
+function writeCleanTreeFile(directory, relativePath, content = "fixture\n") {
+  const file = path.join(directory, relativePath);
+  fs.mkdirSync(path.dirname(file), { recursive: true });
+  fs.writeFileSync(file, content);
+}
+
+/** Keep output files outside the Git tree and quote settings local to each fixture. */
+function cleanTreeFixture(t, quotePath, baselinePaths = []) {
+  const fixture = makeRepository(t);
+  const { directory } = fixture;
+  execFileSync("git", ["config", "--local", "core.quotePath", String(quotePath)], { cwd: directory });
+  execFileSync("git", ["config", "--local", "core.excludesFile", "/dev/null"], { cwd: directory });
+  if (baselinePaths.length) {
+    for (const relativePath of baselinePaths) writeCleanTreeFile(directory, relativePath, "baseline\n");
+    execFileSync("git", ["add", "--", ...baselinePaths], { cwd: directory });
+    execFileSync("git", ["commit", "-qm", "tracked clean-tree fixture"], { cwd: directory });
+    fixture.sha = execFileSync("git", ["rev-parse", "HEAD"], { cwd: directory, encoding: "utf8" }).trim();
+  }
+  assert.equal(execFileSync("git", ["status", "--porcelain", "--untracked-files=all"],
+    { cwd: directory, encoding: "utf8" }), "", "fixture baseline must be clean");
+  const outputDirectory = fs.mkdtempSync(path.join(os.tmpdir(), "eta-mu-clean-tree-output-"));
+  t.after(() => fs.rmSync(outputDirectory, { recursive: true, force: true }));
+  return { ...fixture, output: path.join(outputDirectory, "outputs") };
+}
+
+function assertCleanTreeAdmission(t, guard, fixture, expectedClean, scenario, quotePath) {
+  const { directory, sha, output } = fixture;
+  if (guard.kind === "deterministic") {
+    writeCleanTreeFile(directory, ".opencode/review-evidence/statuses.env", "unit=0\n");
+  }
+  const status = execFileSync("git", ["status", "--porcelain", "--untracked-files=all"],
+    { cwd: directory, encoding: "utf8" });
+  t.diagnostic(JSON.stringify({ guard: guard.name, scenario, quotePath, porcelain: status }));
+  if (scenario.startsWith("generated Unicode")) {
+    if (quotePath) assert.match(status, /^\?\? ".*\\[0-7]{3}/m, "Git must actually quote Unicode");
+    else {
+      assert.match(status, /尾-ημ/);
+      assert.doesNotMatch(status, /^\?\? "/m, "Unicode presentation must actually be unquoted");
+    }
+  }
+  let script;
+  let env;
+  if (guard.kind === "setup") {
+    script = reviewSetupCleanTreeScript();
+    env = { GITHUB_OUTPUT: output, GITHUB_WORKSPACE: directory };
+  } else if (guard.kind === "review") {
+    script = namedStep("review", "Verify review remained revision-bound").run;
+    env = { EXPECTED_SHA: sha, EXECUTED_SHA: sha, GITHUB_OUTPUT: output,
+      INITIAL_CLEAN: "true", INITIAL_EXACT_HEAD: "true" };
+  } else {
+    script = namedStep("deterministic_evidence", "Summarize deterministic evidence").run;
+    env = summaryEnvironment(directory, output, sha);
+  }
+  const result = runScript(script, directory, env);
+  assert.equal(result.error, undefined, "Bash must start successfully");
+  assert.equal(result.signal, null, "guard must complete without a signal");
+  const diagnostic = `${guard.name}: ${scenario}, core.quotePath=${quotePath}\n${status}${result.stdout}${result.stderr}`;
+  if (guard.kind === "setup") {
+    assert.equal(result.status, expectedClean ? 0 : 1, diagnostic);
+    if (!expectedClean) assert.match(result.stdout, /Review-context setup left the working tree dirty/);
+    return;
+  }
+  const values = parseOutput(output);
+  assert.equal(values.exact_head, "true", "pathname fixtures must retain exact revision");
+  assert.equal(values.expected_sha, sha);
+  assert.equal(values.executed_sha, sha);
+  assert.equal(values.completion_sha, sha);
+  if (guard.kind === "review") {
+    assert.equal(values.clean, String(expectedClean), diagnostic);
+    assert.equal(result.status, expectedClean ? 0 : 1, diagnostic);
+    if (!expectedClean) assert.match(result.stdout, /Review execution modified the pull-request tree/);
+  } else {
+    assert.equal(result.status, 0, diagnostic); // Summary retains failures; the terminal gate enforces them.
+    assert.equal(values.clean, String(expectedClean), diagnostic);
+    assert.equal(values.result, expectedClean ? "success" : "failure");
+    const summary = JSON.parse(fs.readFileSync(path.join(directory, ".opencode/review-evidence/summary.json"), "utf8"));
+    assert.equal(summary.clean_checkout, expectedClean);
+    assert.deepEqual(summary.statuses, { unit: 0 });
+    assert.deepEqual(summary.errors, expectedClean ? [] : ["checkout was not clean across deterministic execution"]);
+  }
+}
+
+for (const guard of cleanTreeGuards) {
+  for (const quotePath of [true, false]) {
+    test(`clean-tree ${guard.name}: empty tree (quotePath=${quotePath})`, (t) => {
+      assertCleanTreeAdmission(t, guard, cleanTreeFixture(t, quotePath), true, "empty tree", quotePath);
+    });
+    for (const prefix of guard.allowed) {
+      for (const [description, suffix] of [
+        ["generated ASCII", "artifact.txt"],
+        ["generated Unicode filename", "尾-ημ.txt"],
+        ["generated Unicode directory", "尾-ημ/artifact.txt"],
+      ]) {
+        const scenario = `${description} under ${prefix}/`;
+        test(`clean-tree ${guard.name}: ${scenario} (quotePath=${quotePath})`, (t) => {
+          const fixture = cleanTreeFixture(t, quotePath);
+          writeCleanTreeFile(fixture.directory, `${prefix}/${suffix}`);
+          assertCleanTreeAdmission(t, guard, fixture, true, scenario, quotePath);
+        });
+      }
+      for (const mutation of ["modified", "Unicode modified", "staged", "deleted", "renamed"]) {
+        const tracked = `${prefix}/${mutation === "Unicode modified" ? "尾-ημ.txt" : "tracked.txt"}`;
+        const scenario = `reject tracked ${mutation} under ${prefix}/`;
+        test(`clean-tree ${guard.name}: ${scenario} (quotePath=${quotePath})`, (t) => {
+          const fixture = cleanTreeFixture(t, quotePath, [tracked]);
+          if (mutation === "deleted") fs.unlinkSync(path.join(fixture.directory, tracked));
+          else if (mutation === "renamed") {
+            execFileSync("git", ["mv", "--", tracked, `${prefix}/renamed.txt`], { cwd: fixture.directory });
+          } else {
+            writeCleanTreeFile(fixture.directory, tracked, "mutated\n");
+            if (mutation === "staged") {
+              execFileSync("git", ["add", "--", tracked], { cwd: fixture.directory });
+            }
+          }
+          assertCleanTreeAdmission(t, guard, fixture, false, scenario, quotePath);
+        });
+      }
+    }
+    for (const [description, relativePath] of [
+      ["unrelated ASCII", "unexpected.txt"],
+      ["unrelated Unicode", "尾-ημ.txt"],
+      ["review-context prefix lookalike", ".review-context-extra/artifact.txt"],
+      ["review-evidence prefix lookalike", ".opencode/review-evidence-extra/artifact.txt"],
+      ["unrelated opencode sibling", ".opencode/unexpected.txt"],
+    ]) {
+      const scenario = `reject ${description}`;
+      test(`clean-tree ${guard.name}: ${scenario} (quotePath=${quotePath})`, (t) => {
+        const fixture = cleanTreeFixture(t, quotePath);
+        writeCleanTreeFile(fixture.directory, relativePath);
+        assertCleanTreeAdmission(t, guard, fixture, false, scenario, quotePath);
+      });
+    }
+    test(`clean-tree ${guard.name}: reject mixed generated and unrelated dirt (quotePath=${quotePath})`, (t) => {
+      const fixture = cleanTreeFixture(t, quotePath);
+      for (const prefix of guard.allowed) writeCleanTreeFile(fixture.directory, `${prefix}/artifact.txt`);
+      writeCleanTreeFile(fixture.directory, "尾-ημ.txt");
+      assertCleanTreeAdmission(t, guard, fixture, false, "reject mixed generated and unrelated dirt", quotePath);
+    });
+    if (guard.kind === "deterministic") {
+      for (const suffix of ["artifact.txt", "尾-ημ.txt"]) {
+        const scenario = `reject review-context/${suffix}`;
+        test(`clean-tree ${guard.name}: ${scenario} (quotePath=${quotePath})`, (t) => {
+          const fixture = cleanTreeFixture(t, quotePath);
+          writeCleanTreeFile(fixture.directory, `.review-context/${suffix}`);
+          assertCleanTreeAdmission(t, guard, fixture, false, scenario, quotePath);
+        });
+      }
+    }
+  }
+}
+
+for (const [jobId, name] of [
+  ["deterministic_evidence", "Verify exact and clean pull request checkout"],
+  ["review", "Verify exact and clean review checkout"],
+]) {
+  for (const quotePath of [true, false]) {
+    for (const relativePath of [null, ".opencode/review-evidence/artifact.txt",
+      ".opencode/review-evidence/尾-ημ.txt", ".review-context/artifact.txt", ".review-context/尾-ημ.txt"]) {
+      const scenario = relativePath ? `reject generated ${relativePath}` : "accept empty tree";
+      test(`clean-tree initial ${jobId}: ${scenario} (quotePath=${quotePath})`, (t) => {
+        const fixture = cleanTreeFixture(t, quotePath);
+        if (relativePath) writeCleanTreeFile(fixture.directory, relativePath);
+        const status = execFileSync("git", ["status", "--porcelain", "--untracked-files=all"],
+          { cwd: fixture.directory, encoding: "utf8" });
+        t.diagnostic(JSON.stringify({ guard: `initial ${jobId}`, scenario, quotePath, porcelain: status }));
+        const result = runScript(namedStep(jobId, name).run, fixture.directory,
+          guardEnvironment(fixture.directory, fixture.output, fixture.sha));
+        assert.equal(result.error, undefined);
+        assert.equal(result.signal, null);
+        const values = parseOutput(fixture.output);
+        assert.equal(values.exact_head, "true");
+        assert.equal(values.clean, String(relativePath === null), `${scenario}\n${status}${result.stdout}${result.stderr}`);
+        assert.equal(result.status, relativePath ? 1 : 0, result.stderr);
+      });
+    }
+  }
+}
+
 test("terminal gate passes only the complete successful exact-head tuple", (t) => {
   const { directory, sha } = makeRepository(t);
   const script = namedStep("review_gate", "Enforce truthful reusable review result").run;

@@ -1,0 +1,394 @@
+{
+  "epistemic_tier": "observed-command-output transcription; not raw REST, provider approval or native settlement",
+  "correction_timestamp": "2026-10-08T11:15:02.535Z",
+  "verified_at": "2026-10-08T11:18:48.672892Z",
+  "scope": {
+    "worktree": "/home/err/spaces/cephalon-review-receiver/receiver-plan",
+    "source_head": "1c4c53a8af725322d9b6d508d4d165a3dc979685",
+    "written_paths": [
+      "receipts.edn",
+      ".ημ/session-mycology/ledger.md",
+      ".ημ/review-evidence/receiver-receipt-corrected-copies-20261008.json"
+    ],
+    "format": "canonical unwrapped receipt maps; correction provenance uses existing refs/note fields",
+    "new_repo": "open-hax/eta-mu",
+    "containing_personal_fork": "riatzukiza/eta-mu"
+  },
+  "before": {
+    "head": "1c4c53a8af725322d9b6d508d4d165a3dc979685",
+    "branch": "codex/cephalon-review-receiver-plan",
+    "index_path": "/home/err/spaces/cephalon-review-receiver/eta-mu/.git/worktrees/receiver-plan/index",
+    "index_bytes": 264874,
+    "index_sha256": "6ddc2fb5a3892b5c3308f3b4af063b75e0226215e3f931c1930436276d45ee19",
+    "refs_sha256": "a7a965ee550766a79fc8102e7c6ec80a06ef7df5c28a87f4df6ca005b766f156",
+    "head_diff_names": [],
+    "files": {
+      "receipts.edn": {
+        "bytes": 323767,
+        "sha256": "7e3ca00242d2857c314add9a2d73cad8985967032d2c3c5351113fd8e564055c",
+        "lines": 259,
+        "committed_bytes": 323767,
+        "committed_sha256": "7e3ca00242d2857c314add9a2d73cad8985967032d2c3c5351113fd8e564055c",
+        "committed_prefix_equal": true
+      },
+      ".ημ/session-mycology/ledger.md": {
+        "bytes": 45377,
+        "sha256": "b6d4b1417785b6c05e75675154b5745f8ca34580834524771769b9e63eaabce5",
+        "lines": 596,
+        "committed_bytes": 45377,
+        "committed_sha256": "b6d4b1417785b6c05e75675154b5745f8ca34580834524771769b9e63eaabce5",
+        "committed_prefix_equal": true
+      }
+    }
+  },
+  "owning_record_errors_source": {
+    "law_path": "/home/err/spaces/cephalon-receipt-attribution/receipt-river/src/cljs/eta_mu/receipt_river/law/receipt.cljs",
+    "law_bytes": 4927,
+    "law_sha256": "a40dd843cf298926dfbe229d5544470dbd51682fd538e841a0fad62d29bed320",
+    "law_owner_head": "6370ff968841115e681e2b21d80277fd0f0a0289",
+    "rows": [
+      {
+        "ordinal": 256,
+        "raw_bytes": 3877,
+        "raw_sha256": "1bbf2357daf8c2d9642a7cc4e80daecddd2ff3fbfabc2bb3d033bb4de5898489",
+        "content_sha256": "909bc0beb7e71e0574b093982b3b11b2810363c18b9f5cf5c7c2fc3d50970271"
+      },
+      {
+        "ordinal": 257,
+        "raw_bytes": 2630,
+        "raw_sha256": "ea881ef13a3e6cabef9ab124bf2d26366def610375f82aaac1d78b9f2a449e23",
+        "content_sha256": "e787d4309fd1a3b245b54bb79da357bc8c6013e5311f7c36576238eb78d7d164"
+      },
+      {
+        "ordinal": 258,
+        "raw_bytes": 3930,
+        "raw_sha256": "9ec4715f58d449ce553879e56cd5e78b6fcdb4b3029753ecff3472900e7ec379",
+        "content_sha256": "af28a64c6f25be347948b6beaaaab605638499c2afdc5c8de8e4d2e7f5ee9e66"
+      },
+      {
+        "ordinal": 259,
+        "raw_bytes": 2810,
+        "raw_sha256": "971476edb88417a5037b8d09cae9447fb1391d5b691007cbb014f77b8802f3ed",
+        "content_sha256": "cb1856f23e0de9ad93ac849ee6607d1b55afea4d1ca327e20c1cc62cfe7e198d"
+      }
+    ],
+    "source_batch_bytes": 10437,
+    "source_batch_sha256": "592b8c95c84c82d3c9df8d4291e7aa768f3ebe9242aa6971e81be21550ad6cfa"
+  },
+  "native_read_observations": [
+    {
+      "id": 4212734252,
+      "path": "receipts.edn",
+      "line": 256,
+      "original_line": 256,
+      "commit_id": "1c4c53a8af725322d9b6d508d4d165a3dc979685",
+      "original_commit_id": "1c4c53a8af725322d9b6d508d4d165a3dc979685",
+      "body": "Impact: Receipt River is eta-mu's source-of-truth ledger, and the repo's own precedent (receipts.edn line 176) closed PR #293 unmerged for exactly this defect, resolving it only when line 178's records passed `law/record-errors` with zero errors. Evidence: (1) direct grep of receipts.edn shows only lines 255 and 259 of the five new 2026-10-07 records contain `:repo` — lines 256-258 do not; (2) law/receipt.cljs:16-17 lists `:repo` in `legacy-required-keys` and :147-151 routes unwrapped maps through `legacy-errors`, whose `missing-errors` reports \"missing required key: repo\"; (3) the consumer chain is live — receipt-river CLI `validate` (infra/cli.cljs:68) calls api/validate-line (api.cljs:17-20) which applies `law/record-errors` per line; (4) the PR's own adjudication at line 259 concedes the originals \"do not pass that validator,\" because corrections are not folded — the appended correction does not restore compliance. Smallest corrective direction: before merge (these records are not yet immutable main history), add `:repo \"open-hax/eta-mu\"` to lines 256-258 so all five appended records pass `record-errors`; alternatively follow the #293 resolution (fresh corrected records) if byte preservation of committed branch commits is required, and record any owner-authorized exception in the PR description rather than only inside the ledger itself.",
+      "html_url": "https://github.com/riatzukiza/eta-mu/pull/8#discussion_r4212734252",
+      "updated_at": "2026-10-07T22:36:19Z",
+      "author": "eta-mu-ai[bot]",
+      "endpoint": "repos/riatzukiza/eta-mu/pulls/comments/4212734252",
+      "command": [
+        "gh",
+        "api",
+        "repos/riatzukiza/eta-mu/pulls/comments/4212734252"
+      ],
+      "exit": 0,
+      "raw_bytes": 20165,
+      "raw_sha256": "b720a9bace6dedce1579d2ca6dcc197dfa029bdfe367c5500a81fc223fbb65f2"
+    },
+    {
+      "number": 8,
+      "head": "1c4c53a8af725322d9b6d508d4d165a3dc979685",
+      "head_repo": "riatzukiza/eta-mu",
+      "base_repo": "riatzukiza/eta-mu",
+      "body_sha256": "60758dfa181565e955c8d74d3f038fdd57f6db77898aa796aefb943b3fefe5fa",
+      "description_relevant_lines": [
+        "Current implementation head: `1c4c53a8af725322d9b6d508d4d165a3dc979685`. Its parent `c4ac7e32d0e9d4e726c66f46781dacdb817d97ff` contains the workflow repair; this head appends one receipt correction and one reflection without changing that repair.",
+        "- Baseline workflow SHA256: `58203c0309193c9e5cd24c3d6147cd5328f2744147635fab2ff55e36a1ec3b66`.",
+        "- GREEN workflow SHA256: `a863c87944119fa619a39f432237f862327bb28cfe8285211386f1ef85531927`.",
+        "5. `1c4c53a8af725322d9b6d508d4d165a3dc979685`: append-only receipt attribution correction and reflection; all preceding ledger bytes and workflow/test bytes preserved.",
+        "The earlier publication statement above describes the initial c4 publication time. The c4 hosted run [37688133473](https://github.com/riatzukiza/eta-mu/actions/runs/37688133473) subsequently completed SUCCESS, including context, all seven deterministic gates (install, bootstrap_extensions, lint, test, generated_outputs_baseline, build, generated_outputs_restore), MiMo and terminal publication jobs. Actual deterministic duration was 16 minutes 55 seconds; this observation is not a future execution bound. Its complete 76714-byte base/head diff matched the immutable Git diff byte-for-byte. Both hosted artifact ZIPs matched their native SHA256 digests.",
+        "That approval and executed run are historical parent proof. They do not approve 1c, complete a current-head review round, settle CodeRabbit's open receipt finding, or waive new required checks.",
+        "## Append-only receipt correction",
+        "The user's explicit direction is to append a correction or preserve the old receipt; repository context supplies attribution. Original c4 receipt lines 256–258 remain byte-identical (10437 bytes together, SHA256 `592b8c95c84c82d3c9df8d4291e7aa768f3ebe9242aa6971e81be21550ad6cfa`). New line 259 binds each original line/hash and supplies repository `open-hax/eta-mu`, containing fork `riatzukiza/eta-mu`, the owner decision and unchanged historical facts. Native `receipt validate 1` passed on the appended record.",
+        "The current record-local native law still rejects the three original maps for missing `:repo`; appending does not silently change that reader. CodeRabbit [accepted the append-only approach](https://github.com/riatzukiza/eta-mu/pull/8#discussion_r4212275790), while explicitly retaining its validation finding at root `4212096853` / thread `PRRT_kwDOU4VdxM6qGbgC`. This is neither a withdrawal nor a settlement or approval. No historical rewrite, context-reader implementation or validation waiver is included.",
+        "8. `receipts.edn` — all five appended records",
+        "- Receipts: 307743 bytes, SHA256 `f5341346f4cb00187782b077b62bc8e6389f00632b4bbc8aad1a2a556d3ada10`.",
+        "- Reflections: 41059 bytes, SHA256 `d3ec12eb81b72d244a52475dfda02e27b9a40d1973af38b4a7daed7ef233582d`.",
+        "- Native events: 1725349 bytes, SHA256 `3a7e813e4c1373de728df75d9a45b5011c4e8f33869a2640ce068d227d0f81ca`.",
+        "RED/GREEN JSONs retain local executed-test evidence, not provider approval. The verbatim GREEN packet is 15228 bytes, SHA256 `16609bfd85bdac10fe343ecceda52e3ce67ed44de2550d7da391021afbb93a31`. Raw local logs remain private; the JSON supplies commands, counts, failure names, hashes and limitations."
+      ],
+      "endpoint": "repos/riatzukiza/eta-mu/pulls/8",
+      "command": [
+        "gh",
+        "api",
+        "repos/riatzukiza/eta-mu/pulls/8"
+      ],
+      "exit": 0,
+      "raw_bytes": 24356,
+      "raw_sha256": "59577892591a5fc9f88b69717e9e6526455710eee0d6cd1573eed2930f7bb677"
+    }
+  ],
+  "preparation": {
+    "roundtrip_equal": true,
+    "sources": [
+      {
+        "ordinal": 256,
+        "raw-bytes": 3877,
+        "raw-sha256": "1bbf2357daf8c2d9642a7cc4e80daecddd2ff3fbfabc2bb3d033bb4de5898489",
+        "original_ts": "2026-10-07T20:53:17.309954Z",
+        "original_kind": ":decision",
+        "original_origin": "cephalon-review-receiver-native-ready-20261007T2049",
+        "errors": [
+          "missing required key: repo"
+        ]
+      },
+      {
+        "ordinal": 257,
+        "raw-bytes": 2630,
+        "raw-sha256": "ea881ef13a3e6cabef9ab124bf2d26366def610375f82aaac1d78b9f2a449e23",
+        "original_ts": "2026-10-07T21:04:25.059237Z",
+        "original_kind": ":test-run",
+        "original_origin": "review-clean-tree-unicode-path-filter/RED-20261007T2104",
+        "errors": [
+          "missing required key: repo"
+        ]
+      },
+      {
+        "ordinal": 258,
+        "raw-bytes": 3930,
+        "raw-sha256": "9ec4715f58d449ce553879e56cd5e78b6fcdb4b3029753ecff3472900e7ec379",
+        "original_ts": "2026-10-07T21:14:58.388652Z",
+        "original_kind": ":test-run",
+        "original_origin": "review-clean-tree-unicode-path-filter/GREEN-20261007T2114",
+        "errors": [
+          "missing required key: repo"
+        ]
+      }
+    ],
+    "new_errors": [
+      [],
+      [],
+      []
+    ],
+    "original_nonmetadata_fields_equal": true,
+    "original_note_prefix_equal": true,
+    "original_refs_prefix_equal": true,
+    "candidate_sha256": "b0d3b8b1567f29a1b1882eae12a3b9f3c50678285cd4dd32a999171eb3476afe",
+    "adjudication_errors": [],
+    "proof_path": ".ημ/review-evidence/receiver-receipt-corrected-copies-20261008.json",
+    "candidate_bytes": 15607,
+    "recorded_at": "2026-10-08T11:15:02.535Z",
+    "validation_command": [
+      "/home/err/.volta/tools/image/node/22.20.0/bin/node",
+      "/home/err/.npm/_npx/0856042db19db713/node_modules/nbb/cli.js",
+      "-cp",
+      "/home/err/spaces/cephalon-receipt-attribution/receipt-river/src/cljs",
+      "-e",
+      "(require '[cljs.reader :as edn] '[clojure.string :as str] '[eta-mu.receipt-river.law.receipt :as law] '[\"node:fs\" :as fs] '[\"node:crypto\" :as crypto])\n(def root \"/home/err/spaces/cephalon-review-receiver/receiver-plan\")\n(def proof \".ημ/review-evidence/receiver-receipt-corrected-copies-20261008.json\")\n(def data (.readFileSync fs (str root \"/receipts.edn\")))\n(def lines (str/split (.toString data \"utf8\") #\"\\n\"))\n(def recorded-at (.toISOString (js/Date.)))\n(defn sha [s] (.digest (.update (.createHash crypto \"sha256\") s) \"hex\"))\n(def sources (mapv (fn [n] (let [raw (str (nth lines (dec n)) \"\\n\")] {:ordinal n :raw-bytes (.byteLength js/Buffer raw \"utf8\") :raw-sha256 (sha raw) :record (edn/read-string raw)})) [256 257 258]))\n(def adjudication (edn/read-string (nth lines 258)))\n(assert (= \"open-hax/eta-mu\" (:repo adjudication)))\n(assert (= \"receiver-receipt-repo-append-only-correction-20261007\" (:origin adjudication)))\n(assert (every? #(= [\"missing required key: repo\"] (law/record-errors (:record %))) sources))\n(assert (empty? (law/record-errors adjudication)))\n(def corrections\n (mapv (fn [{:keys [ordinal raw-sha256 raw-bytes record]}]\n  (-> record\n   (assoc :repo (:repo adjudication) :ts recorded-at)\n   (update :refs into\n    [(str \"Appended corrected copy; source-path:receipts.edn;source-ordinal:\" ordinal \";ordinal-scope:1-based physical EDN line\")\n     (str \"source-raw-sha256:\" raw-sha256 \";source-raw-bytes:\" raw-bytes \";hash-scope:exact UTF-8 line including final LF\")\n     \"source-head:1c4c53a8af725322d9b6d508d4d165a3dc979685;source-repository:riatzukiza/eta-mu;owning-repository:open-hax/eta-mu\"\n     (str \"source-ts:\" (:ts record) \";source-origin:\" (:origin record) \";correction-recorded-at:\" recorded-at)\n     \"Attribution adjudication:receipts.edn;source-ordinal:259;source-raw-sha256:971476edb88417a5037b8d09cae9447fb1391d5b691007cbb014f77b8802f3ed\"\n     \"Native offered alternative:riatzukiza/eta-mu#8;MiMo root4212734252@1c4c53a8af725322d9b6d508d4d165a3dc979685;fresh corrected records;owner-authorized append-only exception description remains parent-owned\"\n     (str \"Bounded correction verification:\" proof)])\n   (update :note str\n    (str \" APPENDED CORRECTED COPY recorded \" recorded-at \": repository metadata supplied from ordinal259 while preserving original ordinal\" ordinal \" and its exact raw line hash. The source timestamp \" (:ts record) \" is historical event provenance; this receipt's :ts records the correction. All original event claims, tests, decisions, manifest paths, owner and origin above are historical copied evidence, not fresh execution or current approval. The original rows remain unchanged and still fail record-errors for missing :repo. This append defines no consumer folding, validation waiver, native approval or settlement; parent owns Git/GitHub publication and any description exception.\")))) sources))\n(doseq [[source corrected] (map vector sources corrections)]\n (let [original (:record source)]\n  (assert (= (dissoc original :ts :repo :refs :note) (dissoc corrected :ts :repo :refs :note)))\n  (assert (= (:refs original) (subvec (:refs corrected) 0 (count (:refs original)))))\n  (assert (str/starts-with? (:note corrected) (:note original)))\n  (assert (empty? (law/record-errors corrected)))))\n(def suffix (apply str (map #(str (pr-str %) \"\\n\") corrections)))\n(assert (= corrections (mapv edn/read-string (remove str/blank? (str/split suffix #\"\\n\")))))\n(def result {:recorded_at recorded-at :proof_path proof :candidate_edn suffix :candidate_bytes (.byteLength js/Buffer suffix \"utf8\") :candidate_sha256 (sha suffix) :adjudication_errors (law/record-errors adjudication) :sources (mapv (fn [s] (-> (dissoc s :record) (assoc :original_ts (:ts (:record s)) :original_kind (str (:kind (:record s))) :original_origin (:origin (:record s)) :errors (law/record-errors (:record s))))) sources) :new_errors (mapv law/record-errors corrections) :original_nonmetadata_fields_equal true :original_refs_prefix_equal true :original_note_prefix_equal true :roundtrip_equal true})\n(println (js/JSON.stringify (clj->js result)))"
+    ],
+    "validation_exit": 0,
+    "validation_stderr": ""
+  },
+  "operator_errors": [
+    {
+      "phase": "initial read-only preparation",
+      "exit": 1,
+      "message": "Unmatched delimiter: )",
+      "location": "36:640",
+      "writes": [],
+      "resolution": "Removed trailing delimiter and reran all construction, direct record-errors calls and semantic assertions with exit0 before mutation."
+    },
+    {
+      "phase": "post-append path-scope query",
+      "exit": 1,
+      "message": "AssertionError at Python stdin line107; default git --name-only quotes Unicode paths",
+      "observed_default_output": "\".\\316\\267\\316\\274/session-mycology/ledger.md\"\nreceipts.edn\n",
+      "writes_before_error": [
+        "Three corrected receipts appended once",
+        "One concise reflection appended once"
+      ],
+      "proof_written_before_error": false,
+      "resolution": "Read actual filenames with git diff HEAD --name-only -z, independently verified all received and committed prefixes, then reran direct record-errors readback. No ledger append repeated, no original bytes rewritten."
+    }
+  ],
+  "readback": {
+    "argv": [
+      "/home/err/.volta/tools/image/node/22.20.0/bin/node",
+      "/home/err/.npm/_npx/0856042db19db713/node_modules/nbb/cli.js",
+      "-cp",
+      "/home/err/spaces/cephalon-receipt-attribution/receipt-river/src/cljs",
+      "-e",
+      "(require '[cljs.reader :as edn] '[clojure.string :as str] '[eta-mu.receipt-river.law.receipt :as law] '[\"node:fs\" :as fs] '[\"node:crypto\" :as crypto])\n(def path \"/home/err/spaces/cephalon-review-receiver/receiver-plan/receipts.edn\")\n(def lines (str/split (.readFileSync fs path \"utf8\") #\"\\n\"))\n(defn record-at [n] (edn/read-string (nth lines (dec n))))\n(defn sha [s] (.digest (.update (.createHash crypto \"sha256\") s) \"hex\"))\n(def pairs\n (mapv (fn [old-n new-n]\n  (let [old (record-at old-n) new (record-at new-n)\n        old-sha (sha (str (nth lines (dec old-n)) \"\\n\"))\n        copied-equal (= (dissoc old :ts :repo :refs :note) (dissoc new :ts :repo :refs :note))\n        refs-equal (= (:refs old) (subvec (:refs new) 0 (count (:refs old))))\n        note-equal (str/starts-with? (:note new) (:note old))\n        provenance (and (some #(str/includes? % (str \"source-path:receipts.edn;source-ordinal:\" old-n \";\")) (:refs new))\n                        (some #(str/includes? % (str \"source-raw-sha256:\" old-sha \";\")) (:refs new))\n                        (some #(str/includes? % (str \"source-ts:\" (:ts old) \";\")) (:refs new)))]\n   (assert (= [\"missing required key: repo\"] (law/record-errors old)))\n   (assert (empty? (law/record-errors new)))\n   (assert (= \"open-hax/eta-mu\" (:repo new)))\n   (assert (= \"2026-10-08T11:15:02.535Z\" (:ts new)))\n   (assert (and copied-equal refs-equal note-equal provenance))\n   {:original_ordinal old-n :corrected_ordinal new-n :original_errors (law/record-errors old)\n    :corrected_errors (law/record-errors new) :original_raw_sha256 old-sha\n    :new_raw_sha256 (sha (str (nth lines (dec new-n)) \"\\n\"))\n    :original_ts (:ts old) :correction_ts (:ts new)\n    :copied_fields_equal copied-equal :original_refs_prefix_equal refs-equal\n    :original_note_prefix_equal note-equal :explicit_source_provenance_verified (boolean provenance)}))\n [256 257 258] [260 261 262]))\n(assert (empty? (law/record-errors (record-at 259))))\n(println (js/JSON.stringify (clj->js {:pairs pairs :adjudication_259_errors (law/record-errors (record-at 259)) :new_records_valid true :original_records_still_missing_repo true})))"
+    ],
+    "exit": 0,
+    "stdout": "{\"pairs\":[{\"original_errors\":[\"missing required key: repo\"],\"explicit_source_provenance_verified\":true,\"correction_ts\":\"2026-10-08T11:15:02.535Z\",\"original_ordinal\":256,\"original_ts\":\"2026-10-07T20:53:17.309954Z\",\"original_raw_sha256\":\"1bbf2357daf8c2d9642a7cc4e80daecddd2ff3fbfabc2bb3d033bb4de5898489\",\"original_note_prefix_equal\":true,\"new_raw_sha256\":\"f3a3c8d06b661483c755ecefb9174e085936cd7372bf8f5b2c9a9a871870fea8\",\"corrected_ordinal\":260,\"original_refs_prefix_equal\":true,\"corrected_errors\":[],\"copied_fields_equal\":true},{\"original_errors\":[\"missing required key: repo\"],\"explicit_source_provenance_verified\":true,\"correction_ts\":\"2026-10-08T11:15:02.535Z\",\"original_ordinal\":257,\"original_ts\":\"2026-10-07T21:04:25.059237Z\",\"original_raw_sha256\":\"ea881ef13a3e6cabef9ab124bf2d26366def610375f82aaac1d78b9f2a449e23\",\"original_note_prefix_equal\":true,\"new_raw_sha256\":\"1d366178f90040259c39ccdd717454c8698f686d5dcf570766b1ca255e12c0a3\",\"corrected_ordinal\":261,\"original_refs_prefix_equal\":true,\"corrected_errors\":[],\"copied_fields_equal\":true},{\"original_errors\":[\"missing required key: repo\"],\"explicit_source_provenance_verified\":true,\"correction_ts\":\"2026-10-08T11:15:02.535Z\",\"original_ordinal\":258,\"original_ts\":\"2026-10-07T21:14:58.388652Z\",\"original_raw_sha256\":\"9ec4715f58d449ce553879e56cd5e78b6fcdb4b3029753ecff3472900e7ec379\",\"original_note_prefix_equal\":true,\"new_raw_sha256\":\"b026d36ba4b8163a1ac39f140edf72146062f1e9dcc6e67875a0ce7ef690325a\",\"corrected_ordinal\":262,\"original_refs_prefix_equal\":true,\"corrected_errors\":[],\"copied_fields_equal\":true}],\"adjudication_259_errors\":[],\"new_records_valid\":true,\"original_records_still_missing_repo\":true}\n",
+    "stderr": "",
+    "result": {
+      "pairs": [
+        {
+          "original_errors": [
+            "missing required key: repo"
+          ],
+          "explicit_source_provenance_verified": true,
+          "correction_ts": "2026-10-08T11:15:02.535Z",
+          "original_ordinal": 256,
+          "original_ts": "2026-10-07T20:53:17.309954Z",
+          "original_raw_sha256": "1bbf2357daf8c2d9642a7cc4e80daecddd2ff3fbfabc2bb3d033bb4de5898489",
+          "original_note_prefix_equal": true,
+          "new_raw_sha256": "f3a3c8d06b661483c755ecefb9174e085936cd7372bf8f5b2c9a9a871870fea8",
+          "corrected_ordinal": 260,
+          "original_refs_prefix_equal": true,
+          "corrected_errors": [],
+          "copied_fields_equal": true
+        },
+        {
+          "original_errors": [
+            "missing required key: repo"
+          ],
+          "explicit_source_provenance_verified": true,
+          "correction_ts": "2026-10-08T11:15:02.535Z",
+          "original_ordinal": 257,
+          "original_ts": "2026-10-07T21:04:25.059237Z",
+          "original_raw_sha256": "ea881ef13a3e6cabef9ab124bf2d26366def610375f82aaac1d78b9f2a449e23",
+          "original_note_prefix_equal": true,
+          "new_raw_sha256": "1d366178f90040259c39ccdd717454c8698f686d5dcf570766b1ca255e12c0a3",
+          "corrected_ordinal": 261,
+          "original_refs_prefix_equal": true,
+          "corrected_errors": [],
+          "copied_fields_equal": true
+        },
+        {
+          "original_errors": [
+            "missing required key: repo"
+          ],
+          "explicit_source_provenance_verified": true,
+          "correction_ts": "2026-10-08T11:15:02.535Z",
+          "original_ordinal": 258,
+          "original_ts": "2026-10-07T21:14:58.388652Z",
+          "original_raw_sha256": "9ec4715f58d449ce553879e56cd5e78b6fcdb4b3029753ecff3472900e7ec379",
+          "original_note_prefix_equal": true,
+          "new_raw_sha256": "b026d36ba4b8163a1ac39f140edf72146062f1e9dcc6e67875a0ce7ef690325a",
+          "corrected_ordinal": 262,
+          "original_refs_prefix_equal": true,
+          "corrected_errors": [],
+          "copied_fields_equal": true
+        }
+      ],
+      "adjudication_259_errors": [],
+      "new_records_valid": true,
+      "original_records_still_missing_repo": true
+    }
+  },
+  "after": {
+    "receipts.edn": {
+      "bytes": 339374,
+      "sha256": "c0a1f5ec35203d3098888e194f557c24ad6185f47251781b2a4f162bcb71265c",
+      "lines": 262,
+      "original_bytes": 323767,
+      "original_prefix_equal": true,
+      "suffix_bytes": 15607,
+      "suffix_sha256": "b0d3b8b1567f29a1b1882eae12a3b9f3c50678285cd4dd32a999171eb3476afe",
+      "original_prefix_sha256": "7e3ca00242d2857c314add9a2d73cad8985967032d2c3c5351113fd8e564055c",
+      "committed_prefix_equal": true
+    },
+    ".ημ/session-mycology/ledger.md": {
+      "bytes": 46228,
+      "sha256": "773d1431cfe8f29a66fea66558560f0dde8c157ec389b3d8bd1df6bed708c548",
+      "lines": 605,
+      "original_bytes": 45377,
+      "original_prefix_equal": true,
+      "suffix_bytes": 851,
+      "suffix_sha256": "8ef378785aae86dca77f0b23e6ccb5b9acf7e3a68af139897f4d2097a0a2aa37",
+      "original_prefix_sha256": "b6d4b1417785b6c05e75675154b5745f8ca34580834524771769b9e63eaabce5",
+      "committed_prefix_equal": true
+    }
+  },
+  "original_batch": {
+    "ordinals": [
+      256,
+      257,
+      258
+    ],
+    "bytes_including_each_final_LF": 10437,
+    "sha256": "592b8c95c84c82d3c9df8d4291e7aa768f3ebe9242aa6971e81be21550ad6cfa",
+    "unchanged": true
+  },
+  "diff_hygiene": {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "/home/err/spaces/cephalon-review-receiver/receiver-plan",
+      "diff",
+      "--no-ext-diff",
+      "--check",
+      "HEAD",
+      "--",
+      "receipts.edn",
+      ".ημ/session-mycology/ledger.md"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "path_scope_check": {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "/home/err/spaces/cephalon-review-receiver/receiver-plan",
+      "diff",
+      "--no-ext-diff",
+      "HEAD",
+      "--name-only",
+      "-z"
+    ],
+    "tracked_changed_paths": [
+      ".ημ/session-mycology/ledger.md",
+      "receipts.edn"
+    ],
+    "proof_new_path": ".ημ/review-evidence/receiver-receipt-corrected-copies-20261008.json"
+  },
+  "preservation": {
+    "all_259_original_receipt_lines_byte_identical": true,
+    "original_reflection_bytes_byte_identical": true,
+    "committed_prefixes_byte_identical": true,
+    "head_unchanged": true,
+    "branch_unchanged": true,
+    "refs_sha256": "a7a965ee550766a79fc8102e7c6ec80a06ef7df5c28a87f4df6ca005b766f156",
+    "index_sha256": "6ddc2fb5a3892b5c3308f3b4af063b75e0226215e3f931c1930436276d45ee19",
+    "index_bytes": 264874,
+    "index_bytes_unchanged": true
+  },
+  "append_method": "Existing ledgers: os.open O_WRONLY|O_APPEND, one exact write and fsync each. Proof: O_WRONLY|O_CREAT|O_EXCL mode0600.",
+  "source_semantics": [
+    {
+      "source": 256,
+      "copy": 260,
+      "claim": "Historical native readiness, quota/review truth, source build and native board-admission observations at 2026-10-07T20:53:17.309954Z; copied, not rerun."
+    },
+    {
+      "source": 257,
+      "copy": 261,
+      "claim": "Historical real-Git RED 200tests/190pass/10fail/exit1 with expected quoted-Unicode failures; strict negative/control cases and synthetic transport limits retained."
+    },
+    {
+      "source": 258,
+      "copy": 262,
+      "claim": "Historical GREEN 200pass/0fail, individual guard reversions, actionlint/ShellCheck, native Testing/Review observations; copied as historical claims."
+    }
+  ],
+  "field_contract": "Only ts, repo, refs, note differ from source maps: ts records correction time, repo supplies row259 attribution, original refs/note remain exact parsed prefixes with added provenance. Every other field is equal, including original kind/origin/owner/dod/pi/host/manifest/tests/decisions. Original source timestamps and complete raw-line SHA256 values are explicit refs.",
+  "limitations": [
+    "Current actual record-errors still rejects original256-258 for missing repo. No whole historical-journal validation pass is claimed.",
+    "No consumer folding, replacement protocol, schema or policy workaround introduced.",
+    "Copied historical product tests/builds/board/provider assertions were not freshly executed or requalified.",
+    "Native PR description owner exception and finding settlement remain parent-owned. No review approval, settlement or merge-admission claim.",
+    "No product/workflow test suite was run for this metadata-only append; validation is the owning Receipt River API plus exact semantic/provenance/prefix checks.",
+    "No stage/commit/push/review-request/reply/resolution/branch/remote/index mutation; unrelated all-D staging metadata preserved byte-for-byte.",
+    "No product code/board/card/status/frontmatter/policy/runtime/credentials/PM2/cloud/model/actor/social publication mutation; no install/snapshot/worktree/spore/new scope.",
+    "The human assigned this scoped implementation delegation; no further agent/runtime dispatch."
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "tier": "observed",
+  "evidence_kind": "actual-command-output transcription; local worker assessment is not providerapproval",
+  "source_head": "7ccf3ba5303e94b1d20f5113be26d84194db11e2",
+  "finding": {
+    "review": 5467402440,
+    "comment": 4227957554,
+    "thread": "PRRT_kwDOU4VdxM6qsijM"
+  },
+  "red": {
+    "command": [
+      "node",
+      "/home/err/.volta/tools/image/packages/pnpm/bin/pnpm",
+      "-C",
+      "packages/eta-mu",
+      "test"
+    ],
+    "node": "v22.20.0",
+    "head": "7ccf3ba5303e94b1d20f5113be26d84194db11e2",
+    "exit": 1,
+    "elapsedSeconds": 9.92845378498896,
+    "logBytes": 59258,
+    "logSHA256": "dc57af90e4dd2aa1cc0c3341bf641efbc8e82078f04c01b8afbe6a2a2eef5ffb",
+    "correction": "Parent preserves no-context original complete result equality; nil context must not add contextual-only diagnosticmetadata."
+  },
+  "suite": {
+    "tests": 196,
+    "assertions": 708,
+    "failures": 13,
+    "errors": 0,
+    "compiler_warnings": 0,
+    "all_failures_new_no_git_case": true,
+    "workflow_suite_not_reached_after_intentional_node_exit": true
+  },
+  "worker_initial_red": {
+    "tests": 196,
+    "assertions": 708,
+    "failures": 10,
+    "errors": 0,
+    "logSHA256": "be0e80cdb3ba77a70e56fdb2ae9dfada2f486c813cd21ed956b2e1ce32938cd6",
+    "parent_refinement": "Original no-context API result must be retained exactly; requesting contextual-only metadata atnil context was incorrect. Entire result equality replaces that one assertion; actual rerunadds3true failures."
+  },
+  "actual_test_path": "packages/eta-mu/test/cljs/eta_mu/infra/cli/router_test.cljs",
+  "test_sha256": "7abaa66f9ff099d2d9dc3c3dfa82a632fad3384a0cd53fe697b9c04fb0444ea2",
+  "existing_test_prefix_identical": true,
+  "fixture": "Actual owned noGitdirectory/revparseexit128/nonrepositorydiagnostic; refuseinheritedredirect; actualdefault200handler records2/3arity truevalidator; reuse320957byte/SHA9e9929... original59-258 and256-258; raw/event/schema/ordinals preserved; finallycleanup",
+  "old_source_unchanged": true,
+  "owning_repair_pr": "https://github.com/riatzukiza/receipt-river/pull/2",
+  "candidate_source_head": "47cfcc831d31838abc7f86a196391f8ab53014de",
+  "source_not_yet_qualified_or_consumed": true,
+  "character_complete": false
+}

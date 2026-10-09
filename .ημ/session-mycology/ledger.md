@@ -548,3 +548,103 @@
   spore: none
   receipt-refs: Eta340/fresh fatal UTF8 admission RED GREEN; Eta340/bounded lint diagnostic and frozen scope
   note: Move validation to the earliest shared admission boundary and reproduce it with actual Git bytes, not a guessed transport shape. Preserve immutable predecessor RED and genuine compiler/tool GREEN separately from native successor qualification. Stop stalled tools within the authorized scope, retain their actual signal/time outcome, and label a parser-only diagnostic with external checks disabled precisely. Unknown lint cause stays unknown; no new spore or promotion, and parent owns independent lint/publication.
+
+- ts: "2026-10-07T20:07:38Z"
+  session: /home/err/spaces/cephalon-review-receiver/receiver-plan
+  task: Plan the shared eta-mu Unicode clean-tree filter repair (5f487c2f-ca40-49c1-b6eb-c28d00707732)
+  p-efficiency: 0.85
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: review-clean-tree-unicode-path-filter/planning @ 2026-10-07T20:07:38Z
+  note: Parent-verified native finding stays distinct from local inspection and future behavioral RED. Both receiver45ec644 and base084 retain literal porcelain-prefix filters; deterministic completion shares the representation issue but keeps its one-directory allowance. A provisional incoming two-point card owns the shared repair; caller ignore mitigation and historical cards do not establish completion. Future real-Git quoting and strict dirty-tree fixtures must precede GREEN. Explicit user scope authorizes initial Markdown and appends in this worktree; parent retains commits, PR and native reviews. Original receipt/reflection byte prefixes are preserved. Existing worktree-write-targeting, mechanism-verification and plan-as-hypothesis lessons suffice; no spore or promotion. No board operation or behavioral/native qualification claimed.
+
+- ts: "2026-10-07T20:53:17.309954Z"
+  origin: cephalon-review-receiver-native-ready-20261007T2049
+  p-efficiency: 0.85
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-review-receiver-native-ready-20261007T2049
+  note: Native edited quota prose and stale check labels are separate evidence. One concrete full new-head review completed; explicit receiver planning request received a genuine quota exception, so current canonical available-agent rules admitted one actual MiMo cohort. Build current native artifacts, verify true input/body hashes, then walk Rheos hops before delegated RED. Do not publish raw scoped review links, relabel planning as code, or disturb the active maker. Earlier failed operator reads/shape assumptions were corrected, not counted as production failures. Existing lessons suffice; no spore or promotion.
+
+- ts: "2026-10-07T21:04:25.059237Z"
+  origin: review-clean-tree-unicode-path-filter/RED-20261007T2104
+  p-efficiency: 0.9
+  p-friction: 0.15
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: review-clean-tree-unicode-path-filter/RED-20261007T2104
+  note: Reproduce representation bugs through native Git and actual production shell boundaries. Ten precise positive-case failures and136 passing negative/control regressions keep Unicode tolerance separate from dirt admission. Preserve RED before GREEN and keep synthetic transport metadata distinct from real Muse or provider review. Existing falsification/mechanism lessons suffice; no spore or promotion.
+
+- ts: "2026-10-07T21:14:58.388652Z"
+  origin: review-clean-tree-unicode-path-filter/GREEN-20261007T2114
+  p-efficiency: 0.9
+  p-friction: 0.15
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: review-clean-tree-unicode-path-filter/GREEN-20261007T2114
+  note: Test production guards through real Git and falsify each boundary separately. A minimal representation repair preserves strict refusal predicates; unchanged baseline and independent reversions establish causality. Native board movement, local tests, hosted full gates and provider qualification remain separate facts. Retain exact bytes and private logs, then publish a coherent code head without transferring planning approvals. Existing lessons suffice; no spore or promotion.
+
+- ts: "2026-10-07T21:38:16.984255Z"
+  origin: receiver-receipt-repo-append-only-correction-20261007
+  p-efficiency: 0.78
+  p-friction: 0.35
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: receiver-receipt-repo-append-only-correction-20261007; CodeRabbit4212096853
+  note: Missing metadata on an immutable receipt is handled by an appended, explicitly bound correction or by preserving the original. The direct user instruction resolved the proposed rewrite exception in favor of append-only history; no further approval question is needed. Keep containing-repository inference separate from the current record-local validator, and never claim an appended correction made old maps validate. Preserve original byte hashes, actual evidence and Git history. Existing ledger/provenance lessons suffice; no spore or promotion.
+
+- ts: "2026-10-08T11:15:02.535Z"
+  origin: receiver-receipt-corrected-copies-20261008
+  p-efficiency: 0.88
+  p-friction: 0.20
+  p-skill-candidate: 0.10
+  spore: none
+  receipt-refs: receipts.edn ordinals260-262 correcting immutable ordinals256-258; adjudication259; MiMo4212734252
+  note: Append actual corrected maps with explicit repo and raw-line provenance; keep the original event claims and timestamps distinct from correction time. Use the owning record-errors API directly, retain historical note/reference prefixes and every existing ledger byte, and verify the index separately. Initial read-only preparation had a trailing delimiter after its JSON output; corrected before mutation. This scoped worker leaves publication and native description/settlement to the parent; no consumer folding, historical validation pass, spore or promotion.
+
+- ts: "2026-10-09T07:49:29.144398Z"
+  origin: receiver-containing-repository-consumption-RED-20261009
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: receiver-containing-repository-consumption-RED-20261009
+  note: Freeze the consumer originalprefix and use actual Git/compiled routing; a qualified source does not update an old compiled donor. All20 realRED failures identify absentcontext, no testerrors. Preserve oldledger errors separately; never claim wholejournalPASS. Existing lessons suffice; no spore or promotion.
+
+- ts: "2026-10-09T07:53:25.254224Z"
+  origin: receiver-containing-repository-consumption-GREEN-20261009
+  p-efficiency: 0.85
+  p-friction: 0.15
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: receiver-containing-repository-consumption-GREEN-20261009
+  note: Consume qualified owning bytes and prove actual compiled routes; preserve invalid history as history. Same20 RED gaps now GREEN without local law changes. Source qualification, local integration, hosted gates and character behavior are separate evidence. Existing lessons suffice; no spore or promotion.
+
+- ts: "2026-10-09T08:17:36.876214Z"
+  origin: receiver-no-git-context-RED-20261009
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: receiver-no-git-context-RED-20261009
+  note: Nil context preserves the original complete result rather than adding contextual diagnostics. Actual noGitdefaultwindow negative complements positive; consumer follows qualified owning bytes. No spore/promotion.
+
+- ts: "2026-10-09T09:04:34.636293Z"
+  origin: receiver-no-git-context-GREEN-20261009
+  p-efficiency: 0.85
+  p-friction: 0.15
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: receiver-no-git-context-GREEN-20261009
+  note: Qualify upstream, preserve exact source bytes and test both actual Git outcomes in the existing default-window consumer. Local preparation and native source acceptance are distinct; no spore/promotion.
+
+- ts: "2026-10-09T09:18:12.418382Z"
+  origin: receiver-evidence-spacing-4228545549-20261009
+  p-efficiency: 0.9
+  p-friction: 0.1
+  p-skill-candidate: 0.0
+  spore: none
+  receipt-refs: receiver-evidence-spacing-4228545549-20261009
+  note: Keep review evidence readable without changing the observation or receipt history. A passing incremental review check does not prove complete full-diff review. No spore or promotion.

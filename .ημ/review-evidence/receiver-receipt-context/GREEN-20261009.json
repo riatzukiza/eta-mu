@@ -1,0 +1,224 @@
+{
+  "tier": "observed-command-output-transcription",
+  "qualified_source": {
+    "tier": "observed",
+    "source_repository": "riatzukiza/receipt-river",
+    "native_pr": 1,
+    "merged_at": "2026-10-09T07:39:40Z",
+    "merge_commit": "5eeb77e035c17160416d0a092415b39b3de55133",
+    "parents": [
+      "154440f3c997aa9208194bba59b5edbef3654f78",
+      "67f43c2fd210c6bf48aa89090f2f863d56ef04de"
+    ],
+    "reviewed_head": "67f43c2fd210c6bf48aa89090f2f863d56ef04de",
+    "tree": "ddd9d8202d730c502d845ae006933ded2b1bbc40",
+    "reviewed_tree_equal": true,
+    "mimo_review": 5467136899,
+    "hosted_run": 37897227310,
+    "approval_is_not_deployment": true,
+    "adoption_inputs": {
+      "src/cljs/eta_mu/receipt_river/api.cljs": {
+        "bytes": 2822,
+        "sha256": "38481efb05bb15533d0549f5339ba2a131eae5e8952abfaf8b133664363e41ad"
+      },
+      "src/cljs/eta_mu/receipt_river/infra/cli.cljs": {
+        "bytes": 10085,
+        "sha256": "9e6a94fd73e1d15ffb7a387e060e5e29a9841059298ec21ee3d2b4ac445b0241"
+      },
+      "src/cljs/eta_mu/receipt_river/law/receipt.cljc": {
+        "bytes": 6017,
+        "sha256": "4e1920ed0846025e91090f7fc33cd5bcb9be2c38d7892113fdb23648eeab2326"
+      }
+    }
+  },
+  "actual_adoption": {
+    "tier": "observed",
+    "consumer_red_commit": "b7ff8067e99ba39fbce3752167aa24e053fb5b46",
+    "source_merge": "5eeb77e035c17160416d0a092415b39b3de55133",
+    "source_reviewed_head": "67f43c2fd210c6bf48aa89090f2f863d56ef04de",
+    "mapping": [
+      {
+        "old": "api.cljs",
+        "new": "api.cljs",
+        "bytes": 2822,
+        "sha256": "38481efb05bb15533d0549f5339ba2a131eae5e8952abfaf8b133664363e41ad"
+      },
+      {
+        "old": "infra/cli.cljs",
+        "new": "infra/cli.cljs",
+        "bytes": 10085,
+        "sha256": "9e6a94fd73e1d15ffb7a387e060e5e29a9841059298ec21ee3d2b4ac445b0241"
+      },
+      {
+        "old": "law/receipt.cljs",
+        "new": "law/receipt.cljc",
+        "bytes": 6017,
+        "sha256": "4e1920ed0846025e91090f7fc33cd5bcb9be2c38d7892113fdb23648eeab2326"
+      }
+    ],
+    "all_other_source_bytes_identical": true,
+    "consumer_package_manager_and_shadow_classpath_unchanged": true,
+    "local_semantic_changes": false,
+    "green_execution_pending": true
+  },
+  "test": {
+    "started": "2026-10-09T07:50:34.636651Z",
+    "exit": 0,
+    "elapsed_seconds": 13.102013130992418,
+    "bytes": 10489,
+    "sha256": "c62c77cfb84a1ec57a07abbc48b38d8be63f3866c565e32438ea49039c89ca05",
+    "source_merge": "5eeb77e035c17160416d0a092415b39b3de55133"
+  },
+  "cli_lint": {
+    "command": [
+      "pnpm",
+      "-C",
+      "packages/eta-mu",
+      "lint:kondo"
+    ],
+    "exit": 0,
+    "elapsed_seconds": 0.9540135290008038,
+    "bytes": 534,
+    "sha256": "054ffb993ce4735d488a889af3595ce4d8dda2719c366757e3cdac6ce08ba5fb"
+  },
+  "library_lint": {
+    "command": [
+      "pnpm",
+      "-C",
+      "packages/receipt-river",
+      "lint:kondo"
+    ],
+    "exit": 0,
+    "elapsed_seconds": 0.4833631980000064,
+    "bytes": 422,
+    "sha256": "0b81d5b955051ad790c0101298b50c53bfbf1b55dd26a598a02b7235e3bc5e0d"
+  },
+  "build": {
+    "command": [
+      "pnpm",
+      "-C",
+      "packages/eta-mu",
+      "build"
+    ],
+    "exit": 0,
+    "elapsed_seconds": 13.49293347101775,
+    "bytes": 430,
+    "sha256": "d085f6bf5dfd246d762556264a06ccc5b2dff810e8db43b90ba083f670cb1e47"
+  },
+  "released_default_window": {
+    "tier": "observed",
+    "phase": "green",
+    "node": "v22.20.0",
+    "compiled_bundle_sha256": "f21cce4c3d8e662e5fe5f0f2898488e27dd431216ae07aacd6241d1b375b5fdd",
+    "ledger_prefix_bytes": 320957,
+    "ledger_prefix_sha256": "9e9929aed4c42265f6ff24bf655576dfe10729c3aeb3b4270fe68d8142e8d6ff",
+    "command": [
+      "/home/err/.volta/tools/image/node/22.20.0/bin/node",
+      "/home/err/spaces/cephalon-review-receiver/receiver-consumption/packages/eta-mu/dist-cli/index.cjs",
+      "receipt",
+      "validate"
+    ],
+    "cwd_was_nested_owned_real_git_checkout": true,
+    "default_window_no_numeric_override": "59-258/200",
+    "exit": 1,
+    "failures": {
+      "75": "event is not a map",
+      "82": "missing required key: pi",
+      "83": "missing required key: pi",
+      "97": "missing required key: dod; missing required key: pi",
+      "98": "missing required key: dod; missing required key: pi",
+      "100": "event is not a map",
+      "101": "invalid EDN: Invalid number: 2026-07-12T053333Z.",
+      "102": "invalid EDN: Invalid symbol: branch:.",
+      "103": "invalid EDN: Invalid symbol: tag:.",
+      "104": "invalid EDN: Invalid symbol: ts-lines:.",
+      "105": "invalid EDN: Invalid symbol: files:.",
+      "106": "invalid EDN: Invalid symbol: note:.",
+      "107": "event is not a map",
+      "109": "missing required key: dod; missing required key: pi",
+      "110": "missing required key: dod; missing required key: pi",
+      "111": "missing required key: dod; missing required key: pi",
+      "116": "missing required key: dod; missing required key: pi",
+      "128": "missing required key: dod; missing required key: pi",
+      "129": "missing required key: dod; missing required key: pi",
+      "138": "missing required key: dod; missing required key: pi",
+      "234": "invalid ts: 2026-10-04T00:14:27.593028+00:00",
+      "235": "invalid ts: 2026-10-04T00:28:37.838205+00:00",
+      "236": "invalid ts: 2026-10-04T00:28:37.838205+00:00",
+      "237": "invalid ts: 2026-10-04T01:20:11.369816+00:00",
+      "238": "invalid ts: 2026-10-04T01:20:11.369816+00:00",
+      "239": "invalid ts: 2026-10-04T01:20:11.369816+00:00",
+      "240": "invalid ts: 2026-10-04T01:42:38.682649+00:00",
+      "241": "invalid ts: 2026-10-04T01:57:51.319019+00:00",
+      "242": "invalid ts: 2026-10-04T02:10:00.350294+00:00",
+      "243": "invalid ts: 2026-10-04T02:44:06.679356+00:00",
+      "244": "invalid ts: 2026-10-04T02:57:02.259971+00:00",
+      "245": "unknown kind: :reflection; invalid ts: 2026-10-04T02:57:02.260000+00:00",
+      "246": "invalid ts: 2026-10-04T02:58:39.568267+00:00",
+      "247": "invalid ts: 2026-10-04T03:09:35.607944+00:00"
+    },
+    "original256_258_byte_identity": true,
+    "stdout_sha256": "c12eee0cfb30cf295153791a914c0cf6d455ea2c4a1b489048d5ff0a8d965aad",
+    "stderr_sha256": "65d4d41845ff75209587027c1bff6f20f08c804df97d5b0b1ef5adb9ae9aa046",
+    "whole_journal_pass": false,
+    "temporary_fixture_cleaned_by_context_manager": true
+  },
+  "released_actual_current_checkout": {
+    "tier": "observed",
+    "current_checkout": "/home/err/spaces/cephalon-review-receiver/receiver-consumption",
+    "command": "actual released eta-mu receipt validate (no numeric override)",
+    "exit": 1,
+    "total_physical_rows": 263,
+    "failures": {
+      "75": "event is not a map",
+      "82": "missing required key: pi",
+      "83": "missing required key: pi",
+      "97": "missing required key: dod; missing required key: pi",
+      "98": "missing required key: dod; missing required key: pi",
+      "100": "event is not a map",
+      "101": "invalid EDN: Invalid number: 2026-07-12T053333Z.",
+      "102": "invalid EDN: Invalid symbol: branch:.",
+      "103": "invalid EDN: Invalid symbol: tag:.",
+      "104": "invalid EDN: Invalid symbol: ts-lines:.",
+      "105": "invalid EDN: Invalid symbol: files:.",
+      "106": "invalid EDN: Invalid symbol: note:.",
+      "107": "event is not a map",
+      "109": "missing required key: dod; missing required key: pi",
+      "110": "missing required key: dod; missing required key: pi",
+      "111": "missing required key: dod; missing required key: pi",
+      "116": "missing required key: dod; missing required key: pi",
+      "128": "missing required key: dod; missing required key: pi",
+      "129": "missing required key: dod; missing required key: pi",
+      "138": "missing required key: dod; missing required key: pi",
+      "234": "invalid ts: 2026-10-04T00:14:27.593028+00:00",
+      "235": "invalid ts: 2026-10-04T00:28:37.838205+00:00",
+      "236": "invalid ts: 2026-10-04T00:28:37.838205+00:00",
+      "237": "invalid ts: 2026-10-04T01:20:11.369816+00:00",
+      "238": "invalid ts: 2026-10-04T01:20:11.369816+00:00",
+      "239": "invalid ts: 2026-10-04T01:20:11.369816+00:00",
+      "240": "invalid ts: 2026-10-04T01:42:38.682649+00:00",
+      "241": "invalid ts: 2026-10-04T01:57:51.319019+00:00",
+      "242": "invalid ts: 2026-10-04T02:10:00.350294+00:00",
+      "243": "invalid ts: 2026-10-04T02:44:06.679356+00:00",
+      "244": "invalid ts: 2026-10-04T02:57:02.259971+00:00",
+      "245": "unknown kind: :reflection; invalid ts: 2026-10-04T02:57:02.260000+00:00",
+      "246": "invalid ts: 2026-10-04T02:58:39.568267+00:00",
+      "247": "invalid ts: 2026-10-04T03:09:35.607944+00:00"
+    },
+    "original256_258_no_missing_repo_failures": true,
+    "entire_journal_byte_identity": true,
+    "ledger_bytes": 341263,
+    "ledger_sha256": "082cdcf9c573974dc224037ef9c9df402f1dacc9234ecce6ffd3cc14b7eec56e",
+    "stdout_sha256": "c12eee0cfb30cf295153791a914c0cf6d455ea2c4a1b489048d5ff0a8d965aad",
+    "stderr_sha256": "65d4d41845ff75209587027c1bff6f20f08c804df97d5b0b1ef5adb9ae9aa046",
+    "whole_journal_pass": false
+  },
+  "assessment": "Same195tests668assertions now0fail0error; workflow6tests78assertions0fail0error. Lint0errors0warnings/externPASS; release166files8compiled0compilerwarnings. Actual released CLI retains34 baselineerrors/exit1 while original256-258 pass through contextual owningAPI. No file mutation. Same320957 originalprefix. Strict4 controls refused in actualroute; preserved source/schema/ordinal/raw/contextfree diagnostics.",
+  "notices": "Existing unresolved NPM_TOKEN npmrc/source-map-support notices and pre-existing domain.extern informational lint diagnostic are separate from zero compiler/lint warnings. No suppression or secret changes.",
+  "limitations": [
+    "Local verification is not hosted clean-head evidence or provider approval.",
+    "Legacy standalone donor discovery fixture remains outside this three-production-input consumption; owning standalone source25/88 then32/231 executed its qualified fix. Receiver gates use actual CLI suite; no claim to run donor standalone test here.",
+    "No historical receipt rewrite, correction folding, whole-journal PASS or broader timestamp/ordinal repair.",
+    "No runtime, field, graph, mood, deployment, paid usage or heartbeat resume."
+  ]
+}
