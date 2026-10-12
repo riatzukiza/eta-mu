@@ -123,7 +123,16 @@ Board state is the single source of truth for work. Treat it as a finite-state m
   - `eta-mu-beta kanban comment <uuid> "note"` — append provenance to a card.
   - `eta-mu-beta kanban frontmatter <uuid> status <new-status>` — lawful status change.
   - `node packages/rheos/dist/cli.cjs status-update <uuid> --to <status>` — FSM-enforced move (also runs build-gate when required).
-- **No direct frontmatter edits.** The file watcher treats hand-edited frontmatter as drift and stamps a `drift: true` indicator on the card. Use the CLI so the ledger records a `write-id` and the provenance is auditable.
+- **Manual Markdown input; Rheos operational authority.** Cards may be created
+  and edited manually as Markdown, including a new card's initial `incoming`
+  frontmatter; this is intended, first-class Rheos input. Initial Incoming
+  authoring supplies no operational transition or event evidence and does not
+  require `write-id` or `task-created` provenance. Rheos alone owns operational
+  board reads/writes, status changes, transitions, admission, and event provenance.
+  Use its CLI, API, MCP, or UI for those operations; never use direct frontmatter
+  edits to perform them or create an alternate parser, writer, or validator.
+  A running watcher may record an uncorrelated file add/change as drift; that
+  signal does not prohibit hand-authored cards.
 - **Walk lawful hops.** There are no shortcut edges. To move a card multiple columns forward, step through each lawful transition in order. The direct `in_progress → review` edge exists only when the build-gate passes.
 - **Regenerate snapshots when needed.** The web UI and `kanban/.kanban/board.json` are generated snapshots; the source of truth is the task files plus the ledger in `kanban/.events/ledger.edn`. If a snapshot is stale, regenerate it from the CLI or the web UI.
 

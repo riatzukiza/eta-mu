@@ -1,6 +1,13 @@
 {
   "tier": "Observed-command-output transcriptions, not raw provider approvals or complete review qualification",
   "recorded_at": "2026-10-12T16:34:40.191732+00:00",
+  "projection_redactions": [
+    {
+      "json_pointer": "/actual_canaries/1/observed_result/isolated_XDG_data_home",
+      "reason": "The public transcription retains the isolated per-canary directory identity without the operator's absolute home layout.",
+      "custody": "The original private source bytes remain unchanged; source_bytes and source_sha256 below identify that unredacted source. This redaction applies only to the public projection."
+    }
+  ],
   "human_operating_contract": {
     "route": "Actual OpenCode native CLI",
     "inference_credentials": "Not required for the free offering",
@@ -63,7 +70,7 @@
           ],
           "plugin_count": 0
         },
-        "isolated_XDG_data_home": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/opencode-cli-no-credentials-canary-20261012/data",
+        "isolated_XDG_data_home": "<redacted: isolated per-canary data dir under opencode-cli-no-credentials-canary-20261012/data>",
         "opencode_api_key_env_present": false,
         "auth_file_exists_after": false,
         "credentials_read_or_copied": false,
