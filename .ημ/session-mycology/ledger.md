@@ -648,3 +648,30 @@
   spore: none
   receipt-refs: receiver-evidence-spacing-4228545549-20261009
   note: Keep review evidence readable without changing the observation or receipt history. A passing incremental review check does not prove complete full-diff review. No spore or promotion.
+
+- ts: 2026-10-12T16:36:29.592Z
+  origin: free-mimo-native-route-planning-20261012T1635
+  p-efficiency: 0.8
+  p-friction: 0.25
+  p-skill-candidate: 0.12
+  spore: none
+  receipt-refs: free-mimo-native-route-planning-20261012T1635
+  note: Preserve native forwarded-upstream errors as observations; missing client credentials are not inferred from their label. Discover the current free OpenCode MiMo and bind all roles while preserving review contracts. No promotion.
+
+- ts: 2026-10-12T16:51:27.037Z
+  origin: free-mimo-plan-review-privacy-and-card-input-correction-20261012
+  p-efficiency: 0.8
+  p-friction: 0.25
+  p-skill-candidate: 0.12
+  spore: none
+  receipt-refs: free-mimo-plan-review-privacy-and-card-input-correction-20261012
+  note: Honor supported manual Markdown input while retaining Rheos operational authority. Redact only public projection layout with raw-source custody; local source assessment is not native settlement. No spore or promotion.
+
+- ts: 2026-10-12T17:12:03.858Z
+  origin: free-mimo-raw-catalog-and-source-custody-corrections-20261012T1715
+  p-efficiency: 0.8
+  p-friction: 0.25
+  p-skill-candidate: 0.12
+  spore: none
+  receipt-refs: free-mimo-raw-catalog-and-source-custody-corrections-20261012T1715
+  note: Check raw field presence before normalized provider defaults. Treat unretained historical catalog claims as unverified context; bind source evidence to its owning repository/revision/path/hash, distinguish actual production argv from diagnostic flags, and append corrections without rewriting history. No spore or promotion.
