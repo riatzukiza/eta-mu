@@ -148,12 +148,24 @@
   "owned_source_observations": {
     "base": "b03cb58407cc333b7cabd77431842d44f0deb415",
     "workflow": ".github/workflows/opencode-code-review.yml",
-    "actual_invocation": "opencode run --format json --agent github-reviewer --model REVIEW_MODEL prompt",
+    "actual_invocation": "opencode run --agent github-reviewer --model REVIEW_MODEL prompt",
     "default_model": "opencode/mimo-v2.6-flash-free",
     "default_opencode_version": "1.18.18",
     "muse_revision": "0b9a91492c8355e6933dc2164d35668cb76d9e60",
     "small_model": "No explicit workflow binding observed",
-    "agent": "Pinned Muse github-reviewer frontmatter names the same fixed version slug and retains bash only for true, all other shell commands denied"
+    "agent": "Pinned Muse github-reviewer frontmatter names the same fixed version slug and retains bash only for true, all other shell commands denied",
+    "invocation_evidence": {
+      "repository": "riatzukiza/eta-mu",
+      "revision": "b03cb58407cc333b7cabd77431842d44f0deb415",
+      "path": ".github/scripts/run-opencode-review-recovery.mjs",
+      "lines": "150-165",
+      "sha256": "2c7180cc507431cb4317ee92133da474d74b627059531c842670382b3d3c1f59",
+      "workflow_path": ".github/workflows/opencode-code-review.yml",
+      "workflow_embedded_runner_line": 772,
+      "workflow_invocation_line": 1195,
+      "workflow_sha256": "a863c87944119fa619a39f432237f862327bb28cfe8285211386f1ef85531927",
+      "distinction": "The production baseline omits --format json. Tiny CLI diagnostic canaries requesting --format json remain separate observations; no production runner flag was changed."
+    }
   },
   "superseded_proposal": "The prior private inference-secret provisioning candidate remains unapplied. This plan requires no inference secret. GitHub App credentials for trusted publication remain a separate existing boundary.",
   "limits": [
@@ -161,5 +173,48 @@
     "The second success retains reviewer permission frontmatter but substitutes a tiny diagnostic system prompt and excludes external plugins.",
     "The restricted plan failure differs in both agent and permission configuration; no sole cause established.",
     "No pinned hosted-runtime upgrade, full review, native approval, merge, paid fallback, source deployment or cephalon B1/B2/B3 completion is claimed."
-  ]
+  ],
+  "catalog_claim_correction": {
+    "corrects_receipt_origin": "free-mimo-native-route-planning-20261012T1635",
+    "corrects_receipt_ordinal": 268,
+    "claim": "The receipt tests field states fresh exposed model metadata showed input/output/cache zero, tool_call true and release2026-09-22.",
+    "tier": "Unverified historical context; not retained catalog test proof, strict free/latest admission or refresh proof.",
+    "custody": "That earlier native CLI metadata output was not retained in this discovery artifact or as a hash-bound catalog capture. Do not reconstruct a historical raw snapshot from recollection. The historical receipt remains unchanged; this projection and the appended correction classify its evidentiary limit.",
+    "normalization_limit": "Official OpenCode1.19.0 supplies zero costs and tool_call true defaults before exposing normalized metadata; those observations do not prove raw field presence. Future admission requires successful native refresh and retained unnormalized bytes plus mapping and presence evidence."
+  },
+  "receipt269_source_range_correction": {
+    "corrects_receipt_origin": "free-mimo-plan-review-privacy-and-card-input-correction-20261012",
+    "tier": "Observed source inspection; no board operation, deployment or native review credit.",
+    "owning_source": [
+      {
+        "repository": "riatzukiza/rheos",
+        "revision": "220acdc3ce8c4abf8df74a0da6a85fc09dfcb944",
+        "path": "src/rheos/backend/infra/task_store.cljs",
+        "lines": "32-68;184-223",
+        "sha256": "08e5b9027ac452a5611e191c0dda7e8194d5efcd93aa3ee34323455f3919df20",
+        "observation": "Markdown validation/source hashing/refused errors and configured task loading",
+        "source_url": "https://github.com/riatzukiza/rheos/blob/220acdc3ce8c4abf8df74a0da6a85fc09dfcb944/src/rheos/backend/infra/task_store.cljs"
+      },
+      {
+        "repository": "riatzukiza/rheos",
+        "revision": "220acdc3ce8c4abf8df74a0da6a85fc09dfcb944",
+        "path": "src/rheos/backend/domain/compose.cljs",
+        "lines": "81-112",
+        "sha256": "1dd91823be5a7210b5cd7addad88c6b5f4b21ad8c3f8ea0cd011dfda5e5ecc6c",
+        "observation": "Passes project map to load-tasks and rethrows refused errors; distinct from legacy eta-mu query-filter ranges",
+        "source_url": "https://github.com/riatzukiza/rheos/blob/220acdc3ce8c4abf8df74a0da6a85fc09dfcb944/src/rheos/backend/domain/compose.cljs"
+      },
+      {
+        "repository": "riatzukiza/rheos",
+        "revision": "220acdc3ce8c4abf8df74a0da6a85fc09dfcb944",
+        "path": "src/rheos/backend/infra/watcher.cljs",
+        "lines": "46-63;79-99;101-119;136-144",
+        "sha256": "105ad65597fcd1f1a130b85c85fc30fbd13f979d104dacfbf4c55a9fa32eccc1",
+        "observation": "Frontmatter fields, expected-write correlation, native drift/event branch and watcher registration",
+        "source_url": "https://github.com/riatzukiza/rheos/blob/220acdc3ce8c4abf8df74a0da6a85fc09dfcb944/src/rheos/backend/infra/watcher.cljs"
+      }
+    ],
+    "legacy_distinction": "riatzukiza/eta-mu@b03cb58407cc333b7cabd77431842d44f0deb415 contains separate older copies under packages/rheos/. Independent Rheos source ranges above are not ranges in those legacy copies. Receipt269 refs named the independent Rheos220 source but its abbreviated tests wording omitted that prefix; this correction supplies complete owning bindings.",
+    "limits": "Manual initial Incoming input does not supply task-created/transition/admission/readiness or full event-only replay evidence; watcher drift is separate. The original P1 is kept open for supported native reassessment."
+  }
 }

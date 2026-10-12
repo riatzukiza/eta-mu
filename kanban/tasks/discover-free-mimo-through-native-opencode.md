@@ -26,8 +26,10 @@ is human-supplied context, not a load-test result.
 baseline `b03cb58407cc333b7cabd77431842d44f0deb415`. Its workflow defaults to
 `opencode/mimo-v2.6-flash-free`, CLI `1.18.18`, and Muse
 `0b9a91492c8355e6933dc2164d35668cb76d9e60`. The workflow stages its runner and
-reviewer from revision-bound machinery; the observed actual invocation is
-`opencode run --format json --agent github-reviewer --model REVIEW_MODEL prompt`.
+reviewer from revision-bound machinery. The workflow invokes its packaged
+`run-opencode-review-recovery.mjs`; the [exact baseline runner](../../.github/scripts/run-opencode-review-recovery.mjs)
+spawns `opencode run --agent github-reviewer --model REVIEW_MODEL prompt` without
+`--format json`. Diagnostic canaries using `--format json` are separate evidence.
 The pinned Muse reviewer also names the fixed model slug, and no explicit
 workflow `small_model` binding was observed. These are baseline observations,
 not future model or runtime selections.
@@ -66,6 +68,13 @@ Primary official references for later qualification:
 - [OpenCode CLI model discovery and run flags](https://opencode.ai/docs/cli/#models):
   catalog refresh and verbose cost metadata; confirm the qualified runtime's
   actual command/output contract before relying on it.
+- OpenCode `1.19.0` [cost defaults](https://github.com/anomalyco/opencode/blob/733b2c627e5aec39cb33cc22373bdce33053ef2c/packages/opencode/src/provider/provider.ts#L1272-L1298)
+  and [capability default](https://github.com/anomalyco/opencode/blob/733b2c627e5aec39cb33cc22373bdce33053ef2c/packages/opencode/src/provider/provider.ts#L1334-L1344):
+  missing costs become zero and missing `tool_call` becomes true. The [models command](https://github.com/anomalyco/opencode/blob/733b2c627e5aec39cb33cc22373bdce33053ef2c/packages/opencode/src/cli/cmd/models.ts#L28-L43)
+  exposes normalized provider metadata. The [actual models source](https://github.com/anomalyco/opencode/blob/733b2c627e5aec39cb33cc22373bdce33053ef2c/packages/core/src/models-dev.ts#L160-L252)
+  caches upstream `/api.json` text before parsing, permits disk/bundled fallback,
+  and logs/ignores refresh errors; CLI success or its refresh banner alone cannot
+  prove a successful fresh fetch.
 - [OpenCode server API: provider/catalog and configuration shapes](https://opencode.ai/docs/server/#provider).
   This is a metadata-contract reference.
 - [OpenCode model and small-model configuration](https://opencode.ai/docs/config/#models)
@@ -85,10 +94,13 @@ narrow change. Implementation follows native planning qualification and lawful r
 
 ## Scope
 
-- Discover and specify the native CLI catalog, cost, capability, availability,
-  freshness, and ranking shapes. Reuse existing contracts where suitable;
+- Discover and specify **native-refreshed unnormalized upstream catalog bytes
+  before provider defaults**, including raw field presence, cost, capability,
+  availability, freshness, and ranking shapes. Qualify native metadata/cache
+  reads, upstream/cache identity, and successful refresh evidence; normalized
+  CLI output alone is insufficient. Reuse existing contracts where suitable;
   implement pure selection/admission and normalization in portable `.cljc`.
-  Keep raw native CLI/process I/O in a thin `extern.*` boundary and use an NBB
+  Keep native catalog/process I/O in a thin `extern.*` boundary and use an NBB
   orchestration adapter if its capabilities suffice. Follow the checkout's
   Discovery → Describe → specify → define → shape → extern → domain → infra
   construction order when implementation becomes ready.
@@ -96,7 +108,9 @@ narrow change. Implementation follows native planning qualification and lawful r
   metadata**. Qualify every declared price, tools/chat capability, and current
   availability. Define a documented latest-choice ordering using authoritative
   release/current-offering metadata. Preserve exact IDs as observations and
-  attempt bindings rather than permanent discovery constants.
+  attempt bindings rather than permanent discovery constants. Preserve mapping
+  and provenance from each raw provider/model entry to the normalized effective
+  provider/model/API binding, including defaults and configuration overrides.
 - Bind the selected ID to main/default, `small_model`, title generation, and
   the custom `github-reviewer` model. Whitelist the genuine OpenCode provider
   and the selected model. Account for configuration precedence and the pinned
@@ -124,9 +138,9 @@ narrow change. Implementation follows native planning qualification and lawful r
   gates. Existing GitHub App publication credentials remain their own trusted
   boundary and are not inference credentials.
 - Implementing an alternate Rheos board parser, validator, writer, or workflow.
-  This planning PR carries initial Markdown, bounded evidence and append-only
-  receipts/reflection. It performs no existing-card transition, workflow/code
-  implementation, runtime mutation or credential provisioning.
+  The parent owns discovery artifacts and append-only receipts/reflection.
+  This card-only planning repair performs no existing-card transition,
+  workflow/code implementation, runtime mutation or credential provisioning.
 
 ## Acceptance criteria
 
@@ -139,13 +153,18 @@ narrow change. Implementation follows native planning qualification and lawful r
   with `--agent github-reviewer`; user keys, login, credential copying, or a
   directly called inference endpoint are unnecessary. Preserve visible native
   rate-limit/transport failures and existing bounds.
-- [ ] **Catalog admission:** obtain a fresh, successfully refreshed native
-  catalog in the qualified runtime and validate its shape. Candidate membership
-  uses supported MiMo/fast/free metadata. Verify tools and chat support,
-  availability, and **every declared cost dimension equals numeric zero**,
+- [ ] **Catalog admission:** retain native-refreshed unnormalized upstream bytes
+  before defaults and validate raw required-field presence and shape in the
+  qualified runtime. Prove the native source/cache identity and successful
+  refresh/freshness of those exact bytes; normalized CLI metadata, a bundled
+  snapshot, cache mtime, exit zero, or a refresh banner alone supplies no proof.
+  Candidate membership uses supported raw MiMo/fast/free metadata. Verify
+  explicit tools/chat support, availability, and **every declared cost dimension
+  equals numeric zero**,
   including input, output, cache, and any tiered/conditional prices. Missing
   required price information, null/unknown values, malformed metadata, or any
-  nonzero declared cost cannot count as free.
+  nonzero declared cost cannot count as free. Missing raw costs or `tool_call`
+  must refuse even when normalized metadata reports zero or true.
 - [ ] **Latest deterministic choice:** zero eligible candidates visibly refuses;
   one eligible candidate selects its exact ID; multiple eligible candidates
   select a unique latest offering only when validated metadata establishes the
@@ -153,7 +172,8 @@ narrow change. Implementation follows native planning qualification and lawful r
   on catalog iteration order, or inventing a release date is inadmissible.
   Tied, missing, or incomparable ranking metadata visibly refuses.
 - [ ] **Failure before inference:** unavailable/stale catalogs or models,
-  refresh failure, malformed input, unknown pricing, ambiguous ranking, and
+  refresh failure, unproved raw field presence/cost/capability/freshness,
+  malformed input, ambiguous ranking, unproved raw-to-effective mapping, and
   effective-config mismatch produce explicit diagnostic failure before any
   inference, including small/title requests. No stale-success substitution,
   paid/provider fallback, default-provider escape, or automatic credential
@@ -165,8 +185,10 @@ narrow change. Implementation follows native planning qualification and lawful r
   overrides, without weakening any review tool/permission restriction or
   substituting a diagnostic prompt for the actual reviewer.
 - [ ] **Per-attempt provenance:** retain exact observed provider/model ID,
-  actual CLI/runtime identity and version, raw catalog SHA-256 and observation/
-  refresh time, eligible candidate metadata and ordering decision, effective
+  actual CLI/runtime identity and version, unnormalized catalog bytes/SHA-256,
+  upstream/cache identity and successful native refresh evidence/time, raw field
+  presence, mapping to normalized effective provider/model/API bindings and
+  applied defaults/overrides, eligible metadata and ordering decision, effective
   configuration identity, source/Muse revisions, and admission/refusal outcome.
   Bind recovery attempts to their exact selection evidence; retain prior
   attempts when a refreshed catalog produces a new selection. No silent
@@ -190,9 +212,14 @@ narrow change. Implementation follows native planning qualification and lawful r
 - Zero, one, and multiple eligible candidates; order-independent results; unique
   latest versus tied, missing, or incomparable ranking metadata.
 - Stale or unavailable candidates/catalogs, refresh failure, malformed metadata,
-  missing/unknown prices, and nonfree input/output/cache/conditional costs.
-- Missing tools/chat support; mismatched main/default, small/title, CLI, or custom
-  agent model; paid hidden title override and provider/model whitelist escape.
+  missing/unknown raw prices, and nonfree input/output/cache/conditional costs.
+- Omitted/null raw cost or `tool_call` normalized to zero/true; normalized-only
+  evidence; stale cache/bundled fallback despite exit zero or a refresh banner;
+  missing refresh proof, raw field presence, or raw-to-effective mapping. Refuse
+  each case before inference rather than qualifying defaults as upstream facts.
+- Missing/unknown raw tools/chat support; mismatched main/default, small/title,
+  CLI, or custom agent model; paid hidden title override and provider/model
+  whitelist escape.
 - Every refusal proves that inference was not launched. Paid/provider fallback
   and stale-catalog escape fixtures stay refused; preserve the existing review
   gate regressions. These tests exercise selection/admission, not a new board
@@ -201,8 +228,12 @@ narrow change. Implementation follows native planning qualification and lawful r
 **GREEN — qualified local integration:**
 
 - Pass the same fixtures through portable `.cljc` decisions and the actual
-  native CLI adapter. Run relevant existing suites and required lint/type checks
-  with zero warnings; retain exact failures or unavailable checks.
+  native CLI adapter **after planning qualification/readiness**. Demonstrate
+  successful native refresh, retain its unnormalized upstream cache bytes and
+  raw field-presence/cost/capability/freshness proof, and reconcile their exact
+  provider/model entries with normalized effective bindings and applied defaults
+  and overrides. Run relevant existing suites and required lint/type checks with
+  zero warnings; retain exact failures or unavailable checks.
 - Run an actual **credential-free restricted `github-reviewer` canary** on the
   selected offering with the real reviewer prompt and its qualified compiled
   context/tool exposure. Prove the effective main/small/title/agent bindings,
@@ -227,6 +258,12 @@ narrow change. Implementation follows native planning qualification and lawful r
 
 ## Risks
 
+- OpenCode `1.19.0` fills missing costs with zero and missing `tool_call` with
+  true before exposing provider metadata. Native model loading can use disk or
+  bundled fallback, and refresh errors are ignored after logging. If raw presence,
+  cost, capability, successful refresh/freshness, or mapping to the effective
+  provider cannot be proved, refuse before inference; do not repair evidence by
+  defaulting, direct HTTP inference, client spoofing, or credentials.
 - Catalogs may lack authoritative fast/current/release metadata, complete costs,
   or a reliable availability/freshness signal. Treat that as an explicit native
   qualification gap and refuse before inference; do not guess from a slug or
