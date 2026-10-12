@@ -114,10 +114,22 @@ context-gathering, and writing them is not closeout — both are part of the tur
 
 ## Board Operations
 
-Board state is the single source of truth for work. Treat it as a finite-state machine whose law is implemented in `packages/rheos/src/rheos/backend/law/fsm.cljs` and rendered for humans in `PROCESS.md`.
+Board state is the single source of truth for work. Rheos owns its finite-state
+machine and board operations. The extracted owner is `open-hax/rheos`; qualify
+personal development sources independently. The historical `packages/rheos`
+copy in this checkout is not evidence that a separately qualified owning Rheos
+operation is unsupported. Bind the actual consumed source and compiled CLI in
+the owning receipt/evidence before interpreting or replaying native history.
 
 - **Work from a card.** Never work off-board. Anchor every implementation slice on a kanban task and record the scoped plan on the card before moving to implementation.
-- **Move cards with the Rheos CLI.** Run commands from the **repo root** so the board resolves correctly. Use **`eta-mu-beta`**, not `eta-mu` — the bare name is a volta shim to the *published* build, which carries a different command surface at the same version number. See `DEVELOPMENT.md` § *Running the CLI*. Rebuild first: `pnpm -C packages/eta-mu build`.
+- **Move cards with native Rheos.** Use the qualified owning CLI, API, MCP or UI
+  with an explicit board configuration from the **repo root**. Preserve source,
+  artifact and configuration identity plus native operation outputs/readbacks;
+  do not append invented events or use a repository-local board implementation.
+  When using this checkout's older bundled CLI, use **`eta-mu-beta`**, not the
+  published `eta-mu` Volta shim, and rebuild with `pnpm -C packages/eta-mu build`.
+  Its following historical commands describe that bundled surface, not the
+  command grammar or mutable-key policy of every owning Rheos revision:
   - `eta-mu-beta kanban list` — current board.
   - `eta-mu-beta kanban count` — column counts.
   - `eta-mu-beta kanban comment <uuid> "note"` — append provenance to a card.

@@ -1,0 +1,71 @@
+{
+  "tier": "observed owning source, merge and native command-output custody; not provider judgment",
+  "finding": 4253113967,
+  "source_repository": "riatzukiza/rheos",
+  "reviewed_source": "8ef43eb2cb590f465552f462c8743a04282603fd",
+  "qualified_merge": "ae5cebca6124dae5fdd47707647b07daf10a8a4a",
+  "qualified_cli_sha256": "85369213440634989365f75929045d36eb69b6c6b1e7679f68d483374a0d526b",
+  "config_sha256": "91745b6785ba5af78ab534645bcaf37b883352aa4975d07dada0fba430668e6e",
+  "sources": [
+    {
+      "path": "src/rheos/backend/law/frontmatter.cljc",
+      "git_blob": "de19d458f48b0c0fd9ba5a53fe4d7f80d0e8feb5",
+      "bytes": 3672,
+      "sha256": "c775ba6dd723dd7a75f92b27fa45288c36e3e0523766c4affa0a4d3df12d4579"
+    },
+    {
+      "path": "src/rheos/backend/law/relationships.cljc",
+      "git_blob": "601da1bba1fa5b5b7497f1d25508a0af84024ba2",
+      "bytes": 1222,
+      "sha256": "0dad737d6fe802395ab482aba590e7fb85b0215097a2debf97fdbca35fb68ba8"
+    },
+    {
+      "path": "src/rheos/backend/domain/relationships.cljc",
+      "git_blob": "508ddf69c220623cec41f9a2a38bd8368a99d149",
+      "bytes": 12624,
+      "sha256": "211d7d77517ad0d8a720226a94c33ceabefc3be7e8b93659d18fb4c184752d3e"
+    },
+    {
+      "path": "src/rheos/backend/infra/task_edit.cljs",
+      "git_blob": "d9f428efecd67455e9d719595f9e5d280e696fca",
+      "bytes": 8672,
+      "sha256": "a3f6539ee0e0d53bde57624a6e38a89bfb0a7843eaa624300bbf4d65c5688936"
+    },
+    {
+      "path": "src/rheos/backend/infra/cli.cljs",
+      "git_blob": "acba81ab346300fd1b0d635ebbc27b246ed96cbf",
+      "bytes": 32439,
+      "sha256": "af5a99fbea7c08eb014b3a8d2393df9cd10512213adaef80c5352f92854cec40"
+    }
+  ],
+  "native_parent_outputs": [
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/native-parent-carry-20261012.json",
+      "bytes": 606,
+      "sha256": "b47c59bb39f437af9c1599a83da9699c5d43a8bd5806e4341e6162caf5def378",
+      "write_id": "1791846005710-0.b4hmre00a3tmwv9xq2l",
+      "task_uuid": "52a0f6cc-e43b-4ed5-a628-e54dd9d9fdc4"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/native-parent-caller-20261012.json",
+      "bytes": 682,
+      "sha256": "c3b248f6fe98a2f3ba692435d31f02244675990ddda0b1d241a9225164ccf395",
+      "write_id": "1791846006871-0.5xv2g2ekgroprql79a9",
+      "task_uuid": "b9c591fb-95a8-4e4e-b2a5-39eb988cb996"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/native-parent-consumer-20261012.json",
+      "bytes": 682,
+      "sha256": "365e9772190f592e194b4eb78b9d0f83ac5c059b2e1049c97f892d214a271c0e",
+      "write_id": "1791846007863-0.q56kvane7hds04yp0t",
+      "task_uuid": "ad41fc8a-12fe-453c-bdb9-29d832c94e9f"
+    }
+  ],
+  "authority": "Descriptive mutable-keys still excludes parent. Separate law.relationships and domain.relationships complete-graph admission is selected by infra.task-edit relationship-batch? before descriptive-field admission, using reservation/revision/publication. The used standalone owning version supports the parent operation.",
+  "initial_operator_error": "An inspection assertion incorrectly expected parent in the descriptive mutable-key source; it refused before proof/receipt/event creation. Corrected to separate relationship authority after inspecting actual source.",
+  "limits": [
+    "No historical event rewrite or invented replacement creation",
+    "Older bundled eta-mu Rheos is a different source; no parent-policy extension implemented here",
+    "Current planning qualification and all five Incoming card lifecycles remain required"
+  ]
+}
