@@ -1,0 +1,139 @@
+{
+  "tier": "observed-command-output index; no provider approval or planning qualification",
+  "review": 5496844967,
+  "findings": [
+    4253056691,
+    4253056695,
+    4253056701
+  ],
+  "parent": "4df043a6f7296468824a0b760fa7ec0223e5f09d",
+  "native_readbacks": {
+    "carry": {
+      "uuid": "52a0f6cc-e43b-4ed5-a628-e54dd9d9fdc4",
+      "frontmatter": {
+        "category": "tasks",
+        "labels": "cephalon, b3, review, context-custody",
+        "parent": "de02c921-e23c-4d83-87e8-b32c6c3160ff",
+        "type": "task",
+        "write-id": "1791846005710-0.b4hmre00a3tmwv9xq2l",
+        "points": "2",
+        "title": "Restore and qualify the five consumed review-source files",
+        "priority": "P1",
+        "status": "incoming",
+        "epic": "de02c921-e23c-4d83-87e8-b32c6c3160ff",
+        "uuid": "52a0f6cc-e43b-4ed5-a628-e54dd9d9fdc4",
+        "created_at": "2026-10-12T22:46:26.712Z"
+      },
+      "source-path": "/home/err/spaces/cephalon-review-context-adoption/eta-mu/kanban/tasks/restore-and-qualify-the-five-consumed-review-source-files-d9d9fdc4.md"
+    },
+    "caller": {
+      "uuid": "b9c591fb-95a8-4e4e-b2a5-39eb988cb996",
+      "frontmatter": {
+        "category": "tasks",
+        "labels": "cephalon, b3, review, context-custody",
+        "dependency": [
+          "52a0f6cc-e43b-4ed5-a628-e54dd9d9fdc4",
+          "a880c727-229b-4f3d-9158-718ec164d16c"
+        ],
+        "parent": "de02c921-e23c-4d83-87e8-b32c6c3160ff",
+        "type": "task",
+        "write-id": "1791846009552-0.35bt5bk48382bah39vy",
+        "points": "2",
+        "title": "Bind and verify staged context at both trusted review callers",
+        "priority": "P1",
+        "status": "incoming",
+        "epic": "de02c921-e23c-4d83-87e8-b32c6c3160ff",
+        "uuid": "b9c591fb-95a8-4e4e-b2a5-39eb988cb996",
+        "created_at": "2026-10-12T22:46:27.252Z"
+      },
+      "source-path": "/home/err/spaces/cephalon-review-context-adoption/eta-mu/kanban/tasks/bind-and-verify-staged-context-at-both-trusted-review-callers-988cb996.md"
+    },
+    "consumer": {
+      "uuid": "ad41fc8a-12fe-453c-bdb9-29d832c94e9f",
+      "frontmatter": {
+        "category": "tasks",
+        "labels": "cephalon, b3, review, context-custody",
+        "dependency": [
+          "b9c591fb-95a8-4e4e-b2a5-39eb988cb996"
+        ],
+        "parent": "de02c921-e23c-4d83-87e8-b32c6c3160ff",
+        "type": "task",
+        "write-id": "1791846007863-0.q56kvane7hds04yp0t",
+        "points": "1",
+        "title": "Adopt qualified review context custody in personal OpenPlanner",
+        "priority": "P1",
+        "status": "incoming",
+        "epic": "de02c921-e23c-4d83-87e8-b32c6c3160ff",
+        "uuid": "ad41fc8a-12fe-453c-bdb9-29d832c94e9f",
+        "created_at": "2026-10-12T22:46:27.730Z"
+      },
+      "source-path": "/home/err/spaces/cephalon-review-context-adoption/eta-mu/kanban/tasks/adopt-qualified-review-context-custody-in-personal-openplanner-32c94e9f.md"
+    },
+    "spike": {
+      "uuid": "a880c727-229b-4f3d-9158-718ec164d16c",
+      "frontmatter": {
+        "category": "tasks",
+        "labels": "cephalon, b3, review, context-custody, spike",
+        "parent": "de02c921-e23c-4d83-87e8-b32c6c3160ff",
+        "type": "task",
+        "write-id": "1791846008660-0.8o17vsf0rnlora8l3n5",
+        "points": "1",
+        "title": "Establish genuine OpenCode 1.18.31 HOST read compatibility",
+        "priority": "P1",
+        "status": "incoming",
+        "epic": "de02c921-e23c-4d83-87e8-b32c6c3160ff",
+        "uuid": "a880c727-229b-4f3d-9158-718ec164d16c",
+        "created_at": "2026-10-12T23:00:08.661Z"
+      },
+      "source-path": "/home/err/spaces/cephalon-review-context-adoption/eta-mu/kanban/tasks/establish-genuine-opencode-1-18-31-host-read-compatibility-c164d16c.md"
+    },
+    "epic": {
+      "uuid": "de02c921-e23c-4d83-87e8-b32c6c3160ff",
+      "frontmatter": {
+        "uuid": "de02c921-e23c-4d83-87e8-b32c6c3160ff",
+        "title": "Deliver qualified review context custody through the existing consumer",
+        "status": "incoming",
+        "priority": "P1",
+        "points": "6",
+        "labels": "epics, cephalon, b3, review, context-custody, 6sp",
+        "write-id": "1791846011213-0.f2mn8unsxpf8oqslihw",
+        "type": "epic"
+      },
+      "source-path": "/home/err/spaces/cephalon-review-context-adoption/eta-mu/kanban/tasks/adopt-trusted-staged-context-in-shared-review-caller.md"
+    }
+  },
+  "points": {
+    "carry": 2,
+    "spike": 1,
+    "caller": 2,
+    "consumer": 1,
+    "total": 6
+  },
+  "scope": "Separate and re-estimate already included HOST discovery, no additional feature",
+  "selector": "riatzukiza/eta-mu/.github/workflows/opencode-code-review.yml@<qualified-caller-merge>",
+  "selector_limits": "future exact committed object and Actions permission validation required; no fork-object assumption or settings/org propagation",
+  "truthful_hierarchy": "Qualified Rheos supports epic affiliation; explicit parent added for child hierarchy rather than falsely declaring epic unsupported",
+  "prefixes": {
+    "receipts.edn": {
+      "bytes": 355584,
+      "sha256": "e46c4b6e1b3d38685bb7559ca16cebf1c402258979c19942c2a1603909aba080",
+      "unchanged": true
+    },
+    ".ημ/session-mycology/ledger.md": {
+      "bytes": 53387,
+      "sha256": "17d3239157e8632b1ee21a5210c80f41a05b042dcacdfa84923efaaf3827764a",
+      "unchanged": true
+    },
+    "kanban/.events/ledger.edn": {
+      "bytes": 1747131,
+      "sha256": "4fc1b278e73d7beb7c653979ddf518157a6d225d84337a23334cf965bbdfcf7a",
+      "unchanged": true
+    }
+  },
+  "limits": [
+    "All five cards remain Incoming; no experiment/sourcecarry/caller/consumer implementation/readiness",
+    "Source equality alone does not qualify real HOST output",
+    "Caller requires carry and spike Done plus explicit compatible decision and reviewed re-description/estimate",
+    "Native source/consumer MERGEs required for final completion"
+  ]
+}
