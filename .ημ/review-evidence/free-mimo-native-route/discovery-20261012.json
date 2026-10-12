@@ -1,0 +1,158 @@
+{
+  "tier": "Observed-command-output transcriptions, not raw provider approvals or complete review qualification",
+  "recorded_at": "2026-10-12T16:34:40.191732+00:00",
+  "human_operating_contract": {
+    "route": "Actual OpenCode native CLI",
+    "inference_credentials": "Not required for the free offering",
+    "rate_limits": "IP based, supplied by the human; not independently load tested",
+    "selection": "Discover current fast free MiMo; do not assume a permanent version slug"
+  },
+  "actual_canaries": [
+    {
+      "source": "opencode-cli-default-agent-free-canary-20261012/result.json",
+      "source_bytes": 756,
+      "source_sha256": "1ada41bd158e1acb4076ceb94dc7fa965fbee06ff4ca3a22717eaf86dda0eecf",
+      "observed_result": {
+        "observed_at": "2026-10-12T16:25:09.310300+00:00",
+        "kind": "actual-credential-free-default-agent-CLI-canary",
+        "opencode_version": "1.19.0",
+        "selected_model": "opencode/mimo-v2.6-flash-free",
+        "agent": "build",
+        "custom_permission_restrictions": false,
+        "external_plugins": false,
+        "opencode_api_key_env_present": false,
+        "auth_file_exists_after": false,
+        "credentials_read_or_copied": false,
+        "exit": 0,
+        "timeout": false,
+        "elapsed_ms": 19930,
+        "event_types": [
+          "step_start",
+          "text",
+          "step_finish"
+        ],
+        "answer_chars": 2,
+        "answer_equals_OK": true,
+        "tool_events": 0,
+        "errors": [],
+        "stderr_bytes": 0,
+        "stdout_sha256": "10c36c7e8283a6cee35f7e5e06100b03889d500aff770beb7c033810b818ba20",
+        "review_credit": false
+      }
+    },
+    {
+      "source": "opencode-cli-no-credentials-canary-20261012/result.json",
+      "source_bytes": 1396,
+      "source_sha256": "cec44e7fb7a1188af7e20887eb9c087217ae5f2c5a75d9fd1e94fd193db95b70",
+      "observed_result": {
+        "observed_at": "2026-10-12T16:24:04.746421+00:00",
+        "kind": "actual-opencode-CLI-no-credential-canary",
+        "opencode_version": "1.19.0",
+        "selected_model": "opencode/mimo-v2.6-flash-free",
+        "resolved_config": {
+          "model": "opencode/mimo-v2.6-flash-free",
+          "small_model": "opencode/mimo-v2.6-flash-free",
+          "enabled_providers": [
+            "opencode"
+          ],
+          "permission": {
+            "*": "deny"
+          },
+          "whitelist": [
+            "mimo-v2.6-flash-free"
+          ],
+          "plugin_count": 0
+        },
+        "isolated_XDG_data_home": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/opencode-cli-no-credentials-canary-20261012/data",
+        "opencode_api_key_env_present": false,
+        "auth_file_exists_after": false,
+        "credentials_read_or_copied": false,
+        "exit": 1,
+        "timeout": false,
+        "elapsed_ms": 9966,
+        "event_types": [
+          "error"
+        ],
+        "answer_chars": 0,
+        "answer_equals_OK": false,
+        "tool_events": 0,
+        "errors": [
+          {
+            "name": "APIError",
+            "statusCode": 403,
+            "invalid_credential": false,
+            "http401": false,
+            "http403": true,
+            "cloudflare1010": false,
+            "rate_limit": false,
+            "message": "OpenCode's free tier can only be used from within OpenCode"
+          }
+        ],
+        "stderr_bytes": 0,
+        "stdout_sha256": "852e96d3b1e1e6c03b2bcb4cf8130c45b999ce39aa3c118e6583535b913a1637",
+        "review_credit": false
+      }
+    },
+    {
+      "source": "opencode-cli-review-permissions-free-canary-20261012/result.json",
+      "source_bytes": 972,
+      "source_sha256": "0de639c3e9d4b7a888b8cf0f768a0e5efc66d571b0df9cf059db084cb09c2300",
+      "observed_result": {
+        "observed_at": "2026-10-12T16:33:59.062217+00:00",
+        "kind": "actual-keyless-native-CLI-with-reviewer-permission-frontmatter",
+        "opencode_version": "1.19.0",
+        "model": "opencode/mimo-v2.6-flash-free",
+        "small_model": "opencode/mimo-v2.6-flash-free",
+        "credential_env_present": false,
+        "auth_exists": false,
+        "agent_source_sha256": "518c646482d97e1c50e64339bc01481fca6289761f04d915820456b0b7afce62",
+        "permission_frontmatter_retained": true,
+        "reviewer_system_prompt_retained": false,
+        "external_plugins": false,
+        "elapsed_ms": 24970,
+        "exit": 0,
+        "timeout": false,
+        "event_types": [
+          "step_start",
+          "text",
+          "step_finish"
+        ],
+        "answer_equals_OK": true,
+        "tool_events": 0,
+        "errors": [],
+        "stdout_sha256": "d3daa400fd5dc21e12a4cd2ff75da353f413e3d0827541b022dba10b4e032484",
+        "stderr_bytes": 0,
+        "limits": "Real native CLI transport probe only; no full review, compiled plugin, hosted approval, publisher or paid/credential provisioning."
+      }
+    }
+  ],
+  "hosted_failure": {
+    "repository": "riatzukiza/muse",
+    "run_id": 38270669716,
+    "attempt": 1,
+    "head": "361d4c3b61b04559451e0836bccc62a1e3332294",
+    "artifact_id": 11757001839,
+    "artifact_sha256": "74e0e8a3085824f51b09ccb3fae2ec7de6a15bc4b5e1b498cb5ed0e037308710",
+    "actual_error": "Upstream request failed: Invalid credential",
+    "status_code": 401,
+    "endpoint": "https://opencode.ai/inference/v1/chat/completions",
+    "inference": "An upstream authentication failure can be forwarded by OpenCode; this does not establish that we need a key or that OpenRouter was the specific upstream"
+  },
+  "owned_source_observations": {
+    "base": "b03cb58407cc333b7cabd77431842d44f0deb415",
+    "workflow": ".github/workflows/opencode-code-review.yml",
+    "actual_invocation": "opencode run --format json --agent github-reviewer --model REVIEW_MODEL prompt",
+    "default_model": "opencode/mimo-v2.6-flash-free",
+    "default_opencode_version": "1.18.18",
+    "muse_revision": "0b9a91492c8355e6933dc2164d35668cb76d9e60",
+    "small_model": "No explicit workflow binding observed",
+    "agent": "Pinned Muse github-reviewer frontmatter names the same fixed version slug and retains bash only for true, all other shell commands denied"
+  },
+  "superseded_proposal": "The prior private inference-secret provisioning candidate remains unapplied. This plan requires no inference secret. GitHub App credentials for trusted publication remain a separate existing boundary.",
+  "limits": [
+    "The first success used built-in build, not github-reviewer.",
+    "The second success retains reviewer permission frontmatter but substitutes a tiny diagnostic system prompt and excludes external plugins.",
+    "The restricted plan failure differs in both agent and permission configuration; no sole cause established.",
+    "No pinned hosted-runtime upgrade, full review, native approval, merge, paid fallback, source deployment or cephalon B1/B2/B3 completion is claimed."
+  ]
+}

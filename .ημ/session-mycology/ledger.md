@@ -648,3 +648,12 @@
   spore: none
   receipt-refs: receiver-evidence-spacing-4228545549-20261009
   note: Keep review evidence readable without changing the observation or receipt history. A passing incremental review check does not prove complete full-diff review. No spore or promotion.
+
+- ts: 2026-10-12T16:36:29.592Z
+  origin: free-mimo-native-route-planning-20261012T1635
+  p-efficiency: 0.8
+  p-friction: 0.25
+  p-skill-candidate: 0.12
+  spore: none
+  receipt-refs: free-mimo-native-route-planning-20261012T1635
+  note: Preserve native forwarded-upstream errors as observations; missing client credentials are not inferred from their label. Discover the current free OpenCode MiMo and bind all roles while preserving review contracts. No promotion.
