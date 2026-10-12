@@ -5,6 +5,7 @@ status: incoming
 priority: P1
 points: 5
 labels: tasks, cephalon, b3, review, context-custody, 5sp
+write-id: "1791844094943-0.4b7rym4hhilq74vvc9"
 ---
 
 ## Context
@@ -58,8 +59,12 @@ without a metadata-only fallback or a second context verifier.
   review; existing upstream approval does not transfer to this PR.
 - At the existing supervisor boundary, derive the fixed absolute staged context
   path from the owned evidence directory and read the actual file bytes before
-  spawning the model. Distinguish absent from an existing empty file; propagate
-  unavailable/I/O failures as refusals. Supply the six canonical arguments and
+  spawning the model. This workflow always creates `pr-context.md` in its trusted
+  evidence step (7b workflow lines303-315), so its source declaration requires
+  that exact path to be present. An existing empty file is present; `ENOENT` and
+  every other unavailable/I/O result refuse. Canonical explicit absence remains
+  a library control, never a fallback selected by either workflow caller. No new
+  model-supplied or manifest absence flag is admitted. Supply the six canonical arguments and
   hold the canonical result in supervisor memory across the existing retry cap.
 - At the independent final check, reread the exact staged path and invoke the
   same canonical six-argument preparation before comparing the selected context
@@ -71,10 +76,21 @@ without a metadata-only fallback or a second context verifier.
   no arbitrary code, model, registry or publication authority is selected by
   review output. Keep the actual downstream OpenCode version bound and verify
   its genuine HOST read framing against the supported source contract.
+  The immutable OpenPlanner consumer head `033c001125019908d0c68aa5365749005644edc8`
+  supplies OpenCode `1.18.31` and Node `22.20.0` in
+  `.github/workflows/eta-mu-review.yml` (Git blob
+  `656ae247f5f23616049e655c5bae8fb2f274ebaa`). Muse's qualified literal HOST control
+  currently records `1.18.18`: do not infer compatibility with `1.18.31`.
+  Verify the actual completed-read path, offset/range, EOF and bounded instruction
+  suffix on `1.18.31`; an unsupported presentation boundary refuses delivery and
+  requires re-description rather than a caller-owned parser.
 - After owning source qualification, pin this workflow and matching Muse revision
   only in the existing personal OpenPlanner PR3 caller. Its own required checks,
   complete-input assessment, exact-head reviews and authorized MERGE remain
-  separate obligations; this source card does not complete that consumer.
+  separate gates. This card's Done condition includes actual consumer qualification
+  and authorized merge, with its immutable head, checks, complete-input review and
+  merge readback retained. Source merge alone cannot close this card; it remains
+  open while the existing OpenPlanner consumer advances.
 
 ## Non-goals
 
@@ -91,8 +107,11 @@ slug guarantee. No broad eta-mu synchronization or unrelated source import.
    context path through the qualified canonical six-argument export. The same
    supplied path and bytes reproduce the same prepared identity at supervisor
    and final check; source selection and prepared result are inspectable.
-2. Present Unicode/multiline/CRLF context, an existing zero-byte context and
-   explicit absence retain their distinct canonical meaning. Missing arguments,
+2. Present Unicode/multiline/CRLF context and an existing zero-byte context retain
+   their distinct canonical meaning. Canonical explicit absence is tested separately;
+   this always-present workflow refuses missing files both before inference and at
+   final recheck, even if absence would be valid for a different library caller.
+   Missing arguments,
    unreadable/I/O input, invalid UTF-8 or changed bytes/path stop before model
    invocation or before publication as appropriate. No undefined-key fallback
    or catch-all conversion of I/O failure into absence is allowed.
@@ -110,7 +129,11 @@ slug guarantee. No broad eta-mu synchronization or unrelated source import.
    controls, source/body hygiene and required hosted checks with zero warnings.
    Planning qualification and lawful native readiness precede implementation.
    Source exact-head approval/settlement and authorized merge precede consumer
-   adoption; consumer review/merge supplies no source or character completion.
+   adoption; consumer review/merge supplies no retrospective source or character completion.
+6. This card remains open after source merge until personal OpenPlanner PR3 adopts
+   the qualified source, passes its own required checks and complete current-head
+   review, and actually merges through the authorized canonical gate. Record both
+   source and consumer native merge readbacks before the lawful Done transition.
 
 ## Verification
 
@@ -132,8 +155,16 @@ is a read observation, not an organization release. A prior upstream workflow
 may differ from the personal base, so the three named inputs need complete new
 review and all required deterministic gates. Host framing is version-sensitive.
 Five points provisionally covers the bounded source carry, two independent
-caller bindings, compiled refusal controls and source-to-consumer verification.
+caller bindings, compiled refusal controls and the existing consumer's qualification
+and merge. Source merge and consumer merge are distinct gates within this owned
+completion signal; the implementation can be delivered jointly without closing early.
 Re-estimate through planning review if those boundaries require a different
 split; do not silently expand this finite B3 prerequisite.
 
 Software/process documentation: GPL-3.0-or-later.
+
+
+---
+Planning correction for Codex roots4252846422/6427/6431/6438/6441: this existing incoming Markdown card is supported first-class authored input under the human workspace contract. It does not claim native creation, readiness or an original engine event. This actual native Rheos comment supplies current writer correlation and append-only event provenance before any advancement; do not fabricate created_at or relabel it as task-created. RootAGENTS now explicitly preserves manual Markdown authoring and native-only lifecycle mutations. Card DoD includes actual OpenPlannerPR3 qualification and MERGE after owning source merge. Missing exact7b workflow-test source is retained as122729bytes/blob422bf178460d35fe5c888fcbdb16b3c0dcca8b9d/SHA8eb9ec8ef8d5615bba2508a78a4b7f49db53245d3fdc179c201ec94f287d5e80. Actual consumer033c001 bindsOpenCode1.18.31/Node22.20.0; Muse1.18.18 framing does not establish1.18.31 compatibility. Shared workflow always stages pr-context.md; both supervisor and final check require that path present, refuse ENOENT/I/O, preserve zero-byte present. Explicit absence remains a canonical library control, never inferred by these callers. Card remains Incoming pending fresh complete planning qualification; no implementation, consumer pin or runtime changes.
+
+---

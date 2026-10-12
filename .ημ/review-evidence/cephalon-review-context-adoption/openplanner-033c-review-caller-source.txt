@@ -1,0 +1,30 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+name: eta-mu evidence review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  review:
+    name: Evidence-first review (eta-mu)
+    uses: open-hax/eta-mu/.github/workflows/opencode-code-review.yml@7b5797df3af28e190a994860be758e5f791440b5
+    with:
+      pr_head_sha: ${{ github.event.pull_request.head.sha }}
+      model: opencode/mimo-v2.6-flash-free
+      review_timeout_minutes: 120
+      muse_revision: e733f5b417a870a6c8480ae433d643ee1598af27
+      agents_revision: face3009a8dfb6f355acad467fd288100e49c0ba
+      opencode_version: 1.18.31
+      node_version: "22.20.0"
+      setup_eta_mu_toolchain: false
+      evidence_gates_script: |
+        run_gate diff_stat git diff --stat "${PR_BASE_SHA}...HEAD"
+        run_gate diff_hygiene git diff --check "${PR_BASE_SHA}...HEAD"
+    secrets:
+      ETA_MU_APP_ID: ${{ secrets.ETA_MU_APP_ID }}
+      ETA_MU_APP_PRIVATE_KEY: ${{ secrets.ETA_MU_APP_PRIVATE_KEY }}
