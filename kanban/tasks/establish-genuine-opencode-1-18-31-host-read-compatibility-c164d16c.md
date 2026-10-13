@@ -1,7 +1,7 @@
 ---
 uuid: "a880c727-229b-4f3d-9158-718ec164d16c"
 title: "Establish genuine OpenCode 1.18.31 HOST read compatibility"
-status: "incoming"
+status: "ready"
 type: "task"
 priority: "P1"
 points: "1"
@@ -9,7 +9,7 @@ labels: "cephalon, b3, review, context-custody, spike"
 parent: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 epic: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 category: "tasks"
-write-id: "1791846008660-0.8o17vsf0rnlora8l3n5"
+write-id: "1791852327368-0.0u82bpqjfhij2e7d6pj"
 created_at: "2026-10-12T23:00:08.661Z"
 ---
 
