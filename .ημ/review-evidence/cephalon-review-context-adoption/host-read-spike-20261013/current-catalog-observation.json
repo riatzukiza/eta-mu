@@ -1,0 +1,118 @@
+{
+  "url": "https://models.dev/api.json",
+  "status": 200,
+  "http_date": "Tue, 13 Oct 2026 01:14:34 GMT",
+  "bytes": 5463179,
+  "sha256": "fb82540234e63bf70d6b79bbe19d17a066a457ecde5c5e5969e89f1c720d7e15",
+  "mimo_candidates": [
+    {
+      "id": "mimo-v2-pro-free",
+      "name": "MiMo V2 Pro Free",
+      "status": "deprecated",
+      "tool_call": true,
+      "cost": {
+        "input": 0,
+        "output": 0,
+        "cache_read": 0
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "release_date": "2026-03-18"
+    },
+    {
+      "id": "mimo-v2.6-flash-free",
+      "name": "MiMo-V2.6-Flash Free",
+      "status": null,
+      "tool_call": true,
+      "cost": {
+        "input": 0,
+        "output": 0,
+        "cache_read": 0
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "release_date": "2026-09-22"
+    },
+    {
+      "id": "mimo-v2.5-free",
+      "name": "MiMo V2.5 Free",
+      "status": "deprecated",
+      "tool_call": true,
+      "cost": {
+        "input": 0,
+        "output": 0,
+        "cache_read": 0
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "release_date": "2026-04-24"
+    },
+    {
+      "id": "mimo-v2-omni-free",
+      "name": "MiMo V2 Omni Free",
+      "status": "deprecated",
+      "tool_call": true,
+      "cost": {
+        "input": 0,
+        "output": 0,
+        "cache_read": 0
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "release_date": "2026-03-18"
+    },
+    {
+      "id": "mimo-v2-flash-free",
+      "name": "MiMo V2 Flash Free",
+      "status": "deprecated",
+      "tool_call": true,
+      "cost": {
+        "input": 0,
+        "output": 0,
+        "cache_read": 0
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "release_date": "2025-12-16"
+    }
+  ]
+}

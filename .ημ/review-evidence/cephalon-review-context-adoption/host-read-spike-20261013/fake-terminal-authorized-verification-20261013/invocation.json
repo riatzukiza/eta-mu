@@ -1,0 +1,20 @@
+{
+  "humanAuthorization": "Go ahead with the fake terminal repair",
+  "sourceHead": "a33b8be239d10b777d1c4d770b97270604d5ed63",
+  "startedAt": "2026-10-13T17:53:50.578479+00:00",
+  "command": [
+    "/home/err/.volta/tools/image/node/22.20.0/bin/node",
+    "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/rheos-event-id-checker-implementation-20261012/qualified-rheos-85369213.cjs",
+    "status-update",
+    "a880c727-229b-4f3d-9158-718ec164d16c",
+    "--to",
+    "review",
+    "--config",
+    "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/eta-adoption-qualified-board-config.edn"
+  ],
+  "watchLimitBefore": 1572864,
+  "watchLimitChangedByAdapter": false,
+  "fixtureBeforeSHA256": "3135acebd4a539f6c54f13f5ae32e252a238d83bcfbbc0b92c4e4f118dae98e6",
+  "fixtureAfterSHA256": "f8c0a6c361266e634170a31d47154f0777acc49f7baaaa9bd94c32cb90816851",
+  "heldInputs": 2209
+}

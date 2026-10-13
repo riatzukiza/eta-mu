@@ -1,0 +1,86 @@
+▶ build-gate: pnpm build
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}
+▶ build-gate: pnpm lint
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}
+▶ build-gate: pnpm test
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}
+shadow-cljs - config: /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/eta-mu/shadow-cljs.edn
+no "source-map-support" (run "npm install source-map-support --save-dev" to get it)
+[child_process] pid 2733778 ignored SIGTERM after 2000ms; escalating to SIGKILL
+{:event/type :eta-mu.bus/error, :error/type :receipt-river/invalid-edn, :error/details {:line-number 101, :exception/name "Error", :exception/message "Invalid number: 2026-07-12T053333Z."}}
+{:event/type :eta-mu.bus/error, :error/type :receipt-river/invalid-edn, :error/details {:line-number 102, :exception/name "Error", :exception/message "Invalid symbol: branch:."}}
+{:event/type :eta-mu.bus/error, :error/type :receipt-river/invalid-edn, :error/details {:line-number 103, :exception/name "Error", :exception/message "Invalid symbol: tag:."}}
+{:event/type :eta-mu.bus/error, :error/type :receipt-river/invalid-edn, :error/details {:line-number 104, :exception/name "Error", :exception/message "Invalid symbol: ts-lines:."}}
+{:event/type :eta-mu.bus/error, :error/type :receipt-river/invalid-edn, :error/details {:line-number 105, :exception/name "Error", :exception/message "Invalid symbol: files:."}}
+{:event/type :eta-mu.bus/error, :error/type :receipt-river/invalid-edn, :error/details {:line-number 106, :exception/name "Error", :exception/message "Invalid symbol: note:."}}
+{:event/type :eta-mu.bus/error, :error/type :receipt-river/invalid-edn, :error/details {:line-number 101, :exception/name "Error", :exception/message "Invalid number: 2026-07-12T053333Z."}}
+{:event/type :eta-mu.bus/error, :error/type :receipt-river/invalid-edn, :error/details {:line-number 102, :exception/name "Error", :exception/message "Invalid symbol: branch:."}}
+{:event/type :eta-mu.bus/error, :error/type :receipt-river/invalid-edn, :error/details {:line-number 103, :exception/name "Error", :exception/message "Invalid symbol: tag:."}}
+{:event/type :eta-mu.bus/error, :error/type :receipt-river/invalid-edn, :error/details {:line-number 104, :exception/name "Error", :exception/message "Invalid symbol: ts-lines:."}}
+{:event/type :eta-mu.bus/error, :error/type :receipt-river/invalid-edn, :error/details {:line-number 105, :exception/name "Error", :exception/message "Invalid symbol: files:."}}
+{:event/type :eta-mu.bus/error, :error/type :receipt-river/invalid-edn, :error/details {:line-number 106, :exception/name "Error", :exception/message "Invalid symbol: note:."}}
+{:event/type :eta-mu.bus/error, :error/type :receipt-river/invalid-edn, :error/details {:line-number 101, :exception/name "Error", :exception/message "Invalid number: 2026-07-12T053333Z."}}
+{:event/type :eta-mu.bus/error, :error/type :receipt-river/invalid-edn, :error/details {:line-number 102, :exception/name "Error", :exception/message "Invalid symbol: branch:."}}
+{:event/type :eta-mu.bus/error, :error/type :receipt-river/invalid-edn, :error/details {:line-number 103, :exception/name "Error", :exception/message "Invalid symbol: tag:."}}
+{:event/type :eta-mu.bus/error, :error/type :receipt-river/invalid-edn, :error/details {:line-number 104, :exception/name "Error", :exception/message "Invalid symbol: ts-lines:."}}
+{:event/type :eta-mu.bus/error, :error/type :receipt-river/invalid-edn, :error/details {:line-number 105, :exception/name "Error", :exception/message "Invalid symbol: files:."}}
+{:event/type :eta-mu.bus/error, :error/type :receipt-river/invalid-edn, :error/details {:line-number 106, :exception/name "Error", :exception/message "Invalid symbol: note:."}}
+{:event/type :eta-mu.bus/error, :error/type :receipt-river/invalid-edn, :error/details {:line-number 101, :exception/name "Error", :exception/message "Invalid number: 2026-07-12T053333Z."}}
+{:event/type :eta-mu.bus/error, :error/type :receipt-river/invalid-edn, :error/details {:line-number 102, :exception/name "Error", :exception/message "Invalid symbol: branch:."}}
+{:event/type :eta-mu.bus/error, :error/type :receipt-river/invalid-edn, :error/details {:line-number 103, :exception/name "Error", :exception/message "Invalid symbol: tag:."}}
+{:event/type :eta-mu.bus/error, :error/type :receipt-river/invalid-edn, :error/details {:line-number 104, :exception/name "Error", :exception/message "Invalid symbol: ts-lines:."}}
+{:event/type :eta-mu.bus/error, :error/type :receipt-river/invalid-edn, :error/details {:line-number 105, :exception/name "Error", :exception/message "Invalid symbol: files:."}}
+{:event/type :eta-mu.bus/error, :error/type :receipt-river/invalid-edn, :error/details {:line-number 106, :exception/name "Error", :exception/message "Invalid symbol: note:."}}
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}
+shadow-cljs - config: /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/clio/shadow-cljs.edn
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}
+shadow-cljs - config: /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/rheos/shadow-cljs.edn
+shadow-cljs - starting via "clojure"
+rheos: transition rejected: No transition from 'review' to 'in_review'
+no "source-map-support" (run "npm install source-map-support --save-dev" to get it)
+rheos: transition rejected: No transition from 'review' to 'in_review'
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}
+shadow-cljs - config: /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/sol/shadow-cljs.edn
+shadow-cljs - starting via "clojure"
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}
+shadow-cljs - config: /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/terminal-ui/shadow-cljs.edn
+no "source-map-support" (run "npm install source-map-support --save-dev" to get it)
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}
+shadow-cljs - config: /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/turn-processor/shadow-cljs.edn
+no "source-map-support" (run "npm install source-map-support --save-dev" to get it)
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}
+shadow-cljs - config: /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/extensions/shadow-cljs.edn
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}
+shadow-cljs - config: /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/protocols/shadow-cljs.edn
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}
+shadow-cljs - config: /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/chat-ui/shadow-cljs.edn
+no "source-map-support" (run "npm install source-map-support --save-dev" to get it)
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}
+shadow-cljs - config: /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/axxium/shadow-cljs.edn
+no "source-map-support" (run "npm install source-map-support --save-dev" to get it)
+ WARN  Issue while reading "/home/err/.npmrc". Failed to replace env in config: ${NPM_TOKEN}

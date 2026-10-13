@@ -1,7 +1,7 @@
 ---
 uuid: "a880c727-229b-4f3d-9158-718ec164d16c"
 title: "Establish genuine OpenCode 1.18.31 HOST read compatibility"
-status: "ready"
+status: "review"
 type: "task"
 priority: "P1"
 points: "1"
@@ -9,7 +9,7 @@ labels: "cephalon, b3, review, context-custody, spike"
 parent: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 epic: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 category: "tasks"
-write-id: "1791852327368-0.0u82bpqjfhij2e7d6pj"
+write-id: "1791916235673-0.fylpgag0ofb3kz4p9j"
 created_at: "2026-10-12T23:00:08.661Z"
 ---
 
@@ -45,3 +45,19 @@ Read the immutable existing consumer workflow and native run metadata first, ins
 Retained trace may not cover empty/large context and can require a bounded free diagnostic. New incompatible behavior invalidates caller scope; stop and re-describe rather than expand silently. One point is provisional discovery effort. The epic becomes six provisional total points (2 carry +1 spike +2 caller +1 consumer), a re-estimate of the included work rather than an added feature.
 
 Software/process documentation: GPL-3.0-or-later.
+
+## Observed compatibility decision — 2026-10-13
+
+Genuine isolated OpenCode1.18.31 completed the five prescribed native read calls on the current anonymous free MiMo route in48.175seconds, exit0, all four fixture inputs byte-identical afterward. Dated model/catalog/client/source hashes and the raw complete HOST trace are retained in .ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/decision-and-evidence.json; no provider credential was supplied.
+
+The actual merged Musea9 compiled verifier accepted the native three-page2,201-line UTF-8 delivery with its bounded first-read AGENTS suffix and EOF, and the actual zero-byte present file. Nine deterministic controls passed: those two positives; actual2,000-character line clipping; and synthetic omitted read, missing middle range, altered output, late tool end, missing EOF, and unavailable tool. Native clipped output reports metadata.truncated=false, demonstrating why metadata alone is insufficient. Review scaffolding/perturbations are synthetic and supply no provider approval. The initial scaffold timestamp-order failure is retained and corrected only in synthetic stage timing, preserving all native event bytes.
+
+Decision: compatible for the tested1.18.31 native UTF-8 framing, with clipped long lines correctly refused. This supports re-description/re-estimation of both callers after the separate carry and documentary spike merges; it does not establish the actual hosted consumer context is fully readable, caller adoption, authentication, understanding, B1/B2/live B3 or future availability. Those remain explicit independent proofs. Full source checks/current whole-input reviews/documentary MERGE precede native Done.
+
+
+---
+cephalon-host-spike-custody-green-20261013: Actual approved one-run1048576->2097152 completed all14suites/exit0 and restored1048576 after terminal gate. Native Codex4260128644 correctly keeps zero-warning qualification held: unchanged TerminalUI infer-warning; actual Review->IP corrected, not Done. Receipt280 retains causal offline RED5tests42assertions26fail0errors. Patched archive adapter GREEN5tests44assertions0fail/error checks wholeHOST/manifest/all4fixtures and fresh outputs preserving original artifacts; successful-gate raw log identity supplement added. CodeRabbit log default override/exclusions are a static source candidate with actual hosted complete-input verification pending; no scope/approval credit. Separate human fixture inclusion and any further bounded capacity verification remain pending; do not repeat completed host maintenance or implement callers before spike qualifies.
+
+Current qualification correction, 2026-10-13: The human included the FakeTerminal repair. Commit f04ad5e7db35944b8d289f4d50238eed56f6044b adds only its existing type hint. Actual complete TerminalUI passes70tests172assertions with0failures/errors/compiler warnings; complete unchanged qualified native gate passes all14suites and compiler builds with0warnings, exit0 in338.062seconds. Native IP→Review and independent Review readback are retained. Existing watchlimit1572864 stayed unchanged; generated outputs were retained/restored. Source receipt287 and fake-terminal-authorized-verification-20261013 contain exact raw-log byte/hash identities. The earlier custody-green comment is historical and its fixture/zero-warning blockers are superseded. Current hosted review, remaining verified review findings and authorized exact-head merge still precede closeout and native Document→Done; no deployed memory/field/mood/recall proof is supplied.
+
+---

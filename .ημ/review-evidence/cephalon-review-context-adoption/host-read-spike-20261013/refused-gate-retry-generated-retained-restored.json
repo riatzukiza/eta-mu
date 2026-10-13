@@ -1,0 +1,20 @@
+[
+  {
+    "path": "packages/contracts/output/dist-cli/index.cjs",
+    "retainedOutputBytes": 1997608,
+    "retainedOutputSha256": "f2ff329d9f4ac85dade677787b6c4b1e649c3d9ef3f9614f5295c06c469c85c3",
+    "restoredPreGateSha256": "5f26ab71c04b4cf81a0b58d5bd8fba994bc2ba4f7544370beb570af799f1f014"
+  },
+  {
+    "path": "packages/contracts/output/dist-cli/index.cjs.map",
+    "retainedOutputBytes": 5170120,
+    "retainedOutputSha256": "9883bb83300c6a0ce85bc69a5f744ca031f1a29e0bda74ef6154248100454bde",
+    "restoredPreGateSha256": "00b1a5f5cc8fe7740621d624eb2ceedd0862db086eed24855b4d1702133d32e9"
+  },
+  {
+    "path": "packages/legacy/ai/src/models.generated.ts",
+    "retainedOutputBytes": 618155,
+    "retainedOutputSha256": "a51a43fbf6d2803a644816b16705c4f0f285d57b6bc6fabae5efe1489dd52617",
+    "restoredPreGateSha256": "9e64256d83b2559f60fc6e80cc2320268bd56214c68032f2c222d5d8910fe761"
+  }
+]

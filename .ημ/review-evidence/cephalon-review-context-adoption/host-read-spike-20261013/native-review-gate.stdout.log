@@ -1,0 +1,3045 @@
+
+> @open-hax/eta-mu-monorepo@0.1.0 build /home/err/spaces/cephalon-review-context-adoption/eta-mu
+> pnpm -r --no-bail build
+
+Scope: 26 of 27 workspace projects
+packages/axxium build$ shadow-cljs release server
+packages/chat-ui build$ shadow-cljs compile lib
+packages/contracts/output build$ shadow-cljs release output-contracts && shadow-cljs release cli
+packages/extensions build$ node scripts/build-no-warnings.mjs release
+packages/chat-ui build: shadow-cljs - config: /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/chat-ui/shadow-cljs.edn
+packages/axxium build: shadow-cljs - config: /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/axxium/shadow-cljs.edn
+packages/extensions build: eta-mu: 15 extension(s) in manifest
+packages/extensions build:          15 opencode target(s)
+packages/extensions build:   compiling pi targets...
+packages/extensions build:   shadow-cljs release apply-patch bootstrap chronos contract-runtime contract-runtime-v2 custom-providers graph-memory image-render lisp-decomp-nudge opencode-global-instructions opmf-contract-gate receipt-river session-mycology task-timing websearch-open-hax
+packages/contracts/output build: shadow-cljs - config: /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/contracts/output/shadow-cljs.edn
+packages/extensions build: shadow-cljs - config: /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/extensions/shadow-cljs.edn
+packages/axxium build: [:server] Compiling ...
+packages/chat-ui build: [:lib] Compiling ...
+packages/contracts/output build: [:output-contracts] Compiling ...
+packages/extensions build: [:apply-patch] Compiling ...
+packages/chat-ui build: [:lib] Build completed. (80 files, 0 compiled, 0 warnings, 4.65s)
+packages/chat-ui build: Done
+packages/fork-tax build$ shadow-cljs release fork-tax
+packages/fork-tax build: shadow-cljs - config: /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/fork-tax/shadow-cljs.edn
+packages/extensions build: [:apply-patch] Build completed. (52 files, 1 compiled, 0 warnings, 13.04s)
+packages/extensions build: [:bootstrap] Compiling ...
+packages/fork-tax build: [:fork-tax] Compiling ...
+packages/extensions build: [:bootstrap] Build completed. (48 files, 1 compiled, 0 warnings, 5.37s)
+packages/extensions build: [:chronos] Compiling ...
+packages/axxium build: [:server] Build completed. (73 files, 0 compiled, 0 warnings, 18.87s)
+packages/axxium build: Done
+packages/legacy/docs build$ tsc index.d.ts --noEmit --strict --module esnext --moduleResolution bundler --target es2022
+packages/contracts/output build: [:output-contracts] Build completed. (77 files, 0 compiled, 0 warnings, 20.25s)
+packages/legacy/docs build: Done
+packages/legacy/kanban build$ tsc -p tsconfig.json && vite build
+packages/contracts/output build: shadow-cljs - config: /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/contracts/output/shadow-cljs.edn
+packages/extensions build: [:chronos] Build completed. (49 files, 1 compiled, 0 warnings, 4.54s)
+packages/extensions build: [:contract-runtime] Compiling ...
+packages/legacy/kanban build: vite v8.0.14 building client environment for production...
+packages/legacy/kanban build: [2K
+packages/legacy/kanban build: transforming...✓ 263 modules transformed.
+packages/legacy/kanban build: rendering chunks...
+packages/legacy/kanban build: computing gzip size...
+packages/legacy/kanban build: dist/web/index.html                   0.41 kB │ gzip:  0.27 kB
+packages/legacy/kanban build: dist/web/assets/index-D-9fWq5-.css   38.15 kB │ gzip:  5.66 kB
+packages/legacy/kanban build: dist/web/assets/index-DyjoquFo.js   310.43 kB │ gzip: 95.77 kB
+packages/legacy/kanban build: ✓ built in 837ms
+packages/legacy/kanban build: Done
+packages/receipt-river build$ shadow-cljs release receipt-river
+packages/receipt-river build: shadow-cljs - config: /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/receipt-river/shadow-cljs.edn
+packages/fork-tax build: [:fork-tax] Build completed. (50 files, 0 compiled, 0 warnings, 11.52s)
+packages/fork-tax build: Done
+packages/session-mycology build$ shadow-cljs release session-mycology
+packages/session-mycology build: shadow-cljs - config: /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/session-mycology/shadow-cljs.edn
+packages/contracts/output build: [:cli] Compiling ...
+packages/extensions build: [:contract-runtime] Build completed. (62 files, 1 compiled, 0 warnings, 7.81s)
+packages/extensions build: [:contract-runtime-v2] Compiling ...
+packages/receipt-river build: [:receipt-river] Compiling ...
+packages/extensions build: [:contract-runtime-v2] Build completed. (64 files, 1 compiled, 0 warnings, 5.81s)
+packages/extensions build: [:custom-providers] Compiling ...
+packages/session-mycology build: [:session-mycology] Compiling ...
+packages/extensions build: [:custom-providers] Build completed. (48 files, 1 compiled, 0 warnings, 4.84s)
+packages/extensions build: [:graph-memory] Compiling ...
+packages/extensions build: [:graph-memory] Build completed. (54 files, 1 compiled, 0 warnings, 4.80s)
+packages/extensions build: [:image-render] Compiling ...
+packages/contracts/output build: [:cli] Build completed. (79 files, 0 compiled, 0 warnings, 17.85s)
+packages/receipt-river build: [:receipt-river] Build completed. (59 files, 0 compiled, 0 warnings, 13.77s)
+packages/contracts/output build: Done
+packages/sol build$ shadow-cljs compile server
+packages/receipt-river build: Done
+packages/turn-processor build$ shadow-cljs release turn-processor
+packages/sol build: shadow-cljs - config: /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/sol/shadow-cljs.edn
+packages/sol build: shadow-cljs - starting via "clojure"
+packages/turn-processor build: shadow-cljs - config: /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/turn-processor/shadow-cljs.edn
+packages/extensions build: [:image-render] Build completed. (53 files, 1 compiled, 0 warnings, 4.39s)
+packages/extensions build: [:lisp-decomp-nudge] Compiling ...
+packages/session-mycology build: [:session-mycology] Build completed. (55 files, 0 compiled, 0 warnings, 14.90s)
+packages/session-mycology build: Done
+packages/turn-processor build: [:turn-processor] Compiling ...
+packages/extensions build: [:lisp-decomp-nudge] Build completed. (49 files, 1 compiled, 0 warnings, 4.04s)
+packages/extensions build: [:opencode-global-instructions] Compiling ...
+packages/sol build: [:server] Compiling ...
+packages/extensions build: [:opencode-global-instructions] Build completed. (62 files, 1 compiled, 0 warnings, 5.65s)
+packages/extensions build: [:opmf-contract-gate] Compiling ...
+packages/sol build: [:server] Build completed. (202 files, 0 compiled, 0 warnings, 4.80s)
+packages/sol build: Done
+packages/extensions build: [:opmf-contract-gate] Build completed. (64 files, 1 compiled, 0 warnings, 4.64s)
+packages/extensions build: [:receipt-river] Compiling ...
+packages/turn-processor build: [:turn-processor] Build completed. (58 files, 0 compiled, 0 warnings, 11.74s)
+packages/turn-processor build: Done
+packages/extensions build: [:receipt-river] Build completed. (64 files, 1 compiled, 0 warnings, 2.98s)
+packages/extensions build: [:session-mycology] Compiling ...
+packages/extensions build: [:session-mycology] Build completed. (54 files, 1 compiled, 0 warnings, 2.09s)
+packages/extensions build: [:task-timing] Compiling ...
+packages/extensions build: [:task-timing] Build completed. (48 files, 1 compiled, 0 warnings, 2.19s)
+packages/extensions build: [:websearch-open-hax] Compiling ...
+packages/extensions build: [:websearch-open-hax] Build completed. (53 files, 1 compiled, 0 warnings, 2.45s)
+packages/extensions build:   compiling opencode targets...
+packages/extensions build:   shadow-cljs release opencode-apply-patch opencode-bootstrap opencode-chronos opencode-contract-runtime opencode-contract-runtime-v2 opencode-custom-providers opencode-graph-memory opencode-image-render opencode-lisp-decomp-nudge opencode-opencode-global-instructions opencode-opmf-contract-gate opencode-receipt-river opencode-session-mycology opencode-task-timing opencode-websearch-open-hax
+packages/extensions build: shadow-cljs - config: /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/extensions/shadow-cljs.edn
+packages/extensions build: [:opencode-apply-patch] Compiling ...
+packages/extensions build: [:opencode-apply-patch] Build completed. (52 files, 0 compiled, 0 warnings, 7.35s)
+packages/extensions build: [:opencode-bootstrap] Compiling ...
+packages/extensions build: [:opencode-bootstrap] Build completed. (50 files, 0 compiled, 0 warnings, 3.36s)
+packages/extensions build: [:opencode-chronos] Compiling ...
+packages/extensions build: [:opencode-chronos] Build completed. (50 files, 0 compiled, 0 warnings, 2.65s)
+packages/extensions build: [:opencode-contract-runtime] Compiling ...
+packages/extensions build: [:opencode-contract-runtime] Build completed. (62 files, 0 compiled, 0 warnings, 3.20s)
+packages/extensions build: [:opencode-contract-runtime-v2] Compiling ...
+packages/extensions build: [:opencode-contract-runtime-v2] Build completed. (64 files, 0 compiled, 0 warnings, 2.85s)
+packages/extensions build: [:opencode-custom-providers] Compiling ...
+packages/extensions build: [:opencode-custom-providers] Build completed. (50 files, 0 compiled, 0 warnings, 2.90s)
+packages/extensions build: [:opencode-graph-memory] Compiling ...
+packages/extensions build: [:opencode-graph-memory] Build completed. (54 files, 0 compiled, 0 warnings, 2.65s)
+packages/extensions build: [:opencode-image-render] Compiling ...
+packages/extensions build: [:opencode-image-render] Build completed. (54 files, 0 compiled, 0 warnings, 3.24s)
+packages/extensions build: [:opencode-lisp-decomp-nudge] Compiling ...
+packages/extensions build: [:opencode-lisp-decomp-nudge] Build completed. (50 files, 0 compiled, 0 warnings, 2.48s)
+packages/extensions build: [:opencode-opencode-global-instructions] Compiling ...
+packages/extensions build: [:opencode-opencode-global-instructions] Build completed. (62 files, 0 compiled, 0 warnings, 2.98s)
+packages/extensions build: [:opencode-opmf-contract-gate] Compiling ...
+packages/extensions build: [:opencode-opmf-contract-gate] Build completed. (62 files, 0 compiled, 0 warnings, 3.56s)
+packages/extensions build: [:opencode-receipt-river] Compiling ...
+packages/extensions build: [:opencode-receipt-river] Build completed. (64 files, 0 compiled, 0 warnings, 2.48s)
+packages/extensions build: [:opencode-session-mycology] Compiling ...
+packages/extensions build: [:opencode-session-mycology] Build completed. (54 files, 0 compiled, 0 warnings, 2.81s)
+packages/extensions build: [:opencode-task-timing] Compiling ...
+packages/extensions build: [:opencode-task-timing] Build completed. (50 files, 0 compiled, 0 warnings, 3.20s)
+packages/extensions build: [:opencode-websearch-open-hax] Compiling ...
+packages/extensions build: [:opencode-websearch-open-hax] Build completed. (53 files, 0 compiled, 0 warnings, 2.83s)
+packages/extensions build:   materializing pi targets...
+packages/extensions build:   built targets for apply-patch
+packages/extensions build:   built targets for bootstrap
+packages/extensions build:   built targets for chronos
+packages/extensions build:   built targets for contract-runtime
+packages/extensions build:   built targets for contract-runtime-v2
+packages/extensions build:   built targets for custom-providers
+packages/extensions build:   built targets for graph-memory
+packages/extensions build:   built targets for image-render
+packages/extensions build:   built targets for lisp-decomp-nudge
+packages/extensions build:   built targets for opencode-global-instructions
+packages/extensions build:   built targets for opmf-contract-gate
+packages/extensions build:   built targets for receipt-river
+packages/extensions build:   built targets for session-mycology
+packages/extensions build:   built targets for task-timing
+packages/extensions build:   built targets for websearch-open-hax
+packages/extensions build:   materializing opencode targets...
+packages/extensions build:   built opencode target for apply-patch
+packages/extensions build:   built opencode target for bootstrap
+packages/extensions build:   built opencode target for chronos
+packages/extensions build:   built opencode target for contract-runtime
+packages/extensions build:   built opencode target for contract-runtime-v2
+packages/extensions build:   built opencode target for custom-providers
+packages/extensions build:   built opencode target for graph-memory
+packages/extensions build:   built opencode target for image-render
+packages/extensions build:   built opencode target for lisp-decomp-nudge
+packages/extensions build:   built opencode target for opencode-global-instructions
+packages/extensions build:   built opencode target for opmf-contract-gate
+packages/extensions build:   built opencode target for receipt-river
+packages/extensions build:   built opencode target for session-mycology
+packages/extensions build:   built opencode target for task-timing
+packages/extensions build:   built opencode target for websearch-open-hax
+packages/extensions build:   removing legacy managed host copies...
+packages/extensions build:   registered file:///home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/extensions/dist/opencode/apply-patch.mjs
+packages/extensions build:   registered file:///home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/extensions/dist/opencode/bootstrap.mjs
+packages/extensions build:   registered file:///home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/extensions/dist/opencode/chronos.mjs
+packages/extensions build:   registered file:///home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/extensions/dist/opencode/contract-runtime.mjs
+packages/extensions build:   registered file:///home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/extensions/dist/opencode/contract-runtime-v2.mjs
+packages/extensions build:   registered file:///home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/extensions/dist/opencode/custom-providers.mjs
+packages/extensions build:   registered file:///home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/extensions/dist/opencode/graph-memory.mjs
+packages/extensions build:   registered file:///home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/extensions/dist/opencode/image-render.mjs
+packages/extensions build:   registered file:///home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/extensions/dist/opencode/lisp-decomp-nudge.mjs
+packages/extensions build:   registered file:///home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/extensions/dist/opencode/opencode-global-instructions.mjs
+packages/extensions build:   registered file:///home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/extensions/dist/opencode/opmf-contract-gate.mjs
+packages/extensions build:   registered file:///home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/extensions/dist/opencode/receipt-river.mjs
+packages/extensions build:   registered file:///home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/extensions/dist/opencode/session-mycology.mjs
+packages/extensions build:   registered file:///home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/extensions/dist/opencode/task-timing.mjs
+packages/extensions build:   registered file:///home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/extensions/dist/opencode/websearch-open-hax.mjs
+packages/extensions build: eta-mu build complete:
+packages/extensions build:   - apply-patch
+packages/extensions build:   - bootstrap
+packages/extensions build:   - chronos
+packages/extensions build:   - contract-runtime
+packages/extensions build:   - contract-runtime-v2
+packages/extensions build:   - custom-providers
+packages/extensions build:   - graph-memory
+packages/extensions build:   - image-render
+packages/extensions build:   - lisp-decomp-nudge
+packages/extensions build:   - opencode-global-instructions
+packages/extensions build:   - opmf-contract-gate
+packages/extensions build:   - receipt-river
+packages/extensions build:   - session-mycology
+packages/extensions build:   - task-timing
+packages/extensions build:   - websearch-open-hax
+packages/extensions build: Done
+packages/extensions postbuild$ node scripts/validate-extension-paths.mjs
+packages/extensions postbuild: Validating extension paths...
+packages/extensions postbuild: Package root: /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/extensions
+packages/extensions postbuild:   ✓ dist/pi/cljs-apply-patch/index.ts
+packages/extensions postbuild:   ✓ dist/pi/cljs-receipt-river/index.ts
+packages/extensions postbuild:   ✓ dist/pi/cljs-session-mycology/index.ts
+packages/extensions postbuild:   ✓ dist/pi/cljs-contract-runtime/index.ts
+packages/extensions postbuild:   ✓ dist/pi/cljs-contract-runtime-v2/index.ts
+packages/extensions postbuild:   ✓ dist/pi/cljs-opmf-contract-gate/index.ts
+packages/extensions postbuild:   ✓ dist/pi/cljs-opencode-global-instructions/index.ts
+packages/extensions postbuild:   ✓ dist/pi/cljs-bootstrap/index.ts
+packages/extensions postbuild:   ✓ dist/pi/cljs-task-timing/index.ts
+packages/extensions postbuild:   ✓ dist/pi/cljs-graph-memory/index.ts
+packages/extensions postbuild:   ✓ dist/pi/cljs-websearch-open-hax/index.ts
+packages/extensions postbuild:   ✓ dist/pi/cljs-image-render/index.ts
+packages/extensions postbuild:   ✓ dist/pi/cljs-lisp-decomp-nudge/index.ts
+packages/extensions postbuild:   ✓ dist/pi/cljs-chronos/index.ts
+packages/extensions postbuild:   ✓ dist/pi/cljs-custom-providers/index.ts
+packages/extensions postbuild: ============================================================
+packages/extensions postbuild: Results: 15 valid, 0 missing
+packages/extensions postbuild: All extension paths validated successfully.
+packages/extensions postbuild: Done
+packages/legacy/ai build$ npm run generate-models && tsgo -p tsconfig.build.json
+packages/rheos build$ shadow-cljs release server cli github-sync app
+packages/terminal-ui build$ shadow-cljs release terminal-ui
+packages/legacy/tui build$ tsgo -p tsconfig.build.json
+packages/terminal-ui build: shadow-cljs - config: /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/terminal-ui/shadow-cljs.edn
+packages/rheos build: shadow-cljs - config: /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/rheos/shadow-cljs.edn
+packages/rheos build: shadow-cljs - starting via "clojure"
+packages/legacy/ai build: > @open-hax/eta-mu-ai@0.70.7 generate-models
+packages/legacy/ai build: > npx tsx scripts/generate-models.ts
+packages/legacy/tui build: Done
+packages/legacy/ai build: Fetching models from models.dev API...
+packages/legacy/ai build: Loaded 621 tool-capable models from models.dev
+packages/legacy/ai build: Fetching models from OpenRouter API...
+packages/legacy/ai build: Fetched 391 tool-capable models from OpenRouter
+packages/legacy/ai build: Fetching models from Vercel AI Gateway API...
+packages/legacy/ai build: Fetched 295 tool-capable models from Vercel AI Gateway
+packages/legacy/ai build: Generated src/models.generated.ts
+packages/legacy/ai build: Model Statistics:
+packages/legacy/ai build:   Total tool-capable models: 1389
+packages/legacy/ai build:   Reasoning-capable models: 1134
+packages/legacy/ai build:   amazon-bedrock: 194 models
+packages/legacy/ai build:   anthropic: 17 models
+packages/legacy/ai build:   google: 22 models
+packages/legacy/ai build:   openai: 47 models
+packages/legacy/ai build:   groq: 7 models
+packages/legacy/ai build:   cerebras: 2 models
+packages/legacy/ai build:   cloudflare-workers-ai: 18 models
+packages/legacy/ai build:   xai: 8 models
+packages/legacy/ai build:   zai: 7 models
+packages/legacy/ai build:   mistral: 39 models
+packages/legacy/ai build:   huggingface: 78 models
+packages/legacy/ai build:   fireworks: 22 models
+packages/legacy/ai build:   opencode: 83 models
+packages/legacy/ai build:   opencode-go: 31 models
+packages/legacy/ai build:   github-copilot: 35 models
+packages/legacy/ai build:   minimax: 2 models
+packages/legacy/ai build:   minimax-cn: 2 models
+packages/legacy/ai build:   openrouter: 392 models
+packages/legacy/ai build:   vercel-ai-gateway: 295 models
+packages/legacy/ai build:   deepseek: 2 models
+packages/legacy/ai build:   openai-codex: 10 models
+packages/legacy/ai build:   google-gemini-cli: 7 models
+packages/legacy/ai build:   google-antigravity: 9 models
+packages/legacy/ai build:   google-vertex: 13 models
+packages/legacy/ai build:   azure-openai-responses: 47 models
+packages/legacy/ai build: Done
+packages/terminal-ui build: [:terminal-ui] Compiling ...
+packages/rheos build: [:server] Compiling ...
+packages/terminal-ui build: [:terminal-ui] Build completed. (57 files, 0 compiled, 0 warnings, 10.69s)
+packages/terminal-ui build: Done
+packages/rheos build: [:server] Build completed. (111 files, 0 compiled, 0 warnings, 11.69s)
+packages/rheos build: [:cli] Compiling ...
+packages/rheos build: [:cli] Build completed. (115 files, 0 compiled, 0 warnings, 4.98s)
+packages/rheos build: [:github-sync] Compiling ...
+packages/rheos build: [:github-sync] Build completed. (75 files, 0 compiled, 0 warnings, 4.09s)
+packages/rheos build: [:app] Compiling ...
+packages/rheos build: [:app] Build completed. (95 files, 0 compiled, 0 warnings, 5.06s)
+packages/rheos build: Done
+packages/legacy/agent build$ tsgo -p tsconfig.build.json
+packages/eta-mu build$ shadow-cljs release cli
+packages/eta-mu build: shadow-cljs - config: /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/eta-mu/shadow-cljs.edn
+packages/legacy/agent build: Done
+packages/eta-mu build: [:cli] Compiling ...
+packages/eta-mu build: [:cli] Build completed. (166 files, 0 compiled, 0 warnings, 11.53s)
+packages/eta-mu build: Done
+packages/legacy/coding-agent build$ tsgo -p tsconfig.build.json && shx chmod +x dist/cli.js && npm run copy-assets
+packages/legacy/coding-agent build: > @open-hax/eta-mu-cli@0.70.16 copy-assets
+packages/legacy/coding-agent build: > shx mkdir -p dist/modes/interactive/theme && shx cp src/modes/interactive/theme/*.json dist/modes/interactive/theme/ && shx mkdir -p dist/modes/interactive/assets && shx cp src/modes/interactive/assets/*.png dist/modes/interactive/assets/ && shx mkdir -p dist/core/export-html/vendor && shx cp src/core/export-html/template.html src/core/export-html/template.css src/core/export-html/template.js dist/core/export-html/ && shx cp src/core/export-html/vendor/*.js dist/core/export-html/vendor/
+packages/legacy/coding-agent build: Done
+packages/legacy/github build$ tsc -p tsconfig.json
+packages/legacy/github build: Done
+
+> @open-hax/eta-mu-monorepo@0.1.0 lint /home/err/spaces/cephalon-review-context-adoption/eta-mu
+> bb scripts/lint.bb
+
+
+============================================================
+Running: clj-kondo (eta-mu)
+============================================================
+
+
+> eta-mu@1.1.1 lint:kondo /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/eta-mu
+> clj-kondo --lint src/cljs test/cljs test-e2e/cljs commands/workflows.cljs commands/workflows_test.cljs commands/gates.cljs
+
+src/cljs/eta_mu/domain/session.cljs:8:14: info: a domain namespace must not require eta-mu.extern.path (extern): domain depends on law, shape, and its own layer.
+linting took 921ms, errors: 0, warnings: 0
+
+✓ clj-kondo (eta-mu) passed
+
+============================================================
+Running: clj-kondo (@eta-mu/clio)
+============================================================
+
+
+> @eta-mu/clio@0.1.0 lint:kondo /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/clio
+> clj-kondo --lint src test bin scripts && bb scripts/lint_extern_boundary.bb
+
+linting took 512ms, errors: 0, warnings: 0
+Clio extern.js boundary: clean
+
+✓ clj-kondo (@eta-mu/clio) passed
+
+============================================================
+Running: clj-kondo (@eta-mu/rheos)
+============================================================
+
+
+> @eta-mu/rheos@0.1.0 lint:kondo /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/rheos
+> clj-kondo --lint src test
+
+src/rheos/backend/domain/compose.cljs:7:14: info: a domain namespace must not require rheos.backend.infra.ledger (infra): domain depends on law, shape, and its own layer.
+src/rheos/backend/domain/compose.cljs:8:14: info: a domain namespace must not require rheos.backend.infra.task-store (infra): domain depends on law, shape, and its own layer.
+src/rheos/backend/law/fsm.cljs:7:14: info: a law namespace must not require the host: "node:child_process". Decode foreign data in extern.*, orchestrate effects in infra.*.
+src/rheos/ui/domain/layout.cljs:11:14: info: a domain namespace must not require rheos.ui.infra.api (infra): domain depends on law, shape, and its own layer.
+src/rheos/ui/domain/layout.cljs:12:14: info: a domain namespace must not require rheos.ui.infra.ledger-stream (infra): domain depends on law, shape, and its own layer.
+src/rheos/ui/domain/orchestrator.cljs:17:14: info: a domain namespace must not require rheos.ui.infra.chat-session (infra): domain depends on law, shape, and its own layer.
+src/rheos/ui/domain/sidebar.cljs:7:14: info: a domain namespace must not require the host: "marked". Decode foreign data in extern.*, orchestrate effects in infra.*.
+src/rheos/ui/domain/sidebar.cljs:8:14: info: a domain namespace must not require the host: "dompurify". Decode foreign data in extern.*, orchestrate effects in infra.*.
+linting took 1043ms, errors: 0, warnings: 0
+
+✓ clj-kondo (@eta-mu/rheos) passed
+
+============================================================
+Running: clj-kondo (@eta-mu/sol)
+============================================================
+
+
+> @eta-mu/sol@0.1.1 lint:kondo /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/sol
+> clj-kondo --lint src/cljs test/cljs && node ../../scripts/contract-guard.mjs src/cljs test/cljs
+
+src/cljs/open_hax/sol/domain/agent/agent_templates.cljs:9:14: info: a domain namespace must not require open-hax.sol.infra.config (infra): domain depends on law, shape, and its own layer.
+src/cljs/open_hax/sol/domain/agent/agent_templates.cljs:10:14: info: a domain namespace must not require open-hax.sol.infra.defaults (infra): domain depends on law, shape, and its own layer.
+src/cljs/open_hax/sol/domain/contracts/client.cljs:6:14: info: a domain namespace must not require open-hax.sol.extern.fetch (extern): domain depends on law, shape, and its own layer.
+src/cljs/open_hax/sol/domain/contracts/loader.cljs:6:14: info: a domain namespace must not require the host: "node:fs". Decode foreign data in extern.*, orchestrate effects in infra.*.
+src/cljs/open_hax/sol/domain/contracts/loader.cljs:7:14: info: a domain namespace must not require the host: "node:fs/promises". Decode foreign data in extern.*, orchestrate effects in infra.*.
+src/cljs/open_hax/sol/domain/contracts/loader.cljs:8:14: info: a domain namespace must not require the host: "node:path". Decode foreign data in extern.*, orchestrate effects in infra.*.
+src/cljs/open_hax/sol/domain/node/crypto.cljs:8:14: info: a domain namespace must not require the host: "node:crypto". Decode foreign data in extern.*, orchestrate effects in infra.*.
+src/cljs/open_hax/sol/domain/node/fs.cljs:10:14: info: a domain namespace must not require the host: "node:fs". Decode foreign data in extern.*, orchestrate effects in infra.*.
+src/cljs/open_hax/sol/domain/node/fs.cljs:11:14: info: a domain namespace must not require the host: "node:fs/promises". Decode foreign data in extern.*, orchestrate effects in infra.*.
+src/cljs/open_hax/sol/domain/node/fs.cljs:12:14: info: a domain namespace must not require the host: "node:path". Decode foreign data in extern.*, orchestrate effects in infra.*.
+src/cljs/open_hax/sol/domain/node/path.cljs:9:14: info: a domain namespace must not require the host: "node:path". Decode foreign data in extern.*, orchestrate effects in infra.*.
+src/cljs/open_hax/sol/domain/node/path.cljs:10:14: info: a domain namespace must not require the host: "node:process". Decode foreign data in extern.*, orchestrate effects in infra.*.
+src/cljs/open_hax/sol/domain/realtime.cljs:4:14: info: a domain namespace must not require the host: "node:child_process". Decode foreign data in extern.*, orchestrate effects in infra.*.
+src/cljs/open_hax/sol/domain/realtime.cljs:5:14: info: a domain namespace must not require the host: "node:crypto". Decode foreign data in extern.*, orchestrate effects in infra.*.
+src/cljs/open_hax/sol/domain/realtime.cljs:6:14: info: a domain namespace must not require the host: "node:os". Decode foreign data in extern.*, orchestrate effects in infra.*.
+src/cljs/open_hax/sol/domain/realtime.cljs:7:14: info: a domain namespace must not require the host: "node:util". Decode foreign data in extern.*, orchestrate effects in infra.*.
+src/cljs/open_hax/sol/domain/text.cljs:3:14: info: a domain namespace must not require open-hax.sol.infra.http (infra): domain depends on law, shape, and its own layer.
+linting took 1171ms, errors: 0, warnings: 0
+contract-guard OK (src/cljs, test/cljs)
+
+✓ clj-kondo (@eta-mu/sol) passed
+
+============================================================
+Running: clj-kondo (@eta-mu/terminal-ui)
+============================================================
+
+
+> @eta-mu/terminal-ui@0.1.0 lint:kondo /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/terminal-ui
+> clj-kondo --lint src/cljs test/cljs
+
+src/cljs/eta_mu/terminal_ui/shape/text_utils.cljs:5:14: info: a shape namespace must not require the host: "get-east-asian-width". Decode foreign data in extern.*, orchestrate effects in infra.*.
+src/cljs/eta_mu/terminal_ui/shape/text_utils.cljs:19:3: info: raw `js*` interop must stay behind extern.js.*; decode foreign data there and return Clojure values.
+linting took 338ms, errors: 0, warnings: 0
+
+✓ clj-kondo (@eta-mu/terminal-ui) passed
+
+============================================================
+Running: clj-kondo (@eta-mu/turn-processor)
+============================================================
+
+
+> @eta-mu/turn-processor@0.1.0 lint:kondo /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/turn-processor
+> clj-kondo --lint src/cljs test/cljs
+
+linting took 191ms, errors: 0, warnings: 0
+
+✓ clj-kondo (@eta-mu/turn-processor) passed
+
+============================================================
+Running: clj-kondo (@eta-mu/extensions)
+============================================================
+
+
+> @eta-mu/extensions@0.2.7 lint:kondo /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/extensions
+> clj-kondo --lint src lib
+
+linting took 1087ms, errors: 0, warnings: 0
+
+✓ clj-kondo (@eta-mu/extensions) passed
+
+============================================================
+Running: clj-kondo (@eta-mu/e2e)
+============================================================
+
+
+> @eta-mu/e2e@0.1.1 lint:kondo /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/e2e
+> clj-kondo --lint src
+
+linting took 34ms, errors: 0, warnings: 0
+
+✓ clj-kondo (@eta-mu/e2e) passed
+
+============================================================
+Running: clj-kondo (@open-hax/protocols)
+============================================================
+
+
+> @open-hax/protocols@0.1.0 lint:kondo /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/protocols
+> clj-kondo --lint src test
+
+linting took 455ms, errors: 0, warnings: 0
+
+✓ clj-kondo (@open-hax/protocols) passed
+
+============================================================
+Running: clj-kondo (@open-hax/chat-ui)
+============================================================
+
+
+> @open-hax/chat-ui@0.1.0 lint:kondo /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/chat-ui
+> clj-kondo --lint src test
+
+linting took 119ms, errors: 0, warnings: 0
+
+✓ clj-kondo (@open-hax/chat-ui) passed
+
+============================================================
+Running: clj-kondo (@open-hax/axxium)
+============================================================
+
+
+> @open-hax/axxium@0.1.0 lint:kondo /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/axxium
+> clj-kondo --lint src/cljs
+
+linting took 121ms, errors: 0, warnings: 0
+
+✓ clj-kondo (@open-hax/axxium) passed
+
+============================================================
+Running: clj-kondo (@open-hax/mcp-contracts)
+============================================================
+
+
+> @open-hax/mcp-contracts@0.1.0 lint:kondo /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/mcp-contracts
+> clj-kondo --lint src
+
+linting took 27ms, errors: 0, warnings: 0
+
+✓ clj-kondo (@open-hax/mcp-contracts) passed
+
+============================================================
+Running: clj-kondo (scripts/test.bb)
+============================================================
+
+linting took 19ms, errors: 0, warnings: 0
+
+✓ clj-kondo (scripts/test.bb) passed
+
+============================================================
+Running: clj-kondo (scripts/lint.bb)
+============================================================
+
+linting took 14ms, errors: 0, warnings: 0
+
+✓ clj-kondo (scripts/lint.bb) passed
+
+============================================================
+Running: TypeScript-era checks (scripts/lint.mjs)
+============================================================
+
+
+============================================================
+Running: Biome Lint/Format
+============================================================
+
+Checked 493 files in 331ms. No fixes applied.
+
+✓ Biome Lint/Format passed
+
+============================================================
+Running: TypeScript Typecheck
+============================================================
+
+
+> @open-hax/eta-mu-monorepo@0.1.0 typecheck /home/err/spaces/cephalon-review-context-adoption/eta-mu
+> pnpm --filter @open-hax/eta-mu-docs typecheck && pnpm --filter @open-hax/kanban-legacy exec tsc -p tsconfig.json --noEmit
+
+
+> @open-hax/eta-mu-docs@0.1.1 typecheck /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/legacy/docs
+> tsc index.d.ts --noEmit --strict --module esnext --moduleResolution bundler --target es2022
+
+
+✓ TypeScript Typecheck passed
+
+============================================================
+Running: Extension Path Validation
+============================================================
+
+
+> @eta-mu/extensions@0.2.7 validate-paths /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/extensions
+> node scripts/validate-extension-paths.mjs
+
+Validating extension paths...
+Package root: /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/extensions
+
+  ✓ dist/pi/cljs-apply-patch/index.ts
+  ✓ dist/pi/cljs-receipt-river/index.ts
+  ✓ dist/pi/cljs-session-mycology/index.ts
+  ✓ dist/pi/cljs-contract-runtime/index.ts
+  ✓ dist/pi/cljs-contract-runtime-v2/index.ts
+  ✓ dist/pi/cljs-opmf-contract-gate/index.ts
+  ✓ dist/pi/cljs-opencode-global-instructions/index.ts
+  ✓ dist/pi/cljs-bootstrap/index.ts
+  ✓ dist/pi/cljs-task-timing/index.ts
+  ✓ dist/pi/cljs-graph-memory/index.ts
+  ✓ dist/pi/cljs-websearch-open-hax/index.ts
+  ✓ dist/pi/cljs-image-render/index.ts
+  ✓ dist/pi/cljs-lisp-decomp-nudge/index.ts
+  ✓ dist/pi/cljs-chronos/index.ts
+  ✓ dist/pi/cljs-custom-providers/index.ts
+
+============================================================
+Results: 15 valid, 0 missing
+
+All extension paths validated successfully.
+
+✓ Extension Path Validation passed
+
+============================================================
+Running: Kanban Markdown Validation
+============================================================
+
+All kanban files have frontmatter
+
+✓ Kanban Markdown Validation passed
+
+============================================================
+LINT SUMMARY
+============================================================
+
+  ✓ Biome Lint/Format
+  ✓ TypeScript Typecheck
+  ✓ Extension Path Validation
+  ✓ Kanban Markdown Validation
+
+All checks passed!
+
+✓ TypeScript-era checks (scripts/lint.mjs) passed
+
+============================================================
+LINT SUMMARY
+============================================================
+
+  ✓ clj-kondo (eta-mu)
+  ✓ clj-kondo (@eta-mu/clio)
+  ✓ clj-kondo (@eta-mu/rheos)
+  ✓ clj-kondo (@eta-mu/sol)
+  ✓ clj-kondo (@eta-mu/terminal-ui)
+  ✓ clj-kondo (@eta-mu/turn-processor)
+  ✓ clj-kondo (@eta-mu/extensions)
+  ✓ clj-kondo (@eta-mu/e2e)
+  ✓ clj-kondo (@open-hax/protocols)
+  ✓ clj-kondo (@open-hax/chat-ui)
+  ✓ clj-kondo (@open-hax/axxium)
+  ✓ clj-kondo (@open-hax/mcp-contracts)
+  ✓ clj-kondo (gate scripts)
+  ✓ TypeScript-era checks (scripts/lint.mjs)
+
+All checks passed!
+
+> @open-hax/eta-mu-monorepo@0.1.0 test /home/err/spaces/cephalon-review-context-adoption/eta-mu
+> bb scripts/test.bb
+
+
+============================================================
+Testing: review-workflow
+============================================================
+
+TAP version 13
+# Subtest: Discord actual adapter batches ten long Unicode comments by all embed text
+ok 1 - Discord actual adapter batches ten long Unicode comments by all embed text
+  ---
+  duration_ms: 5.486164
+  type: 'test'
+  ...
+# mock Discord accepted 3 embeds/4893 text units, 3 embeds/4893 text units, 3 embeds/4893 text units, 1 embeds/1632 text units
+# Subtest: Discord actual adapter retains the ten-embed count bound for short comments
+ok 2 - Discord actual adapter retains the ten-embed count bound for short comments
+  ---
+  duration_ms: 1.227047
+  type: 'test'
+  ...
+# Subtest: Discord actual adapter includes title and fields at the inclusive 6000 boundary
+ok 3 - Discord actual adapter includes title and fields at the inclusive 6000 boundary
+  ---
+  duration_ms: 0.889496
+  type: 'test'
+  ...
+# Subtest: Discord actual adapter propagates an HTTP failure and stops remaining sends
+ok 4 - Discord actual adapter propagates an HTTP failure and stops remaining sends
+  ---
+  duration_ms: 0.857613
+  type: 'test'
+  ...
+# Subtest: Discord actual adapter sends nothing without a webhook or fresh comments
+ok 5 - Discord actual adapter sends nothing without a webhook or fresh comments
+  ---
+  duration_ms: 0.236739
+  type: 'test'
+  ...
+# Subtest: workflow exposes one stable always-running terminal gate
+ok 6 - workflow exposes one stable always-running terminal gate
+  ---
+  duration_ms: 0.303956
+  type: 'test'
+  ...
+# Subtest: a required reusable head input drives both exact checkout guards
+ok 7 - a required reusable head input drives both exact checkout guards
+  ---
+  duration_ms: 0.262212
+  type: 'test'
+  ...
+# Subtest: staging preserves the full immutable diff beyond its bounded preview
+ok 8 - staging preserves the full immutable diff beyond its bounded preview
+  ---
+  duration_ms: 93.901472
+  type: 'test'
+  ...
+# Subtest: staging fails closed for an absent base or a mismatched selected head
+ok 9 - staging fails closed for an absent base or a mismatched selected head
+  ---
+  duration_ms: 45.674646
+  type: 'test'
+  ...
+# Subtest: staging preserves empty input and distinguishes the native base from the merge base
+ok 10 - staging preserves empty input and distinguishes the native base from the merge base
+  ---
+  duration_ms: 113.983419
+  type: 'test'
+  ...
+# Subtest: the compiled observer contract pins compatible Muse and allows both full-input tools
+ok 11 - the compiled observer contract pins compatible Muse and allows both full-input tools
+  ---
+  duration_ms: 0.23796
+  type: 'test'
+  ...
+# Subtest: context assembly records Muse and Agents inputs literally without executing ref text
+ok 12 - context assembly records Muse and Agents inputs literally without executing ref text
+  ---
+  duration_ms: 166.664653
+  type: 'test'
+  ...
+# Subtest: fresh and final input verification share one command before App mint and publication
+ok 13 - fresh and final input verification share one command before App mint and publication
+  ---
+  duration_ms: 0.254924
+  type: 'test'
+  ...
+# Subtest: post-guard input, manifest, proof and context mutation stops before publisher
+ok 14 - post-guard input, manifest, proof and context mutation stops before publisher
+  ---
+  duration_ms: 1205.437422
+  type: 'test'
+  ...
+# Subtest: final invocation binding rejects altered selected evidence before publication
+ok 15 - final invocation binding rejects altered selected evidence before publication
+  ---
+  duration_ms: 1978.477163
+  type: 'test'
+  ...
+# Subtest: final binding refuses absent, mismatched and incomplete submission metadata
+ok 16 - final binding refuses absent, mismatched and incomplete submission metadata
+  ---
+  duration_ms: 2373.382556
+  type: 'test'
+  ...
+# Subtest: final binding accepts complete empty, large, Unicode and retained producer input
+ok 17 - final binding accepts complete empty, large, Unicode and retained producer input
+  ---
+  duration_ms: 1074.091699
+  type: 'test'
+  ...
+# Subtest: final binding follows real omission-only recovery and freezes the unchanged submission
+ok 18 - final binding follows real omission-only recovery and freezes the unchanged submission
+  ---
+  duration_ms: 217.701752
+  type: 'test'
+  ...
+# Subtest: post-guard mutation during the recovery invocation still stops publication
+ok 19 - post-guard mutation during the recovery invocation still stops publication
+  ---
+  duration_ms: 193.588628
+  type: 'test'
+  ...
+# Subtest: a fresh review job verifies downloaded input before tools, model or publication
+ok 20 - a fresh review job verifies downloaded input before tools, model or publication
+  ---
+  duration_ms: 0.293458
+  type: 'test'
+  ...
+# Subtest: a successful malicious gate cannot replace full input and its matching manifest
+ok 21 - a successful malicious gate cannot replace full input and its matching manifest
+  ---
+  duration_ms: 215.59828
+  type: 'test'
+  ...
+# Subtest: fresh input rejects a genuine non-UTF8 Git text diff before proof and model
+ok 22 - fresh input rejects a genuine non-UTF8 Git text diff before proof and model
+  ---
+  duration_ms: 139.154621
+  type: 'test'
+  ...
+# Subtest: independent review accepts exact large, empty and divergent-base input
+ok 23 - independent review accepts exact large, empty and divergent-base input
+  ---
+  duration_ms: 448.644499
+  type: 'test'
+  ...
+# Subtest: failed-job rerun verifies retained producer input and records both attempts
+ok 24 - failed-job rerun verifies retained producer input and records both attempts
+  ---
+  duration_ms: 139.968326
+  type: 'test'
+  ...
+# Subtest: retained input refuses forged artifact scope, attempts and producer provenance before model
+ok 25 - retained input refuses forged artifact scope, attempts and producer provenance before model
+  ---
+  duration_ms: 1356.969381
+  type: 'test'
+  ...
+# Subtest: independent review refuses altered manifest identities, size, hash and provenance
+ok 26 - independent review refuses altered manifest identities, size, hash and provenance
+  ---
+  duration_ms: 1119.065875
+  type: 'test'
+  ...
+# Subtest: both checkout guards reject a valid caller SHA that is not the event PR head
+ok 27 - both checkout guards reject a valid caller SHA that is not the event PR head
+  ---
+  duration_ms: 88.514644
+  type: 'test'
+  ...
+# Subtest: toolchain setup defaults on when the input is absent and honors an explicit false
+ok 28 - toolchain setup defaults on when the input is absent and honors an explicit false
+  ---
+  duration_ms: 0.234547
+  type: 'test'
+  ...
+# Subtest: default deterministic gates mirror private Git dependencies without persisting auth
+ok 29 - default deterministic gates mirror private Git dependencies without persisting auth
+  ---
+  duration_ms: 0.185005
+  type: 'test'
+  ...
+# Subtest: the default reusable evidence script executes every declared gate
+ok 30 - the default reusable evidence script executes every declared gate
+  ---
+  duration_ms: 91.75738
+  type: 'test'
+  ...
+# Subtest: artifact names do not claim an unverified head revision
+ok 31 - artifact names do not claim an unverified head revision
+  ---
+  duration_ms: 0.237149
+  type: 'test'
+  ...
+# Subtest: review downloads the immutable artifact names emitted by prerequisite jobs
+ok 32 - review downloads the immutable artifact names emitted by prerequisite jobs
+  ---
+  duration_ms: 0.112154
+  type: 'test'
+  ...
+# Subtest: review context packages the exact runner for reusable-workflow callers
+ok 33 - review context packages the exact runner for reusable-workflow callers
+  ---
+  duration_ms: 0.581815
+  type: 'test'
+  ...
+# Subtest: workflow bounds recovery before validating and publishing the submission
+ok 34 - workflow bounds recovery before validating and publishing the submission
+  ---
+  duration_ms: 0.289614
+  type: 'test'
+  ...
+# Subtest: operator docs distinguish in-job recovery from a failed-job rerun
+ok 35 - operator docs distinguish in-job recovery from a failed-job rerun
+  ---
+  duration_ms: 0.722411
+  type: 'test'
+  ...
+# Subtest: first-pass submission does not invoke recovery
+ok 36 - first-pass submission does not invoke recovery
+  ---
+  duration_ms: 1.353367
+  type: 'test'
+  ...
+# Subtest: one omitted submission receives exactly one corrective attempt
+ok 37 - one omitted submission receives exactly one corrective attempt
+  ---
+  duration_ms: 1.301076
+  type: 'test'
+  ...
+# Subtest: repeated omission fails closed after two retained attempts
+ok 38 - repeated omission fails closed after two retained attempts
+  ---
+  duration_ms: 1.212449
+  type: 'test'
+  ...
+# Subtest: malformed submission fails closed without consuming the recovery attempt
+ok 39 - malformed submission fails closed without consuming the recovery attempt
+  ---
+  duration_ms: 0.756808
+  type: 'test'
+  ...
+# Subtest: non-zero completed invocation records its evidence and does not retry
+ok 40 - non-zero completed invocation records its evidence and does not retry
+  ---
+  duration_ms: 0.712952
+  type: 'test'
+  ...
+# Subtest: rejected invocation is recorded once and rethrows the original error
+ok 41 - rejected invocation is recorded once and rethrows the original error
+  ---
+  duration_ms: 0.543493
+  type: 'test'
+  ...
+# Subtest: recovery CLI preserves both real child-process streams
+ok 42 - recovery CLI preserves both real child-process streams
+  ---
+  duration_ms: 108.784588
+  type: 'test'
+  ...
+# Subtest: recovery CLI finalizes streams and records a spawn failure
+ok 43 - recovery CLI finalizes streams and records a spawn failure
+  ---
+  duration_ms: 41.064151
+  type: 'test'
+  ...
+# Subtest: deterministic checkout guard records independently executed SHA
+ok 44 - deterministic checkout guard records independently executed SHA
+  ---
+  duration_ms: 38.156729
+  type: 'test'
+  ...
+# Subtest: deterministic checkout guard rejects a copied expected SHA mismatch
+ok 45 - deterministic checkout guard rejects a copied expected SHA mismatch
+  ---
+  duration_ms: 59.628893
+  type: 'test'
+  ...
+# Subtest: deterministic checkout guard rejects a non-commit reusable target
+ok 46 - deterministic checkout guard rejects a non-commit reusable target
+  ---
+  duration_ms: 43.675075
+  type: 'test'
+  ...
+# Subtest: deterministic checkout guard rejects a dirty tree
+ok 47 - deterministic checkout guard rejects a dirty tree
+  ---
+  duration_ms: 48.956802
+  type: 'test'
+  ...
+# Subtest: review checkout independently rejects an expected SHA mismatch
+ok 48 - review checkout independently rejects an expected SHA mismatch
+  ---
+  duration_ms: 67.692722
+  type: 'test'
+  ...
+# Subtest: deterministic summary reports success only for exact clean zero exits
+ok 49 - deterministic summary reports success only for exact clean zero exits
+  ---
+  duration_ms: 85.756534
+  type: 'test'
+  ...
+# Subtest: deterministic summary stays available and red when a gate fails
+ok 50 - deterministic summary stays available and red when a gate fails
+  ---
+  duration_ms: 86.621284
+  type: 'test'
+  ...
+# Subtest: deterministic summary never labels mismatched evidence exact-head
+ok 51 - deterministic summary never labels mismatched evidence exact-head
+  ---
+  duration_ms: 71.694586
+  type: 'test'
+  ...
+# Subtest: deterministic summary fails closed when status output is missing
+ok 52 - deterministic summary fails closed when status output is missing
+  ---
+  duration_ms: 61.438231
+  type: 'test'
+  ...
+# Subtest: build gate archives and restores every explicit tracked generated output
+ok 53 - build gate archives and restores every explicit tracked generated output
+  ---
+  duration_ms: 130.580739
+  type: 'test'
+  ...
+# Subtest: build gate never hides a generated-output mutation that predates the build
+ok 54 - build gate never hides a generated-output mutation that predates the build
+  ---
+  duration_ms: 80.182733
+  type: 'test'
+  ...
+# Subtest: review completion permits only review artifacts and preserves revision
+ok 55 - review completion permits only review artifacts and preserves revision
+  ---
+  duration_ms: 40.003276
+  type: 'test'
+  ...
+# Subtest: review completion rejects tracked mutation
+ok 56 - review completion rejects tracked mutation
+  ---
+  duration_ms: 37.132188
+  type: 'test'
+  ...
+# Subtest: review completion rejects untracked files outside bounded artifacts
+ok 57 - review completion rejects untracked files outside bounded artifacts
+  ---
+  duration_ms: 34.216003
+  type: 'test'
+  ...
+# Subtest: clean-tree review setup: empty tree (quotePath=true)
+ok 58 - clean-tree review setup: empty tree (quotePath=true)
+  ---
+  duration_ms: 44.181548
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"empty tree","quotePath":true,"porcelain":""}
+# Subtest: clean-tree review setup: generated ASCII under .opencode/review-evidence/ (quotePath=true)
+ok 59 - clean-tree review setup: generated ASCII under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 50.921985
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"generated ASCII under .opencode/review-evidence/","quotePath":true,"porcelain":"?? .opencode/review-evidence/artifact.txt\\n"}
+# Subtest: clean-tree review setup: generated Unicode filename under .opencode/review-evidence/ (quotePath=true)
+ok 60 - clean-tree review setup: generated Unicode filename under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 50.957615
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"generated Unicode filename under .opencode/review-evidence/","quotePath":true,"porcelain":"?? \\".opencode/review-evidence/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree review setup: generated Unicode directory under .opencode/review-evidence/ (quotePath=true)
+ok 61 - clean-tree review setup: generated Unicode directory under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 55.773092
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"generated Unicode directory under .opencode/review-evidence/","quotePath":true,"porcelain":"?? \\".opencode/review-evidence/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274/artifact.txt\\"\\n"}
+# Subtest: clean-tree review setup: reject tracked modified under .opencode/review-evidence/ (quotePath=true)
+ok 62 - clean-tree review setup: reject tracked modified under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 69.540827
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked modified under .opencode/review-evidence/","quotePath":true,"porcelain":" M .opencode/review-evidence/tracked.txt\\n"}
+# Subtest: clean-tree review setup: reject tracked Unicode modified under .opencode/review-evidence/ (quotePath=true)
+ok 63 - clean-tree review setup: reject tracked Unicode modified under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 77.441802
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked Unicode modified under .opencode/review-evidence/","quotePath":true,"porcelain":" M \\".opencode/review-evidence/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree review setup: reject tracked staged under .opencode/review-evidence/ (quotePath=true)
+ok 64 - clean-tree review setup: reject tracked staged under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 72.173196
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked staged under .opencode/review-evidence/","quotePath":true,"porcelain":"M  .opencode/review-evidence/tracked.txt\\n"}
+# Subtest: clean-tree review setup: reject tracked deleted under .opencode/review-evidence/ (quotePath=true)
+ok 65 - clean-tree review setup: reject tracked deleted under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 65.05422
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked deleted under .opencode/review-evidence/","quotePath":true,"porcelain":" D .opencode/review-evidence/tracked.txt\\n"}
+# Subtest: clean-tree review setup: reject tracked renamed under .opencode/review-evidence/ (quotePath=true)
+ok 66 - clean-tree review setup: reject tracked renamed under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 68.779695
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked renamed under .opencode/review-evidence/","quotePath":true,"porcelain":"R  .opencode/review-evidence/tracked.txt -> .opencode/review-evidence/renamed.txt\\n"}
+# Subtest: clean-tree review setup: generated ASCII under .review-context/ (quotePath=true)
+ok 67 - clean-tree review setup: generated ASCII under .review-context/ (quotePath=true)
+  ---
+  duration_ms: 50.382244
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"generated ASCII under .review-context/","quotePath":true,"porcelain":"?? .review-context/artifact.txt\\n"}
+# Subtest: clean-tree review setup: generated Unicode filename under .review-context/ (quotePath=true)
+ok 68 - clean-tree review setup: generated Unicode filename under .review-context/ (quotePath=true)
+  ---
+  duration_ms: 44.257702
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"generated Unicode filename under .review-context/","quotePath":true,"porcelain":"?? \\".review-context/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree review setup: generated Unicode directory under .review-context/ (quotePath=true)
+ok 69 - clean-tree review setup: generated Unicode directory under .review-context/ (quotePath=true)
+  ---
+  duration_ms: 46.688278
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"generated Unicode directory under .review-context/","quotePath":true,"porcelain":"?? \\".review-context/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274/artifact.txt\\"\\n"}
+# Subtest: clean-tree review setup: reject tracked modified under .review-context/ (quotePath=true)
+ok 70 - clean-tree review setup: reject tracked modified under .review-context/ (quotePath=true)
+  ---
+  duration_ms: 60.20769
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked modified under .review-context/","quotePath":true,"porcelain":" M .review-context/tracked.txt\\n"}
+# Subtest: clean-tree review setup: reject tracked Unicode modified under .review-context/ (quotePath=true)
+ok 71 - clean-tree review setup: reject tracked Unicode modified under .review-context/ (quotePath=true)
+  ---
+  duration_ms: 60.105067
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked Unicode modified under .review-context/","quotePath":true,"porcelain":" M \\".review-context/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree review setup: reject tracked staged under .review-context/ (quotePath=true)
+ok 72 - clean-tree review setup: reject tracked staged under .review-context/ (quotePath=true)
+  ---
+  duration_ms: 64.765977
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked staged under .review-context/","quotePath":true,"porcelain":"M  .review-context/tracked.txt\\n"}
+# Subtest: clean-tree review setup: reject tracked deleted under .review-context/ (quotePath=true)
+ok 73 - clean-tree review setup: reject tracked deleted under .review-context/ (quotePath=true)
+  ---
+  duration_ms: 60.090443
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked deleted under .review-context/","quotePath":true,"porcelain":" D .review-context/tracked.txt\\n"}
+# Subtest: clean-tree review setup: reject tracked renamed under .review-context/ (quotePath=true)
+ok 74 - clean-tree review setup: reject tracked renamed under .review-context/ (quotePath=true)
+  ---
+  duration_ms: 59.726097
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked renamed under .review-context/","quotePath":true,"porcelain":"R  .review-context/tracked.txt -> .review-context/renamed.txt\\n"}
+# Subtest: clean-tree review setup: reject unrelated ASCII (quotePath=true)
+ok 75 - clean-tree review setup: reject unrelated ASCII (quotePath=true)
+  ---
+  duration_ms: 50.383019
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject unrelated ASCII","quotePath":true,"porcelain":"?? unexpected.txt\\n"}
+# Subtest: clean-tree review setup: reject unrelated Unicode (quotePath=true)
+ok 76 - clean-tree review setup: reject unrelated Unicode (quotePath=true)
+  ---
+  duration_ms: 46.401782
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject unrelated Unicode","quotePath":true,"porcelain":"?? \\"\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree review setup: reject review-context prefix lookalike (quotePath=true)
+ok 77 - clean-tree review setup: reject review-context prefix lookalike (quotePath=true)
+  ---
+  duration_ms: 40.107548
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject review-context prefix lookalike","quotePath":true,"porcelain":"?? .review-context-extra/artifact.txt\\n"}
+# Subtest: clean-tree review setup: reject review-evidence prefix lookalike (quotePath=true)
+ok 78 - clean-tree review setup: reject review-evidence prefix lookalike (quotePath=true)
+  ---
+  duration_ms: 44.908739
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject review-evidence prefix lookalike","quotePath":true,"porcelain":"?? .opencode/review-evidence-extra/artifact.txt\\n"}
+# Subtest: clean-tree review setup: reject unrelated opencode sibling (quotePath=true)
+ok 79 - clean-tree review setup: reject unrelated opencode sibling (quotePath=true)
+  ---
+  duration_ms: 43.696136
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject unrelated opencode sibling","quotePath":true,"porcelain":"?? .opencode/unexpected.txt\\n"}
+# Subtest: clean-tree review setup: reject mixed generated and unrelated dirt (quotePath=true)
+ok 80 - clean-tree review setup: reject mixed generated and unrelated dirt (quotePath=true)
+  ---
+  duration_ms: 42.131743
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject mixed generated and unrelated dirt","quotePath":true,"porcelain":"?? .opencode/review-evidence/artifact.txt\\n?? .review-context/artifact.txt\\n?? \\"\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree review setup: empty tree (quotePath=false)
+ok 81 - clean-tree review setup: empty tree (quotePath=false)
+  ---
+  duration_ms: 57.91215
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"empty tree","quotePath":false,"porcelain":""}
+# Subtest: clean-tree review setup: generated ASCII under .opencode/review-evidence/ (quotePath=false)
+ok 82 - clean-tree review setup: generated ASCII under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 43.514382
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"generated ASCII under .opencode/review-evidence/","quotePath":false,"porcelain":"?? .opencode/review-evidence/artifact.txt\\n"}
+# Subtest: clean-tree review setup: generated Unicode filename under .opencode/review-evidence/ (quotePath=false)
+ok 83 - clean-tree review setup: generated Unicode filename under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 37.502184
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"generated Unicode filename under .opencode/review-evidence/","quotePath":false,"porcelain":"?? .opencode/review-evidence/尾-ημ.txt\\n"}
+# Subtest: clean-tree review setup: generated Unicode directory under .opencode/review-evidence/ (quotePath=false)
+ok 84 - clean-tree review setup: generated Unicode directory under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 43.205566
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"generated Unicode directory under .opencode/review-evidence/","quotePath":false,"porcelain":"?? .opencode/review-evidence/尾-ημ/artifact.txt\\n"}
+# Subtest: clean-tree review setup: reject tracked modified under .opencode/review-evidence/ (quotePath=false)
+ok 85 - clean-tree review setup: reject tracked modified under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 60.67072
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked modified under .opencode/review-evidence/","quotePath":false,"porcelain":" M .opencode/review-evidence/tracked.txt\\n"}
+# Subtest: clean-tree review setup: reject tracked Unicode modified under .opencode/review-evidence/ (quotePath=false)
+ok 86 - clean-tree review setup: reject tracked Unicode modified under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 57.936393
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked Unicode modified under .opencode/review-evidence/","quotePath":false,"porcelain":" M .opencode/review-evidence/尾-ημ.txt\\n"}
+# Subtest: clean-tree review setup: reject tracked staged under .opencode/review-evidence/ (quotePath=false)
+ok 87 - clean-tree review setup: reject tracked staged under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 62.98611
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked staged under .opencode/review-evidence/","quotePath":false,"porcelain":"M  .opencode/review-evidence/tracked.txt\\n"}
+# Subtest: clean-tree review setup: reject tracked deleted under .opencode/review-evidence/ (quotePath=false)
+ok 88 - clean-tree review setup: reject tracked deleted under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 53.170623
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked deleted under .opencode/review-evidence/","quotePath":false,"porcelain":" D .opencode/review-evidence/tracked.txt\\n"}
+# Subtest: clean-tree review setup: reject tracked renamed under .opencode/review-evidence/ (quotePath=false)
+ok 89 - clean-tree review setup: reject tracked renamed under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 58.915056
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked renamed under .opencode/review-evidence/","quotePath":false,"porcelain":"R  .opencode/review-evidence/tracked.txt -> .opencode/review-evidence/renamed.txt\\n"}
+# Subtest: clean-tree review setup: generated ASCII under .review-context/ (quotePath=false)
+ok 90 - clean-tree review setup: generated ASCII under .review-context/ (quotePath=false)
+  ---
+  duration_ms: 38.821868
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"generated ASCII under .review-context/","quotePath":false,"porcelain":"?? .review-context/artifact.txt\\n"}
+# Subtest: clean-tree review setup: generated Unicode filename under .review-context/ (quotePath=false)
+ok 91 - clean-tree review setup: generated Unicode filename under .review-context/ (quotePath=false)
+  ---
+  duration_ms: 39.512698
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"generated Unicode filename under .review-context/","quotePath":false,"porcelain":"?? .review-context/尾-ημ.txt\\n"}
+# Subtest: clean-tree review setup: generated Unicode directory under .review-context/ (quotePath=false)
+ok 92 - clean-tree review setup: generated Unicode directory under .review-context/ (quotePath=false)
+  ---
+  duration_ms: 36.25451
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"generated Unicode directory under .review-context/","quotePath":false,"porcelain":"?? .review-context/尾-ημ/artifact.txt\\n"}
+# Subtest: clean-tree review setup: reject tracked modified under .review-context/ (quotePath=false)
+ok 93 - clean-tree review setup: reject tracked modified under .review-context/ (quotePath=false)
+  ---
+  duration_ms: 56.000111
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked modified under .review-context/","quotePath":false,"porcelain":" M .review-context/tracked.txt\\n"}
+# Subtest: clean-tree review setup: reject tracked Unicode modified under .review-context/ (quotePath=false)
+ok 94 - clean-tree review setup: reject tracked Unicode modified under .review-context/ (quotePath=false)
+  ---
+  duration_ms: 49.296144
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked Unicode modified under .review-context/","quotePath":false,"porcelain":" M .review-context/尾-ημ.txt\\n"}
+# Subtest: clean-tree review setup: reject tracked staged under .review-context/ (quotePath=false)
+ok 95 - clean-tree review setup: reject tracked staged under .review-context/ (quotePath=false)
+  ---
+  duration_ms: 56.551682
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked staged under .review-context/","quotePath":false,"porcelain":"M  .review-context/tracked.txt\\n"}
+# Subtest: clean-tree review setup: reject tracked deleted under .review-context/ (quotePath=false)
+ok 96 - clean-tree review setup: reject tracked deleted under .review-context/ (quotePath=false)
+  ---
+  duration_ms: 48.829565
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked deleted under .review-context/","quotePath":false,"porcelain":" D .review-context/tracked.txt\\n"}
+# Subtest: clean-tree review setup: reject tracked renamed under .review-context/ (quotePath=false)
+ok 97 - clean-tree review setup: reject tracked renamed under .review-context/ (quotePath=false)
+  ---
+  duration_ms: 57.76991
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked renamed under .review-context/","quotePath":false,"porcelain":"R  .review-context/tracked.txt -> .review-context/renamed.txt\\n"}
+# Subtest: clean-tree review setup: reject unrelated ASCII (quotePath=false)
+ok 98 - clean-tree review setup: reject unrelated ASCII (quotePath=false)
+  ---
+  duration_ms: 40.520571
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject unrelated ASCII","quotePath":false,"porcelain":"?? unexpected.txt\\n"}
+# Subtest: clean-tree review setup: reject unrelated Unicode (quotePath=false)
+ok 99 - clean-tree review setup: reject unrelated Unicode (quotePath=false)
+  ---
+  duration_ms: 36.170698
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject unrelated Unicode","quotePath":false,"porcelain":"?? 尾-ημ.txt\\n"}
+# Subtest: clean-tree review setup: reject review-context prefix lookalike (quotePath=false)
+ok 100 - clean-tree review setup: reject review-context prefix lookalike (quotePath=false)
+  ---
+  duration_ms: 33.973923
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject review-context prefix lookalike","quotePath":false,"porcelain":"?? .review-context-extra/artifact.txt\\n"}
+# Subtest: clean-tree review setup: reject review-evidence prefix lookalike (quotePath=false)
+ok 101 - clean-tree review setup: reject review-evidence prefix lookalike (quotePath=false)
+  ---
+  duration_ms: 39.598093
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject review-evidence prefix lookalike","quotePath":false,"porcelain":"?? .opencode/review-evidence-extra/artifact.txt\\n"}
+# Subtest: clean-tree review setup: reject unrelated opencode sibling (quotePath=false)
+ok 102 - clean-tree review setup: reject unrelated opencode sibling (quotePath=false)
+  ---
+  duration_ms: 41.879806
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject unrelated opencode sibling","quotePath":false,"porcelain":"?? .opencode/unexpected.txt\\n"}
+# Subtest: clean-tree review setup: reject mixed generated and unrelated dirt (quotePath=false)
+ok 103 - clean-tree review setup: reject mixed generated and unrelated dirt (quotePath=false)
+  ---
+  duration_ms: 37.874213
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject mixed generated and unrelated dirt","quotePath":false,"porcelain":"?? .opencode/review-evidence/artifact.txt\\n?? .review-context/artifact.txt\\n?? 尾-ημ.txt\\n"}
+# Subtest: clean-tree review completion: empty tree (quotePath=true)
+ok 104 - clean-tree review completion: empty tree (quotePath=true)
+  ---
+  duration_ms: 37.777912
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"empty tree","quotePath":true,"porcelain":""}
+# Subtest: clean-tree review completion: generated ASCII under .opencode/review-evidence/ (quotePath=true)
+ok 105 - clean-tree review completion: generated ASCII under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 43.580984
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"generated ASCII under .opencode/review-evidence/","quotePath":true,"porcelain":"?? .opencode/review-evidence/artifact.txt\\n"}
+# Subtest: clean-tree review completion: generated Unicode filename under .opencode/review-evidence/ (quotePath=true)
+ok 106 - clean-tree review completion: generated Unicode filename under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 41.20692
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"generated Unicode filename under .opencode/review-evidence/","quotePath":true,"porcelain":"?? \\".opencode/review-evidence/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree review completion: generated Unicode directory under .opencode/review-evidence/ (quotePath=true)
+ok 107 - clean-tree review completion: generated Unicode directory under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 45.928933
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"generated Unicode directory under .opencode/review-evidence/","quotePath":true,"porcelain":"?? \\".opencode/review-evidence/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274/artifact.txt\\"\\n"}
+# Subtest: clean-tree review completion: reject tracked modified under .opencode/review-evidence/ (quotePath=true)
+ok 108 - clean-tree review completion: reject tracked modified under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 61.191263
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked modified under .opencode/review-evidence/","quotePath":true,"porcelain":" M .opencode/review-evidence/tracked.txt\\n"}
+# Subtest: clean-tree review completion: reject tracked Unicode modified under .opencode/review-evidence/ (quotePath=true)
+ok 109 - clean-tree review completion: reject tracked Unicode modified under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 56.592021
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked Unicode modified under .opencode/review-evidence/","quotePath":true,"porcelain":" M \\".opencode/review-evidence/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree review completion: reject tracked staged under .opencode/review-evidence/ (quotePath=true)
+ok 110 - clean-tree review completion: reject tracked staged under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 59.148416
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked staged under .opencode/review-evidence/","quotePath":true,"porcelain":"M  .opencode/review-evidence/tracked.txt\\n"}
+# Subtest: clean-tree review completion: reject tracked deleted under .opencode/review-evidence/ (quotePath=true)
+ok 111 - clean-tree review completion: reject tracked deleted under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 56.308133
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked deleted under .opencode/review-evidence/","quotePath":true,"porcelain":" D .opencode/review-evidence/tracked.txt\\n"}
+# Subtest: clean-tree review completion: reject tracked renamed under .opencode/review-evidence/ (quotePath=true)
+ok 112 - clean-tree review completion: reject tracked renamed under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 70.937631
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked renamed under .opencode/review-evidence/","quotePath":true,"porcelain":"R  .opencode/review-evidence/tracked.txt -> .opencode/review-evidence/renamed.txt\\n"}
+# Subtest: clean-tree review completion: generated ASCII under .review-context/ (quotePath=true)
+ok 113 - clean-tree review completion: generated ASCII under .review-context/ (quotePath=true)
+  ---
+  duration_ms: 53.703058
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"generated ASCII under .review-context/","quotePath":true,"porcelain":"?? .review-context/artifact.txt\\n"}
+# Subtest: clean-tree review completion: generated Unicode filename under .review-context/ (quotePath=true)
+ok 114 - clean-tree review completion: generated Unicode filename under .review-context/ (quotePath=true)
+  ---
+  duration_ms: 54.170994
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"generated Unicode filename under .review-context/","quotePath":true,"porcelain":"?? \\".review-context/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree review completion: generated Unicode directory under .review-context/ (quotePath=true)
+ok 115 - clean-tree review completion: generated Unicode directory under .review-context/ (quotePath=true)
+  ---
+  duration_ms: 55.316571
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"generated Unicode directory under .review-context/","quotePath":true,"porcelain":"?? \\".review-context/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274/artifact.txt\\"\\n"}
+# Subtest: clean-tree review completion: reject tracked modified under .review-context/ (quotePath=true)
+ok 116 - clean-tree review completion: reject tracked modified under .review-context/ (quotePath=true)
+  ---
+  duration_ms: 75.105907
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked modified under .review-context/","quotePath":true,"porcelain":" M .review-context/tracked.txt\\n"}
+# Subtest: clean-tree review completion: reject tracked Unicode modified under .review-context/ (quotePath=true)
+ok 117 - clean-tree review completion: reject tracked Unicode modified under .review-context/ (quotePath=true)
+  ---
+  duration_ms: 85.193673
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked Unicode modified under .review-context/","quotePath":true,"porcelain":" M \\".review-context/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree review completion: reject tracked staged under .review-context/ (quotePath=true)
+ok 118 - clean-tree review completion: reject tracked staged under .review-context/ (quotePath=true)
+  ---
+  duration_ms: 77.617341
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked staged under .review-context/","quotePath":true,"porcelain":"M  .review-context/tracked.txt\\n"}
+# Subtest: clean-tree review completion: reject tracked deleted under .review-context/ (quotePath=true)
+ok 119 - clean-tree review completion: reject tracked deleted under .review-context/ (quotePath=true)
+  ---
+  duration_ms: 81.965184
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked deleted under .review-context/","quotePath":true,"porcelain":" D .review-context/tracked.txt\\n"}
+# Subtest: clean-tree review completion: reject tracked renamed under .review-context/ (quotePath=true)
+ok 120 - clean-tree review completion: reject tracked renamed under .review-context/ (quotePath=true)
+  ---
+  duration_ms: 80.021821
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked renamed under .review-context/","quotePath":true,"porcelain":"R  .review-context/tracked.txt -> .review-context/renamed.txt\\n"}
+# Subtest: clean-tree review completion: reject unrelated ASCII (quotePath=true)
+ok 121 - clean-tree review completion: reject unrelated ASCII (quotePath=true)
+  ---
+  duration_ms: 61.404233
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject unrelated ASCII","quotePath":true,"porcelain":"?? unexpected.txt\\n"}
+# Subtest: clean-tree review completion: reject unrelated Unicode (quotePath=true)
+ok 122 - clean-tree review completion: reject unrelated Unicode (quotePath=true)
+  ---
+  duration_ms: 48.56605
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject unrelated Unicode","quotePath":true,"porcelain":"?? \\"\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree review completion: reject review-context prefix lookalike (quotePath=true)
+ok 123 - clean-tree review completion: reject review-context prefix lookalike (quotePath=true)
+  ---
+  duration_ms: 48.140158
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject review-context prefix lookalike","quotePath":true,"porcelain":"?? .review-context-extra/artifact.txt\\n"}
+# Subtest: clean-tree review completion: reject review-evidence prefix lookalike (quotePath=true)
+ok 124 - clean-tree review completion: reject review-evidence prefix lookalike (quotePath=true)
+  ---
+  duration_ms: 49.50989
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject review-evidence prefix lookalike","quotePath":true,"porcelain":"?? .opencode/review-evidence-extra/artifact.txt\\n"}
+# Subtest: clean-tree review completion: reject unrelated opencode sibling (quotePath=true)
+ok 125 - clean-tree review completion: reject unrelated opencode sibling (quotePath=true)
+  ---
+  duration_ms: 50.142014
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject unrelated opencode sibling","quotePath":true,"porcelain":"?? .opencode/unexpected.txt\\n"}
+# Subtest: clean-tree review completion: reject mixed generated and unrelated dirt (quotePath=true)
+ok 126 - clean-tree review completion: reject mixed generated and unrelated dirt (quotePath=true)
+  ---
+  duration_ms: 47.856622
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject mixed generated and unrelated dirt","quotePath":true,"porcelain":"?? .opencode/review-evidence/artifact.txt\\n?? .review-context/artifact.txt\\n?? \\"\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree review completion: empty tree (quotePath=false)
+ok 127 - clean-tree review completion: empty tree (quotePath=false)
+  ---
+  duration_ms: 44.745381
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"empty tree","quotePath":false,"porcelain":""}
+# Subtest: clean-tree review completion: generated ASCII under .opencode/review-evidence/ (quotePath=false)
+ok 128 - clean-tree review completion: generated ASCII under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 44.820701
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"generated ASCII under .opencode/review-evidence/","quotePath":false,"porcelain":"?? .opencode/review-evidence/artifact.txt\\n"}
+# Subtest: clean-tree review completion: generated Unicode filename under .opencode/review-evidence/ (quotePath=false)
+ok 129 - clean-tree review completion: generated Unicode filename under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 42.566723
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"generated Unicode filename under .opencode/review-evidence/","quotePath":false,"porcelain":"?? .opencode/review-evidence/尾-ημ.txt\\n"}
+# Subtest: clean-tree review completion: generated Unicode directory under .opencode/review-evidence/ (quotePath=false)
+ok 130 - clean-tree review completion: generated Unicode directory under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 41.819005
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"generated Unicode directory under .opencode/review-evidence/","quotePath":false,"porcelain":"?? .opencode/review-evidence/尾-ημ/artifact.txt\\n"}
+# Subtest: clean-tree review completion: reject tracked modified under .opencode/review-evidence/ (quotePath=false)
+ok 131 - clean-tree review completion: reject tracked modified under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 54.845016
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked modified under .opencode/review-evidence/","quotePath":false,"porcelain":" M .opencode/review-evidence/tracked.txt\\n"}
+# Subtest: clean-tree review completion: reject tracked Unicode modified under .opencode/review-evidence/ (quotePath=false)
+ok 132 - clean-tree review completion: reject tracked Unicode modified under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 59.911952
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked Unicode modified under .opencode/review-evidence/","quotePath":false,"porcelain":" M .opencode/review-evidence/尾-ημ.txt\\n"}
+# Subtest: clean-tree review completion: reject tracked staged under .opencode/review-evidence/ (quotePath=false)
+ok 133 - clean-tree review completion: reject tracked staged under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 54.816711
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked staged under .opencode/review-evidence/","quotePath":false,"porcelain":"M  .opencode/review-evidence/tracked.txt\\n"}
+# Subtest: clean-tree review completion: reject tracked deleted under .opencode/review-evidence/ (quotePath=false)
+ok 134 - clean-tree review completion: reject tracked deleted under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 57.335484
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked deleted under .opencode/review-evidence/","quotePath":false,"porcelain":" D .opencode/review-evidence/tracked.txt\\n"}
+# Subtest: clean-tree review completion: reject tracked renamed under .opencode/review-evidence/ (quotePath=false)
+ok 135 - clean-tree review completion: reject tracked renamed under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 68.899275
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked renamed under .opencode/review-evidence/","quotePath":false,"porcelain":"R  .opencode/review-evidence/tracked.txt -> .opencode/review-evidence/renamed.txt\\n"}
+# Subtest: clean-tree review completion: generated ASCII under .review-context/ (quotePath=false)
+ok 136 - clean-tree review completion: generated ASCII under .review-context/ (quotePath=false)
+  ---
+  duration_ms: 43.670545
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"generated ASCII under .review-context/","quotePath":false,"porcelain":"?? .review-context/artifact.txt\\n"}
+# Subtest: clean-tree review completion: generated Unicode filename under .review-context/ (quotePath=false)
+ok 137 - clean-tree review completion: generated Unicode filename under .review-context/ (quotePath=false)
+  ---
+  duration_ms: 40.339346
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"generated Unicode filename under .review-context/","quotePath":false,"porcelain":"?? .review-context/尾-ημ.txt\\n"}
+# Subtest: clean-tree review completion: generated Unicode directory under .review-context/ (quotePath=false)
+ok 138 - clean-tree review completion: generated Unicode directory under .review-context/ (quotePath=false)
+  ---
+  duration_ms: 42.490061
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"generated Unicode directory under .review-context/","quotePath":false,"porcelain":"?? .review-context/尾-ημ/artifact.txt\\n"}
+# Subtest: clean-tree review completion: reject tracked modified under .review-context/ (quotePath=false)
+ok 139 - clean-tree review completion: reject tracked modified under .review-context/ (quotePath=false)
+  ---
+  duration_ms: 61.071162
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked modified under .review-context/","quotePath":false,"porcelain":" M .review-context/tracked.txt\\n"}
+# Subtest: clean-tree review completion: reject tracked Unicode modified under .review-context/ (quotePath=false)
+ok 140 - clean-tree review completion: reject tracked Unicode modified under .review-context/ (quotePath=false)
+  ---
+  duration_ms: 64.257494
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked Unicode modified under .review-context/","quotePath":false,"porcelain":" M .review-context/尾-ημ.txt\\n"}
+# Subtest: clean-tree review completion: reject tracked staged under .review-context/ (quotePath=false)
+ok 141 - clean-tree review completion: reject tracked staged under .review-context/ (quotePath=false)
+  ---
+  duration_ms: 70.924608
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked staged under .review-context/","quotePath":false,"porcelain":"M  .review-context/tracked.txt\\n"}
+# Subtest: clean-tree review completion: reject tracked deleted under .review-context/ (quotePath=false)
+ok 142 - clean-tree review completion: reject tracked deleted under .review-context/ (quotePath=false)
+  ---
+  duration_ms: 62.610057
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked deleted under .review-context/","quotePath":false,"porcelain":" D .review-context/tracked.txt\\n"}
+# Subtest: clean-tree review completion: reject tracked renamed under .review-context/ (quotePath=false)
+ok 143 - clean-tree review completion: reject tracked renamed under .review-context/ (quotePath=false)
+  ---
+  duration_ms: 70.321706
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked renamed under .review-context/","quotePath":false,"porcelain":"R  .review-context/tracked.txt -> .review-context/renamed.txt\\n"}
+# Subtest: clean-tree review completion: reject unrelated ASCII (quotePath=false)
+ok 144 - clean-tree review completion: reject unrelated ASCII (quotePath=false)
+  ---
+  duration_ms: 44.72034
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject unrelated ASCII","quotePath":false,"porcelain":"?? unexpected.txt\\n"}
+# Subtest: clean-tree review completion: reject unrelated Unicode (quotePath=false)
+ok 145 - clean-tree review completion: reject unrelated Unicode (quotePath=false)
+  ---
+  duration_ms: 43.353792
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject unrelated Unicode","quotePath":false,"porcelain":"?? 尾-ημ.txt\\n"}
+# Subtest: clean-tree review completion: reject review-context prefix lookalike (quotePath=false)
+ok 146 - clean-tree review completion: reject review-context prefix lookalike (quotePath=false)
+  ---
+  duration_ms: 49.561498
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject review-context prefix lookalike","quotePath":false,"porcelain":"?? .review-context-extra/artifact.txt\\n"}
+# Subtest: clean-tree review completion: reject review-evidence prefix lookalike (quotePath=false)
+ok 147 - clean-tree review completion: reject review-evidence prefix lookalike (quotePath=false)
+  ---
+  duration_ms: 49.634789
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject review-evidence prefix lookalike","quotePath":false,"porcelain":"?? .opencode/review-evidence-extra/artifact.txt\\n"}
+# Subtest: clean-tree review completion: reject unrelated opencode sibling (quotePath=false)
+ok 148 - clean-tree review completion: reject unrelated opencode sibling (quotePath=false)
+  ---
+  duration_ms: 50.735598
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject unrelated opencode sibling","quotePath":false,"porcelain":"?? .opencode/unexpected.txt\\n"}
+# Subtest: clean-tree review completion: reject mixed generated and unrelated dirt (quotePath=false)
+ok 149 - clean-tree review completion: reject mixed generated and unrelated dirt (quotePath=false)
+  ---
+  duration_ms: 55.453312
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject mixed generated and unrelated dirt","quotePath":false,"porcelain":"?? .opencode/review-evidence/artifact.txt\\n?? .review-context/artifact.txt\\n?? 尾-ημ.txt\\n"}
+# Subtest: clean-tree deterministic completion: empty tree (quotePath=true)
+ok 150 - clean-tree deterministic completion: empty tree (quotePath=true)
+  ---
+  duration_ms: 77.684468
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"empty tree","quotePath":true,"porcelain":"?? .opencode/review-evidence/statuses.env\\n"}
+# Subtest: clean-tree deterministic completion: generated ASCII under .opencode/review-evidence/ (quotePath=true)
+ok 151 - clean-tree deterministic completion: generated ASCII under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 77.972439
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"generated ASCII under .opencode/review-evidence/","quotePath":true,"porcelain":"?? .opencode/review-evidence/artifact.txt\\n?? .opencode/review-evidence/statuses.env\\n"}
+# Subtest: clean-tree deterministic completion: generated Unicode filename under .opencode/review-evidence/ (quotePath=true)
+ok 152 - clean-tree deterministic completion: generated Unicode filename under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 79.611823
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"generated Unicode filename under .opencode/review-evidence/","quotePath":true,"porcelain":"?? .opencode/review-evidence/statuses.env\\n?? \\".opencode/review-evidence/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree deterministic completion: generated Unicode directory under .opencode/review-evidence/ (quotePath=true)
+ok 153 - clean-tree deterministic completion: generated Unicode directory under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 84.205006
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"generated Unicode directory under .opencode/review-evidence/","quotePath":true,"porcelain":"?? .opencode/review-evidence/statuses.env\\n?? \\".opencode/review-evidence/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274/artifact.txt\\"\\n"}
+# Subtest: clean-tree deterministic completion: reject tracked modified under .opencode/review-evidence/ (quotePath=true)
+ok 154 - clean-tree deterministic completion: reject tracked modified under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 96.151594
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject tracked modified under .opencode/review-evidence/","quotePath":true,"porcelain":" M .opencode/review-evidence/tracked.txt\\n?? .opencode/review-evidence/statuses.env\\n"}
+# Subtest: clean-tree deterministic completion: reject tracked Unicode modified under .opencode/review-evidence/ (quotePath=true)
+ok 155 - clean-tree deterministic completion: reject tracked Unicode modified under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 88.118228
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject tracked Unicode modified under .opencode/review-evidence/","quotePath":true,"porcelain":" M \\".opencode/review-evidence/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n?? .opencode/review-evidence/statuses.env\\n"}
+# Subtest: clean-tree deterministic completion: reject tracked staged under .opencode/review-evidence/ (quotePath=true)
+ok 156 - clean-tree deterministic completion: reject tracked staged under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 97.928838
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject tracked staged under .opencode/review-evidence/","quotePath":true,"porcelain":"M  .opencode/review-evidence/tracked.txt\\n?? .opencode/review-evidence/statuses.env\\n"}
+# Subtest: clean-tree deterministic completion: reject tracked deleted under .opencode/review-evidence/ (quotePath=true)
+ok 157 - clean-tree deterministic completion: reject tracked deleted under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 108.861364
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject tracked deleted under .opencode/review-evidence/","quotePath":true,"porcelain":" D .opencode/review-evidence/tracked.txt\\n?? .opencode/review-evidence/statuses.env\\n"}
+# Subtest: clean-tree deterministic completion: reject tracked renamed under .opencode/review-evidence/ (quotePath=true)
+ok 158 - clean-tree deterministic completion: reject tracked renamed under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 103.544624
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject tracked renamed under .opencode/review-evidence/","quotePath":true,"porcelain":"R  .opencode/review-evidence/tracked.txt -> .opencode/review-evidence/renamed.txt\\n?? .opencode/review-evidence/statuses.env\\n"}
+# Subtest: clean-tree deterministic completion: reject unrelated ASCII (quotePath=true)
+ok 159 - clean-tree deterministic completion: reject unrelated ASCII (quotePath=true)
+  ---
+  duration_ms: 83.943064
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject unrelated ASCII","quotePath":true,"porcelain":"?? .opencode/review-evidence/statuses.env\\n?? unexpected.txt\\n"}
+# Subtest: clean-tree deterministic completion: reject unrelated Unicode (quotePath=true)
+ok 160 - clean-tree deterministic completion: reject unrelated Unicode (quotePath=true)
+  ---
+  duration_ms: 76.262314
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject unrelated Unicode","quotePath":true,"porcelain":"?? .opencode/review-evidence/statuses.env\\n?? \\"\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree deterministic completion: reject review-context prefix lookalike (quotePath=true)
+ok 161 - clean-tree deterministic completion: reject review-context prefix lookalike (quotePath=true)
+  ---
+  duration_ms: 90.265792
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject review-context prefix lookalike","quotePath":true,"porcelain":"?? .opencode/review-evidence/statuses.env\\n?? .review-context-extra/artifact.txt\\n"}
+# Subtest: clean-tree deterministic completion: reject review-evidence prefix lookalike (quotePath=true)
+ok 162 - clean-tree deterministic completion: reject review-evidence prefix lookalike (quotePath=true)
+  ---
+  duration_ms: 76.779595
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject review-evidence prefix lookalike","quotePath":true,"porcelain":"?? .opencode/review-evidence-extra/artifact.txt\\n?? .opencode/review-evidence/statuses.env\\n"}
+# Subtest: clean-tree deterministic completion: reject unrelated opencode sibling (quotePath=true)
+ok 163 - clean-tree deterministic completion: reject unrelated opencode sibling (quotePath=true)
+  ---
+  duration_ms: 77.556376
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject unrelated opencode sibling","quotePath":true,"porcelain":"?? .opencode/review-evidence/statuses.env\\n?? .opencode/unexpected.txt\\n"}
+# Subtest: clean-tree deterministic completion: reject mixed generated and unrelated dirt (quotePath=true)
+ok 164 - clean-tree deterministic completion: reject mixed generated and unrelated dirt (quotePath=true)
+  ---
+  duration_ms: 78.469915
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject mixed generated and unrelated dirt","quotePath":true,"porcelain":"?? .opencode/review-evidence/artifact.txt\\n?? .opencode/review-evidence/statuses.env\\n?? \\"\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree deterministic completion: reject review-context/artifact.txt (quotePath=true)
+ok 165 - clean-tree deterministic completion: reject review-context/artifact.txt (quotePath=true)
+  ---
+  duration_ms: 79.429632
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject review-context/artifact.txt","quotePath":true,"porcelain":"?? .opencode/review-evidence/statuses.env\\n?? .review-context/artifact.txt\\n"}
+# Subtest: clean-tree deterministic completion: reject review-context/尾-ημ.txt (quotePath=true)
+ok 166 - clean-tree deterministic completion: reject review-context/尾-ημ.txt (quotePath=true)
+  ---
+  duration_ms: 72.43855
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject review-context/尾-ημ.txt","quotePath":true,"porcelain":"?? .opencode/review-evidence/statuses.env\\n?? \\".review-context/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree deterministic completion: empty tree (quotePath=false)
+ok 167 - clean-tree deterministic completion: empty tree (quotePath=false)
+  ---
+  duration_ms: 75.690635
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"empty tree","quotePath":false,"porcelain":"?? .opencode/review-evidence/statuses.env\\n"}
+# Subtest: clean-tree deterministic completion: generated ASCII under .opencode/review-evidence/ (quotePath=false)
+ok 168 - clean-tree deterministic completion: generated ASCII under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 82.434543
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"generated ASCII under .opencode/review-evidence/","quotePath":false,"porcelain":"?? .opencode/review-evidence/artifact.txt\\n?? .opencode/review-evidence/statuses.env\\n"}
+# Subtest: clean-tree deterministic completion: generated Unicode filename under .opencode/review-evidence/ (quotePath=false)
+ok 169 - clean-tree deterministic completion: generated Unicode filename under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 76.365789
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"generated Unicode filename under .opencode/review-evidence/","quotePath":false,"porcelain":"?? .opencode/review-evidence/statuses.env\\n?? .opencode/review-evidence/尾-ημ.txt\\n"}
+# Subtest: clean-tree deterministic completion: generated Unicode directory under .opencode/review-evidence/ (quotePath=false)
+ok 170 - clean-tree deterministic completion: generated Unicode directory under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 80.151783
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"generated Unicode directory under .opencode/review-evidence/","quotePath":false,"porcelain":"?? .opencode/review-evidence/statuses.env\\n?? .opencode/review-evidence/尾-ημ/artifact.txt\\n"}
+# Subtest: clean-tree deterministic completion: reject tracked modified under .opencode/review-evidence/ (quotePath=false)
+ok 171 - clean-tree deterministic completion: reject tracked modified under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 85.213564
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject tracked modified under .opencode/review-evidence/","quotePath":false,"porcelain":" M .opencode/review-evidence/tracked.txt\\n?? .opencode/review-evidence/statuses.env\\n"}
+# Subtest: clean-tree deterministic completion: reject tracked Unicode modified under .opencode/review-evidence/ (quotePath=false)
+ok 172 - clean-tree deterministic completion: reject tracked Unicode modified under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 97.383462
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject tracked Unicode modified under .opencode/review-evidence/","quotePath":false,"porcelain":" M .opencode/review-evidence/尾-ημ.txt\\n?? .opencode/review-evidence/statuses.env\\n"}
+# Subtest: clean-tree deterministic completion: reject tracked staged under .opencode/review-evidence/ (quotePath=false)
+ok 173 - clean-tree deterministic completion: reject tracked staged under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 100.673691
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject tracked staged under .opencode/review-evidence/","quotePath":false,"porcelain":"M  .opencode/review-evidence/tracked.txt\\n?? .opencode/review-evidence/statuses.env\\n"}
+# Subtest: clean-tree deterministic completion: reject tracked deleted under .opencode/review-evidence/ (quotePath=false)
+ok 174 - clean-tree deterministic completion: reject tracked deleted under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 95.57615
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject tracked deleted under .opencode/review-evidence/","quotePath":false,"porcelain":" D .opencode/review-evidence/tracked.txt\\n?? .opencode/review-evidence/statuses.env\\n"}
+# Subtest: clean-tree deterministic completion: reject tracked renamed under .opencode/review-evidence/ (quotePath=false)
+ok 175 - clean-tree deterministic completion: reject tracked renamed under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 101.500252
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject tracked renamed under .opencode/review-evidence/","quotePath":false,"porcelain":"R  .opencode/review-evidence/tracked.txt -> .opencode/review-evidence/renamed.txt\\n?? .opencode/review-evidence/statuses.env\\n"}
+# Subtest: clean-tree deterministic completion: reject unrelated ASCII (quotePath=false)
+ok 176 - clean-tree deterministic completion: reject unrelated ASCII (quotePath=false)
+  ---
+  duration_ms: 82.854032
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject unrelated ASCII","quotePath":false,"porcelain":"?? .opencode/review-evidence/statuses.env\\n?? unexpected.txt\\n"}
+# Subtest: clean-tree deterministic completion: reject unrelated Unicode (quotePath=false)
+ok 177 - clean-tree deterministic completion: reject unrelated Unicode (quotePath=false)
+  ---
+  duration_ms: 78.794513
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject unrelated Unicode","quotePath":false,"porcelain":"?? .opencode/review-evidence/statuses.env\\n?? 尾-ημ.txt\\n"}
+# Subtest: clean-tree deterministic completion: reject review-context prefix lookalike (quotePath=false)
+ok 178 - clean-tree deterministic completion: reject review-context prefix lookalike (quotePath=false)
+  ---
+  duration_ms: 86.228178
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject review-context prefix lookalike","quotePath":false,"porcelain":"?? .opencode/review-evidence/statuses.env\\n?? .review-context-extra/artifact.txt\\n"}
+# Subtest: clean-tree deterministic completion: reject review-evidence prefix lookalike (quotePath=false)
+ok 179 - clean-tree deterministic completion: reject review-evidence prefix lookalike (quotePath=false)
+  ---
+  duration_ms: 75.414131
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject review-evidence prefix lookalike","quotePath":false,"porcelain":"?? .opencode/review-evidence-extra/artifact.txt\\n?? .opencode/review-evidence/statuses.env\\n"}
+# Subtest: clean-tree deterministic completion: reject unrelated opencode sibling (quotePath=false)
+ok 180 - clean-tree deterministic completion: reject unrelated opencode sibling (quotePath=false)
+  ---
+  duration_ms: 82.97732
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject unrelated opencode sibling","quotePath":false,"porcelain":"?? .opencode/review-evidence/statuses.env\\n?? .opencode/unexpected.txt\\n"}
+# Subtest: clean-tree deterministic completion: reject mixed generated and unrelated dirt (quotePath=false)
+ok 181 - clean-tree deterministic completion: reject mixed generated and unrelated dirt (quotePath=false)
+  ---
+  duration_ms: 85.759486
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject mixed generated and unrelated dirt","quotePath":false,"porcelain":"?? .opencode/review-evidence/artifact.txt\\n?? .opencode/review-evidence/statuses.env\\n?? 尾-ημ.txt\\n"}
+# Subtest: clean-tree deterministic completion: reject review-context/artifact.txt (quotePath=false)
+ok 182 - clean-tree deterministic completion: reject review-context/artifact.txt (quotePath=false)
+  ---
+  duration_ms: 79.59086
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject review-context/artifact.txt","quotePath":false,"porcelain":"?? .opencode/review-evidence/statuses.env\\n?? .review-context/artifact.txt\\n"}
+# Subtest: clean-tree deterministic completion: reject review-context/尾-ημ.txt (quotePath=false)
+ok 183 - clean-tree deterministic completion: reject review-context/尾-ημ.txt (quotePath=false)
+  ---
+  duration_ms: 83.907119
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject review-context/尾-ημ.txt","quotePath":false,"porcelain":"?? .opencode/review-evidence/statuses.env\\n?? .review-context/尾-ημ.txt\\n"}
+# Subtest: clean-tree initial deterministic_evidence: accept empty tree (quotePath=true)
+ok 184 - clean-tree initial deterministic_evidence: accept empty tree (quotePath=true)
+  ---
+  duration_ms: 52.278122
+  type: 'test'
+  ...
+# {"guard":"initial deterministic_evidence","scenario":"accept empty tree","quotePath":true,"porcelain":""}
+# Subtest: clean-tree initial deterministic_evidence: reject generated .opencode/review-evidence/artifact.txt (quotePath=true)
+ok 185 - clean-tree initial deterministic_evidence: reject generated .opencode/review-evidence/artifact.txt (quotePath=true)
+  ---
+  duration_ms: 53.318911
+  type: 'test'
+  ...
+# {"guard":"initial deterministic_evidence","scenario":"reject generated .opencode/review-evidence/artifact.txt","quotePath":true,"porcelain":"?? .opencode/review-evidence/artifact.txt\\n"}
+# Subtest: clean-tree initial deterministic_evidence: reject generated .opencode/review-evidence/尾-ημ.txt (quotePath=true)
+ok 186 - clean-tree initial deterministic_evidence: reject generated .opencode/review-evidence/尾-ημ.txt (quotePath=true)
+  ---
+  duration_ms: 52.849623
+  type: 'test'
+  ...
+# {"guard":"initial deterministic_evidence","scenario":"reject generated .opencode/review-evidence/尾-ημ.txt","quotePath":true,"porcelain":"?? \\".opencode/review-evidence/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree initial deterministic_evidence: reject generated .review-context/artifact.txt (quotePath=true)
+ok 187 - clean-tree initial deterministic_evidence: reject generated .review-context/artifact.txt (quotePath=true)
+  ---
+  duration_ms: 56.275513
+  type: 'test'
+  ...
+# {"guard":"initial deterministic_evidence","scenario":"reject generated .review-context/artifact.txt","quotePath":true,"porcelain":"?? .review-context/artifact.txt\\n"}
+# Subtest: clean-tree initial deterministic_evidence: reject generated .review-context/尾-ημ.txt (quotePath=true)
+ok 188 - clean-tree initial deterministic_evidence: reject generated .review-context/尾-ημ.txt (quotePath=true)
+  ---
+  duration_ms: 50.200603
+  type: 'test'
+  ...
+# {"guard":"initial deterministic_evidence","scenario":"reject generated .review-context/尾-ημ.txt","quotePath":true,"porcelain":"?? \\".review-context/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree initial deterministic_evidence: accept empty tree (quotePath=false)
+ok 189 - clean-tree initial deterministic_evidence: accept empty tree (quotePath=false)
+  ---
+  duration_ms: 59.323296
+  type: 'test'
+  ...
+# {"guard":"initial deterministic_evidence","scenario":"accept empty tree","quotePath":false,"porcelain":""}
+# Subtest: clean-tree initial deterministic_evidence: reject generated .opencode/review-evidence/artifact.txt (quotePath=false)
+ok 190 - clean-tree initial deterministic_evidence: reject generated .opencode/review-evidence/artifact.txt (quotePath=false)
+  ---
+  duration_ms: 59.179395
+  type: 'test'
+  ...
+# {"guard":"initial deterministic_evidence","scenario":"reject generated .opencode/review-evidence/artifact.txt","quotePath":false,"porcelain":"?? .opencode/review-evidence/artifact.txt\\n"}
+# Subtest: clean-tree initial deterministic_evidence: reject generated .opencode/review-evidence/尾-ημ.txt (quotePath=false)
+ok 191 - clean-tree initial deterministic_evidence: reject generated .opencode/review-evidence/尾-ημ.txt (quotePath=false)
+  ---
+  duration_ms: 57.915205
+  type: 'test'
+  ...
+# {"guard":"initial deterministic_evidence","scenario":"reject generated .opencode/review-evidence/尾-ημ.txt","quotePath":false,"porcelain":"?? .opencode/review-evidence/尾-ημ.txt\\n"}
+# Subtest: clean-tree initial deterministic_evidence: reject generated .review-context/artifact.txt (quotePath=false)
+ok 192 - clean-tree initial deterministic_evidence: reject generated .review-context/artifact.txt (quotePath=false)
+  ---
+  duration_ms: 55.191903
+  type: 'test'
+  ...
+# {"guard":"initial deterministic_evidence","scenario":"reject generated .review-context/artifact.txt","quotePath":false,"porcelain":"?? .review-context/artifact.txt\\n"}
+# Subtest: clean-tree initial deterministic_evidence: reject generated .review-context/尾-ημ.txt (quotePath=false)
+ok 193 - clean-tree initial deterministic_evidence: reject generated .review-context/尾-ημ.txt (quotePath=false)
+  ---
+  duration_ms: 55.925382
+  type: 'test'
+  ...
+# {"guard":"initial deterministic_evidence","scenario":"reject generated .review-context/尾-ημ.txt","quotePath":false,"porcelain":"?? .review-context/尾-ημ.txt\\n"}
+# Subtest: clean-tree initial review: accept empty tree (quotePath=true)
+ok 194 - clean-tree initial review: accept empty tree (quotePath=true)
+  ---
+  duration_ms: 48.062628
+  type: 'test'
+  ...
+# {"guard":"initial review","scenario":"accept empty tree","quotePath":true,"porcelain":""}
+# Subtest: clean-tree initial review: reject generated .opencode/review-evidence/artifact.txt (quotePath=true)
+ok 195 - clean-tree initial review: reject generated .opencode/review-evidence/artifact.txt (quotePath=true)
+  ---
+  duration_ms: 47.172996
+  type: 'test'
+  ...
+# {"guard":"initial review","scenario":"reject generated .opencode/review-evidence/artifact.txt","quotePath":true,"porcelain":"?? .opencode/review-evidence/artifact.txt\\n"}
+# Subtest: clean-tree initial review: reject generated .opencode/review-evidence/尾-ημ.txt (quotePath=true)
+ok 196 - clean-tree initial review: reject generated .opencode/review-evidence/尾-ημ.txt (quotePath=true)
+  ---
+  duration_ms: 53.671974
+  type: 'test'
+  ...
+# {"guard":"initial review","scenario":"reject generated .opencode/review-evidence/尾-ημ.txt","quotePath":true,"porcelain":"?? \\".opencode/review-evidence/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree initial review: reject generated .review-context/artifact.txt (quotePath=true)
+ok 197 - clean-tree initial review: reject generated .review-context/artifact.txt (quotePath=true)
+  ---
+  duration_ms: 62.18726
+  type: 'test'
+  ...
+# {"guard":"initial review","scenario":"reject generated .review-context/artifact.txt","quotePath":true,"porcelain":"?? .review-context/artifact.txt\\n"}
+# Subtest: clean-tree initial review: reject generated .review-context/尾-ημ.txt (quotePath=true)
+ok 198 - clean-tree initial review: reject generated .review-context/尾-ημ.txt (quotePath=true)
+  ---
+  duration_ms: 53.372422
+  type: 'test'
+  ...
+# {"guard":"initial review","scenario":"reject generated .review-context/尾-ημ.txt","quotePath":true,"porcelain":"?? \\".review-context/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree initial review: accept empty tree (quotePath=false)
+ok 199 - clean-tree initial review: accept empty tree (quotePath=false)
+  ---
+  duration_ms: 53.595953
+  type: 'test'
+  ...
+# {"guard":"initial review","scenario":"accept empty tree","quotePath":false,"porcelain":""}
+# Subtest: clean-tree initial review: reject generated .opencode/review-evidence/artifact.txt (quotePath=false)
+ok 200 - clean-tree initial review: reject generated .opencode/review-evidence/artifact.txt (quotePath=false)
+  ---
+  duration_ms: 54.964664
+  type: 'test'
+  ...
+# {"guard":"initial review","scenario":"reject generated .opencode/review-evidence/artifact.txt","quotePath":false,"porcelain":"?? .opencode/review-evidence/artifact.txt\\n"}
+# Subtest: clean-tree initial review: reject generated .opencode/review-evidence/尾-ημ.txt (quotePath=false)
+ok 201 - clean-tree initial review: reject generated .opencode/review-evidence/尾-ημ.txt (quotePath=false)
+  ---
+  duration_ms: 52.663891
+  type: 'test'
+  ...
+# {"guard":"initial review","scenario":"reject generated .opencode/review-evidence/尾-ημ.txt","quotePath":false,"porcelain":"?? .opencode/review-evidence/尾-ημ.txt\\n"}
+# Subtest: clean-tree initial review: reject generated .review-context/artifact.txt (quotePath=false)
+ok 202 - clean-tree initial review: reject generated .review-context/artifact.txt (quotePath=false)
+  ---
+  duration_ms: 52.813645
+  type: 'test'
+  ...
+# {"guard":"initial review","scenario":"reject generated .review-context/artifact.txt","quotePath":false,"porcelain":"?? .review-context/artifact.txt\\n"}
+# Subtest: clean-tree initial review: reject generated .review-context/尾-ημ.txt (quotePath=false)
+ok 203 - clean-tree initial review: reject generated .review-context/尾-ημ.txt (quotePath=false)
+  ---
+  duration_ms: 53.858316
+  type: 'test'
+  ...
+# {"guard":"initial review","scenario":"reject generated .review-context/尾-ημ.txt","quotePath":false,"porcelain":"?? .review-context/尾-ημ.txt\\n"}
+# Subtest: terminal gate passes only the complete successful exact-head tuple
+ok 204 - terminal gate passes only the complete successful exact-head tuple
+  ---
+  duration_ms: 323.158486
+  type: 'test'
+  ...
+# Subtest: terminal gate treats unsupported pull requests as explicitly not applicable
+ok 205 - terminal gate treats unsupported pull requests as explicitly not applicable
+  ---
+  duration_ms: 51.934921
+  type: 'test'
+  ...
+# Subtest: terminal gate fails closed without pull request context
+ok 206 - terminal gate fails closed without pull request context
+  ---
+  duration_ms: 88.984343
+  type: 'test'
+  ...
+# Subtest: review metadata actual context carries rendered data and copies exact verified bytes
+ok 207 - review metadata actual context carries rendered data and copies exact verified bytes
+  ---
+  duration_ms: 120.531545
+  type: 'test'
+  ...
+# Subtest: review metadata actual generated wrapper preserves one plugin and all registry ABI identities
+ok 208 - review metadata actual generated wrapper preserves one plugin and all registry ABI identities
+  ---
+  duration_ms: 128.12003
+  type: 'test'
+  ...
+# Subtest: review metadata actual hook changes only four descriptions and preserves unknown own-key cases
+ok 209 - review metadata actual hook changes only four descriptions and preserves unknown own-key cases
+  ---
+  duration_ms: 128.368906
+  type: 'test'
+  ...
+# Subtest: review metadata actual hook awaits the prior hook once with original input and output
+ok 210 - review metadata actual hook awaits the prior hook once with original input and output
+  ---
+  duration_ms: 174.639632
+  type: 'test'
+  ...
+# Subtest: review metadata actual hook preserves prior rejection without overriding output
+ok 211 - review metadata actual hook preserves prior rejection without overriding output
+  ---
+  duration_ms: 104.925453
+  type: 'test'
+  ...
+# Subtest: review metadata actual wrapper propagates Muse activation failure once
+ok 212 - review metadata actual wrapper propagates Muse activation failure once
+  ---
+  duration_ms: 104.653048
+  type: 'test'
+  ...
+# Subtest: review metadata actual checksum rejects changed data before runtime or plugin copy
+ok 213 - review metadata actual checksum rejects changed data before runtime or plugin copy
+  ---
+  duration_ms: 88.340579
+  type: 'test'
+  ...
+# Subtest: review timeout defaults keep the direct PR route and other stage budgets unchanged
+ok 214 - review timeout defaults keep the direct PR route and other stage budgets unchanged
+  ---
+  duration_ms: 0.294195
+  type: 'test'
+  ...
+# Subtest: authored review job timeout clamps numeric requests before step validation
+ok 215 - authored review job timeout clamps numeric requests before step validation
+  ---
+  duration_ms: 0.315678
+  type: 'test'
+  ...
+# Subtest: authored timeout validation handles native absent input without overriding PR caller input
+ok 216 - authored timeout validation handles native absent input without overriding PR caller input
+  ---
+  duration_ms: 114.48596
+  type: 'test'
+  ...
+# Subtest: authored timeout validation accepts only default or whole minutes before any setup
+ok 217 - authored timeout validation accepts only default or whole minutes before any setup
+  ---
+  duration_ms: 929.977766
+  type: 'test'
+  ...
+# Subtest: bounded review budget keeps publication App mint after validated revision-bound completion
+ok 218 - bounded review budget keeps publication App mint after validated revision-bound completion
+  ---
+  duration_ms: 0.6008
+  type: 'test'
+  ...
+# Subtest: embedded review metadata JSON matches canonical tracked EDN rendering
+ok 219 - embedded review metadata JSON matches canonical tracked EDN rendering
+  ---
+  duration_ms: 15.926543
+  type: 'test'
+  ...
+1..219
+# tests 219
+# suites 0
+# pass 219
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 23548.448031
+
+✓ review-workflow passed (23.6s)
+
+============================================================
+Testing: legacy-ai-catalog
+============================================================
+
+
+ RUN  v3.2.4 /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/legacy/ai
+
+ ✓ test/model-catalog-types.test.ts (1 test) 289ms
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  20:56:42
+   Duration  662ms (transform 45ms, setup 0ms, collect 33ms, tests 289ms, environment 0ms, prepare 109ms)
+
+
+✓ legacy-ai-catalog passed (1.4s)
+
+============================================================
+Testing: contract-guard
+============================================================
+
+TAP version 13
+# Subtest: detects multiline definitions with metadata
+ok 1 - detects multiline definitions with metadata
+  ---
+  duration_ms: 2.474609
+  type: 'test'
+  ...
+# Subtest: ignores definitions in comments, strings, quoted data, and discarded forms
+ok 2 - ignores definitions in comments, strings, quoted data, and discarded forms
+  ---
+  duration_ms: 0.448642
+  type: 'test'
+  ...
+# Subtest: honors the reviewed allow marker on the preceding line
+ok 3 - honors the reviewed allow marker on the preceding line
+  ---
+  duration_ms: 0.208606
+  type: 'test'
+  ...
+# Subtest: terminates when a source directory symlink points back to an ancestor
+ok 4 - terminates when a source directory symlink points back to an ancestor
+  ---
+  duration_ms: 2.510041
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 4
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 64.133244
+
+✓ contract-guard passed (0.1s)
+
+============================================================
+Testing: eta-mu
+============================================================
+
+
+> eta-mu@1.1.1 test /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/eta-mu
+> shadow-cljs compile test && node target/eta-mu-test.cjs && pnpm test:workflows
+
+[:test] Compiling ...
+[:test] Build completed. (204 files, 1 compiled, 0 warnings, 3.46s)
+
+Testing eta-mu.domain.evidence-test
+
+Testing eta-mu.domain.router-test
+
+Testing eta-mu.domain.session-test
+
+Testing eta-mu.domain.tools.edit-test
+
+Testing eta-mu.domain.tools.find-test
+
+Testing eta-mu.domain.tools.glob-test
+
+Testing eta-mu.domain.tools.grep-test
+
+Testing eta-mu.domain.tools.ls-test
+
+Testing eta-mu.domain.tools.read-test
+
+Testing eta-mu.domain.tools.truncate-test
+
+Testing eta-mu.extern.child-process-test
+
+Testing eta-mu.extern.openai-test
+
+Testing eta-mu.extern.readline-test
+
+Testing eta-mu.infra.cli.commands.agent-test
+
+Testing eta-mu.infra.cli.commands.kanban-test
+
+Testing eta-mu.infra.cli.commands.sol-test
+
+Testing eta-mu.infra.cli.router-test
+receipts invalid: 34 failures
+  line 75: event is not a map
+  line 82: missing required key: pi
+  line 83: missing required key: pi
+  line 97: missing required key: dod; missing required key: pi
+  line 98: missing required key: dod; missing required key: pi
+  line 100: event is not a map
+  line 101: invalid EDN: Invalid number: 2026-07-12T053333Z.
+  line 102: invalid EDN: Invalid symbol: branch:.
+  line 103: invalid EDN: Invalid symbol: tag:.
+  line 104: invalid EDN: Invalid symbol: ts-lines:.
+  line 105: invalid EDN: Invalid symbol: files:.
+  line 106: invalid EDN: Invalid symbol: note:.
+  line 107: event is not a map
+  line 109: missing required key: dod; missing required key: pi
+  line 110: missing required key: dod; missing required key: pi
+  line 111: missing required key: dod; missing required key: pi
+  line 116: missing required key: dod; missing required key: pi
+  line 128: missing required key: dod; missing required key: pi
+  line 129: missing required key: dod; missing required key: pi
+  line 138: missing required key: dod; missing required key: pi
+  line 234: invalid ts: 2026-10-04T00:14:27.593028+00:00
+  line 235: invalid ts: 2026-10-04T00:28:37.838205+00:00
+  line 236: invalid ts: 2026-10-04T00:28:37.838205+00:00
+  line 237: invalid ts: 2026-10-04T01:20:11.369816+00:00
+  line 238: invalid ts: 2026-10-04T01:20:11.369816+00:00
+  line 239: invalid ts: 2026-10-04T01:20:11.369816+00:00
+  line 240: invalid ts: 2026-10-04T01:42:38.682649+00:00
+  line 241: invalid ts: 2026-10-04T01:57:51.319019+00:00
+  line 242: invalid ts: 2026-10-04T02:10:00.350294+00:00
+  line 243: invalid ts: 2026-10-04T02:44:06.679356+00:00
+  line 244: invalid ts: 2026-10-04T02:57:02.259971+00:00
+  line 245: unknown kind: :reflection; invalid ts: 2026-10-04T02:57:02.260000+00:00
+  line 246: invalid ts: 2026-10-04T02:58:39.568267+00:00
+  line 247: invalid ts: 2026-10-04T03:09:35.607944+00:00
+receipts invalid: 38 failures
+  line 75: event is not a map
+  line 82: missing required key: pi
+  line 83: missing required key: pi
+  line 97: missing required key: dod; missing required key: pi
+  line 98: missing required key: dod; missing required key: pi
+  line 100: event is not a map
+  line 101: invalid EDN: Invalid number: 2026-07-12T053333Z.
+  line 102: invalid EDN: Invalid symbol: branch:.
+  line 103: invalid EDN: Invalid symbol: tag:.
+  line 104: invalid EDN: Invalid symbol: ts-lines:.
+  line 105: invalid EDN: Invalid symbol: files:.
+  line 106: invalid EDN: Invalid symbol: note:.
+  line 107: event is not a map
+  line 109: missing required key: dod; missing required key: pi
+  line 110: missing required key: dod; missing required key: pi
+  line 111: missing required key: dod; missing required key: pi
+  line 116: missing required key: dod; missing required key: pi
+  line 128: missing required key: dod; missing required key: pi
+  line 129: missing required key: dod; missing required key: pi
+  line 138: missing required key: dod; missing required key: pi
+  line 234: invalid ts: 2026-10-04T00:14:27.593028+00:00
+  line 235: invalid ts: 2026-10-04T00:28:37.838205+00:00
+  line 236: invalid ts: 2026-10-04T00:28:37.838205+00:00
+  line 237: invalid ts: 2026-10-04T01:20:11.369816+00:00
+  line 238: invalid ts: 2026-10-04T01:20:11.369816+00:00
+  line 239: invalid ts: 2026-10-04T01:20:11.369816+00:00
+  line 240: invalid ts: 2026-10-04T01:42:38.682649+00:00
+  line 241: invalid ts: 2026-10-04T01:57:51.319019+00:00
+  line 242: invalid ts: 2026-10-04T02:10:00.350294+00:00
+  line 243: invalid ts: 2026-10-04T02:44:06.679356+00:00
+  line 244: invalid ts: 2026-10-04T02:57:02.259971+00:00
+  line 245: unknown kind: :reflection; invalid ts: 2026-10-04T02:57:02.260000+00:00
+  line 246: invalid ts: 2026-10-04T02:58:39.568267+00:00
+  line 247: invalid ts: 2026-10-04T03:09:35.607944+00:00
+  line 259: payload missing required key: repo
+  line 260: missing required key: repo
+  line 261: missing required key: owner
+  line 262: missing required key: id; missing required key: type; missing required key: recorded-at; missing required key: schema; missing required key: producer; missing required key: subject; missing required key: payload; unexpected event type: ; unexpected schema id: ; unsupported schema version: ; unexpected producer package: ; missing producer package version; invalid event/recorded-at: ; payload event is not a map
+receipts invalid: 59 failures
+  line 75: event is not a map
+  line 82: missing required key: repo; missing required key: pi
+  line 83: missing required key: repo; missing required key: pi
+  line 92: missing required key: repo
+  line 97: missing required key: repo; missing required key: dod; missing required key: pi
+  line 98: missing required key: repo; missing required key: dod; missing required key: pi
+  line 100: event is not a map
+  line 101: invalid EDN: Invalid number: 2026-07-12T053333Z.
+  line 102: invalid EDN: Invalid symbol: branch:.
+  line 103: invalid EDN: Invalid symbol: tag:.
+  line 104: invalid EDN: Invalid symbol: ts-lines:.
+  line 105: invalid EDN: Invalid symbol: files:.
+  line 106: invalid EDN: Invalid symbol: note:.
+  line 107: event is not a map
+  line 109: missing required key: repo; missing required key: dod; missing required key: pi
+  line 110: missing required key: repo; missing required key: dod; missing required key: pi
+  line 111: missing required key: repo; missing required key: dod; missing required key: pi
+  line 116: missing required key: repo; missing required key: dod; missing required key: pi
+  line 126: missing required key: repo
+  line 127: missing required key: repo
+  line 128: missing required key: repo; missing required key: dod; missing required key: pi
+  line 129: missing required key: repo; missing required key: dod; missing required key: pi
+  line 130: missing required key: repo
+  line 131: missing required key: repo
+  line 132: missing required key: repo
+  line 133: missing required key: repo
+  line 134: missing required key: repo
+  line 135: missing required key: repo
+  line 136: missing required key: repo
+  line 137: missing required key: repo
+  line 138: missing required key: repo; missing required key: dod; missing required key: pi
+  line 139: missing required key: repo
+  line 140: missing required key: repo
+  line 141: missing required key: repo
+  line 142: missing required key: repo
+  line 143: missing required key: repo
+  line 148: missing required key: repo
+  line 171: missing required key: repo
+  line 172: missing required key: repo
+  line 231: missing required key: repo
+  line 232: missing required key: repo
+  line 233: missing required key: repo
+  line 234: missing required key: repo; invalid ts: 2026-10-04T00:14:27.593028+00:00
+  line 235: missing required key: repo; invalid ts: 2026-10-04T00:28:37.838205+00:00
+  line 236: missing required key: repo; invalid ts: 2026-10-04T00:28:37.838205+00:00
+  line 237: missing required key: repo; invalid ts: 2026-10-04T01:20:11.369816+00:00
+  line 238: missing required key: repo; invalid ts: 2026-10-04T01:20:11.369816+00:00
+  line 239: missing required key: repo; invalid ts: 2026-10-04T01:20:11.369816+00:00
+  line 240: missing required key: repo; invalid ts: 2026-10-04T01:42:38.682649+00:00
+  line 241: missing required key: repo; invalid ts: 2026-10-04T01:57:51.319019+00:00
+  line 242: missing required key: repo; invalid ts: 2026-10-04T02:10:00.350294+00:00
+  line 243: missing required key: repo; invalid ts: 2026-10-04T02:44:06.679356+00:00
+  line 244: missing required key: repo; invalid ts: 2026-10-04T02:57:02.259971+00:00
+  line 245: missing required key: repo; unknown kind: :reflection; invalid ts: 2026-10-04T02:57:02.260000+00:00
+  line 246: missing required key: repo; invalid ts: 2026-10-04T02:58:39.568267+00:00
+  line 247: missing required key: repo; invalid ts: 2026-10-04T03:09:35.607944+00:00
+  line 256: missing required key: repo
+  line 257: missing required key: repo
+  line 258: missing required key: repo
+
+Testing eta-mu.infra.cli.tui-repl-test
+
+Testing eta-mu.infra.session-test
+
+Testing eta-mu.infra.tools.bash-test
+
+Testing eta-mu.infra.tools.edit-test
+
+Testing eta-mu.infra.tools.find-test
+
+Testing eta-mu.infra.tools.grep-test
+
+Testing eta-mu.infra.tools.ls-test
+
+Testing eta-mu.infra.tools.read-test
+
+Testing eta-mu.infra.tools.write-test
+
+Testing eta-mu.law.command-test
+
+Testing eta-mu.law.evidence-test
+
+Testing eta-mu.law.session-test
+
+Testing eta-mu.law.tools-test
+
+Testing eta-mu.shape.args-test
+
+Testing eta-mu.shape.command-resource-test
+
+Ran 196 tests containing 708 assertions.
+0 failures, 0 errors.
+
+> eta-mu@1.1.1 test:workflows /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/eta-mu
+> nbb commands/workflows_test.cljs
+
+No workflow resources in /home/err/spaces/cephalon-review-context-adoption/eta-mu/contracts/workflows
+
+This project declares no workflows. To start one:
+  mkdir -p contracts/workflows
+  # resources.edn  — the action registry: one pin per action
+  # ci.edn         — {:namespace :your.ci :resources [{:contract/kind :workflow ...}]}
+
+eta-mu carries the projector; the project supplies the resources.
+
+✓ eta-mu passed (12.1s)
+
+============================================================
+Testing: clio
+============================================================
+
+
+> @eta-mu/clio@0.1.0 test /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/clio
+> pnpm run test:bb && pnpm run test:jvm && pnpm run test:nbb && pnpm run test:shadow
+
+
+> @eta-mu/clio@0.1.0 test:bb /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/clio
+> bb test/run.bb
+
+
+Testing clio.shape.canonical-test
+
+Testing clio.law.ledger-test
+
+Testing clio.lint-extern-boundary-test
+
+Ran 29 tests containing 182 assertions.
+0 failures, 0 errors.
+
+> @eta-mu/clio@0.1.0 test:jvm /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/clio
+> clojure -M:test
+
+
+Testing clio.domain.canonicalize-test
+
+Testing clio.domain.schema-test
+
+Testing clio.infra.jvm-durability-retry-test
+
+Testing clio.infra.jvm-ledger-test
+
+Testing clio.law.ledger-test
+
+Testing clio.lint-extern-boundary-test
+
+Testing clio.shape.canonical-test
+
+Testing clio.shape.edn-test
+
+Ran 80 tests containing 388 assertions.
+0 failures, 0 errors.
+
+> @eta-mu/clio@0.1.0 test:nbb /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/clio
+> nbb -cp test:scripts test/run.nbb
+
+
+Testing clio.domain.schema-test
+
+Testing clio.domain.canonicalize-test
+
+Testing clio.law.ledger-test
+
+Testing clio.lint-extern-boundary-test
+
+Testing clio.infra.cli-test
+
+Testing clio.infra.kernel-lock-test
+
+Testing clio.infra.ledger-test
+
+Testing clio.infra.node-durability-test
+
+Testing clio.shape.canonical-test
+
+Testing clio.shape.edn-test
+
+Ran 78 tests containing 395 assertions.
+0 failures, 0 errors.
+
+> @eta-mu/clio@0.1.0 test:shadow /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/clio
+> pnpm exec shadow-cljs compile test
+
+[:test] Compiling ...
+========= Running Tests =======================
+
+Testing clio.domain.canonicalize-test
+
+Testing clio.domain.schema-test
+
+Testing clio.infra.cli-test
+
+Testing clio.infra.kernel-lock-test
+
+Testing clio.infra.ledger-test
+
+Testing clio.infra.node-durability-test
+
+Testing clio.law.ledger-test
+
+Testing clio.lint-extern-boundary-test
+
+Testing clio.shape.canonical-test
+
+Testing clio.shape.edn-test
+
+Ran 78 tests containing 395 assertions.
+0 failures, 0 errors.
+===============================================
+[:test] Build completed. (118 files, 1 compiled, 0 warnings, 31.46s)
+
+✓ clio passed (95.8s)
+
+============================================================
+Testing: rheos
+============================================================
+
+
+> @eta-mu/rheos@0.1.0 test /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/rheos
+> shadow-cljs compile test && node dist/test.cjs
+
+[:test] Compiling ...
+========= Running Tests =======================
+
+Testing rheos.backend.domain.board-test
+
+Testing rheos.backend.domain.compose-condition-test
+
+Testing rheos.backend.domain.compose-test
+
+Testing rheos.backend.domain.events-test
+
+Testing rheos.backend.domain.github-label-projection-test
+
+Testing rheos.backend.domain.kanban-projection-test
+
+Testing rheos.backend.domain.task-create-metadata-test
+
+Testing rheos.backend.domain.task-create-test
+
+Testing rheos.backend.domain.transition-test
+
+Testing rheos.backend.extern.uri-test
+
+Testing rheos.backend.infra.agent-tools-test
+{
+  "ok": true,
+  "uuid": "t1",
+  "from": "breakdown",
+  "to": "ready"
+}
+{
+  "ok": true,
+  "uuid": "t1",
+  "frontmatter": {
+    "uuid": "t1",
+    "title": "Task One",
+    "status": "incoming",
+    "priority": "P3",
+    "dependency": [
+      "dep-a",
+      "dep-b"
+    ],
+    "write-id": "1791856728351-0.gwyt5v3cujllviepvc"
+  }
+}
+{
+  "ok": true,
+  "uuid": "t1",
+  "frontmatter": {
+    "uuid": "t1",
+    "title": "Task One",
+    "status": "incoming",
+    "priority": "P3",
+    "dependency": [],
+    "write-id": "1791856728355-0.n6hzogw6mxmic4t0fd"
+  }
+}
+
+Testing rheos.backend.infra.cli-test
+
+Testing rheos.backend.infra.config-card-creation-test
+
+Testing rheos.backend.infra.config-test
+
+Testing rheos.backend.infra.github-issue-preflight-test
+
+Testing rheos.backend.infra.github-issues-test
+
+Testing rheos.backend.infra.store-test
+
+Testing rheos.backend.infra.task-create-conflict-test
+
+Testing rheos.backend.infra.task-create-test
+
+Testing rheos.backend.infra.task-edit-test
+
+Testing rheos.backend.infra.task-store-test
+
+Testing rheos.backend.infra.task-writeback-test
+
+Testing rheos.backend.infra.transition-test
+
+Testing rheos.backend.infra.view-store-test
+
+Testing rheos.backend.infra.watcher-test
+
+Testing rheos.backend.law.condition-test
+
+Testing rheos.backend.law.frontmatter-test
+
+Testing rheos.backend.law.fsm-test
+
+Testing rheos.backend.law.github-label-projection-test
+
+Testing rheos.backend.shape.content-parser-test
+
+Testing rheos.backend.shape.frontmatter-test
+
+Testing rheos.backend.shape.kanban-test
+
+Testing rheos.backend.shape.markdown-delimiter-test
+
+Testing rheos.backend.shape.markdown-document-test
+
+Ran 206 tests containing 1105 assertions.
+0 failures, 0 errors.
+===============================================
+[:test] Build completed. (161 files, 1 compiled, 0 warnings, 5.92s)
+
+Testing rheos.backend.domain.board-test
+
+Testing rheos.backend.domain.compose-condition-test
+
+Testing rheos.backend.domain.compose-test
+
+Testing rheos.backend.domain.events-test
+
+Testing rheos.backend.domain.github-label-projection-test
+
+Testing rheos.backend.domain.kanban-projection-test
+
+Testing rheos.backend.domain.task-create-metadata-test
+
+Testing rheos.backend.domain.task-create-test
+
+Testing rheos.backend.domain.transition-test
+
+Testing rheos.backend.extern.uri-test
+
+Testing rheos.backend.infra.agent-tools-test
+{
+  "ok": true,
+  "uuid": "t1",
+  "from": "breakdown",
+  "to": "ready"
+}
+{
+  "ok": true,
+  "uuid": "t1",
+  "frontmatter": {
+    "uuid": "t1",
+    "title": "Task One",
+    "status": "incoming",
+    "priority": "P3",
+    "dependency": [
+      "dep-a",
+      "dep-b"
+    ],
+    "write-id": "1791856729629-0.ii9sb2olpxv44w62zu"
+  }
+}
+{
+  "ok": true,
+  "uuid": "t1",
+  "frontmatter": {
+    "uuid": "t1",
+    "title": "Task One",
+    "status": "incoming",
+    "priority": "P3",
+    "dependency": [],
+    "write-id": "1791856729635-0.58y6e93foi8e53rsvik"
+  }
+}
+
+Testing rheos.backend.infra.cli-test
+
+Testing rheos.backend.infra.config-card-creation-test
+
+Testing rheos.backend.infra.config-test
+
+Testing rheos.backend.infra.github-issue-preflight-test
+
+Testing rheos.backend.infra.github-issues-test
+
+Testing rheos.backend.infra.store-test
+
+Testing rheos.backend.infra.task-create-conflict-test
+
+Testing rheos.backend.infra.task-create-test
+
+Testing rheos.backend.infra.task-edit-test
+
+Testing rheos.backend.infra.task-store-test
+
+Testing rheos.backend.infra.task-writeback-test
+
+Testing rheos.backend.infra.transition-test
+
+Testing rheos.backend.infra.view-store-test
+
+Testing rheos.backend.infra.watcher-test
+
+Testing rheos.backend.law.condition-test
+
+Testing rheos.backend.law.frontmatter-test
+
+Testing rheos.backend.law.fsm-test
+
+Testing rheos.backend.law.github-label-projection-test
+
+Testing rheos.backend.shape.content-parser-test
+
+Testing rheos.backend.shape.frontmatter-test
+
+Testing rheos.backend.shape.kanban-test
+
+Testing rheos.backend.shape.markdown-delimiter-test
+
+Testing rheos.backend.shape.markdown-document-test
+
+Ran 206 tests containing 1105 assertions.
+0 failures, 0 errors.
+
+✓ rheos passed (18.7s)
+
+============================================================
+Testing: sol
+============================================================
+
+
+> @eta-mu/sol@0.1.1 test /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/sol
+> shadow-cljs compile test && node --test test/js/*.test.mjs
+
+[:test] Compiling ...
+========= Running Tests =======================
+
+Testing open-hax.sol.domain.agent.agent-templates-test
+
+Testing open-hax.sol.domain.agent.content-test
+
+Testing open-hax.sol.domain.agent.settings-test
+
+Testing open-hax.sol.domain.models-test
+
+Testing open-hax.sol.infra.agent.clio-store-test
+
+Testing open-hax.sol.infra.agent.episode-ledger-test
+
+Testing open-hax.sol.infra.agent.episode-terminal-test
+
+Testing open-hax.sol.infra.agent.episode-turn-test
+
+Testing open-hax.sol.infra.agent.mcp-tools-test
+
+Testing open-hax.sol.infra.agent.provider.turn-processor-test
+
+Testing open-hax.sol.infra.agent.service-episode-test
+
+Testing open-hax.sol.infra.agent.turn-session-test
+
+Testing open-hax.sol.infra.agent.turn-stream-test
+
+Testing open-hax.sol.infra.agent.turn-timeout-test
+
+Testing open-hax.sol.law.contract-kinds-test
+
+Testing open-hax.sol.law.retired-dependency-test
+
+Testing open-hax.sol.shape.app-shapes-episode-test
+
+Testing open-hax.sol.shape.app-shapes-test
+
+Testing open-hax.sol.shape.episode-event-test
+
+Testing open-hax.sol.shape.parse-test
+
+Ran 142 tests containing 607 assertions.
+0 failures, 0 errors.
+===============================================
+[:test] Build completed. (216 files, 1 compiled, 0 warnings, 10.30s)
+TAP version 13
+# Subtest: timed-out worker cleanup waits for inherited pipes to close before deleting its fixture
+ok 1 - timed-out worker cleanup waits for inherited pipes to close before deleting its fixture
+  ---
+  duration_ms: 364.968072
+  type: 'test'
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 432.406371
+
+✓ sol passed (20.9s)
+
+============================================================
+Testing: terminal-ui
+============================================================
+
+
+> @eta-mu/terminal-ui@0.1.0 test /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/terminal-ui
+> shadow-cljs compile test && node target/terminal-ui-test.cjs
+
+[:test] Compiling ...
+[:test] Build completed. (82 files, 2 compiled, 1 warnings, 3.33s)
+
+[1m------ WARNING #1 - :infer-warning ---------------------------------------------[0m
+ File: /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/terminal-ui/test/cljs/eta_mu/terminal_ui/infra/session_selector_test.cljs:57:29
+--------------------------------------------------------------------------------
+[2m  54 |       (feed! handler ["\u001b[B" "\r"])[0m
+[2m  55 |       (let [chosen (await (selector/choose term sample-sessions))][0m
+[2m  56 |         (is (= "bbbb2222-1111" (:session-id chosen)))[0m
+[1m  57 |         (is (str/includes? @(.-buf term) "resume a session")[0m
+-----------------------------------^--------------------------------------------
+ [33;1mCannot infer target type in expression (. term -buf)[0m
+--------------------------------------------------------------------------------
+[2m  58 |             "overlay rendered the hint row")))))[0m
+[2m  59 | [0m
+[2m  60 | (deftest ^:async selector-type-to-filter-test[0m
+[2m  61 |   (testing "typing filters the list; enter selects the match"[0m
+--------------------------------------------------------------------------------
+
+Testing eta-mu.terminal-ui.component.message-test
+
+Testing eta-mu.terminal-ui.component.spacer-test
+
+Testing eta-mu.terminal-ui.component.text-test
+
+Testing eta-mu.terminal-ui.domain.edit-buffer-test
+
+Testing eta-mu.terminal-ui.domain.fuzzy-test
+
+Testing eta-mu.terminal-ui.domain.kill-ring-test
+
+Testing eta-mu.terminal-ui.domain.markdown-test
+
+Testing eta-mu.terminal-ui.domain.undo-stack-test
+
+Testing eta-mu.terminal-ui.extern.terminal-test
+
+Testing eta-mu.terminal-ui.infra.host-test
+
+Testing eta-mu.terminal-ui.infra.input-editor-test
+
+Testing eta-mu.terminal-ui.infra.session-selector-test
+
+Testing eta-mu.terminal-ui.shape.ansi-test
+
+Testing eta-mu.terminal-ui.shape.text-utils-test
+
+Ran 70 tests containing 172 assertions.
+0 failures, 0 errors.
+
+✓ terminal-ui passed (11.0s)
+
+============================================================
+Testing: turn-processor
+============================================================
+
+
+> @eta-mu/turn-processor@0.1.0 test /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/turn-processor
+> shadow-cljs compile test && node target/turn-processor-test.cjs
+
+[:test] Compiling ...
+[:test] Build completed. (71 files, 1 compiled, 0 warnings, 3.53s)
+
+Testing eta-mu.turn-processor.domain.turn-test
+
+Testing eta-mu.turn-processor.infra.loop-test
+
+Testing eta-mu.turn-processor.law.agent-test
+
+Testing eta-mu.turn-processor.law.message-test
+
+Testing eta-mu.turn-processor.law.tool-test
+
+Testing eta-mu.turn-processor.shape.message-test
+
+Testing eta-mu.turn-processor.shape.tool-test
+
+Ran 47 tests containing 120 assertions.
+0 failures, 0 errors.
+
+✓ turn-processor passed (10.2s)
+
+============================================================
+Testing: extensions
+============================================================
+
+
+> @eta-mu/extensions@0.2.7 test /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/extensions
+> shadow-cljs compile node-test && node target/test.cjs
+
+[:node-test] Compiling ...
+========= Running Tests =======================
+
+Testing eta-mu.extensions.contract-runtime-v2-test
+
+Testing eta-mu.extensions.graph-memory-test
+
+Testing eta-mu.extensions.opmf-contract-gate-test
+
+Testing eta-mu.extensions.prompt-section-test
+
+Testing eta-mu.extensions.receipt-river-test
+
+Testing eta-mu.platform.boundary-js-test
+
+Testing eta-mu.platform.dsl-test
+
+Testing eta-mu.platform.effect-result-test
+
+Testing eta-mu.platform.registry-test
+
+Ran 95 tests containing 259 assertions.
+0 failures, 0 errors.
+===============================================
+[:node-test] Build completed. (90 files, 1 compiled, 0 warnings, 3.48s)
+
+Testing eta-mu.extensions.contract-runtime-v2-test
+
+Testing eta-mu.extensions.graph-memory-test
+
+Testing eta-mu.extensions.opmf-contract-gate-test
+
+Testing eta-mu.extensions.prompt-section-test
+
+Testing eta-mu.extensions.receipt-river-test
+
+Testing eta-mu.platform.boundary-js-test
+
+Testing eta-mu.platform.dsl-test
+
+Testing eta-mu.platform.effect-result-test
+
+Testing eta-mu.platform.registry-test
+
+Ran 95 tests containing 259 assertions.
+0 failures, 0 errors.
+
+✓ extensions passed (10.4s)
+
+============================================================
+Testing: protocols
+============================================================
+
+
+> @open-hax/protocols@0.1.0 test /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/protocols
+> shadow-cljs compile test lib && node target/test.cjs && node --test test/js/*.test.mjs
+
+[:test] Compiling ...
+[:test] Build completed. (140 files, 1 compiled, 0 warnings, 4.04s)
+[:lib] Compiling ...
+[:lib] Build completed. (112 files, 0 compiled, 0 warnings, 0.97s)
+
+Testing open-hax.openplanner-protocols-test
+
+Testing open-hax.records.edn.services-test
+/home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/protocols:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @open-hax/protocols@0.1.0 test: `shadow-cljs compile test lib && node target/test.cjs && node --test test/js/*.test.mjs`
+Exit status 1
+
+============================================================
+Testing: chat-ui
+============================================================
+
+
+> @open-hax/chat-ui@0.1.0 test /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/chat-ui
+> shadow-cljs compile test && node target/test.cjs
+
+[:test] Compiling ...
+========= Running Tests =======================
+
+Testing eta-mu.chat-ui.mock-session-test
+
+Testing eta-mu.chat-ui.opencode-session-test
+
+Ran 3 tests containing 6 assertions.
+0 failures, 0 errors.
+===============================================
+[:test] Build completed. (59 files, 1 compiled, 0 warnings, 3.91s)
+
+Testing eta-mu.chat-ui.mock-session-test
+
+Testing eta-mu.chat-ui.opencode-session-test
+
+Ran 3 tests containing 6 assertions.
+0 failures, 0 errors.
+
+✓ chat-ui passed (11.2s)
+
+============================================================
+Testing: axxium
+============================================================
+
+
+> @open-hax/axxium@0.1.0 test /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/axxium
+> shadow-cljs compile test && node target/test.cjs
+
+[:test] Compiling ...
+========= Running Tests =======================
+
+Testing axxium.auth.session-test
+
+Testing axxium.db-test
+
+Testing axxium.extern.fastify-test
+
+Testing axxium.infra.principal-binding-test
+
+Testing axxium.routes.actor-binding-test
+
+Testing axxium.shape.principal-binding-test
+
+Ran 17 tests containing 64 assertions.
+0 failures, 0 errors.
+===============================================
+[:test] Build completed. (76 files, 1 compiled, 0 warnings, 3.75s)
+
+Testing axxium.auth.session-test
+
+Testing axxium.db-test
+
+Testing axxium.extern.fastify-test
+
+Testing axxium.infra.principal-binding-test
+
+Testing axxium.routes.actor-binding-test
+
+Testing axxium.shape.principal-binding-test
+
+Ran 17 tests containing 64 assertions.
+0 failures, 0 errors.
+
+✓ axxium passed (10.3s)
+
+============================================================
+Testing: kanban-legacy
+============================================================
+
+
+> @open-hax/kanban-legacy@0.1.2 test /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/legacy/kanban
+> vitest run
+
+
+ RUN  v2.1.9 /home/err/spaces/cephalon-review-context-adoption/eta-mu/packages/legacy/kanban
+
+ ✓ tests/kanban-sync-workflow.test.ts (1 test) 3ms
+ ✓ tests/github-sync-readme.test.ts (2 tests) 6ms
+ ✓ tests/github-sync.test.ts (11 tests) 16ms
+ ✓ tests/config.test.ts (6 tests) 19ms
+ ✓ tests/sync.test.ts (4 tests) 4ms
+ ✓ tests/task-writeback.test.ts (2 tests) 27ms
+ ✓ tests/tasks.test.ts (5 tests) 29ms
+
+ Test Files  7 passed (7)
+      Tests  31 passed (31)
+   Start at  21:00:23
+   Duration  592ms (transform 406ms, setup 0ms, collect 944ms, tests 104ms, environment 2ms, prepare 761ms)
+
+
+✓ kanban-legacy passed (1.3s)
+
+============================================================
+TEST SUMMARY
+============================================================
+
+  ✓ review-workflow (23.6s)
+  ✓ legacy-ai-catalog (1.4s)
+  ✓ contract-guard (0.1s)
+  ✓ eta-mu (12.1s)
+  ✓ clio (95.8s)
+  ✓ rheos (18.7s)
+  ✓ sol (20.9s)
+  ✓ terminal-ui (11.0s)
+  ✓ turn-processor (10.2s)
+  ✓ extensions (10.4s)
+  ✗ protocols (19.0s)
+  ✓ chat-ui (11.2s)
+  ✓ axxium (10.3s)
+  ✓ kanban-legacy (1.3s)
+
+1 suite(s) failed: protocols
+ ELIFECYCLE  Test failed. See above for more details.

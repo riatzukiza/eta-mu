@@ -1,0 +1,47 @@
+{
+  "provider": "opencode",
+  "model": "mimo-v2.6-flash-free",
+  "recordedAt": "2026-10-13T01:41:59.987683+00:00",
+  "entry": {
+    "id": "mimo-v2.6-flash-free",
+    "name": "MiMo-V2.6-Flash Free",
+    "description": "MiMo Flash model for multimodal coding agents and long-context automation",
+    "family": "mimo",
+    "attachment": true,
+    "reasoning": true,
+    "reasoning_options": [],
+    "tool_call": true,
+    "interleaved": {
+      "field": "reasoning_content"
+    },
+    "temperature": true,
+    "release_date": "2026-09-22",
+    "last_updated": "2026-09-22",
+    "modalities": {
+      "input": [
+        "text",
+        "image",
+        "audio",
+        "video"
+      ],
+      "output": [
+        "text"
+      ]
+    },
+    "open_weights": true,
+    "limit": {
+      "context": 200000,
+      "output": 32000
+    },
+    "cost": {
+      "input": 0,
+      "output": 0,
+      "cache_read": 0
+    },
+    "canonical_model_id": "xiaomi/mimo-v2.6-flash"
+  },
+  "rawCarrierPath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/models-dev-current-native.json",
+  "rawCarrierBytes": 5463179,
+  "rawCarrierSha256": "fb82540234e63bf70d6b79bbe19d17a066a457ecde5c5e5969e89f1c720d7e15",
+  "datedObservationNotPermanentSlug": true
+}

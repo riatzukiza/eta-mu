@@ -1,0 +1,2 @@
+# Preserve exact raw NBB stack output, including its diagnostic trailing spaces.
+.ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/review-custody-corrections-20261013/replay-custody-red.stderr.log whitespace=-blank-at-eol

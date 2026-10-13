@@ -1,0 +1,55 @@
+{
+  "tier": "Actual offline tests and native Rheos transition; not provider review",
+  "causalRed": {
+    "tests": 5,
+    "assertions": 42,
+    "failures": 26,
+    "errors": 0,
+    "exit": 1,
+    "source": "Current6a archive adapter before custody fix"
+  },
+  "operatorError": "Initial replay-custody-red logs are a missing array-seq symbol error, not causal RED; original bytes retained",
+  "nativeStatusCorrection": "Actual qualified native Review->in_progress; warning repair remains unapplied pending separate human decision",
+  "artifacts": [
+    {
+      "path": ".\u03b7\u03bc/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/review-custody-corrections-20261013/p1-native-review-to-in-progress.json",
+      "bytes": 110,
+      "sha256": "0cbd78ca003977eb4a63041d57a491a10cb85b6f1f18c6571e3f877de6d253d4"
+    },
+    {
+      "path": ".\u03b7\u03bc/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/review-custody-corrections-20261013/p1-native-review-to-in-progress.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".\u03b7\u03bc/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/review-custody-corrections-20261013/replay-custody-causal-red-exit.json",
+      "bytes": 240,
+      "sha256": "30f50e66c4d6e32689efcc2f944de607ace65f864a411135f31dce5d27044162"
+    },
+    {
+      "path": ".\u03b7\u03bc/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/review-custody-corrections-20261013/replay-custody-causal-red.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".\u03b7\u03bc/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/review-custody-corrections-20261013/replay-custody-causal-red.stdout.log",
+      "bytes": 45163,
+      "sha256": "86507fa61ef00b0f5b902296068792ad6cad24411d23d15a7832bd53dcd38f90"
+    },
+    {
+      "path": ".\u03b7\u03bc/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/review-custody-corrections-20261013/replay-custody-red-exit.json",
+      "bytes": 110,
+      "sha256": "416053be0a043730fc55612bb2e76073847e4b5d73a422eeb9c4fa53b46d4558"
+    },
+    {
+      "path": ".\u03b7\u03bc/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/review-custody-corrections-20261013/replay-custody-red.stderr.log",
+      "bytes": 3400,
+      "sha256": "0a323d6937009322cc49b7493c1378fbf712a093718a0759fb324fc121a6a606"
+    },
+    {
+      "path": ".\u03b7\u03bc/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/review-custody-corrections-20261013/replay-custody-red.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

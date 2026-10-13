@@ -1,0 +1,24 @@
+{
+  "nativeSource": "https://github.com/riatzukiza/eta-mu/pull/12#issuecomment-6148074330",
+  "sourceHead": "fed85baa06594228384f4baac531e7ae57009c54",
+  "actualChangedInputs": 59,
+  "nativeSelectedInputs": 41,
+  "nativeExplicitIgnoredLogInputs": 18,
+  "nativeSummaryBytes": 23439,
+  "nativeSummarySHA256": "2ec2116995b1f4e8a1afc93099c03b412806ad8e1f84bacd66020ee1a5e6a3b9",
+  "countsSumToChangedScope": true,
+  "approvalEligibility": "incomplete whole-input scope despite exact head coverage/no-actionable summary; do not count as complete approval",
+  "configurationPrepared": {
+    "reviews": {
+      "path_filters": [
+        "**/*"
+      ]
+    }
+  },
+  "officialSchemaBytes": 79097,
+  "officialSchemaSHA256": "3a75b9e80bb4042e25d10f4b365a859c541553e4d7235cda55398b32bca2ac69",
+  "schemaValidation": "PASS",
+  "configurationSemantics": "supported inclusion candidate; does not claim provider execution or override global policy. Actual native full selected scope must be checked after new review.",
+  "paidUsageEnabled": false,
+  "reviewIdentityOrGateChanged": false
+}

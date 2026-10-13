@@ -1,0 +1,73 @@
+{
+  "humanAuthorization": "Confirm the increase",
+  "startedAt": "2026-10-13T14:21:22.031425+00:00",
+  "sourceHead": "bc2d9cdea261856872f2b36097c77a121b655165",
+  "originalLimit": 1048576,
+  "targetLimit": 2097152,
+  "command": [
+    "/home/err/.volta/tools/image/node/22.20.0/bin/node",
+    "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/rheos-event-id-checker-implementation-20261012/qualified-rheos-85369213.cjs",
+    "status-update",
+    "a880c727-229b-4f3d-9158-718ec164d16c",
+    "--to",
+    "review",
+    "--config",
+    "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/eta-adoption-qualified-board-config.edn"
+  ],
+  "heldInputs": 2124,
+  "node": "v22.20.0",
+  "babashka": "babashka v1.13.226",
+  "persistentSysctlConfigChanged": false,
+  "probeBefore": {
+    "opened": false,
+    "code": "ENOSPC"
+  },
+  "apply": {
+    "exitCode": 0,
+    "stdout": "fs.inotify.max_user_watches = 2097152\n",
+    "stderr": "",
+    "at": "2026-10-13T14:21:22.151125+00:00"
+  },
+  "appliedReadback": 2097152,
+  "probeAfterIncrease": {
+    "opened": true,
+    "closed": true
+  },
+  "gateExitCode": 0,
+  "gateEndedAt": "2026-10-13T14:27:03.173507+00:00",
+  "restore": {
+    "exitCode": 0,
+    "stdout": "fs.inotify.max_user_watches = 1048576\n",
+    "stderr": "",
+    "at": "2026-10-13T14:27:03.184216+00:00"
+  },
+  "restoredReadback": 1048576,
+  "restorationVerified": true,
+  "elapsedSeconds": 341.075,
+  "interruptionSignals": [],
+  "changedPathsAfterGeneratedRestore": [
+    "kanban/.events/ledger.edn",
+    "kanban/tasks/establish-genuine-opencode-1-18-31-host-read-compatibility-c164d16c.md"
+  ],
+  "onlyNativeCardAndLedgerChanged": true,
+  "generatedOutputsRetainedAndRestored": [
+    {
+      "path": "packages/contracts/output/dist-cli/index.cjs",
+      "generatedBytes": 1997608,
+      "generatedSHA256": "f2ff329d9f4ac85dade677787b6c4b1e649c3d9ef3f9614f5295c06c469c85c3",
+      "restoredBaselineSHA256": "5f26ab71c04b4cf81a0b58d5bd8fba994bc2ba4f7544370beb570af799f1f014"
+    },
+    {
+      "path": "packages/contracts/output/dist-cli/index.cjs.map",
+      "generatedBytes": 5170120,
+      "generatedSHA256": "9883bb83300c6a0ce85bc69a5f744ca031f1a29e0bda74ef6154248100454bde",
+      "restoredBaselineSHA256": "00b1a5f5cc8fe7740621d624eb2ceedd0862db086eed24855b4d1702133d32e9"
+    },
+    {
+      "path": "packages/legacy/ai/src/models.generated.ts",
+      "generatedBytes": 618582,
+      "generatedSHA256": "26da1576bc046a08e6908749e5931494786bf8b81fad5e24734c1027460effad",
+      "restoredBaselineSHA256": "9e64256d83b2559f60fc6e80cc2320268bd56214c68032f2c222d5d8910fe761"
+    }
+  ]
+}

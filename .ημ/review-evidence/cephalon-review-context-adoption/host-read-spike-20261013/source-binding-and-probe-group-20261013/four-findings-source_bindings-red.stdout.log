@@ -1,0 +1,27 @@
+
+Testing cephalon-host-spike.extern.source-bindings-test
+
+FAIL in (retained-artifacts-are-authentic-at-their-indexed-paths) (/home/err/spaces/cephalon-review-context-adoption/eta-mu/.ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/cephalon_host_spike/extern/source_bindings_test.cljs:19)
+.ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/invoke-genuine-host-read.py
+expected: (= bytes (.-length actual))
+  actual: (not (= 3295 4422))
+
+FAIL in (retained-artifacts-are-authentic-at-their-indexed-paths) (/home/err/spaces/cephalon-review-context-adoption/eta-mu/.ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/cephalon_host_spike/extern/source_bindings_test.cljs:20)
+.ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/invoke-genuine-host-read.py
+expected: (= sha256 (digest actual))
+  actual: (not (= "e6536fafe28d29d51e91a87572b4db2d0fd0af0aa460ae5e18643f28715ea9a1" "ed64d23b614a5aad076a396622472f7309564a26e5c05c2d31d0d0a3bd2d10a5"))
+
+FAIL in (archived-replay-source-is-retained) (/home/err/spaces/cephalon-review-context-adoption/eta-mu/.ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/cephalon_host_spike/extern/source_bindings_test.cljs:26)
+expected: (= sourceSha256 (digest (.readFileSync fs sourcePath)))
+  actual: (not (= "3b1c6025b3295fe715c60f35493271578aa9130e1fb03a5c62d6550fa093c004" "f16e3a2109ec8a29eba9f64d2882e80be6b6a82cb6d29d14b2cb74153e9955d0"))
+
+FAIL in (current-adapters-have-separate-identities) (/home/err/spaces/cephalon-review-context-adoption/eta-mu/.ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/cephalon_host_spike/extern/source_bindings_test.cljs:30)
+expected: (= 2 (count current))
+  actual: (not (= 2 0))
+
+FAIL in (original-index-snapshot-remains-authentic) (/home/err/spaces/cephalon-review-context-adoption/eta-mu/.ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/cephalon_host_spike/extern/source_bindings_test.cljs:40)
+expected: (string? path)
+  actual: (not (string? nil))
+
+Ran 4 tests containing 61 assertions.
+5 failures, 0 errors.

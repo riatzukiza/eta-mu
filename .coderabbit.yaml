@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+# Exact default override, with logs outside review-evidence excluded.
+# https://docs.coderabbit.ai/configuration/path-instructions#how-path-filters-combine
+# Native whole-input selection/readback remains required before qualification.
+reviews:
+  path_filters:
+    - "**/*.log"
+    - "!*.log"
+    - "!.*.log"
+    - "!{!(.ημ),.!(ημ)}/**/*.log"
+    - "!.ημ/*.log"
+    - "!.ημ/.*.log"
+    - "!.ημ/!(review-evidence)/**/*.log"
+    - "!.ημ/.*/**/*.log"

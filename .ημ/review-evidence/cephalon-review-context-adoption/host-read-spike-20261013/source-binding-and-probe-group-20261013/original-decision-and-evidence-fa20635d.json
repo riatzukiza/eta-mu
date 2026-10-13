@@ -1,0 +1,390 @@
+{
+  "schema": "cephalon.genuine-host-framing-decision/v1",
+  "card": "a880c727-229b-4f3d-9158-718ec164d16c",
+  "planningMerge": "35e41047ddd523d7de8c99171679d9755d302cbf",
+  "baseCarryHead": "004356d0155a8b9478612410b01a41bc46dc8bcf",
+  "decision": "compatible for tested OpenCode1.18.31 native UTF-8 read framing; long-line clipping correctly refuses; actual consumer integration remains unqualified",
+  "museMerge": "a9a62f0d509056406f3dd7d8c86a13551be168cd",
+  "compiledMuseSha256": "46bb6ac957cd23a7d66789c9bb6ce26eed71a1b808abfc5887e98d4c0e9de3b6",
+  "actualInvocation": {
+    "clientVersion": "1.18.31",
+    "clientPath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/client/package/bin/opencode",
+    "clientSha256": "f9dab32248695e9ebd56b16a1921798fd85112cf5a69c7dfd0cabc1e17be4a11",
+    "model": "opencode/mimo-v2.6-flash-free",
+    "suppliedProviderCredentials": false,
+    "environmentKeys": [
+      "HOME",
+      "LANG",
+      "OPENCODE_CONFIG",
+      "OPENCODE_DISABLE_CLAUDE_CODE",
+      "OPENCODE_DISABLE_MODELS_FETCH",
+      "OPENCODE_DISABLE_PROJECT_CONFIG",
+      "OPENCODE_MODELS_PATH",
+      "PATH",
+      "TERM",
+      "TMPDIR",
+      "XDG_CACHE_HOME",
+      "XDG_CONFIG_HOME",
+      "XDG_DATA_HOME",
+      "XDG_STATE_HOME"
+    ],
+    "startedAt": "2026-10-13T01:41:59.987683+00:00",
+    "finishedAt": "2026-10-13T01:42:48.162407+00:00",
+    "elapsedSeconds": 48.17472259799979,
+    "exitCode": 0,
+    "timedOut": false,
+    "fixtureBefore": {
+      "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/AGENTS.md": "2742d8dcddff2c07a46f653e6e42d5ae0bfd70b595f775c3b81834ecc225c173",
+      "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/clipped-context.md": "8e9498ef8c7983921a1284c4e81701844f3cf7ba2acd7757b30342169db221d1",
+      "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/empty-context.md": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/large-context.md": "dc9569419b6ff5fd98a24ad77e3cf9153ecea11bc66b21731808320b9a8a9f3e"
+    },
+    "fixtureAfter": {
+      "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/AGENTS.md": "2742d8dcddff2c07a46f653e6e42d5ae0bfd70b595f775c3b81834ecc225c173",
+      "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/clipped-context.md": "8e9498ef8c7983921a1284c4e81701844f3cf7ba2acd7757b30342169db221d1",
+      "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/empty-context.md": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/large-context.md": "dc9569419b6ff5fd98a24ad77e3cf9153ecea11bc66b21731808320b9a8a9f3e"
+    },
+    "fixtureBytesUnchanged": true,
+    "stdoutSha256": "f866932ebcc2c86ad65cab59434a061b0271986bec40d936574ab184f01d4df0",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "limits": "Isolated native HOST framing diagnostic. No code review, approval, understanding, live consumer or publication."
+  },
+  "actualHostSessionID": "ses_ecd13845fffeDk2lTE2aBUj6Yk",
+  "actualHostReads": [
+    {
+      "eventTimestamp": 1791855730717,
+      "partID": "prt_132ec9cfe001HQJDNWwl4O40Y7",
+      "callID": "call_9354f432b2f241318f7e71c4",
+      "sessionID": "ses_ecd13845fffeDk2lTE2aBUj6Yk",
+      "input": {
+        "filePath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/large-context.md",
+        "offset": 1,
+        "limit": 1000
+      },
+      "time": {
+        "start": 1791855730645,
+        "end": 1791855730705
+      },
+      "metadataTruncated": true,
+      "instructionFilesLoaded": [
+        "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/AGENTS.md"
+      ],
+      "outputBytes": 33594,
+      "outputSha256": "6935f3fe1eba7088baa2f94aea25ed4b98683943ed60bb0dbbda9d1eae08bbe3"
+    },
+    {
+      "eventTimestamp": 1791855734381,
+      "partID": "prt_132ecab1c001eJaNny22276fpC",
+      "callID": "call_ae8d79f4155c42039e2261ac",
+      "sessionID": "ses_ecd13845fffeDk2lTE2aBUj6Yk",
+      "input": {
+        "filePath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/large-context.md",
+        "limit": 1000,
+        "offset": 1001
+      },
+      "time": {
+        "start": 1791855734348,
+        "end": 1791855734371
+      },
+      "metadataTruncated": true,
+      "instructionFilesLoaded": [],
+      "outputBytes": 34337,
+      "outputSha256": "1af896e92f7e04f4d60db0aec2423ef93c7a648866c50b86500ad0ca76912377"
+    },
+    {
+      "eventTimestamp": 1791855738885,
+      "partID": "prt_132ecbe7e001Ks1uQYMJrZO9uE",
+      "callID": "call_b36b5f3a2f714f069daaf1c2",
+      "sessionID": "ses_ecd13845fffeDk2lTE2aBUj6Yk",
+      "input": {
+        "filePath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/large-context.md",
+        "limit": 201,
+        "offset": 2001
+      },
+      "time": {
+        "start": 1791855738867,
+        "end": 1791855738881
+      },
+      "metadataTruncated": false,
+      "instructionFilesLoaded": [],
+      "outputBytes": 7139,
+      "outputSha256": "9e12c17df44d292fca079838f9367cfbbcbd691f9f14e9e1a48f68b2195a4215"
+    },
+    {
+      "eventTimestamp": 1791855749877,
+      "partID": "prt_132ece7a40013dVD5zBH3iwIhr",
+      "callID": "call_2f4b4aeddea540dcbc99476c",
+      "sessionID": "ses_ecd13845fffeDk2lTE2aBUj6Yk",
+      "input": {
+        "filePath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/empty-context.md",
+        "limit": 1,
+        "offset": 1
+      },
+      "time": {
+        "start": 1791855749865,
+        "end": 1791855749873
+      },
+      "metadataTruncated": false,
+      "instructionFilesLoaded": [],
+      "outputBytes": 304,
+      "outputSha256": "18de9166cda9070d0be78c9effe753b7afef3ac9f73ca6c37931d4012d147047"
+    },
+    {
+      "eventTimestamp": 1791855765217,
+      "partID": "prt_132ed24a5001p2dbD1x6m1LKL1",
+      "callID": "call_23283167185541809dc18bcb",
+      "sessionID": "ses_ecd13845fffeDk2lTE2aBUj6Yk",
+      "input": {
+        "filePath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/clipped-context.md",
+        "limit": 1,
+        "offset": 1
+      },
+      "time": {
+        "start": 1791855765203,
+        "end": 1791855765213
+      },
+      "metadataTruncated": false,
+      "instructionFilesLoaded": [],
+      "outputBytes": 4342,
+      "outputSha256": "a93c0679d4e1767c55674776059d1e7e54810add453b6dfcf3381444d90c2074"
+    }
+  ],
+  "controls": [
+    {
+      "name": "actual-large-complete",
+      "variant": "unmodified native HOST reads",
+      "ok": true,
+      "code": "verified-review-invocation",
+      "coverage": {
+        "status": "present",
+        "totalLines": 2201,
+        "deliveredLines": 2201,
+        "eof": true
+      }
+    },
+    {
+      "name": "actual-present-empty",
+      "variant": "unmodified native HOST reads",
+      "ok": true,
+      "code": "verified-review-invocation",
+      "coverage": {
+        "status": "present",
+        "totalLines": 0,
+        "deliveredLines": 0,
+        "eof": true
+      }
+    },
+    {
+      "name": "actual-clipped-line-refuses",
+      "variant": "unmodified native HOST reads",
+      "ok": false,
+      "code": "context-read-coverage-unestablished",
+      "coverage": null
+    },
+    {
+      "name": "synthetic-omitted-read-refuses",
+      "variant": "synthetic perturbation of genuine HOST events",
+      "ok": false,
+      "code": "context-read-coverage-unestablished",
+      "coverage": null
+    },
+    {
+      "name": "synthetic-missing-range-refuses",
+      "variant": "synthetic perturbation of genuine HOST events",
+      "ok": false,
+      "code": "context-read-coverage-unestablished",
+      "coverage": null
+    },
+    {
+      "name": "synthetic-altered-output-refuses",
+      "variant": "synthetic perturbation of genuine HOST events",
+      "ok": false,
+      "code": "context-read-coverage-unestablished",
+      "coverage": null
+    },
+    {
+      "name": "synthetic-late-delivery-refuses",
+      "variant": "synthetic perturbation of genuine HOST events",
+      "ok": false,
+      "code": "context-read-coverage-unestablished",
+      "coverage": null
+    },
+    {
+      "name": "synthetic-missing-eof-refuses",
+      "variant": "synthetic perturbation of genuine HOST events",
+      "ok": false,
+      "code": "context-read-coverage-unestablished",
+      "coverage": null
+    },
+    {
+      "name": "synthetic-unavailable-read-refuses",
+      "variant": "synthetic perturbation of genuine HOST events",
+      "ok": false,
+      "code": "host-tool-schema",
+      "coverage": null
+    }
+  ],
+  "scaffoldCorrection": "Initial private synthetic stage timestamps used tool end but fell before actual outer HOST event timestamp, causing host-event-time-order. Original failure retained. Corrected only synthetic stage timestamps to follow both; native event/output bytes unchanged. Initial shell returned0 after printing failure; that is not a harness pass. v2/v3 harness actual captured exits0.",
+  "registeredToolsRestriction": "Existing built-in plan; read/glob/grep/list allowed; Bash only literal true; edit/task/webfetch/websearch/question/todo/external_directory denied; --pure. No supplied provider credentials or new agent.",
+  "retainedEvidence": [
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/genuine-host-read.stdout.jsonl",
+      "originalPath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/genuine-host-read.stdout.jsonl",
+      "bytes": 166859,
+      "sha256": "f866932ebcc2c86ad65cab59434a061b0271986bec40d936574ab184f01d4df0",
+      "tier": "raw tool/command output"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/genuine-host-read.stderr.log",
+      "originalPath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/genuine-host-read.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tier": "raw tool/command output"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/genuine-host-read-invocation.json",
+      "originalPath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/genuine-host-read-invocation.json",
+      "bytes": 3691,
+      "sha256": "b9042a8bf2a42727884dc49e28271f232f281fd4bbeafa96516f2dbec63c52e5",
+      "tier": "prepared or derived; not provider review"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/canonical-host-framing-controls-v3.mjs",
+      "originalPath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/canonical-host-framing-controls-v3.mjs",
+      "bytes": 7249,
+      "sha256": "5aab36dcce1fbbe07454ecb7459253bd3ad93e3ef393d19b03094e4c9341824d",
+      "tier": "prepared or derived; not provider review"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/canonical-host-framing-control-results.json",
+      "originalPath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/canonical-host-framing-control-results.json",
+      "bytes": 12707,
+      "sha256": "237e99c277e6b0c4bb7ca0f3ec97e1fb21c872b511fca74fa7f2154909dca828",
+      "tier": "prepared or derived; not provider review"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/canonical-host-framing-controls-v3.stdout.log",
+      "originalPath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/canonical-host-framing-controls-v3.stdout.log",
+      "bytes": 1179,
+      "sha256": "54699c19f35b704340c30a72234ed412f44ab8f879dbc1915d546d681a8ce265",
+      "tier": "raw tool/command output"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/canonical-host-framing-controls-v3.stderr.log",
+      "originalPath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/canonical-host-framing-controls-v3.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tier": "raw tool/command output"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/canonical-host-framing-controls-v3-exit.json",
+      "originalPath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/canonical-host-framing-controls-v3-exit.json",
+      "bytes": 61,
+      "sha256": "12e3a45aa5cad9a6af242760d93038474473ec83942f5ed031517fd513f6b908",
+      "tier": "prepared or derived; not provider review"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/canonical-host-framing-controls.stderr.log",
+      "originalPath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/canonical-host-framing-controls.stderr.log",
+      "bytes": 795,
+      "sha256": "c766ccd3bd773a8f405f389fe8bfe6a0f90ee9f8b223d187b7cae6f5c77d78d4",
+      "tier": "raw tool/command output"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/first-actual-large-canonical-verdict.json",
+      "originalPath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/first-actual-large-canonical-verdict.json",
+      "bytes": 291,
+      "sha256": "521d73f9e258554d72ed9b0eeab21ee7eae755f84fb66ace461d6748921498b5",
+      "tier": "prepared or derived; not provider review"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/prepared-probe-inputs.json",
+      "originalPath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/prepared-probe-inputs.json",
+      "bytes": 1754,
+      "sha256": "115da5136a69112e421ca541019a96a4a779152ec6fb71d708a8d98f2f32067b",
+      "tier": "prepared or derived; not provider review"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/probe-opencode-config.json",
+      "originalPath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-opencode-config.json",
+      "bytes": 631,
+      "sha256": "8876d66f6c8013248be27203f075c5bb9e1ec2161a2efd63f48442fec7240255",
+      "tier": "prepared or derived; not provider review"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/host-read-probe-prompt.txt",
+      "originalPath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/host-read-probe-prompt.txt",
+      "bytes": 1338,
+      "sha256": "111a6278144c379d1996a7ff5694fb56144a1173c7312298256d3e08231f07fc",
+      "tier": "prepared or derived; not provider review"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/current-catalog-observation.json",
+      "originalPath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/current-catalog-observation.json",
+      "bytes": 2326,
+      "sha256": "d392e8ec98dde616d0ebeb9e7c9d9805904bc033e966b45176b60ee80b52abec",
+      "tier": "prepared or derived; not provider review"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/invoke-genuine-host-read.py",
+      "originalPath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/invoke-genuine-host-read.py",
+      "bytes": 3295,
+      "sha256": "e6536fafe28d29d51e91a87572b4db2d0fd0af0aa460ae5e18643f28715ea9a1",
+      "tier": "prepared or derived; not provider review"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/fixture/AGENTS.md",
+      "originalPath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/AGENTS.md",
+      "bytes": 95,
+      "sha256": "2742d8dcddff2c07a46f653e6e42d5ae0bfd70b595f775c3b81834ecc225c173",
+      "tier": "fixture input"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/fixture/clipped-context.md",
+      "originalPath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/clipped-context.md",
+      "bytes": 4202,
+      "sha256": "8e9498ef8c7983921a1284c4e81701844f3cf7ba2acd7757b30342169db221d1",
+      "tier": "fixture input"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/fixture/empty-context.md",
+      "originalPath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/empty-context.md",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tier": "fixture input"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/fixture/large-context.md",
+      "originalPath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/large-context.md",
+      "bytes": 61627,
+      "sha256": "dc9569419b6ff5fd98a24ad77e3cf9153ecea11bc66b21731808320b9a8a9f3e",
+      "tier": "fixture input"
+    }
+  ],
+  "privateEvidenceAlsoRetained": [
+    "models-dev-current-native.json",
+    "opencode-linux-x64-1.18.31.tgz",
+    "opencode-ai-1.18.31-native.json",
+    "opencode-linux-x64-1.18.31-native.json",
+    "canonical-host-framing-controls-prepared.mjs",
+    "canonical-host-framing-controls-v2.mjs",
+    "canonical-host-framing-controls-v2-exit.json",
+    "initial-scaffold-actual-large-complete-control-response.jsonl",
+    "initial-scaffold-actual-large-complete-synthetic-submission.json"
+  ],
+  "epistemicLimits": "Only genuine HOST framing and deterministic canonical controls. Entire review state scaffold and failure perturbations synthetic. No real provider review, review judgment/approval/cohort, understanding, new caller/Muse pin, hosted OpenPlanner context integration, actual B1/B2/maker recall, runtime/social/publication/heartbeat/auth/paid change. Metadata truncated:false does not establish unclipped content. Changed client/output/context/pin requires fresh qualification. Done still requires complete checks/reviews and documentary MERGE.",
+  "offlineArchivedReplay": {
+    "exitCode": 0,
+    "elapsedSeconds": 0.28897920299641555,
+    "nodeVersion": "v22.20.0",
+    "correction": "Node fileURLToPath decodes Unicode evidence-directory URI, only offline adapter fixed; canonical verifier/native reads/fixtures unchanged",
+    "sourcePath": "/home/err/spaces/cephalon-review-context-adoption/eta-mu/.ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/replay-canonical-host-framing-controls.mjs",
+    "sourceSha256": "3b1c6025b3295fe715c60f35493271578aa9130e1fb03a5c62d6550fa093c004",
+    "resultsFile": "archived-replay-results.json",
+    "initialRefusal": "Initial offline adapter used URL.pathname with percent-encoded Unicode .ημ, failed ENOENT/exit1; native/verifier/fixture bytes unchanged. Original source/log/exit retained. Corrected only standard Node file URL conversion.",
+    "limits": "Synthetic review scaffold and negative perturbations; original native HOST data with exact canonical verifier; no provider approval"
+  },
+  "operatorPreMutationError": "One functions.exec JavaScript template construction failed ReferenceError review before tools ran; no repository mutation/model invocation or canonical test resulted.",
+  "snapshotPreparationFailure": "Initial private gate snapshot adapter used default Git quoted untracked Unicode path output, failed FileNotFoundError before native Rheos invocation. Corrected only Git -z path transport. This is an operator assembly failure, not a native gate refusal. Receipt275 manifest will be corrected by append only with real literal UTF-8 paths."
+}

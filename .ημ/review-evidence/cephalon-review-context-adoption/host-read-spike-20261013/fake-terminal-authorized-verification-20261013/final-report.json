@@ -1,0 +1,61 @@
+{
+  "humanAuthorization": "Go ahead with the fake terminal repair",
+  "sourceHead": "a33b8be239d10b777d1c4d770b97270604d5ed63",
+  "startedAt": "2026-10-13T17:53:50.578479+00:00",
+  "command": [
+    "/home/err/.volta/tools/image/node/22.20.0/bin/node",
+    "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/rheos-event-id-checker-implementation-20261012/qualified-rheos-85369213.cjs",
+    "status-update",
+    "a880c727-229b-4f3d-9158-718ec164d16c",
+    "--to",
+    "review",
+    "--config",
+    "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/eta-adoption-qualified-board-config.edn"
+  ],
+  "watchLimitBefore": 1572864,
+  "watchLimitChangedByAdapter": false,
+  "fixtureBeforeSHA256": "3135acebd4a539f6c54f13f5ae32e252a238d83bcfbbc0b92c4e4f118dae98e6",
+  "fixtureAfterSHA256": "f8c0a6c361266e634170a31d47154f0777acc49f7baaaa9bd94c32cb90816851",
+  "heldInputs": 2209,
+  "gateExitCode": 0,
+  "gateEndedAt": "2026-10-13T17:59:28.640391+00:00",
+  "elapsedSeconds": 338.062,
+  "watchLimitAfter": 1572864,
+  "changedPathsAfterGeneratedRestore": [
+    "kanban/.events/ledger.edn",
+    "kanban/tasks/establish-genuine-opencode-1-18-31-host-read-compatibility-c164d16c.md"
+  ],
+  "onlyNativeCardAndLedgerChanged": true,
+  "generatedRetainedAndRestored": [
+    {
+      "path": "packages/contracts/output/dist-cli/index.cjs",
+      "generatedBytes": 1997608,
+      "generatedSHA256": "f2ff329d9f4ac85dade677787b6c4b1e649c3d9ef3f9614f5295c06c469c85c3",
+      "restoredSHA256": "5f26ab71c04b4cf81a0b58d5bd8fba994bc2ba4f7544370beb570af799f1f014"
+    },
+    {
+      "path": "packages/contracts/output/dist-cli/index.cjs.map",
+      "generatedBytes": 5170120,
+      "generatedSHA256": "9883bb83300c6a0ce85bc69a5f744ca031f1a29e0bda74ef6154248100454bde",
+      "restoredSHA256": "00b1a5f5cc8fe7740621d624eb2ceedd0862db086eed24855b4d1702133d32e9"
+    },
+    {
+      "path": "packages/legacy/ai/src/models.generated.ts",
+      "generatedBytes": 621091,
+      "generatedSHA256": "0ff8ecd5f86105848ff5510913186a609af372bf8356d4bbfa8ba8b63f323b6c",
+      "restoredSHA256": "9e64256d83b2559f60fc6e80cc2320268bd56214c68032f2c222d5d8910fe761"
+    }
+  ],
+  "logs": [
+    {
+      "path": "native-gate.stdout.log",
+      "bytes": 152109,
+      "sha256": "b8c3d28f5f30d36ff0ec5f8fd0e81fb298b617bef8ec37716026a31d44d08fa6"
+    },
+    {
+      "path": "native-gate.stderr.log",
+      "bytes": 10014,
+      "sha256": "f643767f9a9549e47a2de4ad28f3e09306e65d41a3cd34efe6f89ad8a1eb6c87"
+    }
+  ]
+}

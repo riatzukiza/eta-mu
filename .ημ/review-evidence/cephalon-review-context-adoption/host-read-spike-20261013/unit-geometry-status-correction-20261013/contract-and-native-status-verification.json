@@ -1,0 +1,146 @@
+{
+  "tier": "Derived custody packet containing exact observed-command-output strings; not raw REST or provider approval",
+  "currentHeadAtObservation": "f04ad5e7db35944b8d289f4d50238eed56f6044b",
+  "findingByteStats": 4262432221,
+  "findingTaskStatus": 4262432235,
+  "qualifiedMuseMerge": "a9a62f0d509056406f3dd7d8c86a13551be168cd",
+  "qualifiedMuseArtifactSHA256": "46bb6ac957cd23a7d66789c9bb6ce26eed71a1b808abfc5887e98d4c0e9de3b6",
+  "contract": {
+    "trustedUTF8SourceBytes": 102,
+    "canonicalUTF16PageEnd": 100,
+    "legacyDiffStatsBytes": 100,
+    "directUTF8ReplacementVerdict": "begin-source-binding",
+    "existingRegression": "actual-byte-count-and-canonical-utf16-geometry-are-distinct"
+  },
+  "assessment": "The requested direct full.length replacement conflicts with the qualified producer and invocation guard. Original raw UTF8 custody is independently bound. Current report explicitly distinguishes both measures without changing the wire contract. Native reviewer reassessment remains required; no rejection/withdrawal or approval is invented.",
+  "unitReportRegression": {
+    "before": {
+      "tests": 5,
+      "assertions": 53,
+      "failures": 4,
+      "errors": 0
+    },
+    "after": {
+      "tests": 5,
+      "assertions": 53,
+      "failures": 0,
+      "errors": 0
+    },
+    "sourceBindings": {
+      "tests": 4,
+      "assertions": 71,
+      "failures": 0,
+      "errors": 0
+    },
+    "lint": {
+      "errors": 0,
+      "warnings": 0
+    }
+  },
+  "nativeTaskUpdate": "Qualified Rheos appended the current authorization, warning-free native gate and remaining hosted-review/MERGE closeout obligations; independent readback includes that exact text. Earlier notes remain historical.",
+  "operatorFailure": "First CLI help invocation omitted the already known NODE_PATH and could not resolve yaml; corrected invocation succeeded without dependency installation. The direct wire fix and mismatched UTF8 test were rejected experiments, not successful repair or production failures.",
+  "observations": [
+    {
+      "name": "byte-metadata-red.stdout.log",
+      "bytes": 510,
+      "sha256": "87ed22eacfc1d5f859371758331407c953d107f15913e519869ef81e586a6572",
+      "actualCommandOutputUTF8": "\nTesting cephalon-host-spike.extern.replay-custody-test\n\nFAIL in (genuine-replay-preserves-archive) (/home/err/spaces/cephalon-review-context-adoption/eta-mu/.ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/cephalon_host_spike/extern/replay_custody_test.cljs:84)\nReported diff bytes must match the authenticated source bytes\nexpected: (= expected-bytes (get-in begin [:diff-stats :bytes]))\n  actual: (not (= 102 100))\n\nRan 5 tests containing 51 assertions.\n1 failures, 0 errors.\n"
+    },
+    {
+      "name": "byte-metadata-red.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actualCommandOutputUTF8": ""
+    },
+    {
+      "name": "byte-metadata-green.stdout.log",
+      "bytes": 3260,
+      "sha256": "413045c2a25e2ea85fbde6d367e4b579adf346e2a2cf4bfdec59967fe2f71a35",
+      "actualCommandOutputUTF8": "\nTesting cephalon-host-spike.extern.replay-custody-test\n\nFAIL in (genuine-replay-preserves-archive) (/home/err/spaces/cephalon-review-context-adoption/eta-mu/.ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/cephalon_host_spike/extern/replay_custody_test.cljs:64)\nnode:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\nfalse !== true\n\n    at file:///tmp/cephalon-replay-custody-test-Om1ama/archive/replay-canonical-host-framing-controls.mjs:67:8\n    at ModuleJob.run (node:internal/modules/esm/module_job:345:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:665:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v22.20.0\n\nexpected: (= 0 (.-status result))\n  actual: (not (= 0 1))\n\nERROR in (genuine-replay-preserves-archive) (todo:)\nUncaught exception, not in assertion.\nexpected: nil\n  actual: #error {:message \"Unexpected end of JSON input\", :data {:type :sci/error, :line 65, :column 28, :message \"Unexpected end of JSON input\", :sci.impl/callstack #object[cljs.core.Volatile {:val ({:line 62, :column 3, :ns #object[pt cephalon-host-spike.extern.replay-custody-test], :file \"/home/err/spaces/cephalon-review-context-adoption/eta-mu/.ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/cephalon_host_spike/extern/replay_custody_test.cljs\", :sci.impl/f-meta {:name run-copy, :ns #object[pt cephalon-host-spike.extern.replay-custody-test], :file \"/home/err/spaces/cephalon-review-context-adoption/eta-mu/.ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/cephalon_host_spike/extern/replay_custody_test.cljs\", :arglists ([mutate assert-result]), :line 33, :column 1}} {:line 49, :column 9, :ns #object[pt cephalon-host-spike.extern.replay-custody-test], :file \"/home/err/spaces/cephalon-review-context-adoption/eta-mu/.ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/cephalon_host_spike/extern/replay_custody_test.cljs\", :sci.impl/f-meta {:sci.impl/op :resolve-sym, :sci.impl/idx 1}} {:line 65, :column 28, :ns #object[pt cephalon-host-spike.extern.replay-custody-test], :file \"/home/err/spaces/cephalon-review-context-adoption/eta-mu/.ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/cephalon_host_spike/extern/replay_custody_test.cljs\", :sci.impl/f-meta {:name js->clj, :arglists ([x] [x & opts]), :doc \"Recursively transforms JavaScript arrays into ClojureScript\\n  vectors, and JavaScript objects into ClojureScript maps.  With\\n  option ':keywordize-keys true' will convert object fields from\\n  strings to keywords.\", :sci/built-in true, :ns #object[pt clojure.core]}})}], :file \"/home/err/spaces/cephalon-review-context-adoption/eta-mu/.ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/cephalon_host_spike/extern/replay_custody_test.cljs\"}, :cause #object[SyntaxError SyntaxError: Unexpected end of JSON input]}\n\nRan 5 tests containing 38 assertions.\n1 failures, 1 errors.\n"
+    },
+    {
+      "name": "byte-metadata-green.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actualCommandOutputUTF8": ""
+    },
+    {
+      "name": "canonical-byte-contract-probe.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actualCommandOutputUTF8": ""
+    },
+    {
+      "name": "canonical-byte-contract-probe.stderr.txt",
+      "bytes": 1164,
+      "sha256": "1065903240e4ff2cdc4fc8171b723bf9a6acb28424c431e7f17469ab69a64ff6",
+      "actualCommandOutputUTF8": "{\"control\":\"actual-large-complete\",\"verdict\":{\"reviewCallCount\":null,\"acceptedInvocation\":null,\"contextReadCoverage\":null,\"reason\":\"unestablished-review-trace\",\"ok\":false,\"code\":\"begin-source-binding\",\"pageCount\":null,\"violations\":[],\"reasonKind\":\"unestablished-review-trace\",\"sessionID\":null}}\nnode:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\nfalse !== true\n\n    at file:///home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/fake-terminal-authorized-verification-20261013/owned-byte-contract-jqlrr8b5/replay-canonical-host-framing-controls.mjs:67:8\n    at ModuleJob.run (node:internal/modules/esm/module_job:345:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:665:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v22.20.0\n"
+    },
+    {
+      "name": "unit-report-red.stdout.log",
+      "bytes": 1557,
+      "sha256": "a4f51c0062ae02039f95cf8df73c80b62b0a3e2d58ddc459af925ef7cc4d9043",
+      "actualCommandOutputUTF8": "\nTesting cephalon-host-spike.extern.replay-custody-test\n\nFAIL in (genuine-replay-preserves-archive) (/home/err/spaces/cephalon-review-context-adoption/eta-mu/.ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/cephalon_host_spike/extern/replay_custody_test.cljs:85)\nexpected: (= \"utf16-code-units\" (:legacyDiffStatsBytesUnit encoding))\n  actual: (not (= \"utf16-code-units\" nil))\n\nFAIL in (genuine-replay-preserves-archive) (/home/err/spaces/cephalon-review-context-adoption/eta-mu/.ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/cephalon_host_spike/extern/replay_custody_test.cljs:86)\nexpected: (= (:utf8Bytes encoding) (get-in begin [:input-source :full_diff :bytes]))\n  actual: (not (= nil 102))\n\nFAIL in (genuine-replay-preserves-archive) (/home/err/spaces/cephalon-review-context-adoption/eta-mu/.ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/cephalon_host_spike/extern/replay_custody_test.cljs:87)\nexpected: (= (:utf16CodeUnits encoding) (get-in begin [:diff-stats :bytes]))\n  actual: (not (= nil 100))\n\nFAIL in (genuine-replay-preserves-archive) (/home/err/spaces/cephalon-review-context-adoption/eta-mu/.ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/cephalon_host_spike/extern/replay_custody_test.cljs:88)\nThe frozen Unicode fixture distinguishes bytes from page geometry\nexpected: (> (:utf8Bytes encoding) (:utf16CodeUnits encoding))\n  actual: (not (> nil nil))\n\nRan 5 tests containing 53 assertions.\n4 failures, 0 errors.\n"
+    },
+    {
+      "name": "unit-report-red.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actualCommandOutputUTF8": ""
+    },
+    {
+      "name": "unit-report-green.stdout.log",
+      "bytes": 117,
+      "sha256": "b31260741da2feba11d9b24c55763552f8163f27ff3313e877109b1bee066a79",
+      "actualCommandOutputUTF8": "\nTesting cephalon-host-spike.extern.replay-custody-test\n\nRan 5 tests containing 53 assertions.\n0 failures, 0 errors.\n"
+    },
+    {
+      "name": "unit-report-green.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actualCommandOutputUTF8": ""
+    },
+    {
+      "name": "unit-report-bindings-green.stdout.log",
+      "bytes": 118,
+      "sha256": "c9e9d35e4bb01b5fe3831f667f5e43c1b507709c60a04d76b3d2ae2cb6858a09",
+      "actualCommandOutputUTF8": "\nTesting cephalon-host-spike.extern.source-bindings-test\n\nRan 4 tests containing 71 assertions.\n0 failures, 0 errors.\n"
+    },
+    {
+      "name": "unit-report-bindings-green.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actualCommandOutputUTF8": ""
+    },
+    {
+      "name": "unit-report-lint.stdout.log",
+      "bytes": 42,
+      "sha256": "d362520d6efb2e7d68bc9d349dd42ccd9f0e600dbf17c3de993b0b9d4c3d878a",
+      "actualCommandOutputUTF8": "linting took 19ms, errors: 0, warnings: 0\n"
+    },
+    {
+      "name": "unit-report-lint.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actualCommandOutputUTF8": ""
+    },
+    {
+      "name": "native-current-qualification-comment.stdout.json",
+      "bytes": 1032,
+      "sha256": "8d32dbbf3a6c53239bdfadf9761c13917ea6bda1f2444cb571e5df9a46549f60",
+      "actualCommandOutputUTF8": "{\n  \"ok\": true,\n  \"uuid\": \"a880c727-229b-4f3d-9158-718ec164d16c\",\n  \"comment\": \"Current qualification correction, 2026-10-13: The human included the FakeTerminal repair. Commit f04ad5e7db35944b8d289f4d50238eed56f6044b adds only its existing type hint. Actual complete TerminalUI passes70tests172assertions with0failures/errors/compiler warnings; complete unchanged qualified native gate passes all14suites and compiler builds with0warnings, exit0 in338.062seconds. Native IP→Review and independent Review readback are retained. Existing watchlimit1572864 stayed unchanged; generated outputs were retained/restored. Source receipt287 and fake-terminal-authorized-verification-20261013 contain exact raw-log byte/hash identities. The earlier custody-green comment is historical and its fixture/zero-warning blockers are superseded. Current hosted review, remaining verified review findings and authorized exact-head merge still precede closeout and native Document→Done; no deployed memory/field/mood/recall proof is supplied.\"\n}\n"
+    },
+    {
+      "name": "native-current-qualification-comment.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actualCommandOutputUTF8": ""
+    },
+    {
+      "name": "native-current-qualification-readback.json",
+      "bytes": 8625,
+      "sha256": "aa5cbe99cb9c7890e917df467e9ae281090941b72c9ea02da82db5e7ae275ee2",
+      "actualCommandOutputUTF8": "{\n  \"uuid\": \"a880c727-229b-4f3d-9158-718ec164d16c\",\n  \"frontmatter\": {\n    \"category\": \"tasks\",\n    \"labels\": \"cephalon, b3, review, context-custody, spike\",\n    \"parent\": \"de02c921-e23c-4d83-87e8-b32c6c3160ff\",\n    \"type\": \"task\",\n    \"write-id\": \"1791916235673-0.fylpgag0ofb3kz4p9j\",\n    \"points\": \"1\",\n    \"title\": \"Establish genuine OpenCode 1.18.31 HOST read compatibility\",\n    \"priority\": \"P1\",\n    \"status\": \"review\",\n    \"epic\": \"de02c921-e23c-4d83-87e8-b32c6c3160ff\",\n    \"uuid\": \"a880c727-229b-4f3d-9158-718ec164d16c\",\n    \"created_at\": \"2026-10-12T23:00:08.661Z\"\n  },\n  \"sections\": [\n    {\n      \"type\": \"body\",\n      \"content\": \"## Context\\n\\nThis isolates the already scoped genuine OpenCode1.18.31 HOST-read investigation after native Codex5496844967/root4253056695. Muse context-read source is actually merged at a9a62f0d509056406f3dd7d8c86a13551be168cd. Actual existing OpenPlanner consumer033c001125019908d0c68aa5365749005644edc8 uses OpenCode1.18.31/Node22.20.0. The official1.18.31 read source is byte-identical to the recorded1.18.18 read Gitblob678ed44510488965bacc87238bf8c80f70ad3c07/SHAafec8294965cbd9b9e29d3453b682164f0ecdba26574ebc048e9ba21af209c68; source equality alone does not establish actual completed HOST framing.\\n\\n## Outcome\\n\\nAn inspectable version-bound genuine HOST trace and an explicit compatible/incompatible decision allow the two-caller design to be described and estimated from observed behavior.\\n\\n## Scope\\n\\nInspect retained genuine1.18.31 completed read events from the existing native consumer review path, preferring original immutable artifacts over new inference. If the retained trace lacks the required boundary, use only an isolated authorized diagnostic with the existing credential-free OpenCode free MiMo offering discovered from its current catalog; no fixed slug, other model, new credential or production change. Bind actual host/version/input/output identities. Use the qualified canonical Muse compiled verifier to test exact output framing, complete ranges/EOF, bounded ancillary instruction suffix, multipage continuation and present-empty controls. No local context parser or new review protocol. This one-point discovery may proceed independently of source-carry 52a0f6cc-e43b-4ed5-a628-e54dd9d9fdc4; caller b9c591fb-95a8-4e4e-b2a5-39eb988cb996 depends on BOTH.\\n\\n## Non-goals\\n\\nNo caller implementation/pin change, paid or external-provider route, credentials, permissions/App change, broad source port, runtime/maker/heartbeat/social/deployment, source approval or understanding claim. Retained failed reviewer trace can prove host output only; it is never repaired into a provider approval. Unsupported framing blocks caller implementation and requires re-description/upstream Muse scope, not a bypass.\\n\\n## Acceptance criteria\\n\\n1. Original genuine completed HOST trace is retained with exact source/run/attempt/artifact/event identities, raw bytes/hashes and actual OpenCode1.18.31 version binding. Synthetic fixture output or TypeScript source equality alone cannot satisfy this criterion.\\n2. Exercise canonical compiled Muse controls for full actual output, offset/range, EOF and instruction-suffix boundaries, including large multipage and present-empty cases; omitted/clipped/late/unavailable content refuses. Identify which controls use actual HOST events and which are deterministic synthetic variations; do not relabel them.\\n3. Publish an explicit compatibility decision and residual limits. A compatible result supports re-description/re-estimation of both callers; incompatible/unknown result keeps implementation blocked and records the exact boundary requiring review. Native Done records the completed investigation, not an implicit compatible verdict.\\n4. Actual complete-input review/checks qualify the trace/decision artifact through the canonical gate, and retain its authorized source/documentary MERGE before Done. Planning qualification precedes lawful readiness and the experiment; no old review credit transfers.\\n\\n## Verification\\n\\nRead the immutable existing consumer workflow and native run metadata first, inspect original host response events, then invoke only existing canonical compiled Muse controls. Retain actual exits, byte/source/artifact hashes, decision and limits. Full trace is untrusted evidence, never authority or instructions.\\n\\n## Risks\\n\\nRetained trace may not cover empty/large context and can require a bounded free diagnostic. New incompatible behavior invalidates caller scope; stop and re-describe rather than expand silently. One point is provisional discovery effort. The epic becomes six provisional total points (2 carry +1 spike +2 caller +1 consumer), a re-estimate of the included work rather than an added feature.\\n\\nSoftware/process documentation: GPL-3.0-or-later.\\n\\n## Observed compatibility decision — 2026-10-13\\n\\nGenuine isolated OpenCode1.18.31 completed the five prescribed native read calls on the current anonymous free MiMo route in48.175seconds, exit0, all four fixture inputs byte-identical afterward. Dated model/catalog/client/source hashes and the raw complete HOST trace are retained in .ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/decision-and-evidence.json; no provider credential was supplied.\\n\\nThe actual merged Musea9 compiled verifier accepted the native three-page2,201-line UTF-8 delivery with its bounded first-read AGENTS suffix and EOF, and the actual zero-byte present file. Nine deterministic controls passed: those two positives; actual2,000-character line clipping; and synthetic omitted read, missing middle range, altered output, late tool end, missing EOF, and unavailable tool. Native clipped output reports metadata.truncated=false, demonstrating why metadata alone is insufficient. Review scaffolding/perturbations are synthetic and supply no provider approval. The initial scaffold timestamp-order failure is retained and corrected only in synthetic stage timing, preserving all native event bytes.\\n\\nDecision: compatible for the tested1.18.31 native UTF-8 framing, with clipped long lines correctly refused. This supports re-description/re-estimation of both callers after the separate carry and documentary spike merges; it does not establish the actual hosted consumer context is fully readable, caller adoption, authentication, understanding, B1/B2/live B3 or future availability. Those remain explicit independent proofs. Full source checks/current whole-input reviews/documentary MERGE precede native Done.\"\n    },\n    {\n      \"type\": \"comment\",\n      \"content\": \"cephalon-host-spike-custody-green-20261013: Actual approved one-run1048576->2097152 completed all14suites/exit0 and restored1048576 after terminal gate. Native Codex4260128644 correctly keeps zero-warning qualification held: unchanged TerminalUI infer-warning; actual Review->IP corrected, not Done. Receipt280 retains causal offline RED5tests42assertions26fail0errors. Patched archive adapter GREEN5tests44assertions0fail/error checks wholeHOST/manifest/all4fixtures and fresh outputs preserving original artifacts; successful-gate raw log identity supplement added. CodeRabbit log default override/exclusions are a static source candidate with actual hosted complete-input verification pending; no scope/approval credit. Separate human fixture inclusion and any further bounded capacity verification remain pending; do not repeat completed host maintenance or implement callers before spike qualifies.\\n\\nCurrent qualification correction, 2026-10-13: The human included the FakeTerminal repair. Commit f04ad5e7db35944b8d289f4d50238eed56f6044b adds only its existing type hint. Actual complete TerminalUI passes70tests172assertions with0failures/errors/compiler warnings; complete unchanged qualified native gate passes all14suites and compiler builds with0warnings, exit0 in338.062seconds. Native IP→Review and independent Review readback are retained. Existing watchlimit1572864 stayed unchanged; generated outputs were retained/restored. Source receipt287 and fake-terminal-authorized-verification-20261013 contain exact raw-log byte/hash identities. The earlier custody-green comment is historical and its fixture/zero-warning blockers are superseded. Current hosted review, remaining verified review findings and authorized exact-head merge still precede closeout and native Document→Done; no deployed memory/field/mood/recall proof is supplied.\"\n    }\n  ],\n  \"source-path\": \"/home/err/spaces/cephalon-review-context-adoption/eta-mu/kanban/tasks/establish-genuine-opencode-1-18-31-host-read-compatibility-c164d16c.md\"\n}\n"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "tier": "Actual offline synthetic subprocess regression and authentic native review; no new HOST inference",
+  "nativeFinding": 4261004721,
+  "thread": "PRRT_kwDOU4VdxM6r8s5_",
+  "currentCompletedCodeRabbitReview": "One finding, not approval; all84selected, scope clarification remains pending",
+  "causalRed": {
+    "tests": 3,
+    "assertions": 16,
+    "failures": 5,
+    "errors": 0,
+    "exit": 1,
+    "cause": "Original version subprocess waits past13second outer guard, no failure report and unreaped fake until owned cleanup"
+  },
+  "initialHarnessError": "Earlier version-probe-red output is an unmatched parenthesis parse error, not causal RED; bytes retained",
+  "originalDriverRetainedVerbatim": true,
+  "artifacts": [
+    {
+      "path": ".\u03b7\u03bc/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/version-probe-bound-20261013/coderabbit-de1798-completion-6148074330-db59b4e6b48c.json",
+      "bytes": 15095,
+      "sha256": "db59b4e6b48cdecc97b17c2ac9d5f17fd0b57d82436fb9e455912c844a251c43"
+    },
+    {
+      "path": ".\u03b7\u03bc/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/version-probe-bound-20261013/coderabbit-version-probe-finding4261004721-native.json",
+      "bytes": 5957,
+      "sha256": "7b88407182605e634e8be32a45f46ed018d9347ed4746fa1407de950497d7e8f"
+    },
+    {
+      "path": ".\u03b7\u03bc/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/version-probe-bound-20261013/original-invoke-genuine-host-read.py",
+      "bytes": 3295,
+      "sha256": "e6536fafe28d29d51e91a87572b4db2d0fd0af0aa460ae5e18643f28715ea9a1"
+    },
+    {
+      "path": ".\u03b7\u03bc/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/version-probe-bound-20261013/version-probe-causal-red-exit.json",
+      "bytes": 217,
+      "sha256": "02db88a935cd7da3f1ed73335b3d91312081f8c28d219c4963a21702c462dbd6"
+    },
+    {
+      "path": ".\u03b7\u03bc/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/version-probe-bound-20261013/version-probe-causal-red.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".\u03b7\u03bc/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/version-probe-bound-20261013/version-probe-causal-red.stdout.log",
+      "bytes": 1973,
+      "sha256": "724e8c441290c8fb8c9e5542e66388ffebeda2127c7f32412063ea1d2e066812"
+    },
+    {
+      "path": ".\u03b7\u03bc/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/version-probe-bound-20261013/version-probe-red-exit.json",
+      "bytes": 103,
+      "sha256": "d782775a657b033ca516d44b264c85cd4ce18ef5ff8d79752b7ca33ebc41d865"
+    },
+    {
+      "path": ".\u03b7\u03bc/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/version-probe-bound-20261013/version-probe-red.stderr.log",
+      "bytes": 916,
+      "sha256": "c82419a857cb1877315788bbc16b7104b3043fea34cc0e058e184606e0f20577"
+    },
+    {
+      "path": ".\u03b7\u03bc/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/version-probe-bound-20261013/version-probe-red.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

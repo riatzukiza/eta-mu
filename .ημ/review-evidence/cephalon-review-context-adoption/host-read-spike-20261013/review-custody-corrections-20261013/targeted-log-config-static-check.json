@@ -1,0 +1,283 @@
+{
+  "schemaValidation": "PASS official79097byte schema",
+  "patterns": [
+    "**/*.log",
+    "!*.log",
+    "!.*.log",
+    "!!(.ημ)/**/*.log",
+    "!.!(ημ)/**/*.log",
+    "!.ημ/*.log",
+    "!.ημ/.*.log",
+    "!.ημ/!(review-evidence)/**/*.log",
+    "!.ημ/.*/**/*.log"
+  ],
+  "module": "minimatch10.2.5",
+  "results": [
+    {
+      "path": "error.log",
+      "dot": false,
+      "excluded": true,
+      "matched": [
+        "!*.log"
+      ]
+    },
+    {
+      "path": ".error.log",
+      "dot": false,
+      "excluded": true,
+      "matched": [
+        "!.*.log"
+      ]
+    },
+    {
+      "path": "src/error.log",
+      "dot": false,
+      "excluded": true,
+      "matched": [
+        "!!(.ημ)/**/*.log"
+      ]
+    },
+    {
+      "path": "packages/a/x.log",
+      "dot": false,
+      "excluded": true,
+      "matched": [
+        "!!(.ημ)/**/*.log"
+      ]
+    },
+    {
+      "path": "vendor/a.log",
+      "dot": false,
+      "excluded": true,
+      "matched": [
+        "!!(.ημ)/**/*.log"
+      ]
+    },
+    {
+      "path": ".hidden/error.log",
+      "dot": false,
+      "excluded": true,
+      "matched": [
+        "!.!(ημ)/**/*.log"
+      ]
+    },
+    {
+      "path": ".ημ/a.log",
+      "dot": false,
+      "excluded": true,
+      "matched": [
+        "!.ημ/*.log"
+      ]
+    },
+    {
+      "path": ".ημ/.a.log",
+      "dot": false,
+      "excluded": true,
+      "matched": [
+        "!.ημ/.*.log"
+      ]
+    },
+    {
+      "path": ".ημ/runtime/a.log",
+      "dot": false,
+      "excluded": true,
+      "matched": [
+        "!.ημ/!(review-evidence)/**/*.log"
+      ]
+    },
+    {
+      "path": ".ημ/.runtime/a.log",
+      "dot": false,
+      "excluded": true,
+      "matched": [
+        "!.ημ/.*/**/*.log"
+      ]
+    },
+    {
+      "path": ".ημ/review-evidence-shadow/a.log",
+      "dot": false,
+      "excluded": true,
+      "matched": [
+        "!.ημ/!(review-evidence)/**/*.log"
+      ]
+    },
+    {
+      "path": ".ημ/review-evidence/a.log",
+      "dot": false,
+      "excluded": false,
+      "matched": []
+    },
+    {
+      "path": ".ημ/review-evidence/x/a.log",
+      "dot": false,
+      "excluded": false,
+      "matched": []
+    },
+    {
+      "path": ".ημ/review-evidence/.x/a.log",
+      "dot": false,
+      "excluded": false,
+      "matched": []
+    },
+    {
+      "path": "src/main.cljs",
+      "dot": false,
+      "excluded": false,
+      "matched": []
+    },
+    {
+      "path": "packages/foo/main.cljs",
+      "dot": false,
+      "excluded": false,
+      "matched": []
+    },
+    {
+      "path": ".ημ/review-evidence/a.json",
+      "dot": false,
+      "excluded": false,
+      "matched": []
+    },
+    {
+      "path": "package.json",
+      "dot": false,
+      "excluded": false,
+      "matched": []
+    },
+    {
+      "path": "error.log",
+      "dot": true,
+      "excluded": true,
+      "matched": [
+        "!*.log"
+      ]
+    },
+    {
+      "path": ".error.log",
+      "dot": true,
+      "excluded": true,
+      "matched": [
+        "!*.log",
+        "!.*.log"
+      ]
+    },
+    {
+      "path": "src/error.log",
+      "dot": true,
+      "excluded": true,
+      "matched": [
+        "!!(.ημ)/**/*.log"
+      ]
+    },
+    {
+      "path": "packages/a/x.log",
+      "dot": true,
+      "excluded": true,
+      "matched": [
+        "!!(.ημ)/**/*.log"
+      ]
+    },
+    {
+      "path": "vendor/a.log",
+      "dot": true,
+      "excluded": true,
+      "matched": [
+        "!!(.ημ)/**/*.log"
+      ]
+    },
+    {
+      "path": ".hidden/error.log",
+      "dot": true,
+      "excluded": true,
+      "matched": [
+        "!!(.ημ)/**/*.log",
+        "!.!(ημ)/**/*.log"
+      ]
+    },
+    {
+      "path": ".ημ/a.log",
+      "dot": true,
+      "excluded": true,
+      "matched": [
+        "!.ημ/*.log"
+      ]
+    },
+    {
+      "path": ".ημ/.a.log",
+      "dot": true,
+      "excluded": true,
+      "matched": [
+        "!.ημ/*.log",
+        "!.ημ/.*.log"
+      ]
+    },
+    {
+      "path": ".ημ/runtime/a.log",
+      "dot": true,
+      "excluded": true,
+      "matched": [
+        "!.ημ/!(review-evidence)/**/*.log"
+      ]
+    },
+    {
+      "path": ".ημ/.runtime/a.log",
+      "dot": true,
+      "excluded": true,
+      "matched": [
+        "!.ημ/!(review-evidence)/**/*.log",
+        "!.ημ/.*/**/*.log"
+      ]
+    },
+    {
+      "path": ".ημ/review-evidence-shadow/a.log",
+      "dot": true,
+      "excluded": true,
+      "matched": [
+        "!.ημ/!(review-evidence)/**/*.log"
+      ]
+    },
+    {
+      "path": ".ημ/review-evidence/a.log",
+      "dot": true,
+      "excluded": false,
+      "matched": []
+    },
+    {
+      "path": ".ημ/review-evidence/x/a.log",
+      "dot": true,
+      "excluded": false,
+      "matched": []
+    },
+    {
+      "path": ".ημ/review-evidence/.x/a.log",
+      "dot": true,
+      "excluded": false,
+      "matched": []
+    },
+    {
+      "path": "src/main.cljs",
+      "dot": true,
+      "excluded": false,
+      "matched": []
+    },
+    {
+      "path": "packages/foo/main.cljs",
+      "dot": true,
+      "excluded": false,
+      "matched": []
+    },
+    {
+      "path": ".ημ/review-evidence/a.json",
+      "dot": true,
+      "excluded": false,
+      "matched": []
+    },
+    {
+      "path": "package.json",
+      "dot": true,
+      "excluded": false,
+      "matched": []
+    }
+  ],
+  "allAssertionsPassed": true,
+  "limits": "Static glob exclusion matrix only; exact-default-override behavior comes from official/native documentation, actual hosted scope is not certified."
+}

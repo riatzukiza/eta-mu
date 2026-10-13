@@ -1,0 +1,44 @@
+{
+  "clientVersion": "1.18.31",
+  "clientPath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/client/package/bin/opencode",
+  "clientSha256": "f9dab32248695e9ebd56b16a1921798fd85112cf5a69c7dfd0cabc1e17be4a11",
+  "model": "opencode/mimo-v2.6-flash-free",
+  "suppliedProviderCredentials": false,
+  "environmentKeys": [
+    "HOME",
+    "LANG",
+    "OPENCODE_CONFIG",
+    "OPENCODE_DISABLE_CLAUDE_CODE",
+    "OPENCODE_DISABLE_MODELS_FETCH",
+    "OPENCODE_DISABLE_PROJECT_CONFIG",
+    "OPENCODE_MODELS_PATH",
+    "PATH",
+    "TERM",
+    "TMPDIR",
+    "XDG_CACHE_HOME",
+    "XDG_CONFIG_HOME",
+    "XDG_DATA_HOME",
+    "XDG_STATE_HOME"
+  ],
+  "startedAt": "2026-10-13T01:41:59.987683+00:00",
+  "finishedAt": "2026-10-13T01:42:48.162407+00:00",
+  "elapsedSeconds": 48.17472259799979,
+  "exitCode": 0,
+  "timedOut": false,
+  "fixtureBefore": {
+    "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/AGENTS.md": "2742d8dcddff2c07a46f653e6e42d5ae0bfd70b595f775c3b81834ecc225c173",
+    "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/clipped-context.md": "8e9498ef8c7983921a1284c4e81701844f3cf7ba2acd7757b30342169db221d1",
+    "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/empty-context.md": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/large-context.md": "dc9569419b6ff5fd98a24ad77e3cf9153ecea11bc66b21731808320b9a8a9f3e"
+  },
+  "fixtureAfter": {
+    "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/AGENTS.md": "2742d8dcddff2c07a46f653e6e42d5ae0bfd70b595f775c3b81834ecc225c173",
+    "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/clipped-context.md": "8e9498ef8c7983921a1284c4e81701844f3cf7ba2acd7757b30342169db221d1",
+    "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/empty-context.md": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/large-context.md": "dc9569419b6ff5fd98a24ad77e3cf9153ecea11bc66b21731808320b9a8a9f3e"
+  },
+  "fixtureBytesUnchanged": true,
+  "stdoutSha256": "f866932ebcc2c86ad65cab59434a061b0271986bec40d936574ab184f01d4df0",
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "limits": "Isolated native HOST framing diagnostic. No code review, approval, understanding, live consumer or publication."
+}

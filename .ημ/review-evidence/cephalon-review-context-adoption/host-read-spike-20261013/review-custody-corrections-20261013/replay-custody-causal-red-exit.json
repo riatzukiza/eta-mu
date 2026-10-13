@@ -1,0 +1,5 @@
+{
+  "exit": 1,
+  "initialHarnessFailure": "Earlier replay-custody-red output is an NBB array-seq symbol error, not causal RED; bytes preserved",
+  "tier": "Actual bounded offline regression output; no provider or full native gate credit"
+}

@@ -1,0 +1,29 @@
+
+Testing cephalon-host-spike.extern.version-probe-test
+
+FAIL in (hung-version-refuses-without-starting-diagnostic) (/home/err/spaces/cephalon-review-context-adoption/eta-mu/.ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/cephalon_host_spike/extern/version_probe_test.cljs:62)
+Adapter's own bound must fire before outer safety timeout
+expected: (nil? (.-error result))
+  actual: (not (nil? #object[Error Error: spawnSync /usr/bin/python3 ETIMEDOUT]))
+
+FAIL in (hung-version-refuses-without-starting-diagnostic) (/home/err/spaces/cephalon-review-context-adoption/eta-mu/.ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/cephalon_host_spike/extern/version_probe_test.cljs:63)
+Version timeout is an explicit terminal diagnostic failure
+expected: (= 124 (.-status result))
+  actual: (not (= 124 nil))
+
+FAIL in (hung-version-refuses-without-starting-diagnostic) (/home/err/spaces/cephalon-review-context-adoption/eta-mu/.ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/cephalon_host_spike/extern/version_probe_test.cljs:64)
+expected: (< elapsed 12500)
+  actual: (not (< 13016 12500))
+
+FAIL in (hung-version-refuses-without-starting-diagnostic) (/home/err/spaces/cephalon-review-context-adoption/eta-mu/.ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/cephalon_host_spike/extern/version_probe_test.cljs:69)
+Retain one uniquely named failure report
+expected: (= 1 (count reports))
+  actual: (not (= 1 0))
+
+FAIL in (hung-version-refuses-without-starting-diagnostic) (/home/err/spaces/cephalon-review-context-adoption/eta-mu/.ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/cephalon_host_spike/extern/version_probe_test.cljs:78)
+subprocess timeout must reap its own fake child
+expected: (not (.existsSync fs (str "/proc/" pid "/cmdline")))
+  actual: (not (not true))
+
+Ran 3 tests containing 16 assertions.
+5 failures, 0 errors.

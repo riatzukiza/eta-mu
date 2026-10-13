@@ -1,0 +1,263 @@
+{
+  "clientVersion": "1.18.31",
+  "modulePath": "/home/err/spaces/cephalon-muse-context-custody/muse/.opencode/dist/review-invocation.cjs",
+  "moduleSha256": "46bb6ac957cd23a7d66789c9bb6ce26eed71a1b808abfc5887e98d4c0e9de3b6",
+  "nativeResponseSha256": "f866932ebcc2c86ad65cab59434a061b0271986bec40d936574ab184f01d4df0",
+  "nativeCompletedReads": 5,
+  "results": [
+    {
+      "name": "actual-large-complete",
+      "contextSource": {
+        "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/large-context.md",
+        "bytes": 61627,
+        "sha256": "dc9569419b6ff5fd98a24ad77e3cf9153ecea11bc66b21731808320b9a8a9f3e"
+      },
+      "actualSelectedReadCount": 3,
+      "readVariant": "unmodified native HOST reads",
+      "reviewScaffold": "synthetic, no native approval",
+      "verdict": {
+        "reviewCallCount": 9,
+        "acceptedInvocation": {
+          "sessionID": "ses_ecd13845fffeDk2lTE2aBUj6Yk",
+          "submissionCallID": "synthetic-call-12",
+          "submissionPosition": 12,
+          "submissionFile": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/actual-large-complete-synthetic-submission.json",
+          "responseSha256": "de1d2467834cb07664347cda9ee44e72b9a6b3f9c5fc69da655a790bee29dce9",
+          "submissionSha256": "59ec68ec41d7b8a2a9b330af915418aa3bd18cf9be84997289c05a0bfef6e4f1",
+          "fullInputSha256": "a1731e54e3c56488926dc4c7c81d552971d42cc567584f46456f3520e879d2ec",
+          "pageCount": 1
+        },
+        "contextReadCoverage": {
+          "status": "present",
+          "totalLines": 2201,
+          "deliveredLines": 2201,
+          "eof": true
+        },
+        "reason": null,
+        "ok": true,
+        "code": "verified-review-invocation",
+        "pageCount": 1,
+        "violations": [],
+        "reasonKind": null,
+        "sessionID": "ses_ecd13845fffeDk2lTE2aBUj6Yk"
+      },
+      "responseSha256": "de1d2467834cb07664347cda9ee44e72b9a6b3f9c5fc69da655a790bee29dce9",
+      "submissionSha256": "59ec68ec41d7b8a2a9b330af915418aa3bd18cf9be84997289c05a0bfef6e4f1"
+    },
+    {
+      "name": "actual-present-empty",
+      "contextSource": {
+        "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/empty-context.md",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "actualSelectedReadCount": 1,
+      "readVariant": "unmodified native HOST reads",
+      "reviewScaffold": "synthetic, no native approval",
+      "verdict": {
+        "reviewCallCount": 9,
+        "acceptedInvocation": {
+          "sessionID": "ses_ecd13845fffeDk2lTE2aBUj6Yk",
+          "submissionCallID": "synthetic-call-10",
+          "submissionPosition": 10,
+          "submissionFile": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/actual-present-empty-synthetic-submission.json",
+          "responseSha256": "03eba904d36a6a703be1772724af65d1f3ecd18351792b443983c950d46f36de",
+          "submissionSha256": "b43f798037ce618a413f977a2789ac2bffdf191c58a017ee92d2e60d8b2c8535",
+          "fullInputSha256": "a1731e54e3c56488926dc4c7c81d552971d42cc567584f46456f3520e879d2ec",
+          "pageCount": 1
+        },
+        "contextReadCoverage": {
+          "status": "present",
+          "totalLines": 0,
+          "deliveredLines": 0,
+          "eof": true
+        },
+        "reason": null,
+        "ok": true,
+        "code": "verified-review-invocation",
+        "pageCount": 1,
+        "violations": [],
+        "reasonKind": null,
+        "sessionID": "ses_ecd13845fffeDk2lTE2aBUj6Yk"
+      },
+      "responseSha256": "03eba904d36a6a703be1772724af65d1f3ecd18351792b443983c950d46f36de",
+      "submissionSha256": "b43f798037ce618a413f977a2789ac2bffdf191c58a017ee92d2e60d8b2c8535"
+    },
+    {
+      "name": "actual-clipped-line-refuses",
+      "contextSource": {
+        "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/clipped-context.md",
+        "bytes": 4202,
+        "sha256": "8e9498ef8c7983921a1284c4e81701844f3cf7ba2acd7757b30342169db221d1"
+      },
+      "actualSelectedReadCount": 1,
+      "readVariant": "unmodified native HOST reads",
+      "reviewScaffold": "synthetic, no native approval",
+      "verdict": {
+        "reviewCallCount": null,
+        "acceptedInvocation": null,
+        "contextReadCoverage": null,
+        "reason": "unestablished-review-trace",
+        "ok": false,
+        "code": "context-read-coverage-unestablished",
+        "pageCount": null,
+        "violations": [],
+        "reasonKind": "unestablished-review-trace",
+        "sessionID": null
+      },
+      "responseSha256": "197e32e739f87680fb0d6598458413e577fa364d38ed095135324e8c5f91c292",
+      "submissionSha256": "4cace64ecfc6a11078f9fb04895fc364754eeaf91f55759b99bd5ddc4292552f"
+    },
+    {
+      "name": "synthetic-omitted-read-refuses",
+      "contextSource": {
+        "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/large-context.md",
+        "bytes": 61627,
+        "sha256": "dc9569419b6ff5fd98a24ad77e3cf9153ecea11bc66b21731808320b9a8a9f3e"
+      },
+      "actualSelectedReadCount": 3,
+      "readVariant": "synthetic perturbation of genuine HOST events",
+      "reviewScaffold": "synthetic, no native approval",
+      "verdict": {
+        "reviewCallCount": null,
+        "acceptedInvocation": null,
+        "contextReadCoverage": null,
+        "reason": "unestablished-review-trace",
+        "ok": false,
+        "code": "context-read-coverage-unestablished",
+        "pageCount": null,
+        "violations": [],
+        "reasonKind": "unestablished-review-trace",
+        "sessionID": null
+      },
+      "responseSha256": "2c3eb154a01d396f2a96803feb035d03ae1ee909c755108bfe52c3ce661c9a56",
+      "submissionSha256": "59ec68ec41d7b8a2a9b330af915418aa3bd18cf9be84997289c05a0bfef6e4f1"
+    },
+    {
+      "name": "synthetic-missing-range-refuses",
+      "contextSource": {
+        "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/large-context.md",
+        "bytes": 61627,
+        "sha256": "dc9569419b6ff5fd98a24ad77e3cf9153ecea11bc66b21731808320b9a8a9f3e"
+      },
+      "actualSelectedReadCount": 3,
+      "readVariant": "synthetic perturbation of genuine HOST events",
+      "reviewScaffold": "synthetic, no native approval",
+      "verdict": {
+        "reviewCallCount": null,
+        "acceptedInvocation": null,
+        "contextReadCoverage": null,
+        "reason": "unestablished-review-trace",
+        "ok": false,
+        "code": "context-read-coverage-unestablished",
+        "pageCount": null,
+        "violations": [],
+        "reasonKind": "unestablished-review-trace",
+        "sessionID": null
+      },
+      "responseSha256": "43116c7bb104ace38ba4bf4c744bd32f3fbb1923a4aa6a97f68d6460c2aed2fd",
+      "submissionSha256": "59ec68ec41d7b8a2a9b330af915418aa3bd18cf9be84997289c05a0bfef6e4f1"
+    },
+    {
+      "name": "synthetic-altered-output-refuses",
+      "contextSource": {
+        "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/large-context.md",
+        "bytes": 61627,
+        "sha256": "dc9569419b6ff5fd98a24ad77e3cf9153ecea11bc66b21731808320b9a8a9f3e"
+      },
+      "actualSelectedReadCount": 3,
+      "readVariant": "synthetic perturbation of genuine HOST events",
+      "reviewScaffold": "synthetic, no native approval",
+      "verdict": {
+        "reviewCallCount": null,
+        "acceptedInvocation": null,
+        "contextReadCoverage": null,
+        "reason": "unestablished-review-trace",
+        "ok": false,
+        "code": "context-read-coverage-unestablished",
+        "pageCount": null,
+        "violations": [],
+        "reasonKind": "unestablished-review-trace",
+        "sessionID": null
+      },
+      "responseSha256": "ede15fb8157f3ec28d4a788b7d5389f329b3636ec0b0f36b4496253e427b92bd",
+      "submissionSha256": "59ec68ec41d7b8a2a9b330af915418aa3bd18cf9be84997289c05a0bfef6e4f1"
+    },
+    {
+      "name": "synthetic-late-delivery-refuses",
+      "contextSource": {
+        "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/large-context.md",
+        "bytes": 61627,
+        "sha256": "dc9569419b6ff5fd98a24ad77e3cf9153ecea11bc66b21731808320b9a8a9f3e"
+      },
+      "actualSelectedReadCount": 3,
+      "readVariant": "synthetic perturbation of genuine HOST events",
+      "reviewScaffold": "synthetic, no native approval",
+      "verdict": {
+        "reviewCallCount": null,
+        "acceptedInvocation": null,
+        "contextReadCoverage": null,
+        "reason": "unestablished-review-trace",
+        "ok": false,
+        "code": "context-read-coverage-unestablished",
+        "pageCount": null,
+        "violations": [],
+        "reasonKind": "unestablished-review-trace",
+        "sessionID": null
+      },
+      "responseSha256": "6fc208ffe907d114267643e7f5c702629ae6dc1dc15fce00b181e686d447af2d",
+      "submissionSha256": "59ec68ec41d7b8a2a9b330af915418aa3bd18cf9be84997289c05a0bfef6e4f1"
+    },
+    {
+      "name": "synthetic-missing-eof-refuses",
+      "contextSource": {
+        "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/large-context.md",
+        "bytes": 61627,
+        "sha256": "dc9569419b6ff5fd98a24ad77e3cf9153ecea11bc66b21731808320b9a8a9f3e"
+      },
+      "actualSelectedReadCount": 3,
+      "readVariant": "synthetic perturbation of genuine HOST events",
+      "reviewScaffold": "synthetic, no native approval",
+      "verdict": {
+        "reviewCallCount": null,
+        "acceptedInvocation": null,
+        "contextReadCoverage": null,
+        "reason": "unestablished-review-trace",
+        "ok": false,
+        "code": "context-read-coverage-unestablished",
+        "pageCount": null,
+        "violations": [],
+        "reasonKind": "unestablished-review-trace",
+        "sessionID": null
+      },
+      "responseSha256": "c97f7750da612bf9419b01c56e81474f6a33817025e98512c3179fe0cd4ca054",
+      "submissionSha256": "59ec68ec41d7b8a2a9b330af915418aa3bd18cf9be84997289c05a0bfef6e4f1"
+    },
+    {
+      "name": "synthetic-unavailable-read-refuses",
+      "contextSource": {
+        "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/large-context.md",
+        "bytes": 61627,
+        "sha256": "dc9569419b6ff5fd98a24ad77e3cf9153ecea11bc66b21731808320b9a8a9f3e"
+      },
+      "actualSelectedReadCount": 3,
+      "readVariant": "synthetic perturbation of genuine HOST events",
+      "reviewScaffold": "synthetic, no native approval",
+      "verdict": {
+        "reviewCallCount": null,
+        "acceptedInvocation": null,
+        "contextReadCoverage": null,
+        "reason": "unestablished-review-trace",
+        "ok": false,
+        "code": "host-tool-schema",
+        "pageCount": null,
+        "violations": [],
+        "reasonKind": "unestablished-review-trace",
+        "sessionID": null
+      },
+      "responseSha256": "5c5af7a54bcb9034c5557b9baca4da28ab0176baee498cfcf1a58bb5b717e314",
+      "submissionSha256": "59ec68ec41d7b8a2a9b330af915418aa3bd18cf9be84997289c05a0bfef6e4f1"
+    }
+  ],
+  "limits": "Structural HOST framing only. Synthetic review state scaffold, no actual provider review, publication, caller integration, authority or understanding claim."
+}

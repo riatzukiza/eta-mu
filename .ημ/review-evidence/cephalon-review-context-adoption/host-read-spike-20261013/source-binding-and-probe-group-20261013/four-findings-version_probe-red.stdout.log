@@ -1,0 +1,21 @@
+
+Testing cephalon-host-spike.extern.version-probe-test
+
+FAIL in (optimized-python-still-refuses-wrong-version) (/home/err/spaces/cephalon-review-context-adoption/eta-mu/.ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/cephalon_host_spike/extern/version_probe_test.cljs:128)
+expected: (not= 0 (.-status result))
+  actual: (not (not= 0 0))
+
+FAIL in (optimized-python-still-refuses-wrong-version) (/home/err/spaces/cephalon-review-context-adoption/eta-mu/.ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/cephalon_host_spike/extern/version_probe_test.cljs:129)
+expected: (not (.existsSync fs (.join path root "synthetic-run-invoked")))
+  actual: (not (not true))
+
+FAIL in (version-timeout-terminates-forked-child) (/home/err/spaces/cephalon-review-context-adoption/eta-mu/.ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/cephalon_host_spike/extern/version_probe_test.cljs:141)
+expected: (terminal-pid? (str/trim (.readFileSync fs pid-file "utf8")))
+  actual: (not (terminal-pid? "2437764"))
+
+FAIL in (diagnostic-timeout-terminates-forked-child) (/home/err/spaces/cephalon-review-context-adoption/eta-mu/.ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/cephalon_host_spike/extern/version_probe_test.cljs:155)
+expected: (terminal-pid? (str/trim (.readFileSync fs pid-file "utf8")))
+  actual: (not (terminal-pid? "2439600"))
+
+Ran 6 tests containing 35 assertions.
+4 failures, 0 errors.

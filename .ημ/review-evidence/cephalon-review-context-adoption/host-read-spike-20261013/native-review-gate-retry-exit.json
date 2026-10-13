@@ -1,0 +1,22 @@
+{
+  "command": [
+    "/home/err/.volta/tools/image/node/22.20.0/bin/node",
+    "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/rheos-event-id-checker-implementation-20261012/qualified-rheos-85369213.cjs",
+    "status-update",
+    "a880c727-229b-4f3d-9158-718ec164d16c",
+    "--to",
+    "review",
+    "--config",
+    "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/eta-adoption-qualified-board-config.edn"
+  ],
+  "exitCode": 3,
+  "elapsedSeconds": 370.57485198500217,
+  "heldCount": 2101,
+  "changedPaths": [
+    "packages/contracts/output/dist-cli/index.cjs",
+    "packages/contracts/output/dist-cli/index.cjs.map",
+    "packages/legacy/ai/src/models.generated.ts"
+  ],
+  "node": "v22.20.0",
+  "babashka": "babashka v1.13.226"
+}

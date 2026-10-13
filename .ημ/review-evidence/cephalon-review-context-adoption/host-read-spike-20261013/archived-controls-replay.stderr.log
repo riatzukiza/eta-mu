@@ -1,0 +1,18 @@
+node:fs:560
+  return binding.open(
+                 ^
+
+Error: ENOENT: no such file or directory, open '/home/err/spaces/cephalon-review-context-adoption/eta-mu/.%CE%B7%CE%BC/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/genuine-host-read.stdout.jsonl'
+    at Object.openSync (node:fs:560:18)
+    at Object.readFileSync (node:fs:444:35)
+    at file:///home/err/spaces/cephalon-review-context-adoption/eta-mu/.%CE%B7%CE%BC/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/replay-canonical-host-framing-controls.mjs:15:14
+    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/err/spaces/cephalon-review-context-adoption/eta-mu/.%CE%B7%CE%BC/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/genuine-host-read.stdout.jsonl'
+}
+
+Node.js v24.14.1

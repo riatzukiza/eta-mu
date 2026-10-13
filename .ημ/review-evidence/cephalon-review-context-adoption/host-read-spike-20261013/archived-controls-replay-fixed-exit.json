@@ -1,0 +1,6 @@
+{
+  "exitCode": 0,
+  "elapsedSeconds": 0.28897920299641555,
+  "nodeVersion": "v22.20.0",
+  "correction": "Node fileURLToPath decodes Unicode evidence-directory URI, only offline adapter fixed; canonical verifier/native reads/fixtures unchanged"
+}

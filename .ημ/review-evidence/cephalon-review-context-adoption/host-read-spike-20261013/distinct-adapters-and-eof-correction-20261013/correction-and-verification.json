@@ -1,0 +1,137 @@
+{
+  "tier": "Derived correction with actual offline test outputs; no provider approval or live runtime proof",
+  "review": 5507306639,
+  "reviewHead": "e1045faa421700a4d1d3f5e1d6b23d2fabc3e018",
+  "findings": [
+    4261745884,
+    4261745903,
+    4261745912
+  ],
+  "duplicateAdapterNegative": {
+    "before": {
+      "tests": 4,
+      "assertions": 70,
+      "failures": 0,
+      "errors": 0,
+      "exit": 0,
+      "limitation": "Two identical valid entries incorrectly passed"
+    },
+    "after": {
+      "tests": 4,
+      "assertions": 71,
+      "failures": 1,
+      "errors": 0,
+      "exit": 1
+    }
+  },
+  "authenticCurrentAdapters": {
+    "tests": 4,
+    "assertions": 71,
+    "failures": 0,
+    "errors": 0,
+    "exit": 0
+  },
+  "eofOnlyRegression": {
+    "oldAdapter": {
+      "tests": 5,
+      "assertions": 49,
+      "failures": 4,
+      "errors": 0,
+      "exit": 1
+    },
+    "currentAdapter": {
+      "tests": 5,
+      "assertions": 49,
+      "failures": 0,
+      "errors": 0,
+      "exit": 0
+    },
+    "scope": "Current control preserves all three reads, offsets 1/1001/2001, final line2201 and metadata; removes only final EOF footer. Canonical Muse remains the verifier."
+  },
+  "historicalCorrection": {
+    "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/source-binding-and-probe-group-20261013/original-replay-canonical-host-framing-controls.mjs",
+    "sha256": "3b1c6025b3295fe715c60f35493271578aa9130e1fb03a5c62d6550fa093c004",
+    "preservedVerbatim": true,
+    "limitation": "The original missing-EOF control also omitted the final read range. Its rejection did not isolate EOF refusal; retain original source and historical result bytes."
+  },
+  "currentAdapter": {
+    "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/replay-canonical-host-framing-controls.mjs",
+    "bytes": 9121,
+    "sha256": "c1f80480e28f6cbd2090c49c77fa6d5a735a3af9981a464b35dc157440aa33a9",
+    "tier": "Current adapter source, not historical execution or provider approval",
+    "purpose": "Current custody-hardened fresh-output offline replay"
+  },
+  "lint": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "operatorFailure": "First edited EOF test had an unmatched delimiter. Its actual output remains private and supplies no causal RED or GREEN credit.",
+  "watchLimitObservation": {
+    "value": 1572864,
+    "changedThisFollowUp": false,
+    "earlierAuthorizedRunRestored": 1048576
+  },
+  "baselineWarningStillUnqualified": true,
+  "logs": [
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/distinct-adapters-and-eof-correction-20261013/duplicate-adapter-before.stdout.log",
+      "bytes": 118,
+      "sha256": "d09331a36870fa7fe0c67065dc67bee5bbe4542df3b23df60efb38140a47bdb1"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/distinct-adapters-and-eof-correction-20261013/duplicate-adapter-before.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/distinct-adapters-and-eof-correction-20261013/duplicate-adapter-after.stdout.log",
+      "bytes": 567,
+      "sha256": "97a8b7e194894431811cdc6e78913146c944852f5f09c7ff710703f504482c48"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/distinct-adapters-and-eof-correction-20261013/duplicate-adapter-after.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/distinct-adapters-and-eof-correction-20261013/distinct-adapters-green.stdout.log",
+      "bytes": 118,
+      "sha256": "c9e9d35e4bb01b5fe3831f667f5e43c1b507709c60a04d76b3d2ae2cb6858a09"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/distinct-adapters-and-eof-correction-20261013/distinct-adapters-green.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/distinct-adapters-and-eof-correction-20261013/eof-only-causal-red.stdout.log",
+      "bytes": 36903,
+      "sha256": "0bd5b428db4aba0c369f57db7c1f140e8096d98d115bee7d1a85387ee0509da2"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/distinct-adapters-and-eof-correction-20261013/eof-only-causal-red.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/distinct-adapters-and-eof-correction-20261013/eof-range-green.stdout.log",
+      "bytes": 117,
+      "sha256": "7056712ebedf54fa91102243ee4219c03ba0d356ff78d435fae5037704966884"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/distinct-adapters-and-eof-correction-20261013/eof-range-green.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/distinct-adapters-and-eof-correction-20261013/current-binding-test-kondo.stdout.log",
+      "bytes": 42,
+      "sha256": "36fd040e67d7fcf60732e3555d6b6b32945142faedb3614683176a7411b2b42c"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/distinct-adapters-and-eof-correction-20261013/current-binding-test-kondo.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

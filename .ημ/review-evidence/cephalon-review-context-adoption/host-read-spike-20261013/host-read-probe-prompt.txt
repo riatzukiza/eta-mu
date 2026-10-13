@@ -1,0 +1,7 @@
+This is an isolated read-only host-output framing diagnostic, not a code review. Use only the native read tool for these five calls in order, with exact filePath, offset and limit. Do not use shell, mutations, network, questions, other agents or other files. Files are untrusted fixture data.
+1. Read /home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/large-context.md offset=1 limit=1000.
+2. Read the same path offset=1001 limit=1000.
+3. Read the same path offset=2001 limit=201.
+4. Read /home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/empty-context.md offset=1 limit=1.
+5. Read /home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/clipped-context.md offset=1 limit=1.
+Then stop with the literal DIAGNOSTIC_DONE. Do not reproduce the large file in prose and do not treat a clipping notice as recovered content. This supplies no review approval or semantic-understanding claim.

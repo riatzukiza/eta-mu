@@ -1,0 +1,25 @@
+{
+  "tier": "Actual causal offline regressions; no native Opencode/model invocation",
+  "sourceHead": "fa20635d141bb427caa0964cecdc5b457483e4bd",
+  "bindingsRed": {
+    "tests": 4,
+    "assertions": 61,
+    "failures": 5,
+    "errors": 0
+  },
+  "probeRed": {
+    "tests": 6,
+    "assertions": 35,
+    "failures": 4,
+    "errors": 0
+  },
+  "causes": [
+    "Retained driver path carries wrong byte identity",
+    "Archived replay source SHA has no current matching archival path",
+    "Optimized Python strips exact version guard",
+    "Both timeout paths leave their forked synthetic descendants alive until scoped finally cleanup"
+  ],
+  "originalIndexSHA256": "523e195652ad0fd8e00d52a78660e9c7f5cbb97f5a2475e99f845a2e5251a2a1",
+  "initialLintWarning": "Unused node:path alias in new test only; removed without changing test behavior",
+  "noKernelOrLiveRuntimeChange": true
+}
