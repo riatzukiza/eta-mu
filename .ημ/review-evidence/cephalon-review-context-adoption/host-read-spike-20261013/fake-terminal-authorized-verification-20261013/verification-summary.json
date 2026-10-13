@@ -1,0 +1,62 @@
+{
+  "tier": "Derived reading of complete actual native logs; no provider approval",
+  "humanAuthorization": "Go ahead with the fake terminal repair",
+  "fixturePath": "packages/terminal-ui/test/cljs/eta_mu/terminal_ui/infra/session_selector_test.cljs",
+  "fixtureBeforeSHA256": "3135acebd4a539f6c54f13f5ae32e252a238d83bcfbbc0b92c4e4f118dae98e6",
+  "fixtureAfterSHA256": "f8c0a6c361266e634170a31d47154f0777acc49f7baaaa9bd94c32cb90816851",
+  "terminalUI": {
+    "tests": 70,
+    "assertions": 172,
+    "failures": 0,
+    "errors": 0,
+    "compilerWarnings": 0
+  },
+  "fullNativeGate": {
+    "testSuites": 14,
+    "exitCode": 0,
+    "elapsedSeconds": 338.062,
+    "allCompilerBuildsZeroWarnings": true,
+    "qualifiedRheosSHA256": "85369213440634989365f75929045d36eb69b6c6b1e7679f68d483374a0d526b",
+    "nativeReadbackStatus": "review"
+  },
+  "hostWatchLimit": {
+    "before": 1572864,
+    "after": 1572864,
+    "changedByThisVerification": false
+  },
+  "generatedOutputs": [
+    {
+      "path": "packages/contracts/output/dist-cli/index.cjs",
+      "generatedBytes": 1997608,
+      "generatedSHA256": "f2ff329d9f4ac85dade677787b6c4b1e649c3d9ef3f9614f5295c06c469c85c3",
+      "restoredSHA256": "5f26ab71c04b4cf81a0b58d5bd8fba994bc2ba4f7544370beb570af799f1f014"
+    },
+    {
+      "path": "packages/contracts/output/dist-cli/index.cjs.map",
+      "generatedBytes": 5170120,
+      "generatedSHA256": "9883bb83300c6a0ce85bc69a5f744ca031f1a29e0bda74ef6154248100454bde",
+      "restoredSHA256": "00b1a5f5cc8fe7740621d624eb2ceedd0862db086eed24855b4d1702133d32e9"
+    },
+    {
+      "path": "packages/legacy/ai/src/models.generated.ts",
+      "generatedBytes": 621091,
+      "generatedSHA256": "0ff8ecd5f86105848ff5510913186a609af372bf8356d4bbfa8ba8b63f323b6c",
+      "restoredSHA256": "9e64256d83b2559f60fc6e80cc2320268bd56214c68032f2c222d5d8910fe761"
+    }
+  ],
+  "logs": [
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/fake-terminal-authorized-verification-20261013/native-gate.stdout.log",
+      "bytes": 152109,
+      "sha256": "b8c3d28f5f30d36ff0ec5f8fd0e81fb298b617bef8ec37716026a31d44d08fa6"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/fake-terminal-authorized-verification-20261013/native-gate.stderr.log",
+      "bytes": 10014,
+      "sha256": "f643767f9a9549e47a2de4ad28f3e09306e65d41a3cd34efe6f89ad8a1eb6c87"
+    }
+  ],
+  "operatorError": "An initial standalone-file lint from the root did not load TerminalUI package configuration and reported its existing await symbol. The correct pnpm -C packages/terminal-ui lint:kondo command returned zero errors/warnings; native full lint/build/tests also passed.",
+  "environmentNotices": "Existing NPM_TOKEN substitution and source-map-support notices remain in complete logs, separate from compiler diagnostics.",
+  "completionLimits": "Source review, caller/consumer adoption and character B1/B2/B3 runtime proof remain outstanding."
+}
