@@ -1,0 +1,30 @@
+{
+  "schema": "cephalon.native-gate-log-custody/v1",
+  "tier": "Derived byte identities over retained original raw native logs; no new gate or provider credit",
+  "historicalGateSummary": {
+    "path": ".\u03b7\u03bc/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/approved-capacity-run-20261013/gate-summary.json",
+    "bytes": 3045,
+    "sha256": "7b1a93d3164aa39a8332b5591edc25201e026e92041191a4579f96123a31e45d"
+  },
+  "rawLogs": [
+    {
+      "path": ".\u03b7\u03bc/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/approved-capacity-run-20261013/native-gate.stdout.log",
+      "bytes": 153225,
+      "sha256": "5ee858f1c7da31ce7ac2f687264bef8ba6c9d129f19ce223486a018cdc2f645a"
+    },
+    {
+      "path": ".\u03b7\u03bc/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/approved-capacity-run-20261013/native-gate.stderr.log",
+      "bytes": 10014,
+      "sha256": "863d0121ed08ee99152828bc5fa777bdc0d99c92b73e8f636ebde133778d0d59"
+    }
+  ],
+  "historicalNativeStatus": "Review at approved run readback; not current lifecycle qualification",
+  "actualStatusCorrection": {
+    "path": ".\u03b7\u03bc/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/review-custody-corrections-20261013/p1-native-review-to-in-progress.json",
+    "bytes": 110,
+    "sha256": "0cbd78ca003977eb4a63041d57a491a10cb85b6f1f18c6571e3f877de6d253d4"
+  },
+  "nativeExit": 0,
+  "zeroWarningQualification": false,
+  "compilerWarningStillUnchanged": true
+}

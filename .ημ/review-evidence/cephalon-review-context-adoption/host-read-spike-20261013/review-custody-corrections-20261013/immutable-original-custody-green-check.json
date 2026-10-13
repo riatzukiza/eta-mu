@@ -1,0 +1,22 @@
+{
+  "tier": "Actual byte/readback checks; no provider or full native gate credit",
+  "originalArtifactHashes": {
+    "genuine-host-read.stdout.jsonl": "f866932ebcc2c86ad65cab59434a061b0271986bec40d936574ab184f01d4df0",
+    "prepared-probe-inputs.json": "115da5136a69112e421ca541019a96a4a779152ec6fb71d708a8d98f2f32067b",
+    "canonical-host-framing-control-results.json": "237e99c277e6b0c4bb7ca0f3ec97e1fb21c872b511fca74fa7f2154909dca828",
+    "archived-replay-results.json": "ae24e4fc9ca3e61e431e65876b281711b5d12c8794cbfccd3d8db95b23d2b47e",
+    "approved-capacity-run-20261013/gate-summary.json": "7b1a93d3164aa39a8332b5591edc25201e026e92041191a4579f96123a31e45d",
+    "approved-capacity-run-20261013/native-gate.stdout.log": "5ee858f1c7da31ce7ac2f687264bef8ba6c9d129f19ce223486a018cdc2f645a",
+    "approved-capacity-run-20261013/native-gate.stderr.log": "863d0121ed08ee99152828bc5fa777bdc0d99c92b73e8f636ebde133778d0d59"
+  },
+  "allFourFixturesMatch": true,
+  "old6aReceiptReflectionEventPrefixesPreserved": true,
+  "terminalFixtureOriginalSHA256": "3135acebd4a539f6c54f13f5ae32e252a238d83bcfbbc0b92c4e4f118dae98e6",
+  "currentWatchCeilingReadback": 1048576,
+  "nativeGateNotRepeated": true,
+  "kondoErrors": 0,
+  "kondoWarnings": 0,
+  "nodeSyntaxExit": 0,
+  "diffHygieneExit": 0,
+  "rawNBBWhitespace": "Single exact-file attribute keeps original trailing diagnostic spaces; no compiler-warning suppression"
+}

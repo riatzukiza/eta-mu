@@ -1,0 +1,5 @@
+{
+  "ok": true,
+  "uuid": "a880c727-229b-4f3d-9158-718ec164d16c",
+  "comment": "cephalon-host-spike-custody-green-20261013: Actual approved one-run1048576->2097152 completed all14suites/exit0 and restored1048576 after terminal gate. Native Codex4260128644 correctly keeps zero-warning qualification held: unchanged TerminalUI infer-warning; actual Review->IP corrected, not Done. Receipt280 retains causal offline RED5tests42assertions26fail0errors. Patched archive adapter GREEN5tests44assertions0fail/error checks wholeHOST/manifest/all4fixtures and fresh outputs preserving original artifacts; successful-gate raw log identity supplement added. CodeRabbit log default override/exclusions are a static source candidate with actual hosted complete-input verification pending; no scope/approval credit. Separate human fixture inclusion and any further bounded capacity verification remain pending; do not repeat completed host maintenance or implement callers before spike qualifies."
+}

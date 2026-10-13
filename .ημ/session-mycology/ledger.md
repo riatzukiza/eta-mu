@@ -765,3 +765,12 @@
   spore: none
   receipt-refs: cephalon-host-spike-native-codex-custody-causal-red-20261013
   note: All five actual Codex findings remain obligations. Native mechanical gate0/all14tests did not clear unchanged infer-warning. Qualified853 native correction returns spike toIP; actual old Review/readback bytes preserved historically. Offline regressions operate only on unique owned temporary copies and clean them; production/native fixture/HOST bytes and original recorded result files remain untouched. This red receipt does not supply provider approval, completed round, full zero-warning verification, character proof, runtime/deployment or new capacity permission. The separate one-line TerminalUI fixture scope question remains pending/unapplied; original one-run limit already restored1048576. No historical ledger/reflection rewrite or spore.
+
+- ts: 2026-10-13T15:32:20.469Z
+  task: Finite B3 source transport prerequisite; B1/B2/liveB3 unfinished
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-host-spike-native-codex-custody-green-20261013
+  note: Three verified native P2 custody repairs are concrete: wholeHOST/preparedmanifest/allfixture authentication; fresh unique replay outputs returning actualreport path; new successfulgate-log identity supplement without historicalraw/summary rewrite. Initial symbol/namespace/JSONfrontmatter-access errors remain operator failures, not verification or production failure. RawNBB diagnostic trailing spaces are preserved via one exact-file whitespace attribute; no compilerwarning or build/test suppression. Correct receipt279 broadpattern premise by append: actualCodeRabbit6149039943/officialdocs say broad positives restrictscope and do notoverride defaults; only exactlog default override avoids allowlist. Current candidate removescatchall andexcludeslogsoutside review-evidence; documented/staticmatrix is not hostedselectionproof, so native4260294304 remains open pending actual wholeinputscope readback. Native P14260128644 stays open: one existinginfer-warning and separate human fixture inclusion/anothercapacitygate decision pending. No full reviewrequest, syntheticapproval, cohortcredit, waiver, paidinference, maker/runtime/clock/eventowner/deployment/heartbeat or sporechange.

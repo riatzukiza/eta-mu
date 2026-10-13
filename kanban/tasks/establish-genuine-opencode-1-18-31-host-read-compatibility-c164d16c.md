@@ -9,7 +9,7 @@ labels: "cephalon, b3, review, context-custody, spike"
 parent: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 epic: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 category: "tasks"
-write-id: "1791904366939-0.vt04v32vt4u4ceyc5s"
+write-id: "1791905467625-0.nn7al272sarlbkq04ww"
 created_at: "2026-10-12T23:00:08.661Z"
 ---
 
@@ -53,3 +53,9 @@ Genuine isolated OpenCode1.18.31 completed the five prescribed native read calls
 The actual merged Musea9 compiled verifier accepted the native three-page2,201-line UTF-8 delivery with its bounded first-read AGENTS suffix and EOF, and the actual zero-byte present file. Nine deterministic controls passed: those two positives; actual2,000-character line clipping; and synthetic omitted read, missing middle range, altered output, late tool end, missing EOF, and unavailable tool. Native clipped output reports metadata.truncated=false, demonstrating why metadata alone is insufficient. Review scaffolding/perturbations are synthetic and supply no provider approval. The initial scaffold timestamp-order failure is retained and corrected only in synthetic stage timing, preserving all native event bytes.
 
 Decision: compatible for the tested1.18.31 native UTF-8 framing, with clipped long lines correctly refused. This supports re-description/re-estimation of both callers after the separate carry and documentary spike merges; it does not establish the actual hosted consumer context is fully readable, caller adoption, authentication, understanding, B1/B2/live B3 or future availability. Those remain explicit independent proofs. Full source checks/current whole-input reviews/documentary MERGE precede native Done.
+
+
+---
+cephalon-host-spike-custody-green-20261013: Actual approved one-run1048576->2097152 completed all14suites/exit0 and restored1048576 after terminal gate. Native Codex4260128644 correctly keeps zero-warning qualification held: unchanged TerminalUI infer-warning; actual Review->IP corrected, not Done. Receipt280 retains causal offline RED5tests42assertions26fail0errors. Patched archive adapter GREEN5tests44assertions0fail/error checks wholeHOST/manifest/all4fixtures and fresh outputs preserving original artifacts; successful-gate raw log identity supplement added. CodeRabbit log default override/exclusions are a static source candidate with actual hosted complete-input verification pending; no scope/approval credit. Separate human fixture inclusion and any further bounded capacity verification remain pending; do not repeat completed host maintenance or implement callers before spike qualifies.
+
+---
