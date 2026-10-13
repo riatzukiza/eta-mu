@@ -69,7 +69,19 @@
                 (is (string? (:reportPath report)) "Return the fresh report path")
                 (when (string? (:reportPath report))
                   (is (.existsSync fs (:reportPath report)))
-                  (is (not= dir (.dirname path (:reportPath report)))))))))
+                  (is (not= dir (.dirname path (:reportPath report))))
+                  (let [trace (mapv #(js->clj (js/JSON.parse %) :keywordize-keys true)
+                                    (str/split-lines
+                                     (.readFileSync fs (.join path (.dirname path (:reportPath report))
+                                                             "synthetic-missing-eof-refuses-control-response.jsonl")
+                                                    "utf8")))
+                        reads (filterv #(= "read" (get-in % [:part :tool])) trace)
+                        final-output (get-in (peek reads) [:part :state :output])]
+                    (is (= 3 (count reads)) "EOF control must preserve every read range")
+                    (is (= [1 1001 2001] (mapv #(get-in % [:part :state :input :offset]) reads)))
+                    (is (= 2201 (get-in (peek reads) [:part :state :metadata :display :lineEnd])))
+                    (is (str/includes? final-output "2201: EXACT-TAIL-2201: 終わり"))
+                    (is (not (str/includes? final-output "(End of file - total")))))))))
 
 (deftest non-read-event-custody
   (run-copy

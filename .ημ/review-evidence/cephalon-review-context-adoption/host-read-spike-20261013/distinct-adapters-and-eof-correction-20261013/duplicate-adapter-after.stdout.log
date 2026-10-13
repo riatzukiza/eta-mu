@@ -1,0 +1,10 @@
+
+Testing cephalon-host-spike.extern.source-bindings-test
+
+FAIL in (current-adapters-have-separate-identities) (/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/approved-capacity-run-20261013/owned-duplicate-adapter-2hxrd8i_/duplicate-adapter-after.cljs:30)
+The two adapters must have distinct paths
+expected: (= 2 (count (set (map :path current))))
+  actual: (not (= 2 1))
+
+Ran 4 tests containing 71 assertions.
+1 failures, 0 errors.

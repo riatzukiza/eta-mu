@@ -71,7 +71,12 @@ assert.equal(control('synthetic-omitted-read-refuses',large,selected(large),x=>x
 assert.equal(control('synthetic-missing-range-refuses',large,selected(large),x=>x.splice(1,1)).ok,false);
 assert.equal(control('synthetic-altered-output-refuses',large,selected(large),x=>x[0].part.state.output+=' synthetic corruption').ok,false);
 assert.equal(control('synthetic-late-delivery-refuses',large,selected(large),x=>x[0].part.state.time.end=Number.MAX_SAFE_INTEGER).ok,false);
-assert.equal(control('synthetic-missing-eof-refuses',large,selected(large),x=>x.pop()).ok,false);
+assert.equal(control('synthetic-missing-eof-refuses',large,selected(large),x=>{
+ assert.equal(x.length,3,'EOF-only control retains all three read ranges');
+ const last=x.at(-1).part.state;
+ assert.match(last.output,/\(End of file - total \d+ lines\)/);
+ last.output=last.output.replace(/\(End of file - total \d+ lines\)/,'');
+}).ok,false);
 assert.equal(control('synthetic-unavailable-read-refuses',large,selected(large),x=>{x[0].part.state.status='error';x[0].part.state.error='Synthetic unavailable read control';}).ok,false);
 const report={clientVersion:'1.18.31',modulePath,moduleSha256:sha(fs.readFileSync(modulePath)),nativeResponseSha256:sha(raw),preparedManifestSha256:sha(manifestBytes),fixtureCustody:archive.fixtures,nativeCompletedReads:reads.length,results,limits:'Structural HOST framing only. Synthetic review state scaffold, no actual provider review, publication, caller integration, authority or understanding claim.'};
 const reportPath=path.join(outputDirectory,'replay-canonical-host-framing-control-results.json');

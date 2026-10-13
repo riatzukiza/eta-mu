@@ -27,6 +27,7 @@
 (deftest current-adapters-have-separate-identities
   (let [current (:currentSourceAdapters evidence)]
     (is (= 2 (count current)))
+    (is (= 2 (count (set (map :path current)))) "The two adapters must have distinct paths")
     (doseq [{:keys [path bytes sha256]} current]
       (is (.existsSync fs path))
       (when (.existsSync fs path)
