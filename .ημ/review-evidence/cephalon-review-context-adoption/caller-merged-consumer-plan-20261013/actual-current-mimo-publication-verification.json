@@ -1,0 +1,51 @@
+{
+  "artifact": {
+    "id": 11860280273,
+    "name": "review-attempt-14-38479295513-1",
+    "size_in_bytes": 173325,
+    "digest": "sha256:0c0f611158facdf6584aec52356b144cd688b6b6d3f05b137df66d888decc86e"
+  },
+  "nativeReviewID": 5511302623,
+  "head": "1a949713d62d827ca754909d61f4e6d4c2bb16d3",
+  "nativeBodyEqualsActualSubmission": true,
+  "nativeBodyBytes": 1976,
+  "actualAcceptedInvocation": {
+    "attempt": 1,
+    "response_file": "model-response-attempt-1.txt",
+    "response_sha256": "e759227bac531172aedb5dd359e946c1e786ee7559829199acf1fa3dc96b158f",
+    "submission_file": "submission.json",
+    "submission_sha256": "044debf540237695fde17dc0e10b5267ac5a53f5297c948cdb91bf45e06d2f9d",
+    "session_id": "ses_ec871fb36ffecJGTlfqKP3FnFC",
+    "canonical_verdict": {
+      "reviewCallCount": 87,
+      "acceptedInvocation": {
+        "sessionID": "ses_ec871fb36ffecJGTlfqKP3FnFC",
+        "submissionCallID": "call_3b8efc9fa8f548d29ff199fd",
+        "submissionPosition": 335,
+        "submissionFile": "/home/runner/work/eta-mu/eta-mu/.opencode/review-evidence/submission.json",
+        "responseSha256": "e759227bac531172aedb5dd359e946c1e786ee7559829199acf1fa3dc96b158f",
+        "submissionSha256": "044debf540237695fde17dc0e10b5267ac5a53f5297c948cdb91bf45e06d2f9d",
+        "fullInputSha256": "7ae2b96215f2daea6ad7cbb8b0b44f7da04c4588dfb2532dc330c1379c4f003b",
+        "pageCount": 40
+      },
+      "contextReadCoverage": {
+        "status": "present",
+        "totalLines": 126,
+        "deliveredLines": 126,
+        "eof": true
+      },
+      "reason": null,
+      "ok": true,
+      "code": "verified-review-invocation",
+      "pageCount": 40,
+      "violations": [],
+      "reasonKind": null,
+      "sessionID": "ses_ec871fb36ffecJGTlfqKP3FnFC"
+    },
+    "verifier_sha256": "644089cba60b36da77adfc0b108f8e2c7017579a5cfa3e482b88f5963b0f50b9",
+    "expected_context_sha256": "5e8749b7b28059ef15b0b4773fb43aec325da946967724222d695f36d15389fd"
+  },
+  "selectedResponseBytes": 1078946,
+  "selectedSubmissionBytes": 21700,
+  "zipCRC": true
+}

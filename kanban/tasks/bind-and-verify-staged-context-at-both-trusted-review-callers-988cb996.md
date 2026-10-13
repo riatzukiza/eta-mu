@@ -1,7 +1,7 @@
 ---
 uuid: "b9c591fb-95a8-4e4e-b2a5-39eb988cb996"
 title: "Bind and verify staged context at both trusted review callers"
-status: "review"
+status: "done"
 type: "task"
 priority: "P1"
 points: "2"
@@ -9,7 +9,7 @@ labels: "cephalon, b3, review, context-custody"
 epic: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 dependency: ["52a0f6cc-e43b-4ed5-a628-e54dd9d9fdc4","a880c727-229b-4f3d-9158-718ec164d16c"]
 category: "tasks"
-write-id: "1791930742199-0.fleillh1k3un0xecb0d"
+write-id: "1791934771028-0.pvji7aa5afqq0xx5ek"
 created_at: "2026-10-12T22:46:27.252Z"
 parent: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 ---

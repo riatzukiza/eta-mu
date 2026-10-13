@@ -1,0 +1,36 @@
+{
+  "tier": "derived-qualified-source-consumer-plan",
+  "sourceMerge": "3ad5e24bb2eab51ea315a02f590ec234ad6bba46",
+  "sourceHead": "1a949713d62d827ca754909d61f4e6d4c2bb16d3",
+  "sourceBase": "23968980349d07aa647874941cede32db67a4895",
+  "canonicalGate": "PASS/all15checks/all2findingssettled/all3currentapprovals/oneunanimouscodecohort",
+  "sourceCallerTaskDone": "b9c591fb-95a8-4e4e-b2a5-39eb988cb996",
+  "consumerTask": "ad41fc8a-12fe-453c-bdb9-29d832c94e9f",
+  "consumerStatus": "incoming",
+  "consumerPoints": 1,
+  "consumerHead": "033c001125019908d0c68aa5365749005644edc8",
+  "consumerBase": "f95a53a4da8ed90588b0be320ba8e86c6a03668d",
+  "consumerPR": "https://github.com/riatzukiza/openplanner/pull/3",
+  "proposedWorkflow": "riatzukiza/eta-mu/.github/workflows/opencode-code-review.yml@3ad5e24bb2eab51ea315a02f590ec234ad6bba46",
+  "proposedMuse": "a9a62f0d509056406f3dd7d8c86a13551be168cd",
+  "nativeWorkflowRead": {
+    "blob": "1b236fbc31cc3a46a453fb410e4b2deff3d2ceb1",
+    "bytes": 144367,
+    "actionsEnabled": true,
+    "allowedActions": "all",
+    "actualConsumerCallQualified": false
+  },
+  "currentCodeRabbitNativeSummary": {
+    "id": 6156353588,
+    "request": 6157221242,
+    "completion": 6157222820,
+    "bytes": 15994,
+    "sha256": "0182d29d64b4aac9633d77d825e95572c644385d59deace7215998534ae5e634",
+    "run": "d7399cef-7419-4e60-aafe-6cc09da243bf",
+    "all19ExactUnicodePaths": true,
+    "rawPreservedPrivately": true,
+    "formalGithubApprovedSynthesized": false
+  },
+  "scope": "Only two consumer selector/pin changes after lawful planning/Ready; retain original56 carry, entire150input scope, actual1.18.31/22.20.0/free route/120minute budget/permissions/gates. No implementation or consumer qualification yet.",
+  "limits": "Read-only direct public-workflow resolution is not proof of consumer execution. Current source approvals do not transfer. Goal B1/B2/live B3 unfinished. Earlier false path comparison used C-quoted display names; corrected raw -z Unicode sets match and no scope gap was inferred."
+}
