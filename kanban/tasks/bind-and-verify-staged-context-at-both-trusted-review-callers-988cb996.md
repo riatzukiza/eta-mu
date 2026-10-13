@@ -9,7 +9,7 @@ labels: "cephalon, b3, review, context-custody"
 epic: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 dependency: ["52a0f6cc-e43b-4ed5-a628-e54dd9d9fdc4","a880c727-229b-4f3d-9158-718ec164d16c"]
 category: "tasks"
-write-id: "1791846009552-0.35bt5bk48382bah39vy"
+write-id: "1791923628493-0.fmb5f61pwbjg68md7q6"
 created_at: "2026-10-12T22:46:27.252Z"
 parent: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 ---
@@ -51,3 +51,17 @@ The current two-point adapter estimate is provisional until predecessor discover
 Host framing is version-sensitive; upstream source inspection is not genuine HOST execution. Model file mutation requires independent final rechecks. Two points are provisional for two adapters and existing canonical controls; re-estimate through review if needed.
 
 Software/process documentation: GPL-3.0-or-later.
+
+
+---
+Re-description after actual qualified predecessor completion, 2026-10-13. Source carry52a0f6cc-e43b-4ed5-a628-e54dd9d9fdc4 is actually mergedf97582a833d5678fbfce83cf4eac657d5d95e7ce/Done. HOST spikea880c727-229b-4f3d-9158-718ec164d16c is actually merged22bd33d0ff79a1e0b79d1b4a55fdce9dcb301746, qualifiedhead37e9da344c0f1aeb7436a7e243422f12e763606a, native Review→Document→Done/readback. Its bounded decision supports actual OpenCode1.18.31 UTF8 multipage/present-empty completed reads and refuses clipped long lines; synthetic scaffold/perturbations are not model-understanding/full real caller proof.
+
+This existing story remains two provisional points. Discovery found exactly two existing trusted four-argument preparation calls: tracked run-opencode-review-recovery.mjs supervisor and embedded final prepublication workflow check. Implementation adds actual Buffer bytes from ALWAYS-staged evidence/pr-context.md and one fixed absolute resolved path as canonical arguments five/six at both boundaries. Supervisor prepares once before any child and holds the canonical result across the unchanged two-attempt cap; final independently rereads/reprepares and binds the same context/source/verifier/selected-submission digest before publication. Present-empty is still present. ENOENT/I/O/invalid UTF8/missing arguments/changed bytes or path refuse at the appropriate trust point. Neither consumer selects library explicit absence, model-supplied metadata or a manifest flag.
+
+Pin matching Muse plugin/verifier to actual personal mergea9a62f0d509056406f3dd7d8c86a13551be168cd through the existing source fetch boundary, retaining actual compilation/provenance. OpenPlanner's existing1.18.31/Node22.20.0 consumer binding is unchanged; source default host behavior remains separately qualified. Canonical Muse alone interprets HOST lines, suffixes, ranges/EOF and review stages. No second parser/verifier, new model/credential/permission/retry policy, broad upstream sync or runtime action.
+
+Meaningful RED must execute both old caller boundaries against the actual qualified six-argument module and fail for omitted trusted context before child/publication. GREEN must independently cover real staged bytes/path at both callers, present-empty versus absence, read failure/invalid UTF8, changed bytes/path/final-read refusal, and existing restart/failed-call/complete-input/submission/recovery negatives. Reuse the exact known compatible HOST fixture; retain explicit synthetic-control limits. Enforce tracked/embedded runner equality and matching plugin/verifier identity. Existing real workflow/recovery suites, compiled canonical controls, hygiene and zero-warning native/hosted gates remain mandatory.
+
+Two points estimates narrow adapter/pin/fixture integration, not new semantic law or host discovery. Review must assess that cost against the actual controls; if discovery exceeds it, re-describe/re-estimate rather than silently broadening. This comment is the concrete reviewed planning input. No readiness or implementation is claimed until fresh planning qualification and native lawful admission. Consumerad41fc8a-12fe-453c-bdb9-29d832c94e9f still waits for this story actually qualified MERGE/Done, then its own actual OpenPlanner adoption/qualification/MERGE. B1/B2/liveB3 remain incomplete.
+
+---
