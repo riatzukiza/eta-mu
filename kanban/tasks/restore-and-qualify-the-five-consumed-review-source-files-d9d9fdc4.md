@@ -1,14 +1,14 @@
 ---
 uuid: "52a0f6cc-e43b-4ed5-a628-e54dd9d9fdc4"
 title: "Restore and qualify the five consumed review-source files"
-status: "incoming"
+status: "review"
 type: "task"
 priority: "P1"
 points: "2"
 labels: "cephalon, b3, review, context-custody"
 epic: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 category: "tasks"
-write-id: "1791846005710-0.b4hmre00a3tmwv9xq2l"
+write-id: "1791855059420-0.g32ckjfenxs4lqwcu2e"
 created_at: "2026-10-12T22:46:26.712Z"
 parent: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 ---

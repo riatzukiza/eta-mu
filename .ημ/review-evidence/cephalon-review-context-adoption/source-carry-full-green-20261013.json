@@ -1,0 +1,213 @@
+{
+  "schema": "cephalon.source-carry-qualification/v1",
+  "scope": "Two-point five-source carry only; B3 review transport prerequisite, no new Muse pin or caller implementation.",
+  "planning_merge": "35e41047ddd523d7de8c99171679d9755d302cbf",
+  "red_commit": "ab7d882b1cd5915f12bcc86dd2446278fd3041bd",
+  "upstream_initial_source": "7b5797df3af28e190a994860be758e5f791440b5",
+  "actual_source_files": [
+    {
+      "path": ".github/workflows/opencode-code-review.yml",
+      "bytes": 140679,
+      "sha256": "61b679c34d136bd87cc4c71a9c9a33abcf1d470b3449736ec8f77520655d1842"
+    },
+    {
+      "path": ".github/scripts/run-opencode-review-recovery.mjs",
+      "bytes": 43395,
+      "sha256": "67910454a075501c72aae68701eb39aff65714abda1b87906d8a04a428e98bef"
+    },
+    {
+      "path": ".github/scripts/opencode-code-review-workflow.test.mjs",
+      "bytes": 133428,
+      "sha256": "43f1d364600c0d025791c543f9a6f7633045e376c0af2019c90672c6e0fd90bd"
+    },
+    {
+      "path": ".github/scripts/review-invocation-fixture.mjs",
+      "bytes": 7077,
+      "sha256": "931a5cd73df6256624d8c46fa486211647a87ebbcce89e58f3c95d655896429e"
+    },
+    {
+      "path": ".github/review-host-tool-metadata.edn",
+      "bytes": 1741,
+      "sha256": "2c7d86dc58a34a8956dfc8e3828a6cda4b14b0dc17d7a76ab207cddedef416f7"
+    }
+  ],
+  "retained_base_fixture_block": {
+    "lines": 194,
+    "sha256": "3f1bc6d6ef6a59953043cf3ebcfb1e9767c97f42f409832e38f6dde932575c97",
+    "byte_equal": true
+  },
+  "green_deltas": "Only three existing allowed generated-artifact guard lines restored from base35 to support Git quoted path framing; full219 controls retained.",
+  "red": {
+    "tests": 20,
+    "pass": 10,
+    "fail": 10,
+    "exit": 1,
+    "causal": true
+  },
+  "scoped_green": {
+    "tests": 219,
+    "pass": 219,
+    "fail": 0,
+    "skip": 0,
+    "exit": 0
+  },
+  "native_full_gate": {
+    "command": [
+      "node",
+      "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/rheos-event-id-checker-implementation-20261012/qualified-rheos-85369213.cjs",
+      "status-update",
+      "52a0f6cc-e43b-4ed5-a628-e54dd9d9fdc4",
+      "--to",
+      "review",
+      "--config",
+      "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/eta-adoption-qualified-board-config.edn"
+    ],
+    "exit": 0,
+    "elapsed_seconds": 427.3940671320015,
+    "held_count": 1583,
+    "changed_paths": [
+      "packages/contracts/output/dist-cli/index.cjs",
+      "packages/contracts/output/dist-cli/index.cjs.map",
+      "packages/legacy/ai/src/models.generated.ts"
+    ],
+    "babashka": "babashka v1.13.226",
+    "node": "v22.20.0",
+    "retry_reason": "Fresh read-only host occupancy dropped from observed780313 to322051 inotify watch entries; no unrelated process or sysctl was changed. Complete mandatory gate rerun, not a gate override."
+  },
+  "first_two_native_gate_refusals_retained": true,
+  "third_native_gate_result": "pnpm build/lint/test all pass; all14 test suites pass; actual native carry in_progress->review accepted",
+  "environment_recovery": "Private checksum-verified official BB1.13.226 supports HexFormat; no source fix. Protocols inotify failures disappeared after observed host load changed; no unrelated process/sysctl change, skipped test or lowered gate.",
+  "generated_outputs": [
+    {
+      "path": "packages/contracts/output/dist-cli/index.cjs",
+      "sha256": "f2ff329d9f4ac85dade677787b6c4b1e649c3d9ef3f9614f5295c06c469c85c3",
+      "bytes": 1997608,
+      "baseline_sha256": "5f26ab71c04b4cf81a0b58d5bd8fba994bc2ba4f7544370beb570af799f1f014"
+    },
+    {
+      "path": "packages/contracts/output/dist-cli/index.cjs.map",
+      "sha256": "9883bb83300c6a0ce85bc69a5f744ca031f1a29e0bda74ef6154248100454bde",
+      "bytes": 5170120,
+      "baseline_sha256": "00b1a5f5cc8fe7740621d624eb2ceedd0862db086eed24855b4d1702133d32e9"
+    },
+    {
+      "path": "packages/legacy/ai/src/models.generated.ts",
+      "sha256": "72082dd448ec73c2b295e686d8bd8684d6d644021f6a21cea0df585a0b7a86d2",
+      "bytes": 618141,
+      "baseline_sha256": "9e64256d83b2559f60fc6e80cc2320268bd56214c68032f2c222d5d8910fe761"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/source-carry-20261013/exact-five-initial-materialization.json",
+      "bytes": 2291,
+      "sha256": "dc5b4e2e942230b498dff4a9fb2147be1675b0991aae1fa23f73e04d639ebe9a"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/source-carry-20261013/quoted-artifact-red.log",
+      "bytes": 20137,
+      "sha256": "b62e10d1674c486e5d9a0ab78dfd41cfe9c4cc63c1ad70497331fb3ab1ee3ab9"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/source-carry-20261013/quoted-artifact-red-exit.json",
+      "bytes": 193,
+      "sha256": "791509857d22bdc73e870d5c9f86526a6dd880481ef3a4edf805e4a275e50fe2"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/source-carry-20261013/full-existing-review-workflow-green.log",
+      "bytes": 49798,
+      "sha256": "5e79149ce27d5b8fec4313de9107674c59cf43d2f2d245311a66db6811def15a"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/source-carry-20261013/full-existing-review-workflow-green-exit.json",
+      "bytes": 118,
+      "sha256": "b026fd922460364cb26fd1011bb50099c764472c3637a21ba305daf2a127f747"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/source-carry-20261013/full-owning-workspace-install-exit.json",
+      "bytes": 336,
+      "sha256": "aedaaaf8653bd47b9e9e4202487dd87c43c261a259c6119fec8790114712416d"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/source-carry-20261013/native-full-review-gate.stdout.log",
+      "bytes": 147450,
+      "sha256": "cfc074d7d18b4d2604e123fb395f2752efc5c1d0648bedfc5e9e59950a56bdb3"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/source-carry-20261013/native-full-review-gate.stderr.log",
+      "bytes": 12772,
+      "sha256": "26654a35ba576d1e15203b563e5076602a94dbcb506cffd0a16d2b225ed23305"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/source-carry-20261013/native-full-review-gate-exit.json",
+      "bytes": 108,
+      "sha256": "d55d06b02fc03a57ceea8dc80217d87616467abdf3e22b4b1c13aacb32277c34"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/source-carry-20261013/native-full-review-retry.stdout.log",
+      "bytes": 147495,
+      "sha256": "201eb1c8ef4035d7df729d690808112df335fe3ca88d27bba76954af9173e837"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/source-carry-20261013/native-full-review-retry.stderr.log",
+      "bytes": 12048,
+      "sha256": "f51c2d971cf73864e9444d65ec07da0628d44905368c0918ed4bfd334c10d362"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/source-carry-20261013/native-full-review-retry-exit.json",
+      "bytes": 856,
+      "sha256": "01b7c81f125ad111f267c8bb040852eb60e70d2efb49dc9e25996482a6059de4"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/source-carry-20261013/native-full-review-third.stdout.log",
+      "bytes": 153277,
+      "sha256": "8514c099e7cf617e5a498950f11b7bec0b8567b6a5588e80cfb0f18b9b2587e0"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/source-carry-20261013/native-full-review-third.stderr.log",
+      "bytes": 10014,
+      "sha256": "815f33b27bc95ebd4a80b76e77bd1e72dfd0db0c11620961748167b83beceb2c"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/source-carry-20261013/native-full-review-third-exit.json",
+      "bytes": 1064,
+      "sha256": "221443991262e256e51c6a55b23f39cbdee765539e8f51a2b64a4aef310f8ab1"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/source-carry-20261013/babashka-latest-release-native.json",
+      "bytes": 27689,
+      "sha256": "ac6494f3fa5a83068da56eef9febe8511ea2cab1e2ccbd31760e1b8165474b4b"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/source-carry-20261013/clio-new-babashka-targeted-exit.json",
+      "bytes": 193,
+      "sha256": "d8b8e0b579668d67a4ec533b3e7e805ef2adedcd49a3278fb0ad795e56f62d38"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/source-carry-20261013/protocols-targeted-retry.stdout.log",
+      "bytes": 6430,
+      "sha256": "018054fa1cf5b9d7e35fdfffd0d06702b04ae001275924bae7585494357d504f"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/source-carry-20261013/protocols-targeted-retry.stderr.log",
+      "bytes": 211,
+      "sha256": "fab174992518c3c43e37c2b2b926e66ca02b159320b5a061c7defbc79d3f18ea"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/source-carry-20261013/actual-native-gate-generated-delta.json",
+      "bytes": 1268,
+      "sha256": "15fa08e85895bd4c8c48938ec71995317c68d9b2560c6d0b43481c59c72f4990"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/source-carry-20261013/retry2-generated-delta-retained-restored.json",
+      "bytes": 793,
+      "sha256": "15abb30a98e0553d74b1a08690dd930f9a858ad71233f97224e68722f02e4286"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/source-carry-20261013/third-generated-delta-retained-restored.json",
+      "bytes": 793,
+      "sha256": "f1c23fe6526f6c58ec4ccc557ad540be64ab9229f347800d057f407dbcf156d9"
+    }
+  ],
+  "epistemic_limits": "Command-output evidence, not provider approval. Carry current-head code review/MERGE remains outstanding. Both old four-argument callers and Musec136 pin retained; actual B1/B2/liveB3 unfinished; no heartbeat/runtime/paid/spore mutation."
+}

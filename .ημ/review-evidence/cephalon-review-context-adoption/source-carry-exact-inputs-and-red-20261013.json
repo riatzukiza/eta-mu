@@ -1,0 +1,95 @@
+{
+  "kind": "observed-command-output transcription; not native review or approval",
+  "planning_pr": "https://github.com/riatzukiza/eta-mu/pull/10",
+  "reviewed_head": "a2afa4446f3c036325cdee092a89a3a2a23ce631",
+  "base": "b03cb58407cc333b7cabd77431842d44f0deb415",
+  "qualified_merge": "35e41047ddd523d7de8c99171679d9755d302cbf",
+  "merge_parents": [
+    "b03cb58407cc333b7cabd77431842d44f0deb415",
+    "a2afa4446f3c036325cdee092a89a3a2a23ce631"
+  ],
+  "reviewed_tree": "95ec7d054cac6c7a98fa996bb12042a074a1633f",
+  "exact_mimo_approval": 5497386751,
+  "canonical_gate": "9 passing checks;12 settled threads;one unanimous CodeRabbit/Codex/MiMo planning round;PASS",
+  "fresh_frozen_context": "actual full live corrected description captured;12823 bytes/SHAca5d5fef8e3c91900193637e8cabfcb99bd63ca5132f8cc6656048d93ee0d0fc",
+  "fresh_actual_artifact": {
+    "id": 11780168089,
+    "bytes": 1501731,
+    "sha256": "5c77d698785265d1033e38cba689d5663394ac1aa5eb6c9aa9f375d4fa82ab58"
+  },
+  "native_ready": [
+    "52a0f6cc-e43b-4ed5-a628-e54dd9d9fdc4",
+    "a880c727-229b-4f3d-9158-718ec164d16c"
+  ],
+  "carry_status": "in_progress",
+  "caller_consumer_epic_status": "incoming",
+  "initial_exact_five_sources": [
+    {
+      "path": ".github/workflows/opencode-code-review.yml",
+      "source": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/downstream-eta-7b5797df-workflow.yml",
+      "bytes": 140664,
+      "sha256": "7d9820471c4c30e3162a6a40c2a658030b8327327eae68e84f0d8edab0bcc300",
+      "blob": "b7a3aea3351039e30308bdea6d4a1d2e0babeeb5",
+      "initial_exact_native_readback": true
+    },
+    {
+      "path": ".github/scripts/run-opencode-review-recovery.mjs",
+      "source": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/downstream-eta-7b5797df-runner.mjs",
+      "bytes": 43395,
+      "sha256": "67910454a075501c72aae68701eb39aff65714abda1b87906d8a04a428e98bef",
+      "blob": "ee4355b3798cd3e46ec91b8c65aa76b5fa2aefe5",
+      "initial_exact_native_readback": true
+    },
+    {
+      "path": ".github/scripts/opencode-code-review-workflow.test.mjs",
+      "source": "/home/err/spaces/cephalon-review-context-adoption/eta-mu/.ημ/review-evidence/cephalon-review-context-adoption/eta-7b-workflow-test-source.txt",
+      "bytes": 122729,
+      "sha256": "8eb9ec8ef8d5615bba2508a78a4b7f49db53245d3fdc179c201ec94f287d5e80",
+      "blob": "422bf178460d35fe5c888fcbdb16b3c0dcca8b9d",
+      "initial_exact_native_readback": true
+    },
+    {
+      "path": ".github/scripts/review-invocation-fixture.mjs",
+      "source": "/home/err/spaces/cephalon-review-context-adoption/eta-mu/.ημ/review-evidence/cephalon-review-context-adoption/eta-7b-invocation-fixture-source.txt",
+      "bytes": 7077,
+      "sha256": "931a5cd73df6256624d8c46fa486211647a87ebbcce89e58f3c95d655896429e",
+      "blob": "0e9dd05d27ff43eab0293a61a33c13e34686226a",
+      "initial_exact_native_readback": true
+    },
+    {
+      "path": ".github/review-host-tool-metadata.edn",
+      "source": "/home/err/spaces/cephalon-review-context-adoption/eta-mu/.ημ/review-evidence/cephalon-review-context-adoption/eta-7b-host-tool-metadata-source.txt",
+      "bytes": 1741,
+      "sha256": "2c7d86dc58a34a8956dfc8e3828a6cda4b14b0dc17d7a76ab207cddedef416f7",
+      "blob": "a8a71ab5f7997cb6a8905c3a744c986f33fbfa03",
+      "initial_exact_native_readback": true
+    }
+  ],
+  "retained_existing_fixture": {
+    "bytes": 10699,
+    "sha256": "3f1bc6d6ef6a59953043cf3ebcfb1e9767c97f42f409832e38f6dde932575c97",
+    "lines": 194
+  },
+  "red": {
+    "command": [
+      "node",
+      "--test",
+      "--test-name-pattern=clean-tree.*generated Unicode",
+      ".github/scripts/opencode-code-review-workflow.test.mjs"
+    ],
+    "exit": 1,
+    "elapsed_seconds": 1.1295727370015811
+  },
+  "red_log": {
+    "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/source-carry-20261013/quoted-artifact-red.log",
+    "bytes": 20137,
+    "sha256": "b62e10d1674c486e5d9a0ab78dfd41cfe9c4cc63c1ad70497331fb3ab1ee3ab9"
+  },
+  "operator_corrections": [
+    "First capitalized Accepted rejectedexit3; corrected through actual lowercase accepted/breakdown/ready; no invented transition.",
+    "Initial summarized runner blob lost leading e; blocked materialization assertion, then allfive actual native Gitblob/hash readbacks passed.",
+    "Fixture-block195line assumption refused; retained actual complete194line bounded block byte-identically before RED; this operator assertion is not causal RED.",
+    "Test-only YAML2.9.0 installed privately; npm baseline unknown always-auth config warning retained, no credential/config change."
+  ],
+  "limits": "This qualifies the planning source only. Restored source is RED and unqualified; no6argument context-custody adoption,HOST experiment,consumer pin, runtime,heartbeat,credentials,paid change or B1/B2/liveB3 completion."
+}
