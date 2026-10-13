@@ -2859,3 +2859,13 @@ for (const forged of [false, true]) {
     }
   });
 }
+
+test("native event context: identical producer formatter is the last step before the reviewer child", () => {
+  const producer = namedStep("deterministic_evidence", "Stage pull request diff and context");
+  const origin = namedStep("review", "Verify staged context against native event");
+  const formatter = source => source.match(/jq -r '\n([\s\S]*?)\n\s*' "\$GITHUB_EVENT_PATH"/)[1];
+  assert.equal(formatter(origin.run), formatter(producer.run));
+  const steps = workflow.jobs.review.steps;
+  assert.equal(steps.indexOf(origin) + 1,
+    steps.indexOf(namedStep("review", "Run bounded evidence-first OpenCode review")));
+});

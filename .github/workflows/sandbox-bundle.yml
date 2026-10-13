@@ -178,7 +178,7 @@ jobs:
           {
             pnpm install --frozen-lockfile
             pnpm --dir packages/extensions build
-            node .github/scripts/compile-canonical-context-fixture.mjs "$OUT/runtime/canonical-context"
+            pnpm --dir packages/eta-mu exec nbb ../../.github/scripts/eta_mu/extern/canonical_context_fixture.cljs "$OUT/runtime/canonical-context"
             export ETA_MU_CANONICAL_CONTEXT_MODULE="$OUT/runtime/canonical-context/review-invocation.cjs"
             pnpm lint
             pnpm test

@@ -1721,6 +1721,33 @@ jobs:
         id: review_start
         run: echo "started_at=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_OUTPUT"
 
+      - name: Verify staged context against native event
+        shell: bash
+        run: |
+          set -euo pipefail
+          evidence_dir="$GITHUB_WORKSPACE/.opencode/review-evidence"
+          expected_context="$(mktemp "$RUNNER_TEMP/opencode-native-context.XXXXXX")"
+          trap 'rm -f "$expected_context"' EXIT
+          jq -r '
+            "# Pull request context",
+            "",
+            "- Number: #\(.pull_request.number)",
+            "- Title: \(.pull_request.title)",
+            "- Author: \(.pull_request.user.login)",
+            "- Branches: \(.pull_request.head.ref) -> \(.pull_request.base.ref)",
+            "- Head SHA: \(.pull_request.head.sha)",
+            "- Draft: \(.pull_request.draft)",
+            "",
+            "## Body",
+            "",
+            (.pull_request.body // "(no body)")
+          ' "$GITHUB_EVENT_PATH" > "$expected_context"
+          if ! cmp -s -- "$expected_context" "$evidence_dir/pr-context.md"; then
+            echo "::error::staged PR context differs from native event before review child"
+            exit 1
+          fi
+          echo "Verified staged PR context against the review job's native event."
+
       - name: Run bounded evidence-first OpenCode review
         id: review_invocation
         env:

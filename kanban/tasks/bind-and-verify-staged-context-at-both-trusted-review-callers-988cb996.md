@@ -9,7 +9,7 @@ labels: "cephalon, b3, review, context-custody"
 epic: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 dependency: ["52a0f6cc-e43b-4ed5-a628-e54dd9d9fdc4","a880c727-229b-4f3d-9158-718ec164d16c"]
 category: "tasks"
-write-id: "1791929562555-0.jbpwj83eg7kf7jmdn0p"
+write-id: "1791930742199-0.fleillh1k3un0xecb0d"
 created_at: "2026-10-12T22:46:27.252Z"
 parent: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 ---
@@ -90,5 +90,30 @@ This is source code under independent code review, not caller Done or OpenPlanne
 actually merged23968980349d07aa647874941cede32db67a4895. Fresh actual code approval/settlement/required checks
 and authorized MERGE precede caller Done; existing consumer waits. B1 physical encounter/field, B2 persisted
 mood and B3 automatic prompt recall remain unfinished. GoalACTIVE/heartbeat humanPAUSED.
+
+Readable correction to the historical planning qualification paragraph, requested by native CodeRabbit
+finding4264673842 on code PR14. The original native comment and event remain unchanged. This correction
+supplies no new code approval or cohort credit.
+
+Planning qualification was at exact head 5f3070febe98bafdb4709d59219ac46e667d9773 and base
+22bd33d0ff79a1e0b79d1b4a55fdce9dcb301746. The canonical gate passed: nine checks, all findings settled, one
+completed available planning cohort. Exact Codex 6154862420 and native MiMo APPROVED 5509978759 covered all 18
+of 18 pages, 7 inputs and 45 canonical calls, with no omissions. The native body equaled submission.summary.
+ZIP 11850001142 was 95540 bytes, SHA 888a34ddf5161cfb11a1433a11eda5394d4d8ff884247083a8c3525242252f7a, with
+native digest/CRC agreement. Actual source was 145749 UTF8 bytes, SHA
+14e0d3428de8c45584392dec820b3b35afb5ffaa63526bdb3b84b29859dae738. The report's 145295 value was UTF16 wire
+geometry; its original body is preserved. Seven source gates exited 0; 86 compiler builds had zero warnings.
+
+Source carry and HOST spike were independently native Done. CodeRabbit's sole obsolete receipt finding was
+withdrawn 4263908111 and canonically Handled 4263913319. Fresh canonical request 6155212817 received actual
+quota 6155214697 at current-head 21:07:44, with a 32 minute parsed cooldown. The then-current available cohort
+was Codex+MiMo. No allowance-derived timer, paid usage, waiver or CodeRabbit approval credit was added. That
+historical quota does not exclude a new code head.
+
+The provisional two-point estimate remains for the two existing adapters, matching qualified Muse a9 pin and
+existing fixture/control integration. It covers no new review semantics, host discovery, auth/model or retry
+policy. Lawful Ready/Todo/IP admission then started actual adapter RED against the qualified six-argument
+module. Planning qualification transfers no code approval, consumer adoption, runtime proof or B1/B2/B3
+completion. Heartbeat remains human PAUSED.
 
 ---

@@ -262,3 +262,37 @@ This source delivery is a prerequisite for OpenPlanner's independently
 reviewed caller adoption. It does not establish a live encounter/physical
 field change, persisted mood consumption or automatic graph recall in the
 maker's assembled prompt.
+
+
+### Native event origin correction — 2026-10-13
+
+CodeRabbit finding4264673832 identified a separate source-custody defect:
+deterministic gates could replace generated context before upload. Binding the
+received bytes alone did not authenticate their origin. The review job now
+reconstructs context from its native GitHub event using the identical producer
+formatter and compares bytes immediately before the reviewer child. The later
+canonical preparation and final custody checks remain. No new context grammar,
+review law, provider permission or retry behavior was introduced.
+
+The committed origin RED executes the actual canonical supervisor: both the
+original context and a same-length valid UTF8 replacement start a synthetic
+child (2 tests, 1 pass, 1 failure). After correction, the original still starts
+and the replacement refuses before any child. The complete suite now passes
+241/241 with no failures or skips, including exact formatter equality and
+immediate pre-child ordering. Present-empty remains present at the canonical
+library boundary; a file differing from actual native event content still
+refuses origin admission.
+
+New fixture tooling follows the repository's ClojureScript rule:
+`.github/scripts/eta_mu/extern/canonical_context_fixture.cljs` runs through
+`pnpm --dir packages/eta-mu exec nbb`. It executes the existing compiler recipe
+at the same immutable source. Real compilation and dedicated clj-kondo pass
+with zero warnings. The earlier JavaScript adapter and its evidence remain in
+ordinary history; initial NBB location diagnostics are retained as operator
+errors. Current module identity is in the new evidence packet, separately from
+prior builds. Full post-correction lint and structural actionlint pass.
+
+Native Rheos appends a readable correction for finding4264673842 while keeping
+the old planning paragraph and all its IDs/hashes. Historical planning evidence
+supplies no current code approval. Both findings still require native settlement
+and the corrected head's fresh review and hosted qualification before MERGE.
