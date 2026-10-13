@@ -1,0 +1,5 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+# Review committed evidence logs as well as source; native whole-input readback is required.
+reviews:
+  path_filters:
+    - "**/*"
