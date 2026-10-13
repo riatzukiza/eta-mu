@@ -396,7 +396,7 @@ test("staging preserves empty input and distinguishes the native base from the m
 });
 
 test("the compiled observer contract pins compatible Muse and allows both full-input tools", () => {
-  const museSha = "c1369c223cf3c57e3e31934a6d746bfcdfe73f5a";
+  const museSha = "a9a62f0d509056406f3dd7d8c86a13551be168cd";
   const expectedRef = "${{ inputs.muse_revision || '" + museSha + "' }}";
   assert.equal(workflow.on.workflow_call.inputs.muse_revision.default, museSha,
     "workflow-call default must select the corrected immutable Muse source");
@@ -2548,4 +2548,324 @@ test("embedded review metadata JSON matches canonical tracked EDN rendering", ()
   );
   assert.ok(embedded, "review context must carry the rendered metadata JSON");
   assert.deepEqual(JSON.parse(embedded[1]), renderReviewHostMetadataFromEdn());
+});
+
+
+/** Stage the actual compiled owner; synthetic call data grants no review credit. */
+function canonicalContextFixture(checked, contextBytes = Buffer.from("outside encounter 😀\nsecond context line\n")) {
+  const moduleFile = process.env.ETA_MU_CANONICAL_CONTEXT_MODULE;
+  assert.ok(moduleFile && path.isAbsolute(moduleFile), "ETA_MU_CANONICAL_CONTEXT_MODULE must name the compiled Muse owner");
+  const context = path.join(checked.consumer, ".review-context");
+  fs.mkdirSync(path.join(context, "machinery"), { recursive: true });
+  fs.mkdirSync(path.join(context, "metadata"), { recursive: true });
+  const verifierFile = path.join(context, "machinery/review-invocation.cjs");
+  fs.copyFileSync(moduleFile, verifierFile);
+  const verifier = createRequire(import.meta.url)(verifierFile);
+  const tools = ["review_begin", "review_read_diff_chunk", "review_assess_diff_chunk", "review_record_evidence",
+    "review_propose_finding", "review_classify_finding", "review_status", "review_submit"];
+  const registryFile = path.join(context, "metadata/exposed-tools.txt");
+  fs.writeFileSync(registryFile, tools.join("\n") + "\n");
+  const contextFile = path.resolve(checked.evidence, "pr-context.md");
+  fs.writeFileSync(contextFile, contextBytes);
+  const full = fs.readFileSync(path.join(checked.evidence, "basehead.diff"));
+  const manifestBytes = fs.readFileSync(path.join(checked.evidence, "input-manifest.json"));
+  const submissionFile = path.join(checked.evidence, "submission.json");
+  const expectedContext = verifier.prepareReviewInvocationContext(full, manifestBytes, tools, submissionFile, contextBytes, contextFile);
+  assert.throws(() => verifier.prepareReviewInvocationContext(full, manifestBytes, tools, submissionFile), /invalid full-input context/);
+  assert.deepEqual(expectedContext.contextSource, { path: contextFile, bytes: contextBytes.length, sha256: transportSha256(contextBytes) });
+  const checksum = execFileSync("sha256sum", ["machinery/review-invocation.cjs", "metadata/exposed-tools.txt"], { cwd: context });
+  fs.writeFileSync(path.join(context, "SHA256SUMS"), checksum);
+  const output = path.join(checked.evidence, "invocation-outputs");
+  fs.writeFileSync(output, "");
+  return { checked, context, verifier, verifierFile, registryFile, contextFile, contextBytes, full,
+    expectedContext, submissionFile, output, tools, digest: transportSha256(checksum),
+    env: { REVIEW_INVOCATION_VERIFIER_FILE: verifierFile, REVIEW_TOOL_REGISTRY_FILE: registryFile, GITHUB_OUTPUT: output } };
+}
+
+/** Encode synthetic adapter input using canonical geometry and the observed HOST frame shape. */
+function canonicalContextResponse(fixture, { omitRead = false, omitSubmit = false, corruptEof = false } = {}) {
+  const ctx = fixture.expectedContext;
+  const stages = ["deterministic", "map-change", "generate-candidates", "adversarial-validate", "publish"];
+  const sessionID = "ses_synthetic_caller_context";
+  const events = [];
+  let clock = 1;
+  const call = (tool, input, output) => {
+    const n = events.length + 1;
+    events.push({ type: "tool_use", timestamp: clock, sessionID,
+      part: { type: "tool", id: `synthetic-part-${n}`, callID: `synthetic-call-${n}`, sessionID, tool,
+        state: { status: "completed", input, time: { start: clock, end: clock },
+          output: JSON.stringify({ ...output, "context-protocol": "open-hax.review-context/v1",
+            "context-source": ctx.contextSource, "context-observation": { status: ctx.contextSource ? "present" : "absent", source: ctx.contextSource } }) } } });
+    clock += 1;
+  };
+  call("review_begin", {}, { "ok?": true, stage: stages[0], stages, "input-source": ctx.inputSource,
+    "diff-stats": { files: 2, bytes: fixture.full.toString("utf8").length, "truncated?": false },
+    "input-coverage": { chunks: ctx.pages.length, delivered: 0, assessed: 0, missing: ctx.pages.map(p => p.id) } });
+  if (!omitRead) {
+    const lines = ctx.contextLines.map((line, i) => `${i + 1}: ${line}`).join("\n");
+    const eof = corruptEof ? "synthetic incomplete delivery" : `(End of file - total ${ctx.contextLines.length} lines)`;
+    events.push({ type: "tool_use", timestamp: clock, sessionID,
+      part: { type: "tool", id: "synthetic-context-read", callID: "synthetic-context-read", sessionID, tool: "read",
+        state: { status: "completed", input: { filePath: fixture.contextFile, offset: 1, limit: Math.max(1, ctx.contextLines.length) },
+          time: { start: clock, end: clock },
+          metadata: { loaded: [], preview: ctx.contextLines.slice(0, 20).join("\n"), truncated: false,
+            display: { type: "file", path: fixture.contextFile, text: ctx.contextLines.join("\n"),
+              lineStart: 1, lineEnd: ctx.contextLines.length, totalLines: ctx.contextLines.length, truncated: false } },
+          output: `<path>${fixture.contextFile}</path>\n<type>file</type>\n<content>\n${lines}\n\n${eof}\n</content>` } } });
+    clock += 1;
+  }
+  const assessments = ctx.pages.map(p => ({ ...p, note: "Synthetic adapter fixture assessment; no provider judgment." }));
+  for (const [i, page] of ctx.pages.entries()) {
+    call("review_read_diff_chunk", { id: page.id }, { "ok?": true, chunk: { ...page, text: fixture.full.toString("utf8").slice(page.start, page.end) } });
+    call("review_assess_diff_chunk", { id: page.id, note: assessments[i].note }, { "ok?": true, "chunk-id": page.id,
+      coverage: { chunks: ctx.pages.length, delivered: i + 1, assessed: i + 1, missing: ctx.pages.slice(i + 1).map(p => p.id) } });
+  }
+  for (const stage of stages) call("review_record_evidence", { stage, note: `Synthetic ${stage} adapter control.` }, { "ok?": true });
+  const submission = { schema: "open-hax.github-review/v1", event: "COMMENT", summary: "Synthetic caller control; no review credit.", comments: [],
+    "context-protocol": "open-hax.review-context/v1", "context-source": ctx.contextSource,
+    "input-source": ctx.inputSource, "input-coverage": { chunks: ctx.pages.length, delivered: ctx.pages.length, assessed: ctx.pages.length, missing: [] },
+    "input-assessments": assessments };
+  if (!omitSubmit) call("review_submit", { summary: submission.summary }, { "ok?": true, event: "COMMENT", file: fixture.submissionFile, "inline-comments": 0 });
+  events.push({ type: "step_finish", timestamp: clock, sessionID, part: { type: "step-finish", id: "synthetic-stop", sessionID, reason: "stop" } });
+  return { response: Buffer.from(events.map(e => JSON.stringify(e)).join("\n") + "\n"), submission: Buffer.from(JSON.stringify(submission)) };
+}
+
+/** Run the real supervisor with an inert local child, never OpenCode or a provider. */
+function canonicalSupervisor(fixture, { retryAfterMissingSubmit = false, responseOptions = {} } = {}) {
+  const directory = fixture.checked.evidence;
+  const child = path.join(directory, "synthetic-opencode.mjs");
+  const prompt = path.join(directory, "synthetic-prompt.md");
+  const marker = path.join(directory, "synthetic-child-entered");
+  const data = canonicalContextResponse(fixture, responseOptions);
+  fs.writeFileSync(prompt, "Synthetic caller control #{{PR_NUMBER}}.\n");
+  const first = canonicalContextResponse(fixture, { omitSubmit: true });
+  const countFile = path.join(directory, "synthetic-attempt-count");
+  fs.writeFileSync(child, `#!/usr/bin/env node\nimport fs from "node:fs";\nconst countFile=${JSON.stringify(countFile)};\nconst attempt=fs.existsSync(countFile)?Number(fs.readFileSync(countFile,"utf8"))+1:1;\nfs.writeFileSync(countFile,String(attempt));\nfs.writeFileSync(${JSON.stringify(marker)}, "entered");\nif (${JSON.stringify(retryAfterMissingSubmit)} && attempt===1) {\n  process.stdout.write(${JSON.stringify(first.response.toString("utf8"))});\n  fs.appendFileSync(${JSON.stringify(fixture.contextFile)}, "mutated between children\\n");\n} else {\n  fs.writeFileSync(${JSON.stringify(fixture.submissionFile)}, ${JSON.stringify(data.submission.toString("utf8"))});\n  process.stdout.write(${JSON.stringify(data.response.toString("utf8"))});\n}\n`);
+  fs.chmodSync(child, 0o755);
+  const result = spawnSync(process.execPath, [path.join(root, ".github/scripts/run-opencode-review-recovery.mjs")], {
+    cwd: root, encoding: "utf8", env: { PATH: process.env.PATH, PR_NUMBER: "42", REVIEW_MODEL: "synthetic/no-provider",
+      OPENCODE_BIN: child, REVIEW_EVIDENCE_DIR: directory, REVIEW_PROMPT_FILE: prompt, ...fixture.env } });
+  return { result, marker };
+}
+
+/** Bind a real canonical verdict to selected bytes before exercising the complete final command. */
+function bindCanonicalFixture(fixture, options = {}) {
+  const data = canonicalContextResponse(fixture, options);
+  const verdict = fixture.verifier.verifyReviewInvocation(data.response, data.submission, fixture.expectedContext);
+  assert.equal(verdict.ok, true, JSON.stringify(verdict));
+  fs.writeFileSync(fixture.submissionFile, data.submission);
+  const accepted = { attempt: 1, response_file: "model-response-attempt-1.txt", response_sha256: transportSha256(data.response),
+    submission_file: "submission.json", submission_sha256: transportSha256(data.submission), session_id: verdict.sessionID,
+    canonical_verdict: verdict, verifier_sha256: transportSha256(fs.readFileSync(fixture.verifierFile)),
+    expected_context_sha256: transportSha256(JSON.stringify(fixture.expectedContext)) };
+  fs.writeFileSync(path.join(fixture.checked.evidence, accepted.response_file), data.response);
+  fs.writeFileSync(path.join(fixture.checked.evidence, "recovery.json"), JSON.stringify({ schema: "open-hax.review-recovery/v1", max_attempts: 2,
+    attempts: [{ attempt: 1, exit_code: 0, invocation_state: "completed" }], accepted_invocation: accepted }));
+  fixture.invocationDigest = transportSha256(JSON.stringify(accepted));
+}
+
+for (const [name, bytes] of [["UTF8", Buffer.from("outside 😀\n第二行\n")], ["present-empty", Buffer.alloc(0)]]) {
+  test(`canonical staged context: supervisor supplies actual ${name} bytes before its child`, (t) => {
+    const checked = freshReviewInputCheck(fullInputFixture(t, { unicode: true }));
+    assert.equal(checked.result.status, 0, checked.result.stderr);
+    const fixture = canonicalContextFixture(checked, bytes);
+    const probe = canonicalSupervisor(fixture);
+    assert.equal(probe.result.status, 0, probe.result.stderr);
+    assert.equal(fs.existsSync(probe.marker), true);
+    const recovery = JSON.parse(fs.readFileSync(path.join(checked.evidence, "recovery.json")));
+    assert.equal(recovery.accepted_invocation.expected_context_sha256, transportSha256(JSON.stringify(fixture.expectedContext)));
+  });
+  test(`canonical staged context: full final boundary rebinds actual ${name} bytes before publication`, (t) => {
+    const checked = freshReviewInputCheck(fullInputFixture(t, { unicode: true }));
+    assert.equal(checked.result.status, 0, checked.result.stderr);
+    const fixture = canonicalContextFixture(checked, bytes);
+    bindCanonicalFixture(fixture);
+    const final = finalReviewInputCheck(checked, fixture);
+    assert.equal(final.result.status, 0, final.result.stderr);
+    assert.equal(fs.existsSync(final.publication), true);
+  });
+}
+
+for (const [name, mutate, expectedError] of [
+  ["missing", f => fs.rmSync(f.contextFile), /ENOENT/],
+  ["unreadable directory", f => { fs.rmSync(f.contextFile); fs.mkdirSync(f.contextFile); }, /EISDIR/],
+  ["invalid UTF8", f => fs.writeFileSync(f.contextFile, Buffer.from([0xff])), /invalid full-input context/],
+]) {
+  test(`canonical staged context: supervisor refuses ${name} before starting a child`, (t) => {
+    const checked = freshReviewInputCheck(fullInputFixture(t));
+    const fixture = canonicalContextFixture(checked);
+    mutate(fixture);
+    const probe = canonicalSupervisor(fixture);
+    assert.notEqual(probe.result.status, 0);
+    assert.equal(fs.existsSync(probe.marker), false);
+    const recovery = JSON.parse(fs.readFileSync(path.join(checked.evidence, "recovery.json")));
+    assert.equal(recovery.attempts.length, 0);
+    assert.match(recovery.setup_error, expectedError);
+  });
+}
+
+for (const [name, mutate] of [
+  ["missing", f => fs.rmSync(f.contextFile)],
+  ["changed bytes", f => fs.appendFileSync(f.contextFile, "changed\n")],
+  ["invalid UTF8", f => fs.writeFileSync(f.contextFile, Buffer.from([0xff]))],
+]) {
+  test(`canonical staged context: final reread refuses ${name} without publication`, (t) => {
+    const checked = freshReviewInputCheck(fullInputFixture(t));
+    const fixture = canonicalContextFixture(checked);
+    bindCanonicalFixture(fixture);
+    mutate(fixture);
+    const final = finalReviewInputCheck(checked, fixture);
+    assert.notEqual(final.result.status, 0);
+    assert.equal(fs.existsSync(final.publication), false);
+  });
+}
+
+
+test("canonical staged context: matching qualified Muse pin supplies both plugin and verifier", () => {
+  const pin = "a9a62f0d509056406f3dd7d8c86a13551be168cd";
+  assert.equal(workflow.on.workflow_call.inputs.muse_revision.default, pin);
+  const checkout = namedStep("prepare_review_context", "Checkout Muse compatibility compiler");
+  assert.equal(checkout.with.ref, "${{ inputs.muse_revision || '" + pin + "' }}");
+  assert.equal(namedStep("prepare_review_context", "Assemble revision-bound review context").env.MUSE_REVISION, checkout.with.ref);
+});
+
+test("canonical staged context: held supervisor preparation survives the two-child bound, final reread detects mutation", (t) => {
+  const checked = freshReviewInputCheck(fullInputFixture(t));
+  const fixture = canonicalContextFixture(checked);
+  const probe = canonicalSupervisor(fixture, { retryAfterMissingSubmit: true });
+  assert.equal(probe.result.status, 0, probe.result.stderr);
+  const recovery = JSON.parse(fs.readFileSync(path.join(checked.evidence, "recovery.json")));
+  assert.equal(recovery.max_attempts, 2);
+  assert.equal(recovery.attempts.length, 2);
+  assert.equal(recovery.accepted_invocation.attempt, 2);
+  assert.equal(recovery.accepted_invocation.expected_context_sha256, transportSha256(JSON.stringify(fixture.expectedContext)));
+  fixture.invocationDigest = parseOutput(fixture.output).review_invocation_sha256;
+  const final = finalReviewInputCheck(checked, fixture);
+  assert.notEqual(final.result.status, 0);
+  assert.equal(fs.existsSync(final.publication), false);
+});
+
+for (const kind of ["absence", "foreign path"]) {
+  test(`canonical staged context: final boundary refuses model-selected ${kind}`, (t) => {
+    const checked = freshReviewInputCheck(fullInputFixture(t));
+    const fixture = canonicalContextFixture(checked);
+    const contextPath = kind === "absence" ? fixture.contextFile : path.join(checked.evidence, "model-selected.md");
+    const bytes = kind === "absence" ? null : fixture.contextBytes;
+    fixture.expectedContext = fixture.verifier.prepareReviewInvocationContext(fixture.full,
+      fs.readFileSync(path.join(checked.evidence, "input-manifest.json")), fixture.tools, fixture.submissionFile, bytes, contextPath);
+    fixture.contextFile = contextPath;
+    // A valid separate library control must still be refused by the always-present caller.
+    const data = canonicalContextResponse(fixture, { omitRead: kind === "absence" });
+    const verdict = fixture.verifier.verifyReviewInvocation(data.response, data.submission, fixture.expectedContext);
+    assert.equal(verdict.ok, true, JSON.stringify(verdict));
+    fs.writeFileSync(fixture.submissionFile, data.submission);
+    const accepted = { attempt: 1, response_file: "model-response-attempt-1.txt", response_sha256: transportSha256(data.response),
+      submission_file: "submission.json", submission_sha256: transportSha256(data.submission), session_id: verdict.sessionID,
+      canonical_verdict: verdict, verifier_sha256: transportSha256(fs.readFileSync(fixture.verifierFile)),
+      expected_context_sha256: transportSha256(JSON.stringify(fixture.expectedContext)) };
+    fs.writeFileSync(path.join(checked.evidence, accepted.response_file), data.response);
+    fs.writeFileSync(path.join(checked.evidence, "recovery.json"), JSON.stringify({ schema: "open-hax.review-recovery/v1", max_attempts: 2,
+      attempts: [{ attempt: 1, exit_code: 0, invocation_state: "completed" }], accepted_invocation: accepted }));
+    fixture.invocationDigest = transportSha256(JSON.stringify(accepted));
+    const final = finalReviewInputCheck(checked, fixture, { REVIEW_CONTEXT_ABSENT: "true", REVIEW_CONTEXT_PATH: contextPath });
+    assert.notEqual(final.result.status, 0);
+    assert.equal(fs.existsSync(final.publication), false);
+  });
+}
+
+
+test("canonical staged context: deterministic CI supplies the actually compiled module to all regression tests", () => {
+  const job = workflow.jobs.deterministic_evidence;
+  assert.deepEqual(job.needs, ["prepare_review_context"]);
+  assert.equal(job.env.ETA_MU_CANONICAL_CONTEXT_MODULE,
+    "${{ github.workspace }}/.opencode/review-evidence/canonical-context/machinery/review-invocation.cjs");
+  const download = namedStep("deterministic_evidence", "Download canonical Muse context for caller regressions");
+  assert.equal(download.with.name, "${{ needs.prepare_review_context.outputs.artifact_name }}");
+  assert.equal(download.with.path, ".opencode/review-evidence/canonical-context");
+  const verify = namedStep("deterministic_evidence", "Verify canonical caller-test context");
+  assert.match(verify.run, /sha256sum --check --strict SHA256SUMS/);
+  assert.ok(job.steps.indexOf(verify) < job.steps.indexOf(namedStep("deterministic_evidence", "Run deterministic gates")));
+});
+
+
+for (const [name, responseOptions] of [["omitted native read", { omitRead: true }], ["missing EOF", { corruptEof: true }]]) {
+  test(`canonical staged context: actual supervisor delegates ${name} refusal to Muse`, (t) => {
+    const checked = freshReviewInputCheck(fullInputFixture(t));
+    const fixture = canonicalContextFixture(checked);
+    const probe = canonicalSupervisor(fixture, { responseOptions });
+    assert.notEqual(probe.result.status, 0);
+    assert.equal(fs.existsSync(probe.marker), true);
+    const recovery = JSON.parse(fs.readFileSync(path.join(checked.evidence, "recovery.json")));
+    assert.equal(recovery.accepted_invocation, null);
+    assert.equal(recovery.attempts.length, 1);
+    assert.equal(recovery.attempts[0].canonical_verdict.code, "context-read-coverage-unestablished");
+  });
+}
+
+test("canonical staged context: actual caller refuses an older verifier that ignores new arguments", (t) => {
+  const checked = freshReviewInputCheck(fullInputFixture(t));
+  const fixture = canonicalContextFixture(checked);
+  fs.writeFileSync(fixture.verifierFile, `exports.prepareReviewInvocationContext=()=>({inputSource:{},pages:[]});
+exports.verifyReviewInvocation=()=>{throw new Error("must not reach invocation");};`);
+  const probe = canonicalSupervisor(fixture);
+  assert.notEqual(probe.result.status, 0);
+  assert.equal(fs.existsSync(probe.marker), false);
+  const recovery = JSON.parse(fs.readFileSync(path.join(checked.evidence, "recovery.json")));
+  assert.equal(recovery.attempts.length, 0);
+  assert.equal(recovery.setup_error, "canonical verifier did not bind the actual staged context");
+});
+
+test("canonical staged context: sandbox supplies and preserves the real compiled fixture for its full test gate", () => {
+  const sandbox = YAML.parse(fs.readFileSync(path.join(root, ".github/workflows/sandbox-bundle.yml"), "utf8"));
+  const validate = sandbox.jobs.bundle.steps.find(step => step.name === "Install, validate, test, and build");
+  const compile = 'pnpm --dir packages/eta-mu exec nbb ../../.github/scripts/eta_mu/extern/canonical_context_fixture.cljs "$OUT/runtime/canonical-context"';
+  const bind = 'export ETA_MU_CANONICAL_CONTEXT_MODULE="$OUT/runtime/canonical-context/review-invocation.cjs"';
+  assert.ok(validate.run.includes(compile));
+  assert.ok(validate.run.includes(bind));
+  assert.ok(validate.run.indexOf(compile) < validate.run.indexOf(bind));
+  assert.ok(validate.run.indexOf(bind) < validate.run.indexOf("pnpm test"));
+  const collect = sandbox.jobs.bundle.steps.find(step => step.name === "Collect generated outputs and portable toolchains");
+  assert.match(collect.run, /entrypoint: "ETA_MU_CANONICAL_CONTEXT_MODULE=.* pnpm test"/);
+});
+
+for (const forged of [false, true]) {
+  test(`native event context: ${forged ? "replaced valid UTF8 refuses before child" : "actual native bytes reach child"}`, (t) => {
+    const checked = freshReviewInputCheck(fullInputFixture(t, { unicode: true }));
+    assert.equal(checked.result.status, 0, checked.result.stderr);
+    const staged = fs.readFileSync(path.join(checked.evidence, "pr-context.md"));
+    const bytes = forged ? Buffer.from(staged.toString("utf8").replace("input fixture", "evilx fixture")) : staged;
+    if (forged) {
+      assert.equal(bytes.length, staged.length);
+      assert.notDeepEqual(bytes, staged);
+    }
+    const fixture = canonicalContextFixture(checked, bytes);
+    const step = workflow.jobs.review.steps.find(candidate => candidate.name === "Verify staged context against native event");
+    // Before repair no origin check existed. Exercise the actual canonical
+    // supervisor rather than relabel an absent step as a production refusal.
+    const origin = step ? runScript(step.run, checked.consumer, checked.env) : { status: 0 };
+    const probe = origin.status === 0 ? canonicalSupervisor(fixture) : null;
+    console.log(JSON.stringify({ scenario: "native event origin", forged, originStepPresent: Boolean(step),
+      originStatus: origin.status, supervisorStatus: probe?.result.status ?? null,
+      childEntered: fs.existsSync(path.join(checked.evidence, "synthetic-child-entered")) }));
+    if (forged) {
+      assert.notEqual(origin.status, 0);
+      assert.equal(probe, null);
+      assert.match(origin.stdout + origin.stderr, /staged PR context differs from native event/);
+      assert.equal(fs.existsSync(path.join(checked.evidence, "synthetic-child-entered")), false);
+    } else {
+      assert.equal(origin.status, 0, origin.stderr);
+      assert.equal(probe.result.status, 0, probe.result.stderr);
+      assert.equal(fs.existsSync(probe.marker), true);
+    }
+  });
+}
+
+test("native event context: identical producer formatter is the last step before the reviewer child", () => {
+  const producer = namedStep("deterministic_evidence", "Stage pull request diff and context");
+  const origin = namedStep("review", "Verify staged context against native event");
+  const formatter = source => source.match(/jq -r '\n([\s\S]*?)\n\s*' "\$GITHUB_EVENT_PATH"/)[1];
+  assert.equal(formatter(origin.run), formatter(producer.run));
+  const steps = workflow.jobs.review.steps;
+  assert.equal(steps.indexOf(origin) + 1,
+    steps.indexOf(namedStep("review", "Run bounded evidence-first OpenCode review")));
 });

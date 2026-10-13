@@ -736,13 +736,21 @@ async function main() {
     }
     // Canonical Muse prepares the actual lossless geometry once, before any
     // child. Keep it in trusted supervisor memory across the two-attempt bound.
+    const stagedContextFile = path.resolve(evidenceDirectory, "pr-context.md");
+    const stagedContextBytes = fs.readFileSync(stagedContextFile);
     expectedContext = verifier.prepareReviewInvocationContext(
       fs.readFileSync(path.join(evidenceDirectory, "basehead.diff")),
       fs.readFileSync(path.join(evidenceDirectory, "input-manifest.json")),
-      exposedTools, submissionFile,
+      exposedTools, submissionFile, stagedContextBytes, stagedContextFile,
     );
     if (!expectedContext || typeof expectedContext !== "object" || Array.isArray(expectedContext)) {
       throw new Error("canonical verifier context preparation returned no context");
+    }
+    const reflected = expectedContext.contextSource;
+    if (expectedContext.contextPath !== stagedContextFile || !reflected ||
+        reflected.path !== stagedContextFile || reflected.bytes !== stagedContextBytes.length ||
+        reflected.sha256 !== sha256(stagedContextBytes)) {
+      throw new Error("canonical verifier did not bind the actual staged context");
     }
   } catch (error) {
     const metadataFile = path.join(evidenceDirectory, "recovery.json");
@@ -755,7 +763,8 @@ async function main() {
     }
     throw error;
   }
-  const metadata = await runReviewRecovery({ evidenceDirectory, basePrompt, reviewTools,
+  const contextPrompt = `${basePrompt}\n\nTrusted staged context: ${JSON.stringify(expectedContext.contextPath)}. Read the complete file with the native read tool before the first review_record_evidence; a zero-byte file is still present.`;
+  const metadata = await runReviewRecovery({ evidenceDirectory, basePrompt: contextPrompt, reviewTools,
     submissionFile, invokeAttempt: invokeOpenCode,
     verifyReviewInvocation: verifier.verifyReviewInvocation, expectedContext,
     verifierSha256: sha256(verifierBytes) });

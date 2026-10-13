@@ -21,11 +21,12 @@ export const transportVerifierSource = `// TRANSPORT MOCK ONLY; no canonical rev
 const { createHash } = require("node:crypto");
 const path = require("node:path");
 const digest = bytes => createHash("sha256").update(bytes).digest("hex");
-exports.prepareReviewInvocationContext = (full, manifest, tools, submissionFile) => {
+exports.prepareReviewInvocationContext = (full, manifest, tools, submissionFile, contextBytes, contextPath) => {
   if (!Buffer.isBuffer(full) || !Buffer.isBuffer(manifest) || !Array.isArray(tools)
       || !path.isAbsolute(submissionFile)) throw new Error("invalid transport fixture context");
   JSON.parse(manifest.toString("utf8"));
-  return { fixtureAuthority: "TRANSPORT_MOCK_ONLY", fullInputSha256: digest(full),
+  if (!Buffer.isBuffer(contextBytes) || !path.isAbsolute(contextPath)) throw new Error("invalid transport fixture context");
+  return { contextPath, contextSource: { path: contextPath, bytes: contextBytes.length, sha256: digest(contextBytes) }, fixtureAuthority: "TRANSPORT_MOCK_ONLY", fullInputSha256: digest(full),
     manifestSha256: digest(manifest), reviewTools: [...tools], submissionFile };
 };
 exports.verifyReviewInvocation = (response, submission, context) => {
@@ -77,8 +78,10 @@ export function stageTransportVerifier(evidenceDirectory, { verifierFile = path.
   if (!fs.existsSync(full)) fs.writeFileSync(full, "synthetic transport input\n");
   if (!fs.existsSync(manifest)) fs.writeFileSync(manifest, '{"fixtureAuthority":"TRANSPORT_MOCK_ONLY"}\n');
   const verifier = createRequire(import.meta.url)(verifierFile);
+  const contextFile = path.resolve(evidenceDirectory, "pr-context.md");
+  if (!fs.existsSync(contextFile)) fs.writeFileSync(contextFile, "Synthetic transport context; no review credit.\n");
   const expectedContext = verifier.prepareReviewInvocationContext(fs.readFileSync(full), fs.readFileSync(manifest),
-    reviewTools, path.join(evidenceDirectory, "submission.json"));
+    reviewTools, path.join(evidenceDirectory, "submission.json"), fs.readFileSync(contextFile), contextFile);
   const output = path.join(evidenceDirectory, "invocation-outputs");
   fs.writeFileSync(output, "");
   return { verifierFile, registryFile, output, expectedContext,

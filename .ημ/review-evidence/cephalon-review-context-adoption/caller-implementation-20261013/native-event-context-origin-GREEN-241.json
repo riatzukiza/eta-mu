@@ -1,0 +1,90 @@
+{
+  "tier": "observed-command-output-transcription",
+  "sourceRedCommit": "9d3a0a3cc119cf578fde545e72c9a4e3215f9322",
+  "findings": [
+    "4264673832",
+    "4264673842"
+  ],
+  "nativeOriginRed": {
+    "tests": 2,
+    "pass": 1,
+    "fail": 1,
+    "exit": 1,
+    "actualSyntheticChildEnteredForForgedValidUtf8": true
+  },
+  "green": {
+    "tests": 241,
+    "pass": 241,
+    "fail": 0,
+    "skip": 0,
+    "exit": 0,
+    "originalNativeReachesChild": true,
+    "sameLengthForgedNativeRefusedBeforeChild": true,
+    "actualFormatterEqualityAndImmediateOrdering": true
+  },
+  "fixtureNbbCompilation": {
+    "tier": "compiled-fixture",
+    "repository": "octave-commons/muse",
+    "revision": "a9a62f0d509056406f3dd7d8c86a13551be168cd",
+    "recipe_sha256": "1cd6bbd0a1469d451afce8c988c92337585cd7a1b6d15985d4121cbe80436119",
+    "completed": true,
+    "module_bytes": 311385,
+    "module_sha256": "acd6cc2b8877f7c9668158f94887d066aa636b557787655b0d4fcd74e518f525"
+  },
+  "dedicatedNbbKondo": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "fullPostCorrectionLintExit": 0,
+  "actionlintExit": 0,
+  "readability": "Native Rheos append-only correction retains historical paragraph, values and event bytes. No manual board parser/writer.",
+  "limits": "Real compiled canonical module; offline synthetic children. Original native full14-suite gate was the earlier237 checkpoint. Current hosted full gates and fresh code approvals remain required. No live character proof.",
+  "initialPortLintError": "First NBB location had namespace/file mismatch and *file* diagnostic; preserved privately, corrected through actual extern path and fixed pnpm working directory. Not a production RED or pass.",
+  "logBindings": [
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/caller-nbb-final-20261013/complete-green-241.stdout.log",
+      "bytes": 86059,
+      "sha256": "da357a5112eeb600d29baa7604394cde18e304148fa44b18dcf17157460d1787"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/caller-nbb-final-20261013/complete-green-241.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/caller-nbb-final-20261013/compile.stdout.log",
+      "bytes": 408,
+      "sha256": "9fd8295265a6a60fdc24d02907cf238a54d54dbed2cc98ff2d7af5019c2330d1"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/caller-nbb-final-20261013/compile.stderr.log",
+      "bytes": 491,
+      "sha256": "49fb54eaef5fb04a18236464b65f43316765108c7cd6235d295103b07411a2e7"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/caller-nbb-final-20261013/post-origin-lint.stdout.log",
+      "bytes": 14029,
+      "sha256": "0b8a4b11b4fc0290e3dcc5655ae22d1c1fa4b0e3fbfa1c95d78dbeb7c3b35fb8"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/caller-nbb-final-20261013/post-origin-lint.stderr.log",
+      "bytes": 1649,
+      "sha256": "24ca616d842aa5a4b8fe1bb7e07ffb8e0017686d6f3c70a5423dacfa1e3c0f79"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/caller-nbb-final-20261013/fixture-kondo.log",
+      "bytes": 42,
+      "sha256": "86e6474caf9902f134b169fe4c7116713a2a8a83f5f9e21a2e7bd6c65910b01b"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/caller-nbb-final-20261013/actionlint.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/caller-nbb-final-20261013/native-readable-planning-correction.stdout.json",
+      "bytes": 2135,
+      "sha256": "7f85a93cac812608ed51f17044eff4b18d243fcfa27c2c9e63a4a2ca0297b146"
+    }
+  ]
+}

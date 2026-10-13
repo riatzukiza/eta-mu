@@ -1,7 +1,7 @@
 ---
 uuid: "b9c591fb-95a8-4e4e-b2a5-39eb988cb996"
 title: "Bind and verify staged context at both trusted review callers"
-status: "incoming"
+status: "review"
 type: "task"
 priority: "P1"
 points: "2"
@@ -9,7 +9,7 @@ labels: "cephalon, b3, review, context-custody"
 epic: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 dependency: ["52a0f6cc-e43b-4ed5-a628-e54dd9d9fdc4","a880c727-229b-4f3d-9158-718ec164d16c"]
 category: "tasks"
-write-id: "1791923628493-0.fmb5f61pwbjg68md7q6"
+write-id: "1791930742199-0.fleillh1k3un0xecb0d"
 created_at: "2026-10-12T22:46:27.252Z"
 parent: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 ---
@@ -63,5 +63,57 @@ Pin matching Muse plugin/verifier to actual personal mergea9a62f0d509056406f3dd7
 Meaningful RED must execute both old caller boundaries against the actual qualified six-argument module and fail for omitted trusted context before child/publication. GREEN must independently cover real staged bytes/path at both callers, present-empty versus absence, read failure/invalid UTF8, changed bytes/path/final-read refusal, and existing restart/failed-call/complete-input/submission/recovery negatives. Reuse the exact known compatible HOST fixture; retain explicit synthetic-control limits. Enforce tracked/embedded runner equality and matching plugin/verifier identity. Existing real workflow/recovery suites, compiled canonical controls, hygiene and zero-warning native/hosted gates remain mandatory.
 
 Two points estimates narrow adapter/pin/fixture integration, not new semantic law or host discovery. Review must assess that cost against the actual controls; if discovery exceeds it, re-describe/re-estimate rather than silently broadening. This comment is the concrete reviewed planning input. No readiness or implementation is claimed until fresh planning qualification and native lawful admission. Consumerad41fc8a-12fe-453c-bdb9-29d832c94e9f still waits for this story actually qualified MERGE/Done, then its own actual OpenPlanner adoption/qualification/MERGE. B1/B2/liveB3 remain incomplete.
+
+Planning qualification at exact5f3070febe98bafdb4709d59219ac46e667d9773/base22bd33d0ff79a1e0b79d1b4a55fdce9dcb301746: canonical gatePASS/ninechecks/allfindingssettled/onecompletedavailableplanningcohort/Codex6154862420+nativeMiMoAPPROVED5509978759. Actual full18of18pages/7inputs/45canonicalcalls/noomissions; exact nativebody==submission.summary; ZIP11850001142/95540bytes/SHA888a34ddf5161cfb11a1433a11eda5394d4d8ff884247083a8c3525242252f7a matchesnativedigest/CRC. Actualsource145749UTF8bytes/SHA14e0d3428de8c45584392dec820b3b35afb5ffaa63526bdb3b84b29859dae738; report145295isUTF16wiregeometry, preserve originalbody. Sevenexecutedsourcegates0/86compilerbuildszero warnings. SourcecarryandHOSTspike independentlynativeDone. CRsoleobsolete-receiptfinding withdrawn4263908111/canonicalHandled4263913319; freshcanonicalrequest6155212817 receivedactualquota6155214697/currenthead21:07:44/32minuteparsedcooldown, so canonicalavailablecohortisCodex+MiMo; noallowance-derivedtimer/paidusage/waiver/CRapprovalcredit. The two-point estimate is retained for exactlytwoexistingadapters plusmatchingqualifiedMusea9pin and reuseofexistingfixtures/controls; nonewreviewsemantics/hostdiscovery/auth/model/retrypolicy. Lawfulready/IP admission starts realadapterRED againstqualified6argmodule; no codequalification/consumer/runtime/B1B2B3completiontransfer. HeartbeathumanPAUSED.
+
+Actual implementation RED commit7c283bedbbb5aa0a384c8edd0fbed64852c6e747 ran234tests/224PASS/10FAIL, with the
+actual qualified six-argument module refusing both old caller boundaries. Minimum GREEN passes237/237; final
+workflow after necessary sandbox fixture wiring passes238/238/0skipped using a fresh independently compiled
+qualified Musea9 module. Synthetic offline child traces supply no provider approval.
+
+Qualified native Rheos IP→Review actually completedexit0/472.480seconds, fullbuild/lint/all14suites PASS, zero
+compiler warning counts, independentstatus Review. Watch limit1572864 unchanged. Three generated build outputs
+were retained privately and restored byte-exactly; only native card/event changed during that gate. This gate
+preceded the final sandbox wiring; the final238suite and post-wiring lint are recorded separately and actual
+hosted complete gates remain mandatory.
+
+Both callers now supply actual staged Buffer/fixedabspath as canonical arguments5/6. Supervisor holds prepared
+custody across max2 and verifies reflected path/bytes/SHA; full final independently
+rereads/reprepares/reverifies before publication. Present-empty is present;
+missing/I/O/invalidUTF8/changedbytes/absence/foreignpath/omittedread/EOF and old verifier ignoring added
+arguments refuse. All three plugin/verifier selectors pin actual personal Muse
+mergea9a62f0d509056406f3dd7d8c86a13551be168cd through existing fork-network route. Shared producer downloads
+actual compiled artifact for tests; sandbox reuses exactly the existing compiler recipe and retains
+module/provenance. No caller parser/law, model/auth/permissions/retry cap or live product changed.
+
+This is source code under independent code review, not caller Done or OpenPlanner adoption. Planning PR13 is
+actually merged23968980349d07aa647874941cede32db67a4895. Fresh actual code approval/settlement/required checks
+and authorized MERGE precede caller Done; existing consumer waits. B1 physical encounter/field, B2 persisted
+mood and B3 automatic prompt recall remain unfinished. GoalACTIVE/heartbeat humanPAUSED.
+
+Readable correction to the historical planning qualification paragraph, requested by native CodeRabbit
+finding4264673842 on code PR14. The original native comment and event remain unchanged. This correction
+supplies no new code approval or cohort credit.
+
+Planning qualification was at exact head 5f3070febe98bafdb4709d59219ac46e667d9773 and base
+22bd33d0ff79a1e0b79d1b4a55fdce9dcb301746. The canonical gate passed: nine checks, all findings settled, one
+completed available planning cohort. Exact Codex 6154862420 and native MiMo APPROVED 5509978759 covered all 18
+of 18 pages, 7 inputs and 45 canonical calls, with no omissions. The native body equaled submission.summary.
+ZIP 11850001142 was 95540 bytes, SHA 888a34ddf5161cfb11a1433a11eda5394d4d8ff884247083a8c3525242252f7a, with
+native digest/CRC agreement. Actual source was 145749 UTF8 bytes, SHA
+14e0d3428de8c45584392dec820b3b35afb5ffaa63526bdb3b84b29859dae738. The report's 145295 value was UTF16 wire
+geometry; its original body is preserved. Seven source gates exited 0; 86 compiler builds had zero warnings.
+
+Source carry and HOST spike were independently native Done. CodeRabbit's sole obsolete receipt finding was
+withdrawn 4263908111 and canonically Handled 4263913319. Fresh canonical request 6155212817 received actual
+quota 6155214697 at current-head 21:07:44, with a 32 minute parsed cooldown. The then-current available cohort
+was Codex+MiMo. No allowance-derived timer, paid usage, waiver or CodeRabbit approval credit was added. That
+historical quota does not exclude a new code head.
+
+The provisional two-point estimate remains for the two existing adapters, matching qualified Muse a9 pin and
+existing fixture/control integration. It covers no new review semantics, host discovery, auth/model or retry
+policy. Lawful Ready/Todo/IP admission then started actual adapter RED against the qualified six-argument
+module. Planning qualification transfers no code approval, consumer adoption, runtime proof or B1/B2/B3
+completion. Heartbeat remains human PAUSED.
 
 ---

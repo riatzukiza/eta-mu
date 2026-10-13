@@ -31,10 +31,10 @@ on:
         type: string
         default: "22"
       muse_revision:
-        description: Pinned octave-commons/muse commit used to compile the review observer projection.
+        description: Qualified Muse commit fetched through the existing fork network; plugin and verifier compile together.
         required: false
         type: string
-        default: c1369c223cf3c57e3e31934a6d746bfcdfe73f5a
+        default: a9a62f0d509056406f3dd7d8c86a13551be168cd
       agents_revision:
         description: Pinned riatzukiza/.agents commit mounted as global skills.
         required: false
@@ -82,6 +82,9 @@ concurrency:
 jobs:
   deterministic_evidence:
     name: Produce deterministic review evidence
+    needs: [prepare_review_context]
+    env:
+      ETA_MU_CANONICAL_CONTEXT_MODULE: ${{ github.workspace }}/.opencode/review-evidence/canonical-context/machinery/review-invocation.cjs
     if: ${{ github.event.pull_request.draft == false && github.event.pull_request.head.repo.full_name == github.repository }}
     runs-on: ubuntu-24.04
     timeout-minutes: 60
@@ -171,6 +174,19 @@ jobs:
             printf '%s\n' "$checkout_status"
             exit 1
           fi
+
+      - name: Download canonical Muse context for caller regressions
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: ${{ needs.prepare_review_context.outputs.artifact_name }}
+          path: .opencode/review-evidence/canonical-context
+
+      - name: Verify canonical caller-test context
+        shell: bash
+        run: |
+          set -euo pipefail
+          (cd .opencode/review-evidence/canonical-context && sha256sum --check --strict SHA256SUMS)
+          test -s "$ETA_MU_CANONICAL_CONTEXT_MODULE"
 
       - name: Set up Java 21
         if: ${{ !contains(toJSON(inputs), '"setup_eta_mu_toolchain"') || inputs.setup_eta_mu_toolchain }}
@@ -586,7 +602,7 @@ jobs:
         uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           repository: octave-commons/muse
-          ref: ${{ inputs.muse_revision || 'c1369c223cf3c57e3e31934a6d746bfcdfe73f5a' }}
+          ref: ${{ inputs.muse_revision || 'a9a62f0d509056406f3dd7d8c86a13551be168cd' }}
           path: .review-context/muse
           persist-credentials: false
 
@@ -745,7 +761,7 @@ jobs:
       - name: Assemble revision-bound review context
         shell: bash
         env:
-          MUSE_REVISION: ${{ inputs.muse_revision || 'c1369c223cf3c57e3e31934a6d746bfcdfe73f5a' }}
+          MUSE_REVISION: ${{ inputs.muse_revision || 'a9a62f0d509056406f3dd7d8c86a13551be168cd' }}
           AGENTS_REVISION: ${{ inputs.agents_revision || '7fd3252e7663ad5e68be5e90429d126aa66c38c8' }}
         run: |
           set -euo pipefail
@@ -1248,31 +1264,40 @@ jobs:
           IH0KICAgIGlmIChzaGEyNTYoZnMucmVhZEZpbGVTeW5jKHZlcmlmaWVyRmlsZSkpICE9PSBzaGEyNTYodmVyaWZpZXJCeXRlcykpIHsKICAgICAgdGhyb3cg
           bmV3IEVycm9yKCJzdGFnZWQgaW52b2NhdGlvbiB2ZXJpZmllciBjaGFuZ2VkIHdoaWxlIGxvYWRpbmciKTsKICAgIH0KICAgIC8vIENhbm9uaWNhbCBNdXNl
           IHByZXBhcmVzIHRoZSBhY3R1YWwgbG9zc2xlc3MgZ2VvbWV0cnkgb25jZSwgYmVmb3JlIGFueQogICAgLy8gY2hpbGQuIEtlZXAgaXQgaW4gdHJ1c3RlZCBz
-          dXBlcnZpc29yIG1lbW9yeSBhY3Jvc3MgdGhlIHR3by1hdHRlbXB0IGJvdW5kLgogICAgZXhwZWN0ZWRDb250ZXh0ID0gdmVyaWZpZXIucHJlcGFyZVJldmll
-          d0ludm9jYXRpb25Db250ZXh0KAogICAgICBmcy5yZWFkRmlsZVN5bmMocGF0aC5qb2luKGV2aWRlbmNlRGlyZWN0b3J5LCAiYmFzZWhlYWQuZGlmZiIpKSwK
-          ICAgICAgZnMucmVhZEZpbGVTeW5jKHBhdGguam9pbihldmlkZW5jZURpcmVjdG9yeSwgImlucHV0LW1hbmlmZXN0Lmpzb24iKSksCiAgICAgIGV4cG9zZWRU
-          b29scywgc3VibWlzc2lvbkZpbGUsCiAgICApOwogICAgaWYgKCFleHBlY3RlZENvbnRleHQgfHwgdHlwZW9mIGV4cGVjdGVkQ29udGV4dCAhPT0gIm9iamVj
-          dCIgfHwgQXJyYXkuaXNBcnJheShleHBlY3RlZENvbnRleHQpKSB7CiAgICAgIHRocm93IG5ldyBFcnJvcigiY2Fub25pY2FsIHZlcmlmaWVyIGNvbnRleHQg
-          cHJlcGFyYXRpb24gcmV0dXJuZWQgbm8gY29udGV4dCIpOwogICAgfQogIH0gY2F0Y2ggKGVycm9yKSB7CiAgICBjb25zdCBtZXRhZGF0YUZpbGUgPSBwYXRo
-          LmpvaW4oZXZpZGVuY2VEaXJlY3RvcnksICJyZWNvdmVyeS5qc29uIik7CiAgICBpZiAoIWZzLmV4aXN0c1N5bmMobWV0YWRhdGFGaWxlKSkgewogICAgICB3
-          cml0ZVJlY292ZXJ5KG1ldGFkYXRhRmlsZSwgewogICAgICAgIHNjaGVtYTogUkVDT1ZFUllfU0NIRU1BLCBtYXhfYXR0ZW1wdHM6IE1BWF9BVFRFTVBUUywg
-          cmVjb3ZlcnlfcmVhc29uOiBudWxsLAogICAgICAgIGF0dGVtcHRzOiBbXSwgYWNjZXB0ZWRfaW52b2NhdGlvbjogbnVsbCwKICAgICAgICBzZXR1cF9lcnJv
-          cjogZXJyb3IgaW5zdGFuY2VvZiBFcnJvciA/IGVycm9yLm1lc3NhZ2UgOiBTdHJpbmcoZXJyb3IpLAogICAgICB9KTsKICAgIH0KICAgIHRocm93IGVycm9y
-          OwogIH0KICBjb25zdCBtZXRhZGF0YSA9IGF3YWl0IHJ1blJldmlld1JlY292ZXJ5KHsgZXZpZGVuY2VEaXJlY3RvcnksIGJhc2VQcm9tcHQsIHJldmlld1Rv
-          b2xzLAogICAgc3VibWlzc2lvbkZpbGUsIGludm9rZUF0dGVtcHQ6IGludm9rZU9wZW5Db2RlLAogICAgdmVyaWZ5UmV2aWV3SW52b2NhdGlvbjogdmVyaWZp
-          ZXIudmVyaWZ5UmV2aWV3SW52b2NhdGlvbiwgZXhwZWN0ZWRDb250ZXh0LAogICAgdmVyaWZpZXJTaGEyNTY6IHNoYTI1Nih2ZXJpZmllckJ5dGVzKSB9KTsK
-          ICBjb25zdCBhY2NlcHRlZCA9IG1ldGFkYXRhLmFjY2VwdGVkX2ludm9jYXRpb247CiAgdHJ5IHsKICAgIGlmICghYWNjZXB0ZWQgfHwgc2hhMjU2KGZzLnJl
-          YWRGaWxlU3luYyhwYXRoLmpvaW4oZXZpZGVuY2VEaXJlY3RvcnksIGFjY2VwdGVkLnJlc3BvbnNlX2ZpbGUpKSkgIT09IGFjY2VwdGVkLnJlc3BvbnNlX3No
-          YTI1NiB8fAogICAgICAgIHNoYTI1Nihmcy5yZWFkRmlsZVN5bmMoc3VibWlzc2lvbkZpbGUpKSAhPT0gYWNjZXB0ZWQuc3VibWlzc2lvbl9zaGEyNTYpIHsK
-          ICAgICAgdGhyb3cgbmV3IEVycm9yKCJhY2NlcHRlZCBpbnZvY2F0aW9uIGJ5dGVzIGNoYW5nZWQgYmVmb3JlIHRydXN0ZWQgb3V0cHV0Iik7CiAgICB9CiAg
-          ICBjb25zdCBkaWdlc3QgPSBzaGEyNTYoSlNPTi5zdHJpbmdpZnkoYWNjZXB0ZWQpKTsKICAgIGZzLmFwcGVuZEZpbGVTeW5jKHByb2Nlc3MuZW52LkdJVEhV
-          Ql9PVVRQVVQsIGByZXZpZXdfaW52b2NhdGlvbl9zaGEyNTY9JHtkaWdlc3R9XG5gKTsKICB9IGNhdGNoIChlcnJvcikgewogICAgbWV0YWRhdGEuYWNjZXB0
-          ZWRfaW52b2NhdGlvbiA9IG51bGw7CiAgICBtZXRhZGF0YS5yZWplY3RlZF9hY2NlcHRlZF9pbnZvY2F0aW9uID0gYWNjZXB0ZWQ7CiAgICBtZXRhZGF0YS5z
-          dXBlcnZpc29yX2Vycm9yID0gZXJyb3IgaW5zdGFuY2VvZiBFcnJvciA/IGVycm9yLm1lc3NhZ2UgOiBTdHJpbmcoZXJyb3IpOwogICAgd3JpdGVSZWNvdmVy
-          eShwYXRoLmpvaW4oZXZpZGVuY2VEaXJlY3RvcnksICJyZWNvdmVyeS5qc29uIiksIG1ldGFkYXRhKTsKICAgIHRocm93IGVycm9yOwogIH0KfQoKaWYgKHBy
-          b2Nlc3MuYXJndlsxXSAmJiBwYXRoLnJlc29sdmUocHJvY2Vzcy5hcmd2WzFdKSA9PT0gZmlsZVVSTFRvUGF0aChpbXBvcnQubWV0YS51cmwpKSB7CiAgbWFp
-          bigpLmNhdGNoKChlcnJvcikgPT4gewogICAgY29uc29sZS5lcnJvcihgOjplcnJvcjo6JHtlcnJvci5tZXNzYWdlfWApOwogICAgcHJvY2Vzcy5leGl0Q29k
-          ZSA9IDE7CiAgfSk7Cn0K
+          dXBlcnZpc29yIG1lbW9yeSBhY3Jvc3MgdGhlIHR3by1hdHRlbXB0IGJvdW5kLgogICAgY29uc3Qgc3RhZ2VkQ29udGV4dEZpbGUgPSBwYXRoLnJlc29sdmUo
+          ZXZpZGVuY2VEaXJlY3RvcnksICJwci1jb250ZXh0Lm1kIik7CiAgICBjb25zdCBzdGFnZWRDb250ZXh0Qnl0ZXMgPSBmcy5yZWFkRmlsZVN5bmMoc3RhZ2Vk
+          Q29udGV4dEZpbGUpOwogICAgZXhwZWN0ZWRDb250ZXh0ID0gdmVyaWZpZXIucHJlcGFyZVJldmlld0ludm9jYXRpb25Db250ZXh0KAogICAgICBmcy5yZWFk
+          RmlsZVN5bmMocGF0aC5qb2luKGV2aWRlbmNlRGlyZWN0b3J5LCAiYmFzZWhlYWQuZGlmZiIpKSwKICAgICAgZnMucmVhZEZpbGVTeW5jKHBhdGguam9pbihl
+          dmlkZW5jZURpcmVjdG9yeSwgImlucHV0LW1hbmlmZXN0Lmpzb24iKSksCiAgICAgIGV4cG9zZWRUb29scywgc3VibWlzc2lvbkZpbGUsIHN0YWdlZENvbnRl
+          eHRCeXRlcywgc3RhZ2VkQ29udGV4dEZpbGUsCiAgICApOwogICAgaWYgKCFleHBlY3RlZENvbnRleHQgfHwgdHlwZW9mIGV4cGVjdGVkQ29udGV4dCAhPT0g
+          Im9iamVjdCIgfHwgQXJyYXkuaXNBcnJheShleHBlY3RlZENvbnRleHQpKSB7CiAgICAgIHRocm93IG5ldyBFcnJvcigiY2Fub25pY2FsIHZlcmlmaWVyIGNv
+          bnRleHQgcHJlcGFyYXRpb24gcmV0dXJuZWQgbm8gY29udGV4dCIpOwogICAgfQogICAgY29uc3QgcmVmbGVjdGVkID0gZXhwZWN0ZWRDb250ZXh0LmNvbnRl
+          eHRTb3VyY2U7CiAgICBpZiAoZXhwZWN0ZWRDb250ZXh0LmNvbnRleHRQYXRoICE9PSBzdGFnZWRDb250ZXh0RmlsZSB8fCAhcmVmbGVjdGVkIHx8CiAgICAg
+          ICAgcmVmbGVjdGVkLnBhdGggIT09IHN0YWdlZENvbnRleHRGaWxlIHx8IHJlZmxlY3RlZC5ieXRlcyAhPT0gc3RhZ2VkQ29udGV4dEJ5dGVzLmxlbmd0aCB8
+          fAogICAgICAgIHJlZmxlY3RlZC5zaGEyNTYgIT09IHNoYTI1NihzdGFnZWRDb250ZXh0Qnl0ZXMpKSB7CiAgICAgIHRocm93IG5ldyBFcnJvcigiY2Fub25p
+          Y2FsIHZlcmlmaWVyIGRpZCBub3QgYmluZCB0aGUgYWN0dWFsIHN0YWdlZCBjb250ZXh0Iik7CiAgICB9CiAgfSBjYXRjaCAoZXJyb3IpIHsKICAgIGNvbnN0
+          IG1ldGFkYXRhRmlsZSA9IHBhdGguam9pbihldmlkZW5jZURpcmVjdG9yeSwgInJlY292ZXJ5Lmpzb24iKTsKICAgIGlmICghZnMuZXhpc3RzU3luYyhtZXRh
+          ZGF0YUZpbGUpKSB7CiAgICAgIHdyaXRlUmVjb3ZlcnkobWV0YWRhdGFGaWxlLCB7CiAgICAgICAgc2NoZW1hOiBSRUNPVkVSWV9TQ0hFTUEsIG1heF9hdHRl
+          bXB0czogTUFYX0FUVEVNUFRTLCByZWNvdmVyeV9yZWFzb246IG51bGwsCiAgICAgICAgYXR0ZW1wdHM6IFtdLCBhY2NlcHRlZF9pbnZvY2F0aW9uOiBudWxs
+          LAogICAgICAgIHNldHVwX2Vycm9yOiBlcnJvciBpbnN0YW5jZW9mIEVycm9yID8gZXJyb3IubWVzc2FnZSA6IFN0cmluZyhlcnJvciksCiAgICAgIH0pOwog
+          ICAgfQogICAgdGhyb3cgZXJyb3I7CiAgfQogIGNvbnN0IGNvbnRleHRQcm9tcHQgPSBgJHtiYXNlUHJvbXB0fVxuXG5UcnVzdGVkIHN0YWdlZCBjb250ZXh0
+          OiAke0pTT04uc3RyaW5naWZ5KGV4cGVjdGVkQ29udGV4dC5jb250ZXh0UGF0aCl9LiBSZWFkIHRoZSBjb21wbGV0ZSBmaWxlIHdpdGggdGhlIG5hdGl2ZSBy
+          ZWFkIHRvb2wgYmVmb3JlIHRoZSBmaXJzdCByZXZpZXdfcmVjb3JkX2V2aWRlbmNlOyBhIHplcm8tYnl0ZSBmaWxlIGlzIHN0aWxsIHByZXNlbnQuYDsKICBj
+          b25zdCBtZXRhZGF0YSA9IGF3YWl0IHJ1blJldmlld1JlY292ZXJ5KHsgZXZpZGVuY2VEaXJlY3RvcnksIGJhc2VQcm9tcHQ6IGNvbnRleHRQcm9tcHQsIHJl
+          dmlld1Rvb2xzLAogICAgc3VibWlzc2lvbkZpbGUsIGludm9rZUF0dGVtcHQ6IGludm9rZU9wZW5Db2RlLAogICAgdmVyaWZ5UmV2aWV3SW52b2NhdGlvbjog
+          dmVyaWZpZXIudmVyaWZ5UmV2aWV3SW52b2NhdGlvbiwgZXhwZWN0ZWRDb250ZXh0LAogICAgdmVyaWZpZXJTaGEyNTY6IHNoYTI1Nih2ZXJpZmllckJ5dGVz
+          KSB9KTsKICBjb25zdCBhY2NlcHRlZCA9IG1ldGFkYXRhLmFjY2VwdGVkX2ludm9jYXRpb247CiAgdHJ5IHsKICAgIGlmICghYWNjZXB0ZWQgfHwgc2hhMjU2
+          KGZzLnJlYWRGaWxlU3luYyhwYXRoLmpvaW4oZXZpZGVuY2VEaXJlY3RvcnksIGFjY2VwdGVkLnJlc3BvbnNlX2ZpbGUpKSkgIT09IGFjY2VwdGVkLnJlc3Bv
+          bnNlX3NoYTI1NiB8fAogICAgICAgIHNoYTI1Nihmcy5yZWFkRmlsZVN5bmMoc3VibWlzc2lvbkZpbGUpKSAhPT0gYWNjZXB0ZWQuc3VibWlzc2lvbl9zaGEy
+          NTYpIHsKICAgICAgdGhyb3cgbmV3IEVycm9yKCJhY2NlcHRlZCBpbnZvY2F0aW9uIGJ5dGVzIGNoYW5nZWQgYmVmb3JlIHRydXN0ZWQgb3V0cHV0Iik7CiAg
+          ICB9CiAgICBjb25zdCBkaWdlc3QgPSBzaGEyNTYoSlNPTi5zdHJpbmdpZnkoYWNjZXB0ZWQpKTsKICAgIGZzLmFwcGVuZEZpbGVTeW5jKHByb2Nlc3MuZW52
+          LkdJVEhVQl9PVVRQVVQsIGByZXZpZXdfaW52b2NhdGlvbl9zaGEyNTY9JHtkaWdlc3R9XG5gKTsKICB9IGNhdGNoIChlcnJvcikgewogICAgbWV0YWRhdGEu
+          YWNjZXB0ZWRfaW52b2NhdGlvbiA9IG51bGw7CiAgICBtZXRhZGF0YS5yZWplY3RlZF9hY2NlcHRlZF9pbnZvY2F0aW9uID0gYWNjZXB0ZWQ7CiAgICBtZXRh
+          ZGF0YS5zdXBlcnZpc29yX2Vycm9yID0gZXJyb3IgaW5zdGFuY2VvZiBFcnJvciA/IGVycm9yLm1lc3NhZ2UgOiBTdHJpbmcoZXJyb3IpOwogICAgd3JpdGVS
+          ZWNvdmVyeShwYXRoLmpvaW4oZXZpZGVuY2VEaXJlY3RvcnksICJyZWNvdmVyeS5qc29uIiksIG1ldGFkYXRhKTsKICAgIHRocm93IGVycm9yOwogIH0KfQoK
+          aWYgKHByb2Nlc3MuYXJndlsxXSAmJiBwYXRoLnJlc29sdmUocHJvY2Vzcy5hcmd2WzFdKSA9PT0gZmlsZVVSTFRvUGF0aChpbXBvcnQubWV0YS51cmwpKSB7
+          CiAgbWFpbigpLmNhdGNoKChlcnJvcikgPT4gewogICAgY29uc29sZS5lcnJvcihgOjplcnJvcjo6JHtlcnJvci5tZXNzYWdlfWApOwogICAgcHJvY2Vzcy5l
+          eGl0Q29kZSA9IDE7CiAgfSk7Cn0K
           ETA_MU_RECOVERY_RUNNER_BASE64
 
           printf '%s\n' "$MUSE_REVISION" > "$CONTEXT_OUT/metadata/muse-revision.txt"
@@ -1563,8 +1588,14 @@ jobs:
             const verifier = require(verifierFile);
             const registry = fs.readFileSync(path.join(contextDir, 'metadata/exposed-tools.txt'), 'utf8').trim()
               .split(/\r?\n/).filter(Boolean);
+            const stagedContextFile = path.resolve(dir, 'pr-context.md');
+            const stagedContextBytes = fs.readFileSync(stagedContextFile);
             const invocationContext = verifier.prepareReviewInvocationContext(expected, manifestBytes, registry,
-              path.join(dir, 'submission.json'));
+              path.join(dir, 'submission.json'), stagedContextBytes, stagedContextFile);
+            assert.equal(invocationContext.contextPath, stagedContextFile, 'Canonical context path was not bound');
+            assert.deepEqual(invocationContext.contextSource,
+              { path: stagedContextFile, bytes: stagedContextBytes.length, sha256: sha256(stagedContextBytes) },
+              'Canonical verifier did not bind actual staged context');
             assert.equal(sha256(JSON.stringify(invocationContext)), accepted.expected_context_sha256, 'Selected context changed');
             const verdict = verifier.verifyReviewInvocation(responseBytes, submissionBytes, invocationContext);
             assert.equal(verdict.ok, true, 'Canonical invocation verification failed');
@@ -1689,6 +1720,33 @@ jobs:
       - name: Capture review start time
         id: review_start
         run: echo "started_at=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_OUTPUT"
+
+      - name: Verify staged context against native event
+        shell: bash
+        run: |
+          set -euo pipefail
+          evidence_dir="$GITHUB_WORKSPACE/.opencode/review-evidence"
+          expected_context="$(mktemp "$RUNNER_TEMP/opencode-native-context.XXXXXX")"
+          trap 'rm -f "$expected_context"' EXIT
+          jq -r '
+            "# Pull request context",
+            "",
+            "- Number: #\(.pull_request.number)",
+            "- Title: \(.pull_request.title)",
+            "- Author: \(.pull_request.user.login)",
+            "- Branches: \(.pull_request.head.ref) -> \(.pull_request.base.ref)",
+            "- Head SHA: \(.pull_request.head.sha)",
+            "- Draft: \(.pull_request.draft)",
+            "",
+            "## Body",
+            "",
+            (.pull_request.body // "(no body)")
+          ' "$GITHUB_EVENT_PATH" > "$expected_context"
+          if ! cmp -s -- "$expected_context" "$evidence_dir/pr-context.md"; then
+            echo "::error::staged PR context differs from native event before review child"
+            exit 1
+          fi
+          echo "Verified staged PR context against the review job's native event."
 
       - name: Run bounded evidence-first OpenCode review
         id: review_invocation

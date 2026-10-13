@@ -1,0 +1,162 @@
+{
+  "tier": "observed-command-output-transcription",
+  "sourceRedHead": "7c283bedbbb5aa0a384c8edd0fbed64852c6e747",
+  "scope": "two-point admitted caller; actual source delivery only, B1/B2/B3 unfinished",
+  "qualifiedMuseMerge": "a9a62f0d509056406f3dd7d8c86a13551be168cd",
+  "nativeGateBeforeSandboxWiring": {
+    "tier": "observed-command-output-transcription",
+    "sourceHead": "7c283bedbbb5aa0a384c8edd0fbed64852c6e747",
+    "startedAt": "2026-10-13T21:59:52.730023+00:00",
+    "command": [
+      "/home/err/.volta/tools/image/node/22.20.0/bin/node",
+      "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/rheos-event-id-checker-implementation-20261012/qualified-rheos-85369213.cjs",
+      "status-update",
+      "b9c591fb-95a8-4e4e-b2a5-39eb988cb996",
+      "--to",
+      "review",
+      "--config",
+      "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/eta-adoption-qualified-board-config.edn"
+    ],
+    "moduleSHA256": "46bb6ac957cd23a7d66789c9bb6ce26eed71a1b808abfc5887e98d4c0e9de3b6",
+    "freeBytes": 73537658880,
+    "watchLimitBefore": 1572864,
+    "watchLimitChanged": false,
+    "exit": 0,
+    "generatedRetainedRestored": [
+      {
+        "path": "packages/contracts/output/dist-cli/index.cjs",
+        "generatedSHA256": "f2ff329d9f4ac85dade677787b6c4b1e649c3d9ef3f9614f5295c06c469c85c3",
+        "restoredSHA256": "5f26ab71c04b4cf81a0b58d5bd8fba994bc2ba4f7544370beb570af799f1f014"
+      },
+      {
+        "path": "packages/contracts/output/dist-cli/index.cjs.map",
+        "generatedSHA256": "9883bb83300c6a0ce85bc69a5f744ca031f1a29e0bda74ef6154248100454bde",
+        "restoredSHA256": "00b1a5f5cc8fe7740621d624eb2ceedd0862db086eed24855b4d1702133d32e9"
+      },
+      {
+        "path": "packages/legacy/ai/src/models.generated.ts",
+        "generatedSHA256": "de64bace280ac7fc50b10960fee212e07b26c4bf4ef63c0b6e8029d94405cdb9",
+        "restoredSHA256": "9e64256d83b2559f60fc6e80cc2320268bd56214c68032f2c222d5d8910fe761"
+      }
+    ],
+    "elapsedSeconds": 472.48,
+    "endedAt": "2026-10-13T22:07:45.211620+00:00",
+    "watchLimitAfter": 1572864,
+    "changedPaths": [
+      "kanban/.events/ledger.edn",
+      "kanban/tasks/bind-and-verify-staged-context-at-both-trusted-review-callers-988cb996.md"
+    ],
+    "onlyNativeCardLedgerChanged": true,
+    "logs": [
+      {
+        "path": "native-gate.stdout.log",
+        "bytes": 156591,
+        "sha256": "f61aa64bb3476b2c7480905fd384216252b831cbf4735631691a37213a222a72"
+      },
+      {
+        "path": "native-gate.stderr.log",
+        "bytes": 10014,
+        "sha256": "5e050b59a425c6809eed9300a80934945bbc4c4ed32c829c14d3565c3cdc9077"
+      }
+    ]
+  },
+  "finalWorkflow": {
+    "tests": 238,
+    "pass": 238,
+    "fail": 0,
+    "skip": 0,
+    "exit": 0,
+    "actualCompiledFixture": {
+      "tier": "compiled-fixture",
+      "repository": "octave-commons/muse",
+      "revision": "a9a62f0d509056406f3dd7d8c86a13551be168cd",
+      "recipe_sha256": "1cd6bbd0a1469d451afce8c988c92337585cd7a1b6d15985d4121cbe80436119",
+      "completed": true,
+      "module_bytes": 311385,
+      "module_sha256": "431b15aec183f5eb91642a8893d24232a5a7f88d44b3686d062b14798d98a156"
+    }
+  },
+  "sandboxOriginalWiringRed": {
+    "tests": 1,
+    "pass": 0,
+    "fail": 1,
+    "exit": 1,
+    "greenRestoredExactly": true
+  },
+  "postWiringLintExit": 0,
+  "actionlintExit": 0,
+  "syntheticLimits": "Offline child responses only; canonical real module, no provider approval or model-understanding credit. Genuine HOST1.18.31 fixture is a separately merged predecessor. Native/source gate is not character runtime proof.",
+  "warnings": "Compiler/lint/test warning counts zero; existing host npm always-auth and missing NPM_TOKEN notices retained separately, no secret or credential change.",
+  "rawLogBindings": [
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/caller-complete-green.stdout.txt",
+      "bytes": 84860,
+      "sha256": "d31a01a37b78df6bf05f595065426effe7d89da016c4531855d10a1757bd0764"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/caller-complete-green.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/caller-sandbox-wiring-red.stdout.txt",
+      "bytes": 1189,
+      "sha256": "0a7d08bab11d1a7b0b12033af8566bb71eab2d228fee25692dbe810439c77faf"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/caller-sandbox-wiring-red.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/caller-native-green-gate-20261013/native-gate.stdout.log",
+      "bytes": 156591,
+      "sha256": "f61aa64bb3476b2c7480905fd384216252b831cbf4735631691a37213a222a72"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/caller-native-green-gate-20261013/native-gate.stderr.log",
+      "bytes": 10014,
+      "sha256": "5e050b59a425c6809eed9300a80934945bbc4c4ed32c829c14d3565c3cdc9077"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/caller-native-green-gate-20261013/native-readback.json",
+      "bytes": 10344,
+      "sha256": "b5d4817ca525c1f3aa500fd87e263ebe0626775fc7163eb0ae2f9add7917c83d"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/caller-native-green-gate-20261013/native-green-comment.stdout.json",
+      "bytes": 2185,
+      "sha256": "b3165ce3f9be53cce6f43b26d12c064cb317879d183f2273add6fa8152d875af"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/caller-sandbox-fixture-20261013/compile.stdout.log",
+      "bytes": 407,
+      "sha256": "423f9fecd79d88c307056388afe6f8da3117c2730974e5c477f0c3b1efaa640f"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/caller-sandbox-fixture-20261013/compile.stderr.log",
+      "bytes": 704,
+      "sha256": "bd8fc4b485b8cb89ccd39eb73793c99002f1c5f1be13c3d57193d88c2bab2e34"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/caller-sandbox-fixture-20261013/final-workflow.stdout.log",
+      "bytes": 85198,
+      "sha256": "edb305485aa8349a14a2ca1330d31d14e2de25ffe263ee2abfc9e4d1c422aa12"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/caller-sandbox-fixture-20261013/final-workflow.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/caller-sandbox-fixture-20261013/final-lint.stdout.log",
+      "bytes": 14031,
+      "sha256": "5eeba7ec5968600cde463240d08a21c09c36e5a633605af526a4d784bd9138b7"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/caller-sandbox-fixture-20261013/final-lint.stderr.log",
+      "bytes": 1649,
+      "sha256": "24ca616d842aa5a4b8fe1bb7e07ffb8e0017686d6f3c70a5423dacfa1e3c0f79"
+    }
+  ]
+}
