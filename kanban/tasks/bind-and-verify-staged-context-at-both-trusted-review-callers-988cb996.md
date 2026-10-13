@@ -1,7 +1,7 @@
 ---
 uuid: "b9c591fb-95a8-4e4e-b2a5-39eb988cb996"
 title: "Bind and verify staged context at both trusted review callers"
-status: "incoming"
+status: "in_progress"
 type: "task"
 priority: "P1"
 points: "2"
@@ -9,7 +9,7 @@ labels: "cephalon, b3, review, context-custody"
 epic: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 dependency: ["52a0f6cc-e43b-4ed5-a628-e54dd9d9fdc4","a880c727-229b-4f3d-9158-718ec164d16c"]
 category: "tasks"
-write-id: "1791923628493-0.fmb5f61pwbjg68md7q6"
+write-id: "1791926164346-0.4z7c0we56ec2gr3tbmw"
 created_at: "2026-10-12T22:46:27.252Z"
 parent: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 ---
@@ -63,5 +63,7 @@ Pin matching Muse plugin/verifier to actual personal mergea9a62f0d509056406f3dd7
 Meaningful RED must execute both old caller boundaries against the actual qualified six-argument module and fail for omitted trusted context before child/publication. GREEN must independently cover real staged bytes/path at both callers, present-empty versus absence, read failure/invalid UTF8, changed bytes/path/final-read refusal, and existing restart/failed-call/complete-input/submission/recovery negatives. Reuse the exact known compatible HOST fixture; retain explicit synthetic-control limits. Enforce tracked/embedded runner equality and matching plugin/verifier identity. Existing real workflow/recovery suites, compiled canonical controls, hygiene and zero-warning native/hosted gates remain mandatory.
 
 Two points estimates narrow adapter/pin/fixture integration, not new semantic law or host discovery. Review must assess that cost against the actual controls; if discovery exceeds it, re-describe/re-estimate rather than silently broadening. This comment is the concrete reviewed planning input. No readiness or implementation is claimed until fresh planning qualification and native lawful admission. Consumerad41fc8a-12fe-453c-bdb9-29d832c94e9f still waits for this story actually qualified MERGE/Done, then its own actual OpenPlanner adoption/qualification/MERGE. B1/B2/liveB3 remain incomplete.
+
+Planning qualification at exact5f3070febe98bafdb4709d59219ac46e667d9773/base22bd33d0ff79a1e0b79d1b4a55fdce9dcb301746: canonical gatePASS/ninechecks/allfindingssettled/onecompletedavailableplanningcohort/Codex6154862420+nativeMiMoAPPROVED5509978759. Actual full18of18pages/7inputs/45canonicalcalls/noomissions; exact nativebody==submission.summary; ZIP11850001142/95540bytes/SHA888a34ddf5161cfb11a1433a11eda5394d4d8ff884247083a8c3525242252f7a matchesnativedigest/CRC. Actualsource145749UTF8bytes/SHA14e0d3428de8c45584392dec820b3b35afb5ffaa63526bdb3b84b29859dae738; report145295isUTF16wiregeometry, preserve originalbody. Sevenexecutedsourcegates0/86compilerbuildszero warnings. SourcecarryandHOSTspike independentlynativeDone. CRsoleobsolete-receiptfinding withdrawn4263908111/canonicalHandled4263913319; freshcanonicalrequest6155212817 receivedactualquota6155214697/currenthead21:07:44/32minuteparsedcooldown, so canonicalavailablecohortisCodex+MiMo; noallowance-derivedtimer/paidusage/waiver/CRapprovalcredit. The two-point estimate is retained for exactlytwoexistingadapters plusmatchingqualifiedMusea9pin and reuseofexistingfixtures/controls; nonewreviewsemantics/hostdiscovery/auth/model/retrypolicy. Lawfulready/IP admission starts realadapterRED againstqualified6argmodule; no codequalification/consumer/runtime/B1B2B3completiontransfer. HeartbeathumanPAUSED.
 
 ---
