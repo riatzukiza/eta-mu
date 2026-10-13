@@ -1,0 +1,59 @@
+{
+  "tier": "Actual unchanged native gate and sysctl/readback observations; summaries are derived, not GitHub review approval",
+  "humanAuthorization": "Confirm the increase",
+  "sourceHead": "bc2d9cdea261856872f2b36097c77a121b655165",
+  "qualifiedRheosCLI": "85369213440634989365f75929045d36eb69b6c6b1e7679f68d483374a0d526b",
+  "originalLimit": 1048576,
+  "temporaryLimit": 2097152,
+  "restoredLimit": 1048576,
+  "persistentHostConfigChanged": false,
+  "nativeGateExit": 0,
+  "elapsedSeconds": 341.075,
+  "nativeStatus": "review",
+  "testSuitesPassed": 14,
+  "generatedOutputs": [
+    {
+      "path": "packages/contracts/output/dist-cli/index.cjs",
+      "generatedBytes": 1997608,
+      "generatedSHA256": "f2ff329d9f4ac85dade677787b6c4b1e649c3d9ef3f9614f5295c06c469c85c3",
+      "restoredBaselineSHA256": "5f26ab71c04b4cf81a0b58d5bd8fba994bc2ba4f7544370beb570af799f1f014"
+    },
+    {
+      "path": "packages/contracts/output/dist-cli/index.cjs.map",
+      "generatedBytes": 5170120,
+      "generatedSHA256": "9883bb83300c6a0ce85bc69a5f744ca031f1a29e0bda74ef6154248100454bde",
+      "restoredBaselineSHA256": "00b1a5f5cc8fe7740621d624eb2ceedd0862db086eed24855b4d1702133d32e9"
+    },
+    {
+      "path": "packages/legacy/ai/src/models.generated.ts",
+      "generatedBytes": 618582,
+      "generatedSHA256": "26da1576bc046a08e6908749e5931494786bf8b81fad5e24734c1027460effad",
+      "restoredBaselineSHA256": "9e64256d83b2559f60fc6e80cc2320268bd56214c68032f2c222d5d8910fe761"
+    }
+  ],
+  "oldEventLedgerBytes": 1762724,
+  "oldEventLedgerSHA256": "200a9b8b31abf0ba0c83b1be00860d372509fa0643b646da727bcf1f167e9d78",
+  "oldEventLedgerPrefixPreserved": true,
+  "heldInputInventory": {
+    "count": 2124,
+    "beforePrivatePath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/approved-capacity-run-20261013/held-inputs-before.json",
+    "beforeBytes": 274651,
+    "beforeSHA256": "2e50a4749d07fb24bf247ed155739e43ee565a068e49194142ca0ebe5314d866",
+    "afterPrivatePath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/approved-capacity-run-20261013/held-inputs-after-restoration.json",
+    "afterSHA256": "db4a5dcba45cce98ede2dcac7a9a89ea23195dd9cc54b136588ce388b71ad604"
+  },
+  "compilerWarning": {
+    "path": "packages/terminal-ui/test/cljs/eta_mu/terminal_ui/infra/session_selector_test.cljs",
+    "line": 57,
+    "kind": "infer-warning",
+    "message": "Cannot infer target type in expression (. term -buf)",
+    "sourceIdenticalToBase": true,
+    "sourceSHA256": "3135acebd4a539f6c54f13f5ae32e252a238d83bcfbbc0b92c4e4f118dae98e6",
+    "notAZeroWarningClaim": true
+  },
+  "environmentNotices": [
+    "Existing missing NPM_TOKEN substitution notices retained",
+    "Existing missing source-map-support notice retained"
+  ],
+  "providerOrCreativeCompletionClaim": false
+}

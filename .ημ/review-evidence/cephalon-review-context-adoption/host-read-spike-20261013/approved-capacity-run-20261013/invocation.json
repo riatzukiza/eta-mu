@@ -1,0 +1,21 @@
+{
+  "humanAuthorization": "Confirm the increase",
+  "startedAt": "2026-10-13T14:21:22.031425+00:00",
+  "sourceHead": "bc2d9cdea261856872f2b36097c77a121b655165",
+  "originalLimit": 1048576,
+  "targetLimit": 2097152,
+  "command": [
+    "/home/err/.volta/tools/image/node/22.20.0/bin/node",
+    "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/rheos-event-id-checker-implementation-20261012/qualified-rheos-85369213.cjs",
+    "status-update",
+    "a880c727-229b-4f3d-9158-718ec164d16c",
+    "--to",
+    "review",
+    "--config",
+    "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/eta-adoption-qualified-board-config.edn"
+  ],
+  "heldInputs": 2124,
+  "node": "v22.20.0",
+  "babashka": "babashka v1.13.226",
+  "persistentSysctlConfigChanged": false
+}

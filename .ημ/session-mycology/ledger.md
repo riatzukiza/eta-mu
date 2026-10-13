@@ -738,3 +738,12 @@
   spore: none
   receipt-refs: cephalon-host-spike-raw-log-source-custody-correction-20261013
   note: Supplement receipt276 andsource7930835: defaultGitignore omitted16owned raw.log inputs from initialsourcecommit/manifest, while their exact bytes stayed retained privately andunderownedevidencedir. Explicitlystageonlythose16ownedlogs andcurrentrootreceipt/reflection; full50actualinputmanifest fromliteralfilesystem/Git-z paths binds rawgenuineHOSTstderr,canonicalcontrols/failures,bothcompletefullnativegate stdout/stderr,andactualcarryMERGE/Document/Done/refusedhopoutputs. No source/tests/Gitignore/runtimes/hostcapacitychange. Ordinaryintegration of actualqualifiedf975MERGE addsnoapplicationtreediff; SPIKE stillIP becauseProtocolswatcherENOSPC andhuman temporarycapacityscopeanswerpending. This is evidencecustody repair, not newreview/gatecredit; preserveallpriorreceipt/event/reflectionbytes.
+
+- ts: 2026-10-13T14:34:19.523Z
+  task: Finite B3 HOST-read spike verification prerequisite; no character outcome completion
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-approved-watch-capacity-native-gate-20261013
+  note: Supersedes receipts276/277 pending-host-choice and native-refusal snapshots by append; user explicitly confirmed the temporary increase. Actual supported one-run maintenance completed; prior failed attempts/rawnativeHOST bytes and277 receipt/reflection prefixes remain immutable. Gate returns0, all14testsuites pass and Rheos nowReview, but unchanged TerminalUItest source carries one inference warning and native gate does not suppress it. Full raw stdout/stderr and original/restored values retained; generated binaries held privately with exact hashes, only three known owned outputs restored. Documentary complete-input source review/mandatory hosted checks and actual MERGE still precede spikeDone and caller adoption. No B1 field, B2 persisted mood, liveB3, interpretation/approval/cohort/availability guarantee, deployment, maker/PM2/clock/cloud/eventowner/heartbeat/model/auth/paid/spore change. A supplementary public-catalog Python read failed403 before a carrier was written; this is UNKNOWN metadata availability, not evidence of credential need or model delisting.
