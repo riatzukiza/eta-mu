@@ -1,7 +1,7 @@
 ---
 uuid: "a880c727-229b-4f3d-9158-718ec164d16c"
 title: "Establish genuine OpenCode 1.18.31 HOST read compatibility"
-status: "review"
+status: "done"
 type: "task"
 priority: "P1"
 points: "1"
@@ -9,7 +9,7 @@ labels: "cephalon, b3, review, context-custody, spike"
 parent: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 epic: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 category: "tasks"
-write-id: "1791916235673-0.fylpgag0ofb3kz4p9j"
+write-id: "1791923268265-0.9zwqlkizi58eyahh96b"
 created_at: "2026-10-12T23:00:08.661Z"
 ---
 
@@ -59,5 +59,7 @@ Decision: compatible for the tested1.18.31 native UTF-8 framing, with clipped lo
 cephalon-host-spike-custody-green-20261013: Actual approved one-run1048576->2097152 completed all14suites/exit0 and restored1048576 after terminal gate. Native Codex4260128644 correctly keeps zero-warning qualification held: unchanged TerminalUI infer-warning; actual Review->IP corrected, not Done. Receipt280 retains causal offline RED5tests42assertions26fail0errors. Patched archive adapter GREEN5tests44assertions0fail/error checks wholeHOST/manifest/all4fixtures and fresh outputs preserving original artifacts; successful-gate raw log identity supplement added. CodeRabbit log default override/exclusions are a static source candidate with actual hosted complete-input verification pending; no scope/approval credit. Separate human fixture inclusion and any further bounded capacity verification remain pending; do not repeat completed host maintenance or implement callers before spike qualifies.
 
 Current qualification correction, 2026-10-13: The human included the FakeTerminal repair. Commit f04ad5e7db35944b8d289f4d50238eed56f6044b adds only its existing type hint. Actual complete TerminalUI passes70tests172assertions with0failures/errors/compiler warnings; complete unchanged qualified native gate passes all14suites and compiler builds with0warnings, exit0 in338.062seconds. Native IP→Review and independent Review readback are retained. Existing watchlimit1572864 stayed unchanged; generated outputs were retained/restored. Source receipt287 and fake-terminal-authorized-verification-20261013 contain exact raw-log byte/hash identities. The earlier custody-green comment is historical and its fixture/zero-warning blockers are superseded. Current hosted review, remaining verified review findings and authorized exact-head merge still precede closeout and native Document→Done; no deployed memory/field/mood/recall proof is supplied.
+
+Actual qualified source closeout (2026-10-13): personal eta-mu PR12 canonically head-guarded MERGE at20:20:30UTC, merge22bd33d0ff79a1e0b79d1b4a55fdce9dcb301746. Exact parents f97582a833d5678fbfce83cf4eac657d5d95e7ce and gated37e9da344c0f1aeb7436a7e243422f12e763606a; merge tree equals qualified head. Canonical gate PASS: actual CodeRabbit completed passing current-head verdict6148074330/request6153425114/reply6153427572, actual MiMo APPROVED5509190256 exact37, nine passing checks/all15settled threads/one completed current available cohort. Real MiMo attempt2 complete236/236pages/480canonical calls/zero missing inputs and exact native-body==actual submission.summary; ZIP11844497019 actual digest/CRC PASS. Human-authorized FakeTerminal repair and full zero-warning native/hosted gates retained; no new watch-limit operation. HOST decision remains compatible for tested genuine OpenCode1.18.31 native UTF8 multipage/present-empty framing, clipped long lines refused; scaffold/perturbations synthetic and not model-understanding or full real caller proof. Source carry52a0f6cc-e43b-4ed5-a628-e54dd9d9fdc4 is independently merged/Done. Lawful Review→Document→Done closes THIS source spike only; the Incoming caller requires reviewed re-description/estimate and real canonical six-argument adoption before its implementation and later OpenPlanner consumption. No caller/consumer/physical field/mood/liveB3 proof or deployment claimed.
 
 ---
