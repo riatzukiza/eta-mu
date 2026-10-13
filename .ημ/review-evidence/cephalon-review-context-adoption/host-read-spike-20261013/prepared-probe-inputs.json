@@ -1,0 +1,29 @@
+{
+  "state": "prepared-only-not-invoked",
+  "model": "opencode/mimo-v2.6-flash-free",
+  "client_version": "1.18.31",
+  "fixtures": [
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/empty-context.md",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/AGENTS.md",
+      "bytes": 95,
+      "sha256": "2742d8dcddff2c07a46f653e6e42d5ae0bfd70b595f775c3b81834ecc225c173"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/clipped-context.md",
+      "bytes": 4202,
+      "sha256": "8e9498ef8c7983921a1284c4e81701844f3cf7ba2acd7757b30342169db221d1"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/probe-project/fixture/large-context.md",
+      "bytes": 61627,
+      "sha256": "dc9569419b6ff5fd98a24ad77e3cf9153ecea11bc66b21731808320b9a8a9f3e"
+    }
+  ],
+  "compiled_muse": "/home/err/spaces/cephalon-muse-context-custody/muse/.opencode/dist/review-invocation.cjs",
+  "compiled_muse_sha256": "46bb6ac957cd23a7d66789c9bb6ce26eed71a1b808abfc5887e98d4c0e9de3b6"
+}

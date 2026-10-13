@@ -1,0 +1,78 @@
+{
+  "observedAt": "2026-10-13T02:17:56.049050+00:00",
+  "scope": "read-only /proc UID1000, fd entries not unique watches; racing processes possible",
+  "maxUserWatches": 1048576,
+  "maxUserInstances": 4096,
+  "totalObservedWatchEntries": 1048448,
+  "topOwners": [
+    {
+      "pid": 2951401,
+      "comm": "node /home/err/",
+      "watchEntries": 726400,
+      "inotifyFds": 1,
+      "executable": "node /home/err/spaces/muse/dist-daemon/daemon.js",
+      "entryScript": null
+    },
+    {
+      "pid": 2319549,
+      "comm": "ChatGPT",
+      "watchEntries": 318231,
+      "inotifyFds": 6,
+      "executable": "/usr/lib/chatgpt/ChatGPT",
+      "entryScript": null
+    },
+    {
+      "pid": 2322444,
+      "comm": "codex",
+      "watchEntries": 1205,
+      "inotifyFds": 1,
+      "executable": "/usr/lib/chatgpt/resources/codex",
+      "entryScript": null
+    },
+    {
+      "pid": 2900,
+      "comm": "MainThread",
+      "watchEntries": 588,
+      "inotifyFds": 1,
+      "executable": "node",
+      "entryScript": null
+    },
+    {
+      "pid": 2320115,
+      "comm": "codex",
+      "watchEntries": 443,
+      "inotifyFds": 2,
+      "executable": "/usr/lib/chatgpt/resources/codex",
+      "entryScript": null
+    },
+    {
+      "pid": 3513,
+      "comm": "node",
+      "watchEntries": 301,
+      "inotifyFds": 1,
+      "executable": "node",
+      "entryScript": "/home/err/devel/orgs/open-hax/openplanner/packages/agents/knoxx/frontend/node_modules/.bin/../tailwindcss/lib/cli.js"
+    },
+    {
+      "pid": 7284,
+      "comm": "node",
+      "watchEntries": 276,
+      "inotifyFds": 1,
+      "executable": "node",
+      "entryScript": null
+    },
+    {
+      "pid": 7231,
+      "comm": "node",
+      "watchEntries": 271,
+      "inotifyFds": 1,
+      "executable": "node",
+      "entryScript": null
+    }
+  ],
+  "ownedWatchProbe": {
+    "exitCode": 1,
+    "stdout": "ENOSPC: ENOSPC: System limit for number of file watchers reached, watch 'package.json'\n",
+    "stderr": ""
+  }
+}

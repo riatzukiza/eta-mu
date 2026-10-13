@@ -1,0 +1,164 @@
+{
+  "recordedAt": "2026-10-13T02:20:12.536436+00:00",
+  "epistemicTier": "observed outputs and derived byte-identity checks; no fabricated provider approval",
+  "carry": {
+    "pr": "https://github.com/riatzukiza/eta-mu/pull/11",
+    "merged": true,
+    "mergedAt": "2026-10-13T02:17:01Z",
+    "merge": "f97582a833d5678fbfce83cf4eac657d5d95e7ce",
+    "parents": [
+      "35e41047ddd523d7de8c99171679d9755d302cbf",
+      "004356d0155a8b9478612410b01a41bc46dc8bcf"
+    ],
+    "tree": "87c17049b99859efce399839c0d0793cce3a17c3",
+    "reviewedTreeEqual": true,
+    "nativeGate": "PASS: exact Codex+MiMo available-cohort1,15checks; optional native CodeRabbit quota6136570399/request6136567438,no quota approval credit",
+    "nativeDone": "actual Review→Document→Done after merged readback; initial Review→Done rejected unchanged, not successful transition"
+  },
+  "spike": {
+    "nativeGateAttempts": [
+      {
+        "command": [
+          "/home/err/.volta/tools/image/node/22.20.0/bin/node",
+          "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/rheos-event-id-checker-implementation-20261012/qualified-rheos-85369213.cjs",
+          "status-update",
+          "a880c727-229b-4f3d-9158-718ec164d16c",
+          "--to",
+          "review",
+          "--config",
+          "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/eta-adoption-qualified-board-config.edn"
+        ],
+        "exitCode": 3,
+        "elapsedSeconds": 460.7242436469969,
+        "heldCount": 2101,
+        "changedPaths": [
+          "packages/contracts/output/dist-cli/index.cjs",
+          "packages/contracts/output/dist-cli/index.cjs.map",
+          "packages/legacy/ai/src/models.generated.ts"
+        ],
+        "node": "v22.20.0",
+        "babashka": "babashka v1.13.226"
+      },
+      {
+        "command": [
+          "/home/err/.volta/tools/image/node/22.20.0/bin/node",
+          "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/rheos-event-id-checker-implementation-20261012/qualified-rheos-85369213.cjs",
+          "status-update",
+          "a880c727-229b-4f3d-9158-718ec164d16c",
+          "--to",
+          "review",
+          "--config",
+          "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/eta-adoption-qualified-board-config.edn"
+        ],
+        "exitCode": 3,
+        "elapsedSeconds": 370.57485198500217,
+        "heldCount": 2101,
+        "changedPaths": [
+          "packages/contracts/output/dist-cli/index.cjs",
+          "packages/contracts/output/dist-cli/index.cjs.map",
+          "packages/legacy/ai/src/models.generated.ts"
+        ],
+        "node": "v22.20.0",
+        "babashka": "babashka v1.13.226"
+      }
+    ],
+    "nativeStatus": "in_progress",
+    "actualFailure": "Protocols real fs.watch ENOSPC, both full build/lint PASS13of14test suites; no omitted/reclassified failure",
+    "hostCapacityProposal": "private explicit human scope question pending; no sysctl change/process interruption",
+    "ownedGeneratedRestore": "only3known generated files retained privately and restored exact held baseline after each gate; no test/source change",
+    "manifestCorrection": "Actual receipt275 has4valid literal UTF-8 paths. The Git-quoted path transport error occurred in the initial private snapshot adapter, before Rheos ran. The earlier derived decision-and-evidence sentence incorrectly predicted a receipt275 manifest correction. Preserve275 and prior evidence; next append supplements the full literal -z manifest and corrects that interpretation."
+  },
+  "sourceArtifacts": [
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/native-review-gate.stdout.log",
+      "bytes": 147496,
+      "sha256": "164c56893c116aed75a9cc87fe54fab4e74b56fffb1a54e6b1739ba82ab4c353",
+      "originalPrivatePath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/native-review-gate.stdout.log"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/native-review-gate.stderr.log",
+      "bytes": 12048,
+      "sha256": "86742f61635ac3cc2dc23c8c69a794879eef60bcced60e13a9c96245e40ee630",
+      "originalPrivatePath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/native-review-gate.stderr.log"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/native-review-gate-exit.json",
+      "bytes": 903,
+      "sha256": "af9460b6010074081941f14e892cd8512e027d5e8af4c951007e88fba509b3f8",
+      "originalPrivatePath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/native-review-gate-exit.json"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/native-review-gate-retry.stdout.log",
+      "bytes": 147466,
+      "sha256": "6f26e35b5ba3a40aa737c908ce77e8e408cad6bfe88b9294e1237d285fb703fb",
+      "originalPrivatePath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/native-review-gate-retry.stdout.log"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/native-review-gate-retry.stderr.log",
+      "bytes": 12048,
+      "sha256": "175a3c2bf08cea338d88b086fcaea027559987aada65c6801a02095330d3c36e",
+      "originalPrivatePath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/native-review-gate-retry.stderr.log"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/native-review-gate-retry-exit.json",
+      "bytes": 904,
+      "sha256": "3f56f762d5bbf5d1cbd32e0dbda15fe2ab3e4720feafef9c976cd13643018351",
+      "originalPrivatePath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/native-review-gate-retry-exit.json"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/refused-gate-generated-retained-restored.json",
+      "bytes": 895,
+      "sha256": "9844b811962892b2a07304ca4b256b1eecef53f5efff64c37535dc7d1d552643",
+      "originalPrivatePath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/refused-gate-generated-retained-restored.json"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/refused-gate-retry-generated-retained-restored.json",
+      "bytes": 895,
+      "sha256": "600255d478e3ca01acdc17980b7cbbcce27e3bbbc06f327441e5fdbb8ee08fef",
+      "originalPrivatePath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/refused-gate-retry-generated-retained-restored.json"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/post-second-refusal-watch-capacity-observation.json",
+      "bytes": 1978,
+      "sha256": "d06dd7d4ffc68d625c03007d4976e187e090214805e25cf4909166c834cd4fae",
+      "originalPrivatePath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/post-second-refusal-watch-capacity-observation.json"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/pr11-actual-merged-native.json",
+      "bytes": 22923,
+      "sha256": "1046c614d5c2bed26f8585df6a5a52ab6ad53641988a461cc7c1a3e04a5960db",
+      "originalPrivatePath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/source-carry-20261013/pr11-actual-merged-native.json"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/pr11-actual-merge-gate.log",
+      "bytes": 1225,
+      "sha256": "b3b53ed16196afa985c13651cf1f93bfa97f107dca3dd060357825073bb6dad9",
+      "originalPrivatePath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/source-carry-20261013/pr11-actual-merge-gate.log"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/carry-after-actual-merge-native-done.log",
+      "bytes": 66,
+      "sha256": "07b5da4bf72ae9df9a00712ee7dedd3b563726b8c0a01d4012e3a592061c484d",
+      "originalPrivatePath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/source-carry-20261013/carry-after-actual-merge-native-done.log"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/carry-after-actual-merge-native-document.log",
+      "bytes": 107,
+      "sha256": "a198d197ff4b750cc47ef6d85469b630704f8942def720ce303eda963320c1bd",
+      "originalPrivatePath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/source-carry-20261013/carry-after-actual-merge-native-document.log"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/carry-after-document-native-done.log",
+      "bytes": 105,
+      "sha256": "31017bf8f40be8601d55e0d4cf7fb764f636fdddda0e3b0c28318b977d05dfb3",
+      "originalPrivatePath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/source-carry-20261013/carry-after-document-native-done.log"
+    }
+  ],
+  "limits": [
+    "Not caller implementation or model understanding/authentication proof",
+    "No B1/B2/liveB3 or deployment completion",
+    "Heartbeat remains paused",
+    "No new host/model/provider credentials or paid usage",
+    "No spore/newagent/runtime/PM2 change"
+  ]
+}

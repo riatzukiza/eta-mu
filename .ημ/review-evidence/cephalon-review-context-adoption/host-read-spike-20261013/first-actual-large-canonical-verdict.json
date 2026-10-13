@@ -1,0 +1,12 @@
+{
+  "reviewCallCount": null,
+  "acceptedInvocation": null,
+  "contextReadCoverage": null,
+  "reason": "unestablished-review-trace",
+  "ok": false,
+  "code": "host-event-time-order",
+  "pageCount": null,
+  "violations": [],
+  "reasonKind": "unestablished-review-trace",
+  "sessionID": null
+}

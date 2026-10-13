@@ -711,3 +711,21 @@
   spore: none
   receipt-refs: cephalon-eta-five-source-carry-full-native-green-20261013
   note: Exactly five actual7b native Gitblob inputs initially materialized; retainedbase35 complete194line fixture block. GREEN restores onlythree existingGitquoted-generated-artifact filters, preserving tracked/unrelated/rename/lookalike refusal. Firstnativegate refused ClioHexFormat/Protocolsinotify; secondrefused onlyProtocolsinotify. Actualfails retained; thirdfullmandatorygate after observedwatchload780313->322051 passes, no process/sysctl change or testskip/gateoverride. Frozenlock unchanged; all1583 heldsource hashes stable exceptthree owned generator outputs preserved with hashes/restoredexactHEADbytes. MissingNPM_TOKEN/tool notices/intentionalhistoricalinvalidEDNfixture logs retained, not credentialrepair/compilererrors. Operator missingNODE_PATH help failure corrected, notproductionverification. Original273receipt/reflection/event prefixes intact. No6args/newMusepin/caller/HOSTexperiment/runtime/heartbeat/provider/auth/paid/spore change; codePR/currentheadqualification/MERGE still required.
+
+- ts: 2026-10-13T01:51:33.557Z
+  task: Finite B3 review transport prerequisite: one-point genuine HOST framing investigation
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-genuine-opencode11831-host-framing-proof-20261013
+  note: Genuine isolated OpenCode1.18.31 current anonymous free MiMo completes5native reads/exit0/48.1747sec, raw166859bytes/SHAf866932ebcc2c86ad65cab59434a061b0271986bec40d936574ab184f01d4df0, no supplied credentials/fixture mutation. Exact mergedMusea9 compiled46bb canonical controls accept actual3page2201line UTF-8+boundedAGENTSsuffix+EOF and presentempty; refuse actuallonglineclipping despite metadata.truncated=false and synthetic omitted/missingrange/altered/late/missingEOF/unavailable read. Ninecontrols PASS under owningNode22.20.0 offline replay. Syntheticreviewscaffold supplies no native review/approval/understanding. Original scaffold outertimestamp failure and archive UnicodeURL.path ENOENT retained; fixed only syntheticstage timing and NodefileURLToPath adapter, actualnative bytes unchanged. One JS templateconstruction pre-tool ReferenceError caused no mutation/test/model. Native853 Ready->Todo->IP onlyspike. PlanningMERGE35/sourcecarryPR11 exact004 pending independent fullreviews; nativeCR noactionable/codexrequest6136275764, no approvaltransfer. Sourcecarry/callerconsumer/Musepin/B1/B2/liveB3 stillunqualified. Exact274receipt/reflection andevent prefixes preserved; no provider/auth/runtime/heartbeat/paid/newagent/spore action.
+
+- ts: 2026-10-13T02:22:03.008Z
+  task: Finite B3 review transport prerequisite; carry2 delivered, genuineHOSTspike1 notyetqualified
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-source-carry-merged-and-host-spike-native-refusals-20261013
+  note: SourcecarryactualMERGEf975 on2026-10-13T02:17:01Z,parents35+004/tree87c exactreviewed; nativeRheos Review->Document->Doneaccepted after realmerge. InitialdirectReview->Done refused/no statechange, preserved and corrected throughactualFSMhops. CurrentCodex+MiMoapprove/all15checks/oneconfiguredavailablecohort; optionalnativeCRquota exactrequest/source/time/cooldown suppliesnoapproval. Spike remainsIP becausebothunchangedfullnativegatesfail actualProtocolswatchercapacity; unrelateddaemons/makersleft running/no sysctl/tests/gate/sourceconfigchange. Latestread-onlyPID2951401Muse726400entries/Codex318231,observedtotal1048448vs1048576; descriptorcountsnotunique/atomicguarantee. Temporaryhostcapacityscopeproposalprepared/questionpending. Correctiveinterpretation: actualreceipt275manifesthas4validUTF8paths; earlierprivate snapshottransportusedGitquotedpaths andfailedbeforeRheos. Prior indexsentence incorrectlypredictedreceipt275pathcorrection; doNOTrewrite275. Thisappend supplementsallactualownedpaths fromGit-z. GenuineHOST/nativebytes/controls retained; no B1/B2/liveB3/Musecallerpin/consumer/deployment/heartbeat/newagent/spore/auth/paidchange.
