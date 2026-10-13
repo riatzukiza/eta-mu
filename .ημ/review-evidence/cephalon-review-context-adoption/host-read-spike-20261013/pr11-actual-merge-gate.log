@@ -1,0 +1,15 @@
+riatzukiza/eta-mu#11  head 004356d
+  coderabbit: rate-limited   checks: {:pass 15}
+  threads: 0 total, 0 unresolved; by severity {}; informational 0
+  exact-head approvals: #{"codex" "mimo"}  observed commit binding: {"mimo" #{"004356d0155a8b9478612410b01a41bc46dc8bcf"}, "coderabbit" #{"004356d0155a8b9478612410b01a41bc46dc8bcf"}}
+  completed code rounds: 1 / soft minimum 5  participants: #{"codex" "mimo"}
+  coderabbit quota-unavailable: native source 6136570399 request 6136567438 scope current-head observed 2026-10-13T02:05:55Z retry-at-ms 1791858835000
+  gate: PASS
+riatzukiza/eta-mu#11  head 004356d
+  coderabbit: rate-limited   checks: {:pass 15}
+  threads: 0 total, 0 unresolved; by severity {}; informational 0
+  exact-head approvals: #{"codex" "mimo"}  observed commit binding: {"mimo" #{"004356d0155a8b9478612410b01a41bc46dc8bcf"}, "coderabbit" #{"004356d0155a8b9478612410b01a41bc46dc8bcf"}}
+  completed code rounds: 1 / soft minimum 5  participants: #{"codex" "mimo"}
+  coderabbit quota-unavailable: native source 6136570399 request 6136567438 scope current-head observed 2026-10-13T02:05:55Z retry-at-ms 1791858835000
+  gate: PASS
+ready + auto-merge (merge) enabled on 004356d0155a8b9478612410b01a41bc46dc8bcf

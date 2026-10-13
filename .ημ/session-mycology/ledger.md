@@ -729,3 +729,12 @@
   spore: none
   receipt-refs: cephalon-source-carry-merged-and-host-spike-native-refusals-20261013
   note: SourcecarryactualMERGEf975 on2026-10-13T02:17:01Z,parents35+004/tree87c exactreviewed; nativeRheos Review->Document->Doneaccepted after realmerge. InitialdirectReview->Done refused/no statechange, preserved and corrected throughactualFSMhops. CurrentCodex+MiMoapprove/all15checks/oneconfiguredavailablecohort; optionalnativeCRquota exactrequest/source/time/cooldown suppliesnoapproval. Spike remainsIP becausebothunchangedfullnativegatesfail actualProtocolswatchercapacity; unrelateddaemons/makersleft running/no sysctl/tests/gate/sourceconfigchange. Latestread-onlyPID2951401Muse726400entries/Codex318231,observedtotal1048448vs1048576; descriptorcountsnotunique/atomicguarantee. Temporaryhostcapacityscopeproposalprepared/questionpending. Correctiveinterpretation: actualreceipt275manifesthas4validUTF8paths; earlierprivate snapshottransportusedGitquotedpaths andfailedbeforeRheos. Prior indexsentence incorrectlypredictedreceipt275pathcorrection; doNOTrewrite275. Thisappend supplementsallactualownedpaths fromGit-z. GenuineHOST/nativebytes/controls retained; no B1/B2/liveB3/Musecallerpin/consumer/deployment/heartbeat/newagent/spore/auth/paidchange.
+
+- ts: 2026-10-13T02:24:32.544Z
+  task: Finite B3 review transport prerequisite: genuine HOST spike evidence custody
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-host-spike-raw-log-source-custody-correction-20261013
+  note: Supplement receipt276 andsource7930835: defaultGitignore omitted16owned raw.log inputs from initialsourcecommit/manifest, while their exact bytes stayed retained privately andunderownedevidencedir. Explicitlystageonlythose16ownedlogs andcurrentrootreceipt/reflection; full50actualinputmanifest fromliteralfilesystem/Git-z paths binds rawgenuineHOSTstderr,canonicalcontrols/failures,bothcompletefullnativegate stdout/stderr,andactualcarryMERGE/Document/Done/refusedhopoutputs. No source/tests/Gitignore/runtimes/hostcapacitychange. Ordinaryintegration of actualqualifiedf975MERGE addsnoapplicationtreediff; SPIKE stillIP becauseProtocolswatcherENOSPC andhuman temporarycapacityscopeanswerpending. This is evidencecustody repair, not newreview/gatecredit; preserveallpriorreceipt/event/reflectionbytes.
