@@ -1,0 +1,46 @@
+{
+  "schema": "observed-source-discovery/v1",
+  "tier": "observed",
+  "card": "de02c921-e23c-4d83-87e8-b32c6c3160ff",
+  "authority": "Accepted human Include enforcement and joint delivery; concrete proposal step5 adopts merged source in existing downstream review path",
+  "personal_base": "b03cb58407cc333b7cabd77431842d44f0deb415",
+  "muse_merge": "a9a62f0d509056406f3dd7d8c86a13551be168cd",
+  "muse_reviewed_head": "ca6fcc61bc233bc44fd552bd82567834d45a5830",
+  "muse_tree": "615b200f08819e6b5160a652fa88cf162f57e4f7",
+  "consumer": "riatzukiza/openplanner#3",
+  "consumed_eta_source": "7b5797df3af28e190a994860be758e5f791440b5",
+  "actual_old_calls": [
+    "embedded recovery runner lines739-743: four arguments",
+    "independent final workflow lines1566-1567: four arguments"
+  ],
+  "planned_carry": [
+    ".github/workflows/opencode-code-review.yml",
+    ".github/scripts/run-opencode-review-recovery.mjs",
+    ".github/scripts/opencode-code-review-workflow.test.mjs"
+  ],
+  "snapshots": [
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/downstream-eta-7b5797df-workflow.yml",
+      "bytes": 140664,
+      "sha256": "7d9820471c4c30e3162a6a40c2a658030b8327327eae68e84f0d8edab0bcc300"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/downstream-eta-7b5797df-runner.mjs",
+      "bytes": 43395,
+      "sha256": "67910454a075501c72aae68701eb39aff65714abda1b87906d8a04a428e98bef"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/eta-personal-b03-embedded-runner.mjs",
+      "bytes": 7044,
+      "sha256": "2c7180cc507431cb4317ee92133da474d74b627059531c842670382b3d3c1f59"
+    }
+  ],
+  "read_only_fork_network_lookup": "Organization commits API resolves exact same personal merge object/tree/parents, without branch promotion or mutation",
+  "not_implementation": true,
+  "limits": [
+    "No source adoption or consumer pin applied",
+    "No field/mood/live recall completion",
+    "No inferred org release",
+    "All source and consumer gates remain required"
+  ]
+}

@@ -114,16 +114,33 @@ context-gathering, and writing them is not closeout — both are part of the tur
 
 ## Board Operations
 
-Board state is the single source of truth for work. Treat it as a finite-state machine whose law is implemented in `packages/rheos/src/rheos/backend/law/fsm.cljs` and rendered for humans in `PROCESS.md`.
+Board state is the single source of truth for work. Rheos owns its finite-state
+machine and board operations. The extracted owner is `open-hax/rheos`; qualify
+personal development sources independently. The historical `packages/rheos`
+copy in this checkout is not evidence that a separately qualified owning Rheos
+operation is unsupported. Bind the actual consumed source and compiled CLI in
+the owning receipt/evidence before interpreting or replaying native history.
 
 - **Work from a card.** Never work off-board. Anchor every implementation slice on a kanban task and record the scoped plan on the card before moving to implementation.
-- **Move cards with the Rheos CLI.** Run commands from the **repo root** so the board resolves correctly. Use **`eta-mu-beta`**, not `eta-mu` — the bare name is a volta shim to the *published* build, which carries a different command surface at the same version number. See `DEVELOPMENT.md` § *Running the CLI*. Rebuild first: `pnpm -C packages/eta-mu build`.
+- **Move cards with native Rheos.** Use the qualified owning CLI, API, MCP or UI
+  with an explicit board configuration from the **repo root**. Preserve source,
+  artifact and configuration identity plus native operation outputs/readbacks;
+  do not append invented events or use a repository-local board implementation.
+  When using this checkout's older bundled CLI, use **`eta-mu-beta`**, not the
+  published `eta-mu` Volta shim, and rebuild with `pnpm -C packages/eta-mu build`.
+  Its following historical commands describe that bundled surface, not the
+  command grammar or mutable-key policy of every owning Rheos revision:
   - `eta-mu-beta kanban list` — current board.
   - `eta-mu-beta kanban count` — column counts.
   - `eta-mu-beta kanban comment <uuid> "note"` — append provenance to a card.
   - `eta-mu-beta kanban frontmatter <uuid> status <new-status>` — lawful status change.
   - `node packages/rheos/dist/cli.cjs status-update <uuid> --to <status>` — FSM-enforced move (also runs build-gate when required).
-- **No direct frontmatter edits.** The file watcher treats hand-edited frontmatter as drift and stamps a `drift: true` indicator on the card. Use the CLI so the ledger records a `write-id` and the provenance is auditable.
+- **Manual Markdown cards are supported input.** Cards may be created and edited
+  manually as Markdown. Initial Incoming authoring is not a Rheos transition,
+  writer correlation, readiness or validation claim. Rheos owns board state and
+  subsequent lifecycle operations; use its CLI for status/frontmatter transitions
+  and comments so native write IDs and events remain auditable. Never invent
+  creation metadata or engine events for a previously hand-authored card.
 - **Walk lawful hops.** There are no shortcut edges. To move a card multiple columns forward, step through each lawful transition in order. The direct `in_progress → review` edge exists only when the build-gate passes.
 - **Regenerate snapshots when needed.** The web UI and `kanban/.kanban/board.json` are generated snapshots; the source of truth is the task files plus the ledger in `kanban/.events/ledger.edn`. If a snapshot is stale, regenerate it from the CLI or the web UI.
 

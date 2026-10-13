@@ -1,0 +1,128 @@
+{
+  "tier": "observed-command-output index; not provider approval or native source qualification",
+  "review": 5496721636,
+  "findings": [
+    4252951958,
+    4252951965
+  ],
+  "base": "b03cb58407cc333b7cabd77431842d44f0deb415",
+  "reviewed_parent": "932ecb577d79083c1e65f1f566cc5ddccd2eb6c8",
+  "source_carry_count": 5,
+  "stories": {
+    "epic": {
+      "uuid": "de02c921-e23c-4d83-87e8-b32c6c3160ff",
+      "frontmatter": {
+        "uuid": "de02c921-e23c-4d83-87e8-b32c6c3160ff",
+        "title": "Deliver qualified review context custody through the existing consumer",
+        "status": "incoming",
+        "priority": "P1",
+        "points": "5",
+        "labels": "epics, cephalon, b3, review, context-custody, 5sp",
+        "write-id": "1791845188217-0.7f9kgvorlj49oxeif1y",
+        "type": "epic"
+      },
+      "source-path": "/home/err/spaces/cephalon-review-context-adoption/eta-mu/kanban/tasks/adopt-trusted-staged-context-in-shared-review-caller.md"
+    },
+    "carry": {
+      "uuid": "52a0f6cc-e43b-4ed5-a628-e54dd9d9fdc4",
+      "frontmatter": {
+        "category": "tasks",
+        "labels": "cephalon, b3, review, context-custody",
+        "type": "task",
+        "write-id": "1791845186712-0.cpxmpfqz72u5cw5o77",
+        "points": "2",
+        "title": "Restore and qualify the five consumed review-source files",
+        "priority": "P1",
+        "status": "incoming",
+        "epic": "de02c921-e23c-4d83-87e8-b32c6c3160ff",
+        "uuid": "52a0f6cc-e43b-4ed5-a628-e54dd9d9fdc4",
+        "created_at": "2026-10-12T22:46:26.712Z"
+      },
+      "source-path": "/home/err/spaces/cephalon-review-context-adoption/eta-mu/kanban/tasks/restore-and-qualify-the-five-consumed-review-source-files-d9d9fdc4.md"
+    },
+    "caller": {
+      "uuid": "b9c591fb-95a8-4e4e-b2a5-39eb988cb996",
+      "frontmatter": {
+        "category": "tasks",
+        "labels": "cephalon, b3, review, context-custody",
+        "dependency": [
+          "52a0f6cc-e43b-4ed5-a628-e54dd9d9fdc4"
+        ],
+        "type": "task",
+        "write-id": "1791845187252-0.wx05mgq9k3ejv6jmigl",
+        "points": "2",
+        "title": "Bind and verify staged context at both trusted review callers",
+        "priority": "P1",
+        "status": "incoming",
+        "epic": "de02c921-e23c-4d83-87e8-b32c6c3160ff",
+        "uuid": "b9c591fb-95a8-4e4e-b2a5-39eb988cb996",
+        "created_at": "2026-10-12T22:46:27.252Z"
+      },
+      "source-path": "/home/err/spaces/cephalon-review-context-adoption/eta-mu/kanban/tasks/bind-and-verify-staged-context-at-both-trusted-review-callers-988cb996.md"
+    },
+    "consumer": {
+      "uuid": "ad41fc8a-12fe-453c-bdb9-29d832c94e9f",
+      "frontmatter": {
+        "category": "tasks",
+        "labels": "cephalon, b3, review, context-custody",
+        "dependency": [
+          "b9c591fb-95a8-4e4e-b2a5-39eb988cb996"
+        ],
+        "type": "task",
+        "write-id": "1791845187730-0.kbu6u2hi5q1w25l9up",
+        "points": "1",
+        "title": "Adopt qualified review context custody in personal OpenPlanner",
+        "priority": "P1",
+        "status": "incoming",
+        "epic": "de02c921-e23c-4d83-87e8-b32c6c3160ff",
+        "uuid": "ad41fc8a-12fe-453c-bdb9-29d832c94e9f",
+        "created_at": "2026-10-12T22:46:27.730Z"
+      },
+      "source-path": "/home/err/spaces/cephalon-review-context-adoption/eta-mu/kanban/tasks/adopt-qualified-review-context-custody-in-personal-openplanner-32c94e9f.md"
+    }
+  },
+  "provisional_points": {
+    "carry": 2,
+    "caller": 2,
+    "consumer": 1,
+    "total": 5
+  },
+  "companions": {
+    "invocation-fixture": {
+      "path": ".github/scripts/review-invocation-fixture.mjs",
+      "git_blob": "0e9dd05d27ff43eab0293a61a33c13e34686226a",
+      "bytes": 7077,
+      "sha256": "931a5cd73df6256624d8c46fa486211647a87ebbcce89e58f3c95d655896429e"
+    },
+    "host-tool-metadata": {
+      "path": ".github/review-host-tool-metadata.edn",
+      "git_blob": "a8a71ab5f7997cb6a8905c3a744c986f33fbfa03",
+      "bytes": 1741,
+      "sha256": "2c7d86dc58a34a8956dfc8e3828a6cda4b14b0dc17d7a76ab207cddedef416f7"
+    }
+  },
+  "prefix_custody": {
+    "receipts.edn": {
+      "prior_bytes": 353578,
+      "prior_sha256": "ffd403806cd57a15f06fc9422aa7df58e2fde3eded622b84c2031a2751a21ebb",
+      "unchanged_prefix": true
+    },
+    ".ημ/session-mycology/ledger.md": {
+      "prior_bytes": 52028,
+      "prior_sha256": "554e48ab7ba9f0bf0144ab10cddd1af578f15a0bb3d814a2c5e136ad77bd3762",
+      "unchanged_prefix": true
+    },
+    "kanban/.events/ledger.edn": {
+      "prior_bytes": 1731590,
+      "prior_sha256": "df0acd96ba9e772bda0a4d2331c9562c5ceb3272c2761e2b07a85e91b03293f0",
+      "unchanged_prefix": true
+    }
+  },
+  "limits": [
+    "All cards remain Incoming; no implementation/readiness/source adoption",
+    "Existing5file carry needs independent review/checks/MERGE",
+    "Actual OpenCode1.18.31 HOST trace remains unverified though read Gitblob matches1.18.18",
+    "Final consumer and epic require all actual source/consumer qualified MERGEs",
+    "Initial readback comparison wrongly expected scalar dependency; native readback supplies vector of UUIDs. Corrected comparison, no failed read credited. Missing neighbor/CLI usage errors corrected without verification credit"
+  ]
+}
