@@ -48,6 +48,8 @@ function control(name,file,selected,change){
  const sid=selected[0]?.sessionID||'synthetic-empty-omission';
  const lastHostEnd=Math.max(1,...selected.map(e=>e.part.state.time.end));let clock=Math.max(1,Math.min(...selected.map(e=>e.part.state.time.start))-1);const trace=[];
  function call(tool,input,output){const n=trace.length+1;trace.push({type:'tool_use',timestamp:clock,sessionID:sid,part:{type:'tool',id:'synthetic-part-'+n,callID:'synthetic-call-'+n,sessionID:sid,tool,state:{status:'completed',input,time:{start:clock,end:clock},output:JSON.stringify({...output,'context-protocol':'open-hax.review-context/v1','context-source':ctx.contextSource,'context-observation':{status:'present',source:ctx.contextSource}})}}});clock++;}
+ // The qualified Muse wire key diff-stats.bytes is UTF-16 page geometry.
+ // source.full_diff.bytes binds actual UTF-8 bytes; keep their units separate.
  call('review_begin',{}, {'ok?':true,stage:stages[0],stages,'input-source':ctx.inputSource,'diff-stats':{files:1,bytes:full.toString('utf8').length,'truncated?':false},'input-coverage':{chunks:ctx.pages.length,delivered:0,assessed:0,missing:ctx.pages.map(p=>p.id)}});
  trace.push(...native);clock=Math.max(lastHostEnd,...selected.map(e=>e.timestamp))+1;
  const notes=ctx.pages.map(p=>({...p,note:'Synthetic complete page assessment for HOST framing control, no review judgment.'}));
@@ -78,6 +80,6 @@ assert.equal(control('synthetic-missing-eof-refuses',large,selected(large),x=>{
  last.output=last.output.replace(/\(End of file - total \d+ lines\)/,'');
 }).ok,false);
 assert.equal(control('synthetic-unavailable-read-refuses',large,selected(large),x=>{x[0].part.state.status='error';x[0].part.state.error='Synthetic unavailable read control';}).ok,false);
-const report={clientVersion:'1.18.31',modulePath,moduleSha256:sha(fs.readFileSync(modulePath)),nativeResponseSha256:sha(raw),preparedManifestSha256:sha(manifestBytes),fixtureCustody:archive.fixtures,nativeCompletedReads:reads.length,results,limits:'Structural HOST framing only. Synthetic review state scaffold, no actual provider review, publication, caller integration, authority or understanding claim.'};
+const report={clientVersion:'1.18.31',modulePath,moduleSha256:sha(fs.readFileSync(modulePath)),nativeResponseSha256:sha(raw),preparedManifestSha256:sha(manifestBytes),fixtureCustody:archive.fixtures,nativeCompletedReads:reads.length,diffEncoding:{utf8Bytes:full.length,utf16CodeUnits:full.toString('utf8').length,legacyDiffStatsBytesUnit:'utf16-code-units'},results,limits:'Structural HOST framing only. Synthetic review state scaffold, no actual provider review, publication, caller integration, authority or understanding claim.'};
 const reportPath=path.join(outputDirectory,'replay-canonical-host-framing-control-results.json');
 fs.writeFileSync(reportPath,JSON.stringify(report,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify({controls:results.length,allAssertionsPassed:true,nativeCompletedReads:reads.length,outputDirectory,reportPath,results:results.map(r=>({name:r.name,ok:r.verdict.ok,code:r.verdict.code,coverage:r.verdict.contextReadCoverage}))}));

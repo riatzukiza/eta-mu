@@ -76,7 +76,17 @@
                                                              "synthetic-missing-eof-refuses-control-response.jsonl")
                                                     "utf8")))
                         reads (filterv #(= "read" (get-in % [:part :tool])) trace)
+                        begin (js->clj (js/JSON.parse (get-in (first trace) [:part :state :output]))
+                                      :keywordize-keys true)
+                        encoding (:diffEncoding
+                                  (js->clj (js/JSON.parse (.readFileSync fs (:reportPath report) "utf8"))
+                                           :keywordize-keys true))
                         final-output (get-in (peek reads) [:part :state :output])]
+                    (is (= "utf16-code-units" (:legacyDiffStatsBytesUnit encoding)))
+                    (is (= (:utf8Bytes encoding) (get-in begin [:input-source :full_diff :bytes])))
+                    (is (= (:utf16CodeUnits encoding) (get-in begin [:diff-stats :bytes])))
+                    (is (> (:utf8Bytes encoding) (:utf16CodeUnits encoding))
+                        "The frozen Unicode fixture distinguishes bytes from page geometry")
                     (is (= 3 (count reads)) "EOF control must preserve every read range")
                     (is (= [1 1001 2001] (mapv #(get-in % [:part :state :input :offset]) reads)))
                     (is (= 2201 (get-in (peek reads) [:part :state :metadata :display :lineEnd])))

@@ -399,8 +399,8 @@
     },
     {
       "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/replay-canonical-host-framing-controls.mjs",
-      "bytes": 9121,
-      "sha256": "c1f80480e28f6cbd2090c49c77fa6d5a735a3af9981a464b35dc157440aa33a9",
+      "bytes": 9400,
+      "sha256": "dd47a6c07346bc41d283bf970c294dfe78040b283ba969a0317d8c06acf627c7",
       "tier": "Current adapter source, not historical execution or provider approval",
       "purpose": "Current custody-hardened fresh-output offline replay"
     }
