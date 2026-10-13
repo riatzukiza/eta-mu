@@ -756,3 +756,12 @@
   spore: none
   receipt-refs: cephalon-host-spike-complete-review-file-selection-20261013
   note: The first automatic CodeRabbit summary is no-actionable/exactfed but explicitly excludes18changed raw.log inputs through defaults. Preserve actual summary bytes and incomplete status; final coverage markers cannot supply missing log assessment. One supported repository file-selection setting is prepared to include committed inputs, directly serving the existing complete-input acceptance condition; native selection still must prove it. No source/template/semantic reviewer law duplicated locally. This config is source preparation, not adopted complete-review evidence; fresh head/base/full reviews are required after push, with actual included cooldown and pending deduplication. Existing test-fixture warning scope question remains pending/unapplied, original one-run ceiling already restored. Current own old-head hosted review may be superseded by push through its ordinary concurrency rule; no maker/daemon/clock/cloud/heartbeat interruption or paid inference. Original native full14suite exit0 and one compiler warning remain truthful.
+
+- ts: 2026-10-13T15:21:52.681Z
+  task: Finite B3 HOST-framing prerequisite native findings4260128644/4260128661/4260128673
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-host-spike-native-codex-custody-causal-red-20261013
+  note: All five actual Codex findings remain obligations. Native mechanical gate0/all14tests did not clear unchanged infer-warning. Qualified853 native correction returns spike toIP; actual old Review/readback bytes preserved historically. Offline regressions operate only on unique owned temporary copies and clean them; production/native fixture/HOST bytes and original recorded result files remain untouched. This red receipt does not supply provider approval, completed round, full zero-warning verification, character proof, runtime/deployment or new capacity permission. The separate one-line TerminalUI fixture scope question remains pending/unapplied; original one-run limit already restored1048576. No historical ledger/reflection rewrite or spore.
