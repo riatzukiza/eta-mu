@@ -1,7 +1,7 @@
 ---
 uuid: "b9c591fb-95a8-4e4e-b2a5-39eb988cb996"
 title: "Bind and verify staged context at both trusted review callers"
-status: "in_progress"
+status: "review"
 type: "task"
 priority: "P1"
 points: "2"
@@ -9,7 +9,7 @@ labels: "cephalon, b3, review, context-custody"
 epic: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 dependency: ["52a0f6cc-e43b-4ed5-a628-e54dd9d9fdc4","a880c727-229b-4f3d-9158-718ec164d16c"]
 category: "tasks"
-write-id: "1791926164346-0.4z7c0we56ec2gr3tbmw"
+write-id: "1791929562555-0.jbpwj83eg7kf7jmdn0p"
 created_at: "2026-10-12T22:46:27.252Z"
 parent: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 ---
@@ -65,5 +65,30 @@ Meaningful RED must execute both old caller boundaries against the actual qualif
 Two points estimates narrow adapter/pin/fixture integration, not new semantic law or host discovery. Review must assess that cost against the actual controls; if discovery exceeds it, re-describe/re-estimate rather than silently broadening. This comment is the concrete reviewed planning input. No readiness or implementation is claimed until fresh planning qualification and native lawful admission. Consumerad41fc8a-12fe-453c-bdb9-29d832c94e9f still waits for this story actually qualified MERGE/Done, then its own actual OpenPlanner adoption/qualification/MERGE. B1/B2/liveB3 remain incomplete.
 
 Planning qualification at exact5f3070febe98bafdb4709d59219ac46e667d9773/base22bd33d0ff79a1e0b79d1b4a55fdce9dcb301746: canonical gatePASS/ninechecks/allfindingssettled/onecompletedavailableplanningcohort/Codex6154862420+nativeMiMoAPPROVED5509978759. Actual full18of18pages/7inputs/45canonicalcalls/noomissions; exact nativebody==submission.summary; ZIP11850001142/95540bytes/SHA888a34ddf5161cfb11a1433a11eda5394d4d8ff884247083a8c3525242252f7a matchesnativedigest/CRC. Actualsource145749UTF8bytes/SHA14e0d3428de8c45584392dec820b3b35afb5ffaa63526bdb3b84b29859dae738; report145295isUTF16wiregeometry, preserve originalbody. Sevenexecutedsourcegates0/86compilerbuildszero warnings. SourcecarryandHOSTspike independentlynativeDone. CRsoleobsolete-receiptfinding withdrawn4263908111/canonicalHandled4263913319; freshcanonicalrequest6155212817 receivedactualquota6155214697/currenthead21:07:44/32minuteparsedcooldown, so canonicalavailablecohortisCodex+MiMo; noallowance-derivedtimer/paidusage/waiver/CRapprovalcredit. The two-point estimate is retained for exactlytwoexistingadapters plusmatchingqualifiedMusea9pin and reuseofexistingfixtures/controls; nonewreviewsemantics/hostdiscovery/auth/model/retrypolicy. Lawfulready/IP admission starts realadapterRED againstqualified6argmodule; no codequalification/consumer/runtime/B1B2B3completiontransfer. HeartbeathumanPAUSED.
+
+Actual implementation RED commit7c283bedbbb5aa0a384c8edd0fbed64852c6e747 ran234tests/224PASS/10FAIL, with the
+actual qualified six-argument module refusing both old caller boundaries. Minimum GREEN passes237/237; final
+workflow after necessary sandbox fixture wiring passes238/238/0skipped using a fresh independently compiled
+qualified Musea9 module. Synthetic offline child traces supply no provider approval.
+
+Qualified native Rheos IP→Review actually completedexit0/472.480seconds, fullbuild/lint/all14suites PASS, zero
+compiler warning counts, independentstatus Review. Watch limit1572864 unchanged. Three generated build outputs
+were retained privately and restored byte-exactly; only native card/event changed during that gate. This gate
+preceded the final sandbox wiring; the final238suite and post-wiring lint are recorded separately and actual
+hosted complete gates remain mandatory.
+
+Both callers now supply actual staged Buffer/fixedabspath as canonical arguments5/6. Supervisor holds prepared
+custody across max2 and verifies reflected path/bytes/SHA; full final independently
+rereads/reprepares/reverifies before publication. Present-empty is present;
+missing/I/O/invalidUTF8/changedbytes/absence/foreignpath/omittedread/EOF and old verifier ignoring added
+arguments refuse. All three plugin/verifier selectors pin actual personal Muse
+mergea9a62f0d509056406f3dd7d8c86a13551be168cd through existing fork-network route. Shared producer downloads
+actual compiled artifact for tests; sandbox reuses exactly the existing compiler recipe and retains
+module/provenance. No caller parser/law, model/auth/permissions/retry cap or live product changed.
+
+This is source code under independent code review, not caller Done or OpenPlanner adoption. Planning PR13 is
+actually merged23968980349d07aa647874941cede32db67a4895. Fresh actual code approval/settlement/required checks
+and authorized MERGE precede caller Done; existing consumer waits. B1 physical encounter/field, B2 persisted
+mood and B3 automatic prompt recall remain unfinished. GoalACTIVE/heartbeat humanPAUSED.
 
 ---

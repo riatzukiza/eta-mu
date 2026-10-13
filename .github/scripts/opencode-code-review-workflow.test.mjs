@@ -2631,12 +2631,12 @@ function canonicalContextResponse(fixture, { omitRead = false, omitSubmit = fals
 }
 
 /** Run the real supervisor with an inert local child, never OpenCode or a provider. */
-function canonicalSupervisor(fixture, { retryAfterMissingSubmit = false } = {}) {
+function canonicalSupervisor(fixture, { retryAfterMissingSubmit = false, responseOptions = {} } = {}) {
   const directory = fixture.checked.evidence;
   const child = path.join(directory, "synthetic-opencode.mjs");
   const prompt = path.join(directory, "synthetic-prompt.md");
   const marker = path.join(directory, "synthetic-child-entered");
-  const data = canonicalContextResponse(fixture);
+  const data = canonicalContextResponse(fixture, responseOptions);
   fs.writeFileSync(prompt, "Synthetic caller control #{{PR_NUMBER}}.\n");
   const first = canonicalContextResponse(fixture, { omitSubmit: true });
   const countFile = path.join(directory, "synthetic-attempt-count");
@@ -2784,5 +2784,46 @@ test("canonical staged context: deterministic CI supplies the actually compiled 
   assert.equal(download.with.path, ".opencode/review-evidence/canonical-context");
   const verify = namedStep("deterministic_evidence", "Verify canonical caller-test context");
   assert.match(verify.run, /sha256sum --check --strict SHA256SUMS/);
-  assert.ok(job.steps.indexOf(verify) < job.steps.indexOf(namedStep("deterministic_evidence", "Run deterministic evidence gates")));
+  assert.ok(job.steps.indexOf(verify) < job.steps.indexOf(namedStep("deterministic_evidence", "Run deterministic gates")));
+});
+
+
+for (const [name, responseOptions] of [["omitted native read", { omitRead: true }], ["missing EOF", { corruptEof: true }]]) {
+  test(`canonical staged context: actual supervisor delegates ${name} refusal to Muse`, (t) => {
+    const checked = freshReviewInputCheck(fullInputFixture(t));
+    const fixture = canonicalContextFixture(checked);
+    const probe = canonicalSupervisor(fixture, { responseOptions });
+    assert.notEqual(probe.result.status, 0);
+    assert.equal(fs.existsSync(probe.marker), true);
+    const recovery = JSON.parse(fs.readFileSync(path.join(checked.evidence, "recovery.json")));
+    assert.equal(recovery.accepted_invocation, null);
+    assert.equal(recovery.attempts.length, 1);
+    assert.equal(recovery.attempts[0].canonical_verdict.code, "context-read-coverage-unestablished");
+  });
+}
+
+test("canonical staged context: actual caller refuses an older verifier that ignores new arguments", (t) => {
+  const checked = freshReviewInputCheck(fullInputFixture(t));
+  const fixture = canonicalContextFixture(checked);
+  fs.writeFileSync(fixture.verifierFile, `exports.prepareReviewInvocationContext=()=>({inputSource:{},pages:[]});
+exports.verifyReviewInvocation=()=>{throw new Error("must not reach invocation");};`);
+  const probe = canonicalSupervisor(fixture);
+  assert.notEqual(probe.result.status, 0);
+  assert.equal(fs.existsSync(probe.marker), false);
+  const recovery = JSON.parse(fs.readFileSync(path.join(checked.evidence, "recovery.json")));
+  assert.equal(recovery.attempts.length, 0);
+  assert.equal(recovery.setup_error, "canonical verifier did not bind the actual staged context");
+});
+
+test("canonical staged context: sandbox supplies and preserves the real compiled fixture for its full test gate", () => {
+  const sandbox = YAML.parse(fs.readFileSync(path.join(root, ".github/workflows/sandbox-bundle.yml"), "utf8"));
+  const validate = sandbox.jobs.bundle.steps.find(step => step.name === "Install, validate, test, and build");
+  const compile = 'node .github/scripts/compile-canonical-context-fixture.mjs "$OUT/runtime/canonical-context"';
+  const bind = 'export ETA_MU_CANONICAL_CONTEXT_MODULE="$OUT/runtime/canonical-context/review-invocation.cjs"';
+  assert.ok(validate.run.includes(compile));
+  assert.ok(validate.run.includes(bind));
+  assert.ok(validate.run.indexOf(compile) < validate.run.indexOf(bind));
+  assert.ok(validate.run.indexOf(bind) < validate.run.indexOf("pnpm test"));
+  const collect = sandbox.jobs.bundle.steps.find(step => step.name === "Collect generated outputs and portable toolchains");
+  assert.match(collect.run, /entrypoint: "ETA_MU_CANONICAL_CONTEXT_MODULE=.* pnpm test"/);
 });

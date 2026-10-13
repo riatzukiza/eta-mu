@@ -185,3 +185,80 @@ push, GitHub write, settlement, merge or deployment.
 All three reusable selectors, the exact-pin fixture, the companion diagnostic and the architecture default now select `0b9a91492c8355e6933dc2164d35668cb76d9e60`. This successor makes the existing high-surrogate bound explicit, adds both page-boundary and independent page UTF-8 encoding regressions, and reconciles retryable begin wording. The original `56319` bound already equals `0xDBFF`; the reported low-half defect does not reproduce on immutable `446b199`. The widened-bound mutation is separate RED evidence, not a fabricated original defect. The new source passes 212 tests / 606 assertions and the cold eight-tool recovery fixture. Earlier 446 joint evidence above remains historical; current paired native qualification and caller activation remain pending.
 
 The reusable interface now accepts optional `node_version` (default22) consistently in its three Node setup steps. A caller with a frozen Node22.20.0 closure can request that exact release; existing callers retain22. This uses the existing pinned setup action and changes no Bash gate, provider or permission contract. The new immutable0b9a pair was independently compiled before this setup-only interface change:22tools,204pages, fresh Git comparison and forgery refusal passed, zero compiler warnings. Current source workflow tests and structural checks are recorded separately below; native qualification remains required.
+
+
+## Staged context at the trusted callers — 2026-10-13
+
+The reusable workflow now compiles both the observer plugin and invocation
+verifier from the qualified personal Muse merge
+`a9a62f0d509056406f3dd7d8c86a13551be168cd`. The existing fork-network source
+fetch route remains `octave-commons/muse`; this names the fetch boundary,
+not an organization release. All three workflow selectors use that commit.
+
+The supervisor reads the actual `pr-context.md` Buffer at the fixed absolute
+evidence path before starting any child. It supplies the bytes and path as
+canonical preparation arguments five and six and holds that returned context
+across the existing maximum of two attempts. It also verifies that preparation
+reflects the actual path, byte count and SHA256, refusing an older verifier
+that silently ignores the added arguments. The prompt names the trusted path
+and asks for a complete native read before the first evidence stage.
+
+The complete final prepublication check independently rereads that same fixed
+path, repeats six-argument preparation and compares it with the accepted
+invocation identity before rerunning canonical verification. Missing files,
+I/O errors, invalid UTF8 and changed bytes refuse at the corresponding trust
+boundary. A zero-byte file is still present. Neither caller selects the
+canonical library's separate explicit-absence mode from a model or manifest.
+Muse owns HOST framing, ranges, EOF and stage-order decisions; these adapters
+do not implement another context parser or verifier.
+
+### Real-module regression fixture
+
+The existing workflow test suite now requires an absolute
+`ETA_MU_CANONICAL_CONTEXT_MODULE` pointing to the actual compiled
+`review-invocation.cjs` from that qualified Muse revision. It does not substitute
+its transport mock or skip the canonical cases when the module is missing.
+For local execution, compile the matching Muse export and run:
+
+```bash
+ETA_MU_CANONICAL_CONTEXT_MODULE=/absolute/path/to/review-invocation.cjs \
+  node --test .github/scripts/opencode-code-review-workflow.test.mjs
+```
+
+The same environment is required for the repository's full `pnpm test` gate.
+The hosted deterministic job depends on the existing context compiler,
+downloads its revision-bound artifact into the existing generated-evidence
+area, checks its `SHA256SUMS` and supplies the module before running gates.
+Tracked and embedded recovery-runner bytes must remain exactly equal.
+
+The new adapter cases execute the actual supervisor and complete final
+Git/source/submission guard against the real compiled canonical module.
+Their child responses are explicitly synthetic offline inputs, carrying no
+provider approval or model-understanding credit. They cover UTF8 and
+present-empty positives, missing/I/O/invalid input, held preparation across
+both attempts, final mutation, omitted reads/EOF, foreign path and absence
+refusal, and old-verifier argument omission. Existing transport-mock tests
+remain labeled and retain their assertions. Genuine completed HOST1.18.31
+multipage/empty/clipping evidence belongs to the separately merged predecessor
+spike; synthetic adapter traces do not replace it.
+
+Meaningful committed RED ran 234 tests: 224 passed and 10 failed at the actual
+missing-context call boundaries or required wiring. Minimum GREEN plus the
+additional refusal cases ran 237 tests: all passed, with no failures or skips.
+The later sandbox-wiring control separately failed against its original job.
+Sandbox now executes the existing compiler recipe at the same qualified
+revision, exports the resulting module before its full test gate and preserves
+module, recipe and provenance in the bundle. The restored bundle entrypoint
+names that module explicitly; missing tools/compilation remain failures.
+Structural actionlint passed with its documented external-tool flags.
+The native full build/lint/14-suite gate passed at the 237-test checkpoint
+in 472.480 seconds, with the watch limit unchanged and generated files
+restored exactly. The post-wiring suite then passed all 238 tests against the
+freshly compiled fixture, and full lint passed. These are distinct executions;
+current hosted checks and code review still precede source qualification and
+caller Done.
+
+This source delivery is a prerequisite for OpenPlanner's independently
+reviewed caller adoption. It does not establish a live encounter/physical
+field change, persisted mood consumption or automatic graph recall in the
+maker's assembled prompt.

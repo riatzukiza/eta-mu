@@ -178,6 +178,8 @@ jobs:
           {
             pnpm install --frozen-lockfile
             pnpm --dir packages/extensions build
+            node .github/scripts/compile-canonical-context-fixture.mjs "$OUT/runtime/canonical-context"
+            export ETA_MU_CANONICAL_CONTEXT_MODULE="$OUT/runtime/canonical-context/review-invocation.cjs"
             pnpm lint
             pnpm test
             pnpm build
@@ -241,12 +243,13 @@ jobs:
               ref: $ref,
               generated_at: $generated_at,
               validation: $validation,
-              entrypoint: "pnpm test",
+              entrypoint: "ETA_MU_CANONICAL_CONTEXT_MODULE=/absolute/restored/bundle/runtime/canonical-context/review-invocation.cjs pnpm test",
               network_required_after_restore: true,
               restore_requirements: [
                 "Node.js 22 and Java 21 must be installed on the restore host",
                 "Restore the bundled pnpm, Clojure, and Babashka toolchains or install the pinned versions",
-                "Restore the optional dependency-cache artifact or allow network access for dependency installation"
+                "Restore the optional dependency-cache artifact or allow network access for dependency installation",
+                "Set ETA_MU_CANONICAL_CONTEXT_MODULE to the bundled runtime/canonical-context/review-invocation.cjs after verifying bundle SHA256SUMS"
               ]
             }' > "$OUT/manifest.json"
           (cd "$OUT" && find . -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS)
