@@ -327,11 +327,12 @@
       "tier": "prepared or derived; not provider review"
     },
     {
-      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/invoke-genuine-host-read.py",
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/version-probe-bound-20261013/original-invoke-genuine-host-read.py",
       "originalPath": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/host-read-spike-20261013/invoke-genuine-host-read.py",
       "bytes": 3295,
       "sha256": "e6536fafe28d29d51e91a87572b4db2d0fd0af0aa460ae5e18643f28715ea9a1",
-      "tier": "prepared or derived; not provider review"
+      "tier": "prepared or derived; not provider review",
+      "previousIndexedPath": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/invoke-genuine-host-read.py"
     },
     {
       "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/fixture/AGENTS.md",
@@ -379,12 +380,37 @@
     "elapsedSeconds": 0.28897920299641555,
     "nodeVersion": "v22.20.0",
     "correction": "Node fileURLToPath decodes Unicode evidence-directory URI, only offline adapter fixed; canonical verifier/native reads/fixtures unchanged",
-    "sourcePath": "/home/err/spaces/cephalon-review-context-adoption/eta-mu/.ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/replay-canonical-host-framing-controls.mjs",
+    "sourcePath": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/source-binding-and-probe-group-20261013/original-replay-canonical-host-framing-controls.mjs",
     "sourceSha256": "3b1c6025b3295fe715c60f35493271578aa9130e1fb03a5c62d6550fa093c004",
     "resultsFile": "archived-replay-results.json",
     "initialRefusal": "Initial offline adapter used URL.pathname with percent-encoded Unicode .ημ, failed ENOENT/exit1; native/verifier/fixture bytes unchanged. Original source/log/exit retained. Corrected only standard Node file URL conversion.",
-    "limits": "Synthetic review scaffold and negative perturbations; original native HOST data with exact canonical verifier; no provider approval"
+    "limits": "Synthetic review scaffold and negative perturbations; original native HOST data with exact canonical verifier; no provider approval",
+    "originalSourcePath": "/home/err/spaces/cephalon-review-context-adoption/eta-mu/.ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/replay-canonical-host-framing-controls.mjs"
   },
   "operatorPreMutationError": "One functions.exec JavaScript template construction failed ReferenceError review before tools ran; no repository mutation/model invocation or canonical test resulted.",
-  "snapshotPreparationFailure": "Initial private gate snapshot adapter used default Git quoted untracked Unicode path output, failed FileNotFoundError before native Rheos invocation. Corrected only Git -z path transport. This is an operator assembly failure, not a native gate refusal. Receipt275 manifest will be corrected by append only with real literal UTF-8 paths."
+  "snapshotPreparationFailure": "Initial private gate snapshot adapter used default Git quoted untracked Unicode path output, failed FileNotFoundError before native Rheos invocation. Corrected only Git -z path transport. This is an operator assembly failure, not a native gate refusal. Receipt275 manifest will be corrected by append only with real literal UTF-8 paths.",
+  "currentSourceAdapters": [
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/invoke-genuine-host-read.py",
+      "bytes": 5633,
+      "sha256": "59ef8d28ad3a685cbf94803992926059403b56f222fef83ed754ddd8df2e39cf",
+      "tier": "Current adapter source, not historical execution or provider approval",
+      "purpose": "Current bounded version/diagnostic process-group adapter"
+    },
+    {
+      "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/replay-canonical-host-framing-controls.mjs",
+      "bytes": 8878,
+      "sha256": "f16e3a2109ec8a29eba9f64d2882e80be6b6a82cb6d29d14b2cb74153e9955d0",
+      "tier": "Current adapter source, not historical execution or provider approval",
+      "purpose": "Current custody-hardened fresh-output offline replay"
+    }
+  ],
+  "originalIndexSnapshot": {
+    "path": ".ημ/review-evidence/cephalon-review-context-adoption/host-read-spike-20261013/source-binding-and-probe-group-20261013/original-decision-and-evidence-fa20635d.json",
+    "bytes": 24294,
+    "sha256": "523e195652ad0fd8e00d52a78660e9c7f5cbb97f5a2475e99f845a2e5251a2a1",
+    "tier": "Original pre-correction derived evidence index; not raw observation or current adapter",
+    "purpose": "Exact pre-correction derived index; historical bytes preserved"
+  },
+  "sourceBindingCorrection": "Only current retained-source pointers are corrected. Original identities, raw observations, receipts, events, result bytes and whole original index snapshot remain preserved. Current hardened adapter identities are separate from the historical sources."
 }

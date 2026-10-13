@@ -801,3 +801,12 @@
   spore: none
   receipt-refs: cephalon-host-spike-binding-processgroup-causal-red-20261013
   note: All four current nativeP2findings confirmed within alreadyselectedHOST source scope. Newregressions remainfullyoffline; run-tree case shortens600->1second onlyin uniquecontrolledtestcopy, no actualmodel/probe budget changed. Forkedfakechild/wrapper cleanup boundtoits uniqueownedcommandpath; no unrelatedprocesses. Currentfa hostedproducer completedSUCCESS/exacthead andretainsbaseline TerminalUIinfer-warning once; itsnativeZIPdigest/CRC/fullbinarydiff are retainedprivately, not zero-warning evidence. Existinghumanone-linefixture/conditionalcapacitydecisionremains pending/unapplied; old1048576 restoration holds. Originalreceipts/reflections/nativeevents/sourcehashes andall rawnativeHOST data preserved. No kernel/runtime/PM2/maker/clock/owner/cloud/heartbeat/deployment/social/credential/model/paid/newagent/thread/spore mutation.
+
+- ts: 2026-10-13T17:10:11.607Z
+  task: B3 HOST-source prerequisite; B1/B2/liveB3 unachieved
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-host-spike-binding-processgroup-green-20261013
+  note: Onlyderivedcurrent source-index pointers corrected; whole originalfa indexsnapshot preservedverbatim withoriginalhistoricalfacts/hashes. Originale653driver boundtoexistingarchivalcopy; historical3b1replay sourcedfromimmutable6aGitblob andretained; currenthardeneddriver/replay identitiesseparate. Exactclientversion nowunconditional comparison ratherthan optimization-removableassert. Bothversion10sec anddiagnostic600sec calls createfreshownedprocesssessions; timeouteffectkills onlytheirOS-createdgroups andcommunicates/reapswrapper. Offline run-tree fixture uses1sec onlyincontrolledcopy; production600unchanged. Testpermits terminatedzombie grandchildstate, so doesnotclaimallorphansreaped, escapeddescendantfencing ormakerownership. This fixes scopedconfirmedP2s, not broaderlifecycleguarantees orsourceapproval. BaselineTerminalUIwarning/one-linefixture plusconditionalcapacityhumanquestionstillpending/unapplied. Actualcurrentfa hostedproducerSUCCESS carriesoneinfer-warning andsourceMIreviewstilllive; no kernel/runtime/PM2/maker/clock/owner/cloud/deployment/heartbeat/credential/model/paid/newthread/agents/sporechanges.

@@ -1,0 +1,48 @@
+{
+  "tier": "Actual offline regressions and byte/readback checks; not model/nativeprobe/approval",
+  "bindingsRed": {
+    "tests": 4,
+    "assertions": 61,
+    "failures": 5,
+    "errors": 0
+  },
+  "bindingsGreen": {
+    "tests": 4,
+    "assertions": 70,
+    "failures": 0,
+    "errors": 0
+  },
+  "bindingAssertionDifference": "Nine new assertions inspect actual separate adapter and original-index identities once those fields exist",
+  "probeRed": {
+    "tests": 6,
+    "assertions": 35,
+    "failures": 4,
+    "errors": 0
+  },
+  "probeGreen": {
+    "tests": 6,
+    "assertions": 35,
+    "failures": 0,
+    "errors": 0
+  },
+  "originalIndexSHA256": "523e195652ad0fd8e00d52a78660e9c7f5cbb97f5a2475e99f845a2e5251a2a1",
+  "historicalReplaySHA256": "3b1c6025b3295fe715c60f35493271578aa9130e1fb03a5c62d6550fa093c004",
+  "originalDriverSHA256": "e6536fafe28d29d51e91a87572b4db2d0fd0af0aa460ae5e18643f28715ea9a1",
+  "currentDriverSHA256": "59ef8d28ad3a685cbf94803992926059403b56f222fef83ed754ddd8df2e39cf",
+  "originalRawNativeArtifactsUnchanged": true,
+  "receiptReflectionNativeEventPrefixesUnchanged": true,
+  "terminalFixtureUnapplied": true,
+  "currentWatchLimit": 1048576,
+  "optimizedWrongVersionRefuses": true,
+  "versionAndDiagnosticForkedChildrenTerminal": true,
+  "processScope": "Fresh owned process groups only; controlled synthetic descendants; no maker/delegate fencing or escaped-session proof",
+  "productionBudgetsSeconds": {
+    "version": 10,
+    "diagnostic": 600
+  },
+  "syntheticRunBudgetSeconds": 1,
+  "kondoErrors": 0,
+  "kondoWarnings": 0,
+  "pythonAST": "PASS without probe execution",
+  "fullNativeGateRepeated": false
+}

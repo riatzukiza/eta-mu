@@ -2,7 +2,29 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Private isolated diagnostic adapter; no user credential or live runtime.
 from pathlib import Path
-import subprocess, json, hashlib, time, datetime, os
+import subprocess, json, hashlib, time, datetime, os, signal
+
+def run_probe(cmd, *, env, timeout, cwd=None, stdout=None, stderr=None,
+              capture_output=False, text=False, check=False):
+    """Bound one newly owned process group, including forked launcher children."""
+    if capture_output:
+        stdout, stderr = subprocess.PIPE, subprocess.PIPE
+    with subprocess.Popen(cmd, env=env, cwd=cwd, stdout=stdout, stderr=stderr,
+                          text=text, start_new_session=True) as process:
+        try:
+            output, error = process.communicate(timeout=timeout)
+        except subprocess.TimeoutExpired:
+            # The group ID comes from this fresh owned session, never input data.
+            try:
+                os.killpg(process.pid, signal.SIGKILL)
+            except ProcessLookupError:
+                pass
+            process.communicate(timeout=2)
+            raise
+        result = subprocess.CompletedProcess(cmd, process.returncode, output, error)
+        if check:
+            result.check_returncode()
+        return result
 q = Path(__file__).resolve().parent
 home = q / "inference-home"
 for name in ["config", "cache", "data", "state", "tmp"]:
@@ -28,8 +50,8 @@ model = json.loads((q / "probe-opencode-config.json").read_text())["model"]
 version_started = datetime.datetime.now(datetime.timezone.utc).isoformat()
 version_clock = time.monotonic()
 try:
-    version = subprocess.run([str(client), "--version"], env=env, check=True,
-                             capture_output=True, text=True, timeout=10).stdout.strip()
+    version = run_probe([str(client), "--version"], env=env, check=True,
+                        capture_output=True, text=True, timeout=10).stdout.strip()
 except subprocess.TimeoutExpired:
     failure = {
         "stage": "version", "clientPath": str(client),
@@ -47,7 +69,11 @@ except subprocess.TimeoutExpired:
         failure_file.write(json.dumps(failure, indent=2) + "\n")
     print(json.dumps({"exitCode": 124, "timedOut": True, "reportPath": str(failure_path)}))
     raise SystemExit(124)
-assert version == "1.18.31", version
+if version != "1.18.31":
+    print(json.dumps({"stage": "version", "exitCode": 2,
+                      "expectedClientVersion": "1.18.31", "actualClientVersion": version,
+                      "diagnosticRunStarted": False}))
+    raise SystemExit(2)
 fixture_paths = sorted((q / "probe-project/fixture").glob("*"))
 before = {str(p): hashlib.sha256(p.read_bytes()).hexdigest() for p in fixture_paths}
 cmd = [str(client), "run", "--pure", "--agent", "plan", "--model", model,
@@ -59,8 +85,8 @@ timed_out = False
 with (q / "genuine-host-read.stdout.jsonl").open("xb") as out, \
      (q / "genuine-host-read.stderr.log").open("xb") as err:
     try:
-        result = subprocess.run(cmd, env=env, cwd=q / "probe-project",
-                                stdout=out, stderr=err, timeout=600)
+        result = run_probe(cmd, env=env, cwd=q / "probe-project",
+                           stdout=out, stderr=err, timeout=600)
         code = result.returncode
     except subprocess.TimeoutExpired:
         timed_out = True
