@@ -1,0 +1,41 @@
+{
+  "tier": "observed-command-output-transcription",
+  "source": "Actual tool-command output; full originals retained in existing private artifact directory; no native provider approval",
+  "head_before_red": "cfe78130e41c3cf69215cd739a6854a4f9bedd0c",
+  "owner_module": "qualified-muse-a9-review-invocation-46bb6ac9.cjs",
+  "owner_module_sha256": "46bb6ac957cd23a7d66789c9bb6ce26eed71a1b808abfc5887e98d4c0e9de3b6",
+  "native_card": "b9c591fb-95a8-4e4e-b2a5-39eb988cb996/in_progress",
+  "result": {
+    "tests": 234,
+    "pass": 224,
+    "fail": 10,
+    "cancelled": 0,
+    "skipped": 0,
+    "exit": 1
+  },
+  "cause": "Actual old supervisor and complete final prepublication command call canonical preparation with four arguments; qualified six-arg owner refuses missing trusted context. I/O diagnostics are consequently hidden. Three static failures bind new qualified pin/CI fixture custody. Existing assertions remain.",
+  "fixture_correction": "Initial synthetic HOST input omitted required display/preview/loaded metadata; corrected before authoritative RED. Two newline-escape hypotheses failed assertions without modifying source; actual newline encoding was already correct. Initial fixture failures supply no production RED.",
+  "limits": "Synthetic adapter responses/child only, no provider/network/publication. Real compiled canonical owner verifies the constructed input; real supervisor/final routes execute. Initial full10-test RED was extended to cover two-child custody and valid separate-library absence/foreign-path controls.",
+  "outputs": [
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/caller-full-authoritative-red.stdout.txt",
+      "bytes": 97795,
+      "sha256": "eb2f17705a043ea1e573b7c456851fac9c2f058170ec37d0cb5de98f6c2a1309"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/caller-full-authoritative-red.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/caller-red-initial.stdout.txt",
+      "bytes": 12605,
+      "sha256": "b3a9e2b0d6cec14154c720f5a09fe873a8a80a9e22ceb0560e29653fdb5e85e7"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/caller-red-final.stdout.txt",
+      "bytes": 14974,
+      "sha256": "9b790bdaef0cdaea574f435793c532a60b99cf512b733cb38bec97fa95a32e73"
+    }
+  ]
+}
