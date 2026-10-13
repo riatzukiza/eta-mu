@@ -2818,7 +2818,7 @@ exports.verifyReviewInvocation=()=>{throw new Error("must not reach invocation")
 test("canonical staged context: sandbox supplies and preserves the real compiled fixture for its full test gate", () => {
   const sandbox = YAML.parse(fs.readFileSync(path.join(root, ".github/workflows/sandbox-bundle.yml"), "utf8"));
   const validate = sandbox.jobs.bundle.steps.find(step => step.name === "Install, validate, test, and build");
-  const compile = 'node .github/scripts/compile-canonical-context-fixture.mjs "$OUT/runtime/canonical-context"';
+  const compile = 'pnpm --dir packages/eta-mu exec nbb ../../.github/scripts/eta_mu/extern/canonical_context_fixture.cljs "$OUT/runtime/canonical-context"';
   const bind = 'export ETA_MU_CANONICAL_CONTEXT_MODULE="$OUT/runtime/canonical-context/review-invocation.cjs"';
   assert.ok(validate.run.includes(compile));
   assert.ok(validate.run.includes(bind));
@@ -2827,3 +2827,35 @@ test("canonical staged context: sandbox supplies and preserves the real compiled
   const collect = sandbox.jobs.bundle.steps.find(step => step.name === "Collect generated outputs and portable toolchains");
   assert.match(collect.run, /entrypoint: "ETA_MU_CANONICAL_CONTEXT_MODULE=.* pnpm test"/);
 });
+
+for (const forged of [false, true]) {
+  test(`native event context: ${forged ? "replaced valid UTF8 refuses before child" : "actual native bytes reach child"}`, (t) => {
+    const checked = freshReviewInputCheck(fullInputFixture(t, { unicode: true }));
+    assert.equal(checked.result.status, 0, checked.result.stderr);
+    const staged = fs.readFileSync(path.join(checked.evidence, "pr-context.md"));
+    const bytes = forged ? Buffer.from(staged.toString("utf8").replace("input fixture", "evilx fixture")) : staged;
+    if (forged) {
+      assert.equal(bytes.length, staged.length);
+      assert.notDeepEqual(bytes, staged);
+    }
+    const fixture = canonicalContextFixture(checked, bytes);
+    const step = workflow.jobs.review.steps.find(candidate => candidate.name === "Verify staged context against native event");
+    // Before repair no origin check existed. Exercise the actual canonical
+    // supervisor rather than relabel an absent step as a production refusal.
+    const origin = step ? runScript(step.run, checked.consumer, checked.env) : { status: 0 };
+    const probe = origin.status === 0 ? canonicalSupervisor(fixture) : null;
+    console.log(JSON.stringify({ scenario: "native event origin", forged, originStepPresent: Boolean(step),
+      originStatus: origin.status, supervisorStatus: probe?.result.status ?? null,
+      childEntered: fs.existsSync(path.join(checked.evidence, "synthetic-child-entered")) }));
+    if (forged) {
+      assert.notEqual(origin.status, 0);
+      assert.equal(probe, null);
+      assert.match(origin.stdout + origin.stderr, /staged PR context differs from native event/);
+      assert.equal(fs.existsSync(path.join(checked.evidence, "synthetic-child-entered")), false);
+    } else {
+      assert.equal(origin.status, 0, origin.stderr);
+      assert.equal(probe.result.status, 0, probe.result.stderr);
+      assert.equal(fs.existsSync(probe.marker), true);
+    }
+  });
+}

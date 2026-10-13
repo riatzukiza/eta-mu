@@ -1,0 +1,22 @@
+{
+  "tier": "observed-command-output-transcription",
+  "finding": "4264673832",
+  "sourceHead": "ba7906b5dee6f4ece0ffc4ae498a7f05364a4b1e",
+  "tests": 2,
+  "pass": 1,
+  "fail": 1,
+  "exit": 1,
+  "cause": "Actual same-length replaced UTF8 context is accepted by the real canonical supervisor and child starts; no native-event comparison exists yet. Positive native-shaped context also starts. Synthetic child is not provider approval.",
+  "logs": [
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/caller-nbb-final-20261013/native-origin-red-final.stdout.log",
+      "bytes": 1635,
+      "sha256": "823298f135c91f17c7806e63010aae7e110f2ff655221b200239e240cf12dada"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/rheos-event-epic-20261011/muse-context-custody-implementation-20261012/caller-nbb-final-20261013/native-origin-red-final.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}
