@@ -1,0 +1,31 @@
+{
+  "tier": "Actual offline synthetic-client execution and direct byte checks; no native inference",
+  "red": {
+    "tests": 3,
+    "assertions": 16,
+    "failures": 5,
+    "errors": 0
+  },
+  "green": {
+    "tests": 3,
+    "assertions": 20,
+    "failures": 0,
+    "errors": 0
+  },
+  "assertionDifference": "Four retained-report fields are inspected only after a report exists",
+  "versionTimeoutSeconds": 10,
+  "timeoutExit": 124,
+  "failureReport": "Unique x-created name preserves original invocation/report files",
+  "originalDriverSHA256": "e6536fafe28d29d51e91a87572b4db2d0fd0af0aa460ae5e18643f28715ea9a1",
+  "currentDriverSHA256": "ed64d23b614a5aad076a396622472f7309564a26e5c05c2d31d0d0a3bd2d10a5",
+  "originalDriverArchivedVerbatim": true,
+  "sevenOriginalNativeArtifactsUnchanged": true,
+  "receiptReflectionEventPrefixesPreserved": true,
+  "terminalUIFixtureUnchanged": true,
+  "currentWatchLimitReadback": 1048576,
+  "kondoErrors": 0,
+  "kondoWarnings": 0,
+  "pythonAST": "PASS no execution",
+  "diffHygiene": "PASS",
+  "scopeLimits": "No full native gate, provider inference, byte-complete CodeRabbit consumption certificate, hosted Muse consumer, deployment or B1/B2/B3 completion"
+}

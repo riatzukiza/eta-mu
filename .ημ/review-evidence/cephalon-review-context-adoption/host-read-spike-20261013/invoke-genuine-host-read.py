@@ -25,8 +25,28 @@ env = {
 }
 client = q / "client/package/bin/opencode"
 model = json.loads((q / "probe-opencode-config.json").read_text())["model"]
-version = subprocess.run([str(client), "--version"], env=env, check=True,
-                         capture_output=True, text=True).stdout.strip()
+version_started = datetime.datetime.now(datetime.timezone.utc).isoformat()
+version_clock = time.monotonic()
+try:
+    version = subprocess.run([str(client), "--version"], env=env, check=True,
+                             capture_output=True, text=True, timeout=10).stdout.strip()
+except subprocess.TimeoutExpired:
+    failure = {
+        "stage": "version", "clientPath": str(client),
+        "clientSha256": hashlib.sha256(client.read_bytes()).hexdigest(),
+        "startedAt": version_started,
+        "finishedAt": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+        "elapsedSeconds": time.monotonic() - version_clock,
+        "timeoutSeconds": 10, "exitCode": 124, "timedOut": True,
+        "diagnosticRunStarted": False, "suppliedProviderCredentials": False,
+        "limits": "Version probe failed before HOST diagnostic or model invocation."
+    }
+    stamp = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
+    failure_path = q / f"genuine-host-read-version-failure-{stamp}-{os.getpid()}.json"
+    with failure_path.open("x") as failure_file:
+        failure_file.write(json.dumps(failure, indent=2) + "\n")
+    print(json.dumps({"exitCode": 124, "timedOut": True, "reportPath": str(failure_path)}))
+    raise SystemExit(124)
 assert version == "1.18.31", version
 fixture_paths = sorted((q / "probe-project/fixture").glob("*"))
 before = {str(p): hashlib.sha256(p.read_bytes()).hexdigest() for p in fixture_paths}
