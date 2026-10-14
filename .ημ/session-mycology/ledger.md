@@ -1035,3 +1035,12 @@
   spore: none
   receipt-refs: cephalon-final-page-frontmatter-claim-source-anchor-correction-20261014
   note: Correction to receipt309: its original-frontmatter byte-identity wording lacked the temporal qualification. That comparison passed immediately after the two manual Incoming prose edits, before the native comment operation; it does not describe the whole committed dca→e6 follow-up. The later owning CLI correctly updated its correlation write-id. Preserve both IDs and all native event bytes, and scope the verification to unchanged frontmatter excluding that native metadata line. Receipt309 remains immutable; this new receipt supplies the correction. The active Testing card's settled planning body retains old source locations as history; appended native current verification gives560/654 and stable function expressions, preserving the owning post-Breakdown rule. No scope, point, guard, model, credential or production change. Fresh new-head full qualification and authorized MERGE remain pending; goal ACTIVE/heartbeat human PAUSED/0of3. No paid use, live runtime/deployment, agent/chat or spore change.
+
+- ts: 2026-10-14T06:08:07.331Z
+  task: Same one-point B3 prompt source scope
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-final-page-primary-stable-anchor-correction-20261014
+  note: The prior native comment preserves the correction history. The primary Scope now also names the actual stable call expressions, satisfying the review's requested inspectability directly. This is a non-semantic documentation correction within accepted Scope, not a lifecycle/frontmatter/comment-state write, new scope, local board implementation or new behavior. Human manual Markdown editing support governs this authoring input. No historical comment/event or receipt is rewritten; receipt310's verification correction remains intact. No new functional tests for this prose-only edit. Fresh full current-head native qualification/MERGE remain required; goal ACTIVE/heartbeat human PAUSED/0of3. No paid/model/credential/runtime/deployment/agent/chat/spore change.

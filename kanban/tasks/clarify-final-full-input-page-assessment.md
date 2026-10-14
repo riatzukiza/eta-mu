@@ -46,7 +46,9 @@ instruction in .github/scripts/run-opencode-review-recovery.mjs
 and regenerate its exact embedded copy in
 .github/workflows/opencode-code-review.yml with existing 120-column wrapping.
 The existing common strictInvocationPrompt wrapper is applied to the initial
-prompt at runner line 551 and again to correctivePrompt at line 645. The new
+prompt through strictInvocationPrompt(basePrompt) and to the admitted corrective
+prompt through strictInvocationPrompt(prompt) in runReviewRecovery. These are
+currently runner lines 560 and 654; the function expressions are stable anchors. The new
 instruction must reach both actual invocation prompts through that wrapper;
 verify the corrective attempt retains it without changing either call path.
 The third changed file is .github/scripts/opencode-code-review-workflow.test.mjs:
