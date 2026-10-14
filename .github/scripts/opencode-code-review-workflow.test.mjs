@@ -2725,6 +2725,8 @@ test("canonical staged context: initial and corrective prompts require final-pag
   const checked = freshReviewInputCheck(fullInputFixture(t, { unicode: true }));
   assert.equal(checked.result.status, 0, checked.result.stderr);
   const fixture = canonicalContextFixture(checked);
+  assert.ok(fixture.expectedContext.pages.length > 1,
+    "the canonical input must span multiple pages");
   const finalPage = fixture.expectedContext.pages.at(-1);
   assert.ok(finalPage.end > finalPage.start && finalPage.end - finalPage.start < 8192,
     "the canonical input must include a shorter final page");
