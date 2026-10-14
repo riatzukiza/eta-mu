@@ -2721,15 +2721,20 @@ for (const [name, mutate] of [
 }
 
 
-test("canonical staged context: initial and corrective prompts require final-page assessment before evidence", async (t) => {
-  const checked = freshReviewInputCheck(fullInputFixture(t, { large: true, unicode: true }));
+for (const [inputKind, options] of [["multi-page", { large: true, unicode: true }], ["empty", { empty: true }]]) {
+test(`canonical staged context: initial and corrective prompts require final-page assessment before evidence (${inputKind})`, async (t) => {
+  const checked = freshReviewInputCheck(fullInputFixture(t, options));
   assert.equal(checked.result.status, 0, checked.result.stderr);
   const fixture = canonicalContextFixture(checked);
-  assert.ok(fixture.expectedContext.pages.length > 1,
-    "the canonical input must span multiple pages");
-  const finalPage = fixture.expectedContext.pages.at(-1);
-  assert.ok(finalPage.end > finalPage.start && finalPage.end - finalPage.start < 8192,
-    "the canonical input must include a shorter final page");
+  if (inputKind === "empty") {
+    assert.equal(fixture.expectedContext.pages.length, 0);
+  } else {
+    assert.ok(fixture.expectedContext.pages.length > 1,
+      "the canonical input must span multiple pages");
+    const finalPage = fixture.expectedContext.pages.at(-1);
+    assert.ok(finalPage.end > finalPage.start && finalPage.end - finalPage.start < 8192,
+      "the canonical input must include a shorter final page");
+  }
   const calls = [];
   const result = await runReviewRecovery({
     evidenceDirectory: checked.evidence,
@@ -2760,12 +2765,15 @@ test("canonical staged context: initial and corrective prompts require final-pag
   for (const { attempt, prompt } of calls) {
     const checkpoint = prompt.match(/Full-input assessment checkpoint[^]*?Supporting-file HOST read contract/);
     assert.ok(checkpoint, `attempt ${attempt} must carry the final-page checkpoint`);
+    assert.match(checkpoint[0], /zero full-input chunks[^]*skip page reads and assessments/i);
+    assert.match(checkpoint[0], /retain staged-context reading and every evidence-stage requirement[^]*Otherwise:/);
     assert.match(checkpoint[0], /final[^]*review_assess_diff_chunk[^]*actual id[^]*shorter final page/);
     assert.match(checkpoint[0], /coverage\.assessed must equal[^]*coverage\.chunks/);
     assert.match(checkpoint[0], /coverage\.missing must be empty before review_record_evidence/);
     assert.match(checkpoint[0], /Delivered\/read coverage alone does not prove assessment/);
   }
 });
+}
 
 test("canonical staged context: matching qualified Muse pin supplies both plugin and verifier", () => {
   const pin = "a9a62f0d509056406f3dd7d8c86a13551be168cd";
