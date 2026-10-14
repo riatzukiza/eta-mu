@@ -936,3 +936,12 @@
   spore: none
   receipt-refs: cephalon-final-page-plan16-review-publication-clarification-20261014
   note: Native Codex identified valid P2: bare publication in non-goals conflicted with actual trusted review publication in AC3. Clarified only product/social publication is excluded and trusted review publication remains required. All source/consumer proof, one-point scope, identities, cap and gates stay unchanged. Current canonical pack recognized actual CodeRabbit native quota without approval or round credit; no paid usage or duplicate pending request. Changed head requires fresh current approvals/checks and actual settlement. B1/B2/liveB3 remain unproven; goal ACTIVE and heartbeat human PAUSED; no source implementation or live runtime/deployment/spore change.
+
+- ts: 2026-10-14T02:04:06.076Z
+  task: One added source point in the existing finite B3 review epic
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-final-page-plan16-epic-recovery-corrections-20261014
+  note: Codex correctly required the mandatory new point in the existing hierarchy/total. Native epic/parent links and seven provisional points now reflect the approved delta:carry2+HOST1+caller2+prompt1+consumer1. Updated Incoming epic scope/outcome/AC/current total and dependency prose while retaining original native comments/events. Earlier standalone intent and six-point receipts remain dated history, superseded by this linked plan. Corrective-prompt concern improves the specification: both actual invocation prompts must retain the instruction through their existing common wrapper; actual code already reapplies it, so no absent retry wrapper defect or extra recovery rule is asserted. Production plan stays one prompt insertion and exact embedded copy; existing fixture verification covers actual initial/corrective prompt arguments. All three relevant cards remain Incoming; no readiness/implementation/source merge/approval or behavioral proof. Prior reviews are stale after this concrete correction; fresh complete six-input review required. Goal ACTIVE/heartbeat human PAUSED; no model/auth/paid/runtime/deployment/spore change.
