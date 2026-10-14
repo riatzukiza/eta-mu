@@ -1,13 +1,13 @@
 ---
 uuid: "c84f0b33-7527-443a-a9ff-5ee2e2dfed48"
 title: "Clarify final full-input page assessment before review evidence"
-status: "testing"
+status: "done"
 type: "task"
 priority: "P1"
 points: "1"
 labels: "cephalon, b3, review, prompt"
 dependency: ["b9c591fb-95a8-4e4e-b2a5-39eb988cb996"]
-write-id: "1791961158936-0.zhor1elppvj5v1ymra5"
+write-id: "1791965629393-0.152v2s7h52r1qrk81l2"
 epic: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 parent: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 ---
@@ -142,5 +142,7 @@ Current source-anchor correction for native Codex root 4267304041: the settled p
 Acceptance-criterion correction for native Codex review5513783381/root4267390610: final-page ID and returned assessment-response coverage duties apply when coverage.chunks > 0. For canonical zero-page input, skip page reads/assessments because no final ID or assessment response exists, while retaining complete staged-context reading and every evidence-stage/submission/publication duty. This aligns AC1 with the already verified dca production behavior and parameterized canonical empty regression; no new scope, attempt, guard, metadata policy or runtime behavior. The original accepted wording and prior native verification remain append-only history.
 
 Native CodeRabbit review5514049038/body item cr-comment:v1:021f347da872b27e60ea9c00 verification: focused actual runReviewRecovery/compiled Muse tests now cover final, earlier and multiple missing assessments, with complete staged-context reads and real multi-page/short-final geometry. Qualified Musea9 law input-before-first-stage? requires every assessment before stage1. The final-only transport projection is refused by canonical stage-chronology, so it supplies no retry authority or accepted review; earlier/multiple omissions also receive only one invocation. Existing healthy missing-submit recovery remains separately covered. Initial baseline controls RED3/3, actual negative GREEN3/3 and full246/246 pass with0fail/skip/warning lines. No runner/workflow/Muse guard or two-attempt cap changed. An independent native assessment of the requested positive retry is still required before any rejection settlement; this comment supplies no reviewer agreement, approval or round. Same one-point scope, Testing and all historical provenance retained.
+
+Source actually qualified and MERGED: personal ETA PR16 MERGEe4fb01ff056f9ac823b2b9659e6bc25ac7fea1f2 at2026-10-14T08:10:56Z, parents exactbasebd3b048e0bf92a4ef8062f3905694a3cbe930e4d and reviewedhead4c633d49c347267283f5b59f8bf9b71f20cf5c62, tree42b2c6a285d06fcf2164620b47ddcc2ed2b25cf1 equals reviewed tree. Canonical gate/apply PASS:10checks/all18threads/body items settled, current CodeRabbit/Codex explicit issue verdicts plus formal MiMo APPROVED5514780360, one unanimous completed code cohort. Actual full246tests/7executed gates pass; MiMo36/36pages assessed before stage1, all114context linesEOF,5ordered stages, one actual accepted APPROVE/no comments. Native body settlement6163869874 documents the contract-correct canonical coverage fix with actual newer independent judgments, without a fabricated positive retry or rejection-agreement marker. Existing runner/workflow guards unchanged. This completes only the approved one-point source story. ParentPR15/main propagation and consumer ad41fc8a remain independently pending; epic and behavioralB1/B2/B3 remain unfinished, heartbeat humanPAUSED. Preserve all historical prefixes/native metadata and exact proof hashes.
 
 ---

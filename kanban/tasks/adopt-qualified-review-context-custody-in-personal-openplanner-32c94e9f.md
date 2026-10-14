@@ -9,7 +9,7 @@ labels: "cephalon, b3, review, context-custody"
 epic: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 dependency: ["b9c591fb-95a8-4e4e-b2a5-39eb988cb996","c84f0b33-7527-443a-a9ff-5ee2e2dfed48"]
 category: "tasks"
-write-id: "1791957043277-0.j2v09tpppr4b6abttq"
+write-id: "1791965789987-0.wyepq0cf94e4c4odwfk"
 created_at: "2026-10-12T22:46:27.730Z"
 parent: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 ---
@@ -22,6 +22,8 @@ The human approved enforcement and joint delivery of the finite B3 review transp
 
 Existing personal OpenPlanner PR3 consumes the actually qualified shared caller/Muse pair and merges through its own current-head gate, supplying the final joint completion signal.
 
+The concrete source pair is qualified ETA PR16 MERGE `e4fb01ff056f9ac823b2b9659e6bc25ac7fea1f2` (containing caller custody and final-page clarification) and qualified Muse MERGE `a9a62f0d509056406f3dd7d8c86a13551be168cd`. The prompt predecessor is now native Done. This plan still requires independent parent qualification before lawful consumer Ready; the consumer remains Incoming and its workflow pins are unchanged.
+
 ## Scope
 
 Depends on BOTH caller/host story UUID b9c591fb-95a8-4e4e-b2a5-39eb988cb996 and final-page clarification UUID c84f0b33-7527-443a-a9ff-5ee2e2dfed48 actually Done after their independently qualified source MERGEs. Caller in turn requires source-carry 52a0f6cc-e43b-4ed5-a628-e54dd9d9fdc4 and HOST a880c727-229b-4f3d-9158-718ec164d16c independently Done, with the genuine HOST trace and canonical compatibility decision. Update only the existing OpenPlanner .github/workflows/eta-mu-review.yml reusable-workflow selector and matching pins for the qualified shared workflow and matching Muse source. Preserve current free OpenCode route, actual host version, permissions, complete input custody and all own required checks. No new consumer, identity override or organization propagation. Implementation belongs to personal OpenPlanner PR3; this same-board card coordinates its independent lifecycle.
@@ -32,7 +34,7 @@ No second parser/verifier, broad upstream synchronization, fixed free-model slug
 
 ## Acceptance criteria
 
-0. Select `riatzukiza/eta-mu/.github/workflows/opencode-code-review.yml@<exact-qualified-post-clarification-workflow-merge>` as the actual reusable-workflow `uses:` owner/repository/path/ref. Verify native GitHub resolves that exact committed workflow and that Actions permits this public personal workflow call with existing permissions/secrets. Do not rely on fork-network object presence at the old open-hax selector. If unavailable, keep adoption blocked; no organization propagation or settings override. The matching Muse pin remains its actual qualified personal merge.
+0. Select `riatzukiza/eta-mu/.github/workflows/opencode-code-review.yml@e4fb01ff056f9ac823b2b9659e6bc25ac7fea1f2` as the actual reusable-workflow `uses:` owner/repository/path/ref. Verify native GitHub resolves that exact committed workflow and that Actions permits this public personal workflow call with existing permissions/secrets. Do not rely on fork-network object presence at the old open-hax selector. If unavailable, keep adoption blocked; no organization propagation or settings override. The matching Muse pin remains its actual qualified personal merge.
 
 1. Existing consumer pins the actual independently qualified post-clarification workflow MERGE containing both qualified caller context custody and this new final-page instruction, plus matching qualified Muse MERGE. A pre-clarification caller-only workflow pin is insufficient. Selected revisions/artifacts are inspectable and source reviews do not transfer.
 2. Consumer independently passes its required checks, complete current-input assessment, trusted exact-head review/settlement/convergence and canonical authorized MERGE; retain immutable consumer head/base, checks, review and native merge readback.
@@ -106,5 +108,7 @@ Native Codex root4266143957 corrected: primary Scope and AC3 explicitly require 
 Native Codex root4266325325 current pin criterion corrected: primary AC0/AC1 now selects the actual independently qualified post-clarification workflow MERGE that contains both prior qualified caller custody and the new final-page instruction, with matching qualified Muse. Old caller-only3ad proposals in retained history are superseded. Consumer stays Incoming/one point/two pins and requires both predecessor source stories Done plus independent own checks/full-source review/MERGE; no old source approval or pin is transferred.
 
 Readability correction for native CodeRabbit root 4267204981: the Incoming card prose now separates review 5496721636 from the preceding word and genuine 1.18.31 from the preceding adjective. In the earlier native correction comment, caller-only3ad should be read as caller-only 3ad. That historical comment is preserved; this appended correction supplies the readable reference without rewriting append-only comment/event history. The meaning is unchanged: the earlier caller-only 3ad proposal is superseded by the actual independently qualified post-clarification workflow MERGE, with matching qualified Muse. This consumer remains Incoming, one point, two pin changes, with independent source/consumer qualification and all complete-input gates. No relationship, estimate, lifecycle, runtime or review-policy change.
+
+Actual post-clarification predecessor now independently Done: promptc84f0b33-7527-443a-a9ff-5ee2e2dfed48 closed through native Testing→Review→Document→Done after qualified personal ETA PR16 MERGEe4fb01ff056f9ac823b2b9659e6bc25ac7fea1f2. Reviewed4c/basebd, merge parents/tree verified,10checks/all18findings settled/CodeRabbit+Codex+MiMo current approvals/one unanimous code cohort; actual36pages/all114context linesEOF/5ordered stages/accepted published APPROVE. Callerb9 independently Done at3ad remains its predecessor. The existing one-point consumer now selects riatzukiza/eta-mu/.github/workflows/opencode-code-review.yml@e4fb01ff056f9ac823b2b9659e6bc25ac7fea1f2 plus matching Musea9a62f0d509056406f3dd7d8c86a13551be168cd after this parent planning/source propagation independently qualifies and lawful consumer Ready/Todo/IP. Preserve existing actual1.18.31 host/Node22.20/free route/120min/custom gates/permissions/complete150inputs/original56carry. Source code approval does not qualify this consumer plan or its implementation. Consumer remainsIncoming and epic remainsIncoming; no pins/readiness/runtime/deployment/behavioral proof changed. Earlier caller-only3ad proposals remain dated history.
 
 ---
