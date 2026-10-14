@@ -7,7 +7,7 @@ priority: "P1"
 points: "1"
 labels: "cephalon, b3, review, prompt"
 dependency: ["b9c591fb-95a8-4e4e-b2a5-39eb988cb996"]
-write-id: "1791943398847-0.tbqcl4xeioo2pn9h4q7"
+write-id: "1791944496316-0.a27oorf81w52f8v8vk"
 epic: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 parent: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 ---
@@ -49,8 +49,10 @@ The existing common strictInvocationPrompt wrapper is applied to the initial
 prompt at runner line 551 and again to correctivePrompt at line 645. The new
 instruction must reach both actual invocation prompts through that wrapper;
 verify the corrective attempt retains it without changing either call path.
-Extend the existing workflow/recovery fixture only as needed to inspect the
-actual initial and admitted corrective invocation prompt arguments.
+The third changed file is .github/scripts/opencode-code-review-workflow.test.mjs:
+extend the existing recovery coverage to inspect both actual strict-mode
+initial and admitted corrective invocation prompt arguments. The one-point
+estimate includes this required narrow regression update.
 Keep every tool, law, parser, context-custody rule, stage order, full-input
 requirement, recovery predicate and two-attempt cap unchanged. Preserve native
 failed attempts and all receipt/event/reflection prefixes. Deliver through an
@@ -88,7 +90,8 @@ remains required by acceptance criterion 3. No broad prompt rewrite.
 ## Verification
 
 Retain native attempt-one and attempt-two refusal evidence as RED. After
-planning qualification and native Ready/Todo/IP, apply only the two-file edit,
+planning qualification and native Ready/Todo/IP, apply the three-file change (runner instruction, embedded copy and required
+existing regression update),
 run existing Node workflow/recovery tests (including actual initial/corrective
 prompt retention) and exact embedded equality, then
 inspect actual native review coverage/context/stages/submission/publication at
@@ -99,7 +102,8 @@ the changed source head. Retain source MERGE/readback and native lifecycle.
 Prompt clarification may not change model behavior. If actual review still
 omits assessment, preserve the failure and keep delivery unqualified; never
 repair the trace, waive the guard or repeatedly rerun an unchanged failed head.
-One point is provisional for this bounded instruction and embedded copy.
+One point is provisional for this bounded instruction, embedded copy and
+required existing recovery regression update.
 
 Software/process documentation: GPL-3.0-or-later.
 
@@ -110,5 +114,7 @@ Planning authoring correction for native CodeRabbit review5512063480/root4265878
 Planning correction for native Codex review5512071815/root4265886252: the Non-goals section now excludes only product/social publication; trusted review publication remains explicitly required by acceptance criterion3. This removes the ambiguous broad publication word without changing scope, point estimate, review gates, proof requirements or the actual unchanged runner/workflow. Source is still Incoming and implementation remains unapplied.
 
 Native Codex roots4265953854/4265953857 planning correction: this story now joins its B3 epic/parent and the epic explicitly totals seven provisional points over five required deliveries. Scope and AC require the new instruction in both actual initial and admitted corrective prompts and verification through existing recovery fixtures. Source inspection confirms runReviewRecovery already applies the common strictInvocationPrompt at initial line551 and again after correctivePrompt at line645. The proposed insertion in that common wrapper therefore reaches both; no missing retry wrapper is asserted and no duplicate constructor/recovery-rule edit is planned. Actual runner/workflow remain unchanged, source Incoming, one-point scope and existing gates/caps preserved.
+
+Native Codex root4266060763 planning correction: the same approved one-point source story now explicitly lists three implementation files: prompt runner, matching embedded workflow and existing workflow/recovery test. Verification and estimate include the narrow required regression update, inspecting both actual strict-mode initial and admitted corrective invocation prompts. Two production edits plus their existing fixture update do not add a behavior, guard, recovery path or point. Implementation is still unapplied and Incoming.
 
 ---

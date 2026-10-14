@@ -945,3 +945,12 @@
   spore: none
   receipt-refs: cephalon-final-page-plan16-epic-recovery-corrections-20261014
   note: Codex correctly required the mandatory new point in the existing hierarchy/total. Native epic/parent links and seven provisional points now reflect the approved delta:carry2+HOST1+caller2+prompt1+consumer1. Updated Incoming epic scope/outcome/AC/current total and dependency prose while retaining original native comments/events. Earlier standalone intent and six-point receipts remain dated history, superseded by this linked plan. Corrective-prompt concern improves the specification: both actual invocation prompts must retain the instruction through their existing common wrapper; actual code already reapplies it, so no absent retry wrapper defect or extra recovery rule is asserted. Production plan stays one prompt insertion and exact embedded copy; existing fixture verification covers actual initial/corrective prompt arguments. All three relevant cards remain Incoming; no readiness/implementation/source merge/approval or behavioral proof. Prior reviews are stale after this concrete correction; fresh complete six-input review required. Goal ACTIVE/heartbeat human PAUSED; no model/auth/paid/runtime/deployment/spore change.
+
+- ts: 2026-10-14T02:23:32.228Z
+  task: Approved one-point source clarification in seven-point finite B3 prerequisite epic
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-final-page-plan16-three-file-consumer-corrections-20261014
+  note: Codex identified two genuine specification inconsistencies: the required existing test update was absent from the two-file Verification count, and the consumer primary Context retained a current six-point statement. Corrected both within the already approved point; actual strict-mode initial/corrective prompt verification uses the existing test surface, no new guard or behavior. Actual code files remain unchanged and all cards Incoming. Owned stale CI590b cancellation stopped the obsolete review pipeline after an accepted request initially remained in_progress; force-cancel documentation was checked but fresh terminal readback meant no force action was sent. Current-head queued evidence is not approval or successful execution. Fresh changed-head reviews/required gates remain necessary; old quota/approval is not transferred. Goal ACTIVE/heartbeat human PAUSED; no credentials/model/paid use, live maker/runtime/deployment or spore change.
