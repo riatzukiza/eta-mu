@@ -7,6 +7,7 @@ priority: "P1"
 points: "1"
 labels: "cephalon, b3, review, prompt"
 dependency: ["b9c591fb-95a8-4e4e-b2a5-39eb988cb996"]
+write-id: "1791941969276-0.gwzp2lwryor1y9d2ypc"
 ---
 
 ## Context
@@ -26,13 +27,18 @@ scope; it does not reestimate the earlier six-point epic or complete B3.
 
 ## Outcome
 
-The existing strict caller prompt explicitly requires assessment of the final
-page, even when shorter, and inspection of returned assessment coverage before
-the first evidence stage. The canonical guard continues refusing omissions.
+The existing recovery and workflow guards refuse omissions, but the strict
+caller prompt does not yet specify assessment of the final page or inspection
+of returned coverage before the first evidence stage. Add that clarification
+without changing the canonical guard.
 
 ## Scope
 
-Add only that instruction in .github/scripts/run-opencode-review-recovery.mjs
+Add the strict caller prompt instruction to call
+review_assess_diff_chunk with the final page's actual ID, including shorter
+final pages, and to require coverage.assessed == coverage.chunks and
+coverage.missing empty before review_record_evidence. Add only that
+instruction in .github/scripts/run-opencode-review-recovery.mjs
 and regenerate its exact embedded copy in
 .github/workflows/opencode-code-review.yml with existing 120-column wrapping.
 Keep every tool, law, parser, context-custody rule, stage order, full-input
@@ -81,3 +87,9 @@ repair the trace, waive the guard or repeatedly rerun an unchanged failed head.
 One point is provisional for this bounded instruction and embedded copy.
 
 Software/process documentation: GPL-3.0-or-later.
+
+
+---
+Planning authoring correction for native CodeRabbit review5512063480/root4265878394: Outcome and Scope now explicitly distinguish existing guard refusals from the planned new strict-prompt instructions. The Incoming card names the actual final-page assessment call and returned assessed/chunks/missing check before stage one. Existing runner and embedded workflow remain byte-identical to parent bd3b048; no implementation or Ready is claimed. This supported initial-card body correction precedes Breakdown. One-point estimate, exact dependencies, all guards and independent source/consumer qualification remain unchanged.
+
+---
