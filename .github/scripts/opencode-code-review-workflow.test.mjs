@@ -2775,6 +2775,67 @@ for (const [inputKind, options] of [["multi-page", { large: true, unicode: true 
   });
 }
 
+// These inert HOST frames exercise the existing narrow retry boundary through
+// the compiled Muse owner; they supply no provider judgment or review credit.
+for (const omission of ["final", "earlier", "multiple"]) {
+  test(`canonical staged context: final assessment recovery is bounded (${omission})`, async (t) => {
+    const checked = freshReviewInputCheck(fullInputFixture(t, { large: true, unicode: true }));
+    assert.equal(checked.result.status, 0, checked.result.stderr);
+    const fixture = canonicalContextFixture(checked);
+    const pages = fixture.expectedContext.pages;
+    assert.ok(pages.length > 1);
+    const finalPage = pages.at(-1);
+    assert.ok(finalPage.end > finalPage.start && finalPage.end - finalPage.start < 8192);
+    const missing = omission === "final" ? [finalPage.id]
+      : omission === "earlier" ? [pages[0].id] : [pages[0].id, finalPage.id];
+    const healthy = canonicalContextResponse(fixture);
+    const calls = [];
+    const run = runReviewRecovery({
+      evidenceDirectory: checked.evidence,
+      basePrompt: "Synthetic final-assessment recovery control; no review credit.",
+      submissionFile: fixture.submissionFile,
+      reviewTools: fixture.tools,
+      verifyReviewInvocation: fixture.verifier.verifyReviewInvocation,
+      expectedContext: fixture.expectedContext,
+      verifierSha256: transportSha256(fs.readFileSync(fixture.verifierFile)),
+      invokeAttempt: async ({ attempt, responseFile, stderrFile }) => {
+        calls.push(attempt);
+        if (attempt === 1) {
+          // Baseline control mirrors the earlier canonical missing-submit
+          // fixture: every page assessed, no final-coverage refusal encoded.
+          fs.writeFileSync(responseFile, canonicalContextResponse(fixture, { omitSubmit: true }).response);
+        } else {
+          fs.writeFileSync(responseFile, healthy.response);
+          fs.writeFileSync(fixture.submissionFile, healthy.submission);
+        }
+        fs.writeFileSync(stderrFile, "");
+        return { exitCode: 0 };
+      },
+    });
+    if (omission === "final") {
+      const result = await run;
+      assert.deepEqual(calls, [1, 2]);
+      assert.equal(result.max_attempts, 2);
+      assert.equal(result.recovery_reason, "final_input_coverage");
+      assert.equal(result.attempts[0].canonical_verdict.code, "stage-order");
+      assert.equal(result.attempts[0].final_input_coverage.missing_final_page, finalPage.id);
+      assert.equal(result.attempts[0].final_input_coverage.canonical_verdict.code, "healthy-unfinished-review");
+      assert.equal(result.accepted_invocation.attempt, 2);
+      assert.equal(result.accepted_invocation.canonical_verdict.ok, true);
+    } else {
+      await assert.rejects(run, /review invocation verification failed after attempt 1/);
+      assert.deepEqual(calls, [1]);
+      const result = JSON.parse(fs.readFileSync(path.join(checked.evidence, "recovery.json")));
+      assert.equal(result.recovery_reason, null);
+      assert.equal(result.accepted_invocation, null);
+      assert.equal(result.attempts.length, 1);
+      assert.equal(result.attempts[0].canonical_verdict.ok, false);
+      assert.equal(result.attempts[0].final_input_coverage, undefined);
+      assert.equal(fs.existsSync(path.join(checked.evidence, "final-input-coverage-attempt-1.DERIVED.ndjson")), false);
+    }
+  });
+}
+
 test("canonical staged context: matching qualified Muse pin supplies both plugin and verifier", () => {
   const pin = "a9a62f0d509056406f3dd7d8c86a13551be168cd";
   assert.equal(workflow.on.workflow_call.inputs.muse_revision.default, pin);
