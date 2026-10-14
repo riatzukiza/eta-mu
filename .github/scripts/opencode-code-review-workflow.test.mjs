@@ -2721,6 +2721,50 @@ for (const [name, mutate] of [
 }
 
 
+test("canonical staged context: initial and corrective prompts require final-page assessment before evidence", async (t) => {
+  const checked = freshReviewInputCheck(fullInputFixture(t, { unicode: true }));
+  assert.equal(checked.result.status, 0, checked.result.stderr);
+  const fixture = canonicalContextFixture(checked);
+  const finalPage = fixture.expectedContext.pages.at(-1);
+  assert.ok(finalPage.end > finalPage.start && finalPage.end - finalPage.start < 8192,
+    "the canonical input must include a shorter final page");
+  const calls = [];
+  const result = await runReviewRecovery({
+    evidenceDirectory: checked.evidence,
+    basePrompt: "Synthetic strict caller control; no provider or review credit.",
+    submissionFile: fixture.submissionFile,
+    reviewTools: fixture.tools,
+    verifyReviewInvocation: fixture.verifier.verifyReviewInvocation,
+    expectedContext: fixture.expectedContext,
+    verifierSha256: transportSha256(fs.readFileSync(fixture.verifierFile)),
+    invokeAttempt: async ({ attempt, prompt, responseFile, stderrFile }) => {
+      calls.push({ attempt, prompt });
+      const data = canonicalContextResponse(fixture, { omitSubmit: attempt === 1 });
+      fs.writeFileSync(responseFile, data.response);
+      fs.writeFileSync(stderrFile, "");
+      if (attempt === 2) fs.writeFileSync(fixture.submissionFile, data.submission);
+      return { exitCode: 0 };
+    },
+  });
+  assert.deepEqual(calls.map(({ attempt }) => attempt), [1, 2]);
+  assert.equal(result.max_attempts, 2);
+  assert.equal(result.recovery_reason, "missing_review_submit");
+  assert.equal(result.attempts[0].canonical_verdict.reason, "missing-review-submit");
+  assert.equal(result.accepted_invocation.attempt, 2);
+  assert.equal(result.accepted_invocation.canonical_verdict.ok, true);
+  assert.equal(result.accepted_invocation.expected_context_sha256,
+    transportSha256(JSON.stringify(fixture.expectedContext)));
+  assert.match(calls[1].prompt, /corrective attempt 2 of 2/i);
+  for (const { attempt, prompt } of calls) {
+    const checkpoint = prompt.match(/Full-input assessment checkpoint[^]*?Supporting-file HOST read contract/);
+    assert.ok(checkpoint, `attempt ${attempt} must carry the final-page checkpoint`);
+    assert.match(checkpoint[0], /final[^]*review_assess_diff_chunk[^]*actual id[^]*shorter final page/);
+    assert.match(checkpoint[0], /coverage\.assessed must equal[^]*coverage\.chunks/);
+    assert.match(checkpoint[0], /coverage\.missing must be empty before review_record_evidence/);
+    assert.match(checkpoint[0], /Delivered\/read coverage alone does not prove assessment/);
+  }
+});
+
 test("canonical staged context: matching qualified Muse pin supplies both plugin and verifier", () => {
   const pin = "a9a62f0d509056406f3dd7d8c86a13551be168cd";
   assert.equal(workflow.on.workflow_call.inputs.muse_revision.default, pin);

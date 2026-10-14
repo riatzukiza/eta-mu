@@ -981,3 +981,12 @@
   spore: none
   receipt-refs: cephalon-final-page-plan16-snapshot-input-five-deliveries-20261014
   note: Two native P2 documentation inconsistencies fixed. AGENTS now accurately states native board snapshot derives from tracked Markdown cards and does not replay the tracked event ledger. Epistemic roles remain distinct: snapshots diagnostic, cards/events tracked source/provenance as configured. Exact CodeRabbit outcome wording removes wording implying consumer is sixth; SourceContext avoids fifth-order ambiguity. One point/epic7/five story identities, all completion/pin/fixture obligations stay unchanged. New head requires fresh full review/checks; old Codex passing verdict is retained as native issue verdict, not transferred or synthesized APPROVED. All source/consumer/epic remain Incoming. Goal ACTIVE/heartbeat human PAUSED/0of3 behavioral proofs; no model/auth/paid/runtime/deployment/agent/thread/spore change.
+
+- ts: 2026-10-14T04:26:12.814Z
+  task: Finite B3 prerequisite epic7; prompt card c84f0b33-7527-443a-a9ff-5ee2e2dfed48
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-final-page-prompt-qualified-plan-strict-red-20261014
+  note: Human authorized the narrow point. Planning approval is an actual native formal approval, distinct from source implementation/code qualification. MiMo non-blocking wording/provenance observations describe no requested correction or confirmed finding; they remain retained in the full native body. The synthetic local regression grants no model judgment, publication, coverage or review credit. Existing common strict wrapper already covers both invocation paths; only new instruction is missing. Preserve independent parentPR15 and consumer gates. Goal ACTIVE/heartbeat human PAUSED/0of3 behavioral proofs. No credentials, paid models, runtime, deployment, new agent/chat or spore changes.
