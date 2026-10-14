@@ -7,7 +7,7 @@ priority: "P1"
 points: "1"
 labels: "cephalon, b3, review, prompt"
 dependency: ["b9c591fb-95a8-4e4e-b2a5-39eb988cb996"]
-write-id: "1791941969276-0.gwzp2lwryor1y9d2ypc"
+write-id: "1791942273167-0.ts7kgtl6tstdmd9p7zg"
 ---
 
 ## Context
@@ -50,8 +50,9 @@ independently qualified personal source MERGE before consumer adoption.
 
 No automatic assessment, input shortening, gate bypass, retry expansion,
 reviewer identity or policy change, new verifier, fixed model slug, credential,
-paid usage, service/runtime/maker/clock, heartbeat resumption, publication,
-deployment or organization propagation. No broad prompt rewrite.
+paid usage, service/runtime/maker/clock, heartbeat resumption, product/social
+publication, deployment or organization propagation. Trusted review publication
+remains required by acceptance criterion 3. No broad prompt rewrite.
 
 ## Acceptance criteria
 
@@ -91,5 +92,7 @@ Software/process documentation: GPL-3.0-or-later.
 
 ---
 Planning authoring correction for native CodeRabbit review5512063480/root4265878394: Outcome and Scope now explicitly distinguish existing guard refusals from the planned new strict-prompt instructions. The Incoming card names the actual final-page assessment call and returned assessed/chunks/missing check before stage one. Existing runner and embedded workflow remain byte-identical to parent bd3b048; no implementation or Ready is claimed. This supported initial-card body correction precedes Breakdown. One-point estimate, exact dependencies, all guards and independent source/consumer qualification remain unchanged.
+
+Planning correction for native Codex review5512071815/root4265886252: the Non-goals section now excludes only product/social publication; trusted review publication remains explicitly required by acceptance criterion3. This removes the ambiguous broad publication word without changing scope, point estimate, review gates, proof requirements or the actual unchanged runner/workflow. Source is still Incoming and implementation remains unapplied.
 
 ---
