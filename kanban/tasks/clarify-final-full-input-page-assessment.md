@@ -1,13 +1,13 @@
 ---
 uuid: "c84f0b33-7527-443a-a9ff-5ee2e2dfed48"
 title: "Clarify final full-input page assessment before review evidence"
-status: "in_progress"
+status: "testing"
 type: "task"
 priority: "P1"
 points: "1"
 labels: "cephalon, b3, review, prompt"
 dependency: ["b9c591fb-95a8-4e4e-b2a5-39eb988cb996"]
-write-id: "1791951972485-0.lix765ym3upbrzsigkz"
+write-id: "1791952088228-0.z73wkc7bi25n783vuu"
 epic: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 parent: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 ---
@@ -124,5 +124,7 @@ Native Codex root4266143962 addressed by qualified owning Rheos board snapshot r
 Native Codex roots4266325318/4266325325 corrected: tracked empty kanban/.kanban/.gitkeep preserves the native snapshot output parent in a fresh checkout while generated board.json stays ignored. No writer or parser is introduced. AC4 now explicitly requires the consumer workflow pin to name the actual independently qualified post-clarification workflow MERGE, containing both qualified caller and new instruction, plus matching qualified Muse; an older caller-only pin does not satisfy it. One-point production/test scope and all guards remain unchanged.
 
 Planning qualified on exact 9d0aacaa323d8ee042d019440fa07527c9746f39/base bd3b048e0bf92a4ef8062f3905694a3cbe930e4d: native MiMo APPROVED5513002675/run38507936057, all20 immutable pages assessed, context79lines EOF, five ordered stages, seven executed deterministic gates exit0, nine current checks PASS, all13 threads settled; canonical status/gate PASS with one completed available-MiMo planning cohort and authenticated current CodeRabbit/Codex quota exclusions. Actual owning Rheos lawful Incoming→Accepted→Breakdown→Ready→Todo→in_progress completed. New strict-mode regression invokes the actual recovery runner and compiled canonical Muse owner, receives exactly two prompts through admitted missing-submit recovery, and fails at absent final-page checkpoint in initial prompt. RED1test/0pass/1fail; synthetic adapter traces supply no provider/review credit. Production runner/workflow remain unchanged. Approved one-point/three implementation files; all guards/caps, independent parent/consumer qualification and B1/B2/B3 proofs retained.
+
+GREEN after RED6f0c3829: seven-line final-page assessment/checkpoint instruction added only to existing strictInvocationPrompt; actual initial and sole admitted corrective prompt receive it. Runner decoded embedded bytes equal exactly at existing120-column wrapping; Node parse PASS; full workflow test suite242/242PASS/0fail/0skip and zero warning lines. New regression uses the actual strict runner and qualified canonical Muse fixture, verifies typed missing-submit recovery/accepted second invocation/held context/two-attempt cap before inspecting both prompts. Synthetic traces give no native model or review credit. All production bytes outside the prompt insertion and its exact embedded representation remain identical. Native testing phase; fresh full-input code review and all required hosted gates/publication/settlement/qualified source MERGE remain pending. ParentPR15 and consumer qualify independently; B1/B2/B3 still0of3. No credential/model/paid/runtime/agent/chat/spore change.
 
 ---

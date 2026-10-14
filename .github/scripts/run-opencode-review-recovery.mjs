@@ -324,6 +324,13 @@ function strictInvocationPrompt(prompt) {
   return `${prompt.trimEnd()}
 
 
+Full-input assessment checkpoint before the first stage:
+- After reading the final full-input page, explicitly assess that final page with
+  review_assess_diff_chunk using its actual id, including a shorter final page.
+- Check the latest assessment response: coverage.assessed must equal
+  coverage.chunks and coverage.missing must be empty before review_record_evidence.
+  Delivered/read coverage alone does not prove assessment; do not infer completion.
+
 Supporting-file HOST read contract for this restricted reviewer:
 - Use the host read tool's exact filePath to read summary.json and
   deterministic.log under .opencode/review-evidence. Start at offset 1 with
