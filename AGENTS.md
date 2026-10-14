@@ -142,7 +142,7 @@ the owning receipt/evidence before interpreting or replaying native history.
   and comments so native write IDs and events remain auditable. Never invent
   creation metadata or engine events for a previously hand-authored card.
 - **Walk lawful hops.** There are no shortcut edges. To move a card multiple columns forward, step through each lawful transition in order. The direct `in_progress → review` edge exists only when the build-gate passes.
-- **Regenerate snapshots when needed.** The web UI and `kanban/.kanban/board.json` are generated snapshots; the source of truth is the task files plus the ledger in `kanban/.events/ledger.edn`. If a snapshot is stale, regenerate it from the CLI or the web UI.
+- **Regenerate snapshots when needed.** The web UI and `kanban/.kanban/board.json` are generated snapshots; the source of truth is the task files plus the ledger in `kanban/.events/ledger.edn`. If a snapshot is stale, regenerate it from the qualified owning CLI or the web UI. Generated `kanban/.kanban/board.json` is a lossy diagnostic projection and is ignored by Git; a fresh checkout generates it from the tracked Markdown cards. The snapshot command does not replay `kanban/.events/ledger.edn`. Native `rheos board snapshot --out kanban/.kanban/board.json --config openhax.kanban.edn` is the regeneration surface, not a repository-local writer.
 
 ## Code Style
 - **TypeScript** (legacy only): ES modules, camelCase functions, async/await, Zod validation, Fastify server

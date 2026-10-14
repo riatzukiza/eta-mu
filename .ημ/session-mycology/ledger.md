@@ -909,3 +909,156 @@
   spore: none
   receipt-refs: cephalon-consumer-plan15-native-codex-corrections-20261014
   note: Native Codex identified three valid P2 documentation defects. Append-only qualified Rheos corrections distinguish open/non-draft GitHub PR from consumer Rheos Incoming, formal MiMo APPROVED from qualified CodeRabbit/Codex issue verdicts, and attach actual predecessor merge/head/base/tree/check/full-scope/readback closeout to the caller card itself. Historical paragraphs and events remain unchanged. No synthetic formal approval or readiness transfer. Existing one-point two-pin adoption scope and original56 carry/full consumer assessment remain unchanged. Fresh changed-head reviews/checks/settlements/convergence remain required before this planning MERGE and native Ready. The already approved FakeTerminal repair is actually merged in ETA PR12; no repeat repair or watch-capacity run. No live runtime, maker, clock, gateway, PM2, cloud, model/credential/paid use, grant, publication/deployment, agent/thread or spore change. Goal ACTIVE; heartbeat human PAUSED; behavioral B1/B2/live B3 remain unproven.
+
+- ts: 2026-10-14T01:32:28.052Z
+  task: Finite B3 prerequisite; B1/B2/live B3 unfinished
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-final-page-prompt-authorized-planning-20261014
+  note: Human included the new one-point source clarification. Initial hand-authored standalone card is supported input, not invented creation/admission. Qualified owning Rheos added exact source dependency to consumer and recorded the eventual new qualified caller MERGE target; consumer retains one point/two pins and original full scope. Plan stacks on actual PR15 branch because it carries caller Done and consumer planning. Existing runner/workflow unchanged; no planning approval, Ready, source delivery, synthetic review, policy waiver, paid usage, model/credential, live runtime or deployment. Heartbeat remains human PAUSED; goal ACTIVE. Both failed complete-input omissions remain rejected with original bytes; canonical guard is correct. Prompt effect is a hypothesis until native full review succeeds.
+
+- ts: 2026-10-14T01:40:04.167Z
+  task: Approved one-point final-page instruction prerequisite
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-final-page-plan16-outcome-scope-correction-20261014
+  note: Native P2 correctly identified ambiguous present tense in the authored Outcome. Applied the exact suggested Outcome and expanded Scope to the actual final-page call and pre-stage assessed/chunks/missing check. Supported Incoming Markdown authoring correction was recorded by qualified native Rheos comment/event; no historical receipt/event rewrite or claimed implementation. One point and exact dependencies unchanged. Fresh changed-head planning reviews and hosted gates are required; previous current-head verdicts are stale. Goal ACTIVE/heartbeat human PAUSED; no new scope question, credentials, paid usage, model, runtime, deployment or spore.
+
+- ts: 2026-10-14T01:44:33.397Z
+  task: Approved one-point final-page source plan
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-final-page-plan16-review-publication-clarification-20261014
+  note: Native Codex identified valid P2: bare publication in non-goals conflicted with actual trusted review publication in AC3. Clarified only product/social publication is excluded and trusted review publication remains required. All source/consumer proof, one-point scope, identities, cap and gates stay unchanged. Current canonical pack recognized actual CodeRabbit native quota without approval or round credit; no paid usage or duplicate pending request. Changed head requires fresh current approvals/checks and actual settlement. B1/B2/liveB3 remain unproven; goal ACTIVE and heartbeat human PAUSED; no source implementation or live runtime/deployment/spore change.
+
+- ts: 2026-10-14T02:04:06.076Z
+  task: One added source point in the existing finite B3 review epic
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-final-page-plan16-epic-recovery-corrections-20261014
+  note: Codex correctly required the mandatory new point in the existing hierarchy/total. Native epic/parent links and seven provisional points now reflect the approved delta:carry2+HOST1+caller2+prompt1+consumer1. Updated Incoming epic scope/outcome/AC/current total and dependency prose while retaining original native comments/events. Earlier standalone intent and six-point receipts remain dated history, superseded by this linked plan. Corrective-prompt concern improves the specification: both actual invocation prompts must retain the instruction through their existing common wrapper; actual code already reapplies it, so no absent retry wrapper defect or extra recovery rule is asserted. Production plan stays one prompt insertion and exact embedded copy; existing fixture verification covers actual initial/corrective prompt arguments. All three relevant cards remain Incoming; no readiness/implementation/source merge/approval or behavioral proof. Prior reviews are stale after this concrete correction; fresh complete six-input review required. Goal ACTIVE/heartbeat human PAUSED; no model/auth/paid/runtime/deployment/spore change.
+
+- ts: 2026-10-14T02:23:32.228Z
+  task: Approved one-point source clarification in seven-point finite B3 prerequisite epic
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-final-page-plan16-three-file-consumer-corrections-20261014
+  note: Codex identified two genuine specification inconsistencies: the required existing test update was absent from the two-file Verification count, and the consumer primary Context retained a current six-point statement. Corrected both within the already approved point; actual strict-mode initial/corrective prompt verification uses the existing test surface, no new guard or behavior. Actual code files remain unchanged and all cards Incoming. Owned stale CI590b cancellation stopped the obsolete review pipeline after an accepted request initially remained in_progress; force-cancel documentation was checked but fresh terminal readback meant no force action was sent. Current-head queued evidence is not approval or successful execution. Fresh changed-head reviews/required gates remain necessary; old quota/approval is not transferred. Goal ACTIVE/heartbeat human PAUSED; no credentials/model/paid use, live maker/runtime/deployment or spore change.
+
+- ts: 2026-10-14T02:57:26.150Z
+  task: Approved one-point prompt source in finite B3 prerequisite epic
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-final-page-plan16-completion-native-projection-corrections-20261014
+  note: Consumer primary Scope/AC3 and epicAC4 now explicitly require prompt story Done/qualified source MERGE alongside other proper source and consumer deliveries. EpicAC1 distinguishes HOST genuine1.18.31 trace/canonical compatibility decision from the four artifact-producing stories actual MERGEs, applying exact CodeRabbit suggestion. Qualified native Rheos regenerated the stale diagnostic; standing human board discipline keeps generated projection ignored, so the obsolete tracked2026-05-29 snapshot is untracked, not replaced by1.48MB derived state. Native generation source/cards/events remain authority and intact; AGENTS documents native regeneration after checkout. Complete source review includes the old projection deletion and ignore/instruction changes; no parser/validator/writer or omitted input workaround. Actual Codex account quota is preserved without approval/round credit or repeat invitation/credits. One point/three future implementation files and epic7 remain; all cards Incoming and source code unapplied. Fresh changed-head review/checks required. Goal ACTIVE/heartbeat human PAUSED; no model/auth/paid/runtime/deployment/agent/thread/spore change.
+
+- ts: 2026-10-14T03:32:27.149Z
+  task: One-point prompt prerequisite; three eventual code files; epic7
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-final-page-plan16-fresh-directory-post-clarification-pin-20261014
+  note: Two native P2s corrected within the approved point: fresh checkout retains the native output parent via standard empty tracked .gitkeep, and all current pin criteria require the new independently qualified post-clarification workflow MERGE rather than older caller-only3ad. Actual owner CLI was exercised with a fresh fixture output layout; no second board writer or full repository copy. Initial/current source histories remain unchanged; diagnostics remain derived, not authority or approval. One point/three implementation files, epic7 and independent consumer1/two pins remain. Changed head needs fresh complete input review/required checks and settlement; no readiness/source implementation/merge/behavioral proof claimed. Goal ACTIVE/heartbeat human PAUSED; no credentials/model/paid/runtime/deployment/agent/thread/spore change.
+
+- ts: 2026-10-14T03:45:55.149Z
+  task: Approved1point/three implementation files;B3 epic7/five deliveries
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-final-page-plan16-snapshot-input-five-deliveries-20261014
+  note: Two native P2 documentation inconsistencies fixed. AGENTS now accurately states native board snapshot derives from tracked Markdown cards and does not replay the tracked event ledger. Epistemic roles remain distinct: snapshots diagnostic, cards/events tracked source/provenance as configured. Exact CodeRabbit outcome wording removes wording implying consumer is sixth; SourceContext avoids fifth-order ambiguity. One point/epic7/five story identities, all completion/pin/fixture obligations stay unchanged. New head requires fresh full review/checks; old Codex passing verdict is retained as native issue verdict, not transferred or synthesized APPROVED. All source/consumer/epic remain Incoming. Goal ACTIVE/heartbeat human PAUSED/0of3 behavioral proofs; no model/auth/paid/runtime/deployment/agent/thread/spore change.
+
+- ts: 2026-10-14T04:26:12.814Z
+  task: Finite B3 prerequisite epic7; prompt card c84f0b33-7527-443a-a9ff-5ee2e2dfed48
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-final-page-prompt-qualified-plan-strict-red-20261014
+  note: Human authorized the narrow point. Planning approval is an actual native formal approval, distinct from source implementation/code qualification. MiMo non-blocking wording/provenance observations describe no requested correction or confirmed finding; they remain retained in the full native body. The synthetic local regression grants no model judgment, publication, coverage or review credit. Existing common strict wrapper already covers both invocation paths; only new instruction is missing. Preserve independent parentPR15 and consumer gates. Goal ACTIVE/heartbeat human PAUSED/0of3 behavioral proofs. No credentials, paid models, runtime, deployment, new agent/chat or spore changes.
+
+- ts: 2026-10-14T04:28:08.487Z
+  task: Approved one-point final-page source delivery in B3 prerequisite epic7
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-final-page-prompt-strict-green-20261014
+  note: Only the approved prompt cue and matching embedded representation change production: assess the final actual page ID, including short pages, and check returned assessed==chunks/missing-empty before evidence stage one. Required existing regression inspects actual initial and admitted corrective prompts after canonical typed missing-submit recovery, held context and two-attempt bound verification. No law/parser/tool/context/stage/guard/permission/model/credential/retry change. Local synthetic controls do not establish actual provider behavior or native approval. Complete fresh code-stage review/hosted full gates/trusted publication/settlement and authorized MERGE remain pending; parent and consumer require independent qualification. Goal ACTIVE/heartbeat human PAUSED/0of3 behavioral proofs; no runtime/deployment/new agent/chat/spore change.
+
+- ts: 2026-10-14T04:51:45.180Z
+  task: One-point B3 prompt source delivery; three implementation/verification files
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-final-page-prompt-multipage-fixture-correction-20261014
+  note: Completed CodeRabbit full review is not an approval: its native summary carried a real regression coverage request and formal review one stable body item. Corrected exactly within the approved existing test update, with no new point or scope question. Synthetic test geometry proves multiple canonical pages with a shorter final page; this prompt regression does not independently falsify model-selected wrong IDs or establish actual provider behavior. Every changed real input remains subject to native full review. Fresh changed-head required checks and code-cohort qualification remain pending; parent and consumer qualify independently. The first plain stage declaration was preserved and corrected by a fresh unedited native supported marker, without fake request/review credit. Goal ACTIVE/heartbeat human PAUSED/0of3 behavioral proofs. No runtime, deployment, guard/retry/model/credential/paid/agent/chat/spore change.
+
+- ts: 2026-10-14T05:04:33.369Z
+  task: Approved one-point B3 prompt source; three code/verification files
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-final-page-prompt-empty-input-correction-20261014
+  note: This is a valid native code finding within the authorized prompt/test scope, not a new prerequisite point. Zero chunks cannot supply a final page ID. Added two prompt lines to skip only page reads/assessments in that case and explicitly retain context and stage obligations; otherwise existing nonempty checkpoint applies. Parameterized actual strict caller test uses the existing empty fixture and actual qualified canonical owner; synthetic data grants no provider review credit. A newer actual Codex review restores its available-agent obligation, so the older quota cannot be used to exclude it. Fresh changed-head qualification/required hosted full gates and all settlements remain mandatory; no planning or older code approval transfers. Goal ACTIVE/heartbeat human PAUSED/0of3 behavioral proofs. No paid model, credential, review-policy, live runtime/deployment, agent/chat or spore changes.
+
+- ts: 2026-10-14T05:50:43.503Z
+  task: Approved one-point B3 source prerequisite; independent consumer remains one point/two pins
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-final-page-consumer-spacing-correction-20261014
+  note: CodeRabbit's actual remaining finding is three adjacent-reference spacing issues. Primary Context and AC3 were corrected without semantic changes. The third occurrence is a historical native comment; rewriting it would violate the owning CLI's append-only comment rule, so its readability correction is recorded as a new native comment. No source/consumer estimate, dependency, lifecycle, guard or scope change. This is a concrete in-scope review correction, not observation-only head churn. Changed-head review and required CI remain necessary; no older approval transfers. Goal ACTIVE/heartbeat human PAUSED/0 of 3 behavioral proofs. No paid use, credential, runtime/deployment, new agent/chat or spore change.
+
+- ts: 2026-10-14T06:03:52.727Z
+  task: Approved one-point B3 prompt prerequisite; no new source behavior
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-final-page-frontmatter-claim-source-anchor-correction-20261014
+  note: Correction to receipt309: its original-frontmatter byte-identity wording lacked the temporal qualification. That comparison passed immediately after the two manual Incoming prose edits, before the native comment operation; it does not describe the whole committed dca→e6 follow-up. The later owning CLI correctly updated its correlation write-id. Preserve both IDs and all native event bytes, and scope the verification to unchanged frontmatter excluding that native metadata line. Receipt309 remains immutable; this new receipt supplies the correction. The active Testing card's settled planning body retains old source locations as history; appended native current verification gives560/654 and stable function expressions, preserving the owning post-Breakdown rule. No scope, point, guard, model, credential or production change. Fresh new-head full qualification and authorized MERGE remain pending; goal ACTIVE/heartbeat human PAUSED/0of3. No paid use, live runtime/deployment, agent/chat or spore change.
+
+- ts: 2026-10-14T06:08:07.331Z
+  task: Same one-point B3 prompt source scope
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-final-page-primary-stable-anchor-correction-20261014
+  note: The prior native comment preserves the correction history. The primary Scope now also names the actual stable call expressions, satisfying the review's requested inspectability directly. This is a non-semantic documentation correction within accepted Scope, not a lifecycle/frontmatter/comment-state write, new scope, local board implementation or new behavior. Human manual Markdown editing support governs this authoring input. No historical comment/event or receipt is rewritten; receipt310's verification correction remains intact. No new functional tests for this prose-only edit. Fresh full current-head native qualification/MERGE remain required; goal ACTIVE/heartbeat human PAUSED/0of3. No paid/model/credential/runtime/deployment/agent/chat/spore change.
+
+- ts: 2026-10-14T06:20:18.654Z
+  task: Approved one-point B3 prompt prerequisite
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-final-page-zero-chunk-ac-correction-20261014
+  note: Codex found a real completion-contract mismatch: unconditional AC1 required a nonexistent final page ID and assessment response on a canonical empty diff. The implementation and existing regression already correctly support zero-page inputs. A new native comment preserves the correction chronology and primary AC1 now names both branches. This documentation correction aligns the accepted one-point outcome with already reviewed behavior; no new scope, guard, attempt, point, production or runtime change. Historical comments/events/receipts remain immutable, including prior acceptance wording in native review source. Fresh complete current-head reviews and required gates remain pending. Goal ACTIVE, heartbeat human PAUSED, zero of three behavioral proofs; no paid usage, credential/model/runtime/deployment/agent/chat/spore change.
+
+- ts: 2026-10-14T06:59:19.095Z
+  task: Approved one-point B3 prompt prerequisite; existing test file only
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-final-page-canonical-omission-boundary-tests-20261014
+  note: CodeRabbit requested a missing final-page recovery regression. Actual compiled owner enforces all assessments before stage1, so the candidate projection with3 completed stages and an omitted assessment is intentionally unestablished, not healthy unfinished. The tests now cover this actual refusal for final/earlier/multiple omissions rather than falsely requiring an accepted retry. Existing healthy missing-submit recovery remains covered; no production/Muse guard/cap/policy/point change. Its proposed positive final_input_coverage outcome needs independent native adjudication before any rejection settlement; no author self-agreement or fabricated review credit. Original first diagnostic, baseline RED and intermediate candidate refusal remain retained privately. New complete-head tests/reviews/required gates remain necessary; goal ACTIVE, heartbeat human PAUSED, zero of three behavioral proofs. No paid/model/credential/live runtime/deployment/new agent/chat/spore change.

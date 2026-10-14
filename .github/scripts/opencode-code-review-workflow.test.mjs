@@ -2721,6 +2721,135 @@ for (const [name, mutate] of [
 }
 
 
+for (const [inputKind, options] of [["multi-page", { large: true, unicode: true }], ["empty", { empty: true }]]) {
+  test(`canonical staged context: initial and corrective prompts require final-page assessment before evidence (${inputKind})`, async (t) => {
+    const checked = freshReviewInputCheck(fullInputFixture(t, options));
+    assert.equal(checked.result.status, 0, checked.result.stderr);
+    const fixture = canonicalContextFixture(checked);
+    if (inputKind === "empty") {
+      assert.equal(fixture.expectedContext.pages.length, 0);
+    } else {
+      assert.ok(fixture.expectedContext.pages.length > 1,
+        "the canonical input must span multiple pages");
+      const finalPage = fixture.expectedContext.pages.at(-1);
+      assert.ok(finalPage.end > finalPage.start && finalPage.end - finalPage.start < 8192,
+        "the canonical input must include a shorter final page");
+    }
+    const calls = [];
+    const result = await runReviewRecovery({
+      evidenceDirectory: checked.evidence,
+      basePrompt: "Synthetic strict caller control; no provider or review credit.",
+      submissionFile: fixture.submissionFile,
+      reviewTools: fixture.tools,
+      verifyReviewInvocation: fixture.verifier.verifyReviewInvocation,
+      expectedContext: fixture.expectedContext,
+      verifierSha256: transportSha256(fs.readFileSync(fixture.verifierFile)),
+      invokeAttempt: async ({ attempt, prompt, responseFile, stderrFile }) => {
+        calls.push({ attempt, prompt });
+        const data = canonicalContextResponse(fixture, { omitSubmit: attempt === 1 });
+        fs.writeFileSync(responseFile, data.response);
+        fs.writeFileSync(stderrFile, "");
+        if (attempt === 2) fs.writeFileSync(fixture.submissionFile, data.submission);
+        return { exitCode: 0 };
+      },
+    });
+    assert.deepEqual(calls.map(({ attempt }) => attempt), [1, 2]);
+    assert.equal(result.max_attempts, 2);
+    assert.equal(result.recovery_reason, "missing_review_submit");
+    assert.equal(result.attempts[0].canonical_verdict.reason, "missing-review-submit");
+    assert.equal(result.accepted_invocation.attempt, 2);
+    assert.equal(result.accepted_invocation.canonical_verdict.ok, true);
+    assert.equal(result.accepted_invocation.expected_context_sha256,
+      transportSha256(JSON.stringify(fixture.expectedContext)));
+    assert.match(calls[1].prompt, /corrective attempt 2 of 2/i);
+    for (const { attempt, prompt } of calls) {
+      const checkpoint = prompt.match(/Full-input assessment checkpoint[^]*?Supporting-file HOST read contract/);
+      assert.ok(checkpoint, `attempt ${attempt} must carry the final-page checkpoint`);
+      assert.match(checkpoint[0], /zero full-input chunks[^]*skip page reads and assessments/i);
+      assert.match(checkpoint[0], /retain staged-context reading and every evidence-stage requirement[^]*Otherwise:/);
+      assert.match(checkpoint[0], /final[^]*review_assess_diff_chunk[^]*actual id[^]*shorter final page/);
+      assert.match(checkpoint[0], /coverage\.assessed must equal[^]*coverage\.chunks/);
+      assert.match(checkpoint[0], /coverage\.missing must be empty before review_record_evidence/);
+      assert.match(checkpoint[0], /Delivered\/read coverage alone does not prove assessment/);
+    }
+  });
+}
+
+// These inert HOST frames exercise the existing narrow retry boundary through
+// the compiled Muse owner; they supply no provider judgment or review credit.
+for (const omission of ["final", "earlier", "multiple"]) {
+  test(`canonical staged context: incomplete assessment never weakens first-stage custody (${omission})`, async (t) => {
+    const checked = freshReviewInputCheck(fullInputFixture(t, { large: true, unicode: true }));
+    assert.equal(checked.result.status, 0, checked.result.stderr);
+    const fixture = canonicalContextFixture(checked);
+    const pages = fixture.expectedContext.pages;
+    assert.ok(pages.length > 1);
+    const finalPage = pages.at(-1);
+    assert.ok(finalPage.end > finalPage.start && finalPage.end - finalPage.start < 8192);
+    const missing = omission === "final" ? [finalPage.id]
+      : omission === "earlier" ? [pages[0].id] : [pages[0].id, finalPage.id];
+    const healthy = canonicalContextResponse(fixture);
+    const calls = [];
+    const run = runReviewRecovery({
+      evidenceDirectory: checked.evidence,
+      basePrompt: "Synthetic final-assessment recovery control; no review credit.",
+      submissionFile: fixture.submissionFile,
+      reviewTools: fixture.tools,
+      verifyReviewInvocation: fixture.verifier.verifyReviewInvocation,
+      expectedContext: fixture.expectedContext,
+      verifierSha256: transportSha256(fs.readFileSync(fixture.verifierFile)),
+      invokeAttempt: async ({ attempt, responseFile, stderrFile }) => {
+        calls.push(attempt);
+        if (attempt === 1) {
+          const events = healthy.response.toString("utf8").trim().split("\n").map(JSON.parse)
+            .filter(event => !(event.part?.tool === "review_assess_diff_chunk"
+              && missing.includes(event.part.state.input.id)))
+            .filter(event => event.part?.tool !== "review_submit"
+              && !(event.part?.tool === "review_record_evidence"
+                && event.part.state.input.stage === "publish"));
+          const refusal = events.find(event => event.part?.tool === "review_record_evidence"
+            && event.part.state.input.stage === "adversarial-validate");
+          assert.ok(refusal);
+          refusal.part.state.metadata = { truncated: false };
+          refusal.part.state.output = JSON.stringify({ "ok?": false,
+            error: `Unassessed full-input chunks remain: ${missing.join(", ")}. Read and assess every changed hunk before publishing.` });
+          fs.writeFileSync(responseFile, events.map(event => JSON.stringify(event)).join("\n") + "\n");
+        } else {
+          fs.writeFileSync(responseFile, healthy.response);
+          fs.writeFileSync(fixture.submissionFile, healthy.submission);
+        }
+        fs.writeFileSync(stderrFile, "");
+        return { exitCode: 0 };
+      },
+    });
+    await assert.rejects(run, /review invocation verification failed after attempt 1/);
+    assert.deepEqual(calls, [1]);
+    const result = JSON.parse(fs.readFileSync(path.join(checked.evidence, "recovery.json")));
+    assert.equal(result.max_attempts, 2);
+    assert.equal(result.recovery_reason, null);
+    assert.equal(result.accepted_invocation, null);
+    assert.equal(result.attempts.length, 1);
+    assert.equal(result.attempts[0].canonical_verdict.ok, false);
+    assert.equal(result.attempts[0].canonical_verdict.code, "stage-order");
+    assert.equal(fs.existsSync(fixture.submissionFile), false);
+    if (omission === "final") {
+      // The transport candidate is not retry authority: removing its terminal
+      // refusal still leaves input incomplete before the first evidence stage.
+      const proof = result.attempts[0].final_input_coverage;
+      assert.equal(proof.missing_final_page, finalPage.id);
+      assert.equal(proof.accepted_review, false);
+      assert.equal(proof.tier, "DERIVED_RETRY_ELIGIBILITY_ONLY");
+      assert.equal(proof.canonical_verdict.ok, false);
+      assert.equal(proof.canonical_verdict.code, "stage-chronology");
+      const original = fs.readFileSync(path.join(checked.evidence, result.attempts[0].response_file));
+      assert.equal(transportSha256(original), proof.original_response_sha256);
+    } else {
+      assert.equal(result.attempts[0].final_input_coverage, undefined);
+      assert.equal(fs.existsSync(path.join(checked.evidence, "final-input-coverage-attempt-1.DERIVED.ndjson")), false);
+    }
+  });
+}
+
 test("canonical staged context: matching qualified Muse pin supplies both plugin and verifier", () => {
   const pin = "a9a62f0d509056406f3dd7d8c86a13551be168cd";
   assert.equal(workflow.on.workflow_call.inputs.muse_revision.default, pin);
