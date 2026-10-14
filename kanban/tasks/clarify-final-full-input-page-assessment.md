@@ -7,7 +7,7 @@ priority: "P1"
 points: "1"
 labels: "cephalon, b3, review, prompt"
 dependency: ["b9c591fb-95a8-4e4e-b2a5-39eb988cb996"]
-write-id: "1791946377876-0.nqp4wsn8gt8f2mwopdx"
+write-id: "1791948454489-0.7fhwtqcvayj57knl0pt"
 epic: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 parent: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 ---
@@ -84,7 +84,9 @@ remains required by acceptance criterion 3. No broad prompt rewrite.
    MERGE. Local prompt preparation and the planning review alone prove none of
    this implementation behavior.
 4. Consumer remains separately admitted and qualified. Its eventual two pins
-   select actual qualified caller and Muse merges, preserving its complete
+   select the actual independently qualified post-clarification workflow
+   MERGE (containing both the qualified caller and this final-page instruction)
+   and matching qualified Muse MERGE, preserving its complete
    carried source and existing checks; no approval transfers from this source.
 
 ## Verification
@@ -118,5 +120,7 @@ Native Codex roots4265953854/4265953857 planning correction: this story now join
 Native Codex root4266060763 planning correction: the same approved one-point source story now explicitly lists three implementation files: prompt runner, matching embedded workflow and existing workflow/recovery test. Verification and estimate include the narrow required regression update, inspecting both actual strict-mode initial and admitted corrective invocation prompts. Two production edits plus their existing fixture update do not add a behavior, guard, recovery path or point. Implementation is still unapplied and Incoming.
 
 Native Codex root4266143962 addressed by qualified owning Rheos board snapshot regeneration. The diagnostic now includes this exact new UUID and current epic/dependency/card data. Following the human board discipline that generated board.json is lossy diagnostic output ignored by Git, the obsolete tracked2026-05-29 projection is removed from the index and its regenerated file remains locally ignored. Cards and append-only native events remain tracked authority; existing CI already invokes Rheos for fresh snapshots in runner.temp. No local board parser/writer or manual snapshot generation. Complete changed-input review includes the old projection deletion and ignore rule; no artifact is relabeled as board-law validation.
+
+Native Codex roots4266325318/4266325325 corrected: tracked empty kanban/.kanban/.gitkeep preserves the native snapshot output parent in a fresh checkout while generated board.json stays ignored. No writer or parser is introduced. AC4 now explicitly requires the consumer workflow pin to name the actual independently qualified post-clarification workflow MERGE, containing both qualified caller and new instruction, plus matching qualified Muse; an older caller-only pin does not satisfy it. One-point production/test scope and all guards remain unchanged.
 
 ---

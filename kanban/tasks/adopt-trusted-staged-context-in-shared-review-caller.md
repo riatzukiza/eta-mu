@@ -5,7 +5,7 @@ status: incoming
 priority: P1
 points: "7"
 labels: "epics, cephalon, b3, review, context-custody, 7sp"
-write-id: "1791945923753-0.bece7b2q05j9y2cle2v"
+write-id: "1791948587043-0.tmis6p4nzxzcsas4u9"
 type: "epic"
 ---
 
@@ -48,7 +48,7 @@ Source carry, actual host compatibility and many-file consumer review have indep
 
 Software/process documentation: GPL-3.0-or-later.
 
-The actual consumer route is the personal reusable-workflow selector `riatzukiza/eta-mu/.github/workflows/opencode-code-review.yml@<qualified-caller-merge>`, not an assumption that the old organization selector serves a personal object. Validate native resolution/Actions calling rules with existing permissions, without settings changes or organization propagation. Parent links provide child hierarchy; epic links remain supported affiliation in qualified Rheos.
+The actual consumer route is the personal reusable-workflow selector `riatzukiza/eta-mu/.github/workflows/opencode-code-review.yml@<qualified-post-clarification-workflow-merge>`, not an assumption that the old organization selector serves a personal object. Validate native resolution/Actions calling rules with existing permissions, without settings changes or organization propagation. Parent links provide child hierarchy; epic links remain supported affiliation in qualified Rheos.
 
 ---
 Planning correction for Codex roots4252846422/6427/6431/6438/6441: this existing incoming Markdown card is supported first-class authored input under the human workspace contract. It does not claim native creation, readiness or an original engine event. This actual native Rheos comment supplies current writer correlation and append-only event provenance before any advancement; do not fabricate created_at or relabel it as task-created. RootAGENTS now explicitly preserves manual Markdown authoring and native-only lifecycle mutations. Card DoD includes actual OpenPlannerPR3 qualification and MERGE after owning source merge. Missing exact7b workflow-test source is retained as122729bytes/blob422bf178460d35fe5c888fcbdb16b3c0dcca8b9d/SHA8eb9ec8ef8d5615bba2508a78a4b7f49db53245d3fdc179c201ec94f287d5e80. Actual consumer033c001 bindsOpenCode1.18.31/Node22.20.0; Muse1.18.18 framing does not establish1.18.31 compatibility. Shared workflow always stages pr-context.md; both supervisor and final check require that path present, refuse ENOENT/I/O, preserve zero-byte present. Explicit absence remains a canonical library control, never inferred by these callers. Card remains Incoming pending fresh complete planning qualification; no implementation, consumer pin or runtime changes.
@@ -74,5 +74,7 @@ actually finish. No behavioral B1/B2/live B3 completion follows from this plan.
 Native Codex root4265953854 planning correction: the human-approved one-point final-page clarification is now the fifth required delivery in this epic, with exact epic/parent links on c84f0b33-7527-443a-a9ff-5ee2e2dfed48. Qualified native points setter records seven provisional points: carry2+HOST1+caller2+prompt1+consumer1; scope and dependency prose now includes the prompt predecessor. Consumer retains one point/two pins and depends on both caller and prompt source Done. Earlier six-point comments and events remain historical. No extra feature, readiness, source implementation, approval or behavioral completion is claimed.
 
 Native planning roots4266143957/4266206757 corrected: current epic AC1 distinguishes genuine HOST1.18.31 trace/canonical compatibility decision from actual qualified MERGEs owed by the four artifact-producing stories. AC4 now explicitly requires final-page clarification Done/qualified source MERGE, all other source deliveries Done/MERGEs, HOST Done with its proper evidence, and the actual independent OpenPlanner MERGE before epic Done. No nonexistent HOST source MERGE is demanded and no delivery is omitted. Existing points7/five stories and original histories remain unchanged; Incoming and source code unapplied.
+
+Current route consistency for native Codex4266325325: the epic body route example now names the qualified post-clarification workflow MERGE, matching consumer AC0/AC1 and prompt AC4; it must contain both the qualified caller custody and final-page instruction. Retained historical caller-only proposals are not the target. One point/epic7, independent complete review/MERGEs, matching qualified Muse and all existing permissions/gates remain unchanged.
 
 ---

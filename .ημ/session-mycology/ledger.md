@@ -963,3 +963,12 @@
   spore: none
   receipt-refs: cephalon-final-page-plan16-completion-native-projection-corrections-20261014
   note: Consumer primary Scope/AC3 and epicAC4 now explicitly require prompt story Done/qualified source MERGE alongside other proper source and consumer deliveries. EpicAC1 distinguishes HOST genuine1.18.31 trace/canonical compatibility decision from the four artifact-producing stories actual MERGEs, applying exact CodeRabbit suggestion. Qualified native Rheos regenerated the stale diagnostic; standing human board discipline keeps generated projection ignored, so the obsolete tracked2026-05-29 snapshot is untracked, not replaced by1.48MB derived state. Native generation source/cards/events remain authority and intact; AGENTS documents native regeneration after checkout. Complete source review includes the old projection deletion and ignore/instruction changes; no parser/validator/writer or omitted input workaround. Actual Codex account quota is preserved without approval/round credit or repeat invitation/credits. One point/three future implementation files and epic7 remain; all cards Incoming and source code unapplied. Fresh changed-head review/checks required. Goal ACTIVE/heartbeat human PAUSED; no model/auth/paid/runtime/deployment/agent/thread/spore change.
+
+- ts: 2026-10-14T03:32:27.149Z
+  task: One-point prompt prerequisite; three eventual code files; epic7
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-final-page-plan16-fresh-directory-post-clarification-pin-20261014
+  note: Two native P2s corrected within the approved point: fresh checkout retains the native output parent via standard empty tracked .gitkeep, and all current pin criteria require the new independently qualified post-clarification workflow MERGE rather than older caller-only3ad. Actual owner CLI was exercised with a fresh fixture output layout; no second board writer or full repository copy. Initial/current source histories remain unchanged; diagnostics remain derived, not authority or approval. One point/three implementation files, epic7 and independent consumer1/two pins remain. Changed head needs fresh complete input review/required checks and settlement; no readiness/source implementation/merge/behavioral proof claimed. Goal ACTIVE/heartbeat human PAUSED; no credentials/model/paid/runtime/deployment/agent/thread/spore change.
