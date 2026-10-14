@@ -1098,3 +1098,12 @@
   spore: none
   receipt-refs: cephalon-parent-pending-canonical-scope-board-risk-20261014
   note: Fixes valid current planning P2 without silently adding the proposed repair. Source predecessors Done do not grant consumer admission; original finding settlement, complete-input review and own checks remain mandatory. If included, owning source card and lawful native UUID relationships precede implementation; if excluded, the admission obligation stays blocked until a supported alternative qualifies. No local classifier, judgment-copying, old approval transfer, paid/model/auth/live runtime/clock/gateway/cloud/heartbeat/social/deployment/new agent/chat or spore change. Existing B1/B2/B3 outcomes remain unproved.
+
+- ts: 2026-10-14T10:57:52.121Z
+  task: Existing consumer planning, canonical repair scope still pending
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-parent-risk-actual-native-owner-correction-20261014
+  note: This corrects my own prior misplaced risk paragraph and false native epic primary-Risks claim. Original source317 receipt/comments remain immutable; correction is appended. The native comment previously targeted the correct epic, but the manual body edit used the completed caller filename. Actual source-path authority now determines both targets, and the correct primary-body/readback checks are explicit. No new scope, points or dependency is included while human choice is pending. No stale review credit, synthetic settlement, local board/policy implementation, paid/model/auth/runtime/grant/maker/clock/gateway/cloud/heartbeat/social/deployment or spore change.

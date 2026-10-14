@@ -9,7 +9,7 @@ labels: "cephalon, b3, review, context-custody"
 epic: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 dependency: ["52a0f6cc-e43b-4ed5-a628-e54dd9d9fdc4","a880c727-229b-4f3d-9158-718ec164d16c"]
 category: "tasks"
-write-id: "1791936275970-0.lg77e1brxpgpax92wu"
+write-id: "1791975015745-0.l8lgijvmjy52xbck6h"
 created_at: "2026-10-12T22:46:27.252Z"
 parent: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 ---
@@ -45,11 +45,6 @@ No second parser/verifier, broad upstream synchronization, fixed free-model slug
 Exercise actual supervisor/final boundaries with compiled Muse exports and exact staged input digests. Retain host source/version and actual completed-read control, canonical negative results, exits, reviews/checks and source merge readback. Native readiness follows complete planning qualification and predecessor Done.
 
 ## Risks
-
-Pending canonical settlement risk (native Codex4269071422): [owning PR-flow issue25](https://github.com/riatzukiza/.agents/issues/25#issuecomment-6165232107) currently blocks this parent planning gate. The original finding's immutable old enclosing review cannot equal a new head under the installed withdrawal predicate, even after a current-source opener withdrawal. The attempted independent native rejection judgment arrived through an unsupported placement, and its one correction returned a generic verdict. A concrete two-point owning canonical repair is proposed; the human finite-milestone scope choice is pending. This is a proposed workflow prerequisite, not an included source delivery, completed dependency or policy waiver. No new task UUID, points or dependency edge is fabricated before that decision and owning planning review.
-
-The existing source predecessors being Done grants no consumer admission: current parent settlement, complete-input review and required checks must qualify first. The consumer remains Incoming. If the repair is included, record the owning source card and lawful UUID relationships through Rheos before implementation; if it is excluded, retain the unresolved admission obligation while seeking a genuinely supported alternative. Existing five-delivery/seven-point and one-point/two-pin scopes remain unchanged until an accepted re-description.
-
 
 The current two-point adapter estimate is provisional until predecessor discovery establishes a compatible boundary and planning review confirms the described implementation. No readiness is claimed from source equality.
 
@@ -128,5 +123,7 @@ Personal ETA PR14 actually MERGED on 2026-10-13 at 23:37:02 UTC: https://github.
 Canonical source gate and apply both passed: all 15 checks, both findings settled/resolved and one unanimous completed code cohort. Formal MiMo APPROVED review 5511302623 is exact head 1a949713d62d827ca754909d61f4e6d4c2bb16d3; hosted run 38479295513 SUCCESS assessed all 40 full-diff pages, all 19 inputs and actual 7585-byte context to EOF before stage one, with zero confirmed findings. All seven executed deterministic gates exited 0, all 14 suites and final 241 workflow tests passed. CodeRabbit request 6157221242 completed via 6157222820 with passing summary 6156353588; Codex passing comment 6156794831 is current head. These latter two are issue verdicts, not formal GitHub APPROVED records.
 
 After actual qualification and MERGE, qualified native Rheos performed Review to Document to Done; independent read-task confirmed this two-point caller Done. Retained raw proof is .ημ/review-evidence/cephalon-review-context-adoption/caller-merged-consumer-plan-20261013, with receipt cephalon-caller14-actual-merge-done-consumer-plan-20261013. Source-carry and HOST predecessor stories are independently Done. Existing OpenPlanner consumer remains Incoming until its own planning qualification and lawful admission, and then requires its own actual qualified MERGE. This card's Done means caller source delivery only; B1, B2 and live B3 remain unfinished.
+
+Own operator correction for native Codex4269334953: the new pending parent-settlement risk was accidentally put in this completed caller primary body. That accidental paragraph has been removed by exact restoration of the privately preserved pre-mistake bytes, preserving current Done2 metadata. It now lives in the actual Incoming epicde02 primary Risks; consumerad41 risk remains. This caller remains independently qualified source Done after actual3adMERGE, with no new pending delivery or reopened status. Original comments/events and all receipt prefixes remain immutable.
 
 ---

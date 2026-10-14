@@ -5,7 +5,7 @@ status: incoming
 priority: P1
 points: "7"
 labels: "epics, cephalon, b3, review, context-custody, 7sp"
-write-id: "1791949531027-0.dbtp8bck7lrwisymcze"
+write-id: "1791975015314-0.1y6s67pbyipwm8rt8q7"
 type: "epic"
 ---
 
@@ -44,6 +44,11 @@ Current complete planning review/settlement precedes lawful story readiness. The
 
 ## Risks
 
+Pending canonical settlement risk (native Codex4269071422): [owning PR-flow issue25](https://github.com/riatzukiza/.agents/issues/25#issuecomment-6165232107) currently blocks this parent planning gate. The original finding's immutable old enclosing review cannot equal a new head under the installed withdrawal predicate, even after a current-source opener withdrawal. The attempted independent native rejection judgment arrived through an unsupported placement, and its one correction returned a generic verdict. A concrete two-point owning canonical repair is proposed; the human finite-milestone scope choice is pending. This is a proposed workflow prerequisite, not an included source delivery, completed dependency or policy waiver. No new task UUID, points or dependency edge is fabricated before that decision and owning planning review.
+
+The existing source predecessors being Done grants no consumer admission: current parent settlement, complete-input review and required checks must qualify first. The consumer remains Incoming. If the repair is included, record the owning source card and lawful UUID relationships through Rheos before implementation; if it is excluded, retain the unresolved admission obligation while seeking a genuinely supported alternative. Existing five-delivery/seven-point and one-point/two-pin scopes remain unchanged until an accepted re-description.
+
+
 Source carry, actual host compatibility and many-file consumer review have independent blockers. All estimates are provisional; planning review may re-estimate, with no silent feature expansion.
 
 Software/process documentation: GPL-3.0-or-later.
@@ -78,5 +83,9 @@ Native planning roots4266143957/4266206757 corrected: current epic AC1 distingui
 Current route consistency for native Codex4266325325: the epic body route example now names the qualified post-clarification workflow MERGE, matching consumer AC0/AC1 and prompt AC4; it must contain both the qualified caller custody and final-page instruction. Retained historical caller-only proposals are not the target. One point/epic7, independent complete review/MERGEs, matching qualified Muse and all existing permissions/gates remain unchanged.
 
 Native CodeRabbit4266531448 corrected with its exact Outcome suggestion: four prerequisite deliveries qualify according to actual dependencies, then consumer completes the fifth with its independently qualified MERGE/context-read enforcement. This does not add a sixth delivery; total7 and all5 existing story identities remain. Source story Context also avoids implying the newly inserted prerequisite is chronologically fifth. No source code, readiness or estimate change.
+
+Primary Risks now records pending owning canonical withdrawal issue25 as the current parent settlement blocker, per Codex4269071422. Proposed two-point source addition awaits the accepted finite scope decision; no new included delivery, points or dependency is fabricated. Epic remains Incoming/seven points/five existing deliveries and consumer stays Incoming/one point/two pins until independent parent and consumer qualification. Actual source Done/MERGE remains separate from admission; no B1/B2/B3 proof or waiver.
+
+Correction to the preceding primary-Risks claim, per native Codex4269334953: that paragraph was mistakenly inserted in completed caller b9/source bind-and-verify...988cb996.md while this native comment correctly targeted epicde02. Actual owning read-task source-path now verifies this Incoming epic is adopt-trusted-staged-context-in-shared-review-caller.md. The pending issue25/two-point scope risk is now actually in this epic primary Risks, and the completed caller exact pre-mistake bytes were restored. Original native comments/events and receipts remain immutable. EpicIncoming7points/five deliveries and consumerIncoming1point/two pins remain unchanged; no included new task/dependency before actual scope decision.
 
 ---
