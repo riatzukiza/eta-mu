@@ -7,7 +7,7 @@ priority: "P1"
 points: "1"
 labels: "cephalon, b3, review, prompt"
 dependency: ["b9c591fb-95a8-4e4e-b2a5-39eb988cb996"]
-write-id: "1791958794679-0.fnwruc56vqqhm5e2kxd"
+write-id: "1791961158936-0.zhor1elppvj5v1ymra5"
 epic: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 parent: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 ---
@@ -140,5 +140,7 @@ Native Codex5513246730/root4266934756/threadPRRT_kwDOU4VdxM6sKzPp correctly iden
 Current source-anchor correction for native Codex root 4267304041: the settled planning Scope cites runner lines 551 and 645 from its pre-implementation baseline. After the nine-line checkpoint insertion, the actual current initial call is line 560, let prompt = strict ? strictInvocationPrompt(basePrompt) : basePrompt; the actual corrective call is line 654, if (strict) prompt = strictInvocationPrompt(prompt). These stable function expressions identify both invocation paths even if future line numbers move. Actual parameterized canonical regression verifies both prompts for multi-page short-final and zero-page inputs. This appended current verification supersedes the old source locations without rewriting the past-Breakdown settled body, as the owning Rheos comment command requires. Scope, point estimate, production logic and every guard remain unchanged; complete new-head qualification is still required.
 
 Acceptance-criterion correction for native Codex review5513783381/root4267390610: final-page ID and returned assessment-response coverage duties apply when coverage.chunks > 0. For canonical zero-page input, skip page reads/assessments because no final ID or assessment response exists, while retaining complete staged-context reading and every evidence-stage/submission/publication duty. This aligns AC1 with the already verified dca production behavior and parameterized canonical empty regression; no new scope, attempt, guard, metadata policy or runtime behavior. The original accepted wording and prior native verification remain append-only history.
+
+Native CodeRabbit review5514049038/body item cr-comment:v1:021f347da872b27e60ea9c00 verification: focused actual runReviewRecovery/compiled Muse tests now cover final, earlier and multiple missing assessments, with complete staged-context reads and real multi-page/short-final geometry. Qualified Musea9 law input-before-first-stage? requires every assessment before stage1. The final-only transport projection is refused by canonical stage-chronology, so it supplies no retry authority or accepted review; earlier/multiple omissions also receive only one invocation. Existing healthy missing-submit recovery remains separately covered. Initial baseline controls RED3/3, actual negative GREEN3/3 and full246/246 pass with0fail/skip/warning lines. No runner/workflow/Muse guard or two-attempt cap changed. An independent native assessment of the requested positive retry is still required before any rejection settlement; this comment supplies no reviewer agreement, approval or round. Same one-point scope, Testing and all historical provenance retained.
 
 ---
