@@ -909,3 +909,12 @@
   spore: none
   receipt-refs: cephalon-consumer-plan15-native-codex-corrections-20261014
   note: Native Codex identified three valid P2 documentation defects. Append-only qualified Rheos corrections distinguish open/non-draft GitHub PR from consumer Rheos Incoming, formal MiMo APPROVED from qualified CodeRabbit/Codex issue verdicts, and attach actual predecessor merge/head/base/tree/check/full-scope/readback closeout to the caller card itself. Historical paragraphs and events remain unchanged. No synthetic formal approval or readiness transfer. Existing one-point two-pin adoption scope and original56 carry/full consumer assessment remain unchanged. Fresh changed-head reviews/checks/settlements/convergence remain required before this planning MERGE and native Ready. The already approved FakeTerminal repair is actually merged in ETA PR12; no repeat repair or watch-capacity run. No live runtime, maker, clock, gateway, PM2, cloud, model/credential/paid use, grant, publication/deployment, agent/thread or spore change. Goal ACTIVE; heartbeat human PAUSED; behavioral B1/B2/live B3 remain unproven.
+
+- ts: 2026-10-14T01:32:28.052Z
+  task: Finite B3 prerequisite; B1/B2/live B3 unfinished
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-final-page-prompt-authorized-planning-20261014
+  note: Human included the new one-point source clarification. Initial hand-authored standalone card is supported input, not invented creation/admission. Qualified owning Rheos added exact source dependency to consumer and recorded the eventual new qualified caller MERGE target; consumer retains one point/two pins and original full scope. Plan stacks on actual PR15 branch because it carries caller Done and consumer planning. Existing runner/workflow unchanged; no planning approval, Ready, source delivery, synthetic review, policy waiver, paid usage, model/credential, live runtime or deployment. Heartbeat remains human PAUSED; goal ACTIVE. Both failed complete-input omissions remain rejected with original bytes; canonical guard is correct. Prompt effect is a hypothesis until native full review succeeds.
