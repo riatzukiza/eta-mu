@@ -954,3 +954,12 @@
   spore: none
   receipt-refs: cephalon-final-page-plan16-three-file-consumer-corrections-20261014
   note: Codex identified two genuine specification inconsistencies: the required existing test update was absent from the two-file Verification count, and the consumer primary Context retained a current six-point statement. Corrected both within the already approved point; actual strict-mode initial/corrective prompt verification uses the existing test surface, no new guard or behavior. Actual code files remain unchanged and all cards Incoming. Owned stale CI590b cancellation stopped the obsolete review pipeline after an accepted request initially remained in_progress; force-cancel documentation was checked but fresh terminal readback meant no force action was sent. Current-head queued evidence is not approval or successful execution. Fresh changed-head reviews/required gates remain necessary; old quota/approval is not transferred. Goal ACTIVE/heartbeat human PAUSED; no credentials/model/paid use, live maker/runtime/deployment or spore change.
+
+- ts: 2026-10-14T02:57:26.150Z
+  task: Approved one-point prompt source in finite B3 prerequisite epic
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-final-page-plan16-completion-native-projection-corrections-20261014
+  note: Consumer primary Scope/AC3 and epicAC4 now explicitly require prompt story Done/qualified source MERGE alongside other proper source and consumer deliveries. EpicAC1 distinguishes HOST genuine1.18.31 trace/canonical compatibility decision from the four artifact-producing stories actual MERGEs, applying exact CodeRabbit suggestion. Qualified native Rheos regenerated the stale diagnostic; standing human board discipline keeps generated projection ignored, so the obsolete tracked2026-05-29 snapshot is untracked, not replaced by1.48MB derived state. Native generation source/cards/events remain authority and intact; AGENTS documents native regeneration after checkout. Complete source review includes the old projection deletion and ignore/instruction changes; no parser/validator/writer or omitted input workaround. Actual Codex account quota is preserved without approval/round credit or repeat invitation/credits. One point/three future implementation files and epic7 remain; all cards Incoming and source code unapplied. Fresh changed-head review/checks required. Goal ACTIVE/heartbeat human PAUSED; no model/auth/paid/runtime/deployment/agent/thread/spore change.

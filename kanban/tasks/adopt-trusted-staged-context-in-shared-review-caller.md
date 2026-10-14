@@ -5,7 +5,7 @@ status: incoming
 priority: P1
 points: "7"
 labels: "epics, cephalon, b3, review, context-custody, 7sp"
-write-id: "1791943398349-0.d3pth7n24ckw2e8tsun"
+write-id: "1791945923753-0.bece7b2q05j9y2cle2v"
 type: "epic"
 ---
 
@@ -33,10 +33,10 @@ No broad eta-mu import, second parser/verifier, fixed free-model slug, inference
 
 ## Acceptance criteria
 
-1. All five UUID-linked stories qualify independently, walk lawful native lifecycle, and record actual source/consumer MERGEs with exact heads, inputs, checks and reviews.
+1. All five UUID-linked stories qualify independently and walk lawful native lifecycle. Source-carry, caller, final-page clarification and consumer record actual qualified source or consumer MERGEs with exact heads, inputs, checks and reviews. HOST records its genuine1.18.31 trace and canonical compatibility decision.
 2. Five-file carry includes .github/workflows/opencode-code-review.yml, .github/scripts/run-opencode-review-recovery.mjs, .github/scripts/opencode-code-review-workflow.test.mjs, .github/scripts/review-invocation-fixture.mjs and .github/review-host-tool-metadata.edn at exact7b source; no omitted existing test dependency.
 3. Caller story requires present pr-context.md (including zero bytes), refuses ENOENT/I/O, and verifies genuine full context reads via Muse for actual1.18.31 host. Explicit absence stays a separate canonical library control, not workflow fallback.
-4. Consumer story and epic remain open until source-carry and caller qualified MERGEs and actual independently qualified personal OpenPlannerPR3 MERGE are retained. Source qualification alone does not establish consumer or character completion.
+4. Consumer story and epic remain open until source-carry, caller and final-page clarification are independently Done with their actual qualified source MERGEs; HOST is independently Done with its genuine1.18.31 trace and canonical compatibility decision; and the actual independently qualified personal OpenPlannerPR3 MERGE is retained. All five delivery stories must actually finish before epic Done. Source qualification alone does not establish consumer or character completion.
 
 ## Verification
 
@@ -72,5 +72,7 @@ actually finish. No behavioral B1/B2/live B3 completion follows from this plan.
 
 ---
 Native Codex root4265953854 planning correction: the human-approved one-point final-page clarification is now the fifth required delivery in this epic, with exact epic/parent links on c84f0b33-7527-443a-a9ff-5ee2e2dfed48. Qualified native points setter records seven provisional points: carry2+HOST1+caller2+prompt1+consumer1; scope and dependency prose now includes the prompt predecessor. Consumer retains one point/two pins and depends on both caller and prompt source Done. Earlier six-point comments and events remain historical. No extra feature, readiness, source implementation, approval or behavioral completion is claimed.
+
+Native planning roots4266143957/4266206757 corrected: current epic AC1 distinguishes genuine HOST1.18.31 trace/canonical compatibility decision from actual qualified MERGEs owed by the four artifact-producing stories. AC4 now explicitly requires final-page clarification Done/qualified source MERGE, all other source deliveries Done/MERGEs, HOST Done with its proper evidence, and the actual independent OpenPlanner MERGE before epic Done. No nonexistent HOST source MERGE is demanded and no delivery is omitted. Existing points7/five stories and original histories remain unchanged; Incoming and source code unapplied.
 
 ---

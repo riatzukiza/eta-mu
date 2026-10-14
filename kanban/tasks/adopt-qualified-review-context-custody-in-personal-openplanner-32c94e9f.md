@@ -9,7 +9,7 @@ labels: "cephalon, b3, review, context-custody"
 epic: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 dependency: ["b9c591fb-95a8-4e4e-b2a5-39eb988cb996","c84f0b33-7527-443a-a9ff-5ee2e2dfed48"]
 category: "tasks"
-write-id: "1791944496893-0.92200zped5h8bgkafv"
+write-id: "1791945924402-0.rtdj1e6y9kcchc0ubfr"
 created_at: "2026-10-12T22:46:27.730Z"
 parent: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 ---
@@ -24,7 +24,7 @@ Existing personal OpenPlanner PR3 consumes the actually qualified shared caller/
 
 ## Scope
 
-Depends on caller/host story UUID b9c591fb-95a8-4e4e-b2a5-39eb988cb996 actually Done after source MERGE, which in turn depends on source-carry 52a0f6cc-e43b-4ed5-a628-e54dd9d9fdc4. Update only the existing OpenPlanner .github/workflows/eta-mu-review.yml reusable-workflow selector and matching pins for the qualified shared workflow and matching Muse source. Preserve current free OpenCode route, actual host version, permissions, complete input custody and all own required checks. No new consumer, identity override or organization propagation. Implementation belongs to personal OpenPlanner PR3; this same-board card coordinates its independent lifecycle.
+Depends on BOTH caller/host story UUID b9c591fb-95a8-4e4e-b2a5-39eb988cb996 and final-page clarification UUID c84f0b33-7527-443a-a9ff-5ee2e2dfed48 actually Done after their independently qualified source MERGEs. Caller in turn requires source-carry 52a0f6cc-e43b-4ed5-a628-e54dd9d9fdc4 and HOST a880c727-229b-4f3d-9158-718ec164d16c independently Done, with the genuine HOST trace and canonical compatibility decision. Update only the existing OpenPlanner .github/workflows/eta-mu-review.yml reusable-workflow selector and matching pins for the qualified shared workflow and matching Muse source. Preserve current free OpenCode route, actual host version, permissions, complete input custody and all own required checks. No new consumer, identity override or organization propagation. Implementation belongs to personal OpenPlanner PR3; this same-board card coordinates its independent lifecycle.
 
 ## Non-goals
 
@@ -36,7 +36,7 @@ No second parser/verifier, broad upstream synchronization, fixed free-model slug
 
 1. Existing consumer pins exact qualified source merges; selected shared/Muse revisions and artifacts are inspectable and source reviews do not transfer.
 2. Consumer independently passes its required checks, complete current-input assessment, trusted exact-head review/settlement/convergence and canonical authorized MERGE; retain immutable consumer head/base, checks, review and native merge readback.
-3. This final story remains open while consumer advances. Lawful Done requires BOTH source-carry and caller stories Done with actual qualified source MERGEs AND the actual qualified OpenPlanner MERGE. Then the epic can close; metadata custody, source merge or a planning approval alone cannot close it. No B1/B2/liveB3 proof is inferred.
+3. This final story remains open while consumer advances. Lawful Done requires source-carry, caller and final-page clarification stories independently Done with actual qualified source MERGEs, HOST independently Done with genuine1.18.31 trace and canonical compatibility decision, AND the actual qualified OpenPlanner MERGE. Then all five deliveries are finished and the epic can close; metadata custody, source merge or a planning approval alone cannot close it. No B1/B2/liveB3 proof is inferred.
 
 ## Verification
 
@@ -100,5 +100,7 @@ The one-point consumer scope, original 56-file carry and full current input asse
 Human scope inclusion, 2026-10-14: new standalone one-point source prerequisite c84f0b33-7527-443a-a9ff-5ee2e2dfed48 explicitly clarifies final-page assessment and the existing pre-stage coverage checkpoint. Qualified native Rheos added that exact dependency alongside the independently Done caller b9c591fb-95a8-4e4e-b2a5-39eb988cb996. This consumer retains one point and only its two existing pin changes. The historical proposed caller pin 3ad5e24 is superseded as the eventual consumer target by the new actual qualified source MERGE once delivered; matching Muse remains a9a62f0d509056406f3dd7d8c86a13551be168cd. No consumer Ready, implementation or current-head qualification is claimed. All original carried inputs, host/runtime versions, full-input review and independent gates remain obligations.
 
 Native Codex root4266060769 planning correction: current primary Context now explicitly describes the seven-point/five-delivery epic after the human-approved one-point prompt addition, superseding earlier six-point statements. Original native comments/events remain dated history. Consumer retains one point/two pins, native dependencies on caller and prompt source Done, and independent readiness/review/checks/MERGE; no implementation or behavioral completion.
+
+Native Codex root4266143957 corrected: primary Scope and AC3 explicitly require final-page clarification c84f0b33-7527-443a-a9ff-5ee2e2dfed48 Done after independently qualified source MERGE, alongside caller/carry Done/MERGE and HOST Done with genuine trace/compatibility decision, before consumer readiness/delivery and epic closure. Actual OpenPlanner qualified MERGE remains mandatory. Native dependencies are retained as enforced by the qualified owning Rheos; an old bundled-code planning-vector comment does not replace the explicit completion criteria. Consumer remains Incoming, one point/two pins, no approval transfer.
 
 ---

@@ -7,7 +7,7 @@ priority: "P1"
 points: "1"
 labels: "cephalon, b3, review, prompt"
 dependency: ["b9c591fb-95a8-4e4e-b2a5-39eb988cb996"]
-write-id: "1791944496316-0.a27oorf81w52f8v8vk"
+write-id: "1791946377876-0.nqp4wsn8gt8f2mwopdx"
 epic: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 parent: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 ---
@@ -116,5 +116,7 @@ Planning correction for native Codex review5512071815/root4265886252: the Non-go
 Native Codex roots4265953854/4265953857 planning correction: this story now joins its B3 epic/parent and the epic explicitly totals seven provisional points over five required deliveries. Scope and AC require the new instruction in both actual initial and admitted corrective prompts and verification through existing recovery fixtures. Source inspection confirms runReviewRecovery already applies the common strictInvocationPrompt at initial line551 and again after correctivePrompt at line645. The proposed insertion in that common wrapper therefore reaches both; no missing retry wrapper is asserted and no duplicate constructor/recovery-rule edit is planned. Actual runner/workflow remain unchanged, source Incoming, one-point scope and existing gates/caps preserved.
 
 Native Codex root4266060763 planning correction: the same approved one-point source story now explicitly lists three implementation files: prompt runner, matching embedded workflow and existing workflow/recovery test. Verification and estimate include the narrow required regression update, inspecting both actual strict-mode initial and admitted corrective invocation prompts. Two production edits plus their existing fixture update do not add a behavior, guard, recovery path or point. Implementation is still unapplied and Incoming.
+
+Native Codex root4266143962 addressed by qualified owning Rheos board snapshot regeneration. The diagnostic now includes this exact new UUID and current epic/dependency/card data. Following the human board discipline that generated board.json is lossy diagnostic output ignored by Git, the obsolete tracked2026-05-29 projection is removed from the index and its regenerated file remains locally ignored. Cards and append-only native events remain tracked authority; existing CI already invokes Rheos for fresh snapshots in runner.temp. No local board parser/writer or manual snapshot generation. Complete changed-input review includes the old projection deletion and ignore rule; no artifact is relabeled as board-law validation.
 
 ---
