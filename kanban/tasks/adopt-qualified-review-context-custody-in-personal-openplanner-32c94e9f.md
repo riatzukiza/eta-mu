@@ -9,7 +9,7 @@ labels: "cephalon, b3, review, context-custody"
 epic: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 dependency: ["b9c591fb-95a8-4e4e-b2a5-39eb988cb996"]
 category: "tasks"
-write-id: "1791935399228-0.tgof7izk6d74u3icbf"
+write-id: "1791936274976-0.fg7gl0ptlmvavy709of"
 created_at: "2026-10-12T22:46:27.730Z"
 parent: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 ---
@@ -88,5 +88,13 @@ checks/review/settlement and actual qualified MERGE precede consumer Done and ep
 encounter/physical-field persistence, B2 persisted consumed mood and B3 automatic authorized maker-prompt
 recall remain unfinished. This source planning is not runtime deployment or character completion. Heartbeat
 remains human PAUSED.
+
+Correction to the preceding re-description, 2026-10-14 UTC, for native Codex review 5511488115, findings 4265355575 and 4265355581. Preserve the earlier paragraph and its event as dated history; this paragraph controls the current handoff.
+
+The existing personal OpenPlanner PR3 is an open, non-draft GitHub PR. The consumer card ad41fc8a-12fe-453c-bdb9-29d832c94e9f remains Incoming. The earlier phrase “existing ready” described the GitHub review state only; it did not establish Rheos Ready, planning qualification or implementation admission. Current planning PR15 must qualify first. Then native lawful admission requires Accepted, Breakdown, Ready, Todo and IP; source completion grants none of these states.
+
+Predecessor ETA PR14 actually merged at 3ad5e24bb2eab51ea315a02f590ec234ad6bba46, reviewed head 1a949713d62d827ca754909d61f4e6d4c2bb16d3 and base 23968980349d07aa647874941cede32db67a4895. MiMo review 5511302623 is a formal GitHub APPROVED review. CodeRabbit request 6157221242, completed reply 6157222820 and explicit passing summary 6156353588, and Codex passing comment 6156794831 are separately qualified exact-head issue verdicts. Neither issue verdict is a formal GitHub APPROVED state. Canonical source gate passed all 15 checks, both settled findings and one unanimous completed code cohort before the authorized actual MERGE; no evidence transfers to this planning or consumer head.
+
+The one-point consumer scope, original 56-file carry and full current input assessment remain unchanged. Actual own workflow invocation, checks, review, settlements and qualified OpenPlanner MERGE still precede consumer Done and epic closeout. B1, B2 and live B3 remain unfinished; heartbeat remains human PAUSED.
 
 ---
