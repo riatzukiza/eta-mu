@@ -2722,7 +2722,7 @@ for (const [name, mutate] of [
 
 
 test("canonical staged context: initial and corrective prompts require final-page assessment before evidence", async (t) => {
-  const checked = freshReviewInputCheck(fullInputFixture(t, { unicode: true }));
+  const checked = freshReviewInputCheck(fullInputFixture(t, { large: true, unicode: true }));
   assert.equal(checked.result.status, 0, checked.result.stderr);
   const fixture = canonicalContextFixture(checked);
   assert.ok(fixture.expectedContext.pages.length > 1,
