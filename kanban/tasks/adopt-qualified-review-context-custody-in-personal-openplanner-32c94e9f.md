@@ -9,14 +9,14 @@ labels: "cephalon, b3, review, context-custody"
 epic: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 dependency: ["b9c591fb-95a8-4e4e-b2a5-39eb988cb996","c84f0b33-7527-443a-a9ff-5ee2e2dfed48"]
 category: "tasks"
-write-id: "1791948455184-0.yeghjye7b1l185dh7hs"
+write-id: "1791957043277-0.j2v09tpppr4b6abttq"
 created_at: "2026-10-12T22:46:27.730Z"
 parent: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 ---
 
 ## Context
 
-The human approved enforcement and joint delivery of the finite B3 review transport prerequisite. Muse PR7 actually merged at a9a62f0d509056406f3dd7d8c86a13551be168cd. This story belongs to the linked provisional epic de02c921-e23c-4d83-87e8-b32c6c3160ff, originally split after native Codex review5496721636/root4252951958. The human-approved additional prompt story now makes seven points over five required deliveries (carry2+HOST1+caller2+prompt1+consumer1). The earlier six-point statements in retained native comments are dated history; this consumer stays one point/two pin changes. Each source and consumer delivery has independent qualification and lifecycle; no approval transfers.
+The human approved enforcement and joint delivery of the finite B3 review transport prerequisite. Muse PR7 actually merged at a9a62f0d509056406f3dd7d8c86a13551be168cd. This story belongs to the linked provisional epic de02c921-e23c-4d83-87e8-b32c6c3160ff, originally split after native Codex review 5496721636/root4252951958. The human-approved additional prompt story now makes seven points over five required deliveries (carry2+HOST1+caller2+prompt1+consumer1). The earlier six-point statements in retained native comments are dated history; this consumer stays one point/two pin changes. Each source and consumer delivery has independent qualification and lifecycle; no approval transfers.
 
 ## Outcome
 
@@ -36,7 +36,7 @@ No second parser/verifier, broad upstream synchronization, fixed free-model slug
 
 1. Existing consumer pins the actual independently qualified post-clarification workflow MERGE containing both qualified caller context custody and this new final-page instruction, plus matching qualified Muse MERGE. A pre-clarification caller-only workflow pin is insufficient. Selected revisions/artifacts are inspectable and source reviews do not transfer.
 2. Consumer independently passes its required checks, complete current-input assessment, trusted exact-head review/settlement/convergence and canonical authorized MERGE; retain immutable consumer head/base, checks, review and native merge readback.
-3. This final story remains open while consumer advances. Lawful Done requires source-carry, caller and final-page clarification stories independently Done with actual qualified source MERGEs, HOST independently Done with genuine1.18.31 trace and canonical compatibility decision, AND the actual qualified OpenPlanner MERGE. Then all five deliveries are finished and the epic can close; metadata custody, source merge or a planning approval alone cannot close it. No B1/B2/liveB3 proof is inferred.
+3. This final story remains open while consumer advances. Lawful Done requires source-carry, caller and final-page clarification stories independently Done with actual qualified source MERGEs, HOST independently Done with genuine 1.18.31 trace and canonical compatibility decision, AND the actual qualified OpenPlanner MERGE. Then all five deliveries are finished and the epic can close; metadata custody, source merge or a planning approval alone cannot close it. No B1/B2/liveB3 proof is inferred.
 
 ## Verification
 
@@ -104,5 +104,7 @@ Native Codex root4266060769 planning correction: current primary Context now exp
 Native Codex root4266143957 corrected: primary Scope and AC3 explicitly require final-page clarification c84f0b33-7527-443a-a9ff-5ee2e2dfed48 Done after independently qualified source MERGE, alongside caller/carry Done/MERGE and HOST Done with genuine trace/compatibility decision, before consumer readiness/delivery and epic closure. Actual OpenPlanner qualified MERGE remains mandatory. Native dependencies are retained as enforced by the qualified owning Rheos; an old bundled-code planning-vector comment does not replace the explicit completion criteria. Consumer remains Incoming, one point/two pins, no approval transfer.
 
 Native Codex root4266325325 current pin criterion corrected: primary AC0/AC1 now selects the actual independently qualified post-clarification workflow MERGE that contains both prior qualified caller custody and the new final-page instruction, with matching qualified Muse. Old caller-only3ad proposals in retained history are superseded. Consumer stays Incoming/one point/two pins and requires both predecessor source stories Done plus independent own checks/full-source review/MERGE; no old source approval or pin is transferred.
+
+Readability correction for native CodeRabbit root 4267204981: the Incoming card prose now separates review 5496721636 from the preceding word and genuine 1.18.31 from the preceding adjective. In the earlier native correction comment, caller-only3ad should be read as caller-only 3ad. That historical comment is preserved; this appended correction supplies the readable reference without rewriting append-only comment/event history. The meaning is unchanged: the earlier caller-only 3ad proposal is superseded by the actual independently qualified post-clarification workflow MERGE, with matching qualified Muse. This consumer remains Incoming, one point, two pin changes, with independent source/consumer qualification and all complete-input gates. No relationship, estimate, lifecycle, runtime or review-policy change.
 
 ---
