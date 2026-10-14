@@ -5,7 +5,7 @@ status: incoming
 priority: P1
 points: "7"
 labels: "epics, cephalon, b3, review, context-custody, 7sp"
-write-id: "1791948587043-0.tmis6p4nzxzcsas4u9"
+write-id: "1791949531027-0.dbtp8bck7lrwisymcze"
 type: "epic"
 ---
 
@@ -15,7 +15,7 @@ The approved finite B3 review prerequisite requires actual downstream adoption a
 
 ## Outcome
 
-Five independently qualified deliveries advance in sequence, then the existing personal OpenPlanner consumer actually merges with complete context-read enforcement.
+The four prerequisite deliveries qualify according to their dependencies; then the existing personal OpenPlanner consumer completes the fifth delivery with its qualified merge and complete context-read enforcement.
 
 ## Scope
 
@@ -76,5 +76,7 @@ Native Codex root4265953854 planning correction: the human-approved one-point fi
 Native planning roots4266143957/4266206757 corrected: current epic AC1 distinguishes genuine HOST1.18.31 trace/canonical compatibility decision from actual qualified MERGEs owed by the four artifact-producing stories. AC4 now explicitly requires final-page clarification Done/qualified source MERGE, all other source deliveries Done/MERGEs, HOST Done with its proper evidence, and the actual independent OpenPlanner MERGE before epic Done. No nonexistent HOST source MERGE is demanded and no delivery is omitted. Existing points7/five stories and original histories remain unchanged; Incoming and source code unapplied.
 
 Current route consistency for native Codex4266325325: the epic body route example now names the qualified post-clarification workflow MERGE, matching consumer AC0/AC1 and prompt AC4; it must contain both the qualified caller custody and final-page instruction. Retained historical caller-only proposals are not the target. One point/epic7, independent complete review/MERGEs, matching qualified Muse and all existing permissions/gates remain unchanged.
+
+Native CodeRabbit4266531448 corrected with its exact Outcome suggestion: four prerequisite deliveries qualify according to actual dependencies, then consumer completes the fifth with its independently qualified MERGE/context-read enforcement. This does not add a sixth delivery; total7 and all5 existing story identities remain. Source story Context also avoids implying the newly inserted prerequisite is chronologically fifth. No source code, readiness or estimate change.
 
 ---

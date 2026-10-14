@@ -24,7 +24,7 @@ missing page 11. Neither attempt published a review or earned approval.
 Caller b9c591fb-95a8-4e4e-b2a5-39eb988cb996 is independently Done after qualified
 ETA PR14 MERGE 3ad5e24bb2eab51ea315a02f590ec234ad6bba46. Its closeout is carried
 in parent planning PR15. This additional one-point story joins epic/parent
-de02c921-e23c-4d83-87e8-b32c6c3160ff as its fifth required delivery; the
+de02c921-e23c-4d83-87e8-b32c6c3160ff as one of its five required deliveries; the
 provisional total becomes seven points (2+1+2+1+1). Consumer
 ad41fc8a-12fe-453c-bdb9-29d832c94e9f retains its existing one-point two-pin
 scope. The human's approved addition does not complete B3.
