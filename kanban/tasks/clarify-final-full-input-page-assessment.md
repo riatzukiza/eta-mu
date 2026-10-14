@@ -7,7 +7,7 @@ priority: "P1"
 points: "1"
 labels: "cephalon, b3, review, prompt"
 dependency: ["b9c591fb-95a8-4e4e-b2a5-39eb988cb996"]
-write-id: "1791957832507-0.nml0b5me4ngwtamj4a"
+write-id: "1791958794679-0.fnwruc56vqqhm5e2kxd"
 epic: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 parent: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 ---
@@ -70,10 +70,14 @@ remains required by acceptance criterion 3. No broad prompt rewrite.
 
 ## Acceptance criteria
 
-1. The prompt names review_assess_diff_chunk with the final page's actual ID,
-   including shorter final pages. It requires coverage.assessed ==
-   coverage.chunks and coverage.missing empty before review_record_evidence;
-   delivered/read coverage and model narrative alone remain insufficient.
+1. When coverage.chunks > 0, the prompt names review_assess_diff_chunk with
+   the final page's actual ID, including shorter final pages. It requires the
+   returned assessment response to show coverage.assessed == coverage.chunks
+   and coverage.missing empty before review_record_evidence; delivered/read
+   coverage and model narrative alone remain insufficient. When
+   coverage.chunks == 0, skip page reads and assessments; retain complete
+   staged-context reading and every evidence-stage, submission and publication
+   duty, without requiring a nonexistent final ID or assessment response.
    Both actual initial and admitted corrective invocation prompts retain this
    instruction; the pre-existing common strict wrapper remains the sole
    producer of the instruction, with no new recovery admission or attempt.
@@ -134,5 +138,7 @@ Native CodeRabbit COMMENTED5513162610/cr-comment:v1:cbf9b57aee10d3116b779d6a and
 Native Codex5513246730/root4266934756/threadPRRT_kwDOU4VdxM6sKzPp correctly identified valid zero-page input has no final ID. Existing strict recovery regression now covers both multi-page Unicode/short-final-page and the existing empty-input fixture, including actual initial and sole admitted corrective prompts through canonical accepted recovery. RED0d0f05dd fails at the absent zero-chunk exception after the empty canonical invocation succeeds. GREEN243tests243pass0fail0skip/26.990sec; zero warnings, runner/test parse and decoded embedded equality PASS. Only two extra prompt lines make the existing final-page checkpoint conditional: zero chunks skip page reads/assessments and retain staged-context reading/all evidence stages; nonempty input keeps final actual-ID assessment and returned complete coverage requirements. No canonical guard/tool/parser/retry/cap/source-input/credential/model change. Production delta remains confined to this prompt block and exact embedded copy; no new point or scope decision. New source head needs fresh full code review/hosted gates/settlement; older approvals do not transfer. Source remains Testing; goal ACTIVE/0of3, heartbeat human PAUSED, no live runtime/deployment/agent/chat/spore changes.
 
 Current source-anchor correction for native Codex root 4267304041: the settled planning Scope cites runner lines 551 and 645 from its pre-implementation baseline. After the nine-line checkpoint insertion, the actual current initial call is line 560, let prompt = strict ? strictInvocationPrompt(basePrompt) : basePrompt; the actual corrective call is line 654, if (strict) prompt = strictInvocationPrompt(prompt). These stable function expressions identify both invocation paths even if future line numbers move. Actual parameterized canonical regression verifies both prompts for multi-page short-final and zero-page inputs. This appended current verification supersedes the old source locations without rewriting the past-Breakdown settled body, as the owning Rheos comment command requires. Scope, point estimate, production logic and every guard remain unchanged; complete new-head qualification is still required.
+
+Acceptance-criterion correction for native Codex review5513783381/root4267390610: final-page ID and returned assessment-response coverage duties apply when coverage.chunks > 0. For canonical zero-page input, skip page reads/assessments because no final ID or assessment response exists, while retaining complete staged-context reading and every evidence-stage/submission/publication duty. This aligns AC1 with the already verified dca production behavior and parameterized canonical empty regression; no new scope, attempt, guard, metadata policy or runtime behavior. The original accepted wording and prior native verification remain append-only history.
 
 ---
