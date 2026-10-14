@@ -46,6 +46,11 @@ Exercise actual supervisor/final boundaries with compiled Muse exports and exact
 
 ## Risks
 
+Pending canonical settlement risk (native Codex4269071422): [owning PR-flow issue25](https://github.com/riatzukiza/.agents/issues/25#issuecomment-6165232107) currently blocks this parent planning gate. The original finding's immutable old enclosing review cannot equal a new head under the installed withdrawal predicate, even after a current-source opener withdrawal. The attempted independent native rejection judgment arrived through an unsupported placement, and its one correction returned a generic verdict. A concrete two-point owning canonical repair is proposed; the human finite-milestone scope choice is pending. This is a proposed workflow prerequisite, not an included source delivery, completed dependency or policy waiver. No new task UUID, points or dependency edge is fabricated before that decision and owning planning review.
+
+The existing source predecessors being Done grants no consumer admission: current parent settlement, complete-input review and required checks must qualify first. The consumer remains Incoming. If the repair is included, record the owning source card and lawful UUID relationships through Rheos before implementation; if it is excluded, retain the unresolved admission obligation while seeking a genuinely supported alternative. Existing five-delivery/seven-point and one-point/two-pin scopes remain unchanged until an accepted re-description.
+
+
 The current two-point adapter estimate is provisional until predecessor discovery establishes a compatible boundary and planning review confirms the described implementation. No readiness is claimed from source equality.
 
 Host framing is version-sensitive; upstream source inspection is not genuine HOST execution. Model file mutation requires independent final rechecks. Two points are provisional for two adapters and existing canonical controls; re-estimate through review if needed.

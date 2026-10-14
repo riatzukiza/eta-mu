@@ -9,7 +9,7 @@ labels: "cephalon, b3, review, context-custody"
 epic: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 dependency: ["b9c591fb-95a8-4e4e-b2a5-39eb988cb996","c84f0b33-7527-443a-a9ff-5ee2e2dfed48"]
 category: "tasks"
-write-id: "1791969768876-0.tspmikllzqshnd4ubcr"
+write-id: "1791971335165-0.153dpk41ndjq6g7nknz"
 created_at: "2026-10-12T22:46:27.730Z"
 parent: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 ---
@@ -45,6 +45,11 @@ No second parser/verifier, broad upstream synchronization, fixed free-model slug
 Read existing caller at actual033c head before mutation. Compare only selected pins, invoke actual consumer review path, retain complete-input proof and own native checks/reviews/MERGE readback, then lawful Rheos hops/Done. Readiness follows planning qualification and predecessor Done.
 
 ## Risks
+
+Pending canonical settlement risk (native Codex4269071422): [owning PR-flow issue25](https://github.com/riatzukiza/.agents/issues/25#issuecomment-6165232107) currently blocks this parent planning gate. The original finding's immutable old enclosing review cannot equal a new head under the installed withdrawal predicate, even after a current-source opener withdrawal. The attempted independent native rejection judgment arrived through an unsupported placement, and its one correction returned a generic verdict. A concrete two-point owning canonical repair is proposed; the human finite-milestone scope choice is pending. This is a proposed workflow prerequisite, not an included source delivery, completed dependency or policy waiver. No new task UUID, points or dependency edge is fabricated before that decision and owning planning review.
+
+The existing source predecessors being Done grants no consumer admission: current parent settlement, complete-input review and required checks must qualify first. The consumer remains Incoming. If the repair is included, record the owning source card and lawful UUID relationships through Rheos before implementation; if it is excluded, retain the unresolved admission obligation while seeking a genuinely supported alternative. Existing five-delivery/seven-point and one-point/two-pin scopes remain unchanged until an accepted re-description.
+
 
 Consumer has independent many-file review and may block after source qualification; keep its separate lifecycle truthful. One point is provisional for narrow pin adoption/qualification, not permission to skip review or expand unrelated source.
 
@@ -114,5 +119,7 @@ Actual post-clarification predecessor now independently Done: promptc84f0b33-752
 Current planning findings4268814280/4268814283 clarified in the derived proof and current handoff: MiMo is the formal GitHub APPROVED review; CodeRabbit and Codex are separately qualified passing issue verdicts. Gate outcomes, exact source MERGEs and all original raw native proofs remain unchanged. Earlier receipt/comment history is immutable. Consumer remains Incoming/one point/two pins until parent qualification and lawful admission. No behavioral or consumer execution proof is inferred.
 
 Native Codex4268925909 identified the current derived packet still selecting caller-only3ad. The packet now selects actual personal qualified e4 workflow, matching primary AC0/AC1 and Musea9. Fresh native content read resolves blob a318cdafc435bd199f40d70dc854622cc841c523,145272bytes,SHA2565dbe1f78596b8b1658293f25f67fbe009b20fb17e40ba1bf0f9884e87a461da0, exactly equal local committed e4 bytes. Public Actions enabled/all is an observed permission, not actual consumer-call proof. Original caller3ad/source review details remain explicitly historical; no approval transfers. Consumer remains Incoming/one point/two pins until own parent qualification and lawful admission.
+
+Current native Codex4269071422 is reflected in primary Risks: canonical issue25/current native reproduction6165232107 blocks parent settlement; two-point owning repair is proposed with human scope choice pending. No new source task, estimate or UUID dependency is included before the decision/own planning review. Existing source predecessors Done grant no consumer admission; current parent full review/checks/settlement remain mandatory. Consumer remains Incoming/one point/two pins; no waiver or implementation.
 
 ---
