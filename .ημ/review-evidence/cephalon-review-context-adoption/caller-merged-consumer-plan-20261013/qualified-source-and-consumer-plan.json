@@ -11,11 +11,16 @@
   "consumerHead": "033c001125019908d0c68aa5365749005644edc8",
   "consumerBase": "f95a53a4da8ed90588b0be320ba8e86c6a03668d",
   "consumerPR": "https://github.com/riatzukiza/openplanner/pull/3",
-  "proposedWorkflow": "riatzukiza/eta-mu/.github/workflows/opencode-code-review.yml@3ad5e24bb2eab51ea315a02f590ec234ad6bba46",
+  "proposedWorkflow": "riatzukiza/eta-mu/.github/workflows/opencode-code-review.yml@e4fb01ff056f9ac823b2b9659e6bc25ac7fea1f2",
   "proposedMuse": "a9a62f0d509056406f3dd7d8c86a13551be168cd",
   "nativeWorkflowRead": {
-    "blob": "1b236fbc31cc3a46a453fb410e4b2deff3d2ceb1",
-    "bytes": 144367,
+    "repository": "riatzukiza/eta-mu",
+    "revision": "e4fb01ff056f9ac823b2b9659e6bc25ac7fea1f2",
+    "path": ".github/workflows/opencode-code-review.yml",
+    "blob": "a318cdafc435bd199f40d70dc854622cc841c523",
+    "bytes": 145272,
+    "sha256": "5dbe1f78596b8b1658293f25f67fbe009b20fb17e40ba1bf0f9884e87a461da0",
+    "publicRepository": true,
     "actionsEnabled": true,
     "allowedActions": "all",
     "actualConsumerCallQualified": false
@@ -46,5 +51,15 @@
       "channel": "explicit-issue-verdict",
       "commentId": 6156794831
     }
-  }
+  },
+  "selectedPostClarificationSource": {
+    "merge": "e4fb01ff056f9ac823b2b9659e6bc25ac7fea1f2",
+    "reviewedHead": "4c633d49c347267283f5b59f8bf9b71f20cf5c62",
+    "base": "bd3b048e0bf92a4ef8062f3905694a3cbe930e4d",
+    "museMerge": "a9a62f0d509056406f3dd7d8c86a13551be168cd",
+    "sourceTask": "c84f0b33-7527-443a-a9ff-5ee2e2dfed48",
+    "sourceTaskStatus": "done",
+    "sourceQualificationTransfersToConsumer": false
+  },
+  "historicalCallerQualification": "sourceMerge/sourceHead/sourceBase/canonicalGate/approvalEvidenceChannels and currentCodeRabbitNativeSummary retain actual earlier callerPR14 qualification at3ad. ProposedWorkflow/nativeWorkflowRead now bind the selected qualified post-clarification e4 source; actual consumer invocation and independent own qualification remain required."
 }
