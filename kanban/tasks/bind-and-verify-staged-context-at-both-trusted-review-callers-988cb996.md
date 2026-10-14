@@ -1,7 +1,7 @@
 ---
 uuid: "b9c591fb-95a8-4e4e-b2a5-39eb988cb996"
 title: "Bind and verify staged context at both trusted review callers"
-status: "review"
+status: "done"
 type: "task"
 priority: "P1"
 points: "2"
@@ -9,7 +9,7 @@ labels: "cephalon, b3, review, context-custody"
 epic: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 dependency: ["52a0f6cc-e43b-4ed5-a628-e54dd9d9fdc4","a880c727-229b-4f3d-9158-718ec164d16c"]
 category: "tasks"
-write-id: "1791930742199-0.fleillh1k3un0xecb0d"
+write-id: "1791975015745-0.l8lgijvmjy52xbck6h"
 created_at: "2026-10-12T22:46:27.252Z"
 parent: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 ---
@@ -115,5 +115,15 @@ existing fixture/control integration. It covers no new review semantics, host di
 policy. Lawful Ready/Todo/IP admission then started actual adapter RED against the qualified six-argument
 module. Planning qualification transfers no code approval, consumer adoption, runtime proof or B1/B2/B3
 completion. Heartbeat remains human PAUSED.
+
+Actual source closeout, 2026-10-14 UTC, for native Codex review 5511488115 and finding 4265355589. The earlier IP/Review paragraph's pending condition is dated history; it was met before the native Done transition below.
+
+Personal ETA PR14 actually MERGED on 2026-10-13 at 23:37:02 UTC: https://github.com/riatzukiza/eta-mu/pull/14 . Exact merge 3ad5e24bb2eab51ea315a02f590ec234ad6bba46 has parents base 23968980349d07aa647874941cede32db67a4895 and reviewed head 1a949713d62d827ca754909d61f4e6d4c2bb16d3. Merge tree 429e66b34d9130f43de3b9e987be8be01708c28b equals the reviewed head tree; independent native merge/readback verification passed.
+
+Canonical source gate and apply both passed: all 15 checks, both findings settled/resolved and one unanimous completed code cohort. Formal MiMo APPROVED review 5511302623 is exact head 1a949713d62d827ca754909d61f4e6d4c2bb16d3; hosted run 38479295513 SUCCESS assessed all 40 full-diff pages, all 19 inputs and actual 7585-byte context to EOF before stage one, with zero confirmed findings. All seven executed deterministic gates exited 0, all 14 suites and final 241 workflow tests passed. CodeRabbit request 6157221242 completed via 6157222820 with passing summary 6156353588; Codex passing comment 6156794831 is current head. These latter two are issue verdicts, not formal GitHub APPROVED records.
+
+After actual qualification and MERGE, qualified native Rheos performed Review to Document to Done; independent read-task confirmed this two-point caller Done. Retained raw proof is .ημ/review-evidence/cephalon-review-context-adoption/caller-merged-consumer-plan-20261013, with receipt cephalon-caller14-actual-merge-done-consumer-plan-20261013. Source-carry and HOST predecessor stories are independently Done. Existing OpenPlanner consumer remains Incoming until its own planning qualification and lawful admission, and then requires its own actual qualified MERGE. This card's Done means caller source delivery only; B1, B2 and live B3 remain unfinished.
+
+Own operator correction for native Codex4269334953: the new pending parent-settlement risk was accidentally put in this completed caller primary body. That accidental paragraph has been removed by exact restoration of the privately preserved pre-mistake bytes, preserving current Done2 metadata. It now lives in the actual Incoming epicde02 primary Risks; consumerad41 risk remains. This caller remains independently qualified source Done after actual3adMERGE, with no new pending delivery or reopened status. Original comments/events and all receipt prefixes remain immutable.
 
 ---

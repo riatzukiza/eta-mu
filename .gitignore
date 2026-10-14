@@ -82,3 +82,6 @@ packages/eta-mu/*.tgz
 # which biome treats as a nested root config — see the "!.claude/**" exclusion
 # in biome.json.
 .claude/worktrees/
+
+# Generated Rheos board projection; authoritative cards/events stay tracked.
+/kanban/.kanban/board.json

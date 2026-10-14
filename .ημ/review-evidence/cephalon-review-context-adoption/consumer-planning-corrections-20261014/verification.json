@@ -1,0 +1,33 @@
+{
+  "tier": "observed-command-output-transcription",
+  "not_provider_approval": true,
+  "review": 5511488115,
+  "findings": [
+    4265355575,
+    4265355581,
+    4265355589
+  ],
+  "source_before": "977a74466314f45fea8961d07da18b42a251432e",
+  "actual_operations": "qualified native Rheos comment, then independent read-task",
+  "consumer_status": "incoming",
+  "caller_status": "done",
+  "full_comment_readback": "PASS",
+  "immutable_event_receipt_reflection_prefixes": "PASS",
+  "diff_hygiene": "PASS",
+  "historical_findings_preserved": true,
+  "B1_B2_live_B3": "unfinished",
+  "raw_files": {
+    "native-findings.json": {
+      "bytes": 12258,
+      "sha256": "299714e910bc6fa5a0a4f275538f4ffb5c8d5bcbf0214696b87a0089c278d2fa"
+    },
+    "consumer-correction-operation.json": {
+      "bytes": 1815,
+      "sha256": "7fab751124f7a7ed130ce7561d496ca878baa6c922243c5c29e678681bea9e24"
+    },
+    "caller-closeout-operation.json": {
+      "bytes": 2093,
+      "sha256": "986903712e0b646c510a7fcd12b2d8a780fa5ed96224581500fc57486d50003e"
+    }
+  }
+}
