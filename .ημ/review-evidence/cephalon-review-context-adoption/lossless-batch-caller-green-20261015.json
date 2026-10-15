@@ -1,0 +1,218 @@
+{
+  "schema": "cephalon.eta-batch-caller-integration/v1",
+  "tier": "observed local command and actual scripted native CLI evidence; not a provider review, approval, throughput or live B proof",
+  "observed_at": "2026-10-15T19:38:56.831522+00:00",
+  "task": "30c9df92-e1fb-4043-8565-36f96ce2a978",
+  "scope_points": 5,
+  "muse_source": "riatzukiza/muse@259c76eee9ac2def944e9191c1da23d3647ba32e",
+  "discovery_donor": "riatzukiza/eta-mu@fcdf356d6e1dfc802e60c09f3f36c18819124f81",
+  "donor_inventory": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/openplanner-context-consumer-20261014/continuation-20261014T2234/eta-qualified-source-integration-discovery-20261015.json",
+  "planning_qualified_head": "c9adb17360baf9b34bf78d56363b9e057ebd6874",
+  "planning_base": "d8bbd5fdabf9d7d2c56a9471443bdf4a35497f72",
+  "compiled_provenance": {
+    "tier": "compiled-fixture",
+    "repository": "riatzukiza/muse",
+    "revision": "259c76eee9ac2def944e9191c1da23d3647ba32e",
+    "recipe_sha256": "82ab265f407a42692e269790f671ef0d2f2731a7bf077f79d38168b6d934ad56",
+    "completed": true,
+    "module_bytes": 326796,
+    "module_sha256": "552cfab17efc12ae12ef4c6be4a6870f8f53b1b3e9e336e38b2ef341692617a3"
+  },
+  "native_proof": {
+    "tier": "actual physical CLI and compiled producer/verifier with scripted local SSE; no provider judgment or publication",
+    "muse": "riatzukiza/muse@259c76eee9ac2def944e9191c1da23d3647ba32e",
+    "registry": [
+      "actor_list",
+      "actor_mailbox",
+      "actor_monitor",
+      "agent_list",
+      "muse_phases",
+      "phase_conclusions",
+      "phase_filter",
+      "phase_head",
+      "phase_list_active",
+      "phase_list_idle",
+      "phase_observations",
+      "phase_tail",
+      "review_assess_diff_batch",
+      "review_assess_diff_chunk",
+      "review_begin",
+      "review_classify_finding",
+      "review_propose_finding",
+      "review_read_diff_batch",
+      "review_read_diff_chunk",
+      "review_record_evidence",
+      "review_status",
+      "review_submit",
+      "task_list",
+      "task_status"
+    ],
+    "verifier_sha256": "552cfab17efc12ae12ef4c6be4a6870f8f53b1b3e9e336e38b2ef341692617a3",
+    "binary_sha256": "f9dab32248695e9ebd56b16a1921798fd85112cf5a69c7dfd0cabc1e17be4a11",
+    "pages": 17,
+    "groups": 5,
+    "attempts": 2,
+    "captures": 4,
+    "terminal_custody_sha256": "1c119026090d4215aa286823d3dd8bbed81adeea20c4447bd552863ef4e531d2",
+    "intercepted_adapter_controls": [
+      "intact control",
+      "missing member",
+      "duplicate member",
+      "changed original page",
+      "truncated native output",
+      "oversized complete wire",
+      "missing final partial assessment"
+    ]
+  },
+  "native_files": [
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/openplanner-context-consumer-20261014/continuation-20261014T2234/eta-batch5-retained-native-proof/model-catalog-source-response.json",
+      "bytes": 502,
+      "sha256": "415fa6d61f616baf72a54dc14cee83bf75cbf158e94e821191adfa4f12eef1ed"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/openplanner-context-consumer-20261014/continuation-20261014T2234/eta-batch5-retained-native-proof/model-catalog-source.json",
+      "bytes": 606,
+      "sha256": "0a5743c4cd24c02a17a2ae8c5ad67ad7df09b4bd0b702517297db5c25f95b3c7"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/openplanner-context-consumer-20261014/continuation-20261014T2234/eta-batch5-retained-native-proof/model-catalog.stdout",
+      "bytes": 954,
+      "sha256": "651ce688ef0802330c55f77432d8d3e0ea827f0ab4f34105ee06e32bd1d31762"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/openplanner-context-consumer-20261014/continuation-20261014T2234/eta-batch5-retained-native-proof/model-discovery.json",
+      "bytes": 4393,
+      "sha256": "e88fdf20bd8db5a6c9a8dd961907620b1228333d5a019d7cf5058850e33cc399"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/openplanner-context-consumer-20261014/continuation-20261014T2234/eta-batch5-retained-native-proof/model-response-attempt-1.txt",
+      "bytes": 100999,
+      "sha256": "ff8bfc7acf8db2ff7227c952a96979412bda7c44ecda5111cdec97ec1608c332"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/openplanner-context-consumer-20261014/continuation-20261014T2234/eta-batch5-retained-native-proof/model-response-attempt-2.txt",
+      "bytes": 102955,
+      "sha256": "1019220ab2b984d66844aec0fb8ddeb892bd234605755fe3d880c7b8f5a21e34"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/openplanner-context-consumer-20261014/continuation-20261014T2234/eta-batch5-retained-native-proof/model-version.stdout",
+      "bytes": 8,
+      "sha256": "ce93d3a23f487a3c7a9c41bcac7a01907e2d098e11d63d7d77187cb38add2af5"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/openplanner-context-consumer-20261014/continuation-20261014T2234/eta-batch5-retained-native-proof/opencode-stderr-attempt-1.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/openplanner-context-consumer-20261014/continuation-20261014T2234/eta-batch5-retained-native-proof/opencode-stderr-attempt-2.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/openplanner-context-consumer-20261014/continuation-20261014T2234/eta-batch5-retained-native-proof/proof.json",
+      "bytes": 1359,
+      "sha256": "634ff6fc6a4cfc574f6a081139f9ccac6ea2f6dedfaedd404b22599f7ecef246"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/openplanner-context-consumer-20261014/continuation-20261014T2234/eta-batch5-retained-native-proof/recovery.json",
+      "bytes": 44489,
+      "sha256": "0fdd2bf103292e6d613baf778d16ac9bdc43f4b3c49ee89c3d5c4346f7b9bef3"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/openplanner-context-consumer-20261014/continuation-20261014T2234/eta-batch5-retained-native-proof/submission.json",
+      "bytes": 4316,
+      "sha256": "32698148cb53e829b2242a7bdb9939eaf59f27c8c6f74b0a0e6f62674e64ac89"
+    }
+  ],
+  "logs": [
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/openplanner-context-consumer-20261014/continuation-20261014T2234/eta-batch5-child-custody-red-corrected.log",
+      "bytes": 4876,
+      "sha256": "a8cbedf60defc47b1d47d258223a52bfc5b781702146358eaec305396fa2e88f"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/openplanner-context-consumer-20261014/continuation-20261014T2234/eta-batch5-child-custody-green.log",
+      "bytes": 1275,
+      "sha256": "85ab453a292c567043e36295c262b107156fda0fda4bc3abb7fd56ada2101e72"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/openplanner-context-consumer-20261014/continuation-20261014T2234/eta-batch5-selected-adoption-green.log",
+      "bytes": 3476,
+      "sha256": "5196d78dfc07d2ed80a95c0ec741fecefd9f4a257b3f5da0b0fdfa14fd9bf507"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/openplanner-context-consumer-20261014/continuation-20261014T2234/eta-batch5-full-adoption-suite.log",
+      "bytes": 90545,
+      "sha256": "caf95253036942828e8dc9e99160a30e8d8774acb41aab90bd5ed81cc38ef5c1"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/openplanner-context-consumer-20261014/continuation-20261014T2234/eta-batch5-final-native-fixture-build.log",
+      "bytes": 812,
+      "sha256": "db538a7d14d181368381cdb29180d96e6d88b58301d508143031db3bde317776"
+    },
+    {
+      "path": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/openplanner-context-consumer-20261014/continuation-20261014T2234/eta-batch5-final-owned-test-gate.log",
+      "bytes": 90903,
+      "sha256": "8878bfcd812880a815e3ac945f64bb3ede27db1af323b599e1e554c201fa6575"
+    }
+  ],
+  "source_files": [
+    {
+      "path": ".github/scripts/run-opencode-review-recovery.mjs",
+      "bytes": 87364,
+      "sha256": "7ac8a5c8482a10db9e7ce5f2331a91cd673dfa8336f46ae59cacf5ef21a40c3f"
+    },
+    {
+      "path": ".github/scripts/opencode-code-review-workflow.test.mjs",
+      "bytes": 196249,
+      "sha256": "082059e1ca8b88d39243916cebfcb792bc0f6438b36759cb4c90410dcd5b9253"
+    },
+    {
+      "path": ".github/scripts/eta_mu/extern/canonical_context_fixture.cljs",
+      "bytes": 5392,
+      "sha256": "f5509b529367a563aa031d4d64cacfccc13296055a5b328af7decc2d3f3befc4"
+    },
+    {
+      "path": ".github/workflows/opencode-code-review.yml",
+      "bytes": 210401,
+      "sha256": "22b9f05ea938f961ac478aaa472608157fc7c58dd303c40e14f7969c7e630fe2"
+    },
+    {
+      "path": "docs/agent-workflows.md",
+      "bytes": 20037,
+      "sha256": "170cff136ff9ee03cc7a27cd8a9de95b402df46dabc0c77cfc45b620f54ebdf5"
+    }
+  ],
+  "actual_gates": [
+    "causal5tests0PASS5FAIL then5PASS0FAIL",
+    "final complete owning review-workflow suite258PASS0FAIL0SKIP/88.3s through bb scripts/test.bb --only review-workflow",
+    "fresh personal Muse259 profile24 and verifier compile0warnings; whole fixture normal script invocation exit0 and isolated native CLI npm installation",
+    "Node syntax, actual workflow parsing and embedded runner byte equality, scoped Clojure lint0errors0warnings, diff hygiene"
+  ],
+  "preserved": [
+    "complete staged mandatory six-argument context and native read evidence",
+    "actual whole-page membership and distinct notes, final partial batch, all five stages and actual submission",
+    "one accepted whole invocation; existing maximum two processes; no cross-invocation coverage",
+    "original source/host snapshot and every child before/after pair including exceptions; first mutation stops retry/acceptance",
+    "trusted invocation digest binds original/pairs; separate final command independently captures terminal custody; publisher consumes private unchanged bytes",
+    "anonymous OpenCode latest eligible free MiMo, no fixed future model slug or provider credential",
+    "all original ledger/receipt/reflection history; same authorized PR21 continues code phase; native card remains InProgress until actual gates/qualification"
+  ],
+  "truthful_operator_corrections": [
+    "Initial Node24 test could not load yaml; corrected pinned Node22/NODE_PATH supplied actual causal RED.",
+    "Initial compiled fixture command used -m despite a top-level script: compilation really passed with0warnings but command exited1 for absent -main; later correct file invocation passed the entire final fixture.",
+    "Early scripted catalog omitted required provider metadata; native CLI refused before inference. The fixture now uses source-shaped metadata and actual native CLI catalog parsing.",
+    "A scripted request used first_id instead of canonical first-id; refusal remained a failed test, never a successful batch.",
+    "An exact16-page synthetic input did not exercise a partial final group; the final actual17-page input exercises five groups.",
+    "Final guard correctly detected an older root fixture marker removed by its helper; the marker is now removed before native launch. Negative publication markers are cleared between checks.",
+    "Python public-catalog GET observed403; the actual selected Node fetch shape independently observed200/5665354bytes/current eligible mimo-v2.6-flash-free. No inference or credential change."
+  ],
+  "limits": [
+    "No current implementation hosted gates or code-review qualification yet.",
+    "No genuine1491-page/150-input OpenPlanner model review; projection and scripted17-page native test provide no such credit.",
+    "No cephalon runtime, maker, clock, gateway, owner, PM2, cloud, sysctl, credentials, paid model, deployment, social publication or heartbeat resumption.",
+    "GoalACTIVE, heartbeat humanPAUSED, liveB1/B2/B3=0/3."
+  ]
+}

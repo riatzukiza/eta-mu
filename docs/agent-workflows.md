@@ -32,12 +32,12 @@ Kimi must not close ambiguous issues or make broad/destructive changes.
 
 ## MiMo evidence-first PR review
 
-`.github/workflows/opencode-code-review.yml` reviews non-draft, same-repository pull requests with the project-local `github-reviewer` OpenCode agent and the `opencode/mimo-v2.6-flash-free` model.
+`.github/workflows/opencode-code-review.yml` reviews non-draft, same-repository pull requests with the project-local `github-reviewer` OpenCode agent and the latest active, tool-capable, wholly free OpenCode MiMo Flash model from a fresh catalog. Discovery and inference run anonymously through OpenCode; no model API key is required. A caller may explicitly select a currently eligible free model; a dated slug is not the default.
 
 The workflow has three bounded stages:
 
 1. **Deterministic evidence** — install from the committed lockfile, then run the repository lint, test, and build gates. Exit codes and logs are serialized under `.opencode/review-evidence/`. A failed environment or dependency install is evidence about the run, not automatically evidence of a code defect.
-2. **Review-context compilation** — check out pinned revisions of `octave-commons/muse` and `riatzukiza/.agents`. Muse compiles a review-specific OpenCode projection containing only observer tools; the `.agents` repository is packaged as the global skill source. Both revisions and the skill inventory are recorded in the context artifact.
+2. **Review-context compilation** — check out pinned revisions of `riatzukiza/muse` and `riatzukiza/.agents`. Muse compiles a review-specific OpenCode projection containing only observer tools; the `.agents` repository is packaged as the global skill source. Both revisions and the skill inventory are recorded in the context artifact.
 3. **Model review with omission-only recovery** — map the change, reconstruct relevant contracts and invariants, generate candidate findings, attempt to disprove each candidate, and publish only findings that survive the evidence threshold. A completed first invocation that leaves a missing `review_submit` artifact receives exactly one corrective model invocation. The recovery starts the state machine again and must finish with a real tool-written submission; it never synthesizes a review from free-form output. A malformed submission does not consume the recovery attempt, and malformed or repeatedly missing submissions fail closed before publication.
 
 Diff staging preserves the complete Git merge-base/head bytes in `basehead.diff`
@@ -56,11 +56,30 @@ hunk, reading unchanged surrounding code as needed to assess its contracts.
 This does not require exhaustive proof or reading every unchanged file.
 
 The workflow-call default and both direct-PR fallbacks select immutable Muse
-`0b9a91492c8355e6933dc2164d35668cb76d9e60`, including context provenance.
+`259c76eee9ac2def944e9191c1da23d3647ba32e`, the independently qualified personal Muse PR12 merge. Plugin and verifier compile from the same selected source.
 This candidate pair still requires native hosted qualification. Existing
 production callers select the pair only after both candidates qualify and
 merge; historical callers pinned to b5 retain their original functional source
 until a separately reviewed revision update selects the new pair.
+
+The profile has 24 tools: fourteen existing-state observers and ten review
+pipeline tools, including both single-page and bounded batch delivery. Batch
+selection preserves every original page and every distinct per-page assessment;
+follow actual returned membership and the final partial group. Complete native
+context-read evidence and all five stages still precede actual submission.
+
+The review job installs the physical Linux x64 OpenCode 1.18.31 executable in an
+owned temporary directory. Canonical Muse authenticates its batch profile using
+the actual executable, resolved configuration, child environment and cwd. The
+supervisor captures these independently before and after **each** actual model
+child, including failed children. Original source, full config, registry,
+context and Git identities remain bound; the first change or failed capture
+stops retry and acceptance. `recovery.json` retains the original observation and
+all actual capture pairs. Its digest is bound by the trusted invocation output.
+The separate final workflow command checks those exact original pairs and makes
+an independent terminal capture before freezing the unchanged publisher bytes.
+Model-written reports or a new capture cannot replace the original authority.
+Configuration/environment contents remain private; retained evidence uses hashes.
 
 The two model invocations write separate response and stderr files plus a small
 `recovery.json` decision record. The attempt artifact therefore preserves the

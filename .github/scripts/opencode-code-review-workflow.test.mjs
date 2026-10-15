@@ -1,16 +1,17 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 import assert from "node:assert/strict";
-import { execFileSync, spawnSync } from "node:child_process";
+import { execFileSync, spawn, spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import fs from "node:fs";
+import http from "node:http";
 import { createRequire } from "node:module";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 
-import { runReviewRecovery } from "./run-opencode-review-recovery.mjs";
+import { runReviewRecovery, parseOpenCodeModelCatalog, selectFreeMiMoFlash } from "./run-opencode-review-recovery.mjs";
 import { bindTransportInvocation, stageTransportVerifier, transportResponse,
   transportSha256, transportVerifierSource } from "./review-invocation-fixture.mjs";
 
@@ -396,7 +397,7 @@ test("staging preserves empty input and distinguishes the native base from the m
 });
 
 test("the compiled observer contract pins compatible Muse and allows both full-input tools", () => {
-  const museSha = "a9a62f0d509056406f3dd7d8c86a13551be168cd";
+  const museSha = "259c76eee9ac2def944e9191c1da23d3647ba32e";
   const expectedRef = "${{ inputs.muse_revision || '" + museSha + "' }}";
   assert.equal(workflow.on.workflow_call.inputs.muse_revision.default, museSha,
     "workflow-call default must select the corrected immutable Muse source");
@@ -405,7 +406,7 @@ test("the compiled observer contract pins compatible Muse and allows both full-i
   const assembly = namedStep("prepare_review_context", "Assemble revision-bound review context");
   assert.equal(assembly.env.MUSE_REVISION, expectedRef,
     "artifact provenance must record the same effective Muse selection");
-  for (const name of ["review_read_diff_chunk", "review_assess_diff_chunk"]) {
+  for (const name of ["review_read_diff_chunk", "review_assess_diff_chunk", "review_read_diff_batch", "review_assess_diff_batch"]) {
     assert.ok(workflowText.includes(`:${name}`), `missing permission for ${name}`);
     assert.ok(workflowText.includes(`'${name}'`), `missing compiled registry assertion for ${name}`);
   }
@@ -471,14 +472,14 @@ const inputVerificationName = "Verify full review input against independent Git 
 const finalInputVerificationName = "Reverify full input and bind final submission";
 
 /** Stage native-shaped producer input, including empty, large and retained-attempt cases. */
-function fullInputFixture(t, { large = false, baseAhead = false, empty = false, unicode = false, invalidUtf8 = false, producerAttempt = "2" } = {}) {
+function fullInputFixture(t, { large = false, baseAhead = false, empty = false, unicode = false, invalidUtf8 = false, producerAttempt = "2", reviewLines = 2 } = {}) {
   const { directory, sha: ancestor } = makeRepository(t);
   const scratch = fs.mkdtempSync(path.join(os.tmpdir(), "eta-mu-review-input-"));
   t.after(() => fs.rmSync(scratch, { recursive: true, force: true }));
   if (!empty) {
     fs.writeFileSync(path.join(directory, "large.txt"),
       invalidUtf8 ? Buffer.concat([Buffer.from("changed input "), Buffer.from([0xff]), Buffer.from("\n")])
-        : (unicode ? "changed 😀 ημ input\n" : "changed input\n").repeat(large ? 26000 : 2));
+        : (unicode ? "changed 😀 ημ input\n" : "changed input\n").repeat(large ? 26000 : reviewLines));
     fs.writeFileSync(path.join(directory, "尾-ημ.txt"), "tail hunk must be reviewed\n");
     execFileSync("git", ["add", "large.txt", "尾-ημ.txt"], { cwd: directory });
     execFileSync("git", ["commit", "-qm", "review input head"], { cwd: directory });
@@ -716,6 +717,8 @@ function contextFixture(checked) {
 /** Execute the actual final command, or dc4's original completion guard for semantic RED. */
 function finalReviewInputCheck(checked, context, overrides = {}) {
   fs.rmSync(checked.invocation, { force: true });
+  const publication = path.join(checked.evidence, "publisher-invoked");
+  fs.rmSync(publication, { force: true });
   const output = path.join(checked.consumer, ".opencode/review-evidence/final-outputs");
   const env = { ...checked.env, GITHUB_OUTPUT: output, REVIEW_INPUT_PHASE: "final",
     REVIEW_INPUT_VERIFICATION_SHA256: parseOutput(checked.env.GITHUB_OUTPUT).input_verification_sha256,
@@ -726,7 +729,6 @@ function finalReviewInputCheck(checked, context, overrides = {}) {
   const step = workflow.jobs.review.steps.find((candidate) => candidate.name === finalInputVerificationName);
   const legacy = namedStep("review", "Verify review remained revision-bound");
   const result = runScript(step?.run ?? legacy.run, checked.consumer, env);
-  const publication = path.join(checked.evidence, "publisher-invoked");
   if (result.status === 0) fs.writeFileSync(publication, "synthetic publisher boundary\n");
   return { result, publication, output, step };
 }
@@ -2264,13 +2266,18 @@ function reviewMetadataFixture(t) {
   // The real install adapter runs; only its existing npm install effect is mocked.
   fs.writeFileSync(path.join(bin, "npm"), '#!/bin/sh\nprintf "%s\\n" "$@" > "$REVIEW_METADATA_NPM_LOG"\n');
   fs.chmodSync(path.join(bin, "npm"), 0o755);
+  const childEnv = path.join(scratch, "github-env");
+  const childHome = () => fs.existsSync(childEnv)
+    ? fs.readFileSync(childEnv, "utf8").trim().split("\n").filter(line => line.startsWith("REVIEW_CHILD_HOME=")).at(-1).slice("REVIEW_CHILD_HOME=".length)
+    : path.join(runnerTemp, "not-installed");
   const install = () => runScript(namedStep("review", "Verify and install the bounded review context").run,
-    directory, { HOME: runnerHome, GITHUB_WORKSPACE: directory, GITHUB_OUTPUT: path.join(scratch, "output"),
+    directory, { HOME: runnerHome, RUNNER_TEMP: runnerTemp, GITHUB_ENV: childEnv,
+      GITHUB_WORKSPACE: directory, GITHUB_OUTPUT: path.join(scratch, "output"),
       REVIEW_METADATA_NPM_LOG: npmLog, PATH: `${bin}:${process.env.PATH}` });
-  const wrapper = path.join(runnerHome, ".config/opencode/plugins/eta-mu-actors.js");
+  const wrapper = () => path.join(childHome(), ".config/opencode/plugins/eta-mu-actors.js");
   const data = path.join(directory, ".review-context/machinery/review-host-tool-metadata.json");
-  return { directory, scratch, runnerHome, names, tools, hooks, otherHook, data, wrapper, npmLog, install,
-    load: () => import(pathToFileURL(wrapper).href), state: globalThis.__reviewMetadataFixture };
+  return { directory, scratch, runnerHome, childHome, names, tools, hooks, otherHook, data, get wrapper() { return wrapper(); }, npmLog, install,
+    load: () => import(pathToFileURL(wrapper()).href), state: globalThis.__reviewMetadataFixture };
 }
 
 test("review metadata actual context carries rendered data and copies exact verified bytes", async (t) => {
@@ -2284,12 +2291,12 @@ test("review metadata actual context carries rendered data and copies exact veri
   assert.ok(sums.includes(`${createHash("sha256").update(bytes).digest("hex")}  ./machinery/review-host-tool-metadata.json\n`));
   const installed = f.install();
   assert.equal(installed.status, 0, installed.stderr);
-  assert.deepEqual(fs.readFileSync(path.join(f.runnerHome, ".eta-mu-review/review-host-tool-metadata.json")), bytes);
-  assert.deepEqual(JSON.parse(fs.readFileSync(path.join(f.runnerHome, ".config/opencode/opencode.json"))),
+  assert.deepEqual(fs.readFileSync(path.join(f.childHome(), "review-runtime/review-host-tool-metadata.json")), bytes);
+  assert.deepEqual(JSON.parse(fs.readFileSync(path.join(f.childHome(), ".config/opencode/opencode.json"))),
     { permission: { bash: { true: "allow" } } });
   assert.deepEqual(fs.readFileSync(path.join(f.directory, ".opencode/caller.txt")), Buffer.from("caller-owned\n"));
   assert.deepEqual(fs.readFileSync(f.npmLog, "utf8").trim().split("\n"),
-    ["install", "--prefix", path.join(f.runnerHome, ".eta-mu-review"), "--ignore-scripts", "--no-audit", "--no-fund"]);
+    ["install", "--prefix", path.join(f.childHome(), "review-runtime"), "--ignore-scripts", "--no-audit", "--no-fund"]);
 });
 
 test("review metadata actual generated wrapper preserves one plugin and all registry ABI identities", async (t) => {
@@ -2305,7 +2312,7 @@ test("review metadata actual generated wrapper preserves one plugin and all regi
   assert.equal(hooks, f.hooks);
   assert.equal(hooks.tool, f.tools);
   assert.deepEqual(Object.keys(hooks.tool).sort(), f.names);
-  assert.equal(f.names.length, 22);
+  assert.equal(f.names.length, 24);
   for (const name of f.names) {
     assert.equal(hooks.tool[name], f.tools[name]);
     assert.equal(hooks.tool[name].args, f.tools[name].args);
@@ -2392,7 +2399,7 @@ test("review metadata actual checksum rejects changed data before runtime or plu
   const result = f.install();
   assert.notEqual(result.status, 0);
   assert.match(result.stdout, /review-host-tool-metadata.json: FAILED/);
-  assert.equal(fs.existsSync(path.join(f.runnerHome, ".eta-mu-review")), false);
+  assert.equal(fs.existsSync(path.join(f.childHome(), "review-runtime")), false);
   assert.equal(fs.existsSync(f.wrapper), false);
   assert.equal(fs.existsSync(f.npmLog), false);
   assert.equal(fs.readFileSync(path.join(f.directory, ".opencode/caller.txt"), "utf8"), "caller-owned\n");
@@ -2404,7 +2411,7 @@ test("review timeout defaults keep the direct PR route and other stage budgets u
   assert.equal(input.required, false);
   assert.equal(input.default, 60);
   assert.deepEqual(workflow.on.pull_request.types, ["opened", "synchronize", "reopened", "ready_for_review"]);
-  assert.equal(workflow.on.workflow_call.inputs.model.default, "opencode/mimo-v2.6-flash-free");
+  assert.equal(workflow.on.workflow_call.inputs.model.default, "");
   assert.deepEqual(Object.fromEntries(Object.entries(workflow.jobs)
     .filter(([name]) => name !== "review").map(([name, job]) => [name, job["timeout-minutes"]])), {
     deterministic_evidence: 60, prepare_review_context: 45, review_gate: 5,
@@ -2770,6 +2777,275 @@ test("canonical caller custody: a throwing child still gets an independent after
   assert.deepEqual(captures, ["before:1", "after:1"]);
 });
 
+test("native bounded batches: actual standalone, physical CLI and compiled producer close a whole corrective invocation", { timeout: 150_000 }, async (t) => {
+  const owner = process.env.ETA_MU_CANONICAL_CONTEXT_MODULE;
+  assert.ok(owner && path.isAbsolute(owner), "compiled Muse owner is required");
+  const binary = process.env.ETA_MU_NATIVE_BATCH_BINARY ||
+    path.join(path.dirname(owner), "native-cli/node_modules/opencode-linux-x64/bin/opencode");
+  assert.ok(binary && path.isAbsolute(binary), "ETA_MU_NATIVE_BATCH_BINARY must select the actual qualified physical CLI");
+  const localProfile = path.join(path.dirname(owner), "profile");
+  const profile = fs.existsSync(localProfile) ? localProfile : path.resolve(path.dirname(owner), "../muse/opencode");
+  const checked = freshReviewInputCheck(fullInputFixture(t, { unicode: true, reviewLines: 2050 }));
+  // This old inert adapter marker is removed by finalReviewInputCheck; it is
+  // not a source file and must not enter the native invocation's original tree.
+  fs.rmSync(checked.invocation, { force: true });
+  const f = canonicalContextFixture(checked);
+  const ownedBinary = path.join(checked.env.RUNNER_TEMP, "native-physical-opencode");
+  fs.copyFileSync(binary, ownedBinary, fs.constants.COPYFILE_FICLONE);
+  fs.chmodSync(ownedBinary, 0o700);
+  const registry = fs.readFileSync(path.join(profile, "exposed-tools.txt"), "utf8").trim().split("\n");
+  assert.equal(registry.length, 24);
+  assert.ok(registry.includes("review_read_diff_batch") && registry.includes("review_assess_diff_batch"));
+  fs.writeFileSync(f.registryFile, registry.join("\n") + "\n");
+  const runtime = path.join(checked.env.RUNNER_TEMP, "native-runtime");
+  fs.cpSync(profile, runtime, { recursive: true });
+  execFileSync("npm", ["install", "--prefix", runtime, "--ignore-scripts", "--no-audit", "--no-fund"], {
+    cwd: checked.env.RUNNER_TEMP, env: { PATH: process.env.PATH, HOME: checked.env.RUNNER_TEMP, NPM_CONFIG_USERCONFIG: "/dev/null" },
+    stdio: "pipe", timeout: 60_000,
+  });
+  const home = path.join(checked.env.RUNNER_TEMP, "native-home");
+  fs.mkdirSync(home, { mode: 0o700 });
+  const cfg = path.join(home, ".config/opencode");
+  fs.mkdirSync(path.join(cfg, "agents"), { recursive: true });
+  fs.mkdirSync(path.join(cfg, "plugins"));
+  fs.mkdirSync(path.join(home, "tmp"));
+  fs.copyFileSync(path.join(runtime, "agents/github-reviewer.md"), path.join(cfg, "agents/github-reviewer.md"));
+  fs.writeFileSync(path.join(cfg, "plugins/eta-mu-actors.js"),
+    `export { EtaMuActorsPlugin } from ${JSON.stringify(pathToFileURL(path.join(runtime, "dist/eta-mu-actors.js")).href)};\n`);
+  const promptFile = path.join(f.context, "machinery/evidence-review.md");
+  fs.writeFileSync(promptFile, "Scripted native custody diagnostic only. No model judgment or review credit.\n");
+  const runner = path.join(f.context, "machinery/run-opencode-review-recovery.mjs");
+  fs.copyFileSync(path.join(root, ".github/scripts/run-opencode-review-recovery.mjs"), runner);
+  const sums = execFileSync("sha256sum", ["machinery/review-invocation.cjs", "metadata/exposed-tools.txt",
+    "machinery/evidence-review.md", "machinery/run-opencode-review-recovery.mjs"], { cwd: f.context });
+  fs.writeFileSync(path.join(f.context, "SHA256SUMS"), sums);
+  f.digest = transportSha256(sums);
+  const names = new Map(), perAttempt = new Map(), observed = [];
+  const stages = ["deterministic", "map-change", "generate-candidates", "adversarial-validate", "publish"];
+  const server = http.createServer(async (request, response) => {
+    try {
+      let bytes = "";
+      for await (const part of request) { bytes += part; assert.ok(bytes.length < 4 * 1024 * 1024); }
+      const body = JSON.parse(bytes);
+      const attempt = JSON.stringify(body.messages).includes("Corrective attempt 2 of 2") ? 2 : 1;
+      const sequence = perAttempt.get(attempt) ?? [];
+      perAttempt.set(attempt, sequence);
+      const prior = body.messages.filter(message => message.role === "tool").at(-1);
+      const previousName = prior ? names.get(prior.tool_call_id) : null;
+      const previous = prior ? (() => { try { return JSON.parse(prior.content); } catch { return null; } })() : null;
+      let name, args;
+      if (!previousName) { name = "review_begin"; args = {}; }
+      else if (previousName === "review_begin") { name = "read"; args = { filePath: f.contextFile, offset: 1, limit: 200 }; }
+      else if (previousName === "read") { name = "review_read_diff_batch"; args = { "first-id": 1, count: 4 }; }
+      else if (previousName === "review_read_diff_batch") {
+        assert.equal(previous["ok?"], true, JSON.stringify(previous));
+        sequence.push(previous);
+        name = "review_assess_diff_batch";
+        args = { profile: previous.custody.profile, source_sha256: previous.custody.source_sha256,
+          assessments: previous.chunks.map(page => ({ id: page.id, start: page.start, end: page.end, sha256: page.sha256,
+            note: `Original page ${page.id}: scripted native custody diagnostic; no substantive model judgment.` })) };
+      } else if (previousName === "review_assess_diff_batch") {
+        assert.equal(previous["ok?"], true, JSON.stringify(previous));
+        const next = sequence.at(-1).batch["next-id"];
+        if (next !== null) { name = "review_read_diff_batch"; args = { "first-id": next, count: 4 }; }
+        else { name = "review_record_evidence"; args = { stage: stages[0], note: "Scripted native stage control; no model judgment." }; }
+      } else if (previousName === "review_record_evidence") {
+        assert.equal(previous["ok?"], true, JSON.stringify(previous));
+        const recorded = observed.filter(call => call.attempt === attempt && call.name === "review_record_evidence").length;
+        if (recorded < stages.length) { name = "review_record_evidence"; args = { stage: stages[recorded], note: `Scripted stage ${recorded} control.` }; }
+        else if (attempt === 2) { name = "review_submit"; args = { summary: "Scripted native whole-input custody diagnostic only; no semantic review or publication." }; }
+      }
+      response.writeHead(200, { "content-type": "text/event-stream" });
+      const emit = (delta, finish_reason = null) => response.write(`data: ${JSON.stringify({
+        id: "native-caller-fixture", object: "chat.completion.chunk", created: 1, model: body.model,
+        choices: [{ index: 0, delta, finish_reason }],
+      })}\n\n`);
+      emit({ role: "assistant" });
+      if (name) {
+        const id = `native-${attempt}-${observed.length}`;
+        names.set(id, name); observed.push({ attempt, name, args });
+        emit({ tool_calls: [{ index: 0, id, type: "function", function: { name, arguments: JSON.stringify(args) } }] });
+        emit({}, "tool_calls");
+      } else { emit({ content: "Scripted diagnostic stopped." }); emit({}, "stop"); }
+      response.end("data: [DONE]\n\n");
+    } catch (error) {
+      t.diagnostic(`scripted SSE adapter refused ${request.url}: ${error.message}`);
+      if (!response.headersSent) response.writeHead(400, { "content-type": "application/json" });
+      response.end(JSON.stringify({ error: { message: "scripted fixture refused: " + error.message } }));
+    }
+  });
+  await new Promise(resolve => server.listen(0, "127.0.0.1", resolve));
+  t.after(() => { server.closeAllConnections(); server.close(); });
+  const api = `http://127.0.0.1:${server.address().port}/v1`;
+  const selected = { id: "mimo-v9.1-flash-free", family: "mimo", status: "active", release_date: "2027-01-01",
+    name: "Scripted future MiMo Flash", attachment: false, reasoning: false, temperature: true,
+    last_updated: "2027-01-01",
+    tool_call: true, modalities: { input: ["text"], output: ["text"] },
+    cost: { input: 0, output: 0, cache_read: 0, cache_write: 0 }, limit: { context: 131072, output: 2048 } };
+  const catalog = { opencode: { id: "opencode", name: "OpenCode fixture", env: ["OPENCODE_API_KEY"],
+    doc: "https://example.invalid/fixture", api, npm: "@ai-sdk/openai-compatible", models: { [selected.id]: selected } } };
+  const config = JSON.parse(fs.readFileSync(path.join(runtime, "opencode.json")));
+  config.provider = { opencode: { options: { baseURL: api, apiKey: "synthetic-local-fixture" } } };
+  config.enabled_providers = ["opencode"];
+  config.agent = { title: { disable: true }, summary: { disable: true } };
+  fs.writeFileSync(path.join(cfg, "opencode.json"), JSON.stringify(config));
+  const preload = path.join(checked.evidence, "scripted-catalog-preload.mjs");
+  fs.writeFileSync(preload, `globalThis.fetch = async (url, options) => {
+    if (url !== "https://models.opencode.ai/api.json" || options.credentials !== "omit") throw Error("unexpected fixture fetch");
+    const response = new Response(${JSON.stringify(JSON.stringify(catalog))}, { status: 200 });
+    Object.defineProperty(response, "url", { value: url }); return response;
+  };\n`);
+  const environment = { PATH: process.env.PATH, HOME: checked.env.RUNNER_TEMP, PR_NUMBER: "42",
+    OPENCODE_BIN: ownedBinary, REVIEW_MODEL_DISCOVERY: "opencode-free-mimo-flash-v1", REVIEW_EXPECTED_OPENCODE_VERSION: "1.18.31",
+    REVIEW_CHILD_HOME: home, REVIEW_CHILD_RUNTIME: runtime, REVIEW_EVIDENCE_DIR: checked.evidence,
+    REVIEW_PROMPT_FILE: promptFile, REVIEW_TOOL_REGISTRY_FILE: f.registryFile,
+    REVIEW_INVOCATION_VERIFIER_FILE: f.verifierFile, GITHUB_OUTPUT: f.output };
+  const child = spawn(process.execPath, ["--import", preload, runner], { cwd: checked.consumer,
+    env: environment, detached: true, stdio: ["ignore", "pipe", "pipe"] });
+  const stdout = [], stderr = [];
+  child.stdout.on("data", bytes => stdout.push(bytes)); child.stderr.on("data", bytes => stderr.push(bytes));
+  const timer = setTimeout(() => { try { process.kill(-child.pid, "SIGKILL"); } catch {} }, 120_000);
+  const exit = await new Promise((resolve, reject) => { child.once("error", reject); child.once("close", (code, signal) => resolve({ code, signal })); });
+  clearTimeout(timer);
+  const diagnostic = Buffer.concat(stderr).toString("utf8");
+  const catalogFailure = exit.code === 0 ? "" : ["model-discovery.json", "model-catalog.stderr", "model-catalog.stdout", "opencode-stderr-attempt-1.log", "recovery.json"]
+    .map(name => { const file = path.join(checked.evidence, name); return fs.existsSync(file) ? `${name}: ${fs.readFileSync(file, "utf8").slice(0, 6000)}` : name + ": absent"; }).join("\n");
+  assert.equal(exit.code, 0, diagnostic + catalogFailure);
+  const recovery = JSON.parse(fs.readFileSync(path.join(checked.evidence, "recovery.json")));
+  assert.equal(recovery.attempts.length, 2);
+  assert.equal(recovery.accepted_invocation.attempt, 2);
+  assert.equal(recovery.recovery_reason, "missing_review_submit");
+  assert.equal(recovery.batch_custody.captures.length, 4);
+  const actual = JSON.parse(fs.readFileSync(f.submissionFile));
+  assert.ok(actual["input-assessments"].length >= 5);
+  assert.equal(new Set(actual["input-assessments"].map(page => page.note)).size, actual["input-assessments"].length);
+  for (const attempt of [1, 2]) {
+    const groups = perAttempt.get(attempt);
+    assert.ok(groups.some(group => group.chunks.length > 1));
+    assert.equal(groups.at(-1).batch["next-id"], null);
+    assert.ok(groups.at(-1).chunks.length < 4, "actual final partial group is exercised");
+    assert.deepEqual(groups.flatMap(group => group.chunks.map(page => page.id)), actual["input-assessments"].map(page => page.id));
+  }
+  assert.ok(recovery.accepted_invocation.canonical_verdict.contextReadCoverage.eof);
+  assert.equal(transportSha256(JSON.stringify(recovery.accepted_invocation)), parseOutput(f.output).review_invocation_sha256);
+  f.invocationDigest = parseOutput(f.output).review_invocation_sha256;
+  const finalEnvironment = { REVIEW_CHILD_HOME: home, REVIEW_CHILD_RUNTIME: runtime,
+    REVIEW_EXPECTED_OPENCODE_VERSION: "1.18.31" };
+  const final = finalReviewInputCheck(checked, f, finalEnvironment);
+  assert.equal(final.result.status, 0, final.result.stderr);
+  assert.equal(fs.existsSync(final.publication), true, "actual final command must reach the inert publication marker");
+  const publicationProof = JSON.parse(fs.readFileSync(path.join(checked.evidence, "submission-verification.json")));
+  assert.match(publicationProof.terminal_custody_sha256, /^[0-9a-f]{64}$/);
+  const recoveryFile = path.join(checked.evidence, "recovery.json");
+  const configFile = path.join(cfg, "opencode.json");
+  const bundleFile = path.join(runtime, "dist/eta-mu-actors.js");
+  for (const [label, file] of [["actual context", f.contextFile], ["canonical module", f.verifierFile],
+    ["registry", f.registryFile], ["actual private config bytes", configFile], ["actual runtime bundle", bundleFile],
+    ["retained raw catalog", path.join(checked.evidence, "model-catalog-source.json")]]) {
+    const original = fs.readFileSync(file);
+    try {
+      fs.appendFileSync(file, "\n");
+      const refused = finalReviewInputCheck(checked, f, finalEnvironment);
+      assert.notEqual(refused.result.status, 0, `${label} mutation must refuse`);
+      assert.equal(fs.existsSync(refused.publication), false, `${label} mutation reached publication`);
+    } finally { fs.writeFileSync(file, original); }
+  }
+  const binarySize = fs.statSync(ownedBinary).size;
+  try {
+    fs.appendFileSync(ownedBinary, "x");
+    const refused = finalReviewInputCheck(checked, f, finalEnvironment);
+    assert.notEqual(refused.result.status, 0, "changed actual physical executable must refuse");
+    assert.equal(fs.existsSync(refused.publication), false);
+  } finally { fs.truncateSync(ownedBinary, binarySize); }
+  const recoveryBytes = fs.readFileSync(recoveryFile);
+  for (const label of ["original", "missing-pair", "changed-pair"]) {
+    try {
+      const changed = JSON.parse(recoveryBytes);
+      if (label === "original") changed.batch_custody.original.custody.config_sha256 = "0".repeat(64);
+      if (label === "missing-pair") changed.batch_custody.captures.pop();
+      if (label === "changed-pair") changed.batch_custody.captures[1].boundary = "before";
+      fs.writeFileSync(recoveryFile, JSON.stringify(changed));
+      const refused = finalReviewInputCheck(checked, f, finalEnvironment);
+      assert.notEqual(refused.result.status, 0, `${label} custody change must refuse`);
+      assert.equal(fs.existsSync(refused.publication), false);
+    } finally { fs.writeFileSync(recoveryFile, recoveryBytes); }
+  }
+  const changedEnvironment = finalReviewInputCheck(checked, f, { ...finalEnvironment, PATH: process.env.PATH + ":/unselected-fixture" });
+  assert.notEqual(changedEnvironment.result.status, 0, "changed actual terminal environment must refuse");
+  assert.equal(fs.existsSync(changedEnvironment.publication), false);
+  // Replay retained actual native bytes only as intercepted adapter controls.
+  // These negatives grant no fresh host-capture authority or review credit.
+  const responseBytes = fs.readFileSync(path.join(checked.evidence, recovery.accepted_invocation.response_file));
+  const submissionBytes = fs.readFileSync(f.submissionFile);
+  const context = f.verifier.prepareReviewInvocationContext(f.full,
+    fs.readFileSync(path.join(checked.evidence, "input-manifest.json")), registry,
+    f.submissionFile, f.contextBytes, f.contextFile);
+  context.batchHost = recovery.batch_custody.original.batchHost;
+  const firstRead = events => events.find(event => event.part?.tool === "review_read_diff_batch");
+  const editOutput = (event, mutate) => {
+    const output = JSON.parse(event.part.state.output); mutate(output); event.part.state.output = JSON.stringify(output);
+  };
+  const cases = [
+    ["intact control", () => {}],
+    ["missing member", events => editOutput(firstRead(events), output => output.chunks.pop())],
+    ["duplicate member", events => editOutput(firstRead(events), output => { output.chunks[1] = output.chunks[0]; })],
+    ["changed original page", events => editOutput(firstRead(events), output => { output.chunks[0].text += "changed"; })],
+    ["truncated native output", events => { firstRead(events).part.state.metadata.truncated = true; }],
+    ["oversized complete wire", events => { firstRead(events).part.state.output += " ".repeat(48001); }],
+    ["missing final partial assessment", events => {
+      const last = events.findLastIndex(event => event.part?.tool === "review_assess_diff_batch"); events.splice(last, 1);
+    }],
+  ];
+  for (const [label, mutate] of cases) {
+    const events = responseBytes.toString("utf8").trim().split("\n").map(JSON.parse);
+    mutate(events);
+    const candidate = Buffer.from(events.map(event => JSON.stringify(event)).join("\n") + "\n");
+    const directory = fs.mkdtempSync(path.join(checked.evidence, "intercepted-native-control-"));
+    fs.rmSync(f.submissionFile);
+    let result, failure, attempts = 0;
+    try {
+      result = await runReviewRecovery({ evidenceDirectory: directory, basePrompt: "Intercepted native transport control; no new model review.",
+        submissionFile: f.submissionFile, reviewTools: registry, verifyReviewInvocation: f.verifier.verifyReviewInvocation,
+        expectedContext: context, captureBatchHost: async () => structuredClone(recovery.batch_custody.original),
+        invokeAttempt: async ({ responseFile, stderrFile }) => {
+          attempts += 1; fs.writeFileSync(responseFile, candidate); fs.writeFileSync(stderrFile, "");
+          fs.writeFileSync(f.submissionFile, submissionBytes); return { exitCode: 0 };
+        } });
+    } catch (error) { failure = error; }
+    finally { fs.writeFileSync(f.submissionFile, submissionBytes); }
+    if (label === "intact control") {
+      assert.ok(result?.accepted_invocation, failure?.message);
+      assert.equal(attempts, 1);
+    } else {
+      assert.ok(failure, `${label} must refuse`);
+      const refused = JSON.parse(fs.readFileSync(path.join(directory, "recovery.json")));
+      assert.equal(refused.accepted_invocation, null, label);
+      assert.ok(refused.attempts.every(attempt => attempt.canonical_verdict.ok === false), label);
+      assert.ok(attempts <= 2, label);
+    }
+  }
+  if (process.env.ETA_MU_NATIVE_PROOF_DIR) {
+    const proofDirectory = process.env.ETA_MU_NATIVE_PROOF_DIR;
+    assert.ok(path.isAbsolute(proofDirectory)); fs.mkdirSync(proofDirectory, { mode: 0o700 });
+    for (const name of ["recovery.json", "model-response-attempt-1.txt", "model-response-attempt-2.txt", "submission.json",
+      "opencode-stderr-attempt-1.log", "opencode-stderr-attempt-2.log", "model-discovery.json",
+      "model-catalog.stdout", "model-version.stdout", "model-catalog-source.json", "model-catalog-source-response.json"]) {
+      fs.copyFileSync(path.join(checked.evidence, name), path.join(proofDirectory, name));
+      fs.chmodSync(path.join(proofDirectory, name), 0o600);
+    }
+    fs.writeFileSync(path.join(proofDirectory, "proof.json"), JSON.stringify({
+      tier: "actual physical CLI and compiled producer/verifier with scripted local SSE; no provider judgment or publication",
+      muse: "riatzukiza/muse@259c76eee9ac2def944e9191c1da23d3647ba32e", registry,
+      verifier_sha256: transportSha256(fs.readFileSync(f.verifierFile)),
+      binary_sha256: transportSha256(fs.readFileSync(ownedBinary)),
+      pages: actual["input-assessments"].length, groups: perAttempt.get(2).length, attempts: 2, captures: 4,
+      terminal_custody_sha256: publicationProof.terminal_custody_sha256,
+      intercepted_adapter_controls: cases.map(([label]) => label),
+    }, null, 2) + "\n", { mode: 0o600 });
+  }
+  t.diagnostic(`real CLI/canonical producer: ${actual["input-assessments"].length} pages, ${perAttempt.get(2).length} whole groups, 2 isolated invocations, 4 captures; scripted local SSE, no provider judgment`);
+});
+
 /** Bind a real canonical verdict to selected bytes before exercising the complete final command. */
 function bindCanonicalFixture(fixture, options = {}) {
   const data = canonicalContextResponse(fixture, options);
@@ -2932,6 +3208,13 @@ for (const omission of ["final", "earlier", "multiple"]) {
           const refusal = events.find(event => event.part?.tool === "review_record_evidence"
             && event.part.state.input.stage === "adversarial-validate");
           assert.ok(refusal);
+          for (const event of events.filter(event => event.part?.tool === "review_assess_diff_chunk")) {
+            const id = event.part.state.input.id;
+            const output = JSON.parse(event.part.state.output);
+            output.coverage.assessed = id - missing.filter(omitted => omitted <= id).length;
+            output.coverage.missing = pages.filter(page => page.id > id || missing.includes(page.id)).map(page => page.id);
+            event.part.state.output = JSON.stringify(output);
+          }
           refusal.part.state.metadata = { truncated: false };
           refusal.part.state.output = JSON.stringify({ "ok?": false,
             error: `Unassessed full-input chunks remain: ${missing.join(", ")}. Read and assess every changed hunk before publishing.` });
@@ -2973,7 +3256,7 @@ for (const omission of ["final", "earlier", "multiple"]) {
 }
 
 test("canonical staged context: matching qualified Muse pin supplies both plugin and verifier", () => {
-  const pin = "a9a62f0d509056406f3dd7d8c86a13551be168cd";
+  const pin = "259c76eee9ac2def944e9191c1da23d3647ba32e";
   assert.equal(workflow.on.workflow_call.inputs.muse_revision.default, pin);
   const checkout = namedStep("prepare_review_context", "Checkout Muse compatibility compiler");
   assert.equal(checkout.with.ref, "${{ inputs.muse_revision || '" + pin + "' }}");
@@ -3119,4 +3402,91 @@ test("native event context: identical producer formatter is the last step before
   const steps = workflow.jobs.review.steps;
   assert.equal(steps.indexOf(origin) + 1,
     steps.indexOf(namedStep("review", "Run bounded evidence-first OpenCode review")));
+});
+
+// Qualified same-owner discovery controls from fcdf356d, no unrelated native assessment routes.
+function freeMiMoRow(id = "mimo-v9.1-flash-free", release = "2027-01-01") {
+  return { id, providerID: "opencode", family: "mimo", status: "active", release_date: release,
+    api: { id, url: "https://example.invalid/inert", npm: "@ai-sdk/openai-compatible" },
+    capabilities: { toolcall: true, input: { text: true }, output: { text: true } },
+    cost: { input: 0, output: 0, cache: { read: 0, write: 0 } } };
+}
+
+/** Encode the actual ID-line/pretty-JSON catalog format without connecting to a provider. */
+function verboseModelCatalog(rows) {
+  return `\x1b[32mModels cache refreshed\x1b[0m\n\n${rows.map((row) =>
+    `opencode/${row.id}\n${JSON.stringify(row, null, 2)}`).join("\n")}\n`;
+}
+
+for (const id of ["UNRELATED-v1", "unrelated:model", "unrelated+fast"]) {
+  test(`catalog label widening retains unrelated ${id} before valid MiMo selection`, () => {
+    const ordinary = { ...freeMiMoRow("unrelated-plain"), family: "other" };
+    const unrelated = { ...freeMiMoRow(id), family: "other" };
+    const valid = freeMiMoRow();
+    const expected = [ordinary, unrelated, valid];
+    const rows = parseOpenCodeModelCatalog(Buffer.from(verboseModelCatalog(expected)));
+    assert.deepEqual(rows, expected, "each native label must retain its exact metadata row");
+    assert.deepEqual(selectFreeMiMoFlash(rows), valid);
+    assert.deepEqual(selectFreeMiMoFlash(rows, `opencode/${valid.id}`), valid);
+    assert.throws(() => selectFreeMiMoFlash(rows, `opencode/${id}`), /not a unique eligible/);
+  });
+}
+
+test("catalog label widening preserves exact row identity, duplicate IDs and whitespace refusal", () => {
+  const unrelated = { ...freeMiMoRow("Unrelated:model+fast"), family: "other" };
+  const valid = freeMiMoRow();
+  const encode = (row) => Buffer.from(verboseModelCatalog([row, valid]));
+  for (const change of [
+    { providerID: "other" }, { api: { ...unrelated.api, id: "different" } },
+  ]) assert.throws(() => parseOpenCodeModelCatalog(encode({ ...unrelated, ...change })), /identity mismatch/);
+  const catalog = verboseModelCatalog([unrelated, valid]);
+  assert.throws(() => parseOpenCodeModelCatalog(Buffer.from(
+    catalog.replace(`opencode/${unrelated.id}\n`, "opencode/Different:model+fast\n"))), /identity mismatch/);
+  assert.throws(() => parseOpenCodeModelCatalog(Buffer.from(
+    verboseModelCatalog([unrelated, unrelated, valid]))), /duplicate/);
+  for (const id of ["unrelated model", "unrelated\tmodel", "unrelated\nmodel"]) {
+    assert.throws(() => parseOpenCodeModelCatalog(encode({
+      ...unrelated, id, api: { ...unrelated.api, id },
+    })));
+  }
+});
+
+test("free MiMo selector uses numeric versions and coherent release maxima with verified explicit selection", () => {
+  const older = freeMiMoRow("mimo-v2.9-flash-free", "2026-09-01");
+  const newer = freeMiMoRow("mimo-v2.10-flash-free", "2026-10-01");
+  const rows = parseOpenCodeModelCatalog(Buffer.from(verboseModelCatalog([older, newer])));
+  assert.deepEqual(selectFreeMiMoFlash(rows), newer);
+  assert.deepEqual(selectFreeMiMoFlash(rows, "opencode/mimo-v2.9-flash-free"), older);
+  for (const requested of ["opencode/missing-free", "other/mimo-v2.10-flash-free", "opencode/mimo-v2.10-flash-free "]) {
+    assert.throws(() => selectFreeMiMoFlash(rows, requested), /not a unique eligible/);
+  }
+  for (const candidates of [
+    [older, { ...newer, release_date: older.release_date }],
+    [{ ...older, release_date: "2026-11-01" }, newer],
+    [newer, freeMiMoRow("mimo-v2.10.0-flash-free", "2026-11-01")],
+  ]) assert.throws(() => selectFreeMiMoFlash(candidates), /ambiguous latest/);
+  for (const date of [undefined, "2026-02-30", "not-a-date"]) {
+    assert.throws(() => selectFreeMiMoFlash([{ ...newer, release_date: date }]), /no rankable/);
+  }
+});
+
+test("free MiMo selection rejects paid branches, incompatible roles and malformed native catalog records", () => {
+  const valid = freeMiMoRow();
+  const variants = [
+    { providerID: "other" }, { family: "kimi" }, { status: "deprecated" },
+    { id: "mimo-v9.1-pro-free" }, { capabilities: { ...valid.capabilities, toolcall: false } },
+    { capabilities: { ...valid.capabilities, output: { text: false } } },
+    { cost: { ...valid.cost, input: 1 } }, { cost: { ...valid.cost, output: 1 } },
+    { cost: { ...valid.cost, cache: { read: 1, write: 0 } } },
+    { cost: { ...valid.cost, tiers: [{ ...valid.cost, output: 1 }] } },
+    { cost: { ...valid.cost, experimentalOver200K: { ...valid.cost, input: 1 } } },
+  ];
+  for (const change of variants) assert.throws(() => selectFreeMiMoFlash([{ ...valid, ...change }]), /no eligible/);
+  const catalog = verboseModelCatalog([valid]);
+  for (const bytes of [
+    Buffer.from("not a catalog\n" + catalog), Buffer.from(catalog + "trailing diagnostic\n"),
+    Buffer.from(catalog + catalog.replace(/^.*?\n\n/, "")), Buffer.from(catalog.replace('"providerID": "opencode"', '"providerID": "other"')),
+    Buffer.from(catalog.replace('"api": {', '"api": null, "ignored": {')), Buffer.from("opencode/only-id\n"),
+    Buffer.from([0xff, 0x80]),
+  ]) assert.throws(() => parseOpenCodeModelCatalog(bytes));
 });

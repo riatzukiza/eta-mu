@@ -20,12 +20,13 @@
       workflow (js->clj (.parse yaml (.readFileSync fs (.join path root ".github/workflows/opencode-code-review.yml") "utf8"))
                        :keywordize-keys true)
       revision (get-in workflow [:on :workflow_call :inputs :muse_revision :default])
+      cli-version (get-in workflow [:on :workflow_call :inputs :opencode_version :default])
       steps (get-in workflow [:jobs :prepare_review_context :steps])
       checkout (first (filter #(= "Checkout Muse compatibility compiler" (:name %)) steps))
       recipe (:run (first (filter #(= "Compile and verify a read-only Muse review profile" (:name %)) steps)))
       output (first *command-line-args*)]
   (when-not (and (string? revision) (re-matches #"[0-9a-f]{40}" revision)
-                 (= "octave-commons/muse" (get-in checkout [:with :repository]))
+                 (= "riatzukiza/muse" (get-in checkout [:with :repository]))
                  (string? recipe) (seq recipe))
     (throw (js/Error. "canonical fixture needs the existing immutable Muse compiler recipe")))
   (when-not (and output (.isAbsolute path output))
@@ -43,7 +44,7 @@
     (.writeFileSync fs recipe-file recipe)
     (write-provenance! provenance-file provenance)
     (run-command! "git" ["init" "--quiet"] 120000)
-    (run-command! "git" ["fetch" "--depth=1" "https://github.com/octave-commons/muse.git" revision] 120000)
+    (run-command! "git" ["fetch" "--depth=1" "https://github.com/riatzukiza/muse.git" revision] 120000)
     (run-command! "git" ["checkout" "--quiet" "--detach" "FETCH_HEAD"] 120000)
     (let [actual (.trim (.execFileSync child "git" #js ["rev-parse" "HEAD"] #js {:cwd source :encoding "utf8"}))]
       (when-not (= actual revision)
@@ -58,6 +59,22 @@
         (when (zero? (.-length bytes))
           (throw (js/Error. "compiler produced an empty invocation module")))
         (.writeFileSync fs module-file bytes #js {:flag "wx"})
+        ;; Keep the actual compiler outputs for real CLI/producer integration,
+        ;; not just a cached verifier or synthetic registry assertion.
+        (let [profile (.join path output "profile")]
+          (.mkdirSync fs profile)
+          (doseq [relative ["dist" "plugins" "agents" "opencode.json"
+                            "package.json" "exposed-tools.txt"]]
+            (.cpSync fs (.join path source ".opencode" relative)
+                     (.join path profile relative) #js {:recursive true})))
+        ;; The existing Sandbox full-suite caller also needs the actual host,
+        ;; inside its owned fixture output. Never upgrade a global installation.
+        (when-not (and (= "linux" (.-platform js/process)) (= "x64" (.-arch js/process))
+                       (string? cli-version) (re-matches #"\d+\.\d+\.\d+" cli-version))
+          (throw (js/Error. "native batching fixture requires the selected Linux x64 CLI")))
+        (run-command! "npm" ["install" "--prefix" (.join path output "native-cli")
+                             "--ignore-scripts" "--no-audit" "--no-fund"
+                             (str "opencode-linux-x64@" cli-version)] 120000)
         (write-provenance! provenance-file complete)
         (println "Compiled canonical fixture" revision (.-length bytes) "bytes" (:module_sha256 complete))))
     ;; This invocation exclusively created source. Retain module/recipe/provenance
