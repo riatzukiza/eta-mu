@@ -50,7 +50,7 @@ The current main caller carries context enforcement but lacks the dynamic-discov
 
 ## Verification
 
-Read existing caller at actual033c head before mutation. Compare only selected pins, invoke actual consumer review path, retain complete-input proof and own native checks/reviews/MERGE readback, then lawful Rheos hops/Done. Readiness follows planning qualification and predecessor Done.
+Read the existing caller at its actual current head before mutation. Compare exactly the two qualified Git pins, removal of the dated model override and the approved review-workflow Node 22.23.3 pin. Invoke the actual consumer review path, retain complete-input proof and its own native checks/reviews/MERGE readback, then lawful Rheos hops/Done. Readiness follows planning qualification and predecessor Done.
 
 ## Risks
 

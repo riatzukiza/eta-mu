@@ -1287,3 +1287,13 @@
   spore: none
   receipt-refs: cephalon-eta-muse-repository-hosted-context-green-20261015
   note: The assembly now transports fixed MUSE_REPOSITORY riatzukiza/muse as data, writes metadata/muse-repository.txt before checksums, and matches its value to the actual checkout repository in the existing contract test. The real metadata fixture supplies that same actual step environment. Current context hash/independent final custody already covers every checksummed metadata file; all existing source, membership, full-context, twoattempt and publication rules remain unchanged. This closes the accepted exact owner/repository/commit provenance gap within existing ETA5, not a new credential/provider/runtime or policy prerequisite. A local operator assertion wrongly expected read-task to return an ok wrapper after the comment actually succeeded; the already retained bare native task map was then correctly verified, without repeating the mutation or relabeling the operation as failed. Preserve original comments/events/receipts/reflections; new row omits repo. Current native settlement and fresh changed-head full reviews/gates still follow the next grouped source push after the active whole actually ends. GoalACTIVE/live0of3/heartbeat humanPAUSED; no maker/runtime/clock/owner/PM2/cloud/sysctl/credentials/paid/provider/deployment/social or spore change.
+
+- ts: 2026-10-15T22:33:38.772Z
+  session: /home/err/spaces/cephalon-review-batch-consumer/eta-mu
+  task: cephalon-character-memory/B3/review-batching/ETA
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-eta-readable-attempt-limit-correction-20261015
+  note: Readable correction to the metadata RED and GREEN reflection entries of 2026-10-15: the intended wording is two-attempt. The existing limit remains two attempts within 120 minutes. This appended correction addresses native root 4288771571 while preserving the original historical entries exactly, as the user requires. The Incoming consumer Verification paragraph now names the two qualified Git pins, removal of the dated model override and the already approved review-workflow Node 22.23.3 pin; this adds no scope or estimate and performs no consumer implementation or admission. Current source review and required checks must finish before another ordinary corrective push; no prior approval transfers. Goal remains ACTIVE, live proofs remain 0/3 and the heartbeat remains human-paused. No runtime, maker, clock, gateway, owner, PM2, cloud, sysctl, credentials, paid model, provider, deployment, social or spore change.
