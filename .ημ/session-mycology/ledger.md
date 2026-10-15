@@ -1147,3 +1147,13 @@
   spore: none
   receipt-refs: cephalon-eta-four-native-planning-findings-correction-20261015
   note: All four valid actual Codex findings are corrections within approved ETA batching scope, not new prerequisites. Add exact non-GREEN baseline, per-attempt custody and first-mutation stop, exact qualified canonical repair/installed pack/native parent evidence, and explicit fetchable personal Muse owner/repository/commit tuple. Preserve original repair limitations and pending separate Root outdated-location extension. Prior ee whole model attempt actually ended successfully before grouped next push; old review is historical after new head, never transferred. Same ETA5/local12/consumer1/newbatch14 provisional; no source implementation/Ready/GREEN, continuation, changed budgets, credentials/paid/provider/runtime/maker/clock/owner/PM2/cloud/deployment/social/publication/heartbeat or spore change; goalACTIVE/live0of3.
+
+- ts: 2026-10-15T16:40:50.861Z
+  session: /home/err/spaces/cephalon-review-batch-consumer/eta-mu
+  task: cephalon-character-memory/B3/review-batching/ETA
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-eta-mandatory-context-and-current-estimate-risk-correction-20261015
+  note: Two valid existing planning corrections: remove general Muse explicit-null absence allowance for these always-staged pr-context.md callers; ENOENT/I/O/missing argument/null must terminate custody before each child and final publication, never fallback or stripped retry. Correct current epic Risks to local12 and batching14; historical9/11 native evidence remains untouched. Consumer current primary also clarifies clearing only the already-authorized dated override, not a provider/model-family/payment/runtime/credential expansion. All scope/points/dependencies unchanged. Hold concrete correction locally while original e1f whole hosted review remains active; do not cancel or push a stale-review request. CodeRabbit current completion is not every-provider unanimity; Codex actual findings remain obligations. No Ready/RED/GREEN/source implementation/live proof, paid/credential/runtime/owner/PM2/cloud/deployment/social/publication/heartbeat or spore change; goalACTIVE/live0of3.

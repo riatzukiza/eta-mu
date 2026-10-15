@@ -5,7 +5,7 @@ status: incoming
 priority: P1
 points: "12"
 labels: "epics,cephalon,b3,review,context-custody,batching,12sp"
-write-id: "1792081568633-0.ghusbpih9qgsn6dc6hc"
+write-id: "1792082398008-0.lp0ictxkfrtjcsqn17"
 type: "epic"
 ---
 
@@ -63,7 +63,7 @@ This repair preserves known original review provenance while requiring current-h
 
 Current native4284770730 correction links all six local deliveries and enforces batching before downstream adoption. Original issue25 source repair is actually qualified/installed, and ETA parent15 is already MERGED; original pending-risk statements survive in Git/native comments as history and grant no source waiver. Current batching and consumer independent gates remain unfinished. A separate outdated-location extension in another plan is not included here.
 
-The external eight-point Muse source and local nine-point epic are different owners. The same consumer1 appears in both old context and new11-point batching accounting and is counted once; no native global aggregate is adopted here. Actual current source/model/host capability, complete large native review and permissions remain independently verified, and no extra budget or credentials are introduced. No source preparation can establish live B1/B2/B3. Every estimate remains provisional for review before native Ready.
+The external eight-point Muse source and local twelve-point epic are different owners. The same consumer1 appears in both old context and current14-point batching accounting and is counted once; no native global aggregate is adopted here. Actual current source/model/host capability, complete large native review and permissions remain independently verified, and no extra budget or credentials are introduced. No source preparation can establish live B1/B2/B3. Every estimate remains provisional for review before native Ready.
 
 Software/process documentation: GPL-3.0-or-later.
 
@@ -109,5 +109,7 @@ Correction to the immediately preceding history-preservation claim: my prose-nor
 Existing human latest-free-MiMo requirement and selected-source anomaly: personal main d8/e4 preserves six-argument complete-context enforcement, while qualified parallel ETA17/18 15d/fcdf supplies anonymous current-catalog free/tool-capable selection. Same ETA adoption must preserve both via exact reviewed compatible source/functions/tests/provenance, with no broad branch merge, unrelated purpose/budget changes, paid/provider/credential or runtime change. Re-estimate existing ETA2 to5 (batch/host/context/final integration3 + reviewed discovery/executable/publication custody1 + compiled fixture/full-gate reconciliation1). Same six local deliveries propose12 non-additive (2+1+2+1+5+1), prior7/9 history; external Muse8 separate, same consumer1 counted once, new batching allocation14 provisional. Consumer retains1 and two Git pins plus clearing dated model override to use actual latest selector under prior human instruction; no third source pin/new behavior. All statuses remain Incoming and prior relationships/history retained. New source planning still needs independent qualification/Ready before RED/GREEN; hold current local correction while ee hosted review remains active.
 
 Actual Codex root4285174062 corrected in primary Incoming epic: issue25 source reviewed6f5e352443f06cdfb1d0f69954b00cba201e7db6/qualified MERGE6f968b71f92a6782b6d619c370de1e4c3585d687, actual hosted laws/CLI38597875258 and review38597876002/native parentETA15 merge readbacks, interpreted NBB installedpack8497afdd329c3dcaefb78eec36d8e629a59d9eb2/all50regularfilesbyteidentical, actual entry/config and SHA identities now inspectable. Original repair excludes outdated-location withdrawals; separate Root37 extension remains pending/unapplied. This exact prior repair custody grants no current ETA approval/readiness/settlement or live credit. Existing local12/nonadditive and all historical native segments retained.
+
+Actual Codex root4285646942 corrected current Risks arithmetic to local twelve-point epic and current fourteen-point batching allocation, with the same one-point consumer counted once; older nine/eleven estimate history in native comments/receipts remains exact. Primary consumer also clarifies only the already-authorized dated override clearing, no new provider/model family/payment/runtime/credentials. Native Incoming5/12/1/identities/dependencies remain unchanged; no Ready/source implementation or approval transfer.
 
 ---
