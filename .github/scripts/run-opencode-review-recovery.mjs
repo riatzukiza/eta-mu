@@ -1190,6 +1190,19 @@ function sourceDirectoryIdentity(directory) {
   return { path: root, sha256: sha256(JSON.stringify(files)), files: files.length };
 }
 
+/** Bind the actual global skill carrier, not only its original target's bytes. */
+function globalSkillSourceIdentity(environment, contextDirectory) {
+  const file = path.join(environment.HOME, ".agents"), stat = fs.lstatSync(file, { bigint: true });
+  const expected = fs.realpathSync(path.join(contextDirectory, "agents"));
+  if (!stat.isSymbolicLink() || fs.realpathSync(file) !== expected) {
+    throw new Error("global skill source link is unestablished or changed");
+  }
+  return { path: file, mode: Number(stat.mode & 0o777n), kind: "symlink",
+    device: String(stat.dev), inode: String(stat.ino), uid: String(stat.uid), gid: String(stat.gid),
+    size: String(stat.size), ctime_ns: String(stat.ctimeNs),
+    link: fs.readlinkSync(file), target: fs.realpathSync(file) };
+}
+
 /**
  * Independent physical capture for the actual child launch and final boundary.
  * Muse alone interprets the host profile. Full config/environment/source bytes
@@ -1197,15 +1210,20 @@ function sourceDirectoryIdentity(directory) {
  */
 export function captureReviewBatchCustody({ binary, environment, cwd, verifierFile,
   registryFile, evidenceDirectory, promptFile, contextDirectory, runtimeDirectory }) {
+  const skills = globalSkillSourceIdentity(environment, contextDirectory);
   const physical = modelBinaryIdentity(binary, environment);
+  const verifier = createRequire(import.meta.url)(verifierFile);
+  if (typeof verifier.prepareReviewBatchHost !== "function") throw new Error("canonical batch host capture export is required");
+  // Eligibility preflight only: refuse an unknown physical binary before even
+  // executing its config command. Discard this result; only the independently
+  // captured real resolved configuration below supplies the host observation.
+  verifier.prepareReviewBatchHost(physical.real_path, Buffer.from("{}"), environment, cwd);
   const resolved = spawnSync(physical.real_path, ["debug", "config"], {
     cwd, env: environment, encoding: null, timeout: 30_000, maxBuffer: 2 * 1024 * 1024,
   });
   if (resolved.error || resolved.status !== 0 || resolved.signal || !resolved.stdout?.length) {
     throw new Error("independent resolved OpenCode config capture failed");
   }
-  const verifier = createRequire(import.meta.url)(verifierFile);
-  if (typeof verifier.prepareReviewBatchHost !== "function") throw new Error("canonical batch host capture export is required");
   const batchHost = verifier.prepareReviewBatchHost(physical.real_path, resolved.stdout, environment, cwd);
   const files = [verifierFile, registryFile, promptFile,
     ...["basehead.diff", "input-manifest.json", "pr-context.md"].map(name => path.join(evidenceDirectory, name))];
@@ -1221,7 +1239,7 @@ export function captureReviewBatchCustody({ binary, environment, cwd, verifierFi
     binary: physical, config_sha256: sha256(resolved.stdout),
     environment_sha256: sha256(JSON.stringify(Object.entries(environment).sort(([a], [b]) => a.localeCompare(b)))),
     cwd: fs.realpathSync(cwd), sources,
-    context: sourceDirectoryIdentity(contextDirectory), runtime: sourceDirectoryIdentity(runtimeDirectory),
+    context: sourceDirectoryIdentity(contextDirectory), runtime: sourceDirectoryIdentity(runtimeDirectory), skills,
     git_head: git(["rev-parse", "HEAD"]).toString("utf8").trim(),
     git_working_sha256: sha256(git(["diff", "--no-ext-diff", "--binary", "HEAD"])),
     git_untracked_sha256: sha256(JSON.stringify(untracked)),
@@ -1408,6 +1426,7 @@ async function main() {
       const originalSource = batches ? {
         context: sourceDirectoryIdentity(contextDirectory),
         runtime: sourceDirectoryIdentity(process.env.REVIEW_CHILD_RUNTIME),
+        skills: globalSkillSourceIdentity({ HOME: configuration.home }, contextDirectory),
         files: [verifierFile, registryFile, promptFile,
           ...["basehead.diff", "input-manifest.json", "pr-context.md"].map(name => path.join(evidenceDirectory, name))]
           .map(file => ({ path: path.resolve(file), sha256: sha256(fs.readFileSync(file)) })),
@@ -1423,6 +1442,7 @@ async function main() {
             promptFile, contextDirectory, runtimeDirectory: process.env.REVIEW_CHILD_RUNTIME });
           if (!isDeepStrictEqual(observed.custody.sources, originalSource.files) ||
               !isDeepStrictEqual(observed.custody.context, originalSource.context) ||
+              !isDeepStrictEqual(observed.custody.skills, originalSource.skills) ||
               !isDeepStrictEqual(observed.custody.runtime, originalSource.runtime)) {
             throw new Error("review source custody changed since original preparation");
           }

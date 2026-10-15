@@ -9,7 +9,7 @@ labels: "cephalon, b3, review, context-custody"
 epic: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 dependency: ["30c9df92-e1fb-4043-8565-36f96ce2a978","b9c591fb-95a8-4e4e-b2a5-39eb988cb996","c84f0b33-7527-443a-a9ff-5ee2e2dfed48"]
 category: "tasks"
-write-id: "1792079784570-0.j49hr44ptib7cveresd"
+write-id: "1792095471630-0.36z7i9wdvnjtkckoh5e"
 created_at: "2026-10-12T22:46:27.730Z"
 parent: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 ---
@@ -20,7 +20,7 @@ The human approved bounded batching under call_1d609fd775e34385958566086e527a3e 
 
 ## Outcome
 
-Existing personal OpenPlanner PR3 consumes the actual independently qualified ETA batching caller and matching Muse source, then passes its own unchanged complete 150-input native review/check/settlement/convergence and head-guarded MERGE. Muse PR12 actually merged as 259c76eee9ac2def944e9191c1da23d3647ba32e; its profile/joint/coordinator are native Done. ETA task 30c9df92-e1fb-4043-8565-36f96ce2a978 is still Incoming and must qualify/merge/Done first. Prior ETA e4 caller-only and Muse a9 source references below are historical proposed pins, superseded by this newly included batching prerequisite; do not adopt an old pre-batching workflow.
+Existing personal OpenPlanner PR3 consumes the actual independently qualified ETA batching caller and matching Muse source, then passes its own unchanged complete 150-input native review/check/settlement/convergence and head-guarded MERGE. Muse PR12 actually merged as 259c76eee9ac2def944e9191c1da23d3647ba32e; its profile/joint/coordinator are native Done. At the 2026-10-15 code-review correction, ETA task 30c9df92-e1fb-4043-8565-36f96ce2a978 is natively InProgress with local RED/GREEN evidence; it still must independently qualify/merge/Done before this consumer is admitted. Prior ETA e4 caller-only and Muse a9 source references below are historical proposed pins, superseded by this newly included batching prerequisite; do not adopt an old pre-batching workflow.
 
 ## Scope
 
@@ -122,5 +122,7 @@ Current native Codex4269071422 is reflected in primary Risks: canonical issue25/
 Finding 4284770730 corrected within approved bounded-batching scope: ETA batching has this epic/parent, the existing one-point OpenPlanner consumer natively depends on batching as well as prior caller/final-page Done, and six local deliveries propose nine non-additive epic points (2+1+2+1+2+1). External Muse profile3/joint5 is separately Done and counted once; reused consumer1 is not duplicated. Batching independently qualifies/merges/Done before consumer Ready/two-pin adoption/full150-input native review and own MERGE, then epic closeout. Existing statuses remain Incoming and all older events/comments preserved. Former issue25 repair is actually qualified/installed and parent15 merged; historical pending text is not current admission. No source/runtime/paid/model/credential/publication/heartbeat change.
 
 Existing human latest-free-MiMo requirement and selected-source anomaly: personal main d8/e4 preserves six-argument complete-context enforcement, while qualified parallel ETA17/18 15d/fcdf supplies anonymous current-catalog free/tool-capable selection. Same ETA adoption must preserve both via exact reviewed compatible source/functions/tests/provenance, with no broad branch merge, unrelated purpose/budget changes, paid/provider/credential or runtime change. Re-estimate existing ETA2 to5 (batch/host/context/final integration3 + reviewed discovery/executable/publication custody1 + compiled fixture/full-gate reconciliation1). Same six local deliveries propose12 non-additive (2+1+2+1+5+1), prior7/9 history; external Muse8 separate, same consumer1 counted once, new batching allocation14 provisional. Consumer retains1 and two Git pins plus clearing dated model override to use actual latest selector under prior human instruction; no third source pin/new behavior. All statuses remain Incoming and prior relationships/history retained. New source planning still needs independent qualification/Ready before RED/GREEN; hold current local correction while ee hosted review remains active.
+
+Native Codex4287614656 current Outcome correction: upstream ETA batching30c9df92-e1fb-4043-8565-36f96ce2a978 is natively InProgress5, with initial30ed production GREEN/local258PASS followed by active code-review fixes; it is not still Incoming. This consumer remains Incoming1 and cannot be admitted until that upstream independently qualifies/MERGEs/Done. Its current Outcome now dates this observation explicitly. Preserve every historical comment/event, native dependency, one-point estimate, two qualified Git pins plus clearing the dated model override, own planning/native admission/complete150-input review/MERGE gates. No runtime, credentials, paid model, heartbeat or liveB change.
 
 ---
