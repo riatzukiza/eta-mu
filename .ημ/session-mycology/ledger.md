@@ -1267,3 +1267,13 @@
   spore: none
   receipt-refs: cephalon-eta8138-native-malformed-batch-guard-refusal-20261015
   note: This is an actual incomplete model review, not a transport failure, account quota or current approval. The guard correctly keeps every unread or unassessed page outstanding; do not relax membership, continuation or recovery rules to make this attempt pass. No new source repair is justified by this malformed call: the already concrete platform/prose/approved-Node corrections supply the next changed-head review reason. Prior real complete59page native finding review and isolated transport positives remain history, not approval or1491page throughput. The current ten-case real capture matrix passes while the selected native case honestly failed a local npm dependency read timeout. Preserve all prefixes and publish only the owned corrective commits through ordinary personal push; all fresh changed-input reviews, actual deterministic gates and settlements remain required before authorized guardedMERGE. GoalACTIVE/live0of3/heartbeat humanPAUSED; no maker/runtime/clock/owner/PM2/cloud/sysctl/credentials/paid/provider/deployment/social or spore change.
+
+- ts: 2026-10-15T21:31:10.224Z
+  session: /home/err/spaces/cephalon-review-batch-consumer/eta-mu
+  task: cephalon-character-memory/B3/review-batching/ETA
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-eta-muse-repository-hosted-context-causal-red-20261015
+  note: This is a confirmed gap in the existing approved five-point exact owner/repository/commit metadata contract, not a new prerequisite. Correct the actual workflow metadata environment/file and its real shell fixtures, preserving source pins, full context custody, checksums and current mandatory gates. Anonymous dynamic free OpenCode routing, unchanged twoattempt/120minute consumer caps and all original inputs remain. Current a7 actual source reviews/checks must finish before the next grouped corrective push; no review/approval transfer or weakening for malformed model calls. A metadata file's repository attribution is distinct from the human's containing-repository rule for bare receipt rows; this new receipt omits repo. GoalACTIVE/live0of3/heartbeat humanPAUSED; no runtime/maker/clock/owner/PM2/cloud/sysctl/credentials/paid/provider/deployment/social or spore change.

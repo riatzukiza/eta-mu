@@ -457,12 +457,19 @@ test("context assembly records Muse and Agents inputs literally without executin
     assert.equal(fs.existsSync(canary), false, "Review-context ref text executed as Bash source");
     assert.equal(result.status, 0, result.stderr);
     const context = path.join(runnerTemp, "opencode-review-context");
+    const repository = namedStep("prepare_review_context", "Checkout Muse compatibility compiler").with.repository;
+    assert.equal(fs.readFileSync(path.join(context, "metadata/muse-repository.txt"), "utf8"),
+      `${repository}\n`, "downloaded context must retain the actual Muse repository alongside its revision");
     assert.equal(fs.readFileSync(path.join(context, "metadata/muse-revision.txt"), "utf8"),
       `${museRevision || workflow.on.workflow_call.inputs.muse_revision.default}\n`);
     assert.equal(fs.readFileSync(path.join(context, "metadata/agents-revision.txt"), "utf8"),
       `${agentsRevision || workflow.on.workflow_call.inputs.agents_revision.default}\n`);
     const checksums = runScript("sha256sum --check SHA256SUMS", context);
     assert.equal(checksums.status, 0, checksums.stderr);
+    const repositoryHash = createHash("sha256").update(`${repository}\n`).digest("hex");
+    assert.ok(fs.readFileSync(path.join(context, "SHA256SUMS"), "utf8")
+      .includes(`${repositoryHash}  ./metadata/muse-repository.txt\n`),
+      "Muse repository identity must be in the actual context checksum set");
     assert.equal(fs.readFileSync(path.join(context, "machinery/review-invocation.cjs"), "utf8"),
       transportVerifierSource, "assembly must retain the selected verifier's exact fixture bytes");
   }
