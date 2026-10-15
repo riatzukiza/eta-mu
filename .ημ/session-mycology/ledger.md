@@ -1107,3 +1107,13 @@
   spore: none
   receipt-refs: cephalon-parent-risk-actual-native-owner-correction-20261014
   note: This corrects my own prior misplaced risk paragraph and false native epic primary-Risks claim. Original source317 receipt/comments remain immutable; correction is appended. The native comment previously targeted the correct epic, but the manual body edit used the completed caller filename. Actual source-path authority now determines both targets, and the correct primary-body/readback checks are explicit. No new scope, points or dependency is included while human choice is pending. No stale review credit, synthetic settlement, local board/policy implementation, paid/model/auth/runtime/grant/maker/clock/gateway/cloud/heartbeat/social/deployment or spore change.
+
+- ts: 2026-10-15T15:07:17.920Z
+  session: /home/err/spaces/cephalon-review-batch-consumer/eta-mu
+  task: cephalon-character-memory/B3/review-batching/ETA2
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-eta-batch-consumer-owning-plan-20261015
+  note: Approved bounded batching is a B3 delivery prerequisite, not character behavior or live proof. Initial unusedfcdf discovery branch preserved; new clean branch selects actualmain with history-preserving fast-forward, no reset/unrelated peer budget adoption. ETA2 remains provisional and Incoming pending independent planning; no RED/GREEN/source readiness claimed. Future OpenPlanner1 retains only two qualified pins and genuine full150-input native completion. All review/check/settlement gates preserved; no model/auth/paid/runtime/clock/gateway/owner/cloud/PM2/deployment/publication/heartbeat/spore change. New bare receipt omits repo under authorized containing-repository attribution; all historical typed rows preserved.
