@@ -1157,3 +1157,13 @@
   spore: none
   receipt-refs: cephalon-eta-mandatory-context-and-current-estimate-risk-correction-20261015
   note: Two valid existing planning corrections: remove general Muse explicit-null absence allowance for these always-staged pr-context.md callers; ENOENT/I/O/missing argument/null must terminate custody before each child and final publication, never fallback or stripped retry. Correct current epic Risks to local12 and batching14; historical9/11 native evidence remains untouched. Consumer current primary also clarifies clearing only the already-authorized dated override, not a provider/model-family/payment/runtime/credential expansion. All scope/points/dependencies unchanged. Hold concrete correction locally while original e1f whole hosted review remains active; do not cancel or push a stale-review request. CodeRabbit current completion is not every-provider unanimity; Codex actual findings remain obligations. No Ready/RED/GREEN/source implementation/live proof, paid/credential/runtime/owner/PM2/cloud/deployment/social/publication/heartbeat or spore change; goalACTIVE/live0of3.
+
+- ts: 2026-10-15T17:53:38.788Z
+  session: /home/err/spaces/cephalon-review-batch-consumer/eta-mu
+  task: cephalon-character-memory/B3/review-batching/ETA
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-eta-selector-nongoal-and-native-lifecycle-correction-20261015
+  note: Explicitly allow only the already approved anonymous latest-free MiMo selector and clearing the consumer dated override while keeping other routing/provider/credential/payment/live runtime exclusions. Spell out the full Incoming to Accepted to Breakdown to Ready to Todo to InProgress native lifecycle. Both findings are valid existing-scope prose corrections, not new prerequisites or an estimate increase. The first proper current-head Codex invitation actually completed and established one planning cohort; new current-head qualification and settlement remain required after publication. No review transfer, new paid/model attempt, Ready/RED/GREEN/live proof, heartbeat resumption or spore; goal ACTIVE/live0of3. Timing correction: CodeRabbit request6198197987 was created17:29:08UTC;17:28 was command start, not native posting time. Prior custody133 remains unchanged.
