@@ -2697,6 +2697,79 @@ test("canonical bounded batches: unsupported host refuses before the model-attem
   assert.equal(fs.existsSync(fixture.submissionFile), false);
 });
 
+for (const [name, changedBoundary, expectedAttempts, expectedCaptures] of [
+  ["first child mutation", "after:1", 1, ["before:1", "after:1"]],
+  ["mutation before corrective child", "before:2", 1, ["before:1", "after:1", "before:2"]],
+  ["corrective child mutation", "after:2", 2, ["before:1", "after:1", "before:2", "after:2"]],
+]) {
+  test(`canonical caller custody: ${name} stops without acceptance`, async (t) => {
+    const checked = freshReviewInputCheck(fullInputFixture(t));
+    const fixture = canonicalContextFixture(checked);
+    const first = canonicalContextResponse(fixture, { omitSubmit: true });
+    const second = canonicalContextResponse(fixture);
+    const captures = [];
+    let attempts = 0;
+    // Synthetic identity tests transport comparison only. Host eligibility is
+    // decided by the real Muse API in the preceding unsupported-host control.
+    // Reusing this object also proves a later adapter mutation cannot rewrite
+    // the original snapshot retained in supervisor memory.
+    const observation = { batchHost: { profile: "synthetic-custody-control" }, custody: { source: "original" } };
+    let failure;
+    try {
+      await runReviewRecovery({ evidenceDirectory: checked.evidence,
+        basePrompt: "Synthetic custody negative; no provider or publication.",
+        submissionFile: fixture.submissionFile, reviewTools: fixture.tools,
+        verifyReviewInvocation: fixture.verifier.verifyReviewInvocation,
+        expectedContext: fixture.expectedContext,
+        captureBatchHost: async ({ boundary, attempt }) => {
+          const key = `${boundary}:${attempt}`;
+          captures.push(key);
+          if (key === changedBoundary) observation.custody.source = "changed";
+          return observation;
+        },
+        invokeAttempt: async ({ attempt, responseFile, stderrFile }) => {
+          attempts += 1;
+          const data = attempt === 1 ? first : second;
+          fs.writeFileSync(responseFile, data.response);
+          fs.writeFileSync(stderrFile, "");
+          if (attempt === 2) fs.writeFileSync(fixture.submissionFile, data.submission);
+          return { exitCode: 0 };
+        },
+      });
+    } catch (error) { failure = error; }
+    assert.equal(attempts, expectedAttempts, "custody failure must stop before another model child");
+    assert.deepEqual(captures, expectedCaptures);
+    assert.match(failure?.message ?? "", /custody changed/);
+    const recovery = JSON.parse(fs.readFileSync(path.join(checked.evidence, "recovery.json")));
+    assert.equal(recovery.accepted_invocation, null);
+    assert.equal(recovery.batch_custody.original.custody.source, "original");
+  });
+}
+
+test("canonical caller custody: a throwing child still gets an independent after capture", async (t) => {
+  const checked = freshReviewInputCheck(fullInputFixture(t));
+  const fixture = canonicalContextFixture(checked);
+  const captures = [];
+  let attempts = 0;
+  await assert.rejects(runReviewRecovery({ evidenceDirectory: checked.evidence,
+    basePrompt: "Throwing child negative; no provider or publication.",
+    submissionFile: fixture.submissionFile, reviewTools: fixture.tools,
+    verifyReviewInvocation: fixture.verifier.verifyReviewInvocation, expectedContext: fixture.expectedContext,
+    captureBatchHost: async ({ boundary, attempt }) => {
+      captures.push(`${boundary}:${attempt}`);
+      return { batchHost: { profile: "synthetic-custody-control" }, custody: { source: "original" } };
+    },
+    invokeAttempt: async ({ responseFile, stderrFile }) => {
+      attempts += 1;
+      fs.writeFileSync(responseFile, "");
+      fs.writeFileSync(stderrFile, "synthetic child failed\n");
+      throw new Error("synthetic child failure");
+    },
+  }), /synthetic child failure/);
+  assert.equal(attempts, 1);
+  assert.deepEqual(captures, ["before:1", "after:1"]);
+});
+
 /** Bind a real canonical verdict to selected bytes before exercising the complete final command. */
 function bindCanonicalFixture(fixture, options = {}) {
   const data = canonicalContextResponse(fixture, options);

@@ -1187,3 +1187,13 @@
   spore: none
   receipt-refs: cephalon-eta-batch5-first-canonical-host-before-attempt-red-20261015
   note: Causal RED encodes an existing accepted before-child contract, using the real compiled owner for eligibility and inert HOST frames only to observe adapter entry. This supplies no fake native-host positive, provider judgment, approval or throughput proof. The original existing246case/newproducer244PASS2FAIL baseline remains separately recorded, not fixed or relabeled by this selected test. Next implement canonical per-attempt custody/first-mutation stop/final publication together with complete context and compatible qualified anonymous current-catalog discovery, then actual standalone/native positive and full gates. Same5point source scope, no new pure host law or semantic selector. An attempted tool-store of absent session metadata after the already-terminal test was rejected by orchestration; actual test output/log above is authoritative, not a provider failure. Readiness and RED commits remain local until a concrete verified source push; no observation-only review-head churn. GoalACTIVE/heartbeat humanPAUSED/live0of3; no provider/credentials/paid/runtime/deployment/social or spore change.
+
+- ts: 2026-10-15T19:09:38.033Z
+  session: /home/err/spaces/cephalon-review-batch-consumer/eta-mu
+  task: cephalon-character-memory/B3/review-batching/ETA
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-eta-batch5-child-boundaries-causal-red-20261015
+  note: Inert adapter frames exercise transport custody only, not native batch eligibility or provider judgment. The existing actual Muse unsupported-binary negative remains independent. Tests reuse one observation object to require cloning the original supervisor snapshot; after capture must run even when invokeAttempt throws. Same approved five-point scope; no paid/auth/provider/runtime/deployment/social or heartbeat change. GoalACTIVE/live0of3/heartbeat humanPAUSED. No spore.
