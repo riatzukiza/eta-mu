@@ -1,13 +1,13 @@
 ---
 uuid: "30c9df92-e1fb-4043-8565-36f96ce2a978"
 title: "Adopt qualified lossless review batching in the shared ETA caller"
-status: "incoming"
+status: "in_progress"
 type: "task"
 priority: "P1"
 points: "5"
 labels: "cephalon, b3, review, batching, consumer"
 category: "tasks"
-write-id: "1792086787913-0.j5bn8p4zpdtep47ivae"
+write-id: "1792090053913-0.0n2en1mqpni9r802whv2"
 created_at: "2026-10-15T15:06:16.542Z"
 dependency: ["c84f0b33-7527-443a-a9ff-5ee2e2dfed48"]
 epic: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
@@ -99,5 +99,7 @@ Actual Codex roots4285174050/4285174057/4285174074 corrected in current primary 
 Actual Codex root4285646935 corrected in Incoming primary plan: these shared callers always stage complete pr-context.md, so general Muse explicit-null absence is unavailable. Missing/unreadable/null context or missing argument is terminal custody refusal before every child and final verification, never fallback or stripped-context retry. Existing five-argument and missing-file/I/O/null negatives remain; tests are future adoption obligations, not new GREEN. Scope/ETA5 and all original native history remain. Hold this concrete correction locally while original e1f whole hosted review is active, no cancellation/duplicate request.
 
 Current planning correction for native Codex review5537580806: root4286416154 correctly identifies broad model-routing non-goal ambiguity; explicitly exempt only the already approved anonymous latest-free MiMo selector and clearing the dated consumer override, preserving all provider/payment/credential/runtime exclusions. Root4286416170 asks for the complete auditable lifecycle: Incoming -> Accepted -> Breakdown -> Ready -> Todo -> InProgress, with each actual owning Rheos gate. Both are prose corrections within existing ETA5/local12/prerequisite14 scope; no new implementation, Ready, estimate or policy waiver. Original ed23 assessment and history retained; fresh current-head qualification remains required.
+
+Actual canonical planning PASS on stable personal head c9adb17360baf9b34bf78d56363b9e057ebd6874/base d8bbd5fdabf9d7d2c56a9471443bdf4a35497f72. Current Codex6198760360 and MiMoAPPROVED5537968285/all16pages/all6inputs/whole38781134682SUCCESS supply one completed available Codex+MiMo planning cohort;9checksPASS/10settledthreads. First current CodeRabbit request6199607253 received native quota6199609690 updated18:42:14UTC, retry19:37:14UTC; canonical policy excludes the optional unavailable participant, supplies no CodeRabbit approval/round and preserves its old findings. No paid usage, local policy override or old-head approval transfer. Qualified external Muse PR12 actualMERGE259c76eee9ac2def944e9191c1da23d3647ba32e/Done and actual compiled verifier b56daf2c15b5cdf43596a72cbcd330eb1af0845cdf21ce2c974026e15e8fb665 remain exact; native predecessorc84 Done verified. This eligible5-point task may walk each owning native hop before causal RED. Same implementation PR21; no planning-only source merge, downstream consumer admission, kernel/live proof or runtime/heartbeat change.
 
 ---

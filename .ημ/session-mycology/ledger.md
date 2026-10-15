@@ -1167,3 +1167,13 @@
   spore: none
   receipt-refs: cephalon-eta-selector-nongoal-and-native-lifecycle-correction-20261015
   note: Explicitly allow only the already approved anonymous latest-free MiMo selector and clearing the consumer dated override while keeping other routing/provider/credential/payment/live runtime exclusions. Spell out the full Incoming to Accepted to Breakdown to Ready to Todo to InProgress native lifecycle. Both findings are valid existing-scope prose corrections, not new prerequisites or an estimate increase. The first proper current-head Codex invitation actually completed and established one planning cohort; new current-head qualification and settlement remain required after publication. No review transfer, new paid/model attempt, Ready/RED/GREEN/live proof, heartbeat resumption or spore; goal ACTIVE/live0of3. Timing correction: CodeRabbit request6198197987 was created17:29:08UTC;17:28 was command start, not native posting time. Prior custody133 remains unchanged.
+
+- ts: 2026-10-15T18:52:20.094Z
+  session: /home/err/spaces/cephalon-review-batch-consumer/eta-mu
+  task: cephalon-character-memory/B3/review-batching/ETA
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-eta-batch5-canonical-planning-pass-native-readiness-20261015
+  note: The current skill correctly handles native optional reviewer quota: all currently available agents genuinely approve, with one completed cohort and every finding/check settled. No synthetic CodeRabbit verdict, old approval transfer, local classifier or policy waiver. Only batch task30c moves5; epic12 and downstream consumer1 remain Incoming until their own exits. The same PR21 continues as implementation, not a planning-only source merge. Follow actual causal RED before GREEN, reuse canonical Muse review/host laws and compatible qualified discovery source, retain all full-input/context/native-call/publication guards and original120minute/twoattempt consumer limits. Preserve local readiness bytes for next concrete source push rather than observation-only review churn. No code/kernel/live B proof yet. GoalACTIVE/heartbeat humanPAUSED/live0of3; no provider/credential/paid/runtime/clock/owner/PM2/cloud/deployment/social or spore change.
