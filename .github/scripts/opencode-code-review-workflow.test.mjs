@@ -2648,6 +2648,55 @@ function canonicalSupervisor(fixture, { retryAfterMissingSubmit = false, respons
   return { result, marker };
 }
 
+test("canonical bounded batches: unsupported host refuses before the model-attempt adapter", async (t) => {
+  const checked = freshReviewInputCheck(fullInputFixture(t, { unicode: true }));
+  assert.equal(checked.result.status, 0, checked.result.stderr);
+  const fixture = canonicalContextFixture(checked);
+  const tools = [...fixture.tools, "review_read_diff_batch", "review_assess_diff_batch"];
+  fs.writeFileSync(fixture.registryFile, tools.join("\n") + "\n");
+  const expectedContext = fixture.verifier.prepareReviewInvocationContext(
+    fixture.full, fs.readFileSync(path.join(checked.evidence, "input-manifest.json")),
+    tools, fixture.submissionFile, fixture.contextBytes, fixture.contextFile,
+  );
+  assert.equal(typeof fixture.verifier.prepareReviewBatchHost, "function");
+  const unsupported = path.join(checked.evidence, "unsupported-host-control");
+  fs.writeFileSync(unsupported, "Inert unsupported executable bytes; never run this control.\n");
+  const observe = () => fixture.verifier.prepareReviewBatchHost(
+    unsupported, Buffer.from("{}"), {}, checked.consumer,
+  );
+  assert.throws(observe, /unsupported batch host/);
+  // The actual owner decides host eligibility. These inert call frames only
+  // show whether the supervisor enters its attempt adapter before that check;
+  // they supply no native-host positive, model judgment or review credit.
+  const healthy = canonicalContextResponse({ ...fixture, tools, expectedContext });
+  let attempts = 0;
+  let captures = 0;
+  let failure;
+  try {
+    await runReviewRecovery({
+      evidenceDirectory: checked.evidence,
+      basePrompt: "Unsupported-host negative control; no provider or publication.",
+      submissionFile: fixture.submissionFile,
+      reviewTools: tools,
+      verifyReviewInvocation: fixture.verifier.verifyReviewInvocation,
+      expectedContext,
+      verifierSha256: transportSha256(fs.readFileSync(fixture.verifierFile)),
+      captureBatchHost: async () => { captures += 1; return observe(); },
+      invokeAttempt: async ({ responseFile, stderrFile }) => {
+        attempts += 1;
+        fs.writeFileSync(responseFile, healthy.response);
+        fs.writeFileSync(stderrFile, "");
+        fs.writeFileSync(fixture.submissionFile, healthy.submission);
+        return { exitCode: 0 };
+      },
+    });
+  } catch (error) { failure = error; }
+  assert.equal(attempts, 0, "unsupported batch host must refuse before the attempt adapter");
+  assert.equal(captures, 1);
+  assert.match(failure?.message ?? "", /unsupported batch host/);
+  assert.equal(fs.existsSync(fixture.submissionFile), false);
+});
+
 /** Bind a real canonical verdict to selected bytes before exercising the complete final command. */
 function bindCanonicalFixture(fixture, options = {}) {
   const data = canonicalContextResponse(fixture, options);

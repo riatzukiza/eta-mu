@@ -1177,3 +1177,13 @@
   spore: none
   receipt-refs: cephalon-eta-batch5-canonical-planning-pass-native-readiness-20261015
   note: The current skill correctly handles native optional reviewer quota: all currently available agents genuinely approve, with one completed cohort and every finding/check settled. No synthetic CodeRabbit verdict, old approval transfer, local classifier or policy waiver. Only batch task30c moves5; epic12 and downstream consumer1 remain Incoming until their own exits. The same PR21 continues as implementation, not a planning-only source merge. Follow actual causal RED before GREEN, reuse canonical Muse review/host laws and compatible qualified discovery source, retain all full-input/context/native-call/publication guards and original120minute/twoattempt consumer limits. Preserve local readiness bytes for next concrete source push rather than observation-only review churn. No code/kernel/live B proof yet. GoalACTIVE/heartbeat humanPAUSED/live0of3; no provider/credential/paid/runtime/clock/owner/PM2/cloud/deployment/social or spore change.
+
+- ts: 2026-10-15T18:54:11.310Z
+  session: /home/err/spaces/cephalon-review-batch-consumer/eta-mu
+  task: cephalon-character-memory/B3/review-batching/ETA
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-eta-batch5-first-canonical-host-before-attempt-red-20261015
+  note: Causal RED encodes an existing accepted before-child contract, using the real compiled owner for eligibility and inert HOST frames only to observe adapter entry. This supplies no fake native-host positive, provider judgment, approval or throughput proof. The original existing246case/newproducer244PASS2FAIL baseline remains separately recorded, not fixed or relabeled by this selected test. Next implement canonical per-attempt custody/first-mutation stop/final publication together with complete context and compatible qualified anonymous current-catalog discovery, then actual standalone/native positive and full gates. Same5point source scope, no new pure host law or semantic selector. An attempted tool-store of absent session metadata after the already-terminal test was rejected by orchestration; actual test output/log above is authoritative, not a provider failure. Readiness and RED commits remain local until a concrete verified source push; no observation-only review-head churn. GoalACTIVE/heartbeat humanPAUSED/live0of3; no provider/credentials/paid/runtime/deployment/social or spore change.
