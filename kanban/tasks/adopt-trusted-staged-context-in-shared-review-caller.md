@@ -3,9 +3,9 @@ uuid: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 title: "Deliver qualified review context custody through the existing consumer"
 status: incoming
 priority: P1
-points: "9"
-labels: "epics,cephalon,b3,review,context-custody,batching,9sp"
-write-id: "1792077653676-0.fl4kbol2nt40h5w8elr"
+points: "12"
+labels: "epics,cephalon,b3,review,context-custody,batching,12sp"
+write-id: "1792079783243-0.9q600emr3ibutnmcwi3"
 type: "epic"
 ---
 
@@ -20,10 +20,10 @@ Six same-board deliveries qualify and complete independently in their actual ord
 ## Scope
 
 - Carry 52a0f6cc-e43b-4ed5-a628-e54dd9d9fdc4:2; HOST a880c727-229b-4f3d-9158-718ec164d16c:1; caller b9c591fb-95a8-4e4e-b2a5-39eb988cb996:2; final-page c84f0b33-7527-443a-a9ff-5ee2e2dfed48:1. Preserve their original required artifacts/dependencies and independently qualified completion.
-- New ETA batching 30c9df92-e1fb-4043-8565-36f96ce2a978:2, native epic/parent this UUID and dependency on final-page Done, with actual external Muse 259 qualified source prerequisite. Its own planning/Ready/RED/GREEN/full review/checks/qualified source MERGE/Done precede adoption. This is API/registry/prompt/supervisor integration, not a copied verifier.
+- New ETA batching 30c9df92-e1fb-4043-8565-36f96ce2a978:5, native epic/parent this UUID and dependency on final-page Done, with actual external Muse 259 qualified source prerequisite. Its own planning/Ready/RED/GREEN/full review/checks/qualified source MERGE/Done precede adoption. This is API/registry/prompt/supervisor integration, not a copied verifier.
 - Existing consumer ad41fc8a-12fe-453c-bdb9-29d832c94e9f:1, natively depends on caller, final-page and new ETA batching Done. Only two future qualified pins in existing personal OpenPlanner PR3; unchanged actual full 150-input review/budgets/gates and own merge remain mandatory.
 
-Current local estimate is nine provisional points (2+1+2+1+2+1) over six deliveries; former seven/five allocation remains history. This is a non-additive epic aggregate, not nine extra execution points. Muse batching profile 3+joint 5 is an eight-point external predecessor, not an absent local UUID/edge or extra local execution child. New batching prerequisite 11 includes the same consumer 1 already counted here: overlapping deliveries are counted once. No adopted global goal total or native Ready is claimed.
+Current local estimate is twelve provisional points (2+1+2+1+5+1) over six deliveries; former seven/five allocation remains history. This is a non-additive epic aggregate, not twelve extra execution points. Muse batching profile 3+joint 5 is an eight-point external predecessor, not an absent local UUID/edge or extra local execution child. New batching prerequisite 14 includes the same consumer 1 already counted here: overlapping deliveries are counted once. No adopted global goal total or native Ready is claimed.
 
 ## Non-goals
 
@@ -34,6 +34,10 @@ No broad eta-mu import, second parser/verifier, fixed free-model slug, inference
 1. All six exact UUID-linked same-board deliveries complete their own lawful source/adoption lifecycles and exact qualified artifact/readback exits. Batching has actual epic/parent links and the consumer has the enforced new batching dependency. Preserve all original caller/carry/HOST/prompt dependencies; no source completion supplies a downstream approval.
 2. Qualified external Muse 259 source and compatible actual 1.18.31 host precede batching. Batching consumes canonical before/after/final host observation, exact ten-core/24 total registry and six-argument complete context custody, all original input/per-page assessment/native membership/LAST/stage/submit/publication guards, and existing finite attempts/budgets. Canonical source remains Muse, board remains Rheos.
 3. Before consumer Ready/adoption, ETA batching is independently qualified/merged/Done and the selected exact committed personal workflow is natively resolvable. After consumer's two pins, actual full 150-input native assessment and current own checks/reviews/settlements/convergence/qualified MERGE finish the final delivery. Every constituent must pass before epic Done; incomplete native review remains failure/incomplete. Source/transport success is not live B1/B2/B3 proof or deployment authorization.
+
+## Current caller re-estimation and compatibility handoff
+
+ETA batching proposes 5, preserving both selected main context custody and qualified parallel 15d/fcdf anonymous dynamic MiMo discovery. Reuse exact reviewed donor source and current/free/tool-capable catalog selection, with complete source/binary/config/model/publication custody; preserve consumer 120-minute/two-attempt bounds and exclude unrelated peer routes/budget changes. Same six local deliveries now total 12 non-additive (2+1+2+1+5+1), earlier 7/9 history. ExternalMuse8 is separate; the same one-point consumer clears its dated model override to use latest discovery while adopting two qualified Git pins. This follows the existing human changing-slug requirement, with no new provider, payment, credentials, model family or runtime scope. Actual source review/readiness remains mandatory before implementation.
 
 ## Verification
 
@@ -85,5 +89,7 @@ Correction to the preceding primary-Risks claim, per native Codex4269334953: tha
 Finding 4284770730 corrected within approved bounded-batching scope: ETA batching has this epic/parent, the existing one-point OpenPlanner consumer natively depends on batching as well as prior caller/final-page Done, and six local deliveries propose nine non-additive epic points (2+1+2+1+2+1). External Muse profile3/joint5 is separately Done and counted once; reused consumer1 is not duplicated. Batching independently qualifies/merges/Done before consumer Ready/two-pin adoption/full150-input native review and own MERGE, then epic closeout. Existing statuses remain Incoming and all older events/comments preserved. Former issue25 repair is actually qualified/installed and parent15 merged; historical pending text is not current admission. No source/runtime/paid/model/credential/publication/heartbeat change.
 
 Correction to the immediately preceding history-preservation claim: my prose-normalization pass also changed spacing in existing historical comment segments before publication. A failed exact-prefix assertion detected that operator error; it was not a point-type or production failure. The exact original native comment prefixes and secondary historical body bytes are now restored from the retained before-read/file, with the actual new native comment preserved. Correct native readback proves those prefixes plus Incoming9 and all unrelated frontmatter; no original event/receipt was rewritten. The current first body alone now records actual batching dependencies and current qualified original issue25 source status; all old pending-risk comments remain history. This appended correction preserves the original claim and does not supply review or readiness credit.
+
+Existing human latest-free-MiMo requirement and selected-source anomaly: personal main d8/e4 preserves six-argument complete-context enforcement, while qualified parallel ETA17/18 15d/fcdf supplies anonymous current-catalog free/tool-capable selection. Same ETA adoption must preserve both via exact reviewed compatible source/functions/tests/provenance, with no broad branch merge, unrelated purpose/budget changes, paid/provider/credential or runtime change. Re-estimate existing ETA2 to5 (batch/host/context/final integration3 + reviewed discovery/executable/publication custody1 + compiled fixture/full-gate reconciliation1). Same six local deliveries propose12 non-additive (2+1+2+1+5+1), prior7/9 history; external Muse8 separate, same consumer1 counted once, new batching allocation14 provisional. Consumer retains1 and two Git pins plus clearing dated model override to use actual latest selector under prior human instruction; no third source pin/new behavior. All statuses remain Incoming and prior relationships/history retained. New source planning still needs independent qualification/Ready before RED/GREEN; hold current local correction while ee hosted review remains active.
 
 ---

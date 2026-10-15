@@ -9,14 +9,14 @@ labels: "cephalon, b3, review, context-custody"
 epic: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 dependency: ["30c9df92-e1fb-4043-8565-36f96ce2a978","b9c591fb-95a8-4e4e-b2a5-39eb988cb996","c84f0b33-7527-443a-a9ff-5ee2e2dfed48"]
 category: "tasks"
-write-id: "1792077500657-0.iyii3uj8r1mh2ezxgwq"
+write-id: "1792079784570-0.j49hr44ptib7cveresd"
 created_at: "2026-10-12T22:46:27.730Z"
 parent: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 ---
 
 ## Context
 
-The human approved bounded batching under call_1d609fd775e34385958566086e527a3e after three complete-input reviews exhausted their existing limit. This existing one-point consumer remains the same two-pin OpenPlanner adoption within epic de02c921-e23c-4d83-87e8-b32c6c3160ff, now six local deliveries/provisional nine points with ETA batching 2. All older seven-point/five-delivery statements below are estimate history; this consumer is counted once.
+The human approved bounded batching under call_1d609fd775e34385958566086e527a3e after three complete-input reviews exhausted their existing limit. This existing one-point consumer remains the same two-pin OpenPlanner adoption within epic de02c921-e23c-4d83-87e8-b32c6c3160ff, now six local deliveries/provisional twelve points with ETA batching 5. All older seven-point/five-delivery statements below are estimate history; this consumer is counted once.
 
 ## Outcome
 
@@ -26,7 +26,7 @@ Existing personal OpenPlanner PR3 consumes the actual independently qualified ET
 
 Native dependency must include all three same-board tasks: completed caller b9c591fb-95a8-4e4e-b2a5-39eb988cb996, completed final-page clarification c84f0b33-7527-443a-a9ff-5ee2e2dfed48 and new ETA batching 30c9df92-e1fb-4043-8565-36f96ce2a978. Batching depends on the prior final-page source and external exact qualified Muse 259c76e. Caller retains its original carry/HOST predecessors. Each source qualifies independently; source readiness transfers no consumer approval.
 
-Update only the existing OpenPlanner .github/workflows/eta-mu-review.yml reusable-workflow selector to riatzukiza/eta-mu/.github/workflows/opencode-code-review.yml at the actual future qualified PR21 MERGE containing both previous complete-context enforcement and new batching, and its matching Muse pin259c76eee9ac2def944e9191c1da23d3647ba32e. The future ETA merge SHA is not yet known and may not be replaced by an unqualified branch/head or old e4. Preserve existing OpenCode 1.18.31/Node 22.20.0, free route, 120-minute job and two-attempt bound, exact complete 150-input scope/original 56/raw 70 provenance, custom gates, permissions and signing separation. No model/runtime/credential or organization change. Implementation remains in existing personal OpenPlanner PR3 after this consumer's own reviewed planning/native Ready.
+Update the two immutable source pins in the existing OpenPlanner .github/workflows/eta-mu-review.yml reusable-workflow selector to riatzukiza/eta-mu/.github/workflows/opencode-code-review.yml at the actual future qualified PR21 MERGE containing both previous complete-context enforcement and new batching, and its matching Muse pin259c76eee9ac2def944e9191c1da23d3647ba32e. The future ETA merge SHA is not yet known and may not be replaced by an unqualified branch/head or old e4. Preserve existing OpenCode 1.18.31/Node 22.20.0, free route, 120-minute job and two-attempt bound, exact complete 150-input scope/original 56/raw 70 provenance, custom gates, permissions and signing separation. No model/runtime/credential or organization change. Implementation remains in existing personal OpenPlanner PR3 after this consumer's own reviewed planning/native Ready.
 
 ## Non-goals
 
@@ -35,8 +35,12 @@ No second parser/verifier, broad upstream synchronization, fixed free-model slug
 ## Acceptance criteria
 
 1. All three native source dependencies above are Done after their own current-head checks/reviews/settlements and actual qualified source MERGEs. Batching must bind actual Muse 259c76e, ten core/24 total tools, actual host before/after/final custody and the retained six-argument complete-context enforcement. No pre-batching caller pin can satisfy this handoff. Verify GitHub resolves the exact personal owner/path/merge workflow and existing public Actions call permissions; unavailable stays blocked without settings override.
-2. Only the two selected pins change. The actual successful public-personal reusable workflow invocation and unchanged full 150-input real native model assessment must finish within the existing 120-minute budget with every page assessed, complete context read, all five stages and actual validated submission/private publication. Projection, a small scripted probe, source approvals or incomplete/failed progress cannot substitute. Keep actual failures and complete original inputs.
+2. The two selected Git pins change and the existing dated model override is cleared to consume the qualified latest eligible anonymous free OpenCode MiMo selector. This is the human's existing changing-slug instruction, not a new provider/model-family/payment/credential or behavioral scope. No other configuration change is included. The actual successful public-personal reusable workflow invocation and unchanged full 150-input real native model assessment must finish within the existing 120-minute budget with every page assessed, complete context read, all five stages and actual validated submission/private publication. Projection, a small scripted probe, source approvals or incomplete/failed progress cannot substitute. Keep actual failures and complete original inputs.
 3. Consumer independently passes all current required checks, actual native full-input review/settlement/cohort and authorized exact-head MERGE with full native readback. Source-carry/HOST/caller/prompt/ETA batching and this same consumer must each independently complete before epic Done. B1/B2/B3 live proof is still separate 0/3; no heartbeat resumption or runtime deployment follows.
+
+## Latest-model and source-coherence correction
+
+The current main caller carries context enforcement but lacks the dynamic-discovery work independently qualified in ETA17/18 (15d/fcdf). New ETA task must reconcile those existing requirements before its qualified MERGE/Done: retain six-argument complete context custody and batch host guards, reuse the reviewed anonymous latest fast/free/tool-capable MiMo selector with actual catalog/binary/model publication binding, and preserve existing120-minute/two-attempt bounds. ETA re-estimates5 and local six-delivery epic12; this consumer retains 1 and the same dependencies. Its two source pins plus clearing the dated model override are one small adoption in the same workflow file; do not retain a fixed future slug. No third Git pin, provider, account/key/payment or runtime change.
 
 ## Verification
 
@@ -44,7 +48,7 @@ Read existing caller at actual033c head before mutation. Compare only selected p
 
 ## Risks
 
-The actual former issue 25 canonical source repair is now qualified and installed; ETA parent planning PR 15 actually merged as d8bbd5fdabf9d7d2c56a9471443bdf4a35497f72. Historical pending-risk paragraphs below preserve their dated context rather than asserting a current waiver or blocker. A separate outdated-location extension in another plan remains outside this consumer scope. This consumer is currently blocked on its actual new ETA batching dependency and own independent planning/Ready/large-review qualification. Model/catalog/profile drift or incomplete throughput proof stays failure; no credentials, paid route, continuation, timeout-only increase or approval transfer. Consumer remains Incoming 1; nine-point epic and source estimates remain provisional for current independent planning.
+The actual former issue 25 canonical source repair is now qualified and installed; ETA parent planning PR 15 actually merged as d8bbd5fdabf9d7d2c56a9471443bdf4a35497f72. Historical pending-risk paragraphs below preserve their dated context rather than asserting a current waiver or blocker. A separate outdated-location extension in another plan remains outside this consumer scope. This consumer is currently blocked on its actual new ETA batching dependency and own independent planning/Ready/large-review qualification. Model/catalog/profile drift or incomplete throughput proof stays failure; no credentials, paid route, continuation, timeout-only increase or approval transfer. Consumer remains Incoming 1; twelve-point epic and source estimates remain provisional for current independent planning.
 
 Software/process documentation: GPL-3.0-or-later.
 
@@ -116,5 +120,7 @@ Native Codex4268925909 identified the current derived packet still selecting cal
 Current native Codex4269071422 is reflected in primary Risks: canonical issue25/current native reproduction6165232107 blocks parent settlement; two-point owning repair is proposed with human scope choice pending. No new source task, estimate or UUID dependency is included before the decision/own planning review. Existing source predecessors Done grant no consumer admission; current parent full review/checks/settlement remain mandatory. Consumer remains Incoming/one point/two pins; no waiver or implementation.
 
 Finding 4284770730 corrected within approved bounded-batching scope: ETA batching has this epic/parent, the existing one-point OpenPlanner consumer natively depends on batching as well as prior caller/final-page Done, and six local deliveries propose nine non-additive epic points (2+1+2+1+2+1). External Muse profile3/joint5 is separately Done and counted once; reused consumer1 is not duplicated. Batching independently qualifies/merges/Done before consumer Ready/two-pin adoption/full150-input native review and own MERGE, then epic closeout. Existing statuses remain Incoming and all older events/comments preserved. Former issue25 repair is actually qualified/installed and parent15 merged; historical pending text is not current admission. No source/runtime/paid/model/credential/publication/heartbeat change.
+
+Existing human latest-free-MiMo requirement and selected-source anomaly: personal main d8/e4 preserves six-argument complete-context enforcement, while qualified parallel ETA17/18 15d/fcdf supplies anonymous current-catalog free/tool-capable selection. Same ETA adoption must preserve both via exact reviewed compatible source/functions/tests/provenance, with no broad branch merge, unrelated purpose/budget changes, paid/provider/credential or runtime change. Re-estimate existing ETA2 to5 (batch/host/context/final integration3 + reviewed discovery/executable/publication custody1 + compiled fixture/full-gate reconciliation1). Same six local deliveries propose12 non-additive (2+1+2+1+5+1), prior7/9 history; external Muse8 separate, same consumer1 counted once, new batching allocation14 provisional. Consumer retains1 and two Git pins plus clearing dated model override to use actual latest selector under prior human instruction; no third source pin/new behavior. All statuses remain Incoming and prior relationships/history retained. New source planning still needs independent qualification/Ready before RED/GREEN; hold current local correction while ee hosted review remains active.
 
 ---

@@ -1127,3 +1127,13 @@
   spore: none
   receipt-refs: cephalon-eta-batch-native-delivery-chain-correction-20261015
   note: Valid P1 within approved batching: native dependency prevents downstream consumer readiness without new ETA source. Current primary descriptions now name six local deliveries, qualified external Muse and future independently qualified ETA batching merge/two pins; historical early pending issue25 risk is dated, actual original canonical repair and parent merge verified. Held local while original whole review attempt remains active; no cancellation/duplicate model invocation or premature Fixed. Failed assertion correctly exposed accidental spacing edits in old comments; exact original bytes restored before publication, operator string-type hypothesis was disproven, correction is appended. No new scope/model/credential/paid/runtime/clock/owner/PM2/cloud/deployment/publication/heartbeat/spore change; goalACTIVE/live0of3.
+
+- ts: 2026-10-15T15:57:26.432Z
+  session: /home/err/spaces/cephalon-review-batch-consumer/eta-mu
+  task: cephalon-character-memory/B3/review-batching/ETA
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-eta-context-and-existing-dynamic-mimo-source-reconciliation-20261015
+  note: Discovery invalidates selecting either branch alone: peerfcdf drops context enforcement, while maind8 lacks already-required anonymous current-catalog discovery and relies on dated default. Re-describe same caller adoption to reuse compatible exact qualified owning functions/tests/provenance, preserving six-argument context, new batch host custody and private publication. Exclude broad peer merge, unrelated assessment routes/45-minute allocation and any provider/credential/paid/runtime change; preserve existing120-minute/twoattempt consumer budget. Re-estimate same ETA from2 to5 (integration3+reviewed-discovery1+compiled/fullgate reconciliation1); six local deliveries propose12 non-additive, externalMuse8 separate and consumer1 reused, new prerequisite14 provisional. Consumer remains1 with two Git pins plus clearing dated model override under prior explicit human naming correction; no third source pin or new behavioral item. Independent planning/admission still required. Hold local concrete refinement until active ee review finishes; no cancellation, stale-head review request, Ready/GREEN, runtime/deployment/publication/heartbeat or spore change.
