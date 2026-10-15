@@ -2814,7 +2814,8 @@ function actualCaptureFixture(t) {
 // The host/config capture is production code and a real physical CLI. Only
 // invokeAttempt is inert: these controls grant no native model-positive credit.
 for (const boundary of ["before", "after"]) for (const field of ["executable", "resolved-config", "environment", "cwd", "skills-link"]) {
-  test(`actual corrective capture: ${field} mutation ${boundary} child two refuses`, async (t) => {
+  test(`actual corrective capture: ${field} mutation ${boundary} child two refuses`,
+    { skip: process.platform !== "linux" || process.arch !== "x64" }, async (t) => {
     const { checked, f, binary, configFile, environment, captureInput, link, otherSkills } = actualCaptureFixture(t);
     const first = canonicalContextResponse(f, { omitSubmit: true }), second = canonicalContextResponse(f);
     const alternate = path.join(checked.env.RUNNER_TEMP, "alternate-cwd");
@@ -2852,7 +2853,8 @@ for (const boundary of ["before", "after"]) for (const field of ["executable", "
   });
 }
 
-test("native bounded batches: actual standalone, physical CLI and compiled producer close a whole corrective invocation", { timeout: 150_000 }, async (t) => {
+test("native bounded batches: actual standalone, physical CLI and compiled producer close a whole corrective invocation",
+  { timeout: 150_000, skip: process.platform !== "linux" || process.arch !== "x64" }, async (t) => {
   const owner = process.env.ETA_MU_CANONICAL_CONTEXT_MODULE;
   assert.ok(owner && path.isAbsolute(owner), "compiled Muse owner is required");
   const binary = process.env.ETA_MU_NATIVE_BATCH_BINARY ||

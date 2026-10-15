@@ -69,12 +69,13 @@
                      (.join path profile relative) #js {:recursive true})))
         ;; The existing Sandbox full-suite caller also needs the actual host,
         ;; inside its owned fixture output. Never upgrade a global installation.
-        (when-not (and (= "linux" (.-platform js/process)) (= "x64" (.-arch js/process))
-                       (string? cli-version) (re-matches #"\d+\.\d+\.\d+" cli-version))
-          (throw (js/Error. "native batching fixture requires the selected Linux x64 CLI")))
-        (run-command! "npm" ["install" "--prefix" (.join path output "native-cli")
-                             "--ignore-scripts" "--no-audit" "--no-fund"
-                             (str "opencode-linux-x64@" cli-version)] 120000)
+        (when-not (and (string? cli-version) (re-matches #"\d+\.\d+\.\d+" cli-version))
+          (throw (js/Error. "native batching fixture requires the selected CLI version")))
+        (if (and (= "linux" (.-platform js/process)) (= "x64" (.-arch js/process)))
+          (run-command! "npm" ["install" "--prefix" (.join path output "native-cli")
+                               "--ignore-scripts" "--no-audit" "--no-fund"
+                               (str "opencode-linux-x64@" cli-version)] 120000)
+          (println "Skipping native Linux x64 CLI fixture on" (.-platform js/process) (.-arch js/process)))
         (write-provenance! provenance-file complete)
         (println "Compiled canonical fixture" revision (.-length bytes) "bytes" (:module_sha256 complete))))
     ;; This invocation exclusively created source. Retain module/recipe/provenance
