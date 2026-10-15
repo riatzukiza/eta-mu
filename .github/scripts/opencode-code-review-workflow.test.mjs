@@ -11,7 +11,7 @@ import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 
-import { runReviewRecovery, parseOpenCodeModelCatalog, selectFreeMiMoFlash } from "./run-opencode-review-recovery.mjs";
+import { runReviewRecovery, captureReviewBatchCustody, parseOpenCodeModelCatalog, selectFreeMiMoFlash } from "./run-opencode-review-recovery.mjs";
 import { bindTransportInvocation, stageTransportVerifier, transportResponse,
   transportSha256, transportVerifierSource } from "./review-invocation-fixture.mjs";
 
@@ -2775,6 +2775,56 @@ test("canonical caller custody: a throwing child still gets an independent after
   }), /synthetic child failure/);
   assert.equal(attempts, 1);
   assert.deepEqual(captures, ["before:1", "after:1"]);
+});
+
+test("actual capture: retargeted global skills refuse before the corrective adapter", async (t) => {
+  const owner = process.env.ETA_MU_CANONICAL_CONTEXT_MODULE;
+  const binary = process.env.ETA_MU_NATIVE_BATCH_BINARY ||
+    path.join(path.dirname(owner), "native-cli/node_modules/opencode-linux-x64/bin/opencode");
+  const checked = freshReviewInputCheck(fullInputFixture(t));
+  const f = canonicalContextFixture(checked);
+  const home = path.join(checked.env.RUNNER_TEMP, "owned-capture-home");
+  const runtime = path.join(checked.env.RUNNER_TEMP, "owned-capture-runtime");
+  const otherSkills = path.join(checked.env.RUNNER_TEMP, "other-skills");
+  for (const directory of [home, runtime, otherSkills, path.join(home, ".config/opencode"),
+    path.join(f.context, "agents/skills")]) fs.mkdirSync(directory, { recursive: true, mode: 0o700 });
+  fs.writeFileSync(path.join(runtime, "inert-source.txt"), "Captured inert source identity; never executed.\n");
+  fs.writeFileSync(path.join(f.context, "agents/skills/original.md"), "Original owned skill source.\n");
+  fs.writeFileSync(path.join(otherSkills, "different.md"), "Different owned skill source.\n");
+  const link = path.join(home, ".agents");
+  fs.symlinkSync(path.join(f.context, "agents"), link);
+  const configFile = path.join(home, ".config/opencode/opencode.json");
+  fs.writeFileSync(configFile, "{}\n");
+  const promptFile = path.join(f.context, "machinery/evidence-review.md");
+  fs.writeFileSync(promptFile, "Inert adapter capture control; no model invocation.\n");
+  const environment = { PATH: process.env.PATH, HOME: home,
+    XDG_CONFIG_HOME: path.join(home, ".config"), XDG_DATA_HOME: path.join(home, ".local/share"),
+    XDG_CACHE_HOME: path.join(home, ".cache"), XDG_STATE_HOME: path.join(home, ".local/state"),
+    OPENCODE_CONFIG: configFile, OPENCODE_CONFIG_DIR: path.join(home, ".config/opencode"),
+    OPENCODE_DISABLE_PROJECT_CONFIG: "true", OPENCODE_DISABLE_MODELS_FETCH: "true" };
+  const first = canonicalContextResponse(f, { omitSubmit: true }), second = canonicalContextResponse(f);
+  let attempts = 0, failure;
+  try {
+    await runReviewRecovery({ evidenceDirectory: checked.evidence, basePrompt: "Actual capture with inert attempt adapters.",
+      submissionFile: f.submissionFile, reviewTools: f.tools, verifyReviewInvocation: f.verifier.verifyReviewInvocation,
+      expectedContext: f.expectedContext,
+      captureBatchHost: async ({ boundary, attempt }) => {
+        if (boundary === "before" && attempt === 2) { fs.unlinkSync(link); fs.symlinkSync(otherSkills, link); }
+        return captureReviewBatchCustody({ binary, environment, cwd: checked.consumer, verifierFile: f.verifierFile,
+          registryFile: f.registryFile, evidenceDirectory: checked.evidence, promptFile,
+          contextDirectory: f.context, runtimeDirectory: runtime });
+      },
+      invokeAttempt: async ({ attempt, responseFile, stderrFile }) => {
+        attempts += 1;
+        const data = attempt === 1 ? first : second;
+        fs.writeFileSync(responseFile, data.response); fs.writeFileSync(stderrFile, "");
+        if (attempt === 2) fs.writeFileSync(f.submissionFile, data.submission);
+        return { exitCode: 0 };
+      } });
+  } catch (error) { failure = error; }
+  assert.equal(attempts, 1, "retargeted global skill source must stop before the corrective adapter");
+  assert.match(failure?.message ?? "", /skill|custody/);
+  assert.equal(JSON.parse(fs.readFileSync(path.join(checked.evidence, "recovery.json"))).accepted_invocation, null);
 });
 
 test("native bounded batches: actual standalone, physical CLI and compiled producer close a whole corrective invocation", { timeout: 150_000 }, async (t) => {

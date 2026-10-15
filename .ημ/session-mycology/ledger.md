@@ -1207,3 +1207,13 @@
   spore: none
   receipt-refs: cephalon-eta-batch5-actual-standalone-source-custody-green-20261015
   note: GREEN source uses canonical Muse host policy and semantic verifier, never a local batch selector or fabricated native membership. Original immutable supervisor snapshot and every actual before/after child pair survive errors; first mutation/capture failure stops retry/acceptance. Full raw config/environment/source custody is hashed privately, accepted digest binds original/pairs, final workflow independently recaptures terminal custody and preserves private unchanged publisher bytes. Reuse qualified anonymous latest-eligible free OpenCode MiMo discovery; no fixed future slug, model credential, paid route, extra continuation or timeout increase. Actual scripted local SSE is transport proof, not model review/approval/throughput/full150-input review or live character proof. Same PR21 needs fresh code-phase hosted gates/reviews/settlement/convergence and authorized qualified MERGE before lawful Done and consumer1 admission; no planning approval transfer. Honest operator failures and fixture corrections remain in the evidence, including initial missing-yaml/wrong -m/source-shaped catalog/first-id/final-partial/old-marker issues; no history rewrite or production failure inferred. GoalACTIVE/liveB1B2B3=0of3/heartbeat humanPAUSED. No maker/runtime/clock/gateway/owner/PM2/cloud/sysctl/credential/paid/deployment/social or spore change.
+
+- ts: 2026-10-15T20:04:03.491Z
+  session: /home/err/spaces/cephalon-review-batch-consumer/eta-mu
+  task: cephalon-character-memory/B3/review-batching/ETA
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-eta-global-skill-link-actual-capture-red-20261015
+  note: Confirmed current review finding is within the existing approved five-point custody story, so no new prerequisite scope is inferred. Bind actual lstat/readlink/resolved target before first async preparation and every child/final observation; concrete executable/resolved-config/environment/cwd corrective-boundary negatives remain required. The model adapters are inert fixtures: actual capture/config execution is real, but no native model-positive, provider judgment, approval, throughput or liveB proof is claimed. Current card prose concern must respect frozen primary after Breakdown: use native comments and lawful Incoming consumer correction, with honest review settlement, not an unauthorized historical rewrite. Original ledger/reflection prefixes preserved, no source head churn while the accepted whole hosted attempt runs. GoalACTIVE/live0of3/heartbeat humanPAUSED; no runtime/maker/clock/owner/PM2/cloud/sysctl/credential/paid/provider/deployment/social or spore change.
