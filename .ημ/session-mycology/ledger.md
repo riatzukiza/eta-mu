@@ -1297,3 +1297,13 @@
   spore: none
   receipt-refs: cephalon-eta-readable-attempt-limit-correction-20261015
   note: Readable correction to the metadata RED and GREEN reflection entries of 2026-10-15: the intended wording is two-attempt. The existing limit remains two attempts within 120 minutes. This appended correction addresses native root 4288771571 while preserving the original historical entries exactly, as the user requires. The Incoming consumer Verification paragraph now names the two qualified Git pins, removal of the dated model override and the already approved review-workflow Node 22.23.3 pin; this adds no scope or estimate and performs no consumer implementation or admission. Current source review and required checks must finish before another ordinary corrective push; no prior approval transfers. Goal remains ACTIVE, live proofs remain 0/3 and the heartbeat remains human-paused. No runtime, maker, clock, gateway, owner, PM2, cloud, sysctl, credentials, paid model, provider, deployment, social or spore change.
+
+- ts: 2026-10-15T23:21:05.669Z
+  session: /home/err/spaces/cephalon-review-batch-consumer/eta-mu
+  task: cephalon-character-memory/B3/review-batching/ETA
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-eta-changing-model-slug-wording-and-actual-ci-truth-20261015
+  note: Replace the ambiguous phrase with the exact reviewer wording: the existing human requirement to support changing model slugs. This is an Incoming epic primary prose correction within the existing scope, not a completed-card rewrite, operational board transition, new prerequisite or estimate change. Preserve the historical comments and metadata exactly. The actual current CodeRabbit full review selected all14 inputs and still reported this one Minor finding; completion and reviewed coverage are not passing approval while it remains. Current Codex passing issue receipt is native exact-head evidence only. Correct earlier operator commentary that called the successful evidence-producing job fully green: its downloaded payload records test exit1, caused by an upstream Clojure tools bootstrap download before the Clio Node peer could start. The release asset currently exists; no transient diagnosis or source/test repair is proven from one failure. Preserve failure and let the active full native review finish. The next concrete wording-correction push will require fresh full verification with all existing limits and gates; no manual duplicate or hidden retry is started. Goal remains ACTIVE, live proofs remain0/3 and heartbeat remains human-paused. No runtime, maker, clock, gateway, owner, PM2, cloud, sysctl, credentials, provider, paid model, deployment, social or spore change.
