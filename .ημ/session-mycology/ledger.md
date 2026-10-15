@@ -1277,3 +1277,13 @@
   spore: none
   receipt-refs: cephalon-eta-muse-repository-hosted-context-causal-red-20261015
   note: This is a confirmed gap in the existing approved five-point exact owner/repository/commit metadata contract, not a new prerequisite. Correct the actual workflow metadata environment/file and its real shell fixtures, preserving source pins, full context custody, checksums and current mandatory gates. Anonymous dynamic free OpenCode routing, unchanged twoattempt/120minute consumer caps and all original inputs remain. Current a7 actual source reviews/checks must finish before the next grouped corrective push; no review/approval transfer or weakening for malformed model calls. A metadata file's repository attribution is distinct from the human's containing-repository rule for bare receipt rows; this new receipt omits repo. GoalACTIVE/live0of3/heartbeat humanPAUSED; no runtime/maker/clock/owner/PM2/cloud/sysctl/credentials/paid/provider/deployment/social or spore change.
+
+- ts: 2026-10-15T21:33:08.940Z
+  session: /home/err/spaces/cephalon-review-batch-consumer/eta-mu
+  task: cephalon-character-memory/B3/review-batching/ETA
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-eta-muse-repository-hosted-context-green-20261015
+  note: The assembly now transports fixed MUSE_REPOSITORY riatzukiza/muse as data, writes metadata/muse-repository.txt before checksums, and matches its value to the actual checkout repository in the existing contract test. The real metadata fixture supplies that same actual step environment. Current context hash/independent final custody already covers every checksummed metadata file; all existing source, membership, full-context, twoattempt and publication rules remain unchanged. This closes the accepted exact owner/repository/commit provenance gap within existing ETA5, not a new credential/provider/runtime or policy prerequisite. A local operator assertion wrongly expected read-task to return an ok wrapper after the comment actually succeeded; the already retained bare native task map was then correctly verified, without repeating the mutation or relabeling the operation as failed. Preserve original comments/events/receipts/reflections; new row omits repo. Current native settlement and fresh changed-head full reviews/gates still follow the next grouped source push after the active whole actually ends. GoalACTIVE/live0of3/heartbeat humanPAUSED; no maker/runtime/clock/owner/PM2/cloud/sysctl/credentials/paid/provider/deployment/social or spore change.

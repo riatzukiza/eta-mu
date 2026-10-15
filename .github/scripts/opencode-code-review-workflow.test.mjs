@@ -404,6 +404,9 @@ test("the compiled observer contract pins compatible Muse and allows both full-i
   assert.equal(namedStep("prepare_review_context", "Checkout Muse compatibility compiler").with.ref,
     expectedRef, "direct-PR compiler fallback must match the workflow-call default");
   const assembly = namedStep("prepare_review_context", "Assemble revision-bound review context");
+  assert.equal(assembly.env.MUSE_REPOSITORY,
+    namedStep("prepare_review_context", "Checkout Muse compatibility compiler").with.repository,
+    "artifact provenance must record the actual Muse repository selection");
   assert.equal(assembly.env.MUSE_REVISION, expectedRef,
     "artifact provenance must record the same effective Muse selection");
   for (const name of ["review_read_diff_chunk", "review_assess_diff_chunk", "review_read_diff_batch", "review_assess_diff_batch"]) {
@@ -2263,7 +2266,8 @@ function reviewMetadataFixture(t) {
   execFileSync("git", ["commit", "-qm", "caller config fixture"], { cwd: directory });
   const assembly = namedStep("prepare_review_context", "Assemble revision-bound review context");
   const result = runScript(assembly.run, directory, {
-    RUNNER_TEMP: runnerTemp, MUSE_REVISION: "fixture-muse", AGENTS_REVISION: "fixture-agents",
+    RUNNER_TEMP: runnerTemp, MUSE_REPOSITORY: assembly.env.MUSE_REPOSITORY,
+    MUSE_REVISION: "fixture-muse", AGENTS_REVISION: "fixture-agents",
   });
   assert.equal(result.status, 0, result.stderr);
   fs.rmSync(path.join(directory, ".review-context"), { recursive: true });

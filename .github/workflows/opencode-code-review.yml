@@ -772,6 +772,7 @@ jobs:
       - name: Assemble revision-bound review context
         shell: bash
         env:
+          MUSE_REPOSITORY: riatzukiza/muse
           MUSE_REVISION: ${{ inputs.muse_revision || '259c76eee9ac2def944e9191c1da23d3647ba32e' }}
           AGENTS_REVISION: ${{ inputs.agents_revision || '7fd3252e7663ad5e68be5e90429d126aa66c38c8' }}
         run: |
@@ -1808,6 +1809,7 @@ jobs:
           cnJvcjo6JHtlcnJvci5tZXNzYWdlfWApOwogICAgcHJvY2Vzcy5leGl0Q29kZSA9IDE7CiAgfSk7Cn0K
           ETA_MU_RECOVERY_RUNNER_BASE64
 
+          printf '%s\n' "$MUSE_REPOSITORY" > "$CONTEXT_OUT/metadata/muse-repository.txt"
           printf '%s\n' "$MUSE_REVISION" > "$CONTEXT_OUT/metadata/muse-revision.txt"
           printf '%s\n' "$AGENTS_REVISION" > "$CONTEXT_OUT/metadata/agents-revision.txt"
           (cd "$CONTEXT_OUT/agents" && find skills -name SKILL.md -type f -print | sort) > "$CONTEXT_OUT/metadata/skills.txt"
