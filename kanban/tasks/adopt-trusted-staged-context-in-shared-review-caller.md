@@ -5,7 +5,7 @@ status: incoming
 priority: P1
 points: "12"
 labels: "epics,cephalon,b3,review,context-custody,batching,12sp"
-write-id: "1792079783243-0.9q600emr3ibutnmcwi3"
+write-id: "1792081568633-0.ghusbpih9qgsn6dc6hc"
 type: "epic"
 ---
 
@@ -42,6 +42,22 @@ ETA batching proposes 5, preserving both selected main context custody and quali
 ## Verification
 
 Current complete planning review/settlement precedes lawful story readiness. The caller requires both source-carry and HOST spike actually Done plus compatible decision; the consumer requires caller, final-page clarification AND ETA batching independently qualified/MERGED/Done, with matching qualified external Muse259 source. Each predecessor must actually be Done before dependent readiness/implementation. Retain original historical receipts/reflections/events, exact raw source snapshots and appended correction evidence. Use native Rheos only; manual Incoming body prose creates no engine event or readiness.
+## Earlier issue25 repair: exact qualified source and installation
+
+The earlier immutable-original-review/current-head defect is owned by [riatzukiza/.agents issue25](https://github.com/riatzukiza/.agents/issues/25) and was delivered by [personal PR36](https://github.com/riatzukiza/.agents/pull/36): reviewed source6f5e352443f06cdfb1d0f69954b00cba201e7db6, actual MERGE **6f968b71f92a6782b6d619c370de1e4c3585d687**, merged2026-10-14T17:00:48Z. The actual required [PR-flow laws and CLI run38597875258/job115969173171](https://github.com/riatzukiza/.agents/actions/runs/38597875258/job/115969173171) succeeded; separate hosted full-input review/evidence run38597876002 and its native MiMo APPROVED at2026-10-14T16:45:33Z bind that source head. Source qualification is independently inspectable at those native records, not inferred from this planning prose.
+
+On this correction, native personal .agents main is **8497afdd329c3dcaefb78eec36d8e629a59d9eb2**. All50 installed regular files under /home/err/.agents/skills/pr-flow compare byte-identically with that exact source tree, including the adopted issue25 repair. This is an interpreted NBB skill pack, not a separately compiled executable. The actual entry point is `nbb -cp /home/err/.agents/skills/pr-flow/scripts /home/err/.agents/skills/pr-flow/scripts/pr.cljs`; configuration is skills/pr-flow/flow.edn, contract0.3.4. Exact installed identities:
+
+- SKILL.md: 30914bytes, SHA256bd8938a4cf8c75189ed100793a90dff156d2cce875083c29b01ffd76418ea40b.
+- CONTRACT.edn: 19313bytes, SHA256355b765892bd16830ba2b6bebd3b81c2789a730808c2479aeaa807ef4e726105.
+- flow.edn: 10427bytes, SHA2567d67002ac44b2489e8749d24caeea4aa9351dadf2030bc1204b8a08a33822ab9.
+- scripts/pr.cljs: 61247bytes, SHA256fb983d86d5f94b7d1989d4b4f682ec4bc926ea05a4c1132fe79ab97e453c31a7.
+- scripts/pr_flow/law.cljc: 101963bytes, SHA256891e7f2f2c80e9997caaa51cf37049d846d2c1e767423144ac7b4f7a053b6e33.
+
+The observed installed-source custody transcription SHA256 is 792a8bd56bd702dfc1b982de115ec6995d053fbf28dc6172a13ff685f0b0a346; native snapshots and all50 per-file Git blob/byte/SHA bindings are retained in eta21-installed-canonical-prerequisite-custody.json and eta21-canonical-prerequisite-actual-checks.json under the goal evidence directory. These are command-output observations, not synthetic Bot approval. Actual native ETA PR15 readback reports reviewed head56474ccbb1450aeccb31b75d8280dd3846accb6e and MERGE d8bbd5fdabf9d7d2c56a9471443bdf4a35497f72 at2026-10-14T17:36:47Z, the selected current personal main. All original findings, reviews, withdrawals, events and receipts remain intact.
+
+This repair preserves known original review provenance while requiring current-head opener withdrawal and authorized writer settlement. It intentionally does **not** admit outdated-location withdrawals. The separately proposed Root37 outdated-location extension remains pending/unapplied and is not cleared by this source, nor does source installation supply any current ETA planning approval, finding settlement, readiness, cohort or live proof. Every current native gate still applies.
+
 
 ## Risks
 
@@ -91,5 +107,7 @@ Finding 4284770730 corrected within approved bounded-batching scope: ETA batchin
 Correction to the immediately preceding history-preservation claim: my prose-normalization pass also changed spacing in existing historical comment segments before publication. A failed exact-prefix assertion detected that operator error; it was not a point-type or production failure. The exact original native comment prefixes and secondary historical body bytes are now restored from the retained before-read/file, with the actual new native comment preserved. Correct native readback proves those prefixes plus Incoming9 and all unrelated frontmatter; no original event/receipt was rewritten. The current first body alone now records actual batching dependencies and current qualified original issue25 source status; all old pending-risk comments remain history. This appended correction preserves the original claim and does not supply review or readiness credit.
 
 Existing human latest-free-MiMo requirement and selected-source anomaly: personal main d8/e4 preserves six-argument complete-context enforcement, while qualified parallel ETA17/18 15d/fcdf supplies anonymous current-catalog free/tool-capable selection. Same ETA adoption must preserve both via exact reviewed compatible source/functions/tests/provenance, with no broad branch merge, unrelated purpose/budget changes, paid/provider/credential or runtime change. Re-estimate existing ETA2 to5 (batch/host/context/final integration3 + reviewed discovery/executable/publication custody1 + compiled fixture/full-gate reconciliation1). Same six local deliveries propose12 non-additive (2+1+2+1+5+1), prior7/9 history; external Muse8 separate, same consumer1 counted once, new batching allocation14 provisional. Consumer retains1 and two Git pins plus clearing dated model override to use actual latest selector under prior human instruction; no third source pin/new behavior. All statuses remain Incoming and prior relationships/history retained. New source planning still needs independent qualification/Ready before RED/GREEN; hold current local correction while ee hosted review remains active.
+
+Actual Codex root4285174062 corrected in primary Incoming epic: issue25 source reviewed6f5e352443f06cdfb1d0f69954b00cba201e7db6/qualified MERGE6f968b71f92a6782b6d619c370de1e4c3585d687, actual hosted laws/CLI38597875258 and review38597876002/native parentETA15 merge readbacks, interpreted NBB installedpack8497afdd329c3dcaefb78eec36d8e629a59d9eb2/all50regularfilesbyteidentical, actual entry/config and SHA identities now inspectable. Original repair excludes outdated-location withdrawals; separate Root37 extension remains pending/unapplied. This exact prior repair custody grants no current ETA approval/readiness/settlement or live credit. Existing local12/nonadditive and all historical native segments retained.
 
 ---

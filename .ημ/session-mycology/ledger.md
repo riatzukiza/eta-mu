@@ -1137,3 +1137,13 @@
   spore: none
   receipt-refs: cephalon-eta-context-and-existing-dynamic-mimo-source-reconciliation-20261015
   note: Discovery invalidates selecting either branch alone: peerfcdf drops context enforcement, while maind8 lacks already-required anonymous current-catalog discovery and relies on dated default. Re-describe same caller adoption to reuse compatible exact qualified owning functions/tests/provenance, preserving six-argument context, new batch host custody and private publication. Exclude broad peer merge, unrelated assessment routes/45-minute allocation and any provider/credential/paid/runtime change; preserve existing120-minute/twoattempt consumer budget. Re-estimate same ETA from2 to5 (integration3+reviewed-discovery1+compiled/fullgate reconciliation1); six local deliveries propose12 non-additive, externalMuse8 separate and consumer1 reused, new prerequisite14 provisional. Consumer remains1 with two Git pins plus clearing dated model override under prior explicit human naming correction; no third source pin or new behavioral item. Independent planning/admission still required. Hold local concrete refinement until active ee review finishes; no cancellation, stale-head review request, Ready/GREEN, runtime/deployment/publication/heartbeat or spore change.
+
+- ts: 2026-10-15T16:26:19.849Z
+  session: /home/err/spaces/cephalon-review-batch-consumer/eta-mu
+  task: cephalon-character-memory/B3/review-batching/ETA
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-eta-four-native-planning-findings-correction-20261015
+  note: All four valid actual Codex findings are corrections within approved ETA batching scope, not new prerequisites. Add exact non-GREEN baseline, per-attempt custody and first-mutation stop, exact qualified canonical repair/installed pack/native parent evidence, and explicit fetchable personal Muse owner/repository/commit tuple. Preserve original repair limitations and pending separate Root outdated-location extension. Prior ee whole model attempt actually ended successfully before grouped next push; old review is historical after new head, never transferred. Same ETA5/local12/consumer1/newbatch14 provisional; no source implementation/Ready/GREEN, continuation, changed budgets, credentials/paid/provider/runtime/maker/clock/owner/PM2/cloud/deployment/social/publication/heartbeat or spore change; goalACTIVE/live0of3.
