@@ -1227,3 +1227,13 @@
   spore: none
   receipt-refs: cephalon-eta-actual-child-custody-corrections-green-20261015
   note: Same approved five-point source scope. Original lstat/readlink/realpath plus full target bytes now remain supervisor-bound before/after every child and separate final capture; unknown physical binary refuses through canonical owner before config execution. Actual corrective matrix uses real physical CLI/compiled host capture, with inert child adapters; it supplies no model review/throughput credit. Additive historical label preserves the accepted primary planning contract, and lawful Incoming consumer prose dates actual InProgress dependency. Actual owning Rheos body convention was found in docs/cli.md after an incomplete skill/AGENTS search; no scope or acceptance change, no invented prohibition or new prerequisite. Initial missing-NODE_PATH command failed before any native mutation; actual bound comments/readbacks subsequently pass. Previous receipts/reflections remain exact; new line omits repo by containing repository attribution. Hosted review must finish before grouped ordinary push; no cancellation or approval transfer. GoalACTIVE/live0of3/heartbeat humanPAUSED; no maker/runtime/clock/owner/PM2/cloud/sysctl/credentials/paid/provider/deployment/social or spore change.
+
+- ts: 2026-10-15T20:29:16.697Z
+  session: /home/err/spaces/cephalon-review-batch-consumer/eta-mu
+  task: cephalon-character-memory/B3/review-batching/ETA
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-eta-actual-hosted-context-layout-red-20261015
+  note: The bounded native complete review actually worked and correctly found a real CI-only test-fixture path defect; this is CHANGES_REQUESTED, never approval. Historical local258PASS and current local268PASS used the compiled-fixture profile layout and remain real but do not prove actual CI-layout success. Reproduce against the actual downloaded immutable context artifact before changing the test, then use its real metadata registry. This fixture reconciliation is explicitly in the existing ETA5 story, not a newly selected prerequisite. Raw archive custody and observed transcription retain limits; actual59page success is not1491page consumer throughput/qualification or liveB proof. A whole-run log read failed with HTTP2 streamCANCEL while immutable artifacts and native review read succeeded; no model/provider failure is inferred. Source5e fixes stay local until grouped verified publication; old rows/reflections exact. GoalACTIVE/live0of3/heartbeat humanPAUSED; no runtime/maker/clock/owner/PM2/cloud/sysctl/credentials/paid/provider/deployment/social or spore change.

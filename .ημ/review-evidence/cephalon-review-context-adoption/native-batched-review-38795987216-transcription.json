@@ -1,0 +1,49 @@
+{
+  "run": 38795987216,
+  "head": "30ed480c5115a3eae6f41dc42177151b85304cdf",
+  "overall": "failure:deterministic-output-test-nonzero",
+  "modelJob": {
+    "id": 116640848554,
+    "conclusion": "success",
+    "started": "2026-10-15T20:00:20Z",
+    "completed": "2026-10-15T20:24:11Z"
+  },
+  "nativeReview": {
+    "id": 5539410402,
+    "state": "CHANGES_REQUESTED",
+    "oneConfirmedFinding": "actual hosted canonical context registry path mismatch",
+    "noApprovalClaim": true
+  },
+  "accepted": {
+    "attempts": 1,
+    "canonical_ok": true,
+    "pageCount": 59,
+    "contextReadCoverage": {
+      "status": "present",
+      "totalLines": 90,
+      "deliveredLines": 90,
+      "eof": true
+    },
+    "nativeReadGroups": 15,
+    "nativeAssessmentGroups": 15,
+    "input_coverage": {
+      "chunks": 59,
+      "delivered": 59,
+      "assessed": 59,
+      "missing": []
+    },
+    "terminal_custody_sha256": "91fa56bf19a42cf283cc3473b9d6e2b09d1fe43126d09ada73154d93f0d2fc95"
+  },
+  "discovery": {
+    "status": "selected",
+    "mode": "latest",
+    "observed_model_not_future_slug": "opencode/mimo-v2.6-flash-free",
+    "credential": "anonymous OpenCode route, no new credential"
+  },
+  "rawArchive": {
+    "file": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/openplanner-context-consumer-20261014/continuation-20261014T2234/eta30ed-whole-review-attempt-12003719219.zip",
+    "bytes": 913245,
+    "sha256": "68205d16ba93f0a4c2cb78cc7c44e2e7f30bb02e1f31eb78b2003e0531f9e229"
+  },
+  "limits": "Actual59-page native complete review is not complete1491-page OpenPlanner qualification, approval of5e or liveB proof; source-finding/local-vs-hosted mismatch requires repair, not waived gate"
+}
