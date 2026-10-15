@@ -7,26 +7,26 @@ priority: "P1"
 points: "1"
 labels: "cephalon, b3, review, context-custody"
 epic: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
-dependency: ["b9c591fb-95a8-4e4e-b2a5-39eb988cb996","c84f0b33-7527-443a-a9ff-5ee2e2dfed48"]
+dependency: ["30c9df92-e1fb-4043-8565-36f96ce2a978","b9c591fb-95a8-4e4e-b2a5-39eb988cb996","c84f0b33-7527-443a-a9ff-5ee2e2dfed48"]
 category: "tasks"
-write-id: "1791971335165-0.153dpk41ndjq6g7nknz"
+write-id: "1792077500657-0.iyii3uj8r1mh2ezxgwq"
 created_at: "2026-10-12T22:46:27.730Z"
 parent: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 ---
 
 ## Context
 
-The human approved enforcement and joint delivery of the finite B3 review transport prerequisite. Muse PR7 actually merged at a9a62f0d509056406f3dd7d8c86a13551be168cd. This story belongs to the linked provisional epic de02c921-e23c-4d83-87e8-b32c6c3160ff, originally split after native Codex review 5496721636/root4252951958. The human-approved additional prompt story now makes seven points over five required deliveries (carry2+HOST1+caller2+prompt1+consumer1). The earlier six-point statements in retained native comments are dated history; this consumer stays one point/two pin changes. Each source and consumer delivery has independent qualification and lifecycle; no approval transfers.
+The human approved bounded batching under call_1d609fd775e34385958566086e527a3e after three complete-input reviews exhausted their existing limit. This existing one-point consumer remains the same two-pin OpenPlanner adoption within epic de02c921-e23c-4d83-87e8-b32c6c3160ff, now six local deliveries/provisional nine points with ETA batching 2. All older seven-point/five-delivery statements below are estimate history; this consumer is counted once.
 
 ## Outcome
 
-Existing personal OpenPlanner PR3 consumes the actually qualified shared caller/Muse pair and merges through its own current-head gate, supplying the final joint completion signal.
-
-The concrete source pair is qualified ETA PR16 MERGE `e4fb01ff056f9ac823b2b9659e6bc25ac7fea1f2` (containing caller custody and final-page clarification) and qualified Muse MERGE `a9a62f0d509056406f3dd7d8c86a13551be168cd`. The prompt predecessor is now native Done. This plan still requires independent parent qualification before lawful consumer Ready; the consumer remains Incoming and its workflow pins are unchanged.
+Existing personal OpenPlanner PR3 consumes the actual independently qualified ETA batching caller and matching Muse source, then passes its own unchanged complete 150-input native review/check/settlement/convergence and head-guarded MERGE. Muse PR12 actually merged as 259c76eee9ac2def944e9191c1da23d3647ba32e; its profile/joint/coordinator are native Done. ETA task 30c9df92-e1fb-4043-8565-36f96ce2a978 is still Incoming and must qualify/merge/Done first. Prior ETA e4 caller-only and Muse a9 source references below are historical proposed pins, superseded by this newly included batching prerequisite; do not adopt an old pre-batching workflow.
 
 ## Scope
 
-Depends on BOTH caller/host story UUID b9c591fb-95a8-4e4e-b2a5-39eb988cb996 and final-page clarification UUID c84f0b33-7527-443a-a9ff-5ee2e2dfed48 actually Done after their independently qualified source MERGEs. Caller in turn requires source-carry 52a0f6cc-e43b-4ed5-a628-e54dd9d9fdc4 and HOST a880c727-229b-4f3d-9158-718ec164d16c independently Done, with the genuine HOST trace and canonical compatibility decision. Update only the existing OpenPlanner .github/workflows/eta-mu-review.yml reusable-workflow selector and matching pins for the qualified shared workflow and matching Muse source. Preserve current free OpenCode route, actual host version, permissions, complete input custody and all own required checks. No new consumer, identity override or organization propagation. Implementation belongs to personal OpenPlanner PR3; this same-board card coordinates its independent lifecycle.
+Native dependency must include all three same-board tasks: completed caller b9c591fb-95a8-4e4e-b2a5-39eb988cb996, completed final-page clarification c84f0b33-7527-443a-a9ff-5ee2e2dfed48 and new ETA batching 30c9df92-e1fb-4043-8565-36f96ce2a978. Batching depends on the prior final-page source and external exact qualified Muse 259c76e. Caller retains its original carry/HOST predecessors. Each source qualifies independently; source readiness transfers no consumer approval.
+
+Update only the existing OpenPlanner .github/workflows/eta-mu-review.yml reusable-workflow selector to riatzukiza/eta-mu/.github/workflows/opencode-code-review.yml at the actual future qualified PR21 MERGE containing both previous complete-context enforcement and new batching, and its matching Muse pin259c76eee9ac2def944e9191c1da23d3647ba32e. The future ETA merge SHA is not yet known and may not be replaced by an unqualified branch/head or old e4. Preserve existing OpenCode 1.18.31/Node 22.20.0, free route, 120-minute job and two-attempt bound, exact complete 150-input scope/original 56/raw 70 provenance, custom gates, permissions and signing separation. No model/runtime/credential or organization change. Implementation remains in existing personal OpenPlanner PR3 after this consumer's own reviewed planning/native Ready.
 
 ## Non-goals
 
@@ -34,11 +34,9 @@ No second parser/verifier, broad upstream synchronization, fixed free-model slug
 
 ## Acceptance criteria
 
-0. Select `riatzukiza/eta-mu/.github/workflows/opencode-code-review.yml@e4fb01ff056f9ac823b2b9659e6bc25ac7fea1f2` as the actual reusable-workflow `uses:` owner/repository/path/ref. Verify native GitHub resolves that exact committed workflow and that Actions permits this public personal workflow call with existing permissions/secrets. Do not rely on fork-network object presence at the old open-hax selector. If unavailable, keep adoption blocked; no organization propagation or settings override. The matching Muse pin remains its actual qualified personal merge.
-
-1. Existing consumer pins the actual independently qualified post-clarification workflow MERGE containing both qualified caller context custody and this new final-page instruction, plus matching qualified Muse MERGE. A pre-clarification caller-only workflow pin is insufficient. Selected revisions/artifacts are inspectable and source reviews do not transfer.
-2. Consumer independently passes its required checks, complete current-input assessment, trusted exact-head review/settlement/convergence and canonical authorized MERGE; retain immutable consumer head/base, checks, review and native merge readback.
-3. This final story remains open while consumer advances. Lawful Done requires source-carry, caller and final-page clarification stories independently Done with actual qualified source MERGEs, HOST independently Done with genuine 1.18.31 trace and canonical compatibility decision, AND the actual qualified OpenPlanner MERGE. Then all five deliveries are finished and the epic can close; metadata custody, source merge or a planning approval alone cannot close it. No B1/B2/liveB3 proof is inferred.
+1. All three native source dependencies above are Done after their own current-head checks/reviews/settlements and actual qualified source MERGEs. Batching must bind actual Muse 259c76e, ten core/24 total tools, actual host before/after/final custody and the retained six-argument complete-context enforcement. No pre-batching caller pin can satisfy this handoff. Verify GitHub resolves the exact personal owner/path/merge workflow and existing public Actions call permissions; unavailable stays blocked without settings override.
+2. Only the two selected pins change. The actual successful public-personal reusable workflow invocation and unchanged full 150-input real native model assessment must finish within the existing 120-minute budget with every page assessed, complete context read, all five stages and actual validated submission/private publication. Projection, a small scripted probe, source approvals or incomplete/failed progress cannot substitute. Keep actual failures and complete original inputs.
+3. Consumer independently passes all current required checks, actual native full-input review/settlement/cohort and authorized exact-head MERGE with full native readback. Source-carry/HOST/caller/prompt/ETA batching and this same consumer must each independently complete before epic Done. B1/B2/B3 live proof is still separate 0/3; no heartbeat resumption or runtime deployment follows.
 
 ## Verification
 
@@ -46,12 +44,7 @@ Read existing caller at actual033c head before mutation. Compare only selected p
 
 ## Risks
 
-Pending canonical settlement risk (native Codex4269071422): [owning PR-flow issue25](https://github.com/riatzukiza/.agents/issues/25#issuecomment-6165232107) currently blocks this parent planning gate. The original finding's immutable old enclosing review cannot equal a new head under the installed withdrawal predicate, even after a current-source opener withdrawal. The attempted independent native rejection judgment arrived through an unsupported placement, and its one correction returned a generic verdict. A concrete two-point owning canonical repair is proposed; the human finite-milestone scope choice is pending. This is a proposed workflow prerequisite, not an included source delivery, completed dependency or policy waiver. No new task UUID, points or dependency edge is fabricated before that decision and owning planning review.
-
-The existing source predecessors being Done grants no consumer admission: current parent settlement, complete-input review and required checks must qualify first. The consumer remains Incoming. If the repair is included, record the owning source card and lawful UUID relationships through Rheos before implementation; if it is excluded, retain the unresolved admission obligation while seeking a genuinely supported alternative. Existing five-delivery/seven-point and one-point/two-pin scopes remain unchanged until an accepted re-description.
-
-
-Consumer has independent many-file review and may block after source qualification; keep its separate lifecycle truthful. One point is provisional for narrow pin adoption/qualification, not permission to skip review or expand unrelated source.
+The actual former issue 25 canonical source repair is now qualified and installed; ETA parent planning PR 15 actually merged as d8bbd5fdabf9d7d2c56a9471443bdf4a35497f72. Historical pending-risk paragraphs below preserve their dated context rather than asserting a current waiver or blocker. A separate outdated-location extension in another plan remains outside this consumer scope. This consumer is currently blocked on its actual new ETA batching dependency and own independent planning/Ready/large-review qualification. Model/catalog/profile drift or incomplete throughput proof stays failure; no credentials, paid route, continuation, timeout-only increase or approval transfer. Consumer remains Incoming 1; nine-point epic and source estimates remain provisional for current independent planning.
 
 Software/process documentation: GPL-3.0-or-later.
 
@@ -121,5 +114,7 @@ Current planning findings4268814280/4268814283 clarified in the derived proof an
 Native Codex4268925909 identified the current derived packet still selecting caller-only3ad. The packet now selects actual personal qualified e4 workflow, matching primary AC0/AC1 and Musea9. Fresh native content read resolves blob a318cdafc435bd199f40d70dc854622cc841c523,145272bytes,SHA2565dbe1f78596b8b1658293f25f67fbe009b20fb17e40ba1bf0f9884e87a461da0, exactly equal local committed e4 bytes. Public Actions enabled/all is an observed permission, not actual consumer-call proof. Original caller3ad/source review details remain explicitly historical; no approval transfers. Consumer remains Incoming/one point/two pins until own parent qualification and lawful admission.
 
 Current native Codex4269071422 is reflected in primary Risks: canonical issue25/current native reproduction6165232107 blocks parent settlement; two-point owning repair is proposed with human scope choice pending. No new source task, estimate or UUID dependency is included before the decision/own planning review. Existing source predecessors Done grant no consumer admission; current parent full review/checks/settlement remain mandatory. Consumer remains Incoming/one point/two pins; no waiver or implementation.
+
+Finding 4284770730 corrected within approved bounded-batching scope: ETA batching has this epic/parent, the existing one-point OpenPlanner consumer natively depends on batching as well as prior caller/final-page Done, and six local deliveries propose nine non-additive epic points (2+1+2+1+2+1). External Muse profile3/joint5 is separately Done and counted once; reused consumer1 is not duplicated. Batching independently qualifies/merges/Done before consumer Ready/two-pin adoption/full150-input native review and own MERGE, then epic closeout. Existing statuses remain Incoming and all older events/comments preserved. Former issue25 repair is actually qualified/installed and parent15 merged; historical pending text is not current admission. No source/runtime/paid/model/credential/publication/heartbeat change.
 
 ---

@@ -1117,3 +1117,13 @@
   spore: none
   receipt-refs: cephalon-eta-batch-consumer-owning-plan-20261015
   note: Approved bounded batching is a B3 delivery prerequisite, not character behavior or live proof. Initial unusedfcdf discovery branch preserved; new clean branch selects actualmain with history-preserving fast-forward, no reset/unrelated peer budget adoption. ETA2 remains provisional and Incoming pending independent planning; no RED/GREEN/source readiness claimed. Future OpenPlanner1 retains only two qualified pins and genuine full150-input native completion. All review/check/settlement gates preserved; no model/auth/paid/runtime/clock/gateway/owner/cloud/PM2/deployment/publication/heartbeat/spore change. New bare receipt omits repo under authorized containing-repository attribution; all historical typed rows preserved.
+
+- ts: 2026-10-15T15:20:54.712Z
+  session: /home/err/spaces/cephalon-review-batch-consumer/eta-mu
+  task: cephalon-character-memory/B3/review-batching/ETA2
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-eta-batch-native-delivery-chain-correction-20261015
+  note: Valid P1 within approved batching: native dependency prevents downstream consumer readiness without new ETA source. Current primary descriptions now name six local deliveries, qualified external Muse and future independently qualified ETA batching merge/two pins; historical early pending issue25 risk is dated, actual original canonical repair and parent merge verified. Held local while original whole review attempt remains active; no cancellation/duplicate model invocation or premature Fixed. Failed assertion correctly exposed accidental spacing edits in old comments; exact original bytes restored before publication, operator string-type hypothesis was disproven, correction is appended. No new scope/model/credential/paid/runtime/clock/owner/PM2/cloud/deployment/publication/heartbeat/spore change; goalACTIVE/live0of3.
