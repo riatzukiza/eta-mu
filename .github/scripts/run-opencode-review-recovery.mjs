@@ -1222,7 +1222,10 @@ export function captureReviewBatchCustody({ binary, environment, cwd, verifierFi
     cwd, env: environment, encoding: null, timeout: 30_000, maxBuffer: 2 * 1024 * 1024,
   });
   if (resolved.error || resolved.status !== 0 || resolved.signal || !resolved.stdout?.length) {
-    throw new Error("independent resolved OpenCode config capture failed");
+    const failure = { exit_code: resolved.status, signal: resolved.signal,
+      error_code: resolved.error?.code ?? null, stdout_bytes: resolved.stdout?.length ?? 0,
+      stderr_bytes: resolved.stderr?.length ?? 0 };
+    throw new Error(`independent resolved OpenCode config capture failed: ${JSON.stringify(failure)}`);
   }
   const batchHost = verifier.prepareReviewBatchHost(physical.real_path, resolved.stdout, environment, cwd);
   const files = [verifierFile, registryFile, promptFile,

@@ -2860,6 +2860,10 @@ test("native bounded batches: actual standalone, physical CLI and compiled produ
   assert.ok(binary && path.isAbsolute(binary), "ETA_MU_NATIVE_BATCH_BINARY must select the actual qualified physical CLI");
   const localProfile = path.join(path.dirname(owner), "profile");
   const profile = fs.existsSync(localProfile) ? localProfile : path.resolve(path.dirname(owner), "../muse/opencode");
+  const registryFile = fs.existsSync(localProfile)
+    ? path.join(localProfile, "exposed-tools.txt")
+    : path.resolve(path.dirname(owner), "../metadata/exposed-tools.txt");
+  assert.ok(fs.existsSync(registryFile), "compiled fixture profile or canonical workflow metadata tool registry is required");
   const checked = freshReviewInputCheck(fullInputFixture(t, { unicode: true, reviewLines: 2050 }));
   // This old inert adapter marker is removed by finalReviewInputCheck; it is
   // not a source file and must not enter the native invocation's original tree.
@@ -2868,16 +2872,19 @@ test("native bounded batches: actual standalone, physical CLI and compiled produ
   const ownedBinary = path.join(checked.env.RUNNER_TEMP, "native-physical-opencode");
   fs.copyFileSync(binary, ownedBinary, fs.constants.COPYFILE_FICLONE);
   fs.chmodSync(ownedBinary, 0o700);
-  const registry = fs.readFileSync(path.join(profile, "exposed-tools.txt"), "utf8").trim().split("\n");
+  const registry = fs.readFileSync(registryFile, "utf8").trim().split("\n");
   assert.equal(registry.length, 24);
   assert.ok(registry.includes("review_read_diff_batch") && registry.includes("review_assess_diff_batch"));
   fs.writeFileSync(f.registryFile, registry.join("\n") + "\n");
   const runtime = path.join(checked.env.RUNNER_TEMP, "native-runtime");
   fs.cpSync(profile, runtime, { recursive: true });
-  execFileSync("npm", ["install", "--prefix", runtime, "--ignore-scripts", "--no-audit", "--no-fund"], {
+  const installed = spawnSync("npm", ["install", "--prefix", runtime, "--ignore-scripts", "--no-audit", "--no-fund"], {
     cwd: checked.env.RUNNER_TEMP, env: { PATH: process.env.PATH, HOME: checked.env.RUNNER_TEMP, NPM_CONFIG_USERCONFIG: "/dev/null" },
-    stdio: "pipe", timeout: 60_000,
+    encoding: "utf8", stdio: "pipe", timeout: 60_000,
   });
+  assert.ifError(installed.error);
+  assert.equal(installed.status, 0, installed.stderr);
+  assert.doesNotMatch(installed.stderr, /^npm warn/m, "native fixture dependencies must satisfy the actual test runtime without warnings");
   const home = path.join(checked.env.RUNNER_TEMP, "native-home");
   fs.mkdirSync(home, { mode: 0o700 });
   fs.mkdirSync(path.join(f.context, "agents/skills"), { recursive: true });
@@ -2986,6 +2993,17 @@ test("native bounded batches: actual standalone, physical CLI and compiled produ
   const exit = await new Promise((resolve, reject) => { child.once("error", reject); child.once("close", (code, signal) => resolve({ code, signal })); });
   clearTimeout(timer);
   const diagnostic = Buffer.concat(stderr).toString("utf8");
+  if (exit.code !== 0 && process.env.ETA_MU_NATIVE_PROOF_DIR) {
+    const failureDirectory = process.env.ETA_MU_NATIVE_PROOF_DIR + "-failure";
+    assert.ok(path.isAbsolute(failureDirectory)); fs.mkdirSync(failureDirectory, { mode: 0o700 });
+    fs.writeFileSync(path.join(failureDirectory, "supervisor.stderr"), diagnostic, { mode: 0o600 });
+    // This HOME is the credential-free, scripted fixture, never an operator HOME.
+    for (const [name, file] of [["cli-logs", path.join(home, ".local/share/opencode/log")],
+      ["global-package.json", path.join(cfg, "package.json")],
+      ["global-sdk-package.json", path.join(cfg, "node_modules/@opencode-ai/plugin/package.json")]]) {
+      if (fs.existsSync(file)) fs.cpSync(file, path.join(failureDirectory, name), { recursive: true });
+    }
+  }
   const catalogFailure = exit.code === 0 ? "" : ["model-discovery.json", "model-catalog.stderr", "model-catalog.stdout", "opencode-stderr-attempt-1.log", "recovery.json"]
     .map(name => { const file = path.join(checked.evidence, name); return fs.existsSync(file) ? `${name}: ${fs.readFileSync(file, "utf8").slice(0, 6000)}` : name + ": absent"; }).join("\n");
   assert.equal(exit.code, 0, diagnostic + catalogFailure);
