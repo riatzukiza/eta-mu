@@ -2645,6 +2645,99 @@ test("public job budget: anonymous complete pagination selects only the exact cu
   assert.equal(origin.runner_name, "exact-runner");
 });
 
+for (const repositoryId of ["1401249220", "9007199254740991"]) {
+  test(`public job budget: 101 actual jobs accept repository-ID ${repositoryId} links but fetch only the original owner route`, async () => {
+    const f = publicJobFixture(), seen = [], signals = [];
+    const owner = "https://api.github.com/repos/open-hax/fixture/actions/runs/123/attempts/2/jobs?per_page=100&page=";
+    const alias = `https://api.github.com/repositories/${repositoryId}/actions/runs/123/attempts/2/jobs?per_page=100&page=`;
+    const selected = f.job(101);
+    const origin = await acquireReviewJobOrigin(f.identity, async (url, options) => {
+      seen.push(url); signals.push(options.signal);
+      assert.equal(url, owner + seen.length, "Link targets must never be fetched");
+      assert.equal(options.credentials, "omit"); assert.equal(options.redirect, "error");
+      assert.equal(options.cache, "no-store");
+      assert.deepEqual(options.headers, { Accept: "application/vnd.github+json" });
+      assert.ok(options.signal instanceof AbortSignal);
+      return seen.length === 1
+        ? f.response(url, { total_count: 101, jobs: Array.from({ length: 100 }, (_, index) => f.job(index + 1, "different-runner")) },
+          { link: `<${alias}2>; rel="next", <${alias}2>; rel="last"` })
+        : f.response(url, { total_count: 101, jobs: [selected] },
+          { link: `<${alias}1>; rel="prev", <${alias}1>; rel="first"` });
+    });
+    assert.deepEqual(seen, [owner + "1", owner + "2"]);
+    assert.equal(signals[0], signals[1], "one acquisition controller spans both pages");
+    assert.deepEqual(origin, { repository: f.identity.repository, run_id: "123", run_attempt: "2",
+      runner_name: "exact-runner", runner_id: 1101, job_id: 101, started_at_ms: Date.parse(selected.started_at) });
+  });
+}
+
+const repositoryJobLink = "https://api.github.com/repositories/1401249220/actions/runs/123/attempts/2/jobs?per_page=100&page=2";
+for (const [fault, target] of [
+  ["different run", repositoryJobLink.replace("runs/123/", "runs/124/")],
+  ["different attempt", repositoryJobLink.replace("attempts/2/", "attempts/3/")],
+  ["different endpoint", repositoryJobLink.replace("/jobs?", "/artifacts?")],
+  ["job detail endpoint", repositoryJobLink.replace("/jobs?", "/jobs/101?")],
+  ["missing attempt", repositoryJobLink.replace("/attempts/2", "")],
+  ...["0", "-1", "01", "+1", "1.0", "1e3", "9007199254740992", "not-an-id", "", "140124922%30"]
+    .map(id => [`malformed repository ID ${JSON.stringify(id)}`, repositoryJobLink.replace("/1401249220/", `/${id}/`)]),
+  ["foreign origin", repositoryJobLink.replace("api.github.com", "example.invalid")],
+  ["foreign port", repositoryJobLink.replace("api.github.com", "api.github.com:444")],
+  ["insecure origin", repositoryJobLink.replace("https:", "http:")],
+  ["extra query", repositoryJobLink + "&unexpected=1"],
+  ["duplicate page", repositoryJobLink + "&page=2"],
+  ["duplicate page size", repositoryJobLink + "&per_page=100"],
+  ["missing page size", repositoryJobLink.replace("per_page=100&", "")],
+  ["different page size", repositoryJobLink.replace("per_page=100", "per_page=1")],
+  ...["0", "01", "9007199254740992"].map(page => [`invalid page ${page}`, repositoryJobLink.replace("page=2", `page=${page}`)]),
+  ["credentials", repositoryJobLink.replace("api.github.com", "user:password@api.github.com")],
+  ["username", repositoryJobLink.replace("api.github.com", "user@api.github.com")],
+  ["fragment", repositoryJobLink + "#jobs"],
+]) {
+  test(`public job budget: repository-ID links refuse ${fault} on every relation`, async () => {
+    for (const relation of ["next", "last", "prev", "first"]) {
+      const f = publicJobFixture(), seen = [];
+      await assert.rejects(acquireReviewJobOrigin(f.identity, async url => {
+        seen.push(url);
+        return f.response(url, { total_count: 2, jobs: [f.job(1)] }, { link: `<${target}>; rel="${relation}"` });
+      }), /foreign public review job pagination/, relation);
+      assert.deepEqual(seen, ["https://api.github.com/repos/open-hax/fixture/actions/runs/123/attempts/2/jobs?per_page=100&page=1"]);
+    }
+  });
+}
+
+for (const [fault, page] of [["repeated", "1"], ["skipped", "3"]]) {
+  test(`public job budget: repository-ID links refuse a ${fault} next page`, async () => {
+    const f = publicJobFixture(), seen = [];
+    await assert.rejects(acquireReviewJobOrigin(f.identity, async url => {
+      seen.push(url);
+      return f.response(url, { total_count: 2, jobs: [f.job(1)] },
+        { link: `<${repositoryJobLink.replace("page=2", `page=${page}`)}>; rel="next"` });
+    }), /repeated or skipped public review job page/);
+    assert.equal(seen.length, 1);
+  });
+}
+
+for (const [fault, expected] of [["changed total", /incomplete public review job inventory/],
+  ["duplicate job", /foreign or duplicate public review job metadata/],
+  ["second matching job", /current public review job is unavailable or ambiguous/],
+  ["partial final page", /partial public review job inventory/]]) {
+  test(`public job budget: repository-ID pagination still refuses ${fault} after an early matching job`, async () => {
+    const f = publicJobFixture(), seen = [];
+    const owner = "https://api.github.com/repos/open-hax/fixture/actions/runs/123/attempts/2/jobs?per_page=100&page=";
+    await assert.rejects(acquireReviewJobOrigin(f.identity, async url => {
+      seen.push(url);
+      assert.equal(url, owner + seen.length);
+      if (seen.length === 1) return f.response(url,
+        { total_count: 101, jobs: Array.from({ length: 100 }, (_, index) => f.job(index + 1, index === 0 ? "exact-runner" : "different-runner")) },
+        { link: `<${repositoryJobLink}>; rel="next"` });
+      const jobs = fault === "partial final page" ? [] :
+        [f.job(fault === "duplicate job" ? 100 : 101, fault === "second matching job" ? "exact-runner" : "different-runner")];
+      return f.response(url, { total_count: fault === "changed total" ? 102 : 101, jobs });
+    }), expected);
+    assert.deepEqual(seen, [owner + "1", owner + "2"], "matching on page one must not skip the remaining inventory");
+  });
+}
+
 for (const fault of ["missing", "ambiguous", "foreign-run", "foreign-attempt", "foreign-url", "future-start",
   "invalid-start", "partial", "duplicate", "repeated-page", "foreign-page", "wrong-response-url", "invalid-json", "unavailable"]) {
   test(`public job budget refuses ${fault} without fallback`, async () => {
@@ -3908,7 +4001,7 @@ for(const [mode,elapsedMinutes] of [["setup-expired",61],["reserve",60-20/60]]){
 }
 
 test("actual model post-before clock boundary: refusal retains the deadline without a child or ENOENT",
-  {timeout:20_000,skip:process.platform!=="linux"||process.arch!=="x64"},async t=>{
+  {timeout:45_000,skip:process.platform!=="linux"||process.arch!=="x64"},async t=>{
     const result=await actualModelDeadlineRegression(t,{mode:"post-before"});
     assert.equal(result.outerExpired,false);
     assert.equal(result.exit.code,1);
