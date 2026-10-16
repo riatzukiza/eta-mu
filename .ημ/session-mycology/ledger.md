@@ -1367,3 +1367,13 @@
   spore: none
   receipt-refs: cephalon-eta-caller-refusal-discovery-green-20261016
   note: Initialoutputcheck nowinsideexistingcaptureguard; finalacceptedcheckrefusal truthfullyrecordsboundary/attempt, retainsrejectedidentity andclearsacceptance throughheldrawwriteguard. Unknownrawrecovery remainsuntouched/refused. Version/modeldiscoveryownsdetachedgroupTERM/KILL/actualclose andnewduringcollection2MiB enforcementmatchesexistingconfiguredstreambound, shared30sdeadline/numericcapsunchanged. Onlyrunnerandembeddedcopychanged. Old2ahostedfailure wasactualmodeltransposedpagehashes; no newcaller/prompt/model/retryexception. Existingstrictbatch/recoveryeligibility/twoattempt120min/64MiBGitgatesremain; no points/newprerequisite/Musepermissionlaw. Finalnativecurrentheadreviews/checks/settlements/MERGE/adoption remain. B1B2B3liveproofsremain0of3 andheartbeatHUMAN-PAUSED; no runtime/credential/provider/paid/deployment/social/spore change.
+
+- ts: 2026-10-16T07:37:25.506Z
+  session: /home/err/spaces/cephalon-review-batch-consumer/eta-mu
+  task: cephalon-character-memory/B1-B3/shared-review-caller
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-eta-original-git-model-deadline-causal-red-20261016
+  note: Confirmed trackedGit baseline missing beforediscovery andactualmodelgroup/deadline missing. TheseareordinaryexistingETA5 fixes, no newprerequisite/points/capincrease. Actualtenselection andfinaltworerun preservedseparately; no inventedfullten-terminalpass orGREEN. Sharednativejobdeadline andderivedtailreserve proposal remainsunapplied beforeGREEN. No newreviewrequest/cancel/sourcepush/Fixed/MERGE/install, credentials/provider/paid/globalruntime/deployment/social/heartbeat change; live0of3/humanPAUSED.

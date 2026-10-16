@@ -3144,6 +3144,249 @@ test("actual custody refusal metadata: final accepted check revokes the persiste
   assert.equal(parseOutput(f.output).review_invocation_sha256, undefined);
 });
 
+/** Public CLI with real discovery/custody; only the owned model process and clock are synthetic. */
+async function actualModelDeadlineRegression(t, { mode, minutes = 60, explicit = true, elapsedMinutes = 0 } = {}) {
+  const { checked, f, binary, environment, captureInput } = actualCaptureFixture(t);
+  fs.rmSync(checked.invocation, { force: true });
+  const state = path.join(checked.env.RUNNER_TEMP, "owned-model-deadline");
+  fs.mkdirSync(state, { mode: 0o700 });
+  const batches = ["tracked", "unchanged", "hang", "helper", "setup-expired", "reserve"].includes(mode);
+  const tools = batches ? [...f.tools, "review_read_diff_batch", "review_assess_diff_batch"] : f.tools;
+  fs.writeFileSync(f.registryFile, tools.join("\n") + "\n");
+  const expectedContext = f.verifier.prepareReviewInvocationContext(f.full,
+    fs.readFileSync(path.join(checked.evidence, "input-manifest.json")), tools,
+    f.submissionFile, f.contextBytes, f.contextFile);
+  const first = canonicalContextResponse({ ...f, tools, expectedContext }, { omitSubmit: true });
+  const firstVerdict = mode === "retry" ? f.verifier.verifyReviewInvocation(first.response, null, expectedContext) : null;
+  for (const [name, bytes] of [["agents/github-reviewer.md", "---\nmode: primary\n---\nOwned inert model fault fixture.\n"],
+    ["plugins/eta-mu-actors.js", "// Owned inert carrier; no model or provider plugin.\n"]]) {
+    const file = path.join(environment.HOME, ".config/opencode", name);
+    fs.mkdirSync(path.dirname(file), { recursive: true }); fs.writeFileSync(file, bytes);
+  }
+  // Complete the real CLI's ordinary first-use config normalization before
+  // the held discovery baseline; normalization is not the fault under test.
+  await captureReviewBatchCustody(captureInput);
+  const runner = path.join(f.context, "machinery/run-opencode-review-recovery.mjs");
+  fs.copyFileSync(path.join(root, ".github/scripts/run-opencode-review-recovery.mjs"), runner);
+  const preload = path.join(state, "preload.mjs"), input = path.join(state, "input.json");
+  const selected = { id: "mimo-v9.1-flash-free", family: "mimo", status: "active", release_date: "2027-01-01",
+    name: "Synthetic offline deadline control", attachment: false, reasoning: false, temperature: true,
+    last_updated: "2027-01-01", tool_call: true, modalities: { input: ["text"], output: ["text"] },
+    cost: { input: 0, output: 0, cache_read: 0, cache_write: 0 }, limit: { context: 131072, output: 2048 } };
+  const catalog = { opencode: { id: "opencode", name: "Owned offline fixture", env: ["OPENCODE_API_KEY"],
+    doc: "https://example.invalid/fixture", api: "https://example.invalid/v1", npm: "@ai-sdk/openai-compatible",
+    models: { [selected.id]: selected } } };
+  const tracked = path.join(checked.consumer, "tracked.txt");
+  const originalTracked = fs.readFileSync(tracked);
+  const startingHead = execFileSync("git", ["rev-parse", "HEAD"], { cwd: checked.consumer, encoding: "utf8" }).trim();
+  const startingWorking = transportSha256(execFileSync("git", ["diff", "--no-ext-diff", "--binary", "HEAD"], { cwd: checked.consumer }));
+  fs.writeFileSync(input, JSON.stringify({ state, binary, mode, minutes, elapsedMinutes, tracked,
+    catalog, first: first.response.toString("utf8"), startingHead, startingWorking }));
+  fs.writeFileSync(preload, String.raw`
+    import fs from "node:fs";
+    import cp from "node:child_process";
+    import path from "node:path";
+    import { syncBuiltinESMExports } from "node:module";
+    const f = JSON.parse(fs.readFileSync(process.env.OWNED_MODEL_FAULT_INPUT,"utf8"));
+    const spawn = cp.spawn, realNow = Date.now, realPerformanceNow = performance.now.bind(performance);
+    const realSetTimeout = globalThis.setTimeout;
+    let offset = 0, entered = 0;
+    Date.now = () => realNow() + offset;
+    Object.defineProperty(performance,"now",{value:()=>realPerformanceNow()+offset});
+    // This is a synthetic clock, not a smaller production allowance. Retain
+    // every requested long timer; advance both clocks only when it actually fires.
+    globalThis.setTimeout = (callback,delay,...args) => {
+      if (entered && delay > 30_000) {
+        fs.appendFileSync(path.join(f.state,"timers.jsonl"),JSON.stringify({delay,attempt:entered})+"\n");
+        return realSetTimeout(()=>{offset+=delay;callback(...args);},500);
+      }
+      return realSetTimeout(callback,delay,...args);
+    };
+    const write = fs.writeFileSync;
+    fs.writeFileSync = function(file,bytes,...options) {
+      const result=write.call(this,file,bytes,...options);
+      if (["setup-expired","reserve"].includes(f.mode) &&
+          file === path.join(process.env.REVIEW_EVIDENCE_DIR,"model-discovery.json") &&
+          JSON.parse(bytes.toString()).status === "selected") {
+        // The actual discovery owner has completed, outside its30s acquisition
+        // deadline. Do not turn this into a catalog-deadline negative instead.
+        offset+=f.elapsedMinutes*60_000;
+        write(path.join(f.state,"elapsed.json"),JSON.stringify({offset,now:Date.now(),
+          remainingMs:f.minutes*60_000-(Date.now()-Number(process.env.REVIEW_JOB_STARTED_AT_MS))}));
+      }
+      return result;
+    };
+    globalThis.fetch = async (url,options) => {
+      if (url !== "https://models.opencode.ai/api.json" || options.credentials !== "omit")
+        throw Error("unexpected offline catalog request");
+      if (f.mode === "tracked") {
+        fs.appendFileSync(f.tracked,"changed during actual asynchronous discovery\n");
+        fs.writeFileSync(path.join(f.state,"tracked-changed"),"changed");
+      }
+      const response = new Response(JSON.stringify(f.catalog),{status:200});
+      Object.defineProperty(response,"url",{value:url});return response;
+    };
+    cp.spawn = (binary,args,options) => {
+      if (binary !== f.binary || args[0] !== "run") return spawn(binary,args,options);
+      entered += 1;
+      fs.appendFileSync(path.join(f.state,"launches.jsonl"),JSON.stringify({attempt:entered,args,
+        binary,detached:options.detached ?? false,now:Date.now(),monotonic:performance.now()})+"\n");
+      const pidFile=path.join(f.state,"fault-"+entered+".pid"), helperFile=path.join(f.state,"helper-"+entered+".pid");
+      const helper='const fs=require("node:fs");process.on("SIGTERM",()=>{});'+
+        'fs.writeFileSync('+JSON.stringify(helperFile)+',String(process.pid));setInterval(()=>{},1000);';
+      const code = f.mode === "hang" || f.mode === "helper"
+        ? 'const fs=require("node:fs"),cp=require("node:child_process");'+
+          'process.on("SIGTERM",()=>fs.appendFileSync('+JSON.stringify(path.join(f.state,"term"))+',"TERM\\n"));'+
+          'fs.writeFileSync('+JSON.stringify(pidFile)+',String(process.pid));'+
+          (f.mode === "helper" ? 'cp.spawn(process.execPath,["-e",'+JSON.stringify(helper)+'],{stdio:["ignore",1,2]});'+
+            'const ready=setInterval(()=>{if(fs.existsSync('+JSON.stringify(helperFile)+')){clearInterval(ready);process.exit(0);}},10);'
+            : 'setInterval(()=>{},1000);')
+        : 'const fs=require("node:fs");fs.writeFileSync('+JSON.stringify(pidFile)+',String(process.pid));'+
+          (f.mode === "retry" && entered === 1 ? 'process.stdout.write('+JSON.stringify(f.first)+');'
+            : 'process.stderr.write("owned model fault exits without a review\\n");process.exitCode=1;');
+      const child=spawn(process.execPath,["-e",code],options);
+      if(f.mode === "retry" && entered === 1) child.once("close",()=>{
+        offset+=f.elapsedMinutes*60_000;
+        fs.writeFileSync(path.join(f.state,"elapsed.json"),JSON.stringify({offset,now:Date.now()}));
+      });
+      return child;
+    };
+    syncBuiltinESMExports();
+  `);
+  const env = { PATH: process.env.PATH, HOME: checked.env.RUNNER_TEMP, PR_NUMBER: "42",
+    OPENCODE_BIN: binary, REVIEW_MODEL_DISCOVERY: "opencode-free-mimo-flash-v1", REVIEW_EXPECTED_OPENCODE_VERSION: "1.18.31",
+    REVIEW_CHILD_HOME: environment.HOME, REVIEW_CHILD_RUNTIME: captureInput.runtimeDirectory,
+    REVIEW_EVIDENCE_DIR: checked.evidence, REVIEW_PROMPT_FILE: captureInput.promptFile,
+    REVIEW_TOOL_REGISTRY_FILE: f.registryFile, REVIEW_INVOCATION_VERIFIER_FILE: f.verifierFile,
+    GITHUB_OUTPUT: f.output, OWNED_MODEL_FAULT_INPUT: input,
+    // Synthetic trusted job-anchor/selected-budget data for this owned fixture.
+    // Actual hosted anchor acquisition remains an unapplied main-owned choice.
+    REVIEW_JOB_STARTED_AT_MS: String(Date.now()),
+    ...(explicit ? { REVIEW_TIMEOUT_MINUTES: String(minutes) } : {}) };
+  const child = spawn(process.execPath,["--import",preload,runner],{
+    cwd:checked.consumer,env,detached:true,stdio:["ignore","pipe","pipe"] });
+  const stdout=[],stderr=[];
+  child.stdout.on("data",bytes=>stdout.push(bytes)); child.stderr.on("data",bytes=>stderr.push(bytes));
+  const live = pid => {
+    try { return !["Z","X"].includes(fs.readFileSync(`/proc/${pid}/status`,"utf8").match(/^State:\s+([A-Z])/m)?.[1]); }
+    catch(error) { if(error.code === "ENOENT")return false;throw error; }
+  };
+  const ownedPids = () => [child.pid,...(fs.existsSync(state)?fs.readdirSync(state):[]).filter(name=>/^(fault|helper)-\d+\.pid$/.test(name))
+    .map(name=>Number(fs.readFileSync(path.join(state,name),"utf8")))];
+  const stop=()=>{for(const pid of ownedPids()){
+    if(!Number.isSafeInteger(pid)||pid<=1)continue;
+    try{process.kill(-pid,"SIGKILL");}catch{}
+    try{process.kill(pid,"SIGKILL");}catch{}
+  }};
+  let outerExpired=false,exit;
+  const timer=setTimeout(()=>{outerExpired=true;stop();},12_000);
+  t.after(()=>{clearTimeout(timer);stop();});
+  try {exit=await new Promise((resolve,reject)=>{child.once("error",reject);child.once("close",(code,signal)=>resolve({code,signal}));});}
+  finally {clearTimeout(timer);stop();}
+  // Give only owned orphan processes time to report their terminated state.
+  for(let n=0;n<50 && ownedPids().some(live);n+=1) await new Promise(resolve=>setTimeout(resolve,10));
+  const cleanup=ownedPids().map(pid=>({pid,live:live(pid)}));
+  const readJson=name=>fs.existsSync(path.join(state,name))?JSON.parse(fs.readFileSync(path.join(state,name),"utf8")):null;
+  const launches=fs.existsSync(path.join(state,"launches.jsonl"))?fs.readFileSync(path.join(state,"launches.jsonl"),"utf8").trim().split("\n").filter(Boolean).map(JSON.parse):[];
+  const recoveryFile=path.join(checked.evidence,"recovery.json");
+  const recovery=fs.existsSync(recoveryFile)?JSON.parse(fs.readFileSync(recoveryFile,"utf8")):null;
+  const outcome={mode,minutes,explicit,elapsedMinutes,exit,outerExpired,launches,cleanup,recovery,firstVerdict,
+    changed:fs.existsSync(path.join(state,"tracked-changed")),elapsed:readJson("elapsed.json"),
+    discoveryStatus:fs.existsSync(path.join(checked.evidence,"model-discovery.json"))
+      ? JSON.parse(fs.readFileSync(path.join(checked.evidence,"model-discovery.json"),"utf8")).status : null,
+    helperStarted:fs.readdirSync(state).some(name=>/^helper-\d+\.pid$/.test(name)),
+    timers:fs.existsSync(path.join(state,"timers.jsonl"))?fs.readFileSync(path.join(state,"timers.jsonl"),"utf8"):"",
+    stdout:Buffer.concat(stdout).toString("utf8"),stderr:Buffer.concat(stderr).toString("utf8"),
+    output:parseOutput(f.output),startingHead,startingWorking};
+  if(process.env.ETA_MU_NATIVE_PROOF_DIR){
+    const retained=path.join(process.env.ETA_MU_NATIVE_PROOF_DIR,`model-${mode}-${explicit?minutes:"default"}-${elapsedMinutes}`);
+    fs.mkdirSync(retained,{recursive:true,mode:0o700});
+    for(const [name,bytes] of [["outcome.json",JSON.stringify(outcome,null,2)+"\n"],
+      ["preload.mjs",fs.readFileSync(preload)],["input.json",fs.readFileSync(input)]])
+      fs.writeFileSync(path.join(retained,name),bytes,{mode:0o600});
+    for(const name of ["model-discovery.json","recovery.json","model-response-attempt-1.txt","model-response-attempt-2.txt",
+      "opencode-stderr-attempt-1.log","opencode-stderr-attempt-2.log"]){
+      const file=path.join(checked.evidence,name);if(fs.existsSync(file))fs.writeFileSync(path.join(retained,name),fs.readFileSync(file),{mode:0o600});
+    }
+  }
+  // Restore only this fixture's known fault after its final observation.
+  fs.writeFileSync(tracked,originalTracked);
+  t.diagnostic(JSON.stringify({mode,minutes,explicit,elapsedMinutes,outerExpired,exit,launches:launches.length,
+    changed:outcome.changed,helperStarted:outcome.helperStarted,cleanup,
+    captures:recovery?.batch_custody?.captures?.map(row=>`${row.boundary}:${row.attempt}`),
+    attempts:recovery?.attempts?.map(row=>({attempt:row.attempt,state:row.invocation_state,error:row.invocation_error})),
+    error:outcome.stderr.slice(-1500)}));
+  assert.ok(cleanup.every(row=>!row.live),"every owned model fault/worker must be terminated after containment");
+  return outcome;
+}
+
+for(const mode of ["unchanged","tracked"]){
+  test(`actual model custody RED: ${mode} tracked baseline across discovery`,
+    {timeout:20_000,skip:process.platform!=="linux"||process.arch!=="x64"},async t=>{
+      const result=await actualModelDeadlineRegression(t,{mode});
+      assert.equal(result.outerExpired,false,"ordinary discovery must finish without containment");
+      assert.equal(result.changed,mode==="tracked","the real tracked-file fault must occur inside discovery");
+      assert.equal(result.launches.length,mode==="tracked"?0:1,"changed pre-discovery Git identity must refuse before model entry");
+      if(mode==="tracked"){
+        assert.match(result.stderr,/source|custody|Git|tracked/i);
+        assert.equal(result.recovery?.accepted_invocation,null);
+      }else{
+        assert.deepEqual(result.recovery.batch_custody.captures.map(row=>`${row.boundary}:${row.attempt}`),["before:1","after:1"]);
+        assert.equal(result.recovery.batch_custody.original.custody.git_head,result.startingHead);
+        assert.equal(result.recovery.batch_custody.original.custody.git_working_sha256,result.startingWorking);
+      }
+    });
+}
+
+for(const mode of ["hang","helper"]){
+  test(`actual model deadline RED: ${mode} terminates before owned containment`,
+    {timeout:45_000,skip:process.platform!=="linux"||process.arch!=="x64"},async t=>{
+      const result=await actualModelDeadlineRegression(t,{mode});
+      assert.equal(result.launches.length,1,"the public model adapter must actually enter its owned fault");
+      if(mode==="helper")assert.equal(result.helperStarted,true,"a pipe-holding descendant must actually start");
+      assert.equal(result.outerExpired,false,"the model supervisor must terminate/reap before outer containment");
+      assert.equal(result.recovery?.accepted_invocation,null);
+      assert.deepEqual(result.recovery.batch_custody.captures.map(row=>`${row.boundary}:${row.attempt}`),["before:1","after:1"]);
+      assert.equal(result.recovery.attempts.length,1);
+      assert.equal(result.recovery.attempts[0].invocation_state,"rejected");
+      assert.match(result.recovery.attempts[0].invocation_error,/deadline|timed? ?out|signal|descendant|process group/i);
+      assert.equal(result.output.review_invocation_sha256,undefined);
+    });
+}
+
+for(const [minutes,explicit,elapsedMinutes,expected] of [[60,false,61,1],[120,true,61,2],[120,true,121,1],[180,true,181,1]]){
+  test(`actual model shared budget RED: ${explicit?minutes:"default60"} minutes after ${elapsedMinutes} elapsed`,
+    {timeout:20_000,skip:process.platform!=="linux"||process.arch!=="x64"},async t=>{
+      const result=await actualModelDeadlineRegression(t,{mode:"retry",minutes,explicit,elapsedMinutes});
+      assert.equal(result.outerExpired,false);
+      assert.ok(result.elapsed,"the actual first child must close before the synthetic elapsed-time fault");
+      assert.equal(result.firstVerdict.reason,"missing-review-submit","the actual owner must establish the first trace's omission independently of deadline refusal");
+      if(expected===2)assert.equal(result.recovery?.recovery_reason,"missing_review_submit","an in-budget omission must retain the existing retry decision");
+      assert.equal(result.launches.length,expected,"attempt two must share the selected whole-job deadline, without a reset or hardcoded60");
+      assert.equal(result.recovery.max_attempts,2);
+      assert.equal(result.recovery.accepted_invocation,null);
+      assert.equal(result.output.review_invocation_sha256,undefined);
+    });
+}
+
+for(const [mode,elapsedMinutes] of [["setup-expired",61],["reserve",60-20/60]]){
+  test(`actual model prelaunch budget RED: ${mode} refuses before the first child`,
+    {timeout:20_000,skip:process.platform!=="linux"||process.arch!=="x64"},async t=>{
+      const result=await actualModelDeadlineRegression(t,{mode,elapsedMinutes});
+      assert.equal(result.outerExpired,false);
+      assert.equal(result.discoveryStatus,"selected","the real discovery must complete before the clock fault");
+      assert.ok(result.elapsed,"the trusted synthetic elapsed fault must actually occur");
+      if(mode==="reserve")assert.ok(result.elapsed.remainingMs>0 && result.elapsed.remainingMs<30_000,
+        "time remains, but less than even one existing30s final capture allocation");
+      else assert.ok(result.elapsed.remainingMs<0,"the same selected whole-job allocation must actually be exhausted");
+      assert.equal(result.launches.length,0,"insufficient whole-job time must refuse before any model child");
+      assert.equal(result.recovery?.attempts.length,0,"a prelaunch refusal cannot invent an attempted child");
+      assert.equal(result.recovery.accepted_invocation,null);
+      assert.match(result.stderr,/deadline|budget|remaining|reserve/i);
+      assert.equal(result.output.review_invocation_sha256,undefined);
+    });
+}
+
 for (const command of ["--version", "models"]) for (const descendant of [false, true]) {
   test(`actual discovery deadline: ${command} TERM-resistant ${descendant ? "descendant" : "child"} closes before containment`,
     { timeout: 45_000, skip: process.platform !== "linux" || process.arch !== "x64" }, async (t) => {

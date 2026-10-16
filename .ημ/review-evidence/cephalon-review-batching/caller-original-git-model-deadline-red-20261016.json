@@ -1,0 +1,183 @@
+{
+  "tier": "Observed causal test results, not provider approval or board validation",
+  "observedAt": "2026-10-16T07:37:13.934582+00:00",
+  "againstHead": "03cfd620b12dc3348205853b10a365c312515bed",
+  "nativeReview": 5544034013,
+  "nativeRoots": [
+    4291706178,
+    4291706183
+  ],
+  "scope": "Ordinary existing InProgress5 corrections",
+  "finalTestSource": {
+    "path": ".github/scripts/opencode-code-review-workflow.test.mjs",
+    "bytes": 254322,
+    "sha256": "224f1aa2f6730cfb19fc873b26048f7e336913c00fc88f755b64be8f64f7b575",
+    "addedLines": 243,
+    "allOriginalBytesRetained": true,
+    "originalSha256": "be98fb5e70abaa6f9b47ac1955feabc44ca40b6d81a946ec3fb5ae699fba6dc2"
+  },
+  "production": {
+    ".github/scripts/run-opencode-review-recovery.mjs": {
+      "sha256": "cb118cd04aa29e46b22f8da8b2379eed2e1197b3e631a42a1062237deee899bd",
+      "bytes": 107318,
+      "unchanged": true
+    },
+    ".github/workflows/opencode-code-review.yml": {
+      "sha256": "f60b791f974a12db22159e2b3f6a3f47949311a88f61569893a9a734231b66e1",
+      "bytes": 241080,
+      "unchanged": true
+    },
+    ".github/workflows/muse-review-context-diagnostic.yml": {
+      "sha256": "2c7c008a3938f66c53546dc3ab6ba4c88a5b301087f6ccf533bc3b0bbaf901b8",
+      "bytes": 4552,
+      "unchanged": true
+    }
+  },
+  "actualTenCaseRun": {
+    "command": [
+      "/home/err/.volta/tools/image/node/22.23.3/bin/node",
+      "--test",
+      "--test-reporter=tap",
+      "--test-name-pattern=^actual model (custody|deadline|shared budget|prelaunch budget) RED:",
+      ".github/scripts/opencode-code-review-workflow.test.mjs"
+    ],
+    "startedAt": "2026-10-16T07:23:16.887534+00:00",
+    "finishedAt": "2026-10-16T07:25:24.807317+00:00",
+    "elapsedSeconds": 127.9192245969898,
+    "exit": 1,
+    "before": {
+      ".github/scripts/opencode-code-review-workflow.test.mjs": "e060e8bcc01aa035f8196fa40c7de9b6d05d0ebe5e19ba7de1369155d627dce5",
+      ".github/scripts/run-opencode-review-recovery.mjs": "cb118cd04aa29e46b22f8da8b2379eed2e1197b3e631a42a1062237deee899bd",
+      ".github/workflows/opencode-code-review.yml": "f60b791f974a12db22159e2b3f6a3f47949311a88f61569893a9a734231b66e1",
+      ".github/workflows/muse-review-context-diagnostic.yml": "2c7c008a3938f66c53546dc3ab6ba4c88a5b301087f6ccf533bc3b0bbaf901b8"
+    },
+    "after": {
+      ".github/scripts/opencode-code-review-workflow.test.mjs": "e060e8bcc01aa035f8196fa40c7de9b6d05d0ebe5e19ba7de1369155d627dce5",
+      ".github/scripts/run-opencode-review-recovery.mjs": "cb118cd04aa29e46b22f8da8b2379eed2e1197b3e631a42a1062237deee899bd",
+      ".github/workflows/opencode-code-review.yml": "f60b791f974a12db22159e2b3f6a3f47949311a88f61569893a9a734231b66e1",
+      ".github/workflows/muse-review-context-diagnostic.yml": "2c7c008a3938f66c53546dc3ab6ba4c88a5b301087f6ccf533bc3b0bbaf901b8"
+    },
+    "logs": {
+      "stdout": {
+        "bytes": 11494,
+        "sha256": "91818cfa3b2c3440ab5cda05dfcdf9e7d13d84de314e1013477f9a47e667cdf5"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "summary": [
+      "ok 1 - actual model custody RED: unchanged tracked baseline across discovery",
+      "not ok 2 - actual model custody RED: tracked tracked baseline across discovery",
+      "not ok 3 - actual model deadline RED: hang terminates before owned containment",
+      "not ok 4 - actual model deadline RED: helper terminates before owned containment",
+      "not ok 5 - actual model shared budget RED: default60 minutes after 61 elapsed",
+      "ok 6 - actual model shared budget RED: 120 minutes after 61 elapsed",
+      "not ok 7 - actual model shared budget RED: 120 minutes after 121 elapsed",
+      "not ok 8 - actual model shared budget RED: 180 minutes after 181 elapsed",
+      "not ok 9 - actual model prelaunch budget RED: setup-expired refuses before the first child",
+      "not ok 10 - actual model prelaunch budget RED: reserve refuses before the first child",
+      "# tests 10",
+      "# suites 0",
+      "# pass 2",
+      "# fail 7",
+      "# cancelled 1",
+      "# skipped 0",
+      "# todo 0",
+      "# duration_ms 127878.774294"
+    ]
+  },
+  "actualFinalHangRerun": {
+    "command": [
+      "/home/err/.volta/tools/image/node/22.23.3/bin/node",
+      "--test",
+      "--test-reporter=tap",
+      "--test-name-pattern=^actual model deadline RED:",
+      ".github/scripts/opencode-code-review-workflow.test.mjs"
+    ],
+    "startedAt": "2026-10-16T07:27:00.283785+00:00",
+    "finishedAt": "2026-10-16T07:27:41.539132+00:00",
+    "elapsedSeconds": 41.25477386097191,
+    "exit": 1,
+    "before": {
+      ".github/scripts/opencode-code-review-workflow.test.mjs": "224f1aa2f6730cfb19fc873b26048f7e336913c00fc88f755b64be8f64f7b575",
+      ".github/scripts/run-opencode-review-recovery.mjs": "cb118cd04aa29e46b22f8da8b2379eed2e1197b3e631a42a1062237deee899bd",
+      ".github/workflows/opencode-code-review.yml": "f60b791f974a12db22159e2b3f6a3f47949311a88f61569893a9a734231b66e1",
+      ".github/workflows/muse-review-context-diagnostic.yml": "2c7c008a3938f66c53546dc3ab6ba4c88a5b301087f6ccf533bc3b0bbaf901b8"
+    },
+    "after": {
+      ".github/scripts/opencode-code-review-workflow.test.mjs": "224f1aa2f6730cfb19fc873b26048f7e336913c00fc88f755b64be8f64f7b575",
+      ".github/scripts/run-opencode-review-recovery.mjs": "cb118cd04aa29e46b22f8da8b2379eed2e1197b3e631a42a1062237deee899bd",
+      ".github/workflows/opencode-code-review.yml": "f60b791f974a12db22159e2b3f6a3f47949311a88f61569893a9a734231b66e1",
+      ".github/workflows/muse-review-context-diagnostic.yml": "2c7c008a3938f66c53546dc3ab6ba4c88a5b301087f6ccf533bc3b0bbaf901b8"
+    },
+    "logs": {
+      "stdout": {
+        "bytes": 2701,
+        "sha256": "54b2d8699b7e1bbc3617fc06a3da596b03de4af460d2f62998bd9b6f80fd304d"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "summary": [
+      "not ok 1 - actual model deadline RED: hang terminates before owned containment",
+      "not ok 2 - actual model deadline RED: helper terminates before owned containment",
+      "# tests 2",
+      "# suites 0",
+      "# pass 0",
+      "# fail 2",
+      "# cancelled 0",
+      "# skipped 0",
+      "# todo 0",
+      "# duration_ms 41211.366465"
+    ]
+  },
+  "fixtureCeilingCorrection": "Owned hang/helper test ceiling20s->45s; outer containment12s and every assertion unchanged",
+  "prelaunch": [
+    {
+      "mode": "reserve",
+      "discoveryStatus": "selected",
+      "remainingAtFaultMs": 18472,
+      "modelEntries": 1
+    },
+    {
+      "mode": "setup-expired",
+      "discoveryStatus": "selected",
+      "remainingAtFaultMs": -61746,
+      "modelEntries": 1
+    }
+  ],
+  "checks": [
+    {
+      "command": [
+        "/home/err/.volta/tools/image/node/22.23.3/bin/node",
+        "--check",
+        ".github/scripts/opencode-code-review-workflow.test.mjs"
+      ],
+      "exit": 0,
+      "stdoutBytes": 0,
+      "stderrBytes": 0
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "--",
+        ".github/scripts/opencode-code-review-workflow.test.mjs"
+      ],
+      "exit": 0,
+      "stdoutBytes": 0,
+      "stderrBytes": 0
+    }
+  ],
+  "allRecordedOwnedPIDsAbsent": true,
+  "residualOwnedFixtureProcesses": [],
+  "nativePlan": "QualifiedRheos3ops0/readbackInProgress5/old1885983Bledgerprefix+1824Bactualappend",
+  "deadlineProposalStatus": "UNAPPLIED; actualnativejoborigin and derivedreserve mustbe selectedbeforeGREEN. No first-step/late review_start/workflow-start assumed asjobstart. Existing60..180/default60/max2 never increase.",
+  "actualCompleted03cfReview": "Separately actualMiMo5544243601APPROVED/whole38858798512SUCCESS/oneacceptedattempt/94rawpages andassessments/204actualReadlines, notsettlement ofthese defects orfutureheadapproval",
+  "operatorLimits": "No fullsuite/GREEN, sourcepush/Fixed/merge/adoption/provider/credential/globalruntime/paid/deployment/social/heartbeat effects."
+}
