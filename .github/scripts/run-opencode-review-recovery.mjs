@@ -191,7 +191,9 @@ function captureDeadline(deadline) {
 
 /** Stream exact finite regular bytes; reject partial reads, concurrent growth or retyping. */
 async function fileCustody(file, deadline, prefix = null) {
+  captureDeadline(deadline);
   const stat = physicalStat(file);
+  captureDeadline(deadline);
   if (!stat) return null;
   const size = Number(stat.size), length = prefix ?? size;
   if (length > size) throw new Error("review output prefix was truncated");
@@ -214,11 +216,16 @@ async function fileCustody(file, deadline, prefix = null) {
   return { path: path.resolve(file), type: "regular", mode: Number(stat.mode & 0o7777n), bytes: length, sha256: hash.digest("hex") };
 }
 
-async function consumerInputCustody(cwd, evidenceDirectory, deadline, submissionFile) {
+async function consumerInputCustody(cwd, evidenceDirectory, deadline, submissionFile, context) {
   const git = args => execFileSync("git", args, { cwd, encoding: null, maxBuffer: 64 * 1024 * 1024,
     timeout: Math.max(1, Math.floor(captureDeadline(deadline))), killSignal: "SIGKILL" });
   const root = fs.realpathSync(cwd);
   if (git(["rev-parse", "--show-toplevel"]).toString("utf8").trim() !== root) throw new Error("review custody cwd must be the Git root");
+  // Only this acquisition's complete, independently observed physical context
+  // can delegate its descendants. JSON/model text cannot manufacture the key.
+  const captured = sourceDirectorySnapshots.get(context);
+  if (!captured || !captured.root.startsWith(root + path.sep)) throw new Error("unestablished physical context custody");
+  await recheckSourceDirectory(context, deadline);
   const listed = new TextDecoder("utf-8", { fatal: true, ignoreBOM: true }).decode(git(["ls-files", "--others", "-z"]));
   if (listed && !listed.endsWith("\0")) throw new Error("incomplete Git custody path listing");
   const names = listed ? listed.slice(0, -1).split("\0") : [];
@@ -235,11 +242,13 @@ async function consumerInputCustody(cwd, evidenceDirectory, deadline, submission
       throw new Error("invalid Git custody input path");
     }
     if (outputs.has(file)) { physicalStat(file); continue; }
+    if (file.startsWith(captured.root + path.sep)) continue;
     const row = await fileCustody(file, deadline);
     if (!row) throw new Error("Git custody input disappeared during acquisition");
     rows.push({ ...row, path: name });
   }
   if (!git(["ls-files", "--others", "-z"]).equals(Buffer.from(listed, "utf8"))) throw new Error("Git custody input set changed during acquisition");
+  await recheckSourceDirectory(context, deadline);
   return { files: rows, sha256: sha256(JSON.stringify(rows)) };
 }
 
@@ -1543,25 +1552,149 @@ export async function runReviewRecovery({
   throw new Error("unreachable review recovery state");
 }
 
-/** Retain physical source bytes and link identities, without publishing contents. */
-function sourceDirectoryIdentity(directory) {
-  const root = fs.realpathSync(directory);
-  const files = [];
-  const walk = (current) => {
-    for (const name of fs.readdirSync(current).sort()) {
-      const file = path.join(current, name), stat = fs.lstatSync(file);
-      const relative = path.relative(root, file);
-      if (stat.isSymbolicLink()) {
-        const target = fs.realpathSync(file);
-        if (!target.startsWith(`${root}${path.sep}`)) throw new Error("review source link escapes its captured directory");
-        files.push({ path: relative, link: fs.readlinkSync(file), target: path.relative(root, target) });
-      } else if (stat.isDirectory()) walk(file);
-      else if (stat.isFile()) files.push({ path: relative, mode: stat.mode & 0o777, sha256: sha256(fs.readFileSync(file)) });
-      else throw new Error("review source contains a special file");
+// One consumed metadata allowance for BOTH context and runtime in an
+// acquisition. Releasing a frame/hashed row never refunds it. This applies
+// the existing64MiB caller allowance to metadata, not regular payload bytes.
+const sourceDirectorySnapshots = new WeakMap();
+function sourceMetadataAllowance() { return { consumed: 0 }; }
+function sourceMetadata(metadata, value) {
+  const bytes = Buffer.byteLength(value, "utf8"), limit = 64 * 1024 * 1024;
+  if (!Number.isSafeInteger(bytes) || bytes < 0 || bytes > limit - metadata.consumed) {
+    throw new Error("review source acquisition metadata exceeds shared bound");
+  }
+  metadata.consumed += bytes;
+}
+
+async function sourceOperation(deadline, operation) {
+  captureDeadline(deadline);
+  const value = await operation();
+  captureDeadline(deadline);
+  return value;
+}
+const sourceStat = (file, deadline) => sourceOperation(deadline, () => fs.promises.lstat(file, { bigint: true }));
+function sameSourceStat(before, after) {
+  return ["dev", "ino", "mode", "size", "mtimeNs", "ctimeNs"].every(key => before[key] === after[key]);
+}
+async function physicalSourceDirectory(directory, deadline) {
+  const root = path.resolve(directory);
+  const actual = await sourceOperation(deadline, () => fs.promises.realpath(root));
+  const stat = await sourceStat(root, deadline);
+  if (actual !== root || !stat.isDirectory() || stat.isSymbolicLink()) {
+    throw new Error("review source context/runtime root must be a physical directory");
+  }
+  return { root, stat };
+}
+async function boundContextDirectory(directory, verifierFile, registryFile, promptFile, deadline) {
+  const root = path.resolve(directory);
+  if (root !== path.resolve(path.dirname(verifierFile), "..") ||
+      [verifierFile, registryFile, promptFile].some(file => !path.resolve(file).startsWith(root + path.sep))) {
+    throw new Error("review physical context source binding is unestablished");
+  }
+  await physicalSourceDirectory(root, deadline);
+  return root;
+}
+
+/** Recheck every observed entry/root before allowing custody delegation. */
+async function recheckSourceDirectory(identity, deadline) {
+  const captured = sourceDirectorySnapshots.get(identity);
+  if (!captured) throw new Error("unestablished physical source directory capture");
+  const current = await physicalSourceDirectory(captured.root, deadline);
+  if (!sameSourceStat(captured.stat, current.stat)) throw new Error("review source root changed during acquisition");
+  for (const entry of captured.observations) {
+    if (!sameSourceStat(entry.stat, await sourceStat(entry.file, deadline))) {
+      throw new Error("review source entry changed during acquisition");
     }
+  }
+  captureDeadline(deadline);
+}
+
+/** Stream the ORIGINAL sorted-DFS JSON rows; never buffer regular payloads. */
+async function sourceDirectoryIdentity(directory, deadline, metadata) {
+  const { root, stat } = await physicalSourceDirectory(directory, deadline);
+  const observations = [], hash = createHash("sha256");
+  let count = 0;
+  const remember = (file, observed) => {
+    // Account the retained entry-check metadata too, before retaining it.
+    sourceMetadata(metadata, JSON.stringify([file,
+      ...["dev", "ino", "mode", "size", "mtimeNs", "ctimeNs"].map(key => String(observed[key]))]));
+    observations.push({ file, stat: observed });
   };
-  walk(root);
-  return { path: root, sha256: sha256(JSON.stringify(files)), files: files.length };
+  const listing = async (current, expected) => {
+    const before = await sourceStat(current, deadline);
+    if (!before.isDirectory() || !sameSourceStat(before, expected)) throw new Error("review source directory changed");
+    captureDeadline(deadline);
+    const handle = await fs.promises.opendir(current);
+    const names = [], seen = new Set();
+    try {
+      // A late open still owns a handle; refuse only inside its cleanup scope.
+      captureDeadline(deadline);
+      for await (const entry of handle) {
+        captureDeadline(deadline);
+        const name = entry.name;
+        if (typeof name !== "string" || !name || name === "." || name === ".." || name.includes("\0") ||
+            path.basename(name) !== name || seen.has(name)) throw new Error("invalid or duplicate review source entry");
+        sourceMetadata(metadata, name + "\0");
+        seen.add(name); names.push(name);
+      }
+    } finally {
+      try { await handle.close(); }
+      catch (error) { if (error.code !== "ERR_DIR_CLOSED") throw error; }
+    }
+    captureDeadline(deadline);
+    if (!sameSourceStat(before, await sourceStat(current, deadline))) throw new Error("review source directory changed during listing");
+    return names.sort();
+  };
+  const emit = row => {
+    const encoded = JSON.stringify(row);
+    if (count) sourceMetadata(metadata, ",");
+    sourceMetadata(metadata, encoded);
+    captureDeadline(deadline);
+    if (count) hash.update(",");
+    hash.update(encoded); count += 1;
+  };
+  sourceMetadata(metadata, "["); hash.update("[");
+  remember(root, stat);
+  const stack = [{ file: root, stat, names: await listing(root, stat), next: 0 }];
+  while (stack.length) {
+    captureDeadline(deadline);
+    const frame = stack.at(-1);
+    if (frame.next === frame.names.length) {
+      const after = await listing(frame.file, frame.stat);
+      if (!isDeepStrictEqual(after, frame.names)) throw new Error("review source entry set changed during acquisition");
+      stack.pop(); continue;
+    }
+    const file = path.join(frame.file, frame.names[frame.next++]);
+    const before = await sourceStat(file, deadline), relative = path.relative(root, file);
+    remember(file, before);
+    if (before.isDirectory()) {
+      stack.push({ file, stat: before, names: await listing(file, before), next: 0 });
+    } else if (before.isSymbolicLink()) {
+      const link = await sourceOperation(deadline, () => fs.promises.readlink(file));
+      const target = await sourceOperation(deadline, () => fs.promises.realpath(file));
+      if (!target.startsWith(root + path.sep)) throw new Error("review source link escapes its captured directory");
+      if (!sameSourceStat(before, await sourceStat(file, deadline))) throw new Error("review source link changed during acquisition");
+      emit({ path: relative, link, target: path.relative(root, target) });
+    } else if (before.isFile()) {
+      const row = await fileCustody(file, deadline);
+      if (!row || !sameSourceStat(before, await sourceStat(file, deadline))) throw new Error("review source file changed during acquisition");
+      emit({ path: relative, mode: row.mode & 0o777, sha256: row.sha256 });
+    } else throw new Error("review source contains a special file");
+  }
+  sourceMetadata(metadata, "]"); captureDeadline(deadline); hash.update("]");
+  const identity = { path: root, sha256: hash.digest("hex"), files: count };
+  sourceDirectorySnapshots.set(identity, { root, stat, observations });
+  await recheckSourceDirectory(identity, deadline);
+  return identity;
+}
+
+async function sourceFilesCustody(files, deadline) {
+  const sources = [];
+  for (const file of files) {
+    const row = await fileCustody(file, deadline);
+    if (!row) throw new Error("review custody requires physical regular source files");
+    sources.push({ path: row.path, sha256: row.sha256 });
+  }
+  return sources;
 }
 
 /** Bind the actual global skill carrier, not only its original target's bytes. */
@@ -1628,7 +1761,8 @@ export async function captureReviewBatchCustody({ binary, environment, cwd, veri
   registryFile, evidenceDirectory, promptFile, contextDirectory, runtimeDirectory,
   deadline = performance.now() + MODEL_DISCOVERY_BUDGET_MS }) {
   captureDeadline(deadline);
-  const skills = globalSkillSourceIdentity(environment, contextDirectory);
+  const contextRoot = await boundContextDirectory(contextDirectory, verifierFile, registryFile, promptFile, deadline);
+  const skills = globalSkillSourceIdentity(environment, contextRoot);
   const physical = modelBinaryIdentity(binary, environment);
   const verifier = createRequire(import.meta.url)(verifierFile);
   if (typeof verifier.prepareReviewBatchHost !== "function") throw new Error("canonical batch host capture export is required");
@@ -1640,14 +1774,14 @@ export async function captureReviewBatchCustody({ binary, environment, cwd, veri
   const batchHost = verifier.prepareReviewBatchHost(physical.real_path, resolved, environment, cwd);
   const files = [verifierFile, registryFile, promptFile,
     ...["basehead.diff", "input-manifest.json", "pr-context.md"].map(name => path.join(evidenceDirectory, name))];
-  const sources = files.map(file => {
-    const actual = path.resolve(file), stat = fs.lstatSync(actual);
-    if (!stat.isFile() || stat.isSymbolicLink()) throw new Error("review custody requires physical regular source files");
-    return { path: actual, sha256: sha256(fs.readFileSync(actual)) };
-  });
-  const untracked = await consumerInputCustody(cwd, evidenceDirectory, deadline);
-  const context = sourceDirectoryIdentity(contextDirectory), runtime = sourceDirectoryIdentity(runtimeDirectory);
+  const sources = await sourceFilesCustody(files, deadline);
+  const metadata = sourceMetadataAllowance();
+  const context = await sourceDirectoryIdentity(contextRoot, deadline, metadata);
+  const runtime = await sourceDirectoryIdentity(runtimeDirectory, deadline, metadata);
+  const untracked = await consumerInputCustody(cwd, evidenceDirectory, deadline, undefined, context);
   const tracked = trackedGitCustody(cwd, deadline);
+  await recheckSourceDirectory(context, deadline);
+  await recheckSourceDirectory(runtime, deadline);
   captureDeadline(deadline);
   return { batchHost, custody: {
     binary: physical, config_sha256: sha256(resolved),
@@ -1880,17 +2014,25 @@ async function main() {
       // Retain source custody before the first asynchronous catalog/host work.
       // A changed file cannot become the original merely by changing early.
       const contextDirectory = path.resolve(path.dirname(verifierFile), "..");
-      const originalTracked = batches ? trackedGitCustody(process.cwd(), performance.now() + MODEL_DISCOVERY_BUDGET_MS) : null;
-      const originalSource = batches ? {
-        ...originalTracked,
-        inputs: await consumerInputCustody(process.cwd(), evidenceDirectory, performance.now() + MODEL_DISCOVERY_BUDGET_MS),
-        context: sourceDirectoryIdentity(contextDirectory),
-        runtime: sourceDirectoryIdentity(process.env.REVIEW_CHILD_RUNTIME),
-        skills: globalSkillSourceIdentity({ HOME: configuration.home }, contextDirectory),
-        files: [verifierFile, registryFile, promptFile,
-          ...["basehead.diff", "input-manifest.json", "pr-context.md"].map(name => path.join(evidenceDirectory, name))]
-          .map(file => ({ path: path.resolve(file), sha256: sha256(fs.readFileSync(file)) })),
-      } : null;
+      let originalSource = null;
+      if (batches) {
+        const deadline = Math.min(modelDeadline, performance.now() + MODEL_DISCOVERY_BUDGET_MS);
+        const root = await boundContextDirectory(contextDirectory, verifierFile, registryFile, promptFile, deadline);
+        const metadata = sourceMetadataAllowance();
+        const tracked = trackedGitCustody(process.cwd(), deadline);
+        const context = await sourceDirectoryIdentity(root, deadline, metadata);
+        const runtime = await sourceDirectoryIdentity(process.env.REVIEW_CHILD_RUNTIME, deadline, metadata);
+        originalSource = {
+          ...tracked, context, runtime,
+          inputs: await consumerInputCustody(process.cwd(), evidenceDirectory, deadline, undefined, context),
+          skills: globalSkillSourceIdentity({ HOME: configuration.home }, root),
+          files: await sourceFilesCustody([verifierFile, registryFile, promptFile,
+            ...["basehead.diff", "input-manifest.json", "pr-context.md"].map(name => path.join(evidenceDirectory, name))], deadline),
+        };
+        await recheckSourceDirectory(context, deadline);
+        await recheckSourceDirectory(runtime, deadline);
+        captureDeadline(deadline);
+      }
       discovery = await discoverFreeMiMoFlash({ evidenceDirectory, requested: process.env.REVIEW_MODEL || "",
         expectedVersion: process.env.REVIEW_EXPECTED_OPENCODE_VERSION, inferenceConfiguration: configuration });
       launch = reviewChildLaunch(discovery, configuration, process.env, evidenceDirectory);
