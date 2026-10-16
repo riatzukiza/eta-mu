@@ -20,6 +20,136 @@ const MODEL_DISCOVERY_BUDGET_MS = 30_000;
 const MODEL_CATALOG_URL = "https://models.opencode.ai/api.json";
 const MODEL_CATALOG_MAX_BYTES = 16 * 1024 * 1024;
 
+// BEGIN_REVIEW_JOB_BUDGET: copied exactly into the pre-checkout validation step.
+const REVIEW_JOB_ACQUISITION_MS = 30_000;
+const REVIEW_JOB_METADATA_MAX_BYTES = 2 * 1024 * 1024;
+// Four existing30s custody/check allocations plus the existing250ms kill grace.
+const REVIEW_JOB_TAIL_RESERVE_MS = 4 * 30_000 + 250;
+
+/** Read complete official public job metadata anonymously; ambiguity is refusal. */
+export async function acquireReviewJobOrigin({ repository, runId, runAttempt, runnerName },
+  fetchMetadata = globalThis.fetch) {
+  const positive = value => typeof value === "string" && /^[1-9]\d*$/.test(value) && Number.isSafeInteger(Number(value));
+  if (typeof repository !== "string" || !/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(repository) ||
+      repository.split("/").some(value => value === "." || value === "..") ||
+      !positive(runId) || !positive(runAttempt) || typeof runnerName !== "string" ||
+      !runnerName || runnerName !== runnerName.trim() || /[\r\n\0]/.test(runnerName)) {
+    throw new Error("unestablished public review job identity");
+  }
+  const route = `/repos/${repository}/actions/runs/${runId}/attempts/${runAttempt}/jobs`;
+  const pageURL = page => `https://api.github.com${route}?per_page=100&page=${page}`;
+  const deadline = performance.now() + REVIEW_JOB_ACQUISITION_MS;
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), REVIEW_JOB_ACQUISITION_MS);
+  const jobs = [], seen = new Set();
+  let bytes = 0, total = null, page = 1;
+  const check = () => {
+    if (controller.signal.aborted || performance.now() >= deadline) throw new Error("public review job metadata deadline expired");
+  };
+  try {
+    for (;;) {
+      check();
+      const url = pageURL(page);
+      const response = await fetchMetadata(url, { credentials: "omit", redirect: "error", cache: "no-store",
+        signal: controller.signal, headers: { Accept: "application/vnd.github+json" } });
+      check();
+      if (response.status !== 200 || response.url !== url || response.redirected || !response.body) {
+        if (response.body) await response.body.cancel();
+        throw new Error("public review job metadata response refused");
+      }
+      const reader = response.body.getReader(), chunks = [];
+      let complete = false;
+      try {
+        for (;;) {
+          check();
+          const next = await reader.read();
+          check();
+          if (next.done) { complete = true; break; }
+          bytes += next.value.byteLength;
+          if (bytes > REVIEW_JOB_METADATA_MAX_BYTES) throw new Error("public review job metadata exceeds shared byte bound");
+          chunks.push(next.value);
+        }
+      } finally {
+        try { if (!complete) await reader.cancel(); }
+        finally { reader.releaseLock(); }
+      }
+      const body = new Uint8Array(chunks.reduce((sum, chunk) => sum + chunk.byteLength, 0));
+      let offset = 0;
+      for (const chunk of chunks) { body.set(chunk, offset); offset += chunk.byteLength; }
+      const data = JSON.parse(new TextDecoder("utf-8", { fatal: true }).decode(body));
+      if (!Number.isSafeInteger(data?.total_count) || data.total_count < 0 || !Array.isArray(data.jobs) || data.jobs.length > 100 ||
+          (total !== null && data.total_count !== total)) throw new Error("incomplete public review job inventory");
+      total = data.total_count;
+      for (const job of data.jobs) {
+        if (!Number.isSafeInteger(job?.id) || job.id <= 0 || seen.has(job.id) ||
+            String(job.run_id) !== runId || String(job.run_attempt) !== runAttempt ||
+            job.url !== `https://api.github.com/repos/${repository}/actions/jobs/${job.id}` ||
+            job.run_url !== `https://api.github.com/repos/${repository}/actions/runs/${runId}`) {
+          throw new Error("foreign or duplicate public review job metadata");
+        }
+        seen.add(job.id); jobs.push(job);
+      }
+      let nextPage = null;
+      const relations = new Set(), link = response.headers.get("link");
+      if (link) for (const item of link.split(/,\s*(?=<)/)) {
+        const match = item.trim().match(/^<([^>]+)>;\s*rel="(next|prev|first|last)"$/);
+        if (!match || relations.has(match[2])) throw new Error("ambiguous public review job pagination");
+        relations.add(match[2]);
+        const target = new URL(match[1]);
+        const keys = [...target.searchParams.keys()];
+        if (target.origin !== "https://api.github.com" || target.pathname !== route || target.username || target.password || target.hash ||
+            keys.length !== 2 || !keys.includes("page") || !keys.includes("per_page") ||
+            target.searchParams.get("per_page") !== "100" || !positive(target.searchParams.get("page"))) {
+          throw new Error("foreign public review job pagination");
+        }
+        if (match[2] === "next") {
+          nextPage = Number(target.searchParams.get("page"));
+          if (nextPage !== page + 1) throw new Error("repeated or skipped public review job page");
+        }
+      }
+      if (jobs.length > total || (nextPage !== null && jobs.length >= total) ||
+          (nextPage === null && jobs.length !== total)) throw new Error("partial public review job inventory");
+      check();
+      if (nextPage === null) break;
+      page = nextPage;
+    }
+    const matches = jobs.filter(job => job.status === "in_progress" && job.runner_name === runnerName);
+    if (matches.length !== 1) throw new Error("current public review job is unavailable or ambiguous");
+    const job = matches[0], startedAt = Date.parse(job.started_at);
+    if (!Number.isSafeInteger(job.runner_id) || job.runner_id <= 0 || typeof job.started_at !== "string" ||
+        !/^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(?:\.\d{3})?Z$/.test(job.started_at) ||
+        !Number.isSafeInteger(startedAt) || startedAt <= 0 || startedAt > Date.now() ||
+        new Date(startedAt).toISOString().replace(".000Z", "Z") !== job.started_at.replace(".000Z", "Z")) {
+      throw new Error("unestablished or future public review job start");
+    }
+    check();
+    return { repository, run_id: runId, run_attempt: runAttempt, runner_name: runnerName,
+      runner_id: job.runner_id, job_id: job.id, started_at_ms: startedAt };
+  } finally { clearTimeout(timer); }
+}
+
+/** Convert the held same-job wall-clock origin once to a shared monotonic cutoff. */
+export function reviewJobDeadline(environment = process.env) {
+  const raw = environment.REVIEW_TIMEOUT_MINUTES ?? "60";
+  const start = environment.REVIEW_JOB_STARTED_AT_MS;
+  const wallNow = Date.now(), monoNow = performance.now();
+  if (typeof raw !== "string" || !/^(?:[6-9]\d|1[0-7]\d|180)$/.test(raw) ||
+      typeof start !== "string" || !/^[1-9]\d*$/.test(start) || !Number.isSafeInteger(Number(start)) ||
+      !Number.isSafeInteger(wallNow) || !Number.isFinite(monoNow) || Number(start) > wallNow) {
+    throw new Error("unestablished review job budget or start");
+  }
+  if (environment.GITHUB_ACTIONS === "true") {
+    let origin;
+    try { origin = JSON.parse(environment.REVIEW_JOB_ORIGIN_JSON); } catch { /* Refuse below. */ }
+    if (!origin || origin.repository !== environment.GITHUB_REPOSITORY || origin.run_id !== environment.GITHUB_RUN_ID ||
+        origin.run_attempt !== environment.GITHUB_RUN_ATTEMPT || origin.runner_name !== environment.RUNNER_NAME ||
+        origin.started_at_ms !== Number(start) || !Number.isSafeInteger(origin.job_id) || origin.job_id <= 0 ||
+        !Number.isSafeInteger(origin.runner_id) || origin.runner_id <= 0) throw new Error("foreign review job budget binding");
+  }
+  return monoNow + (Number(start) + Number(raw) * 60_000 - wallNow) - REVIEW_JOB_TAIL_RESERVE_MS;
+}
+// END_REVIEW_JOB_BUDGET
+
 // Exact paths delegated to existing producers; every other readable Git-other
 // path (including ignored files and downloaded neighbors) remains immutable.
 function outputRoles(directory, submissionFile = path.join(directory, "submission.json")) {
@@ -111,6 +241,14 @@ async function consumerInputCustody(cwd, evidenceDirectory, deadline, submission
   }
   if (!git(["ls-files", "--others", "-z"]).equals(Buffer.from(listed, "utf8"))) throw new Error("Git custody input set changed during acquisition");
   return { files: rows, sha256: sha256(JSON.stringify(rows)) };
+}
+
+/** Same bounded tracked Git identity before discovery and at every later capture. */
+function trackedGitCustody(cwd, deadline) {
+  const git = args => execFileSync("git", args, { cwd, encoding: null, maxBuffer: 64 * 1024 * 1024,
+    timeout: Math.max(1, Math.floor(captureDeadline(deadline))), killSignal: "SIGKILL" });
+  return { git_head: git(["rev-parse", "HEAD"]).toString("utf8").trim(),
+    git_working_sha256: sha256(git(["diff", "--no-ext-diff", "--binary", "HEAD"])) };
 }
 
 // Only the supervisor's actual serialized writes establish this expectation.
@@ -1191,6 +1329,7 @@ export async function runReviewRecovery({
   verifierSha256 = null,
   captureBatchHost,
   modelDiscovery = null,
+  modelDeadline,
 }) {
   if (!evidenceDirectory) throw new Error("evidenceDirectory is required");
   if (typeof basePrompt !== "string" || basePrompt.trim().length === 0) {
@@ -1210,6 +1349,7 @@ export async function runReviewRecovery({
     throw new Error("canonical batch host capture is required before model execution");
   }
   if (captureBatchHost && !strict) throw new Error("batch host custody requires canonical invocation verification");
+  if (modelDeadline !== undefined && !Number.isFinite(modelDeadline)) throw new Error("invalid shared review job deadline");
   if (strict) expectedContext = structuredClone(expectedContext);
 
   fs.mkdirSync(evidenceDirectory, { recursive: true });
@@ -1240,9 +1380,15 @@ export async function runReviewRecovery({
   let contextSha256 = strict ? sha256(JSON.stringify(expectedContext)) : null;
   const capture = async (boundary, attempt) => {
     const deadline = performance.now() + MODEL_DISCOVERY_BUDGET_MS;
+    const checkModelTime = () => {
+      if (boundary === "before" && modelDeadline !== undefined && performance.now() >= modelDeadline) {
+        throw new Error("review job budget has insufficient remaining time for a model child and final custody reserve");
+      }
+    };
     try {
+      checkModelTime();
       if (checkOutputs) await checkOutputs(boundary === "after" ? attempt : null, deadline);
-      if (!captureBatchHost) return;
+      if (!captureBatchHost) { checkModelTime(); return; }
       const observation = structuredClone(await captureBatchHost({ boundary, attempt, deadline }));
       await checkOutputs(null, deadline);
       captureDeadline(deadline);
@@ -1258,6 +1404,7 @@ export async function runReviewRecovery({
       } else if (!isDeepStrictEqual(custody.original, observation)) {
         throw new Error(`review source/host custody changed ${boundary} child ${attempt}`);
       }
+      checkModelTime();
       writeRecovery(metadataFile, metadata);
     } catch (error) {
       metadata.custody_error = { boundary, attempt, message: error instanceof Error ? error.message : String(error) };
@@ -1498,19 +1645,16 @@ export async function captureReviewBatchCustody({ binary, environment, cwd, veri
     if (!stat.isFile() || stat.isSymbolicLink()) throw new Error("review custody requires physical regular source files");
     return { path: actual, sha256: sha256(fs.readFileSync(actual)) };
   });
-  const git = args => execFileSync("git", args, { cwd, encoding: null, maxBuffer: 64 * 1024 * 1024,
-    timeout: Math.max(1, Math.floor(captureDeadline(deadline))), killSignal: "SIGKILL" });
   const untracked = await consumerInputCustody(cwd, evidenceDirectory, deadline);
   const context = sourceDirectoryIdentity(contextDirectory), runtime = sourceDirectoryIdentity(runtimeDirectory);
-  const gitHead = git(["rev-parse", "HEAD"]).toString("utf8").trim();
-  const gitWorking = sha256(git(["diff", "--no-ext-diff", "--binary", "HEAD"]));
+  const tracked = trackedGitCustody(cwd, deadline);
   captureDeadline(deadline);
   return { batchHost, custody: {
     binary: physical, config_sha256: sha256(resolved),
     environment_sha256: sha256(JSON.stringify(Object.entries(environment).sort(([a], [b]) => a.localeCompare(b)))),
     cwd: fs.realpathSync(cwd), sources,
     context, runtime, skills,
-    git_head: gitHead, git_working_sha256: gitWorking,
+    ...tracked,
     git_untracked_sha256: untracked.sha256, git_untracked_files: untracked.files,
   } };
 }
@@ -1579,8 +1723,9 @@ export async function verifyReviewBatchCustody({ evidenceDirectory, recovery, ex
 /** Run the configured OpenCode review and mirror stdout and stderr to retained files. */
 async function invokeOpenCode({ prompt, responseFile, stderrFile,
   opencodeBin = process.env.OPENCODE_BIN || "opencode", reviewModel = process.env.REVIEW_MODEL,
-  environment = null, cwd = process.cwd() }) {
+  environment = null, cwd = process.cwd(), deadline }) {
   if (!reviewModel) throw new Error("REVIEW_MODEL is required");
+  if (!Number.isFinite(deadline) || performance.now() >= deadline) throw new Error("OpenCode review job deadline expired before launch");
 
   const responseFd = fs.openSync(responseFile, "wx", 0o600);
   let stderrFd;
@@ -1589,43 +1734,66 @@ async function invokeOpenCode({ prompt, responseFile, stderrFile,
   const response = fs.createWriteStream(responseFile, { fd: responseFd });
   const stderr = fs.createWriteStream(stderrFile, { fd: stderrFd });
   const streamsFinished = Promise.allSettled([finished(response), finished(stderr)]);
-  let invocationRejected = false;
+  let invocationRejected = false, child, timer, force, failure, parentExited = false, closed = false;
+  const kill = signal => {
+    if (!child?.pid) return;
+    try { process.kill(-child.pid, signal); } catch (error) { if (error.code !== "ESRCH") failure ??= error; }
+  };
+  const terminate = () => {
+    kill("SIGTERM");
+    force ??= setTimeout(() => {
+      if (parentExited && !closed) failure ??= new Error("OpenCode review descendant retained capture pipes");
+      kill("SIGKILL");
+    }, Math.max(0, Math.min(250, deadline - performance.now())));
+  };
+  const rejectCapture = error => { failure ??= error; terminate(); };
+  response.on("error", rejectCapture); stderr.on("error", rejectCapture);
 
   try {
     const childEnvironment = { ...(environment ?? process.env) };
     for (const name of ["GITHUB_OUTPUT", "GITHUB_ENV", "GITHUB_PATH", "GITHUB_STATE", "GITHUB_STEP_SUMMARY"]) {
       delete childEnvironment[name];
     }
-    const child = spawn(
+    child = spawn(
       opencodeBin,
       ["run", "--format", "json", "--agent", "github-reviewer", "--model", reviewModel, prompt],
-      { stdio: ["ignore", "pipe", "pipe"], env: childEnvironment, cwd },
+      { stdio: ["ignore", "pipe", "pipe"], env: childEnvironment, cwd, detached: true },
     );
 
     child.stdout.on("data", (chunk) => {
-      response.write(chunk);
-      process.stdout.write(chunk);
+      try { response.write(chunk); process.stdout.write(chunk); } catch (error) { rejectCapture(error); }
     });
     child.stderr.on("data", (chunk) => {
-      stderr.write(chunk);
-      process.stderr.write(chunk);
+      try { stderr.write(chunk); process.stderr.write(chunk); } catch (error) { rejectCapture(error); }
+    });
+    child.stdout.on("error", rejectCapture); child.stderr.on("error", rejectCapture);
+    timer = setTimeout(() => {
+      failure ??= new Error("OpenCode review job deadline expired"); terminate();
+    }, Math.max(0, deadline - performance.now() - 250));
+
+    const exit = await new Promise(resolve => {
+      child.once("error", error => { failure ??= error; terminate(); });
+      child.once("exit", () => { parentExited = true; terminate(); });
+      child.once("close", (code, signal) => { closed = true; resolve({ code, signal }); });
     });
 
-    const exit = await new Promise((resolve, reject) => {
-      child.once("error", reject);
-      child.once("close", (code, signal) => resolve({ code, signal }));
-    });
-
+    if (performance.now() >= deadline) failure ??= new Error("OpenCode review job deadline expired");
+    if (failure) throw failure;
     if (exit.signal) throw new Error(`OpenCode review terminated by ${exit.signal}`);
     return { exitCode: exit.code };
   } catch (error) {
     invocationRejected = true;
     throw error;
   } finally {
+    clearTimeout(timer); clearTimeout(force);
+    // Close the whole owned group even when an exiting parent's helper did
+    // not retain capture pipes. No daemon-escape or hard isolation is claimed.
+    kill("SIGKILL");
     response.end();
     stderr.end();
     const streamResults = await streamsFinished;
     if (!invocationRejected) {
+      if (failure) throw failure;
       const streamFailure = streamResults.find(({ status }) => status === "rejected");
       if (streamFailure) throw streamFailure.reason;
     }
@@ -1699,7 +1867,10 @@ async function main() {
   const contextPrompt = `${basePrompt}\n\nTrusted staged context: ${JSON.stringify(expectedContext.contextPath)}. Read the complete file with the native read tool before the first review_record_evidence; a zero-byte file is still present.`;
   const batches = reviewTools.includes("review_read_diff_batch") || reviewTools.includes("review_assess_diff_batch");
   let discovery = null, configuration = null, launch = null, captureBatchHost;
+  let modelDeadline;
   try {
+    modelDeadline = reviewJobDeadline();
+    if (performance.now() >= modelDeadline) throw new Error("review job budget has no model time remaining after final custody reserve");
     if (batches && process.env.REVIEW_MODEL_DISCOVERY !== MODEL_DISCOVERY_MODE) {
       throw new Error("batch review requires checked anonymous model discovery");
     }
@@ -1709,7 +1880,9 @@ async function main() {
       // Retain source custody before the first asynchronous catalog/host work.
       // A changed file cannot become the original merely by changing early.
       const contextDirectory = path.resolve(path.dirname(verifierFile), "..");
+      const originalTracked = batches ? trackedGitCustody(process.cwd(), performance.now() + MODEL_DISCOVERY_BUDGET_MS) : null;
       const originalSource = batches ? {
+        ...originalTracked,
         inputs: await consumerInputCustody(process.cwd(), evidenceDirectory, performance.now() + MODEL_DISCOVERY_BUDGET_MS),
         context: sourceDirectoryIdentity(contextDirectory),
         runtime: sourceDirectoryIdentity(process.env.REVIEW_CHILD_RUNTIME),
@@ -1730,6 +1903,8 @@ async function main() {
           const discoveryPaths = new Set(discoveryNames().map(name => path.relative(launch.cwd, path.resolve(evidenceDirectory, name))));
           const heldInputs = observed.custody.git_untracked_files.filter(row => !discoveryPaths.has(row.path));
           if (!isDeepStrictEqual(observed.custody.sources, originalSource.files) ||
+              observed.custody.git_head !== originalSource.git_head ||
+              observed.custody.git_working_sha256 !== originalSource.git_working_sha256 ||
               !isDeepStrictEqual(heldInputs, originalSource.inputs.files) ||
               !isDeepStrictEqual(observed.custody.context, originalSource.context) ||
               !isDeepStrictEqual(observed.custody.skills, originalSource.skills) ||
@@ -1751,11 +1926,11 @@ async function main() {
     assertModelDiscovery(discovery);
     try {
       return await invokeOpenCode({ ...arguments_, opencodeBin: launch.binary,
-        reviewModel: discovery.proof.selected_model, environment: launch.environment, cwd: launch.cwd });
+        reviewModel: discovery.proof.selected_model, environment: launch.environment, cwd: launch.cwd, deadline: modelDeadline });
     } finally { assertModelDiscovery(discovery); }
-  } : invokeOpenCode;
+  } : arguments_ => invokeOpenCode({ ...arguments_, deadline: modelDeadline });
   const metadata = await runReviewRecovery({ evidenceDirectory, basePrompt: contextPrompt, reviewTools,
-    submissionFile, invokeAttempt: invoke, captureBatchHost,
+    submissionFile, invokeAttempt: invoke, captureBatchHost, modelDeadline,
     modelDiscovery: discovery ? { file: "model-discovery.json", sha256: discovery.sha256,
       selected_model: discovery.proof.selected_model } : null,
     verifyReviewInvocation: verifier.verifyReviewInvocation, expectedContext,

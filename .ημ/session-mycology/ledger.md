@@ -1377,3 +1377,13 @@
   spore: none
   receipt-refs: cephalon-eta-original-git-model-deadline-causal-red-20261016
   note: Confirmed trackedGit baseline missing beforediscovery andactualmodelgroup/deadline missing. TheseareordinaryexistingETA5 fixes, no newprerequisite/points/capincrease. Actualtenselection andfinaltworerun preservedseparately; no inventedfullten-terminalpass orGREEN. Sharednativejobdeadline andderivedtailreserve proposal remainsunapplied beforeGREEN. No newreviewrequest/cancel/sourcepush/Fixed/MERGE/install, credentials/provider/paid/globalruntime/deployment/social/heartbeat change; live0of3/humanPAUSED.
+
+- ts: 2026-10-16T08:37:01.171Z
+  session: /home/err/spaces/cephalon-review-batch-consumer/eta-mu
+  task: cephalon-character-memory/B1-B3/shared-review-caller
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-eta-original-git-model-deadline-green-20261016
+  note: TrackedGitHEAD/workingdiff capturedsynchronously beforefirstasynchronousdiscovery andcomparedlater. Anonymousofficialcompletecurrentrun/attempt/job/runner origin, shared30s2MiB acquisition, actualjobstart deductssetup/discovery/attempts intooneheldwall/monotonic cutoff.120250msreserve partitions existing60..180/default60 budget, notincrease. OwnedmodelgroupTERM/KILL/actualclose/finalizedstreams andpipefreehelpercleanup; max2/recoveryeligibility unchanged. Earlier337PASS1EEXISTFAIL archivecollision retainedfailed; finaluniquedestination actual339PASS. Postbefore-clock control passes existingemptycapturefallback, notnewproductionbugfix. Initialmainreadback usedwrong commentskey afterthree successfulnativeops; correctedfromretainedsections/content withoutrepeatwrite. Currentheadhostedreviews/checks/settlements/MERGE/adoption remain. B1B2B3live0of3/heartbeatHUMAN-PAUSED. No points/newprerequisite/providercredential/paid/globalruntime/deployment/social/spore change.

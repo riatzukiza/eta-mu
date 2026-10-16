@@ -11,7 +11,8 @@ import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 
-import { runReviewRecovery, captureReviewBatchCustody, parseOpenCodeModelCatalog, selectFreeMiMoFlash } from "./run-opencode-review-recovery.mjs";
+import { runReviewRecovery, captureReviewBatchCustody, parseOpenCodeModelCatalog, selectFreeMiMoFlash,
+  acquireReviewJobOrigin, reviewJobDeadline } from "./run-opencode-review-recovery.mjs";
 import { bindTransportInvocation, stageTransportVerifier, transportResponse,
   transportSha256, transportVerifierSource } from "./review-invocation-fixture.mjs";
 
@@ -166,6 +167,36 @@ function runScript(script, cwd, env = {}) {
     env: { ...process.env, ...env },
     encoding: "utf8",
   });
+}
+
+/** Explicit local test-job facts; no hosted/native-origin qualification is claimed. */
+function localReviewBudgetFixture() {
+  return { GITHUB_ACTIONS: "false", REVIEW_JOB_STARTED_AT_MS: String(Date.now()), REVIEW_TIMEOUT_MINUTES: "60" };
+}
+
+/** Execute the real pre-checkout ESM step with offline native-shaped metadata. */
+function runTimeoutValidation(script, cwd, env = {}) {
+  const preload = path.join(cwd, "owned-job-origin-preload.mjs");
+  const output = path.join(cwd, "owned-job-budget-env");
+  fs.writeFileSync(output, "");
+  fs.writeFileSync(preload, `
+    globalThis.fetch = async (url, options) => {
+      if (url !== 'https://api.github.com/repos/open-hax/fixture/actions/runs/123/attempts/2/jobs?per_page=100&page=1'
+        || options.credentials !== 'omit' || options.redirect !== 'error'
+        || Object.keys(options.headers).some(key=>key.toLowerCase()==='authorization'))
+        throw Error('unexpected owned public job metadata request');
+      const job={id:456,run_id:123,run_attempt:2,status:'in_progress',runner_name:'owned-test-runner',runner_id:789,
+        url:'https://api.github.com/repos/open-hax/fixture/actions/jobs/456',
+        run_url:'https://api.github.com/repos/open-hax/fixture/actions/runs/123',
+        started_at:new Date(Math.floor(Date.now()/1000)*1000-5000).toISOString()};
+      const response=new Response(JSON.stringify({total_count:1,jobs:[job]}),{status:200});
+      Object.defineProperty(response,'url',{value:url});return response;
+    };
+  `);
+  return { ...runScript(script, cwd, { NODE_OPTIONS: `--import=${preload}`, GITHUB_ENV: output,
+    GITHUB_REPOSITORY: "open-hax/fixture", GITHUB_RUN_ID: "123", GITHUB_RUN_ATTEMPT: "2",
+    RUNNER_NAME: "owned-test-runner", GITHUB_API_URL: "https://api.github.com", GITHUB_SERVER_URL: "https://github.com", ...env }),
+    budgetOutput: parseOutput(output) };
 }
 
 function parseOutput(file) {
@@ -1592,6 +1623,7 @@ if (attempt === 2) {
       encoding: "utf8",
       env: {
         ...process.env,
+        ...localReviewBudgetFixture(),
         OPENCODE_BIN: fakeOpenCode,
         PR_NUMBER: "296",
         REVIEW_EVIDENCE_DIR: directory,
@@ -1635,6 +1667,7 @@ test("recovery CLI finalizes streams and records a spawn failure", (t) => {
     timeout: 10_000,
     env: {
       ...process.env,
+      ...localReviewBudgetFixture(),
       OPENCODE_BIN: path.join(directory, "missing-opencode"),
       PR_NUMBER: "296",
       REVIEW_EVIDENCE_DIR: directory,
@@ -2475,7 +2508,7 @@ test("authored timeout validation handles native absent input without overriding
     ['{"pr_head_sha":"caller-head"}', "null", 60],
     ['{"review_timeout_minutes":120}', "120", 120],
   ]) {
-    const result = runScript(validation.run, directory, {
+    const result = runTimeoutValidation(validation.run, directory, {
       REVIEW_INPUTS_JSON: inputs, REVIEW_TIMEOUT_JSON: property,
       GITHUB_EVENT_NAME: "pull_request",
     });
@@ -2497,7 +2530,7 @@ test("authored timeout validation accepts only default or whole minutes before a
   const directory = fs.mkdtempSync(path.join(os.tmpdir(), "eta-mu-review-timeout-"));
   t.after(() => fs.rmSync(directory, { recursive: true, force: true }));
   for (const [request, expected] of [[60, 60], [61, 61], [120, 120], [179, 179], [180, 180]]) {
-    const result = runScript(validation.run, directory, {
+    const result = runTimeoutValidation(validation.run, directory, {
       REVIEW_INPUTS_JSON: JSON.stringify({ review_timeout_minutes: request }),
       GITHUB_EVENT_NAME: "pull_request",
     });
@@ -2511,20 +2544,185 @@ test("authored timeout validation accepts only default or whole minutes before a
     .map((review_timeout_minutes) => JSON.stringify({ review_timeout_minutes }));
   const invalidContexts = ["", "NaN", "Infinity", "{", "false", "true", "[]", "0", "120", '""', JSON.stringify(opaque)];
   for (const raw of [...invalidRequests, ...invalidContexts]) {
-    const result = runScript(validation.run, directory, { REVIEW_INPUTS_JSON: raw });
+    const result = runTimeoutValidation(validation.run, directory, { REVIEW_INPUTS_JSON: raw });
     assert.notEqual(result.status, 0, `invalid raw request accepted: ${raw}`);
     assert.equal(result.stdout, "");
     assert.equal(result.stderr.trim(),
       "::error::review_timeout_minutes must be a whole number from 60 through 180.");
     assert.equal(fs.existsSync(canary), false, "opaque input must never execute or enter workflow commands");
   }
-  const absentWithOpaqueSibling = runScript(validation.run, directory, {
+  const absentWithOpaqueSibling = runTimeoutValidation(validation.run, directory, {
     REVIEW_INPUTS_JSON: JSON.stringify({ unrelated: opaque }),
   });
   assert.equal(absentWithOpaqueSibling.status, 0, absentWithOpaqueSibling.stderr);
   assert.equal(absentWithOpaqueSibling.stderr, "");
   assert.equal(absentWithOpaqueSibling.stdout.trim(), "Review job timeout: 60 minutes.");
   assert.equal(fs.existsSync(canary), false, "other input properties must never execute or enter workflow commands");
+});
+
+test("public job budget: pre-checkout ESM uses the exact runner owner and exports validated bindings", t => {
+  const step = namedStep("review", "Validate review timeout");
+  const pattern = /\/\/ BEGIN_REVIEW_JOB_BUDGET[\s\S]*?\/\/ END_REVIEW_JOB_BUDGET/;
+  assert.equal(step.run.match(pattern)?.[0], recoveryRunnerSource.match(pattern)?.[0]);
+  assert.match(step.run, /node --input-type=module/);
+  assert.equal(workflow.jobs.review.permissions.actions, undefined, "no added actions permission");
+  assert.doesNotMatch(step.run, /Authorization|Bearer|github\.token|secrets\./);
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), "eta-mu-native-budget-"));
+  t.after(() => fs.rmSync(directory, { recursive: true, force: true }));
+  for (const [input, expected] of [[{}, 60], [{ review_timeout_minutes: 120 }, 120], [{ review_timeout_minutes: 180 }, 180]]) {
+    const result = runTimeoutValidation(step.run, directory, { REVIEW_INPUTS_JSON: JSON.stringify(input) });
+    assert.equal(result.status, 0, result.stderr);
+    assert.equal(result.budgetOutput.REVIEW_TIMEOUT_MINUTES, String(expected));
+    const origin = JSON.parse(result.budgetOutput.REVIEW_JOB_ORIGIN_JSON);
+    assert.equal(origin.job_id, 456); assert.equal(origin.runner_id, 789);
+    assert.equal(origin.run_attempt, "2"); assert.equal(origin.runner_name, "owned-test-runner");
+    assert.equal(result.budgetOutput.REVIEW_JOB_STARTED_AT_MS, String(origin.started_at_ms));
+  }
+  const foreign = runTimeoutValidation(step.run, directory, { REVIEW_INPUTS_JSON: "{}", GITHUB_API_URL: "https://example.invalid" });
+  assert.notEqual(foreign.status, 0);
+  assert.equal(foreign.budgetOutput.REVIEW_JOB_STARTED_AT_MS, undefined);
+});
+
+function publicJobFixture() {
+  const identity = { repository: "open-hax/fixture", runId: "123", runAttempt: "2", runnerName: "exact-runner" };
+  const job = (id, runner = identity.runnerName) => ({ id, run_id: 123, run_attempt: 2,
+    status: "in_progress", runner_name: runner, runner_id: id + 1000,
+    url: `https://api.github.com/repos/open-hax/fixture/actions/jobs/${id}`,
+    run_url: "https://api.github.com/repos/open-hax/fixture/actions/runs/123",
+    started_at: new Date(Math.floor(Date.now() / 1000) * 1000 - 60_000).toISOString() });
+  const response = (url, data, headers = {}) => {
+    const value = new Response(typeof data === "string" ? data : JSON.stringify(data), { status: 200, headers });
+    Object.defineProperty(value, "url", { value: url }); return value;
+  };
+  return { identity, job, response };
+}
+
+test("public job budget: anonymous complete pagination selects only the exact current run/attempt/runner", async () => {
+  const f = publicJobFixture(), seen = [];
+  const prefix = "https://api.github.com/repos/open-hax/fixture/actions/runs/123/attempts/2/jobs?per_page=100&page=";
+  const origin = await acquireReviewJobOrigin(f.identity, async (url, options) => {
+    seen.push(url);
+    assert.equal(options.credentials, "omit"); assert.equal(options.redirect, "error");
+    assert.deepEqual(Object.keys(options.headers), ["Accept"]);
+    assert.ok(options.signal instanceof AbortSignal);
+    return url === prefix + "1"
+      ? f.response(url, { total_count: 2, jobs: [f.job(1, "different-runner")] }, { link: `<${prefix}2>; rel="next", <${prefix}2>; rel="last"` })
+      : f.response(url, { total_count: 2, jobs: [f.job(2)] }, { link: `<${prefix}1>; rel="prev", <${prefix}1>; rel="first"` });
+  });
+  assert.deepEqual(seen, [prefix + "1", prefix + "2"]);
+  assert.equal(origin.job_id, 2); assert.equal(origin.run_id, "123"); assert.equal(origin.run_attempt, "2");
+  assert.equal(origin.runner_name, "exact-runner");
+});
+
+for (const fault of ["missing", "ambiguous", "foreign-run", "foreign-attempt", "foreign-url", "future-start",
+  "invalid-start", "partial", "duplicate", "repeated-page", "foreign-page", "wrong-response-url", "invalid-json", "unavailable"]) {
+  test(`public job budget refuses ${fault} without fallback`, async () => {
+    const f = publicJobFixture(); let calls = 0;
+    await assert.rejects(acquireReviewJobOrigin(f.identity, async url => {
+      calls += 1;
+      const job = f.job(1), data = { total_count: 1, jobs: [job] }, headers = {};
+      if (fault === "missing") job.runner_name = "someone-else";
+      if (fault === "ambiguous") { data.jobs.push(f.job(2)); data.total_count = 2; }
+      if (fault === "foreign-run") job.run_id = 124;
+      if (fault === "foreign-attempt") job.run_attempt = 1;
+      if (fault === "foreign-url") job.url = "https://example.invalid/job";
+      if (fault === "future-start") job.started_at = new Date(Date.now() + 60_000).toISOString();
+      if (fault === "invalid-start") job.started_at = "2026-02-30T00:00:00Z";
+      if (fault === "partial") data.total_count = 2;
+      if (fault === "duplicate") { data.jobs.push(job); data.total_count = 2; }
+      if (fault === "repeated-page") { data.total_count = 2; headers.link = `<${url}>; rel="next"`; }
+      if (fault === "foreign-page") { data.total_count = 2; headers.link = '<https://example.invalid/jobs?per_page=100&page=2>; rel="next"'; }
+      if (fault === "unavailable") return new Response("unavailable", { status: 403 });
+      return f.response(fault === "wrong-response-url" ? "https://example.invalid/jobs" : url,
+        fault === "invalid-json" ? "{" : data, headers);
+    }));
+    assert.equal(calls, 1, "no credential retry or alternative source");
+  });
+}
+
+test("public job budget: shared2MiB bound covers complete bodies across pages", async () => {
+  const f = publicJobFixture(); let calls = 0;
+  await assert.rejects(acquireReviewJobOrigin(f.identity, async url => {
+    calls += 1;
+    const next = new URL(url); next.searchParams.set("page", "2");
+    return f.response(url, { total_count: 2, jobs: [f.job(calls)], padding: "x".repeat(1_100_000) },
+      calls === 1 ? { link: `<${next}>; rel="next"` } : {});
+  }), /byte bound/);
+  assert.equal(calls, 2);
+});
+
+test("public job budget: incomplete body and total acquisition deadline refuse", async () => {
+  const f = publicJobFixture();
+  await assert.rejects(acquireReviewJobOrigin(f.identity, async url => {
+    const value = new Response(new ReadableStream({ start(controller) {
+      controller.enqueue(new TextEncoder().encode('{"total_count":1')); controller.error(new Error("owned partial stream"));
+    } }));
+    Object.defineProperty(value, "url", { value: url }); return value;
+  }), /partial stream/);
+  const descriptor = Object.getOwnPropertyDescriptor(performance, "now");
+  const original = performance.now.bind(performance); let offset = 0;
+  Object.defineProperty(performance, "now", { configurable: true, value: () => original() + offset });
+  try {
+    await assert.rejects(acquireReviewJobOrigin(f.identity, async url => {
+      offset += 30_001; return f.response(url, { total_count: 1, jobs: [f.job(1)] });
+    }), /deadline/);
+  } finally { if (descriptor) Object.defineProperty(performance, "now", descriptor); else delete performance.now; }
+});
+
+test("public job budget: one held wall sample converts shared selected minutes with the existing tail reserve", () => {
+  const original = Date.now, wall = original(); let reads = 0;
+  Date.now = () => { reads += 1; return reads === 1 ? wall : wall + 1_000_000; };
+  try {
+    const before = performance.now();
+    const cutoff = reviewJobDeadline({ REVIEW_TIMEOUT_MINUTES: "120", REVIEW_JOB_STARTED_AT_MS: String(wall - 60_000) });
+    const after = performance.now(), remaining = 120 * 60_000 - 60_000 - 120_250;
+    assert.ok(cutoff >= before + remaining && cutoff <= after + remaining);
+    assert.equal(reads, 1, "wall clock must not be read again after validation");
+  } finally { Date.now = original; }
+  for (const env of [{}, { REVIEW_JOB_STARTED_AT_MS: String(wall + 60_000) },
+    { REVIEW_JOB_STARTED_AT_MS: String(wall), REVIEW_TIMEOUT_MINUTES: "59" },
+    { REVIEW_JOB_STARTED_AT_MS: String(wall), REVIEW_TIMEOUT_MINUTES: "181" },
+    { REVIEW_JOB_STARTED_AT_MS: String(wall), REVIEW_TIMEOUT_MINUTES: "120.5" },
+    { REVIEW_JOB_STARTED_AT_MS: String(wall), GITHUB_ACTIONS: "true", REVIEW_JOB_ORIGIN_JSON: "{}" }]) {
+    assert.throws(() => reviewJobDeadline(env), /job budget|job start/);
+  }
+});
+
+test("actual model cleanup: parent close terminates an owned helper without capture pipes", t => {
+  const checked = freshReviewInputCheck(fullInputFixture(t));
+  const f = canonicalContextFixture(checked), data = canonicalContextResponse(f);
+  const helperFile = path.join(checked.env.RUNNER_TEMP, "owned-pipe-free-helper.pid");
+  const script = path.join(checked.env.RUNNER_TEMP, "owned-pipe-free-model.mjs");
+  const prompt = path.join(checked.env.RUNNER_TEMP, "owned-pipe-free-prompt.md");
+  fs.writeFileSync(prompt, "Synthetic local process cleanup control; no model/provider/publication.\n");
+  const helper = `const fs=require('node:fs');process.on('SIGTERM',()=>{});` +
+    `fs.writeFileSync(${JSON.stringify(helperFile)},String(process.pid));setInterval(()=>{},1000);`;
+  fs.writeFileSync(script, `#!/usr/bin/env node
+    import fs from 'node:fs';import {spawn} from 'node:child_process';
+    spawn(process.execPath,['-e',${JSON.stringify(helper)}],{stdio:'ignore'});
+    const ready=setInterval(()=>{if(!fs.existsSync(${JSON.stringify(helperFile)}))return;clearInterval(ready);
+      fs.writeFileSync(${JSON.stringify(f.submissionFile)},${JSON.stringify(data.submission.toString())});
+      process.stdout.write(${JSON.stringify(data.response.toString())},()=>process.exit(0));
+    },10);
+  `);
+  fs.chmodSync(script, 0o700);
+  let pid;
+  t.after(() => { if (pid) { try { process.kill(pid, "SIGKILL"); } catch { /* Only this owned helper. */ } } });
+  const result = spawnSync(process.execPath, [path.join(root, ".github/scripts/run-opencode-review-recovery.mjs")], {
+    cwd: checked.consumer, encoding: "utf8", timeout: 15_000,
+    env: { PATH: process.env.PATH, ...localReviewBudgetFixture(), PR_NUMBER: "42", REVIEW_MODEL: "synthetic/no-provider",
+      OPENCODE_BIN: script, REVIEW_EVIDENCE_DIR: checked.evidence, REVIEW_PROMPT_FILE: prompt, ...f.env },
+  });
+  if (fs.existsSync(helperFile)) pid = Number(fs.readFileSync(helperFile, "utf8"));
+  assert.ok(Number.isSafeInteger(pid) && pid > 1, "the real owned pipe-free helper must start");
+  let live = false;
+  try { live = !["Z", "X"].includes(fs.readFileSync(`/proc/${pid}/status`, "utf8").match(/^State:\s+([A-Z])/m)?.[1]); }
+  catch (error) { if (error.code !== "ENOENT") throw error; }
+  t.diagnostic(JSON.stringify({ ownedPipeFreeHelperPID: pid, liveAtSupervisorCompletion: live }));
+  assert.ifError(result.error);
+  assert.equal(result.status, 0, result.stderr);
+  assert.equal(live, false, "normal parent/pipe close must not leave its owned helper working");
+  assert.equal(JSON.parse(fs.readFileSync(path.join(checked.evidence, "recovery.json"))).accepted_invocation.attempt, 1);
 });
 
 test("bounded review budget keeps publication App mint after validated revision-bound completion", () => {
@@ -2676,7 +2874,7 @@ function canonicalSupervisor(fixture, { retryAfterMissingSubmit = false, respons
   fs.writeFileSync(child, `#!/usr/bin/env node\nimport fs from "node:fs";\nconst countFile=${JSON.stringify(countFile)};\nconst attempt=fs.existsSync(countFile)?Number(fs.readFileSync(countFile,"utf8"))+1:1;\nfs.writeFileSync(countFile,String(attempt));\nfs.writeFileSync(${JSON.stringify(marker)}, "entered");\nif (${JSON.stringify(retryAfterMissingSubmit)} && attempt===1) {\n  process.stdout.write(${JSON.stringify(first.response.toString("utf8"))});\n  fs.appendFileSync(${JSON.stringify(fixture.contextFile)}, "mutated between children\\n");\n} else {\n  fs.writeFileSync(${JSON.stringify(fixture.submissionFile)}, ${JSON.stringify(data.submission.toString("utf8"))});\n  process.stdout.write(${JSON.stringify(data.response.toString("utf8"))});\n}\n`);
   fs.chmodSync(child, 0o755);
   const result = spawnSync(process.execPath, [path.join(root, ".github/scripts/run-opencode-review-recovery.mjs")], {
-    cwd: root, encoding: "utf8", env: { PATH: process.env.PATH, PR_NUMBER: "42", REVIEW_MODEL: "synthetic/no-provider",
+    cwd: root, encoding: "utf8", env: { ...localReviewBudgetFixture(), PATH: process.env.PATH, PR_NUMBER: "42", REVIEW_MODEL: "synthetic/no-provider",
       OPENCODE_BIN: child, REVIEW_EVIDENCE_DIR: directory, REVIEW_PROMPT_FILE: prompt, ...fixture.env } });
   return { result, marker };
 }
@@ -3150,7 +3348,7 @@ async function actualModelDeadlineRegression(t, { mode, minutes = 60, explicit =
   fs.rmSync(checked.invocation, { force: true });
   const state = path.join(checked.env.RUNNER_TEMP, "owned-model-deadline");
   fs.mkdirSync(state, { mode: 0o700 });
-  const batches = ["tracked", "unchanged", "hang", "helper", "setup-expired", "reserve"].includes(mode);
+  const batches = ["tracked", "unchanged", "hang", "helper", "setup-expired", "reserve", "post-before"].includes(mode);
   const tools = batches ? [...f.tools, "review_read_diff_batch", "review_assess_diff_batch"] : f.tools;
   fs.writeFileSync(f.registryFile, tools.join("\n") + "\n");
   const expectedContext = f.verifier.prepareReviewInvocationContext(f.full,
@@ -3190,7 +3388,7 @@ async function actualModelDeadlineRegression(t, { mode, minutes = 60, explicit =
     const f = JSON.parse(fs.readFileSync(process.env.OWNED_MODEL_FAULT_INPUT,"utf8"));
     const spawn = cp.spawn, realNow = Date.now, realPerformanceNow = performance.now.bind(performance);
     const realSetTimeout = globalThis.setTimeout;
-    let offset = 0, entered = 0;
+    let offset = 0, entered = 0, postBeforeJump = false;
     Date.now = () => realNow() + offset;
     Object.defineProperty(performance,"now",{value:()=>realPerformanceNow()+offset});
     // This is a synthetic clock, not a smaller production allowance. Retain
@@ -3205,6 +3403,17 @@ async function actualModelDeadlineRegression(t, { mode, minutes = 60, explicit =
     const write = fs.writeFileSync;
     fs.writeFileSync = function(file,bytes,...options) {
       const result=write.call(this,file,bytes,...options);
+      if (f.mode === "post-before" && !postBeforeJump &&
+          file === path.join(process.env.REVIEW_EVIDENCE_DIR,"recovery.json")) {
+        const held=JSON.parse(bytes.toString()), captures=held.batch_custody?.captures;
+        if (captures?.length === 1 && captures[0].boundary === "before" &&
+            captures[0].attempt === 1 && held.attempts.length === 0 && !held.custody_error) {
+          // Advance only AFTER the real successful before-capture write, after
+          // its final time check and immediately before the model adapter entry.
+          postBeforeJump=true;offset+=61*60_000;
+          write(path.join(f.state,"elapsed.json"),JSON.stringify({phase:"after-before-write",offset,now:Date.now()}));
+        }
+      }
       if (["setup-expired","reserve"].includes(f.mode) &&
           file === path.join(process.env.REVIEW_EVIDENCE_DIR,"model-discovery.json") &&
           JSON.parse(bytes.toString()).status === "selected") {
@@ -3297,7 +3506,11 @@ async function actualModelDeadlineRegression(t, { mode, minutes = 60, explicit =
     helperStarted:fs.readdirSync(state).some(name=>/^helper-\d+\.pid$/.test(name)),
     timers:fs.existsSync(path.join(state,"timers.jsonl"))?fs.readFileSync(path.join(state,"timers.jsonl"),"utf8"):"",
     stdout:Buffer.concat(stdout).toString("utf8"),stderr:Buffer.concat(stderr).toString("utf8"),
-    output:parseOutput(f.output),startingHead,startingWorking};
+    output:parseOutput(f.output),startingHead,startingWorking,
+    ...(mode === "post-before" ? { retainedCaptures: ["model-response-attempt-1.txt","opencode-stderr-attempt-1.log"].map(name => {
+      const file=path.join(checked.evidence,name), exists=fs.existsSync(file), bytes=exists?fs.readFileSync(file):null;
+      return {name,exists,bytes:bytes?.length ?? null,sha256:bytes?transportSha256(bytes):null};
+    }) } : {})};
   if(process.env.ETA_MU_NATIVE_PROOF_DIR){
     const retained=path.join(process.env.ETA_MU_NATIVE_PROOF_DIR,`model-${mode}-${explicit?minutes:"default"}-${elapsedMinutes}`);
     fs.mkdirSync(retained,{recursive:true,mode:0o700});
@@ -3386,6 +3599,32 @@ for(const [mode,elapsedMinutes] of [["setup-expired",61],["reserve",60-20/60]]){
       assert.equal(result.output.review_invocation_sha256,undefined);
     });
 }
+
+test("actual model post-before clock boundary: refusal retains the deadline without a child or ENOENT",
+  {timeout:20_000,skip:process.platform!=="linux"||process.arch!=="x64"},async t=>{
+    const result=await actualModelDeadlineRegression(t,{mode:"post-before"});
+    assert.equal(result.outerExpired,false);
+    assert.equal(result.exit.code,1);
+    assert.equal(result.discoveryStatus,"selected");
+    assert.equal(result.elapsed?.phase,"after-before-write","the clock fault must follow the real successful before-capture write");
+    assert.equal(result.launches.length,0,"the expired adapter entry must not spawn a model child");
+    assert.deepEqual(result.recovery.batch_custody.captures.map(row=>`${row.boundary}:${row.attempt}`),["before:1","after:1"]);
+    assert.equal(result.recovery.accepted_invocation,null);
+    assert.equal(result.recovery.attempts.length,1,"retain the rejected adapter entry without inventing a launched child");
+    const attempt=result.recovery.attempts[0];
+    assert.equal(attempt.invocation_state,"rejected");
+    assert.equal(attempt.verification_state,"not-run-invocation-rejected");
+    assert.match(attempt.invocation_error,/deadline/i);
+    assert.doesNotMatch(attempt.invocation_error,/ENOENT/);
+    assert.doesNotMatch(result.stderr,/ENOENT/);
+    for(const capture of result.retainedCaptures){
+      assert.equal(capture.exists,true,"recordAttempt must retain actual owned capture files before hashing");
+      assert.equal(capture.bytes,0);
+      assert.equal(capture.sha256,transportSha256(Buffer.alloc(0)));
+      assert.equal(capture.sha256,capture.name.startsWith("model-response")?attempt.response_sha256:attempt.stderr_sha256);
+    }
+    assert.equal(result.output.review_invocation_sha256,undefined);
+  });
 
 for (const command of ["--version", "models"]) for (const descendant of [false, true]) {
   test(`actual discovery deadline: ${command} TERM-resistant ${descendant ? "descendant" : "child"} closes before containment`,
@@ -3737,7 +3976,7 @@ test("native bounded batches: actual standalone, physical CLI and compiled produ
     const response = new Response(${JSON.stringify(JSON.stringify(catalog))}, { status: 200 });
     Object.defineProperty(response, "url", { value: url }); return response;
   };\n`);
-  const environment = { PATH: process.env.PATH, HOME: checked.env.RUNNER_TEMP, PR_NUMBER: "42",
+  const environment = { ...localReviewBudgetFixture(), PATH: process.env.PATH, HOME: checked.env.RUNNER_TEMP, PR_NUMBER: "42",
     OPENCODE_BIN: ownedBinary, REVIEW_MODEL_DISCOVERY: "opencode-free-mimo-flash-v1", REVIEW_EXPECTED_OPENCODE_VERSION: "1.18.31",
     REVIEW_CHILD_HOME: home, REVIEW_CHILD_RUNTIME: runtime, REVIEW_EVIDENCE_DIR: checked.evidence,
     REVIEW_PROMPT_FILE: promptFile, REVIEW_TOOL_REGISTRY_FILE: f.registryFile,
