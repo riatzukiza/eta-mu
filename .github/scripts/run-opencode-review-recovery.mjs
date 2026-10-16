@@ -97,7 +97,11 @@ export async function acquireReviewJobOrigin({ repository, runId, runAttempt, ru
         relations.add(match[2]);
         const target = new URL(match[1]);
         const keys = [...target.searchParams.keys()];
-        if (target.origin !== "https://api.github.com" || target.pathname !== route || target.username || target.password || target.hash ||
+        // GitHub may use its repository-ID alias; only the page number is consumed.
+        const repositoryId = /^\/repositories\/([1-9]\d*)\//.exec(target.pathname)?.[1];
+        const samePath = target.pathname === route || (positive(repositoryId) &&
+          target.pathname === `/repositories/${repositoryId}/actions/runs/${runId}/attempts/${runAttempt}/jobs`);
+        if (target.origin !== "https://api.github.com" || !samePath || target.username || target.password || target.hash ||
             keys.length !== 2 || !keys.includes("page") || !keys.includes("per_page") ||
             target.searchParams.get("per_page") !== "100" || !positive(target.searchParams.get("page"))) {
           throw new Error("foreign public review job pagination");

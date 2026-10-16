@@ -313,3 +313,41 @@ When working on this repo:
 3. Keep status labels consistent with actual task progress.
 4. Mention or link the synced issue/PR relationship when opening fixes.
 5. Preserve auditability: receipts, PR descriptions, and comments should explain what changed and why.
+
+
+## Public job pagination and native fixture containment — 2026-10-16
+
+CodeRabbit finding4299928479 on767ab889 identified a real public metadata
+compatibility defect. An anonymous official GitHub jobs response returned
+repository-ID1401249220 Link URLs, while the caller accepted only the original
+owner/repository path. The caller now permits that positive safe-integer ID
+alias for the exact same run/attempt/jobs suffix. It uses the link only to
+validate pagination and select the next consecutive page number; every fetch
+still uses the original trusted owner/repository URL. Anonymous transport,
+origin/credential/fragment/query checks, full inventory validation and the
+single shared30-second/2MiB acquisition remain unchanged. The pre-checkout
+embedded implementation is byte-identical to the runner's budget block.
+
+Actual focused RED ran56 tests:48 passed/8 failed; the same pagination tests
+then passed56/56. The101-job cases are local synthetic job objects over two
+pages, distinct from the two-job primary response requested one per page.
+Refusal controls retain foreign routes, malformed IDs, altered queries,
+duplicate/partial inventories, ambiguity and repeated/skipped pages.
+
+Separately, native Sandbox38974045176/job117219081840 on the merge containing
+767 ran353 workflow tests:352 passed,0 failed and1 cancelled. Its post-before
+clock-boundary test exceeded its enclosing20-second setup-plus-test timeout
+at20179.98ms. That one enclosing allowance is now45 seconds, matching existing
+hang/helper fixtures. The inner12-second owned containment, every assertion
+and production/shared deadlines are unchanged. The actual focused corrected
+test passed in18.67 seconds, with outerExpired:false, zero model launches,
+before/after custody captures, the expected deadline refusal without ENOENT
+and no live owned process. This is an observed harness correction, not proof
+of future runner speed or relaxed application limits.
+
+The source record at
+`.ημ/review-evidence/cephalon-review-batching/pagination-link-and-fixture-timeout-20261016.json`
+retains exact source/log hashes and limits. The earlier local353PASS remains
+bound to767; a complete final-source suite and fresh hosted reviews/checks are
+still required. No application runtime, credentials, model, board state,
+publication or deployment changed.
