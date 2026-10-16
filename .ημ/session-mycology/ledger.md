@@ -1317,3 +1317,13 @@
   spore: none
   receipt-refs: cephalon-eta-reference-model-discovery-and-qualified-muse-docs-20261016
   note: Update only reference implementation purpose/modelroute wording, Muse repository and Muse pin. Empty modelinput discovers current eligible free MiMoFlash through anonymous OpenCode/IP ratelimits; optional explicit override passes same actualcatalogeligibility. No fixedslug or directprovidercredentialfallback. ReferencedMuse source isactualqualified personal259c76e normalMERGE; existingagentspin unchanged. An initial assumed architecturefilename read failedwithoutmutation, then actual nativefinding supplied docs/github-automation-architecture.md and source verified. Localdoccommit can preserve ownedwork while currentremote0c whole review finishes; do notpush/cancel/restart activeproviderwork merely for observation. All requiredgates/completecurrent15inputscope need fresh qualification afterconcretepush. GoalACTIVE/live0of3/heartbeat humanPAUSED; no runtime/board/Ready/provider/credential/paid/deployment/social/spore change.
+
+- ts: 2026-10-16T02:59:52.084Z
+  session: /home/err/spaces/cephalon-review-batch-consumer/eta-mu
+  task: cephalon-character-memory/B3/review-batching/ETA
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-eta-native-fixture-timeout-and-guaranteed-cleanup-20261016
+  note: Verified150second test bound is shorter than60second npm install plus120second supervisor budgets. Apply exact minimal review fix; keep install/supervisor limits, every native producer/physicalCLI/custody assertion and production behavior unchanged. Preserve actual local failure, not credential/provider diagnosis or assumed transient. Existing required hosted suite must verify corrective head; source is not ready to merge or Done. No broad optional retest, new mirror test, model retry/cancel, capacity/globalruntime/credential/provider/paid/deployment/social change. GoalACTIVE/live0of3/heartbeat humanPAUSED; no spore/promotion.

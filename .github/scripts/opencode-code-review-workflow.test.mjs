@@ -2865,7 +2865,7 @@ for (const boundary of ["before", "after"]) for (const field of ["executable", "
 }
 
 test("native bounded batches: actual standalone, physical CLI and compiled producer close a whole corrective invocation",
-  { timeout: 150_000, skip: process.platform !== "linux" || process.arch !== "x64" }, async (t) => {
+  { timeout: 240_000, skip: process.platform !== "linux" || process.arch !== "x64" }, async (t) => {
   const owner = process.env.ETA_MU_CANONICAL_CONTEXT_MODULE;
   assert.ok(owner && path.isAbsolute(owner), "compiled Muse owner is required");
   const binary = process.env.ETA_MU_NATIVE_BATCH_BINARY ||
@@ -3003,6 +3003,7 @@ test("native bounded batches: actual standalone, physical CLI and compiled produ
   const stdout = [], stderr = [];
   child.stdout.on("data", bytes => stdout.push(bytes)); child.stderr.on("data", bytes => stderr.push(bytes));
   const timer = setTimeout(() => { try { process.kill(-child.pid, "SIGKILL"); } catch {} }, 120_000);
+  t.after(() => { clearTimeout(timer); try { process.kill(-child.pid, "SIGKILL"); } catch {} });
   const exit = await new Promise((resolve, reject) => { child.once("error", reject); child.once("close", (code, signal) => resolve({ code, signal })); });
   clearTimeout(timer);
   const diagnostic = Buffer.concat(stderr).toString("utf8");
