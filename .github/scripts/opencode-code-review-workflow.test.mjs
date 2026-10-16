@@ -2881,7 +2881,7 @@ for (const boundary of ["before", "after"]) for (const field of ["executable", "
 
 /** Existing physical capture and canonical owner; all child call frames are synthetic offline data. */
 async function actualCustodyRegression(t, { prepare = () => {}, mutate = () => {},
-  boundary = "after", attempt = 1, retry = false, firstKind = "missing" } = {}) {
+  boundary = "after", attempt = 1, retry = false, firstKind = "missing", afterChild = () => {} } = {}) {
   const fixture = actualCaptureFixture(t);
   const { checked, f, captureInput } = fixture;
   prepare(fixture);
@@ -2943,6 +2943,7 @@ async function actualCustodyRegression(t, { prepare = () => {}, mutate = () => {
         if (!fs.existsSync(eventFile) || fs.lstatSync(eventFile).isFile()) {
           fs.appendFileSync(eventFile, JSON.stringify({ kind: "synthetic-owned-output", attempt: childAttempt }) + "\n");
         }
+        afterChild(fixture, childAttempt);
         return { exitCode: 0 };
       } });
   } catch (error) { failure = error; }
@@ -3039,6 +3040,224 @@ for (const [name, firstKind] of [["response", "missing"], ["stderr", "missing"],
     assert.ok(outcome.failure);
     assert.match(outcome.failure.message, /custody|changed|output|recovery|retained|prefix/i);
     assert.equal(outcome.result?.accepted_invocation, undefined);
+    const raw = fs.readFileSync(path.join(outcome.checked.evidence, "recovery.json"));
+    if (name === "raw recovery") {
+      assert.ok(raw.toString("utf8").endsWith(" \n"), "untrusted raw recovery drift must not be overwritten");
+    } else {
+      const retained = JSON.parse(raw);
+      assert.equal(retained.accepted_invocation, null);
+      assert.equal(retained.custody_error.boundary, "before");
+      assert.equal(retained.custody_error.attempt, 2);
+    }
+  });
+}
+
+for (const boundary of ["before", "after"]) for (const name of ["response", "event prefix"]) {
+  test(`actual custody refusal metadata: ${name} at initial ${boundary} output check is retained`,
+    { skip: process.platform !== "linux" || process.arch !== "x64" }, async (t) => {
+    let changed = false;
+    let metadataFile;
+    const originalWrite = fs.writeFileSync;
+    const mutate = checked => {
+      const file = path.join(checked.evidence, name === "response"
+        ? "model-response-attempt-1.txt" : "review-events.jsonl");
+      assert.ok(fs.lstatSync(file).isFile(), "the prior attempt must create the real sealed role");
+      if (name === "event prefix") originalWrite(file, "rewritten owned event prefix\n");
+      else fs.appendFileSync(file, "changed sealed response\n");
+      changed = true;
+    };
+    let fixtureChecked;
+    // The actual supervisor write completes first. This injects only an owned
+    // file fault between its retry decision and the next public boundary.
+    fs.writeFileSync = function (file, bytes, ...options) {
+      const result = originalWrite.call(this, file, bytes, ...options);
+      if (boundary === "before" && !changed && file === metadataFile) {
+        const record = JSON.parse(bytes.toString());
+        if (record.recovery_reason === "missing_review_submit") mutate(fixtureChecked);
+      }
+      return result;
+    };
+    t.after(() => { fs.writeFileSync = originalWrite; });
+    let outcome;
+    try {
+      outcome = await actualCustodyRegression(t, { retry: true, boundary: "unused",
+        prepare: ({ checked }) => {
+          fixtureChecked = checked;
+          metadataFile = path.join(checked.evidence, "recovery.json");
+        },
+        afterChild: ({ checked }, attempt) => { if (boundary === "after" && attempt === 2) mutate(checked); } });
+    } finally { fs.writeFileSync = originalWrite; }
+    assert.equal(changed, true, "the fault must occur after a genuine first-attempt seal");
+    assert.equal(outcome.entered, boundary === "before" ? 1 : 2);
+    assert.match(outcome.failure?.message ?? "", /custody|sealed|prefix|changed/);
+    const recovery = JSON.parse(fs.readFileSync(metadataFile, "utf8"));
+    assert.equal(recovery.accepted_invocation, null);
+    assert.equal(recovery.custody_error?.boundary, boundary, "output-check refusal must retain its actual boundary");
+    assert.equal(recovery.custody_error?.attempt, 2, "output-check refusal must retain its actual attempt");
+  });
+}
+
+test("actual custody refusal metadata: final accepted check revokes the persisted acceptance",
+  { skip: process.platform !== "linux" || process.arch !== "x64" }, async (t) => {
+  const { checked, f, captureInput } = actualCaptureFixture(t);
+  const healthy = canonicalContextResponse(f);
+  const metadataFile = path.join(checked.evidence, "recovery.json");
+  const originalWrite = fs.writeFileSync;
+  let injected = false, acceptance, failure, entered = 0;
+  fs.writeFileSync = function (file, bytes, ...options) {
+    const result = originalWrite.call(this, file, bytes, ...options);
+    if (file === metadataFile && !injected) {
+      const actual = JSON.parse(fs.readFileSync(file, "utf8"));
+      if (actual.accepted_invocation) {
+        // Exact real-write boundary: do not mutate recovery itself or replace
+        // the verifier. The original accepted record remains held/trusted.
+        acceptance = structuredClone(actual.accepted_invocation);
+        injected = true;
+        fs.appendFileSync(path.join(checked.evidence, "opencode-stderr-attempt-1.log"), "post-acceptance owned fault\n");
+      }
+    }
+    return result;
+  };
+  t.after(() => { fs.writeFileSync = originalWrite; });
+  try {
+    await runReviewRecovery({ evidenceDirectory: checked.evidence,
+      basePrompt: "Synthetic accepted-boundary fault; no model/provider/publication.",
+      submissionFile: f.submissionFile, reviewTools: f.tools,
+      verifyReviewInvocation: f.verifier.verifyReviewInvocation, expectedContext: f.expectedContext,
+      captureBatchHost: () => captureReviewBatchCustody(captureInput),
+      invokeAttempt: async ({ responseFile, stderrFile }) => {
+        entered += 1;
+        fs.writeFileSync(responseFile, healthy.response); fs.writeFileSync(stderrFile, "owned original stderr\n");
+        fs.writeFileSync(f.submissionFile, healthy.submission);
+        return { exitCode: 0 };
+      } });
+  } catch (error) { failure = error; }
+  finally { fs.writeFileSync = originalWrite; }
+  assert.equal(entered, 1);
+  assert.equal(injected, true, "the actual canonical attempt must persist acceptance before the fault");
+  assert.match(failure?.message ?? "", /custody|sealed|changed/);
+  const recovery = JSON.parse(fs.readFileSync(metadataFile, "utf8"));
+  assert.equal(recovery.accepted_invocation, null, "failed final custody cannot retain an accepted invocation");
+  assert.deepEqual(recovery.rejected_accepted_invocation, acceptance);
+  assert.equal(recovery.custody_error?.boundary, "accepted");
+  assert.equal(recovery.custody_error?.attempt, 1);
+  assert.equal(parseOutput(f.output).review_invocation_sha256, undefined);
+});
+
+for (const command of ["--version", "models"]) for (const descendant of [false, true]) {
+  test(`actual discovery deadline: ${command} TERM-resistant ${descendant ? "descendant" : "child"} closes before containment`,
+    { timeout: 45_000, skip: process.platform !== "linux" || process.arch !== "x64" }, async (t) => {
+    const { checked, binary, environment } = actualCaptureFixture(t);
+    const state = path.join(checked.env.RUNNER_TEMP, "owned-discovery-fault");
+    fs.mkdirSync(state, { mode: 0o700 });
+    const input = path.join(state, "input.json");
+    fs.writeFileSync(input, JSON.stringify({ state, binary, environment, command, descendant,
+      evidenceDirectory: checked.evidence,
+      runner: path.join(root, ".github/scripts/run-opencode-review-recovery.mjs") }));
+    // Same isolated child-process fault approach as the config deadline tests:
+    // retain the real selected binary and public discovery arguments/options.
+    // Only the owned faulting process is substituted; no model/provider runs.
+    const worker = String.raw`
+      import fs from "node:fs";
+      import cp from "node:child_process";
+      import path from "node:path";
+      import { syncBuiltinESMExports } from "node:module";
+      import { pathToFileURL } from "node:url";
+      const f = JSON.parse(fs.readFileSync(process.argv[1], "utf8"));
+      const pidFile = path.join(f.state,"fault.pid"), descendantFile = path.join(f.state,"descendant.pid");
+      const grandchild = 'const fs=require("node:fs");process.on("SIGTERM",()=>{});' +
+        'fs.writeFileSync(' + JSON.stringify(descendantFile) + ',String(process.pid));setInterval(()=>{},1000);';
+      const trap = 'const fs=require("node:fs"),cp=require("node:child_process");' +
+        'process.on("SIGTERM",()=>{fs.appendFileSync(' + JSON.stringify(path.join(f.state,"term")) + ',"TERM\\n");' +
+          (f.descendant ? 'process.exit(0);' : '') + '});' +
+        'fs.writeFileSync(' + JSON.stringify(pidFile) + ',String(process.pid));' +
+        (f.descendant ? 'cp.spawn(process.execPath,["-e",' + JSON.stringify(grandchild) + '],{stdio:["ignore",1,2]});' : '') +
+        'fs.writeFileSync(' + JSON.stringify(path.join(f.state,"ready")) + ',"ready");setInterval(()=>{},1000);';
+      const original = cp.spawn;
+      cp.spawn = (binary,args,options) => {
+        if (binary !== f.binary) throw Error("unexpected discovery binary");
+        const target = f.command === "--version" ? ["--version"] : ["models","opencode","--verbose"];
+        if (JSON.stringify(args) !== JSON.stringify(target)) {
+          if (f.command === "models" && JSON.stringify(args) === '["--version"]') return original(binary,args,options);
+          throw Error("unexpected discovery command");
+        }
+        fs.writeFileSync(path.join(f.state,"launch.json"),JSON.stringify({binary,args,detached:options.detached ?? false}));
+        return original(process.execPath,["-e",trap],options);
+      };
+      syncBuiltinESMExports();
+      // The existing bounded raw-catalog acquisition uses inert bytes. This
+      // reaches the actual models launch without any external network request.
+      globalThis.fetch = async (url,options) => {
+        if (url !== "https://models.opencode.ai/api.json" || options.credentials !== "omit")
+          throw Error("unexpected discovery fixture fetch");
+        const response = new Response(JSON.stringify({opencode:{id:"opencode",models:{}}}),{status:200});
+        Object.defineProperty(response,"url",{value:url});return response;
+      };
+      const { discoverFreeMiMoFlash } = await import(pathToFileURL(f.runner).href);
+      const alive = file => {
+        if (!fs.existsSync(file)) return false;
+        const pid = Number(fs.readFileSync(file,"utf8"));
+        try {
+          process.kill(pid,0);
+          const state = fs.readFileSync('/proc/' + pid + '/status',"utf8").match(/^State:\s+([A-Z])/m)?.[1];
+          if (!state) throw Error("owned discovery process state unavailable");
+          return state !== "Z" && state !== "X";
+        } catch (error) { if (["ESRCH","ENOENT"].includes(error.code)) return false; throw error; }
+      };
+      let result;
+      try {
+        await discoverFreeMiMoFlash({evidenceDirectory:f.evidenceDirectory,binary:f.binary,
+          environment:f.environment,expectedVersion:"1.18.31"});
+        result = {rejected:false};
+      } catch (error) { result = {rejected:true,error:error.message}; }
+      const proofFile = path.join(f.evidenceDirectory,"model-discovery.json");
+      fs.writeFileSync(path.join(f.state,"result.json"),JSON.stringify({...result,
+        faultAlive:alive(pidFile),descendantAlive:alive(descendantFile),
+        proof:fs.existsSync(proofFile) ? JSON.parse(fs.readFileSync(proofFile,"utf8")) : null}));
+    `;
+    const child = spawn(process.execPath, ["--input-type=module", "--eval", worker, input],
+      { detached: true, env: { PATH: process.env.PATH }, stdio: ["ignore", "pipe", "pipe"] });
+    const stdout = [], stderr = [];
+    child.stdout.on("data", bytes => stdout.push(bytes)); child.stderr.on("data", bytes => stderr.push(bytes));
+    let outerExpired = false;
+    const stop = () => {
+      for (const name of ["fault.pid", "descendant.pid"]) {
+        const file = path.join(state, name);
+        if (!fs.existsSync(file)) continue;
+        const pid = Number(fs.readFileSync(file, "utf8"));
+        if (!Number.isSafeInteger(pid) || pid <= 1) continue;
+        try { process.kill(-pid, "SIGKILL"); } catch { /* Only an owned group, if detached. */ }
+        try { process.kill(pid, "SIGKILL"); } catch { /* Already terminated. */ }
+      }
+      try { process.kill(-child.pid, "SIGKILL"); } catch { /* Already closed. */ }
+    };
+    const timer = setTimeout(() => { outerExpired = true; stop(); }, 35_000);
+    t.after(() => { clearTimeout(timer); stop(); });
+    let exit;
+    try {
+      exit = await new Promise((resolve, reject) => {
+        child.once("error", reject); child.once("close", (code, signal) => resolve({ code, signal }));
+      });
+    } finally { clearTimeout(timer); stop(); }
+    const resultFile = path.join(state, "result.json");
+    const result = fs.existsSync(resultFile) ? JSON.parse(fs.readFileSync(resultFile, "utf8")) : null;
+    const launchFile = path.join(state, "launch.json");
+    const launch = fs.existsSync(launchFile) ? JSON.parse(fs.readFileSync(launchFile, "utf8")) : null;
+    t.diagnostic(JSON.stringify({ command, descendant, outerExpired, exit, launch,
+      result: result && { rejected: result.rejected, error: result.error, faultAlive: result.faultAlive,
+        descendantAlive: result.descendantAlive, proofStatus: result.proof?.status },
+      entered: fs.existsSync(path.join(state, "ready")), termObserved: fs.existsSync(path.join(state, "term")),
+      stderr: Buffer.concat(stderr).toString("utf8").slice(-2000), stdoutBytes: Buffer.concat(stdout).length }));
+    assert.ok(fs.existsSync(path.join(state, "ready")), "the actual public discovery command must enter the owned fault");
+    assert.deepEqual(launch.args, command === "--version" ? ["--version"] : ["models", "opencode", "--verbose"]);
+    if (descendant) assert.ok(fs.existsSync(path.join(state, "descendant.pid")), "the pipe-holding helper must actually start");
+    assert.equal(outerExpired, false, "discovery must terminate its owned group before outer containment");
+    assert.equal(result?.rejected, true);
+    assert.match(result.error, /discovery|version|catalog|deadline|capture/i);
+    assert.equal(result.proof.status, "refused");
+    assert.equal(result.proof.selected_model, null);
+    assert.equal(result.faultAlive, false);
+    assert.equal(result.descendantAlive, false);
   });
 }
 

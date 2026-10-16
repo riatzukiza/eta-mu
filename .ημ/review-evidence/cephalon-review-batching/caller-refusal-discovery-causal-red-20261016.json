@@ -1,0 +1,203 @@
+{
+  "kind": "actual-registered-causal-RED-only",
+  "finishedAt": "2026-10-16T05:37:39.185161+00:00",
+  "head": "2a1b6614c4eae936a7d92c29229181f65a740aa5",
+  "ownerCard": "30c9df92-e1fb-4043-8565-36f96ce2a978",
+  "scope": "ordinary existing ETA5 corrections for native roots4291135204 and4291146564",
+  "testFile": ".github/scripts/opencode-code-review-workflow.test.mjs",
+  "testBytes": 236695,
+  "testSHA256": "be98fb5e70abaa6f9b47ac1955feabc44ca40b6d81a946ec3fb5ae699fba6dc2",
+  "patchSHA256": "9954e57786715be6c00fc3a4c456e96d39d45258782fc9ba213ceaa94b367fcc",
+  "production": {
+    ".github/scripts/run-opencode-review-recovery.mjs": {
+      "bytes": 105554,
+      "sha256": "6f9108640cd622e0eb1e1571ca381b11eda4b58783ac8a2ca5abbdc2baa634c6",
+      "exactHeadBytes": true
+    },
+    ".github/workflows/opencode-code-review.yml": {
+      "bytes": 238508,
+      "sha256": "c77a23b4f79a86c5c6506e72b39d122e821b72846c80d4695f9334571df7fdad",
+      "exactHeadBytes": true
+    },
+    ".github/workflows/muse-review-context-diagnostic.yml": {
+      "bytes": 4552,
+      "sha256": "2c7c008a3938f66c53546dc3ab6ba4c88a5b301087f6ccf533bc3b0bbaf901b8",
+      "exactHeadBytes": true
+    }
+  },
+  "runs": {
+    "custody-metadata": {
+      "command": [
+        "/home/err/.volta/tools/image/node/22.23.3/bin/node",
+        "--test",
+        "--test-reporter=tap",
+        "--test-name-pattern=actual custody refusal metadata|actual custody regression: sealed prior",
+        ".github/scripts/opencode-code-review-workflow.test.mjs"
+      ],
+      "exit": 1,
+      "elapsedSeconds": 111.61491706199013,
+      "startedAt": "2026-10-16T05:33:27.062050+00:00",
+      "finishedAt": "2026-10-16T05:35:18.676983+00:00",
+      "logs": {
+        "stdout": {
+          "bytes": 12537,
+          "sha256": "d64db130d031d7945b84448bdb0405bef02dad2eee0ec43bbd7549b5bd9c17d5"
+        },
+        "stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "summary": {
+        "tests": 12,
+        "pass": 7,
+        "fail": 5,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "failures": [
+        "actual custody refusal metadata: response at initial before output check is retained",
+        "actual custody refusal metadata: event prefix at initial before output check is retained",
+        "actual custody refusal metadata: response at initial after output check is retained",
+        "actual custody refusal metadata: event prefix at initial after output check is retained",
+        "actual custody refusal metadata: final accepted check revokes the persisted acceptance"
+      ]
+    },
+    "discovery-deadline": {
+      "command": [
+        "/home/err/.volta/tools/image/node/22.23.3/bin/node",
+        "--test",
+        "--test-reporter=tap",
+        "--test-name-pattern=actual discovery deadline:",
+        ".github/scripts/opencode-code-review-workflow.test.mjs"
+      ],
+      "exit": 1,
+      "elapsedSeconds": 141.59918331197696,
+      "startedAt": "2026-10-16T05:34:40.651607+00:00",
+      "finishedAt": "2026-10-16T05:37:02.250812+00:00",
+      "logs": {
+        "stdout": {
+          "bytes": 4109,
+          "sha256": "1d404fc4e14fd4a7b83af9aea3e93efbf07e025ec21869d2f8de391a86b26018"
+        },
+        "stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "summary": {
+        "tests": 4,
+        "pass": 2,
+        "fail": 2,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "failures": [
+        "actual discovery deadline: --version TERM-resistant descendant closes before containment",
+        "actual discovery deadline: models TERM-resistant descendant closes before containment"
+      ]
+    }
+  },
+  "syntaxAndDiff": {
+    "syntax": {
+      "command": [
+        "/home/err/.volta/tools/image/node/22.23.3/bin/node",
+        "--check",
+        ".github/scripts/opencode-code-review-workflow.test.mjs"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "diff-hygiene": {
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "--",
+        ".github/scripts/opencode-code-review-workflow.test.mjs"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  },
+  "cleanup": {
+    "knownDescendantFaultPIDs": [
+      {
+        "command": "--version",
+        "role": "worker",
+        "pid": 3742927,
+        "state": "absent",
+        "live": false
+      },
+      {
+        "command": "--version",
+        "role": "fault.pid",
+        "pid": 3742939,
+        "state": "absent",
+        "live": false
+      },
+      {
+        "command": "--version",
+        "role": "descendant.pid",
+        "pid": 3742950,
+        "state": "absent",
+        "live": false
+      },
+      {
+        "command": "models",
+        "role": "worker",
+        "pid": 3752728,
+        "state": "absent",
+        "live": false
+      },
+      {
+        "command": "models",
+        "role": "fault.pid",
+        "pid": 3752793,
+        "state": "absent",
+        "live": false
+      },
+      {
+        "command": "models",
+        "role": "descendant.pid",
+        "pid": 3752800,
+        "state": "absent",
+        "live": false
+      }
+    ],
+    "remainingOwnedFaultWorkers": [],
+    "directChildCases": "actual worker diagnostics report faultAlive:false/descendantAlive:false; terminal refusals before containment",
+    "meaning": "Z/X means terminated without work or retained pipes; init reaping is external"
+  },
+  "oracleErrors": [],
+  "limitations": [
+    "Synthetic offline child/tool frames exercise the actual public supervisor and canonical qualified local Muse verifier; no native provider-positive/review credit.",
+    "CP fault injection preserves selected physical binary identity and actual public --version/models args/options, then substitutes only owned hanging processes.",
+    "No production fix or full suite run in RED; existing positive assertions preserved.",
+    "No source/runtime/provider/native/Git/receipt mutation except the one authorized test file; coordinator-owned card/event changes retained."
+  ],
+  "evidenceTier": "observed-command-output transcription; no provider approval or live goal proof",
+  "privateProofSHA256": "9dcd37ba53dc39cce8fff4b60b1732e715956096a6afeee556cf1c1862be5526",
+  "nativeOperativePlan": {
+    "qualifiedRheosSHA256": "85369213440634989365f75929045d36eb69b6c6b1e7679f68d483374a0d526b",
+    "proofSHA256": "88e5e049c7a823dc736d1335bdc586dfcc03e844af8046d7075e9739f62221a9",
+    "observedOperations": 3,
+    "exitCodes": [
+      0,
+      0,
+      0
+    ],
+    "status": "InProgress",
+    "points": 5,
+    "eventSuffixBytes": 1570
+  },
+  "runtime": {
+    "canonicalModuleSHA256": "9c6519c1320ae5c6b5123e72610b7d4899c9c1fc62327713e032ee18183ca33b",
+    "physicalBinarySHA256": "f9dab32248695e9ebd56b16a1921798fd85112cf5a69c7dfd0cabc1e17be4a11",
+    "node": "22.23.3; process-only selection"
+  }
+}

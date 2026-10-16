@@ -1347,3 +1347,13 @@
   spore: none
   receipt-refs: cephalon-eta-caller-current-input-output-config-green-20261016
   note: Completeignored/untrackedbyte/type/mode/length immutablecustody and12exactmutableownedroles/priorseals/actualeventprefix/recoverywritebinding. TrustedrawrecoverySHA checkedbeforeparse andalloutputsindependentlyrehashed; seven-discoveryowner transition held. AwaitedownedconfiggroupTERMtoKILL keeps30s/2MiB limits; companionpersonalMuse259 andexactbase64runnerwidth120. No newMuse/permissionlaw/points/budget. Nativegreencomment/readback staysexistingInProgress5; noDone/oldapprovaltransfer/settlement/MERGE/adoption/currenthostedPASS/livegoalproof. Old7bwholeMiMo review full72pages wasauditedseparately andremainsoldafterthishead. No credential/provider/paid/globalruntime/deployment/social/heartbeat change; live0of3/humanPAUSED.
+
+- ts: 2026-10-16T05:41:07.985Z
+  session: /home/err/spaces/cephalon-review-batch-consumer/eta-mu
+  task: cephalon-character-memory/B1-B3/shared-review-caller
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-eta-caller-refusal-discovery-causal-red-20261016
+  note: Both confirmed current findings are ordinary existing ETA5 corrections; no new prerequisite, points, Muse permission law or cap change. Exact real accepted-write and first before/after output-check fault placement; raw-recovery tamper remains preserved without overwrite. Public discoverFreeMiMoFlash faults keep exact selected physical binary/public args and substitute only owned isolated hanging processes. No provider or fullsuite run. RED precedes GREEN. Current2a hosted deterministic producer succeeded, model/reviewgate later failed; no approval claimed. No paid, credential, globalruntime, deployment, social or heartbeat change; live0of3/heartbeat humanPAUSED.
