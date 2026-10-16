@@ -5,7 +5,7 @@ status: incoming
 priority: P1
 points: "12"
 labels: "epics,cephalon,b3,review,context-custody,batching,12sp"
-write-id: "1792082398008-0.lp0ictxkfrtjcsqn17"
+write-id: "1792194257523-0.uguyoyx4pxa2czakqfw"
 type: "epic"
 ---
 
@@ -111,5 +111,7 @@ Existing human latest-free-MiMo requirement and selected-source anomaly: persona
 Actual Codex root4285174062 corrected in primary Incoming epic: issue25 source reviewed6f5e352443f06cdfb1d0f69954b00cba201e7db6/qualified MERGE6f968b71f92a6782b6d619c370de1e4c3585d687, actual hosted laws/CLI38597875258 and review38597876002/native parentETA15 merge readbacks, interpreted NBB installedpack8497afdd329c3dcaefb78eec36d8e629a59d9eb2/all50regularfilesbyteidentical, actual entry/config and SHA identities now inspectable. Original repair excludes outdated-location withdrawals; separate Root37 extension remains pending/unapplied. This exact prior repair custody grants no current ETA approval/readiness/settlement or live credit. Existing local12/nonadditive and all historical native segments retained.
 
 Actual Codex root4285646942 corrected current Risks arithmetic to local twelve-point epic and current fourteen-point batching allocation, with the same one-point consumer counted once; older nine/eleven estimate history in native comments/receipts remains exact. Primary consumer also clarifies only the already-authorized dated override clearing, no new provider/model family/payment/runtime/credentials. Native Incoming5/12/1/identities/dependencies remain unchanged; no Ready/source implementation or approval transfer.
+
+Current child-state correction for CodeRabbit review5554746499/comment4300266581, 2026-10-16 UTC. Preserve the earlier Incoming/no-implementation note as its historical planning checkpoint. Native readback now shows batching child30c9df92-e1fb-4043-8565-36f96ce2a978 InProgress,5points, with source implementation published at4c75ae37135db35a7a39af37283f08dbb0ac7409 on personal ETA21/base d8bbd5fdabf9d7d2c56a9471443bdf4a35497f72. Actual local390/390 and independent native producer390/390/all7 recorded deterministic operations have passed; native MiMo117239750732 is completed FAILURE with malformed batch-assessment arguments and no publication. CodeRabbit exact4c full review5554746499 completed with one minor current-status-note finding, now addressed through native append-only comments. The narrow prompt clarification is still undergoing source qualification. Parent remains Incoming/12points and its six-delivery/consumer dependencies and completion contract stay intact; child implementation/test progress supplies no parent Done, consumer readiness, merge, installation or live B1/B2/B3 proof.
 
 ---

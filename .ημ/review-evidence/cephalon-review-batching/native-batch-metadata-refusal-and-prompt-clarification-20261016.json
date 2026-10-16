@@ -1,0 +1,156 @@
+{
+  "kind": "observed-command-output-transcription-and-derived-comparison-not-raw-provider-approval",
+  "observedAt": "2026-10-16T23:45:12.640411+00:00",
+  "predecessorHead": "4c75ae37135db35a7a39af37283f08dbb0ac7409",
+  "base": "d8bbd5fdabf9d7d2c56a9471443bdf4a35497f72",
+  "nativeAttempt": {
+    "run": 38978467666,
+    "attempt": 1,
+    "job": 117239750732,
+    "startedAt": "2026-10-16T23:15:20Z",
+    "completedAt": "2026-10-16T23:30:17Z",
+    "conclusion": "FAILURE",
+    "artifact": 12081520938,
+    "zipBytes": 1031601,
+    "zipSHA256": "05dd05027fa2245de238144206dd84be43f0abe1fb864eede107956483743982",
+    "lastCoverage": {
+      "delivered": 60,
+      "assessed": 52,
+      "chunks": 122
+    },
+    "failure": {
+      "tool": "review_assess_diff_batch",
+      "responseLine": 108,
+      "submittedPageNumbers": [
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "members": 8,
+      "memberLimit": 4,
+      "incorrectPageHashes": [
+        53,
+        54,
+        55,
+        56
+      ],
+      "matchingGeometryAndFullSourceDigest": true,
+      "requestUTF8Bytes": 3995,
+      "requestLimit": 16384,
+      "largestNoteUTF8Bytes": 487,
+      "noteLimit": 2048,
+      "toolOk": false,
+      "restartRequired": true
+    },
+    "childExit": 0,
+    "childStderrBytes": 0,
+    "submission": null,
+    "verdict": "unestablished-review-trace",
+    "code": "structured-input-unestablished",
+    "acceptedInvocation": null,
+    "recoveryReason": null
+  },
+  "scopeCorrection": {
+    "prompt": "1–4 assessments from one actual delivered read batch; assess before next read; copy exact id/start/end/sha256; stop if unavailable; do not combine or reconstruct compacted metadata",
+    "guardLimitRecoveryVerifierPublicationModelCredentialTimeoutChanges": false,
+    "completeEncodedPayloadSynchronized": true,
+    "preCheckoutBlockUnchanged": true,
+    "testFileUnchanged": true,
+    "futureModelCompliance": "UNVERIFIED"
+  },
+  "focusedVerification": {
+    "existingTests": 13,
+    "pass": 13,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "exit": 0,
+    "stderrBytes": 0,
+    "durationMs": 5690.748233,
+    "stdoutSHA256": "cec7b23a0121b313f542f9deb9dc467ebee71b01f240c36605c5266fa0c9351d",
+    "scope": [
+      "exact runner and precheckout copy equality",
+      "batch-host unsupported refusal",
+      "initial/corrective custody and prompt plumbing",
+      "incomplete assessment refusal",
+      "two-child supervisor bound"
+    ],
+    "fullCurrentSuccessorNativeCI": "PENDING_NOT_YET_PUBLISHED",
+    "physicalCLIInstallFixture": "NOT_RERUN_LOCALLY"
+  },
+  "priorProducer": {
+    "job": 117233684078,
+    "all7RecordedOperationsExit0": true,
+    "rootSuitesPass": 14,
+    "workflowTestsPass": 390,
+    "workflowTestsFail": 0,
+    "durationMs": 526149.178995,
+    "warningsAndNotices": "retained separately; no zero-warning assertion"
+  },
+  "nativeFinding": {
+    "review": 5554746499,
+    "comment": 4300266581,
+    "sourceHead": "4c75ae37135db35a7a39af37283f08dbb0ac7409",
+    "codeRabbitCompletionReply": 6226610250,
+    "updatedAt": "2026-10-16T23:38:39Z",
+    "selectedInputs": 26,
+    "actionableComments": 1,
+    "disposition": "source correction through actual qualified Rheos comments; native finding settlement after source commit"
+  },
+  "nativeRheos": {
+    "qualifiedCliSHA256": "85369213440634989365f75929045d36eb69b6c6b1e7679f68d483374a0d526b",
+    "qualifiedBoardSource": "8ef43eb2cb590f465552f462c8743a04282603fd",
+    "config": "openhax.kanban.edn",
+    "operations": [
+      {
+        "label": "batch",
+        "uuid": "30c9df92-e1fb-4043-8565-36f96ce2a978",
+        "verb": "comment",
+        "exit": 0,
+        "stderrBytes": 0,
+        "bodySHA256": "6a7cc01d3b41a79da158fd218f6cd4616ec6231ab162518f3d02b62037308c70",
+        "readExit": 0,
+        "readStderrBytes": 0,
+        "exactCommentReadback": true,
+        "identityStatusPointsEdgesUnchanged": true
+      },
+      {
+        "label": "parent",
+        "uuid": "de02c921-e23c-4d83-87e8-b32c6c3160ff",
+        "verb": "comment",
+        "exit": 0,
+        "stderrBytes": 0,
+        "bodySHA256": "ae8da4b9fba0a3c5bbbdf8189f7864593e1a8d489b54b1ee563030f530d20481",
+        "readExit": 0,
+        "readStderrBytes": 0,
+        "exactCommentReadback": true,
+        "identityStatusPointsEdgesUnchanged": true
+      }
+    ],
+    "originalLedgerPrefixBytes": 1898562,
+    "exactOriginalLedgerPrefix": true,
+    "appendedEventRows": 2,
+    "appendedEventBytes": 3305,
+    "initialReadFailure": "Copied CLI initially lacked NODE_PATH/yaml; both reads failed before board admission or mutation. Corrected native read-task invocations exit0/stderr0 before any write."
+  },
+  "sourceHashes": {
+    ".github/scripts/run-opencode-review-recovery.mjs": {
+      "bytes": 125867,
+      "sha256": "e8baf9d5dcd2c9b045b26d0ca589d136282443f01bbfd16b52902488ef3289bb"
+    },
+    ".github/workflows/opencode-code-review.yml": {
+      "bytes": 278670,
+      "sha256": "2138e2018d22c5ad6920d679d66bcd1d47b1cca15a47aa6c4ddb59a6803780d9"
+    },
+    "docs/agent-workflows.md": {
+      "bytes": 24478,
+      "sha256": "e0aa9a7c51bac08c28e65ed5847c8f3f7896ac33172ec44cb9f5f0032a304249"
+    }
+  },
+  "limits": "No deployed character/clock/owner/PM2/cloud/credential/paid/source gate waiver/heartbeat change; native Ready/Done and B1-B3 served proof absent."
+}

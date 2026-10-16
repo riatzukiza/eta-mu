@@ -1139,6 +1139,12 @@ Full-input assessment checkpoint before the first stage:
   UTF8 bytes. Do not reread a page already assessed, synthesize single-page
   calls, combine invocation history or replace per-page notes with one summary.
   Any failed/truncated/refused batch stops this invocation without submission.
+- Each review_assess_diff_batch call must contain 1–4 assessments from exactly
+  one delivered read batch. Assess that batch before requesting the next read.
+  Copy exact id/start/end/sha256 from that actual returned batch. Never combine
+  batches or reconstruct metadata after compaction or from a compaction summary.
+  If the exact returned metadata is unavailable, stop this invocation without
+  further tool calls or submission.
 - Check the latest assessment response: coverage.assessed must equal
   coverage.chunks and coverage.missing must be empty before review_record_evidence.
   Delivered/read coverage alone does not prove assessment; do not infer completion.

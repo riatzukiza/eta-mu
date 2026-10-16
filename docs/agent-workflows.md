@@ -369,3 +369,21 @@ The existing exact-copy assertion and56 public-job controls pass together
 checks/reviews remain required. The separate transcription
 `.ημ/review-evidence/cephalon-review-batching/packaged-runner-sync-red-green-20261016.json`
 retains the exact failed-run and corrected-payload source/log hashes.
+
+### Native batch assessment clarification — 2026-10-16
+
+At PR21 head `4c75ae37135db35a7a39af37283f08dbb0ac7409`, native MiMo
+job117239750732/run38978467666 failed after an eight-member assessment call
+for pages53–60 also supplied incorrect delivered-page hashes for pages53–56.
+Pinned Muse refused that call; the runner retained one completed child with
+exit0, empty stderr, no submission and `unestablished-review-trace`. Its last
+successful tool coverage was60 delivered/52 assessed of122 pages. The separate
+native deterministic producer's390/390 passing tests remain valid evidence.
+
+The caller prompt now explicitly requires1–4 assessments from exactly one
+delivered read batch, assessed before the next read, with exact returned
+id/start/end/sha256 metadata. Combining batches or reconstructing metadata after
+compaction is forbidden; unavailable exact metadata requires stopping. This
+clarifies the existing contract without changing guards, limits, recovery,
+verifier, publication or timeouts. Future model compliance still requires
+native qualification on the successor head.
