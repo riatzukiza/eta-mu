@@ -1357,3 +1357,13 @@
   spore: none
   receipt-refs: cephalon-eta-caller-refusal-discovery-causal-red-20261016
   note: Both confirmed current findings are ordinary existing ETA5 corrections; no new prerequisite, points, Muse permission law or cap change. Exact real accepted-write and first before/after output-check fault placement; raw-recovery tamper remains preserved without overwrite. Public discoverFreeMiMoFlash faults keep exact selected physical binary/public args and substitute only owned isolated hanging processes. No provider or fullsuite run. RED precedes GREEN. Current2a hosted deterministic producer succeeded, model/reviewgate later failed; no approval claimed. No paid, credential, globalruntime, deployment, social or heartbeat change; live0of3/heartbeat humanPAUSED.
+
+- ts: 2026-10-16T05:59:20.277Z
+  session: /home/err/spaces/cephalon-review-batch-consumer/eta-mu
+  task: cephalon-character-memory/B1-B3/shared-review-caller
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-eta-caller-refusal-discovery-green-20261016
+  note: Initialoutputcheck nowinsideexistingcaptureguard; finalacceptedcheckrefusal truthfullyrecordsboundary/attempt, retainsrejectedidentity andclearsacceptance throughheldrawwriteguard. Unknownrawrecovery remainsuntouched/refused. Version/modeldiscoveryownsdetachedgroupTERM/KILL/actualclose andnewduringcollection2MiB enforcementmatchesexistingconfiguredstreambound, shared30sdeadline/numericcapsunchanged. Onlyrunnerandembeddedcopychanged. Old2ahostedfailure wasactualmodeltransposedpagehashes; no newcaller/prompt/model/retryexception. Existingstrictbatch/recoveryeligibility/twoattempt120min/64MiBGitgatesremain; no points/newprerequisite/Musepermissionlaw. Finalnativecurrentheadreviews/checks/settlements/MERGE/adoption remain. B1B2B3liveproofsremain0of3 andheartbeatHUMAN-PAUSED; no runtime/credential/provider/paid/deployment/social/spore change.

@@ -287,28 +287,48 @@ async function captureModelCommand({ binary, args, environment, cwd, deadline, d
   const stdout = fs.createWriteStream(stdoutFile, { flags: "wx", mode: 0o600 });
   const stderr = fs.createWriteStream(stderrFile, { flags: "wx", mode: 0o600 });
   const streams = Promise.allSettled([finished(stdout), finished(stderr)]);
-  let timeout, force, timedOut = false, exit, failure, capturesClosed = false;
+  let child, timeout, force, timedOut = false, exit, failure, capturesClosed = false;
+  let stdoutBytes = 0, stderrBytes = 0;
+  const kill = signal => {
+    if (!child?.pid) return;
+    try { process.kill(-child.pid, signal); } catch (error) { if (error.code !== "ESRCH") failure ??= error; }
+  };
+  const terminate = () => {
+    kill("SIGTERM");
+    force ??= setTimeout(() => kill("SIGKILL"), Math.max(0, Math.min(250, deadline - performance.now())));
+  };
+  const collect = (output, stream) => bytes => {
+    if (stream === "stdout") stdoutBytes += bytes.length; else stderrBytes += bytes.length;
+    if ((stream === "stdout" ? stdoutBytes : stderrBytes) > 2 * 1024 * 1024) {
+      failure ??= new Error("OpenCode catalog capture exceeded stream bound"); terminate();
+    } else output.write(bytes);
+  };
+  for (const output of [stdout, stderr]) output.on("error", error => { failure ??= error; terminate(); });
   try {
     const remaining = deadline - performance.now();
     if (remaining <= 0) throw new Error("OpenCode model discovery deadline expired");
-    const child = spawn(binary, args, { stdio: ["ignore", "pipe", "pipe"], env: environment, cwd });
-    child.stdout.pipe(stdout); child.stderr.pipe(stderr);
+    child = spawn(binary, args, { stdio: ["ignore", "pipe", "pipe"], env: environment, cwd, detached: true });
+    child.stdout.on("data", collect(stdout, "stdout")); child.stderr.on("data", collect(stderr, "stderr"));
     timeout = setTimeout(() => {
-      timedOut = true; child.kill("SIGTERM");
-      force = setTimeout(() => child.kill("SIGKILL"), 250);
-    }, remaining);
-    exit = await new Promise((resolve, reject) => {
-      child.once("error", reject);
+      timedOut = true; terminate();
+    }, Math.max(0, remaining - 250));
+    exit = await new Promise(resolve => {
+      child.once("error", error => { failure ??= error; });
+      // A normally exiting parent may leave a helper holding its pipes. Close
+      // the entire owned group and await close, as with config acquisition.
+      child.once("exit", terminate);
       child.once("close", (code, signal) => resolve({ code, signal }));
     });
   } catch (error) { failure = error; }
   finally {
-    clearTimeout(timeout); clearTimeout(force);
+    clearTimeout(timeout); kill("SIGKILL");
     stdout.end(); stderr.end();
     const closed = await streams;
+    clearTimeout(force);
     capturesClosed = closed.every(({ status }) => status === "fulfilled");
     if (!failure && closed.some(({ status }) => status === "rejected")) failure = new Error("OpenCode catalog capture failed");
   }
+  if (performance.now() >= deadline) { timedOut = true; failure ??= new Error("OpenCode model discovery deadline expired"); }
   const record = { command: [binary, ...args], cwd, exit_code: exit?.code ?? null,
     signal: exit?.signal ?? null, timed_out: timedOut, captures_closed: capturesClosed,
     stdout_file: path.basename(stdoutFile), stderr_file: path.basename(stderrFile),
@@ -1220,9 +1240,9 @@ export async function runReviewRecovery({
   let contextSha256 = strict ? sha256(JSON.stringify(expectedContext)) : null;
   const capture = async (boundary, attempt) => {
     const deadline = performance.now() + MODEL_DISCOVERY_BUDGET_MS;
-    if (checkOutputs) await checkOutputs(boundary === "after" ? attempt : null, deadline);
-    if (!captureBatchHost) return;
     try {
+      if (checkOutputs) await checkOutputs(boundary === "after" ? attempt : null, deadline);
+      if (!captureBatchHost) return;
       const observation = structuredClone(await captureBatchHost({ boundary, attempt, deadline }));
       await checkOutputs(null, deadline);
       captureDeadline(deadline);
@@ -1333,7 +1353,19 @@ export async function runReviewRecovery({
         };
         writeRecovery(metadataFile, metadata);
       }
-      if (checkOutputs) { await checkOutputs(); writeRecovery(metadataFile, metadata); }
+      if (checkOutputs) {
+        try { await checkOutputs(); }
+        catch (error) {
+          metadata.custody_error = { boundary: "accepted", attempt, message: error instanceof Error ? error.message : String(error) };
+          metadata.rejected_accepted_invocation = metadata.accepted_invocation;
+          metadata.accepted_invocation = null;
+          // Only held supervisor bytes may be replaced. writeRecovery refuses
+          // an independently changed raw record instead of repairing its history.
+          writeRecovery(metadataFile, metadata);
+          throw error;
+        }
+        writeRecovery(metadataFile, metadata);
+      }
       return metadata;
     }
     if (state === "malformed") {
