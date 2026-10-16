@@ -1,0 +1,104 @@
+{
+  "kind": "observed causal RED for current native ETA findings; not GREEN/provider approval/adoption",
+  "recordedAt": "2026-10-16T09:38:44.903954+00:00",
+  "unchangedProductionHead": "1f0786e9fbb4174042eeb4f7bfab009482c350d0",
+  "nativeFindings": {
+    "CodeRabbit": {
+      "review": 5545233832,
+      "root": 4292631000
+    },
+    "Codex": {
+      "review": 5545237967,
+      "roots": [
+        4292634123,
+        4292634137
+      ]
+    }
+  },
+  "actualRun": {
+    "startedAt": "2026-10-16T09:32:19.365535+00:00",
+    "finishedAt": "2026-10-16T09:33:06.650179+00:00",
+    "wallSeconds": 47.28465194097953,
+    "exit": 1,
+    "counts": {
+      "tests": 14,
+      "pass": 5,
+      "fail": 9,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 46992.036335
+    },
+    "stdout": {
+      "bytes": 16153,
+      "sha256": "6cea79ab99bce4fa8d7126701285d27ec1e4a458827a619c2550d49c7bd7fdd6"
+    },
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "eightLeafFailuresPlusOneAggregation": true,
+    "fiveBoundaryAndMutationControlsPass": true,
+    "sourceFrozen": true,
+    "sampledOwnedPIDs": 29,
+    "allSameOwnedProcessIdentitiesAbsentAtReadback": true,
+    "rawCausalProofSHA256": "8f1cb2007f4fb406010db610d27beb7c216edc7ddd21e0c53ae3f810860300ca"
+  },
+  "sourceFiles": {
+    ".github/scripts/run-opencode-review-recovery.mjs": {
+      "bytes": 117931,
+      "sha256": "0d7b6f4f79e2ad3b192d53a981d851c3c23f4dab2472b1ed2fc2b3c195bb3c44"
+    },
+    ".github/workflows/opencode-code-review.yml": {
+      "bytes": 266394,
+      "sha256": "8aa7d4b3d7b595d28e31f1b46077f12dfa604418d4cdc9e3d8cfa9360655e69c"
+    },
+    ".github/scripts/opencode-code-review-workflow.test.mjs": {
+      "bytes": 290275,
+      "sha256": "5dbabf1b59242cc1f4995921bb60f405cd67685b0302118c6937f5f4b6b2f0c4"
+    }
+  },
+  "causalAttribution": {
+    "leafFailures": 8,
+    "parentSubtestsFailedAggregation": 1,
+    "passingBoundaryAndMutationControls": 5,
+    "observedOracleOrMissingToolErrors": [],
+    "metadataPrecision": "The old helper never enters Buffer.byteLength measurement (measurements=[]); tiny-row identity succeeds. These are unimplemented metadata accounting REDs, not an actually acquired64MiB tree or virtual overflow that fired.",
+    "deadlinePrecision": "The final capture refuses, but only after5/4 runtime payload starts beyond the synthetic deadline; no claim of accepted output after deadline.",
+    "sortedDFSPrecision": "Native capture refuses the legitimate in-root link before the complete expected identity assertion; unchanged hash semantics remain a GREEN obligation."
+  },
+  "observedDefects": [
+    "The inert selected-version fixture still installed hardcoded1.18.31.",
+    "Selected context descendants remain duplicate census inputs; a legitimate internal link is refused before the complete identity oracle is reached.",
+    "Regular payload uses a whole-file read, not streaming.",
+    "Final capture refuses expired input, but only after five/four later runtime payload reads under explicit synthetic clock faults.",
+    "Current helper never enters UTF8 metadata accounting; the synthetic overflow measurement seams did not fire on this RED."
+  ],
+  "selectedRepair": {
+    "metadataAllowanceBytes": 67108864,
+    "meaning": "New application of existing caller allowance to monotonically consumed names/separators/identity-row metadata across complete context/runtime acquisition; not a payload-byte or arbitrary entry-number cap.",
+    "deadline": "One existing30-second acquisition deadline shared across all directory/file/context/runtime work; no renewal or retry entitlement.",
+    "payload": "Stream observed finite regular-file lengths with unchanged sorted DFS JSON digest and link semantics.",
+    "census": "Only exact descendants of independently held physical context leave duplicate regular-file census; complete context identity and all other inputs remain mandatory.",
+    "version": "Same effective caller-selected version through quoted environment/arguments; existing default/profile eligibility unchanged."
+  },
+  "nativeFailedAttempt": {
+    "head": "1f0786e9fbb4174042eeb4f7bfab009482c350d0",
+    "run": 38875069821,
+    "modelJob": 116897759580,
+    "nativeConclusion": "failure",
+    "nativeOriginStepSuccess": true,
+    "diagnosis": "Page26 assessment note2150UTF8bytes exceeded existing2048-byte limit by102; host refused the batch. All supplied bindings matched. No new caller defect established.",
+    "scope": "28of109 pages delivered; assessments1-24 accepted;81 unread; full260-line context read; no stages/submission/accepted invocation.",
+    "noQuotaCredentialTransportOrDeadlineCauseObserved": true,
+    "noRetryBeyondExistingEligibility": true,
+    "digestVerifiedNativeZIPs": 3,
+    "rawDataAuditSHA256": "255433bea154655f6574d7e0dd0540ced1e9c232b847171a3cc4f45ced81ce29"
+  },
+  "limits": [
+    "Actual local public capture/physical CLI is used; clock/UTF8 measurement faults are explicitly synthetic.",
+    "No actual64MiB tree, triggered virtual overflow on the old helper, or native-host payload maximum is claimed.",
+    "All previous assertions remain; four expected-version fixture values and their transport now follow the selected input.",
+    "No production edit, provider/credential/paid/runtime/deployment/social/heartbeat change; live0of3/goalACTIVE/HUMAN-PAUSED."
+  ]
+}

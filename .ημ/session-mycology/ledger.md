@@ -1387,3 +1387,13 @@
   spore: none
   receipt-refs: cephalon-eta-original-git-model-deadline-green-20261016
   note: TrackedGitHEAD/workingdiff capturedsynchronously beforefirstasynchronousdiscovery andcomparedlater. Anonymousofficialcompletecurrentrun/attempt/job/runner origin, shared30s2MiB acquisition, actualjobstart deductssetup/discovery/attempts intooneheldwall/monotonic cutoff.120250msreserve partitions existing60..180/default60 budget, notincrease. OwnedmodelgroupTERM/KILL/actualclose/finalizedstreams andpipefreehelpercleanup; max2/recoveryeligibility unchanged. Earlier337PASS1EEXISTFAIL archivecollision retainedfailed; finaluniquedestination actual339PASS. Postbefore-clock control passes existingemptycapturefallback, notnewproductionbugfix. Initialmainreadback usedwrong commentskey afterthree successfulnativeops; correctedfromretainedsections/content withoutrepeatwrite. Currentheadhostedreviews/checks/settlements/MERGE/adoption remain. B1B2B3live0of3/heartbeatHUMAN-PAUSED. No points/newprerequisite/providercredential/paid/globalruntime/deployment/social/spore change.
+
+- ts: 2026-10-16T09:39:41.417Z
+  session: /home/err/spaces/cephalon-review-batch-consumer/eta-mu
+  task: cephalon-character-memory/B1-B3/shared-review-caller
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-eta-context-stream-version-causal-red-20261016
+  note: Confirmed duplicate context census, hardcoded native-test version and unbounded recursive payload acquisition inside existing ETA5. Final capture already refuses an expired result, but traversal continued after the synthetic deadline; do not claim expired output was accepted. Old helper never entered metadata accounting, so the virtual overflow seams did not fire in RED. Selected GREEN uses one monotonically consumed64MiB name/row metadata allowance and one existing30-second acquisition deadline, finite streaming payloads, complete independent context identity and all other census inputs; no payload cap or numeric budget increase. Native1f MiMo failure was a2150-byte page26 note against2048 limit;28of109 pages delivered/24 assessed/no stages or submission, not a credential, quota, transport or deadline failure. Preserve the strict refusal and existing retry rules. Both native operative plans retain InProgress5 with append-only events. Commit this actual RED before production GREEN. No new points, prerequisite, model/provider credential, paid usage, global runtime, deployment, social or heartbeat change. Live0of3; goalACTIVE; heartbeatHUMAN-PAUSED; no spore.

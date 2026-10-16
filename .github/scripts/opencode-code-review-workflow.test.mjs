@@ -24,6 +24,10 @@ const requireFromEtaMu = createRequire(path.join(root, "packages/eta-mu/package.
 const YAML = requireFromEtaMu("yaml");
 const workflowText = fs.readFileSync(workflowPath, "utf8");
 const workflow = YAML.parse(workflowText);
+// The workflow installs this selected physical version. Its fingerprint must
+// still qualify through Muse; selecting a version supplies no host admission.
+const nativeBatchVersion = process.env.ETA_MU_NATIVE_BATCH_VERSION ||
+  String(workflow.on.workflow_call.inputs.opencode_version.default);
 const workflowDocs = fs.readFileSync(path.join(root, "docs/agent-workflows.md"), "utf8");
 const recoveryRunnerSource = fs.readFileSync(
   path.join(root, ".github/scripts/run-opencode-review-recovery.mjs"),
@@ -1378,6 +1382,33 @@ test("review context packages the exact runner for reusable-workflow callers", (
     namedStep("review", "Run bounded evidence-first OpenCode review").run,
     "node .review-context/machinery/run-opencode-review-recovery.mjs",
   );
+});
+
+test("native caller version: deterministic installation uses the same selected input as production", (t) => {
+  const { directory } = makeRepository(t);
+  const fixture = path.join(directory, "owned-native-version");
+  const bin = path.join(fixture, "bin"), runnerTemp = path.join(fixture, "tmp");
+  fs.mkdirSync(bin, { recursive: true }); fs.mkdirSync(runnerTemp);
+  const argvFile = path.join(fixture, "npm-argv.json"), envFile = path.join(fixture, "github-env");
+  // Inert argv capture: no npm install, binary replacement, network or model.
+  fs.writeFileSync(path.join(bin, "npm"), `#!/usr/bin/env node\n` +
+    `require("node:fs").writeFileSync(process.env.OWNED_NPM_ARGV,JSON.stringify(process.argv.slice(2)));\n`, { mode: 0o700 });
+  const selected = "9.8.7-owned-fixture";
+  const step = namedStep("deterministic_evidence", "Install physical OpenCode for native caller regression");
+  const result = runScript(step.run, directory, { PATH: `${bin}:${process.env.PATH}`,
+    RUNNER_TEMP: runnerTemp, GITHUB_ENV: envFile, OWNED_NPM_ARGV: argvFile, OPENCODE_VERSION: selected });
+  assert.equal(result.status, 0, result.stderr);
+  const args = JSON.parse(fs.readFileSync(argvFile, "utf8"));
+  assert.deepEqual(args.filter(arg => arg.startsWith("opencode-linux-x64@")),
+    [`opencode-linux-x64@${selected}`], "the actual install script must use the selected value as one quoted argument");
+  const expression = "${{ inputs.opencode_version || '1.18.31' }}";
+  assert.equal(step.env?.OPENCODE_VERSION, expression);
+  assert.equal(step.env.OPENCODE_VERSION, namedStep("review", "Install pinned OpenCode CLI").env.OPENCODE_VERSION);
+  assert.equal(namedStep("review", "Run bounded evidence-first OpenCode review").env.REVIEW_EXPECTED_OPENCODE_VERSION, expression);
+  assert.equal(namedStep("review", finalInputVerificationName).env.REVIEW_EXPECTED_OPENCODE_VERSION, expression);
+  assert.equal(parseOutput(envFile).ETA_MU_NATIVE_BATCH_VERSION, selected,
+    "the same installed version must reach the existing actual physical discovery/terminal fixtures");
+  assert.equal(String(workflow.on.workflow_call.inputs.opencode_version.default), "1.18.31");
 });
 
 test("workflow bounds recovery before validating and publishing the submission", () => {
@@ -3035,6 +3066,265 @@ function actualCaptureFixture(t) {
   return { checked, f, binary, configFile, environment, captureInput, link, otherSkills };
 }
 
+test("actual context custody: the selected physical context has one complete byte owner",
+  { skip: process.platform !== "linux" || process.arch !== "x64" }, async (t) => {
+  const { checked, f, captureInput } = actualCaptureFixture(t);
+  const observed = await captureReviewBatchCustody(captureInput);
+  assert.ok(observed.custody.context.files >= 5);
+  assert.equal(observed.custody.context.path, fs.realpathSync(f.context));
+  assert.match(observed.custody.context.sha256, /^[0-9a-f]{64}$/);
+  const prefix = path.relative(checked.consumer, f.context) + path.sep;
+  assert.deepEqual(observed.custody.git_untracked_files.filter(row => row.path.startsWith(prefix)), [],
+    "only this independently held physical context must leave the duplicate consumer census");
+  assert.ok(observed.custody.git_untracked_files.some(row => row.path === path.relative(checked.consumer, f.contextFile)),
+    "the staged encounter file outside that root must remain an immutable consumer input");
+});
+
+test("actual context custody: sorted DFS JSON identity retains modes, empty bytes, Unicode and internal links",
+  { skip: process.platform !== "linux" || process.arch !== "x64" }, async (t) => {
+  const { f, captureInput } = actualCaptureFixture(t);
+  fs.mkdirSync(path.join(f.context, "a-tree"));
+  fs.writeFileSync(path.join(f.context, "a-tree/blank"), "");
+  fs.chmodSync(path.join(f.context, "a-tree/blank"), 0o640);
+  fs.writeFileSync(path.join(f.context, "a-tree/尾.txt"), "actual finite Unicode bytes ημ\n");
+  fs.chmodSync(path.join(f.context, "a-tree/尾.txt"), 0o604);
+  fs.symlinkSync("a-tree/尾.txt", path.join(f.context, "link-one"));
+  // Explicit known fixture inventory, not a second general directory walker.
+  // This is the original sorted depth-first JSON row representation.
+  const expected = ["SHA256SUMS", "a-tree/blank", "a-tree/尾.txt", "agents/skills/original.md", "link-one",
+    "machinery/evidence-review.md", "machinery/review-invocation.cjs", "metadata/exposed-tools.txt"].map(name =>
+    name === "link-one" ? { path: name, link: "a-tree/尾.txt", target: "a-tree/尾.txt" }
+      : { path: name, mode: fs.statSync(path.join(f.context, name)).mode & 0o777,
+        sha256: transportSha256(fs.readFileSync(path.join(f.context, name))) });
+  assert.equal(expected[1].mode, 0o640); assert.equal(expected[2].mode, 0o604);
+  const observed = await captureReviewBatchCustody(captureInput);
+  assert.deepEqual(observed.custody.context, { path: fs.realpathSync(f.context),
+    sha256: transportSha256(JSON.stringify(expected)), files: expected.length });
+});
+
+for (const kind of ["root symlink", "escaping internal link", "special context input"]) {
+  test(`actual context custody: ${kind} cannot establish a census exemption`,
+    { skip: process.platform !== "linux" || process.arch !== "x64" }, async (t) => {
+    const { checked, f, captureInput } = actualCaptureFixture(t);
+    if (kind === "root symlink") {
+      const outside = path.join(checked.env.RUNNER_TEMP, "owned-rebound-context");
+      fs.renameSync(f.context, outside); fs.symlinkSync(outside, f.context);
+    } else if (kind === "escaping internal link") {
+      const outside = path.join(checked.env.RUNNER_TEMP, "owned-external-source");
+      fs.writeFileSync(outside, "not an admitted context descendant\n");
+      fs.symlinkSync(outside, path.join(f.context, "escaping-link"));
+    } else execFileSync("mkfifo", [path.join(f.context, "owned-special-input")]);
+    await assert.rejects(captureReviewBatchCustody(captureInput), /physical|source|context|regular|symlink|special|escape/i);
+  });
+}
+
+test("actual source acquisition RED: finite streaming, shared deadline and aggregate metadata custody",
+  { skip: process.platform !== "linux" || process.arch !== "x64" }, async (t) => {
+  // Reuse ONE physical copy/fixture for these isolated faults. Only tiny source
+  // files are added; there is no dependency install or64MiB filesystem tree.
+  const { checked, captureInput } = actualCaptureFixture(t);
+  const contextRow = "owned-row-context-ημ", runtimeRow = "owned-row-runtime-ημ", nameLimit = "owned-name-limit-ημ";
+  for (const [directory, name, bytes] of [[captureInput.contextDirectory, contextRow, "context row\n"],
+    [captureInput.runtimeDirectory, runtimeRow, "runtime row\n"],
+    [captureInput.runtimeDirectory, nameLimit, "finite name input\n"],
+    [captureInput.runtimeDirectory, "a-first.txt", "x".repeat(8192)],
+    [captureInput.runtimeDirectory, "z-after.txt", "must not read after expiry\n"]]) {
+    fs.writeFileSync(path.join(directory, name), bytes);
+  }
+  for (const mode of ["whole-file", "shared-deadline", "stream-clock", "metadata-name", "metadata-aggregate"]) {
+    await t.test(mode, { timeout: 45_000 }, async (t) => {
+      const state = path.join(checked.env.RUNNER_TEMP, `owned-source-acquisition-${mode}`);
+      fs.mkdirSync(state, { mode: 0o700 });
+      const input = path.join(state, "input.json");
+      fs.writeFileSync(input, JSON.stringify({ state, mode, captureInput, contextRow, runtimeRow, nameLimit,
+        runner: path.join(root, ".github/scripts/run-opencode-review-recovery.mjs") }));
+      // Same owned worker/public-capture pattern as the existing config faults.
+      // Actual physical CLI/Muse/files are retained. Clock and UTF8 measurement
+      // faults below are explicitly SYNTHETIC, not native large-tree proof.
+      const worker = String.raw`
+        import fs from "node:fs";
+        import fsp from "node:fs/promises";
+        import cp from "node:child_process";
+        import crypto from "node:crypto";
+        import path from "node:path";
+        import { syncBuiltinESMExports } from "node:module";
+        import { pathToFileURL } from "node:url";
+        const f=JSON.parse(fs.readFileSync(process.argv[1],"utf8"));
+        const spawn=cp.spawn;
+        cp.spawn=(binary,args,options)=>{
+          const child=spawn(binary,args,options);
+          if(child.pid) fs.appendFileSync(path.join(f.state,"owned-pids.jsonl"),JSON.stringify({
+            pid:child.pid,detached:options?.detached===true})+"\n");
+          return child;
+        };
+        syncBuiltinESMExports();
+        const {captureReviewBatchCustody}=await import(pathToFileURL(f.runner).href);
+        // Normalize the actual CLI and establish unchanged source identity
+        // before any synthetic fault; no model or provider is called.
+        const baseline=await captureReviewBatchCustody(f.captureInput);
+        const realNow=performance.now.bind(performance);
+        const deadline=realNow()+30_000;
+        let offset=0,clockFault=false,contextCharged=false,runtimeCharged=false;
+        let wholeReads=0,streamReads=0,runtimeReadsAfterExpiry=0,laterReads=0,rowHashed=false;
+        const measurements=[];
+        Object.defineProperty(performance,"now",{value:()=>realNow()+offset});
+        const first=path.join(f.captureInput.runtimeDirectory,"a-first.txt");
+        const later=path.join(f.captureInput.runtimeDirectory,"z-after.txt");
+        const target=file=>typeof file==="string"?path.resolve(file):null;
+        const listed=directory=>{
+          const actual=target(directory);
+          if(f.mode!=="shared-deadline")return;
+          if(actual===f.captureInput.contextDirectory&&!contextCharged){contextCharged=true;offset+=16_000;}
+          if(actual===f.captureInput.runtimeDirectory&&!runtimeCharged){runtimeCharged=true;offset+=16_000;clockFault=true;}
+        };
+        const reading=file=>{
+          const actual=target(file);
+          if(actual?.startsWith(f.captureInput.runtimeDirectory+path.sep)&&performance.now()>=deadline)runtimeReadsAfterExpiry++;
+          if(actual===later)laterReads++;
+        };
+        const jump=()=>{if(!clockFault){clockFault=true;offset+=31_000;}};
+        const readFile=fs.readFileSync,readAsync=fsp.readFile,stream=fs.createReadStream;
+        const readdir=fs.readdirSync,readdirAsync=fsp.readdir,opendir=fsp.opendir;
+        const byteLength=Buffer.byteLength,createHash=crypto.createHash;
+        fs.readdirSync=function(directory,...args){const rows=readdir.call(this,directory,...args);listed(directory);return rows;};
+        fsp.readdir=async function(directory,...args){const rows=await readdirAsync.call(this,directory,...args);listed(directory);return rows;};
+        fsp.opendir=async function(directory,...args){
+          const handle=await opendir.call(this,directory,...args);
+          return {path:handle.path,
+            read:async()=>{const row=await handle.read();if(row===null)listed(directory);return row;},
+            close:()=>handle.close(),
+            async *[Symbol.asyncIterator](){for await(const row of handle)yield row;listed(directory);}};
+        };
+        fs.readFileSync=function(file,...args){
+          reading(file);
+          if(target(file)===first){
+            wholeReads++;
+            if(f.mode==="whole-file")throw Error("SYNTHETIC owned payload refuses whole-file buffering");
+          }
+          const bytes=readFile.call(this,file,...args);
+          if(f.mode==="stream-clock"&&target(file)===first)jump();
+          return bytes;
+        };
+        fsp.readFile=async function(file,...args){
+          reading(file);
+          if(target(file)===first){wholeReads++;if(f.mode==="whole-file")throw Error("SYNTHETIC owned payload refuses whole-file buffering");}
+          const bytes=await readAsync.call(this,file,...args);
+          if(f.mode==="stream-clock"&&target(file)===first)jump();return bytes;
+        };
+        fs.createReadStream=function(file,...args){
+          reading(file);const result=stream.call(this,file,...args);
+          if(target(file)===first){streamReads++;if(f.mode==="stream-clock")result.prependOnceListener("data",jump);}
+          return result;
+        };
+        Buffer.byteLength=function(value,encoding){
+          const actual=byteLength.call(this,value,encoding);
+          if(typeof value!=="string")return actual;
+          if(f.mode==="metadata-name"&&value.split("\0").includes(f.nameLimit)){
+            const bytes=64*1024*1024+1;
+            measurements.push({kind:"name",role:"runtime",actual,reported:bytes});return bytes;
+          }
+          if(f.mode==="metadata-aggregate"&&value.startsWith('{"path":')){
+            const role=value.includes('"path":"'+f.contextRow+'"')?"context":
+              value.includes('"path":"'+f.runtimeRow+'"')?"runtime":null;
+            if(role){
+              // Two completed tiny rows account for32MiB each in this ONLY
+              // synthetic measurement. Existing names/separators/other rows
+              // make the shared consumed total exceed64MiB on the second.
+              const bytes=32*1024*1024;
+              measurements.push({kind:"row",role,actual,reported:bytes});return bytes;
+            }
+          }
+          return actual;
+        };
+        crypto.createHash=function(...args){
+          const hash=createHash.apply(this,args),update=hash.update;
+          hash.update=function(value,...options){
+            const text=typeof value==="string"?value:Buffer.isBuffer(value)?value.toString("utf8"):"";
+            if(f.mode==="metadata-name"&&text.includes('"path":"'+f.nameLimit+'"'))rowHashed=true;
+            if(f.mode==="metadata-aggregate"&&text.includes('"path":"'+f.runtimeRow+'"'))rowHashed=true;
+            return update.call(this,value,...options);
+          };return hash;
+        };
+        syncBuiltinESMExports();
+        let result;
+        try{
+          const observed=await captureReviewBatchCustody({...f.captureInput,deadline});
+          result={rejected:false,sameContext:JSON.stringify(observed.custody.context)===JSON.stringify(baseline.custody.context),
+            sameRuntime:JSON.stringify(observed.custody.runtime)===JSON.stringify(baseline.custody.runtime)};
+        }catch(error){result={rejected:true,error:error.message};}
+        finally{
+          fs.readFileSync=readFile;fsp.readFile=readAsync;fs.createReadStream=stream;
+          fs.readdirSync=readdir;fsp.readdir=readdirAsync;fsp.opendir=opendir;
+          Buffer.byteLength=byteLength;crypto.createHash=createHash;syncBuiltinESMExports();
+        }
+        fs.writeFileSync(path.join(f.state,"result.json"),JSON.stringify({...result,wholeReads,streamReads,
+          runtimeReadsAfterExpiry,laterReads,clockFault,contextCharged,runtimeCharged,measurements,rowHashed}));
+      `;
+      const child = spawn(process.execPath, ["--input-type=module", "--eval", worker, input],
+        { detached: true, env: { PATH: process.env.PATH }, stdio: ["ignore", "pipe", "pipe"] });
+      const stdout = [], stderr = [];
+      child.stdout.on("data", bytes => stdout.push(bytes)); child.stderr.on("data", bytes => stderr.push(bytes));
+      let outerExpired = false;
+      const owned = () => {
+        const file = path.join(state, "owned-pids.jsonl");
+        return fs.existsSync(file) ? fs.readFileSync(file, "utf8").trim().split("\n").filter(Boolean).map(JSON.parse) : [];
+      };
+      const stop = () => {
+        for (const row of owned()) if (Number.isSafeInteger(row.pid) && row.pid > 1) {
+          if (row.detached) try { process.kill(-row.pid, "SIGKILL"); } catch { /* Only this fixture's owned group. */ }
+          try { process.kill(row.pid, "SIGKILL"); } catch { /* Already closed. */ }
+        }
+        try { process.kill(-child.pid, "SIGKILL"); } catch { /* Owned worker already closed. */ }
+      };
+      const timer = setTimeout(() => { outerExpired = true; stop(); }, 35_000);
+      t.after(() => { clearTimeout(timer); stop(); });
+      let exit;
+      try {
+        exit = await new Promise((resolve, reject) => {
+          child.once("error", reject); child.once("close", (code, signal) => resolve({ code, signal }));
+        });
+      } finally { clearTimeout(timer); stop(); }
+      const resultFile = path.join(state, "result.json");
+      const result = fs.existsSync(resultFile) ? JSON.parse(fs.readFileSync(resultFile, "utf8")) : null;
+      const cleanup = [{ pid: child.pid }, ...owned()].map(row => {
+        try {
+          const status = fs.readFileSync(`/proc/${row.pid}/status`, "utf8").match(/^State:\s+([A-Z])/m)?.[1];
+          return { pid: row.pid, live: !["Z", "X"].includes(status) };
+        } catch (error) { if (error.code === "ENOENT") return { pid: row.pid, live: false }; throw error; }
+      });
+      t.diagnostic(JSON.stringify({ mode, outerExpired, exit, result, cleanup,
+        stderr: Buffer.concat(stderr).toString("utf8").slice(-2000), stdoutBytes: Buffer.concat(stdout).length }));
+      assert.equal(outerExpired, false, "the public capture must return before owned containment");
+      assert.equal(exit.code, 0, Buffer.concat(stderr).toString("utf8"));
+      assert.ok(cleanup.every(row => !row.live), "every recorded owned worker/config process must be terminated");
+      assert.ok(result, "the actual public capture must produce its retained result");
+      if (mode === "whole-file") {
+        assert.equal(result.rejected, false, "finite regular source payload must not use whole-file buffering");
+        assert.equal(result.wholeReads, 0); assert.ok(result.streamReads > 0);
+        assert.equal(result.sameContext, true); assert.equal(result.sameRuntime, true);
+      } else if (mode === "shared-deadline" || mode === "stream-clock") {
+        assert.equal(result.clockFault, true, "the explicitly synthetic elapsed-time boundary must actually occur");
+        if (mode === "shared-deadline") {
+          assert.equal(result.contextCharged, true); assert.equal(result.runtimeCharged, true);
+        }
+        assert.equal(result.rejected, true); assert.match(result.error, /deadline|expired|abort/i);
+        assert.equal(result.runtimeReadsAfterExpiry, 0, "no later payload may start after the original shared deadline");
+        if (mode === "stream-clock") assert.equal(result.laterReads, 0);
+      } else {
+        assert.equal(result.rejected, true, "metadata overflow must refuse, never publish a partial identity");
+        assert.match(result.error, /metadata|acquisition|bound|limit|overflow/i);
+        if (mode === "metadata-name") assert.ok(result.measurements.some(row => row.kind === "name"));
+        else {
+          assert.ok(result.measurements.some(row => row.role === "context"));
+          assert.ok(result.measurements.some(row => row.role === "runtime"),
+            "hashing/releasing context rows must not refund or renew the consumed allowance for runtime");
+        }
+        assert.equal(result.rowHashed, false, "the overflowing complete name/row must refuse before entering the tree hash");
+      }
+    });
+  }
+});
+
 // The host/config capture is production code and a real physical CLI. Only
 // invokeAttempt is inert: these controls grant no native model-positive credit.
 for (const boundary of ["before", "after"]) for (const field of ["executable", "resolved-config", "environment", "cwd", "skills-link"]) {
@@ -3148,6 +3438,23 @@ async function actualCustodyRegression(t, { prepare = () => {}, mutate = () => {
   t.diagnostic(JSON.stringify({ entered, changed, accepted: Boolean(result?.accepted_invocation),
     failure: failure?.message ?? null }));
   return { ...fixture, entered, changed, failure, result };
+}
+
+for (const role of ["selected context", "context prefix sibling"]) {
+  test(`actual context custody: ${role} mutation still stops after the actual child`,
+    { skip: process.platform !== "linux" || process.arch !== "x64" }, async (t) => {
+    let selected;
+    const outcome = await actualCustodyRegression(t, {
+      prepare: ({ checked, f }) => {
+        selected = role === "selected context" ? path.join(f.context, "held-context.txt")
+          : path.join(checked.consumer, ".review-context-extra/held-neighbor.txt");
+        fs.mkdirSync(path.dirname(selected), { recursive: true }); fs.writeFileSync(selected, "held original bytes\n");
+      },
+      mutate: () => fs.writeFileSync(selected, "different post-child bytes\n") });
+    assert.equal(outcome.entered, 1); assert.equal(outcome.changed, true);
+    assert.match(outcome.failure?.message ?? "", /source|context|custody|input/i);
+    assert.equal(outcome.result?.accepted_invocation, undefined);
+  });
 }
 
 for (const scenario of ["untracked bytes", "ignored bytes", "immutable evidence neighbor", "new ignored input",
@@ -3463,7 +3770,7 @@ async function actualModelDeadlineRegression(t, { mode, minutes = 60, explicit =
     syncBuiltinESMExports();
   `);
   const env = { PATH: process.env.PATH, HOME: checked.env.RUNNER_TEMP, PR_NUMBER: "42",
-    OPENCODE_BIN: binary, REVIEW_MODEL_DISCOVERY: "opencode-free-mimo-flash-v1", REVIEW_EXPECTED_OPENCODE_VERSION: "1.18.31",
+    OPENCODE_BIN: binary, REVIEW_MODEL_DISCOVERY: "opencode-free-mimo-flash-v1", REVIEW_EXPECTED_OPENCODE_VERSION: nativeBatchVersion,
     REVIEW_CHILD_HOME: environment.HOME, REVIEW_CHILD_RUNTIME: captureInput.runtimeDirectory,
     REVIEW_EVIDENCE_DIR: checked.evidence, REVIEW_PROMPT_FILE: captureInput.promptFile,
     REVIEW_TOOL_REGISTRY_FILE: f.registryFile, REVIEW_INVOCATION_VERIFIER_FILE: f.verifierFile,
@@ -3634,7 +3941,7 @@ for (const command of ["--version", "models"]) for (const descendant of [false, 
     fs.mkdirSync(state, { mode: 0o700 });
     const input = path.join(state, "input.json");
     fs.writeFileSync(input, JSON.stringify({ state, binary, environment, command, descendant,
-      evidenceDirectory: checked.evidence,
+      evidenceDirectory: checked.evidence, expectedVersion: nativeBatchVersion,
       runner: path.join(root, ".github/scripts/run-opencode-review-recovery.mjs") }));
     // Same isolated child-process fault approach as the config deadline tests:
     // retain the real selected binary and public discovery arguments/options.
@@ -3689,7 +3996,7 @@ for (const command of ["--version", "models"]) for (const descendant of [false, 
       let result;
       try {
         await discoverFreeMiMoFlash({evidenceDirectory:f.evidenceDirectory,binary:f.binary,
-          environment:f.environment,expectedVersion:"1.18.31"});
+          environment:f.environment,expectedVersion:f.expectedVersion});
         result = {rejected:false};
       } catch (error) { result = {rejected:true,error:error.message}; }
       const proofFile = path.join(f.evidenceDirectory,"model-discovery.json");
@@ -3977,7 +4284,7 @@ test("native bounded batches: actual standalone, physical CLI and compiled produ
     Object.defineProperty(response, "url", { value: url }); return response;
   };\n`);
   const environment = { ...localReviewBudgetFixture(), PATH: process.env.PATH, HOME: checked.env.RUNNER_TEMP, PR_NUMBER: "42",
-    OPENCODE_BIN: ownedBinary, REVIEW_MODEL_DISCOVERY: "opencode-free-mimo-flash-v1", REVIEW_EXPECTED_OPENCODE_VERSION: "1.18.31",
+    OPENCODE_BIN: ownedBinary, REVIEW_MODEL_DISCOVERY: "opencode-free-mimo-flash-v1", REVIEW_EXPECTED_OPENCODE_VERSION: nativeBatchVersion,
     REVIEW_CHILD_HOME: home, REVIEW_CHILD_RUNTIME: runtime, REVIEW_EVIDENCE_DIR: checked.evidence,
     REVIEW_PROMPT_FILE: promptFile, REVIEW_TOOL_REGISTRY_FILE: f.registryFile,
     REVIEW_INVOCATION_VERIFIER_FILE: f.verifierFile, GITHUB_OUTPUT: f.output };
@@ -4033,7 +4340,7 @@ test("native bounded batches: actual standalone, physical CLI and compiled produ
   assert.equal(transportSha256(JSON.stringify(recovery.accepted_invocation)), parseOutput(f.output).review_invocation_sha256);
   f.invocationDigest = parseOutput(f.output).review_invocation_sha256;
   const finalEnvironment = { REVIEW_CHILD_HOME: home, REVIEW_CHILD_RUNTIME: runtime,
-    REVIEW_EXPECTED_OPENCODE_VERSION: "1.18.31" };
+    REVIEW_EXPECTED_OPENCODE_VERSION: nativeBatchVersion };
   const final = finalReviewInputCheck(checked, f, finalEnvironment);
   assert.equal(final.result.status, 0, final.result.stderr);
   assert.equal(fs.existsSync(final.publication), true, "actual final command must reach the inert publication marker");
