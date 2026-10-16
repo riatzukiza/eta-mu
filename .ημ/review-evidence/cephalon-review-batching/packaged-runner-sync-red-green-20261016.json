@@ -1,0 +1,66 @@
+{
+  "tier": "Observed-command-output transcription; raw failed/full and focused output retained privately; no provider approval or new native CI credit",
+  "observedAt": "2026-10-16T22:52:56.645145+00:00",
+  "headBeforeSynchronization": "bf4e47ff19d72a2e70d5ed1eb801a768f365ccb6",
+  "actualFullRED": {
+    "exit": 1,
+    "summary": [
+      "not ok 33 - review context packages the exact runner for reusable-workflow callers",
+      "# tests 390",
+      "# suites 0",
+      "# pass 389",
+      "# fail 1",
+      "# cancelled 0",
+      "# skipped 0",
+      "# todo 0",
+      "# duration_ms 615701.301653"
+    ],
+    "elapsedSeconds": 615.8031319219735,
+    "logs": {
+      "stdout": {
+        "bytes": 405636,
+        "sha256": "6f5040fc8f623d3ef9a29a362e927b76d482bd2d56222251fcd8ee8bbb70fbf9"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "sourceDrift": [],
+    "observerErrors": [],
+    "ownedLive": 0,
+    "ownedMarkerResidualPIDs": [],
+    "rawObservationCount": 205,
+    "resultPath": "/home/err/.local/share/codex/cephalon-field-settlement-20261016/eta-pagination/required-full-bf4e47ff/result.json"
+  },
+  "cause": "Workflow retains a complete base64-encoded recovery runner in addition to its pre-checkout budget block. Pagination edit updated source/block but omitted the existing full payload. The pre-existing exact decoded-source assertion33 correctly failed; all other389 tests passed.",
+  "repair": {
+    "originalLineWidth": 120,
+    "originalWorkflowSHA256": "d5fe372e3019c6d909daf476c43834f23520d1c241785791fdc15821613b06f5",
+    "intermediate76ColumnWorkflowSHA256": "89b92d8ec9806d5c6a4ea02597fc582392966ad725cf70ff8b6f90d45b642781",
+    "finalWorkflowSHA256": "80fd7c31d7dbb74e65fa1d36176d8f3fe61562383831b1322171b549b7791609",
+    "runnerSHA256": "585b20e59f99c6297ed71d68dae2325ad913fadd2ca46d41406a132dab8ce1a9",
+    "decodedExact": true,
+    "outsidePayloadUnchanged": true
+  },
+  "actualFocusedGREEN": {
+    "command": "Node22.23.3 --test --test-name-pattern review context packages the exact runner|public.job.budget .github/scripts/opencode-code-review-workflow.test.mjs",
+    "tests": 57,
+    "pass": 57,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "stderrBytes": 0,
+    "stdoutSHA256": "c13ab16db98d2402b1489705e5757a9c5f10d98e3bc2303fe60db331692e2b11"
+  },
+  "preserved": [
+    "existing exact-payload equality assertion",
+    "original120-column base64 wrapping",
+    "all workflow text outside existing payload",
+    "runner source/pre-checkout block",
+    "all390 tests and their assertions",
+    "original failed615.803-second run and raw205observations"
+  ],
+  "remaining": "Full390 current-source rerun and native checks/review remain required; no389or57PASS is relabeled390PASS",
+  "runtime": "No application, model route, credentials, paid use, board state, maker/owner or publication changed"
+}

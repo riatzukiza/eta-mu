@@ -351,3 +351,21 @@ retains exact source/log hashes and limits. The earlier local353PASS remains
 bound to767; a complete final-source suite and fresh hosted reviews/checks are
 still required. No application runtime, credentials, model, board state,
 publication or deployment changed.
+
+
+### Complete packaged-runner synchronization
+
+The actual final-source bf4e47ff full run completed390 tests:389 passed and
+one failed (the existing exact packaged-runner equality assertion), with
+zero cancellations/skips/stderr, stable source hashes,205 raw observations
+and no live owned helper. The runner source and pre-checkout block had been
+updated, but the existing full base64 payload still contained the old runner.
+This failure is retained; it is not a390PASS result.
+
+The existing payload now decodes byte-for-byte to the actual runner, preserving
+its original120-column wrapping and all workflow text outside that payload.
+The existing exact-copy assertion and56 public-job controls pass together
+57/57 with empty stderr. A complete current-source rerun and fresh native
+checks/reviews remain required. The separate transcription
+`.ημ/review-evidence/cephalon-review-batching/packaged-runner-sync-red-green-20261016.json`
+retains the exact failed-run and corrected-payload source/log hashes.
