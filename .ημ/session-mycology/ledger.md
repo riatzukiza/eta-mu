@@ -1327,3 +1327,13 @@
   spore: none
   receipt-refs: cephalon-eta-native-fixture-timeout-and-guaranteed-cleanup-20261016
   note: Verified150second test bound is shorter than60second npm install plus120second supervisor budgets. Apply exact minimal review fix; keep install/supervisor limits, every native producer/physicalCLI/custody assertion and production behavior unchanged. Preserve actual local failure, not credential/provider diagnosis or assumed transient. Existing required hosted suite must verify corrective head; source is not ready to merge or Done. No broad optional retest, new mirror test, model retry/cancel, capacity/globalruntime/credential/provider/paid/deployment/social change. GoalACTIVE/live0of3/heartbeat humanPAUSED; no spore/promotion.
+
+- ts: 2026-10-16T04:23:30.160Z
+  session: /home/err/spaces/cephalon-review-batch-consumer/eta-mu
+  task: cephalon-character-memory/B1-B3/shared-review-caller
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-eta-caller-current-input-output-config-causal-red-20261016
+  note: Confirmed ignored/untracked/immutable-neighbor bytes and newnames, preplanted/symlink/special outputroles, priorresponse/stderr/submission/projection/eventprefix/recoverydrift, TERM-ignoringconfigprocess cleanup and companionMusepins are ordinary current ETA5 fixes. Actualfreshlayout/completeimmutable and12exactmutable-owner inventory reuse existing owners; conditionalMuse3 superseded, no newpoints/permissionlaw. Existing30s capture/64MiB Gitoutput/2attempt120min limits retained. CommitRED before productionGREEN; no approvaltransfer/settlement/merge/adoption/livegoalproof. No credential/provider/globalruntime/paid/deployment/social/heartbeat change; heartbeat humanPAUSED/live0of3.

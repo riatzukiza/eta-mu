@@ -409,6 +409,13 @@ test("the compiled observer contract pins compatible Muse and allows both full-i
     "artifact provenance must record the actual Muse repository selection");
   assert.equal(assembly.env.MUSE_REVISION, expectedRef,
     "artifact provenance must record the same effective Muse selection");
+  const companion = YAML.parse(fs.readFileSync(
+    path.join(root, ".github/workflows/muse-review-context-diagnostic.yml"), "utf8"));
+  const companionCheckout = companion.jobs.diagnose.steps.find(step => step.name === "Checkout Muse");
+  assert.equal(companionCheckout.with.repository, assembly.env.MUSE_REPOSITORY,
+    "the companion diagnostic must compile the production default repository");
+  assert.equal(companionCheckout.with.ref, museSha,
+    "the companion diagnostic must compile the production default revision");
   for (const name of ["review_read_diff_chunk", "review_assess_diff_chunk", "review_read_diff_batch", "review_assess_diff_batch"]) {
     assert.ok(workflowText.includes(`:${name}`), `missing permission for ${name}`);
     assert.ok(workflowText.includes(`'${name}'`), `missing compiled registry assertion for ${name}`);
@@ -2861,6 +2868,273 @@ for (const boundary of ["before", "after"]) for (const field of ["executable", "
     assert.equal(recovery.accepted_invocation, null);
     assert.equal(recovery.custody_error.attempt, 2);
     assert.equal(recovery.custody_error.boundary, boundary);
+  });
+}
+
+/** Existing physical capture and canonical owner; all child call frames are synthetic offline data. */
+async function actualCustodyRegression(t, { prepare = () => {}, mutate = () => {},
+  boundary = "after", attempt = 1, retry = false, firstKind = "missing" } = {}) {
+  const fixture = actualCaptureFixture(t);
+  const { checked, f, captureInput } = fixture;
+  prepare(fixture);
+  const healthy = canonicalContextResponse(f);
+  // The trace helper also returns candidate submission bytes. An omitted
+  // submission must not persist them, exactly as in the existing caller fixture.
+  let first = { response: canonicalContextResponse(f, { omitSubmit: true }).response };
+  if (retry && firstKind === "missing") {
+    assert.equal(f.verifier.verifyReviewInvocation(first.response, null, f.expectedContext).reason,
+      "missing-review-submit", "the real owner must establish missing-submit retry eligibility");
+  }
+  if (firstKind === "stale") {
+    const events = healthy.response.toString("utf8").trim().split("\n").map(JSON.parse);
+    const last = events.pop();
+    const read = structuredClone(events.find(event => event.part?.tool === "review_read_diff_chunk"));
+    read.timestamp = last.timestamp; read.part.id = "synthetic-late-read"; read.part.callID = "synthetic-late-read";
+    read.part.state.time = { start: last.timestamp, end: last.timestamp };
+    last.timestamp += 1;
+    first = { response: Buffer.from([...events, read, last].map(event => JSON.stringify(event)).join("\n") + "\n"),
+      submission: healthy.submission };
+    assert.equal(f.verifier.verifyReviewInvocation(first.response, first.submission, f.expectedContext).reason,
+      "stale-review-coverage", "the real owner must establish stale retry eligibility");
+  } else if (firstKind === "submit-json") {
+    const events = first.response.toString("utf8").trim().split("\n").map(JSON.parse);
+    const last = events.pop();
+    const error = 'Invalid input for tool review_submit: JSON parsing failed: Text: {"summary":"unfinished' +
+      "\nError message: JSON Parse error: Unterminated string";
+    events.push({ type: "tool_use", timestamp: last.timestamp, sessionID: last.sessionID,
+      part: { type: "tool", id: "synthetic-invalid-submit", callID: "synthetic-invalid-submit", sessionID: last.sessionID,
+        tool: "invalid", state: { status: "completed", input: { tool: "review_submit", error },
+          time: { start: last.timestamp, end: last.timestamp }, metadata: { truncated: false },
+          output: `The arguments provided to the tool are invalid: ${error}` } } });
+    last.timestamp += 1; events.push(last);
+    first = { response: Buffer.from(events.map(event => JSON.stringify(event)).join("\n") + "\n") };
+    assert.equal(f.verifier.verifyReviewInvocation(first.response, null, f.expectedContext).code,
+      "unavailable-host-tool", "the real owner must refuse the original malformed submit transport");
+  }
+  let entered = 0, failure, result, changed = false;
+  try {
+    result = await runReviewRecovery({ evidenceDirectory: checked.evidence,
+      basePrompt: "Synthetic physical-custody regression; no provider or review credit.",
+      submissionFile: f.submissionFile, reviewTools: f.tools,
+      verifyReviewInvocation: f.verifier.verifyReviewInvocation, expectedContext: f.expectedContext,
+      captureBatchHost: async (point) => {
+        if (point.boundary === boundary && point.attempt === attempt) {
+          mutate(fixture); changed = true;
+        }
+        return captureReviewBatchCustody(captureInput);
+      },
+      invokeAttempt: async ({ attempt: childAttempt, responseFile, stderrFile }) => {
+        entered += 1;
+        const data = retry && childAttempt === 1 ? first : healthy;
+        fs.writeFileSync(responseFile, data.response);
+        fs.writeFileSync(stderrFile, `synthetic owned stderr ${childAttempt}\n`);
+        if (data.submission) fs.writeFileSync(f.submissionFile, data.submission);
+        const eventFile = path.join(checked.evidence, "review-events.jsonl");
+        // The inert child must not open a planted FIFO: the assertion below
+        // checks whether production refused the role BEFORE entering this child.
+        if (!fs.existsSync(eventFile) || fs.lstatSync(eventFile).isFile()) {
+          fs.appendFileSync(eventFile, JSON.stringify({ kind: "synthetic-owned-output", attempt: childAttempt }) + "\n");
+        }
+        return { exitCode: 0 };
+      } });
+  } catch (error) { failure = error; }
+  t.diagnostic(JSON.stringify({ entered, changed, accepted: Boolean(result?.accepted_invocation),
+    failure: failure?.message ?? null }));
+  return { ...fixture, entered, changed, failure, result };
+}
+
+for (const scenario of ["untracked bytes", "ignored bytes", "immutable evidence neighbor", "new ignored input",
+  "deleted input", "symlink input", "special input"]) {
+  test(`actual custody regression: ${scenario} refuses after the actual child`,
+    { skip: process.platform !== "linux" || process.arch !== "x64" }, async (t) => {
+    const outcome = await actualCustodyRegression(t, {
+      prepare: ({ checked }) => {
+        fs.appendFileSync(path.join(checked.consumer, ".git/info/exclude"), "\nignored-custody.txt\n");
+        const file = scenario === "immutable evidence neighbor"
+          ? path.join(checked.evidence, "downloaded-support.txt")
+          : path.join(checked.consumer, scenario.includes("ignored") ? "ignored-custody.txt" : "supporting.txt");
+        if (scenario !== "new ignored input") fs.writeFileSync(file, "original input bytes\n");
+      },
+      mutate: ({ checked }) => {
+        const file = scenario === "immutable evidence neighbor"
+          ? path.join(checked.evidence, "downloaded-support.txt")
+          : path.join(checked.consumer, scenario.includes("ignored") ? "ignored-custody.txt" : "supporting.txt");
+        if (scenario === "deleted input") fs.unlinkSync(file);
+        else if (scenario === "symlink input") {
+          fs.unlinkSync(file);
+          const target = path.join(checked.env.RUNNER_TEMP, "owned-link-target");
+          fs.writeFileSync(target, "original input bytes\n"); fs.symlinkSync(target, file);
+        } else if (scenario === "special input") {
+          fs.unlinkSync(file); execFileSync("mkfifo", [file]);
+        } else fs.writeFileSync(file, "modified input bytes\n");
+      } });
+    assert.equal(outcome.entered, 1, "the initial actual capture must succeed before input mutation");
+    assert.equal(outcome.changed, true);
+    assert.ok(outcome.failure, `${scenario} must not reach accepted_invocation`);
+    assert.match(outcome.failure.message, /custody|untracked|input|regular|symlink|special/i);
+    assert.equal(outcome.result?.accepted_invocation, undefined);
+  });
+}
+
+for (const name of ["recovery.json", "model-response-attempt-1.txt", "model-response-attempt-2.txt",
+  "opencode-stderr-attempt-1.log", "opencode-stderr-attempt-2.log", "submission.json", "submission-attempt-1.json",
+  "review-submit-json-attempt-1.DERIVED.ndjson", "review-submit-json-attempt-1.OMITTED.ndjson",
+  "final-input-coverage-attempt-1.DERIVED.ndjson", "final-input-coverage-attempt-1.OMITTED.ndjson", "review-events.jsonl"]) {
+  test(`actual custody regression: preplanted owned output ${name} refuses before child`,
+    { skip: process.platform !== "linux" || process.arch !== "x64" }, async (t) => {
+    const outcome = await actualCustodyRegression(t, {
+      prepare: ({ checked }) => fs.writeFileSync(path.join(checked.evidence, name), "preplanted owned-fixture bytes\n") });
+    assert.equal(outcome.entered, 0, "existing input must not become a fresh mutable output");
+    assert.ok(outcome.failure);
+    assert.match(outcome.failure.message, /pre-existing|preexisting|output|custody/i);
+  });
+}
+
+for (const kind of ["dangling response symlink", "projection symlink", "special event output"]) {
+  test(`actual custody regression: ${kind} refuses before child`,
+    { skip: process.platform !== "linux" || process.arch !== "x64" }, async (t) => {
+    const outcome = await actualCustodyRegression(t, {
+      prepare: ({ checked }) => {
+        const target = path.join(checked.env.RUNNER_TEMP, "owned-output-target");
+        if (kind === "special event output") execFileSync("mkfifo", [path.join(checked.evidence, "review-events.jsonl")]);
+        else {
+          if (kind === "projection symlink") fs.writeFileSync(target, "owned target\n");
+          fs.symlinkSync(target, path.join(checked.evidence, kind === "projection symlink"
+            ? "review-submit-json-attempt-1.DERIVED.ndjson" : "model-response-attempt-1.txt"));
+        }
+      } });
+    assert.equal(outcome.entered, 0, "nonregular output roles must refuse before the child adapter");
+    assert.ok(outcome.failure);
+    assert.match(outcome.failure.message, /pre-existing|preexisting|output|custody|regular|symlink|special/i);
+  });
+}
+
+for (const [name, firstKind] of [["response", "missing"], ["stderr", "missing"], ["retained submission", "stale"],
+  ["derived submit projection", "submit-json"], ["omitted submit projection", "submit-json"],
+  ["event prefix", "missing"], ["raw recovery", "missing"]]) {
+  test(`actual custody regression: sealed prior ${name} change refuses before corrective child`,
+    { skip: process.platform !== "linux" || process.arch !== "x64" }, async (t) => {
+    const outcome = await actualCustodyRegression(t, { retry: true, firstKind, boundary: "before", attempt: 2,
+      mutate: ({ checked }) => {
+        const names = { response: "model-response-attempt-1.txt", stderr: "opencode-stderr-attempt-1.log",
+          "retained submission": "submission-attempt-1.json",
+          "derived submit projection": "review-submit-json-attempt-1.DERIVED.ndjson",
+          "omitted submit projection": "review-submit-json-attempt-1.OMITTED.ndjson",
+          "event prefix": "review-events.jsonl", "raw recovery": "recovery.json" };
+        const file = path.join(checked.evidence, names[name]);
+        assert.ok(fs.lstatSync(file).isFile(), "the existing producer must have created the prior artifact");
+        if (name === "event prefix") fs.writeFileSync(file, "rewritten prefix\n");
+        else fs.appendFileSync(file, " \n");
+      } });
+    assert.equal(outcome.changed, true, "the actual first attempt must reach its admitted recovery boundary");
+    assert.equal(outcome.entered, 1, "changed sealed bytes must stop before child two");
+    assert.ok(outcome.failure);
+    assert.match(outcome.failure.message, /custody|changed|output|recovery|retained|prefix/i);
+    assert.equal(outcome.result?.accepted_invocation, undefined);
+  });
+}
+
+for (const descendant of [false, true]) {
+  test(`actual custody regression: TERM-resistant config ${descendant ? "descendant" : "child"} reaches bounded refusal`,
+    { timeout: 45_000, skip: process.platform !== "linux" || process.arch !== "x64" }, async (t) => {
+    const { checked, captureInput } = actualCaptureFixture(t);
+    const state = path.join(checked.env.RUNNER_TEMP, "owned-config-fault");
+    fs.mkdirSync(state, { mode: 0o700 });
+    const input = path.join(state, "input.json");
+    fs.writeFileSync(input, JSON.stringify({ captureInput, state, descendant,
+      runner: path.join(root, ".github/scripts/run-opencode-review-recovery.mjs") }));
+    // Isolated process-fault injection only. Both APIs retain the exact actual
+    // config-launch arguments/options; no healthy config or verdict is stubbed.
+    // The real physical binary still passes the actual canonical preflight.
+    const worker = String.raw`
+      import fs from "node:fs";
+      import cp from "node:child_process";
+      import path from "node:path";
+      import { syncBuiltinESMExports } from "node:module";
+      import { pathToFileURL } from "node:url";
+      const f = JSON.parse(fs.readFileSync(process.argv[1], "utf8"));
+      const pidFile = path.join(f.state, "fault.pid"), grandchildFile = path.join(f.state, "descendant.pid");
+      const readyFile = path.join(f.state, "ready"), termFile = path.join(f.state, "term");
+      const grandchild = 'const fs=require("node:fs");process.on("SIGTERM",()=>{});' +
+        'fs.writeFileSync(' + JSON.stringify(grandchildFile) + ',String(process.pid));setInterval(()=>{},1000);';
+      const trap = 'const fs=require("node:fs"),cp=require("node:child_process");' +
+        'process.on("SIGTERM",()=>{fs.appendFileSync(' + JSON.stringify(termFile) + ',"TERM\\n");' +
+          (f.descendant ? 'process.exit(0);' : '') + '});' +
+        'fs.writeFileSync(' + JSON.stringify(pidFile) + ',String(process.pid));' +
+        (f.descendant ? 'cp.spawn(process.execPath,["-e",' + JSON.stringify(grandchild) + '],{stdio:["ignore",1,2]});' : '') +
+        'fs.writeFileSync(' + JSON.stringify(readyFile) + ',"ready");setInterval(()=>{},1000);';
+      const sync = cp.spawnSync, async = cp.spawn;
+      const redirect = (binary, args, options) => {
+        if (binary !== f.captureInput.binary || JSON.stringify(args) !== '["debug","config"]')
+          throw Error("unexpected synthetic config launch");
+        fs.writeFileSync(path.join(f.state,"launch.json"),JSON.stringify({binary,args,timeout:options.timeout ?? null,detached:options.detached ?? false}));
+        return [process.execPath,["-e",trap],options];
+      };
+      cp.spawnSync = (binary,args,options) => sync(...redirect(binary,args,options));
+      cp.spawn = (binary,args,options) => async(...redirect(binary,args,options));
+      syncBuiltinESMExports();
+      const { captureReviewBatchCustody } = await import(pathToFileURL(f.runner).href);
+      const alive = file => {
+        if (!fs.existsSync(file)) return false;
+        const pid = Number(fs.readFileSync(file,"utf8"));
+        try {
+          process.kill(pid,0);
+          // A terminated orphan may briefly await init's reaping. It cannot
+          // retain pipes or perform work; do not confuse it with a live child.
+          const status = fs.readFileSync('/proc/' + pid + '/status',"utf8");
+          const state = status.match(/^State:\s+([A-Z])/m)?.[1];
+          if (!state) throw Error("owned config process state is unavailable");
+          return state !== "Z" && state !== "X";
+        } catch (error) { if (["ESRCH","ENOENT"].includes(error.code)) return false; throw error; }
+      };
+      const retain = result => fs.writeFileSync(path.join(f.state,"result.json"),JSON.stringify({
+        ...result, faultAlive:alive(pidFile), descendantAlive:alive(grandchildFile) }));
+      try {
+        await captureReviewBatchCustody(f.captureInput);
+        retain({rejected:false});
+      } catch (error) {
+        retain({rejected:true,error:error.message});
+      }
+    `;
+    const child = spawn(process.execPath, ["--input-type=module", "--eval", worker, input],
+      { detached: true, env: { PATH: process.env.PATH }, stdio: ["ignore", "pipe", "pipe"] });
+    const stdout = [], stderr = [];
+    child.stdout.on("data", bytes => stdout.push(bytes)); child.stderr.on("data", bytes => stderr.push(bytes));
+    let outerExpired = false;
+    const stop = () => {
+      // Only groups/PIDs created by this fixture. No broad matching or global kill.
+      for (const name of ["fault.pid", "descendant.pid"]) {
+        const file = path.join(state, name);
+        if (!fs.existsSync(file)) continue;
+        const pid = Number(fs.readFileSync(file, "utf8"));
+        if (!Number.isSafeInteger(pid) || pid <= 1) continue;
+        try { process.kill(-pid, "SIGKILL"); } catch { /* It may share the worker's group. */ }
+        try { process.kill(pid, "SIGKILL"); } catch { /* Already reaped. */ }
+      }
+      try { process.kill(-child.pid, "SIGKILL"); } catch { /* Already closed. */ }
+    };
+    // Production has 30s. This outer 35s containment is deliberately longer,
+    // so a sync TERM trap fails an assertion and cannot hang this test process.
+    const timer = setTimeout(() => { outerExpired = true; stop(); }, 35_000);
+    t.after(() => { clearTimeout(timer); stop(); });
+    let exit;
+    try {
+      exit = await new Promise((resolve, reject) => {
+        child.once("error", reject); child.once("close", (code, signal) => resolve({ code, signal }));
+      });
+    } finally { clearTimeout(timer); stop(); }
+    const resultFile = path.join(state, "result.json");
+    const result = fs.existsSync(resultFile) ? JSON.parse(fs.readFileSync(resultFile, "utf8")) : null;
+    t.diagnostic(JSON.stringify({ descendant, outerExpired, exit, result,
+      entered: fs.existsSync(path.join(state, "ready")), termObserved: fs.existsSync(path.join(state, "term")),
+      stderr: Buffer.concat(stderr).toString("utf8").slice(-2000), stdoutBytes: Buffer.concat(stdout).length }));
+    assert.ok(fs.existsSync(path.join(state, "ready")), "actual config acquisition must enter the injected fault");
+    if (descendant) assert.ok(fs.existsSync(path.join(state, "descendant.pid")), "the owned descendant must actually start");
+    assert.equal(outerExpired, false, "production must return after owned TERM/KILL cleanup, before the outer bound");
+    assert.equal(result?.rejected, true, "a timed-out config cannot become a host observation");
+    assert.match(result.error, /config|capture|timed|deadline/i);
+    assert.equal(result.faultAlive, false, "production must finish the owned config child before returning");
+    assert.equal(result.descendantAlive, false, "production must clean the owned config descendant before returning");
   });
 }
 

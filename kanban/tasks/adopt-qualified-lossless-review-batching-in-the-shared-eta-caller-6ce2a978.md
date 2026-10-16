@@ -7,7 +7,7 @@ priority: "P1"
 points: "5"
 labels: "cephalon, b3, review, batching, consumer"
 category: "tasks"
-write-id: "1792119533058-0.uqjc7q7l45snr7xlaqs"
+write-id: "1792123503914-0.ohsocanmvuaz29cuc5z"
 created_at: "2026-10-15T15:06:16.542Z"
 dependency: ["c84f0b33-7527-443a-a9ff-5ee2e2dfed48"]
 epic: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
@@ -115,5 +115,7 @@ Readability correction for CodeRabbit4288175402, appended under the human rule t
 Codex review 5540101494, finding 4288415689, identifies a missing source repository in the downloaded hosted context. The actual assembly test fails before production changes with ENOENT for metadata/muse-repository.txt. The current correction supplies the exact compiler checkout repository alongside its revision, inside the actual SHA256SUMS set. All eleven selected assembly, metadata-hook and source-pin tests pass, including literal ref and command-injection controls. This is within the existing five-point owner/repository/commit custody obligation. The current hosted attempt remains active, so this corrective source stays local until it actually ends. No new fixture compile, model invocation, relaxed guard, source approval or full current-suite pass is claimed. Goal remains active, live proof 0/3 and heartbeat human-paused.
 
 Current exact04bb full CodeRabbit6206692711 completed with Minor4290297418/review5542350011: existing native fixture test150s below install60s plus supervisor120s; early test exit lacked after-hook group cleanup. Minimal two-line correction sets test-only240s and guarantees timer/owned detached child-group cleanup, preserving production budgets and every assertion. Node22.23.3 syntax/diff hygiene pass; actual focused local test failed existing config capture ETIMEDOUT/SIGTERM at60.300s before first model attempt, not GREEN. Scoped Biome unavailable126. Preserve actual failure and obtain existing required hosted verification/current-head review. Scope stays this InProgress5 task; no Done, current approval transfer, credentials/provider/paid/runtime/deployment or heartbeat change.
+
+Current7b nativeCodex5542589429 roots4290502930/2936/2945 are confirmed ordinary review defects within this existing ETA5 caller task. Necessary actualfreshjob/layout discovery shows current qualifiedowners suffice; conditionalMuse3 is superseded, no newprerequisite/points/permissions. Plan: hash type/mode/length/content for complete ignored+untracked immutableinputs, retain no evidence-directory exemption; reserve only12exact supervisor-derived freshmutable pathroles with existing byteowners/seals/prefix/recovery outputdigest; reuse64MiB listing and30000ms capture allocations, stream/refuseincomplete/changed/symlink/special inputs without invented policycaps. Asyncownedgroup configcapture TERM-to-KILL within existing allocation andawaitallcallers; aligncompanion diagnostic exactqualifiedMuse repository/ref andexistingpintest. Preserve2attempts/120min/singleinvocation/fullinput/context/stages/submission/publicationguards andrealnativefixture. Causalregistered RED first, thenminimal adapterGREEN/fullgates/review. Earlier7b all7deterministicgates reallyPASS andtest23546.4sec; these newgaps remainopen untilverified. No newmodelrequest/cancel, credential/provider/globalruntime/paid/deployment/social orheartbeat change.
 
 ---
