@@ -1,0 +1,291 @@
+{
+  "schema": "cephalon.eta-caller-correction-evidence/v1",
+  "kind": "observed-command-output-transcription-and-actual-native-main-operations-not-provider-approval",
+  "observedAt": "2026-10-16T04:57:30.705455+00:00",
+  "causalRedCommit": "3832ff280ab0043be7a273925953edfab63433ad",
+  "agentVerification": {
+    "observedUtc": "2026-10-16T04:49:31.115425+00:00",
+    "scope": "ETA5 existing three findings GREEN, four authorized files; main owns receipt/native/Git/review/adoption",
+    "head": "3832ff280ab0043be7a273925953edfab63433ad",
+    "sources": {
+      ".github/scripts/run-opencode-review-recovery.mjs": {
+        "sha256": "6f9108640cd622e0eb1e1571ca381b11eda4b58783ac8a2ca5abbdc2baa634c6",
+        "bytes": 105554
+      },
+      ".github/scripts/opencode-code-review-workflow.test.mjs": {
+        "sha256": "b6c2a8d69462573faebce1d0f80f42918f60f1918b7348a31d05719c17fe9d11",
+        "bytes": 223365
+      },
+      ".github/workflows/opencode-code-review.yml": {
+        "sha256": "c77a23b4f79a86c5c6506e72b39d122e821b72846c80d4695f9334571df7fdad",
+        "bytes": 238508
+      },
+      ".github/workflows/muse-review-context-diagnostic.yml": {
+        "sha256": "2c7c008a3938f66c53546dc3ab6ba4c88a5b301087f6ccf533bc3b0bbaf901b8",
+        "bytes": 4552
+      }
+    },
+    "sourceStableDuringFinalFullRun": true,
+    "fullRegisteredWorkflowSuite": {
+      "command": [
+        "/home/err/.volta/tools/image/node/22.23.3/bin/node",
+        "--test",
+        ".github/scripts/opencode-code-review-workflow.test.mjs"
+      ],
+      "node": "22.23.3",
+      "startedUtc": "2026-10-16T04:43:06.330524+00:00",
+      "sourcesBefore": {
+        ".github/scripts/run-opencode-review-recovery.mjs": {
+          "bytes": 105554,
+          "sha256": "6f9108640cd622e0eb1e1571ca381b11eda4b58783ac8a2ca5abbdc2baa634c6"
+        },
+        ".github/scripts/opencode-code-review-workflow.test.mjs": {
+          "bytes": 223365,
+          "sha256": "b6c2a8d69462573faebce1d0f80f42918f60f1918b7348a31d05719c17fe9d11"
+        },
+        ".github/workflows/opencode-code-review.yml": {
+          "bytes": 238508,
+          "sha256": "c77a23b4f79a86c5c6506e72b39d122e821b72846c80d4695f9334571df7fdad"
+        },
+        ".github/workflows/muse-review-context-diagnostic.yml": {
+          "bytes": 4552,
+          "sha256": "2c7c008a3938f66c53546dc3ab6ba4c88a5b301087f6ccf533bc3b0bbaf901b8"
+        }
+      },
+      "pid": 3364102,
+      "exit": 0,
+      "finishedUtc": "2026-10-16T04:47:59.400232+00:00",
+      "elapsedSeconds": 293.06899264798267,
+      "logs": {
+        "stdout": {
+          "bytes": 105152,
+          "sha256": "bc7e3b981165f272a686f79c9cf1a62010d8f1f531b9b90a4456185ee5b055f6"
+        },
+        "stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "summary": [
+        "# tests 299",
+        "# suites 0",
+        "# pass 299",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0",
+        "# todo 0",
+        "# duration_ms 293025.618291"
+      ],
+      "sourcesUnchangedDuringRun": true
+    },
+    "targetedBeforeFull": {
+      "targeted-initial": {
+        "command": [
+          "/home/err/.volta/tools/image/node/22.23.3/bin/node",
+          "--test",
+          "--test-reporter=tap",
+          "--test-name-pattern=actual custody regression: (untracked bytes|sealed prior (?:retained submission|derived submit projection))|the compiled observer contract pins compatible Muse",
+          ".github/scripts/opencode-code-review-workflow.test.mjs"
+        ],
+        "node": "22.23.3",
+        "startedUtc": "2026-10-16T04:29:06.146650+00:00",
+        "finishedUtc": "2026-10-16T04:29:37.892433+00:00",
+        "elapsedSeconds": 31.74578435497824,
+        "exit": 0,
+        "logs": {
+          "stdout": {
+            "bytes": 1423,
+            "sha256": "7ede2a24d6ac9fb54f8b636af731d2a08079150891f3476f75e10ca8a68559bc"
+          },
+          "stderr": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      },
+      "targeted-remaining": {
+        "command": [
+          "/home/err/.volta/tools/image/node/22.23.3/bin/node",
+          "--test",
+          "--test-reporter=tap",
+          "--test-name-pattern=actual custody regression: (?!untracked bytes|sealed prior (?:retained submission|derived submit projection)|TERM-resistant)",
+          ".github/scripts/opencode-code-review-workflow.test.mjs"
+        ],
+        "node": "22.23.3",
+        "startedUtc": "2026-10-16T04:30:00.383845+00:00",
+        "finishedUtc": "2026-10-16T04:31:32.385360+00:00",
+        "elapsedSeconds": 92.00152337003965,
+        "exit": 0,
+        "logs": {
+          "stdout": {
+            "bytes": 10139,
+            "sha256": "0e6e3d33cd80e65e4bae1f842ac162d3b9bb5b4aa72494185182083dd93b3f9a"
+          },
+          "stderr": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      },
+      "targeted-timeouts": {
+        "command": [
+          "/home/err/.volta/tools/image/node/22.23.3/bin/node",
+          "--test",
+          "--test-reporter=tap",
+          "--test-name-pattern=actual custody regression: TERM-resistant",
+          ".github/scripts/opencode-code-review-workflow.test.mjs"
+        ],
+        "node": "22.23.3",
+        "startedUtc": "2026-10-16T04:30:01.550948+00:00",
+        "finishedUtc": "2026-10-16T04:31:09.188824+00:00",
+        "elapsedSeconds": 67.63788658601698,
+        "exit": 0,
+        "logs": {
+          "stdout": {
+            "bytes": 1432,
+            "sha256": "39652530e7b28ea5f29a0fcd61feae6c9d4eef46c752826d1649ecc08100f207"
+          },
+          "stderr": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      },
+      "source-wiring": {
+        "command": [
+          "/home/err/.volta/tools/image/node/22.23.3/bin/node",
+          "--test",
+          "--test-reporter=tap",
+          "--test-name-pattern=review context packages the exact runner|fresh and final input verification share one command|the compiled observer contract pins compatible Muse",
+          ".github/scripts/opencode-code-review-workflow.test.mjs"
+        ],
+        "node": "22.23.3",
+        "startedUtc": "2026-10-16T04:33:25.670036+00:00",
+        "finishedUtc": "2026-10-16T04:33:25.913273+00:00",
+        "elapsedSeconds": 0.24323769903276116,
+        "exit": 0,
+        "logs": {
+          "stdout": {
+            "bytes": 807,
+            "sha256": "9515811e4a43228ccaecb98f0bd9d7f71d12c41c839b781dcab6c5789125da82"
+          },
+          "stderr": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      },
+      "full-edge-repairs": {
+        "command": [
+          "/home/err/.volta/tools/image/node/22.23.3/bin/node",
+          "--test",
+          "--test-reporter=tap",
+          "--test-name-pattern=context assembly records Muse|review metadata actual|actual corrective capture: cwd mutation|full final boundary rebinds actual|review context packages the exact runner|fresh and final input verification share one command",
+          ".github/scripts/opencode-code-review-workflow.test.mjs"
+        ],
+        "node": "22.23.3",
+        "startedUtc": "2026-10-16T04:41:17.216064+00:00",
+        "finishedUtc": "2026-10-16T04:41:34.568683+00:00",
+        "elapsedSeconds": 17.35262712702388,
+        "exit": 0,
+        "logs": {
+          "stdout": {
+            "bytes": 3430,
+            "sha256": "88db651a240969ca1cbcb832f3e6442811745462f2537b605055eeaf528f6dac"
+          },
+          "stderr": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      }
+    },
+    "sourceEqualityPin": {
+      "node": "v22.23.3",
+      "embeddedExact": true,
+      "runnerSha256": "6f9108640cd622e0eb1e1571ca381b11eda4b58783ac8a2ca5abbdc2baa634c6",
+      "embeddedLineWidth": 120,
+      "companion": {
+        "repository": "riatzukiza/muse",
+        "ref": "259c76eee9ac2def944e9191c1da23d3647ba32e"
+      },
+      "yamlParsed": true
+    },
+    "nodeSyntaxChecks": {
+      "runner": 0,
+      "workflowTest": 0
+    },
+    "diffCheckExit": 0,
+    "allPriorAssertionLinesPreserved": true,
+    "remainingOwnedConfigFaultProcesses": [],
+    "initialFullRunRetained": {
+      "file": "full.result.json",
+      "pass": 287,
+      "fail": 12,
+      "tests": 299,
+      "nativePositivePassed": true,
+      "causes": [
+        "eight assembly fixtures hit E2BIG from bash -c script argument; same script now enters existing helper via stdin",
+        "two cwd mutation controls refused with native Git outside-root wording; explicit custody containment now precedes Git query",
+        "two canonical binding fixtures omitted trusted raw recovery digest; their existing binder now retains it when it writes the fixture"
+      ]
+    },
+    "boundsAndOwners": [
+      "No input directory or ignored/untracked filename-family exemption. Every regular Git-other input is byte/type/mode/length bound; 12 exact mutable slots have separate fresh/lifecycle/seal checks. Seven discovery files transition through the existing discovery owner before being held immutable.",
+      "The existing 64MiB Git output bound and shared 30000ms acquisition/config deadline remain. Config uses owned detached group TERM then KILL, 2MiB per stream, awaited close. Existing two-attempt and workflow timing/model/permission policy remain.",
+      "Recovery actual serialized writes are held in supervisor memory; a separate trusted output digest is checked before JSON parse and rechecked after terminal verification. Final proof retains recovery digest. Prior outputs and event-prefix snapshots receive independent terminal hashes. Event ledger added to existing artifact retention.",
+      "Embedded exact source retains width120 and original indentation. Companion alone changes repository/ref to qualified personal Muse259. Outer-workflow-only diff retained."
+    ],
+    "limits": [
+      "Full native positive uses actual local qualified physical CLI and compiled Muse with scripted loopback SSE. It is not a hosted model judgment, GitHub approval, deployment or runtime availability proof.",
+      "The earlier 12-failure full run and all intermediate results are preserved, not relabelled GREEN. The final full run independently passes all299 cases.",
+      "No commits, pushes, native reviews/requests/settlement, board/receipt writes, runtime adoption, credentials, paid/provider requests, global installs or deployment were performed. Existing native fixture uses its owned temporary dependency preparation."
+    ]
+  },
+  "agentLimitsDescribeOnlyItsPreHandoffExecution": true,
+  "mainActualNativeRheos": {
+    "observedAt": "2026-10-16T04:56:06.675628+00:00",
+    "qualifiedCLI_SHA256": "85369213440634989365f75929045d36eb69b6c6b1e7679f68d483374a0d526b",
+    "task": "30c9df92-e1fb-4043-8565-36f96ce2a978",
+    "nativeStatus": "in_progress",
+    "nativePoints": 5,
+    "operations": [
+      {
+        "operation": "main-native-before-green-comment",
+        "args": [
+          "read-task",
+          "30c9df92-e1fb-4043-8565-36f96ce2a978",
+          "--json"
+        ],
+        "exit": 0,
+        "stdoutSHA256": "3594f57c9f3f2d30076080efbfa9ebb8d2f55378af57f796847a6c08c2528a10"
+      },
+      {
+        "operation": "main-native-green-comment",
+        "args": [
+          "comment",
+          "30c9df92-e1fb-4043-8565-36f96ce2a978",
+          "--text",
+          "Scoped ETA5 currentthreefindings correction has actualcausalRED3832ff280ab0043be7a273925953edfab63433ad (32selected/24causalFAIL/8controls) and nowcomplete localGREEN: finalregisteredNode22.23.3 workflow299/299PASS0fail0cancel0skip, unchangedfourfiles, JS/YAML/embedding/pins/diffPASS. Completeignored+untrackedbyte/type/mode/length custody,12exactmutableownedroles/priorseals/eventprefix/recoverywrites, rawrecoverySHA trustedbeforeparse/finalhashes, awaitedownedconfiggroupTERMtoKILL existing30s/2MiB and companionpersonalMuse259. ActualnativeCLI+Muse scriptedSSE positive17pages/5groups/2isolatedattempts/4captures passes; no providerjudgment. Earlierfull287pass12fail retained; actualE2BIGfixturetransport nowidenticalscriptviaSTDIN, cwd custodydiagnosticandtrustedfixturebindings repaired withoutassertionweakening. No newMuse law/permissions/points/budgets. ExistingInProgress5 stays; finalhostedexactheadchecks/reviews/settlement/MERGE/adoption remainrequired. No current7b approvaltransfer, modelrequest/cancel/paid/credential/provider/globalruntime/deployment/social/heartbeat change."
+        ],
+        "exit": 0,
+        "stdoutSHA256": "ad76f43c62f8aa77f7b235fe7ed78103a246b2fb24430582efbbb2bf8dc6d6e5"
+      },
+      {
+        "operation": "main-native-after-green-comment",
+        "args": [
+          "read-task",
+          "30c9df92-e1fb-4043-8565-36f96ce2a978",
+          "--json"
+        ],
+        "exit": 0,
+        "stdoutSHA256": "829e6a2a296a6c15026ae1e1ba1c69f9b5700fa10f936a3c2e692408993e64c6"
+      }
+    ],
+    "oldLedgerPrefixExact": true,
+    "oldLedgerBytes": 1881170,
+    "actualAppendBytes": 1524,
+    "nativeAfterSHA256": "829e6a2a296a6c15026ae1e1ba1c69f9b5700fa10f936a3c2e692408993e64c6"
+  },
+  "reviewLimits": "Old7b MiMo5542908261/whole38843330962SUCCESS/all72pages18groups/all16/all22receipts/fullcontext467checksums was independently audited. No old-head approval is transferred; new code requires current hosted checks/reviews/settlements/MERGE/adoption. Live B1/B2/B3 stays0/3; heartbeat human-paused."
+}

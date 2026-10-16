@@ -160,7 +160,8 @@ test("Discord actual adapter sends nothing without a webhook or fresh comments",
 });
 
 function runScript(script, cwd, env = {}) {
-  return spawnSync("bash", ["-c", script], {
+  return spawnSync("bash", ["-s"], {
+    input: script,
     cwd,
     env: { ...process.env, ...env },
     encoding: "utf8",
@@ -717,7 +718,10 @@ function contextFixture(checked) {
      * Bind this transport fixture and store its invocation digest.
      * @returns {void}
      */
-    bind() { this.invocationDigest = bindTransportInvocation(checked.evidence, invocation); },
+    bind() {
+      this.invocationDigest = bindTransportInvocation(checked.evidence, invocation);
+      this.recoveryDigest = transportSha256(fs.readFileSync(path.join(checked.evidence, "recovery.json")));
+    },
     /**
      * Record a completed transport recovery binding in the fixture output.
      * @param {Object} result - Recovery metadata with an accepted invocation.
@@ -727,6 +731,7 @@ function contextFixture(checked) {
     acceptRecovery(result) {
       assert.ok(result.accepted_invocation, "strict transport recovery must select a completed invocation");
       this.invocationDigest = transportSha256(JSON.stringify(result.accepted_invocation));
+      this.recoveryDigest = transportSha256(fs.readFileSync(path.join(checked.evidence, "recovery.json")));
       fs.appendFileSync(invocation.output, `review_invocation_sha256=${this.invocationDigest}\n`);
     } };
 }
@@ -736,11 +741,12 @@ function finalReviewInputCheck(checked, context, overrides = {}) {
   fs.rmSync(checked.invocation, { force: true });
   const publication = path.join(checked.evidence, "publisher-invoked");
   fs.rmSync(publication, { force: true });
-  const output = path.join(checked.consumer, ".opencode/review-evidence/final-outputs");
+  const output = path.join(checked.env.RUNNER_TEMP, "final-outputs");
   const env = { ...checked.env, GITHUB_OUTPUT: output, REVIEW_INPUT_PHASE: "final",
     REVIEW_INPUT_VERIFICATION_SHA256: parseOutput(checked.env.GITHUB_OUTPUT).input_verification_sha256,
     REVIEW_CONTEXT_SHA256: context.digest,
     REVIEW_INVOCATION_SHA256: context.invocationDigest,
+    REVIEW_RECOVERY_SHA256: context.recoveryDigest ?? parseOutput(context.output).review_recovery_sha256,
     EXPECTED_SHA: checked.env.PR_HEAD_SHA, EXECUTED_SHA: checked.env.PR_HEAD_SHA,
     INITIAL_EXACT_HEAD: "true", INITIAL_CLEAN: "true", ...overrides };
   const step = workflow.jobs.review.steps.find((candidate) => candidate.name === finalInputVerificationName);
@@ -762,6 +768,8 @@ test("fresh and final input verification share one command before App mint and p
     "${{ steps.review_context.outputs.context_sha256 }}");
   assert.equal(final.env.REVIEW_INVOCATION_SHA256,
     "${{ steps.review_invocation.outputs.review_invocation_sha256 }}");
+  assert.equal(final.env.REVIEW_RECOVERY_SHA256,
+    "${{ steps.review_invocation.outputs.review_recovery_sha256 }}");
   const invocation = namedStep("review", "Run bounded evidence-first OpenCode review");
   assert.equal(invocation.id, "review_invocation");
   assert.equal(invocation.env.REVIEW_INVOCATION_VERIFIER_FILE,
@@ -2600,7 +2608,7 @@ function canonicalContextFixture(checked, contextBytes = Buffer.from("outside en
   assert.deepEqual(expectedContext.contextSource, { path: contextFile, bytes: contextBytes.length, sha256: transportSha256(contextBytes) });
   const checksum = execFileSync("sha256sum", ["machinery/review-invocation.cjs", "metadata/exposed-tools.txt"], { cwd: context });
   fs.writeFileSync(path.join(context, "SHA256SUMS"), checksum);
-  const output = path.join(checked.evidence, "invocation-outputs");
+  const output = path.join(checked.env.RUNNER_TEMP, "invocation-outputs");
   fs.writeFileSync(output, "");
   return { checked, context, verifier, verifierFile, registryFile, contextFile, contextBytes, full,
     expectedContext, submissionFile, output, tools, digest: transportSha256(checksum),
@@ -3300,6 +3308,16 @@ test("native bounded batches: actual standalone, physical CLI and compiled produ
   assert.equal(recovery.accepted_invocation.attempt, 2);
   assert.equal(recovery.recovery_reason, "missing_review_submit");
   assert.equal(recovery.batch_custody.captures.length, 4);
+  const eventBytes = fs.readFileSync(path.join(checked.evidence, "review-events.jsonl"));
+  for (const capture of recovery.batch_custody.captures) {
+    const prefix = capture.outputs["review-events.jsonl"];
+    if (capture.boundary === "before" && capture.attempt === 1) assert.equal(prefix, undefined);
+    else {
+      assert.ok(prefix.bytes > 0 && prefix.bytes <= eventBytes.length);
+      assert.equal(prefix.sha256, transportSha256(eventBytes.subarray(0, prefix.bytes)),
+        "each actual child boundary must retain its complete event prefix identity");
+    }
+  }
   const actual = JSON.parse(fs.readFileSync(f.submissionFile));
   assert.ok(actual["input-assessments"].length >= 5);
   assert.equal(new Set(actual["input-assessments"].map(page => page.note)).size, actual["input-assessments"].length);
@@ -3320,6 +3338,7 @@ test("native bounded batches: actual standalone, physical CLI and compiled produ
   assert.equal(fs.existsSync(final.publication), true, "actual final command must reach the inert publication marker");
   const publicationProof = JSON.parse(fs.readFileSync(path.join(checked.evidence, "submission-verification.json")));
   assert.match(publicationProof.terminal_custody_sha256, /^[0-9a-f]{64}$/);
+  assert.equal(publicationProof.recovery_sha256, parseOutput(f.output).review_recovery_sha256);
   const recoveryFile = path.join(checked.evidence, "recovery.json");
   const configFile = path.join(cfg, "opencode.json");
   const bundleFile = path.join(runtime, "dist/eta-mu-actors.js");
@@ -3413,7 +3432,7 @@ test("native bounded batches: actual standalone, physical CLI and compiled produ
     assert.ok(path.isAbsolute(proofDirectory)); fs.mkdirSync(proofDirectory, { mode: 0o700 });
     for (const name of ["recovery.json", "model-response-attempt-1.txt", "model-response-attempt-2.txt", "submission.json",
       "opencode-stderr-attempt-1.log", "opencode-stderr-attempt-2.log", "model-discovery.json",
-      "model-catalog.stdout", "model-version.stdout", "model-catalog-source.json", "model-catalog-source-response.json"]) {
+      "model-catalog.stdout", "model-version.stdout", "model-catalog-source.json", "model-catalog-source-response.json", "review-events.jsonl"]) {
       fs.copyFileSync(path.join(checked.evidence, name), path.join(proofDirectory, name));
       fs.chmodSync(path.join(proofDirectory, name), 0o600);
     }
@@ -3444,6 +3463,7 @@ function bindCanonicalFixture(fixture, options = {}) {
   fs.writeFileSync(path.join(fixture.checked.evidence, "recovery.json"), JSON.stringify({ schema: "open-hax.review-recovery/v1", max_attempts: 2,
     attempts: [{ attempt: 1, exit_code: 0, invocation_state: "completed" }], accepted_invocation: accepted }));
   fixture.invocationDigest = transportSha256(JSON.stringify(accepted));
+  fixture.recoveryDigest = transportSha256(fs.readFileSync(path.join(fixture.checked.evidence, "recovery.json")));
 }
 
 for (const [name, bytes] of [["UTF8", Buffer.from("outside 😀\n第二行\n")], ["present-empty", Buffer.alloc(0)]]) {

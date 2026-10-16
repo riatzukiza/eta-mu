@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-import { execFileSync, spawn, spawnSync } from "node:child_process";
+import { execFileSync, spawn } from "node:child_process";
 import os from "node:os";
 import { createHash } from "node:crypto";
 import fs from "node:fs";
@@ -19,6 +19,186 @@ const MODEL_DISCOVERY_MODE = "opencode-free-mimo-flash-v1";
 const MODEL_DISCOVERY_BUDGET_MS = 30_000;
 const MODEL_CATALOG_URL = "https://models.opencode.ai/api.json";
 const MODEL_CATALOG_MAX_BYTES = 16 * 1024 * 1024;
+
+// Exact paths delegated to existing producers; every other readable Git-other
+// path (including ignored files and downloaded neighbors) remains immutable.
+function outputRoles(directory, submissionFile = path.join(directory, "submission.json")) {
+  return new Map([
+    ...[1, 2].flatMap(attempt => [`model-response-attempt-${attempt}.txt`, `opencode-stderr-attempt-${attempt}.log`]),
+    "submission-attempt-1.json", "review-submit-json-attempt-1.DERIVED.ndjson", "review-submit-json-attempt-1.OMITTED.ndjson",
+    "final-input-coverage-attempt-1.DERIVED.ndjson", "final-input-coverage-attempt-1.OMITTED.ndjson",
+    "recovery.json", "review-events.jsonl",
+  ].map(name => [name, path.resolve(directory, name)]).concat([["submission.json", path.resolve(submissionFile)]]));
+}
+
+function discoveryNames() {
+  return ["model-discovery.json", "model-version.stdout", "model-version.stderr", "model-catalog.stdout", "model-catalog.stderr",
+    "model-catalog-source.json", "model-catalog-source-response.json"];
+}
+
+function physicalStat(file) {
+  const actual = path.resolve(file);
+  if (fs.realpathSync(path.dirname(actual)) !== path.dirname(actual)) throw new Error("review custody parent is not physical");
+  try {
+    const stat = fs.lstatSync(actual, { bigint: true });
+    if (!stat.isFile() || stat.isSymbolicLink()) throw new Error("review custody requires regular files; symlink/special output or input refused");
+    if (stat.size > BigInt(Number.MAX_SAFE_INTEGER)) throw new Error("review custody file length is not representable");
+    return stat;
+  } catch (error) { if (error.code === "ENOENT") return null; throw error; }
+}
+
+function freshOutputRoles(directory, submissionFile, includeDiscovery = false) {
+  const paths = [...outputRoles(directory, submissionFile).values(), path.resolve(directory, "submission-verification.json"),
+    ...(includeDiscovery ? discoveryNames().map(name => path.resolve(directory, name)) : [])];
+  for (const file of paths) if (physicalStat(file)) throw new Error("refusing pre-existing owned output custody; retained history must not be overwritten");
+}
+
+function captureDeadline(deadline) {
+  const remaining = deadline - performance.now();
+  if (remaining <= 0) throw new Error("review custody acquisition deadline expired");
+  return remaining;
+}
+
+/** Stream exact finite regular bytes; reject partial reads, concurrent growth or retyping. */
+async function fileCustody(file, deadline, prefix = null) {
+  const stat = physicalStat(file);
+  if (!stat) return null;
+  const size = Number(stat.size), length = prefix ?? size;
+  if (length > size) throw new Error("review output prefix was truncated");
+  const hash = createHash("sha256");
+  let bytes = 0;
+  if (length > 0) {
+    const stream = fs.createReadStream(file, { flags: fs.constants.O_RDONLY | fs.constants.O_NOFOLLOW,
+      end: length - 1, signal: AbortSignal.timeout(Math.max(1, Math.floor(captureDeadline(deadline)))) });
+    for await (const chunk of stream) {
+      captureDeadline(deadline); bytes += chunk.length;
+      if (bytes > length) throw new Error("review custody file grew during acquisition");
+      hash.update(chunk);
+    }
+  }
+  const after = physicalStat(file);
+  if (bytes !== length || !after || ["dev", "ino", "mode", "size", "mtimeNs", "ctimeNs"].some(key => after[key] !== stat[key])) {
+    throw new Error("review custody file changed during acquisition");
+  }
+  captureDeadline(deadline);
+  return { path: path.resolve(file), type: "regular", mode: Number(stat.mode & 0o7777n), bytes: length, sha256: hash.digest("hex") };
+}
+
+async function consumerInputCustody(cwd, evidenceDirectory, deadline, submissionFile) {
+  const git = args => execFileSync("git", args, { cwd, encoding: null, maxBuffer: 64 * 1024 * 1024,
+    timeout: Math.max(1, Math.floor(captureDeadline(deadline))), killSignal: "SIGKILL" });
+  const root = fs.realpathSync(cwd);
+  if (git(["rev-parse", "--show-toplevel"]).toString("utf8").trim() !== root) throw new Error("review custody cwd must be the Git root");
+  const listed = new TextDecoder("utf-8", { fatal: true, ignoreBOM: true }).decode(git(["ls-files", "--others", "-z"]));
+  if (listed && !listed.endsWith("\0")) throw new Error("incomplete Git custody path listing");
+  const names = listed ? listed.slice(0, -1).split("\0") : [];
+  if (new Set(names).size !== names.length) throw new Error("duplicate Git custody input path");
+  const outputs = new Set(outputRoles(evidenceDirectory, submissionFile).values());
+  if ([...outputs].some(file => !file.startsWith(root + path.sep))) throw new Error("review output custody escaped the consumer Git root");
+  if (git(["ls-files", "--cached", "-z", "--", ...[...outputs].map(file => path.relative(root, file))]).length) {
+    throw new Error("tracked input cannot become owned mutable output custody");
+  }
+  const rows = [];
+  for (const name of names.sort()) {
+    const file = path.resolve(root, name);
+    if (!name || path.isAbsolute(name) || path.posix.normalize(name) !== name || !file.startsWith(root + path.sep)) {
+      throw new Error("invalid Git custody input path");
+    }
+    if (outputs.has(file)) { physicalStat(file); continue; }
+    const row = await fileCustody(file, deadline);
+    if (!row) throw new Error("Git custody input disappeared during acquisition");
+    rows.push({ ...row, path: name });
+  }
+  if (!git(["ls-files", "--others", "-z"]).equals(Buffer.from(listed, "utf8"))) throw new Error("Git custody input set changed during acquisition");
+  return { files: rows, sha256: sha256(JSON.stringify(rows)) };
+}
+
+// Only the supervisor's actual serialized writes establish this expectation.
+// The raw digest is exported separately, never inserted into its own file.
+const recoveryWrites = new Map();
+function heldRecovery(file) {
+  const expected = recoveryWrites.get(path.resolve(file));
+  const stat = physicalStat(file);
+  if (!expected ? stat !== null : !stat || Number(stat.size) !== expected.bytes ||
+      Number(stat.mode & 0o7777n) !== expected.mode || sha256(fs.readFileSync(file)) !== expected.sha256) {
+    throw new Error("raw recovery output custody changed since supervisor write");
+  }
+  return expected;
+}
+
+/** Exact output lifecycle, independent of the immutable census. No review law is interpreted here. */
+function outputCustody(directory, submissionFile, metadata) {
+  const roles = outputRoles(directory, submissionFile), seals = new Map();
+  const metadataFile = roles.get("recovery.json");
+  const refresh = async (closingAttempt = null, deadline = performance.now() + MODEL_DISCOVERY_BUDGET_MS) => {
+    heldRecovery(metadataFile);
+    // Only these existing supervisor operations can create a sealed role.
+    for (const record of metadata.attempts) {
+      const retained = record.retained_submission_file;
+      if (retained !== undefined) {
+        if (record.attempt !== 1 || retained !== "submission-attempt-1.json") throw new Error("invalid retained output custody path");
+        const actual = await fileCustody(roles.get(retained), deadline);
+        if (!actual || actual.sha256 !== record.retained_submission_sha256) throw new Error("retained output custody changed");
+        if (!seals.has(retained)) {
+          const prior = seals.get("submission.json");
+          if (!prior || !isDeepStrictEqual({ ...prior, path: actual.path }, actual) || physicalStat(submissionFile)) throw new Error("retained submission custody changed");
+          seals.delete("submission.json"); seals.set(retained, actual);
+        }
+      }
+      for (const [key, stem] of [["submit_json_transport", "review-submit-json"], ["final_input_coverage", "final-input-coverage"]]) {
+        const proof = record[key];
+        if (!proof) continue;
+        for (const [field, suffix] of [["projection", "DERIVED"], ["omitted", "OMITTED"]]) {
+          const name = `${stem}-attempt-1.${suffix}.ndjson`;
+          if (record.attempt !== 1 || proof[`${field}_file`] !== name) throw new Error("invalid derived output custody path");
+          const actual = await fileCustody(roles.get(name), deadline);
+          if (!actual || actual.sha256 !== proof[`${field}_sha256`]) throw new Error("derived output custody changed");
+          if (!seals.has(name)) seals.set(name, actual);
+        }
+      }
+    }
+    for (const [name, file] of roles) {
+      if (name === "recovery.json") continue;
+      const previous = seals.get(name), actual = await fileCustody(file, deadline);
+      const childOwned = closingAttempt !== null && ["submission.json", "review-events.jsonl",
+        `model-response-attempt-${closingAttempt}.txt`, `opencode-stderr-attempt-${closingAttempt}.log`].includes(name);
+      if (childOwned) {
+        if (name === "review-events.jsonl" && previous) {
+          const prefix = await fileCustody(file, deadline, previous.bytes);
+          if (!prefix || prefix.sha256 !== previous.sha256 || prefix.mode !== previous.mode) throw new Error("review event output prefix changed");
+        }
+        if (actual) seals.set(name, actual);
+        else if (previous) throw new Error("owned review output disappeared");
+      } else if (!isDeepStrictEqual(actual, previous ?? null)) throw new Error(`sealed output custody changed: ${name}`);
+    }
+    if (physicalStat(path.resolve(directory, "submission-verification.json"))) throw new Error("pre-existing final output custody");
+    metadata.output_custody = Object.fromEntries(seals);
+  };
+  return refresh;
+}
+
+async function verifyOutputFiles(directory, submissionFile, metadata, deadline = performance.now() + MODEL_DISCOVERY_BUDGET_MS) {
+  const roles = outputRoles(directory, submissionFile), seals = metadata.output_custody;
+  if (!seals || typeof seals !== "object" || Array.isArray(seals)) throw new Error("missing final output custody");
+  if (Object.keys(seals).some(name => !roles.has(name) || name === "recovery.json")) throw new Error("unknown final output custody role");
+  for (const [name, file] of roles) if (name !== "recovery.json" && !isDeepStrictEqual(await fileCustody(file, deadline), seals[name] ?? null)) {
+    throw new Error(`final sealed output custody changed: ${name}`);
+  }
+  for (const record of metadata.attempts) {
+    for (const [field, name] of [["response", `model-response-attempt-${record.attempt}.txt`], ["stderr", `opencode-stderr-attempt-${record.attempt}.log`]]) {
+      if (![1, 2].includes(record.attempt) || record[`${field}_file`] !== name || seals[name]?.sha256 !== record[`${field}_sha256`]) throw new Error("final attempt output custody mismatch");
+    }
+    if (record.retained_submission_file && (record.attempt !== 1 || record.retained_submission_file !== "submission-attempt-1.json" ||
+        seals[record.retained_submission_file]?.sha256 !== record.retained_submission_sha256)) throw new Error("final retained output custody mismatch");
+    for (const [key, stem] of [["submit_json_transport", "review-submit-json"], ["final_input_coverage", "final-input-coverage"]]) if (record[key]) {
+      for (const [field, suffix] of [["projection", "DERIVED"], ["omitted", "OMITTED"]]) {
+        const name = `${stem}-attempt-1.${suffix}.ndjson`, proof = record[key];
+        if (record.attempt !== 1 || proof[`${field}_file`] !== name || seals[name]?.sha256 !== proof[`${field}_sha256`]) throw new Error("final projection output custody mismatch");
+      }
+    }
+  }
+  if (seals["submission.json"]?.sha256 !== metadata.accepted_invocation?.submission_sha256) throw new Error("final submission output custody mismatch");
+}
 
 /** Decode the ID-line/pretty-JSON format emitted by `opencode models --verbose`. */
 export function parseOpenCodeModelCatalog(bytes) {
@@ -406,6 +586,7 @@ export async function discoverFreeMiMoFlash({ evidenceDirectory, requested = "",
     throw new Error("declared OpenCode version is required for model discovery");
   }
   const proofFile = path.join(evidenceDirectory, "model-discovery.json");
+  freshOutputRoles(evidenceDirectory, path.join(evidenceDirectory, "submission.json"), true);
   const names = ["model-discovery.json", "model-version.stdout", "model-version.stderr", "model-catalog.stdout", "model-catalog.stderr",
     "model-catalog-source.json", "model-catalog-source-response.json", "recovery.json", "submission.json", ...[1, 2].flatMap((attempt) => [`model-response-attempt-${attempt}.txt`, `opencode-stderr-attempt-${attempt}.log`])];
   if (names.some((name) => fs.existsSync(path.join(evidenceDirectory, name)))) {
@@ -851,7 +1032,11 @@ waive any canonical result, verification guard, or the two-attempt bound.
 
 /** Write the current recovery metadata as formatted JSON with a trailing newline. */
 function writeRecovery(metadataFile, metadata) {
-  fs.writeFileSync(metadataFile, `${JSON.stringify(metadata, null, 2)}\n`);
+  heldRecovery(metadataFile);
+  const bytes = Buffer.from(`${JSON.stringify(metadata, null, 2)}\n`);
+  fs.writeFileSync(metadataFile, bytes, { flag: recoveryWrites.has(path.resolve(metadataFile)) ? "w" : "wx", mode: 0o600 });
+  const stat = physicalStat(metadataFile);
+  recoveryWrites.set(path.resolve(metadataFile), { bytes: bytes.length, mode: Number(stat.mode & 0o7777n), sha256: sha256(bytes) });
 }
 
 /** Validate the callback's transport envelope, without implementing review law. */
@@ -940,8 +1125,9 @@ function recordAttempt({
   stderrFile,
   submissionFile,
 }) {
-  if (!fs.existsSync(responseFile)) fs.writeFileSync(responseFile, "");
-  if (!fs.existsSync(stderrFile)) fs.writeFileSync(stderrFile, "");
+  if (!physicalStat(responseFile)) fs.writeFileSync(responseFile, "", { flag: "wx", mode: 0o600 });
+  if (!physicalStat(stderrFile)) fs.writeFileSync(stderrFile, "", { flag: "wx", mode: 0o600 });
+  physicalStat(submissionFile);
 
   const state = submissionState(submissionFile);
   const record = {
@@ -1008,6 +1194,7 @@ export async function runReviewRecovery({
 
   fs.mkdirSync(evidenceDirectory, { recursive: true });
   const metadataFile = path.join(evidenceDirectory, "recovery.json");
+  if (strict) freshOutputRoles(evidenceDirectory, submissionFile);
   if (strict && [metadataFile, ...[1, 2].flatMap((attempt) => [
     path.join(evidenceDirectory, `model-response-attempt-${attempt}.txt`),
     path.join(evidenceDirectory, `opencode-stderr-attempt-${attempt}.log`),
@@ -1023,6 +1210,7 @@ export async function runReviewRecovery({
   if (strict) metadata.accepted_invocation = null;
   if (modelDiscovery) metadata.model_discovery = structuredClone(modelDiscovery);
   if (captureBatchHost) metadata.batch_custody = { original: null, captures: [] };
+  const checkOutputs = strict ? outputCustody(evidenceDirectory, submissionFile, metadata) : null;
 
   if (fs.existsSync(submissionFile)) {
     throw new Error(`refusing pre-existing review submission: ${submissionFile}`);
@@ -1031,14 +1219,18 @@ export async function runReviewRecovery({
   let prompt = strict ? strictInvocationPrompt(basePrompt) : basePrompt;
   let contextSha256 = strict ? sha256(JSON.stringify(expectedContext)) : null;
   const capture = async (boundary, attempt) => {
+    const deadline = performance.now() + MODEL_DISCOVERY_BUDGET_MS;
+    if (checkOutputs) await checkOutputs(boundary === "after" ? attempt : null, deadline);
     if (!captureBatchHost) return;
     try {
-      const observation = structuredClone(await captureBatchHost({ boundary, attempt }));
+      const observation = structuredClone(await captureBatchHost({ boundary, attempt, deadline }));
+      await checkOutputs(null, deadline);
+      captureDeadline(deadline);
       if (!observation?.batchHost || typeof observation.batchHost !== "object" || Array.isArray(observation.batchHost)) {
         throw new Error("canonical batch host capture returned no observation");
       }
       const custody = metadata.batch_custody;
-      custody.captures.push({ boundary, attempt, observation });
+      custody.captures.push({ boundary, attempt, observation, outputs: structuredClone(metadata.output_custody) });
       if (custody.original === null) {
         custody.original = structuredClone(observation);
         expectedContext.batchHost = structuredClone(observation.batchHost);
@@ -1069,7 +1261,9 @@ export async function runReviewRecovery({
         childError = error;
         throw error;
       } finally {
-        try { await capture("after", attempt); }
+        try {
+          await capture("after", attempt);
+        }
         catch (error) {
           if (childError) metadata.child_error = { attempt, message: childError instanceof Error ? childError.message : String(childError) };
           throw error;
@@ -1139,6 +1333,7 @@ export async function runReviewRecovery({
         };
         writeRecovery(metadataFile, metadata);
       }
+      if (checkOutputs) { await checkOutputs(); writeRecovery(metadataFile, metadata); }
       return metadata;
     }
     if (state === "malformed") {
@@ -1208,8 +1403,52 @@ function globalSkillSourceIdentity(environment, contextDirectory) {
  * Muse alone interprets the host profile. Full config/environment/source bytes
  * are custody inputs, not public artifacts or model-authored observations.
  */
-export function captureReviewBatchCustody({ binary, environment, cwd, verifierFile,
-  registryFile, evidenceDirectory, promptFile, contextDirectory, runtimeDirectory }) {
+async function captureResolvedConfig(binary, environment, cwd, deadline) {
+  captureDeadline(deadline);
+  const child = spawn(binary, ["debug", "config"], { cwd, env: environment, detached: true,
+    stdio: ["ignore", "pipe", "pipe"] });
+  const stdout = [], stderr = [];
+  let stdoutBytes = 0, stderrBytes = 0, failure, force, timeout;
+  const kill = signal => {
+    if (!child.pid) return;
+    try { process.kill(-child.pid, signal); } catch (error) { if (error.code !== "ESRCH") failure ??= error; }
+  };
+  const terminate = () => {
+    kill("SIGTERM");
+    force ??= setTimeout(() => kill("SIGKILL"), Math.max(0, Math.min(250, deadline - performance.now())));
+  };
+  const collect = (chunks, stream) => bytes => {
+    if (stream === "stdout") stdoutBytes += bytes.length; else stderrBytes += bytes.length;
+    if ((stream === "stdout" ? stdoutBytes : stderrBytes) > 2 * 1024 * 1024) {
+      failure ??= new Error("independent config capture exceeded stream bound"); terminate();
+    } else chunks.push(bytes);
+  };
+  child.stdout.on("data", collect(stdout, "stdout")); child.stderr.on("data", collect(stderr, "stderr"));
+  timeout = setTimeout(() => { failure ??= new Error("independent config capture deadline expired"); terminate(); },
+    Math.max(0, deadline - performance.now() - 250));
+  let exit;
+  try {
+    exit = await new Promise(resolve => {
+      child.once("error", error => { failure ??= error; });
+      // A config child can exit while a descendant retains its pipes. Always
+      // close that owned group, even on an apparently successful parent exit.
+      child.once("exit", terminate);
+      child.once("close", (code, signal) => resolve({ code, signal }));
+    });
+  } finally { clearTimeout(timeout); clearTimeout(force); kill("SIGKILL"); }
+  if (failure || exit.code !== 0 || exit.signal || stdoutBytes === 0) {
+    throw new Error(`independent resolved OpenCode config capture failed: ${JSON.stringify({
+      exit_code: exit.code, signal: exit.signal, error: failure?.message ?? null,
+      stdout_bytes: stdoutBytes, stderr_bytes: stderrBytes })}`);
+  }
+  captureDeadline(deadline);
+  return Buffer.concat(stdout);
+}
+
+export async function captureReviewBatchCustody({ binary, environment, cwd, verifierFile,
+  registryFile, evidenceDirectory, promptFile, contextDirectory, runtimeDirectory,
+  deadline = performance.now() + MODEL_DISCOVERY_BUDGET_MS }) {
+  captureDeadline(deadline);
   const skills = globalSkillSourceIdentity(environment, contextDirectory);
   const physical = modelBinaryIdentity(binary, environment);
   const verifier = createRequire(import.meta.url)(verifierFile);
@@ -1218,16 +1457,8 @@ export function captureReviewBatchCustody({ binary, environment, cwd, verifierFi
   // executing its config command. Discard this result; only the independently
   // captured real resolved configuration below supplies the host observation.
   verifier.prepareReviewBatchHost(physical.real_path, Buffer.from("{}"), environment, cwd);
-  const resolved = spawnSync(physical.real_path, ["debug", "config"], {
-    cwd, env: environment, encoding: null, timeout: 30_000, maxBuffer: 2 * 1024 * 1024,
-  });
-  if (resolved.error || resolved.status !== 0 || resolved.signal || !resolved.stdout?.length) {
-    const failure = { exit_code: resolved.status, signal: resolved.signal,
-      error_code: resolved.error?.code ?? null, stdout_bytes: resolved.stdout?.length ?? 0,
-      stderr_bytes: resolved.stderr?.length ?? 0 };
-    throw new Error(`independent resolved OpenCode config capture failed: ${JSON.stringify(failure)}`);
-  }
-  const batchHost = verifier.prepareReviewBatchHost(physical.real_path, resolved.stdout, environment, cwd);
+  const resolved = await captureResolvedConfig(physical.real_path, environment, cwd, deadline);
+  const batchHost = verifier.prepareReviewBatchHost(physical.real_path, resolved, environment, cwd);
   const files = [verifierFile, registryFile, promptFile,
     ...["basehead.diff", "input-manifest.json", "pr-context.md"].map(name => path.join(evidenceDirectory, name))];
   const sources = files.map(file => {
@@ -1235,17 +1466,20 @@ export function captureReviewBatchCustody({ binary, environment, cwd, verifierFi
     if (!stat.isFile() || stat.isSymbolicLink()) throw new Error("review custody requires physical regular source files");
     return { path: actual, sha256: sha256(fs.readFileSync(actual)) };
   });
-  const git = args => execFileSync("git", args, { cwd, encoding: null, maxBuffer: 64 * 1024 * 1024 });
-  const untracked = git(["ls-files", "--others", "--exclude-standard", "-z"]).toString("utf8").split("\0")
-    .filter(name => name && !name.startsWith(".review-context/") && !name.startsWith(".opencode/review-evidence/"));
+  const git = args => execFileSync("git", args, { cwd, encoding: null, maxBuffer: 64 * 1024 * 1024,
+    timeout: Math.max(1, Math.floor(captureDeadline(deadline))), killSignal: "SIGKILL" });
+  const untracked = await consumerInputCustody(cwd, evidenceDirectory, deadline);
+  const context = sourceDirectoryIdentity(contextDirectory), runtime = sourceDirectoryIdentity(runtimeDirectory);
+  const gitHead = git(["rev-parse", "HEAD"]).toString("utf8").trim();
+  const gitWorking = sha256(git(["diff", "--no-ext-diff", "--binary", "HEAD"]));
+  captureDeadline(deadline);
   return { batchHost, custody: {
-    binary: physical, config_sha256: sha256(resolved.stdout),
+    binary: physical, config_sha256: sha256(resolved),
     environment_sha256: sha256(JSON.stringify(Object.entries(environment).sort(([a], [b]) => a.localeCompare(b)))),
     cwd: fs.realpathSync(cwd), sources,
-    context: sourceDirectoryIdentity(contextDirectory), runtime: sourceDirectoryIdentity(runtimeDirectory), skills,
-    git_head: git(["rev-parse", "HEAD"]).toString("utf8").trim(),
-    git_working_sha256: sha256(git(["diff", "--no-ext-diff", "--binary", "HEAD"])),
-    git_untracked_sha256: sha256(JSON.stringify(untracked)),
+    context, runtime, skills,
+    git_head: gitHead, git_working_sha256: gitWorking,
+    git_untracked_sha256: untracked.sha256, git_untracked_files: untracked.files,
   } };
 }
 
@@ -1259,8 +1493,9 @@ export function reviewChildLaunch(discovery, configuration, environment, evidenc
 }
 
 /** Independently close every actual pair against the trusted accepted digest. */
-export function verifyReviewBatchCustody({ evidenceDirectory, recovery, expectedVersion,
+export async function verifyReviewBatchCustody({ evidenceDirectory, recovery, expectedVersion,
   verifierFile, registryFile, promptFile, contextDirectory, runtimeDirectory }) {
+  const deadline = performance.now() + MODEL_DISCOVERY_BUDGET_MS;
   verifyModelDiscoveryArtifacts(evidenceDirectory, recovery, expectedVersion);
   const proof = discoveryArtifactProof(evidenceDirectory, recovery.model_discovery.sha256, expectedVersion);
   const configuration = ordinaryInferenceConfiguration();
@@ -1283,10 +1518,19 @@ export function verifyReviewBatchCustody({ evidenceDirectory, recovery, expected
         !isDeepStrictEqual(capture.observation, custody.original)) {
       throw new Error("unestablished actual child custody pair");
     }
+    if (!capture.outputs || typeof capture.outputs !== "object" || Array.isArray(capture.outputs)) throw new Error("missing actual child output custody");
+    const events = capture.outputs["review-events.jsonl"];
+    if (events && (!Number.isSafeInteger(events.bytes) || events.bytes < 0 ||
+        !isDeepStrictEqual(await fileCustody(path.join(evidenceDirectory, "review-events.jsonl"),
+          deadline, events.bytes), events))) {
+      throw new Error("review event output prefix changed at terminal verification");
+    }
   }
   const launch = reviewChildLaunch({ proof }, configuration, process.env, evidenceDirectory);
-  const terminal = captureReviewBatchCustody({ ...launch, verifierFile, registryFile,
-    evidenceDirectory, promptFile, contextDirectory, runtimeDirectory });
+  await verifyOutputFiles(evidenceDirectory, path.join(evidenceDirectory, "submission.json"), recovery, deadline);
+  if (physicalStat(path.join(evidenceDirectory, "submission-verification.json"))) throw new Error("pre-existing final output custody");
+  const terminal = await captureReviewBatchCustody({ ...launch, verifierFile, registryFile,
+    evidenceDirectory, promptFile, contextDirectory, runtimeDirectory, deadline });
   if (!isDeepStrictEqual(terminal, custody.original)) {
     // Names only: never expose raw config or environment while diagnosing drift.
     const changed = [
@@ -1295,6 +1539,8 @@ export function verifyReviewBatchCustody({ evidenceDirectory, recovery, expected
     ];
     throw new Error(`review custody changed at terminal publication capture: ${changed.join(", ")}`);
   }
+  await verifyOutputFiles(evidenceDirectory, path.join(evidenceDirectory, "submission.json"), recovery, deadline);
+  captureDeadline(deadline);
   return { batchHost: structuredClone(custody.original.batchHost), terminal_sha256: sha256(JSON.stringify(terminal)) };
 }
 
@@ -1304,8 +1550,12 @@ async function invokeOpenCode({ prompt, responseFile, stderrFile,
   environment = null, cwd = process.cwd() }) {
   if (!reviewModel) throw new Error("REVIEW_MODEL is required");
 
-  const response = fs.createWriteStream(responseFile, { flags: "w" });
-  const stderr = fs.createWriteStream(stderrFile, { flags: "w" });
+  const responseFd = fs.openSync(responseFile, "wx", 0o600);
+  let stderrFd;
+  try { stderrFd = fs.openSync(stderrFile, "wx", 0o600); }
+  catch (error) { fs.closeSync(responseFd); throw error; }
+  const response = fs.createWriteStream(responseFile, { fd: responseFd });
+  const stderr = fs.createWriteStream(stderrFile, { fd: stderrFd });
   const streamsFinished = Promise.allSettled([finished(response), finished(stderr)]);
   let invocationRejected = false;
 
@@ -1371,6 +1621,7 @@ async function main() {
   // The caller stages this CJS from qualified Muse machinery. No model output
   // selects the module, context, semantic verdict, or trusted step output.
   const submissionFile = path.resolve(evidenceDirectory, "submission.json");
+  freshOutputRoles(evidenceDirectory, submissionFile, true);
   let verifierBytes;
   let verifier;
   let expectedContext;
@@ -1427,6 +1678,7 @@ async function main() {
       // A changed file cannot become the original merely by changing early.
       const contextDirectory = path.resolve(path.dirname(verifierFile), "..");
       const originalSource = batches ? {
+        inputs: await consumerInputCustody(process.cwd(), evidenceDirectory, performance.now() + MODEL_DISCOVERY_BUDGET_MS),
         context: sourceDirectoryIdentity(contextDirectory),
         runtime: sourceDirectoryIdentity(process.env.REVIEW_CHILD_RUNTIME),
         skills: globalSkillSourceIdentity({ HOME: configuration.home }, contextDirectory),
@@ -1438,12 +1690,15 @@ async function main() {
         expectedVersion: process.env.REVIEW_EXPECTED_OPENCODE_VERSION, inferenceConfiguration: configuration });
       launch = reviewChildLaunch(discovery, configuration, process.env, evidenceDirectory);
       if (batches) {
-        captureBatchHost = async () => {
+        captureBatchHost = async ({ deadline = performance.now() + MODEL_DISCOVERY_BUDGET_MS } = {}) => {
           assertModelDiscovery(discovery);
           assertInferenceConfiguration(configuration);
-          const observed = captureReviewBatchCustody({ ...launch, verifierFile, registryFile, evidenceDirectory,
-            promptFile, contextDirectory, runtimeDirectory: process.env.REVIEW_CHILD_RUNTIME });
+          const observed = await captureReviewBatchCustody({ ...launch, verifierFile, registryFile, evidenceDirectory,
+            promptFile, contextDirectory, runtimeDirectory: process.env.REVIEW_CHILD_RUNTIME, deadline });
+          const discoveryPaths = new Set(discoveryNames().map(name => path.relative(launch.cwd, path.resolve(evidenceDirectory, name))));
+          const heldInputs = observed.custody.git_untracked_files.filter(row => !discoveryPaths.has(row.path));
           if (!isDeepStrictEqual(observed.custody.sources, originalSource.files) ||
+              !isDeepStrictEqual(heldInputs, originalSource.inputs.files) ||
               !isDeepStrictEqual(observed.custody.context, originalSource.context) ||
               !isDeepStrictEqual(observed.custody.skills, originalSource.skills) ||
               !isDeepStrictEqual(observed.custody.runtime, originalSource.runtime)) {
@@ -1475,16 +1730,21 @@ async function main() {
     verifierSha256: sha256(verifierBytes) });
   const accepted = metadata.accepted_invocation;
   try {
+    const deadline = performance.now() + MODEL_DISCOVERY_BUDGET_MS;
     if (discovery) assertModelDiscovery(discovery);
-    if (captureBatchHost && !isDeepStrictEqual(await captureBatchHost(), metadata.batch_custody.original)) {
+    if (captureBatchHost && !isDeepStrictEqual(await captureBatchHost({ deadline }), metadata.batch_custody.original)) {
       throw new Error("review source/host custody changed before trusted output");
     }
     if (!accepted || sha256(fs.readFileSync(path.join(evidenceDirectory, accepted.response_file))) !== accepted.response_sha256 ||
         sha256(fs.readFileSync(submissionFile)) !== accepted.submission_sha256) {
       throw new Error("accepted invocation bytes changed before trusted output");
     }
+    await verifyOutputFiles(evidenceDirectory, submissionFile, metadata, deadline);
+    const rawRecovery = heldRecovery(path.join(evidenceDirectory, "recovery.json"));
+    if (!rawRecovery) throw new Error("missing held recovery output custody");
+    captureDeadline(deadline);
     const digest = sha256(JSON.stringify(accepted));
-    fs.appendFileSync(process.env.GITHUB_OUTPUT, `review_invocation_sha256=${digest}\n`);
+    fs.appendFileSync(process.env.GITHUB_OUTPUT, `review_invocation_sha256=${digest}\nreview_recovery_sha256=${rawRecovery.sha256}\n`);
   } catch (error) {
     metadata.accepted_invocation = null;
     metadata.rejected_accepted_invocation = accepted;

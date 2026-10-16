@@ -19,8 +19,8 @@ jobs:
       - name: Checkout Muse
         uses: actions/checkout@v6
         with:
-          repository: octave-commons/muse
-          ref: 0b9a91492c8355e6933dc2164d35668cb76d9e60
+          repository: riatzukiza/muse
+          ref: 259c76eee9ac2def944e9191c1da23d3647ba32e
           path: muse
           persist-credentials: false
 
