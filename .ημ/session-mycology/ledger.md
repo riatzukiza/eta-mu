@@ -1158,3 +1158,12 @@ These are readable renderings of the recorded historical values. Each belongs to
   spore: none
   receipt-refs: 9c5b87c510f5305c9df2c72bb69e89dfdc124690,sha256:36288014886934b9b8d3708ada38bc2b193a55dd4b333b1517060a2c1180b938
   note: Constrain an integration fixture to the platform capabilities its real child runner already requires. Keep portable recovery tests enabled; preserve every existing Linux deadline/recovery/reaping assertion. A one-test platform option needs no mirrored registration-parser test: the actual ordinary three-file Node24 suite ran329 tests with zero failures/skips/warnings, and the Linux deadline fixture executed with all owned children reaped. Preserve the original current-c4 review and native P2; a local correction is not native settlement or production adoption. All source/index/three generated overlays stayed exact. Candidate0; no spore/promotion.
+- ts: 2026-10-17T09:42:14.928200796Z
+  session: /home/err/.local/share/openhax-codex/20261010/eta-native-review-body-item-single-scope-plan-overdef461-v1
+  task: Plan the missing single native review-body item assessment boundary
+  p-efficiency: 0.92
+  p-friction: 0.3
+  p-skill-candidate: 0
+  spore: none
+  receipt-refs: 30a24c653011671bf97d0cb98c85ef53617702bf,card:9db1ed5e-c2e6-41bd-aea2-a30641b95557
+  note: A settlement grammar that names body items does not demonstrate a typed collector or publisher. Read current canonical source, full active cards and native planning carriers before adding scope. Plan one item and one actual proposal per invocation; retain complete corpus, independent judgment, history and one-shot publication. Incoming planning is neither implementation readiness nor finding disposition. Keep the application source and all historical ledger bytes fixed. Candidate zero; no spore or promotion.
