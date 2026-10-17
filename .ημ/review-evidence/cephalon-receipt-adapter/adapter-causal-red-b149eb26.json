@@ -1,0 +1,56 @@
+{
+  "epistemicTier": "observed actual native job logs and Git object checks; not provider approval",
+  "head": "b149eb26f51a6a7b87bbd0079ed0d797583ca225",
+  "base": "0993581ac8ee602eb928375c15b29ea3e5425618",
+  "actualFocusedCheckout": "48d77bdf9fad4ffdaea4b2820fee59b9396efe81",
+  "checkoutParents": [
+    "0993581ac8ee602eb928375c15b29ea3e5425618",
+    "b149eb26f51a6a7b87bbd0079ed0d797583ca225"
+  ],
+  "checkoutTree": "05de13f11c4488ba45579a36f58efd71e5194147",
+  "treeEqualsPreparedHead": true,
+  "logs": [
+    {
+      "job": 117451377443,
+      "path": "/home/err/.local/share/codex/cephalon-field-restore-work-20261017/eta-receipt-adapter-approved-plan/wake1714-job-117451377443-20261017T171508.872928Z.log",
+      "bytes": 97343,
+      "sha256": "0f89cc84bf049f937cc1aee51749431c789c0366e5bf6e88fd732c71fd4d22c2",
+      "compiledTests": 97,
+      "assertions": 294,
+      "failures": 2,
+      "errors": 0,
+      "compiledWarnings": 0,
+      "failedTest": "compiled-command-and-tool-use-real-containing-git-root",
+      "routes": [
+        "command",
+        "tool"
+      ],
+      "eachExecutionHasSameTwoFailures": true
+    },
+    {
+      "job": 117451377512,
+      "path": "/home/err/.local/share/codex/cephalon-field-restore-work-20261017/eta-receipt-adapter-approved-plan/wake1714-job-117451377512-20261017T171508.872928Z.log",
+      "bytes": 124039,
+      "sha256": "c2922b964764d96cd577b43336d42c546a66e629e8d18c26854a08b48dc1ab92",
+      "compiledTests": 97,
+      "assertions": 294,
+      "failures": 2,
+      "errors": 0,
+      "compiledWarnings": 0,
+      "failedTest": "compiled-command-and-tool-use-real-containing-git-root",
+      "routes": [
+        "command",
+        "tool"
+      ],
+      "eachExecutionHasSameTwoFailures": true
+    }
+  ],
+  "commands": [
+    "shadow-cljs --verbose compile node-test",
+    "node target/test.cjs",
+    "pnpm run test:coverage"
+  ],
+  "result": "Causal RED: both real command/tool positive assertions refused valid repo-less receipt; outside-Git/no-active controls, original bytes/result shape/global-state isolation and prior tests passed. All executions97tests294assertions2fail0errors; zero compiler warnings.",
+  "scope": "Confirmed included adapter defect; production validator and compiler source paths unchanged in B149. Actual native Ready preceded regression authoring. No missing-symbol/namespace or fixture error supplies this result.",
+  "limits": "Focused workflows execute native merge48d treeequalB149, not a literal B149commitcheckout. Full existing review pipeline still tracked separately; no GREEN/current approval/merge/liveBproof."
+}
