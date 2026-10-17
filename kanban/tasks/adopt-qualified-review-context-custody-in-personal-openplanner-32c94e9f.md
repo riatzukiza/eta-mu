@@ -1,7 +1,7 @@
 ---
 uuid: "ad41fc8a-12fe-453c-bdb9-29d832c94e9f"
 title: "Adopt qualified review context custody in personal OpenPlanner"
-status: "incoming"
+status: "in_progress"
 type: "task"
 priority: "P1"
 points: "1"
@@ -9,7 +9,7 @@ labels: "cephalon, b3, review, context-custody"
 epic: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 dependency: ["30c9df92-e1fb-4043-8565-36f96ce2a978","b9c591fb-95a8-4e4e-b2a5-39eb988cb996","c84f0b33-7527-443a-a9ff-5ee2e2dfed48"]
 category: "tasks"
-write-id: "1792200968523-0.2t5oob8e9rzjjhbs1k3"
+write-id: "1792204898972-0.lqllz0qqnhaxcvmdng"
 created_at: "2026-10-12T22:46:27.730Z"
 parent: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 ---
@@ -142,5 +142,9 @@ Human answer call_7002e9ffc89f4293835580f464a3e11a explicitly includes one-line 
 Current code-review prose correction for CodeRabbit4288175406 and Codex4288191276: this Incoming 1 consumer must, in the future, adopt the actually qualified ETA batching caller/Muse source and pass its own full150-input gates/MERGE. It has not done so. Its primary AC2 now explicitly includes the already human-approved review-job node_version22.20.0→22.23.3, alongside the two qualified Git pins and clearing the dated model override, while excluding every unrelated configuration/runtime/app/globalNode/physical-kernel22.20 profile change. Scope matches human call_7002e9ffc89f4293835580f464a3e11a; this fixes an omitted acceptance-text exception, not a new prerequisite or estimate. Preserve prior comments/events and source dependencies. ETA must independently qualify/MERGE/Done before own consumer planning/native readiness/implementation/full native review. No current source approval or local scripted proof transfers. GoalACTIVE/live0of3/heartbeat humanPAUSED.
 
 Planning handoff after actual source completion, 2026-10-17 UTC. ETA PR21 is qualified MERGE e8e50a96fbd13edfcf0b4cf65dbeb2b544b4133f with exact reviewed cfb tree; source task30c9df92 is nativeDone after actual390/7gateCI, complete126page/361line accepted MiMoAPPROVED5555320532,15passing checks,35settled and canonical exact-head MERGE. Both other native dependencies b9c591fb and c84f0b33 also read back Done. This Incoming1 primary plan now binds actual qualified ETA e8e50a96/Muse259c76e, clearing the dated model override and the existing approved review-only Node22.23.3 input; all other consumer workflow/source/provider/credential/runtime/120minute/twoattempt/full-input/current-head gates remain. The recorded150-input count is the baseline to refresh truthfully; no reduced input, extra application code or transfer of source approvals. Own independent consumer planning review and nativeReady precede implementation in existing personal OpenPlannerPR3. No OpenPlanner workflow edit, Ready/InProgress/consumerDone/epicDone, runtime/maker/owner/clock/PM2/cloud/deployment/social/paid change or heartbeat resumption. Raw previous failures, source history, original56/raw70 provenance and all native comments/events retained.
+
+Planning qualified and actually MERGED as ETA PR27/5bf66006e905349daecdd7e9ce13529e7ed3a694, exact reviewed d83 tree. Canonical native gate PASS9checks/0threads/currentCodeRabbit+MiMo/1completedplanningcohort; genuine native MiMo APPROVED5555559565/full9of9pages/missing[]/46of46contextEOF/singleacceptedinvocation/recoverynull. Failed first trace/artifact retained separately0credit. Fresh native reads show all3 same-board dependencies30c9df92/b9c591fb/c84f0b33 Done after their own qualified source delivery. Admit only this reviewed Incoming1 consumer through lawful hops before implementation in existing personal OpenPlannerPR3. Scope remains two Git pins ETA workflowe8e50a96fbd13edfcf0b4cf65dbeb2b544b4133f/Muse259c76eee9ac2def944e9191c1da23d3647ba32e, remove dated model override for qualified latest eligible anonymous free OpenCode MiMo discovery, approved review-onlyNode22.23.3. Preserve all actual changed inputs/original56/raw70/baseline150, all other workflow config, OpenCode1.18.31/120min/twoattempt/signing separation/currentreviewcheckssettlementsMERGE. No thirdpin/extraapplicationcode/physicalnumeric/globalNode/credential/paid/runtime/deploy/heartbeat change; consumerDone and servedB1B2B3 remain unproven.
+
+Approved consumer implementation published as personal OpenPlannerPR3 exact92e9de3a8e411bf81d9821c9926d9844e463f320/basef95a53a4da8ed90588b0be320ba8e86c6a03668d, ordinary3ab→92e9 history. Only approvedtwoGitpins E8/Muse259, remove dated model override for qualified anonymousOpenCode latestfreeMiMo discovery, and reviewNode22.23.3; allotherYAML/inputcontract/physicalNode22.20workflow/raw70/source56 unchanged. Native whole PRbody readback7307bytes/SHA6f950287b62169235d2bf0e7e6870b0e543d450db504b2a86b7b72dd49d10cad confirmed92e9/f95/autoMergeNull after transient oldhead cache. Full150changedinputs/276committedreceipts; actualnew functional run38995640694 and evidence-review run38995640792 LIVE. Staticconfigchecks are not completed nativeconsumerreview or throughput. Keep this task InProgress until actualfunctional/fullinputreview/checks/settlement/convergence/MERGE satisfy its ACs. NativeReady/sourceplanningqualifiedbeforetheimplementation, no body/status handedit, no newpoint/scope/runtime/paid/credential/deploy/heartbeat change.
 
 ---
