@@ -1,14 +1,14 @@
 ---
 uuid: "d452f01b-70d7-46aa-90ec-5ffd709e79bd"
 title: "Validate legacy receipts in their containing repository"
-status: "in_progress"
+status: "testing"
 type: "task"
 priority: "P1"
 points: "2"
 labels: "cephalon, receipts, compatibility, validation"
 category: "tasks"
 parent: "8872994a-9a50-40a9-85a4-f4c6f5a6a21d"
-write-id: "1792255929382-0.1q9napdywzrp178ui9w"
+write-id: "1792265203230-0.1d51ejsss1qwxzkovug"
 ---
 
 ## Context
@@ -129,3 +129,9 @@ require both outside-Git controls. The canonical API accepts a nonblank supplied
 path; it does not authenticate repository identity. This is the same two-point
 adapter and regression scope, with no owner-law or legacy-writer change. No
 production implementation, native Ready or settlement of ETA31 follows here.
+
+
+---
+Qualified source repair PR33 actually MERGED b0962a3dbbac7bf5c09f6826072d65bab8519d0c at2026-10-17T19:24:01Z. Actual parents0993581ac8ee602eb928375c15b29ea3e5425618+4eb071a1c7c7c83384054de98c2ec450481bf81e; merge tree948458095ecdcbac1b7555a775fc2efc8e2209f8 equals reviewed4eb. Canonical gatePASS11checks/currentCodeRabbit+MiMo/oneunanimousavailablecodecohort/boththreadssettled. Full hosted39053706370attempt2SUCCESS/all7attempted0/workflow392of392/compiled126tests473assertions0failures,errors,compilerwarnings; causalRED97tests294assertions2positive-routefailures retained. Complete integrated parentETA31 qualification and original finding4302111496 settlement remain pending AC5. Keep childTesting2 and parentTesting3 until that boundary is verified. No nativeDone, runtime/deployment or liveB1-B3 proof claimed. Original receipt/event bytes and full native review/context custody retained.
+
+---
