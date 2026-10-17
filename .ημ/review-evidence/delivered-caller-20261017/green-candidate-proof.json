@@ -1,0 +1,72 @@
+{
+  "tier": "observed command-output transcription; no provider review, merge or live character proof",
+  "observedAt": "2026-10-17T08:15:21.125402+00:00",
+  "selectedMuseMerge": "f422d77cf9c6cea46b6791e3f54c98679e949d1f",
+  "compiledFixture": {
+    "tier": "compiled-fixture",
+    "repository": "riatzukiza/muse",
+    "revision": "f422d77cf9c6cea46b6791e3f54c98679e949d1f",
+    "recipe_sha256": "5dc9836dc6e227feb7e1f6e52b67988e75fa6098cf41ce1562d13aa5bc4d36da",
+    "completed": true,
+    "module_bytes": 328141,
+    "module_sha256": "99f2c0d69acd6b466326c364e2c4d4f9b5244016a1ec06771aab5a198063eaed"
+  },
+  "fullSweep": {
+    "tests": 392,
+    "pass": 391,
+    "fail": 1,
+    "skipped": 0,
+    "failure": "New mixed test collector incorrectly assumed every read result had chunks; actual single read uses chunk. No production failure. Preserve full raw log."
+  },
+  "onlyCorrectionAfterSweep": "Test collection now handles actual chunk or chunks. Production source unchanged.",
+  "finalFocusedRecheck": {
+    "tests": 8,
+    "pass": 8,
+    "fail": 0,
+    "skipped": 0,
+    "bothNativeProtocolsAndPromptPinCustodyTests": true
+  },
+  "compositeCoverage": "All392 cases covered by original full sweep plus focused correction; not a single final-head392/392 sweep. Final native hosted full deterministic gate remains required.",
+  "static": {
+    "nodeSyntax": true,
+    "gitDiffHygiene": true,
+    "actionlintSyntaxNoExternalAnalyzers": "exit0 with -shellcheck= -pyflakes=; no output",
+    "fullOptionalActionlint": "Owned original invocation produced no output and was terminated143; no full ShellCheck/Pyflakes pass claimed."
+  },
+  "raw": [
+    {
+      "file": ".\u03b7\u03bc/review-evidence/delivered-caller-20261017/full-workflow-initial.log",
+      "bytes": 136617,
+      "sha256": "65193fa6718670e1c86203b8e46a829fd7a028f57bd4723690d54760009f24de"
+    },
+    {
+      "file": ".\u03b7\u03bc/review-evidence/delivered-caller-20261017/focused-final-recheck.log",
+      "bytes": 2554,
+      "sha256": "92278f70cfc96d9de5658cdd865190875522f386a6a105f6981eb9bc3c4aa804"
+    },
+    {
+      "file": ".\u03b7\u03bc/review-evidence/delivered-caller-20261017/qualified-context-build.log",
+      "bytes": 731,
+      "sha256": "a3732121f5cad9f83663895cdb207076a2f0180a835d9f70159dde90696d23f0"
+    }
+  ],
+  "nativeSummaries": {
+    "strict": {
+      "pages": 17,
+      "groups": 5,
+      "attempts": 2,
+      "captures": 4,
+      "requestBytes": 0,
+      "readWireBytes": 15185
+    },
+    "delivered-mixed": {
+      "pages": 17,
+      "groups": 6,
+      "attempts": 2,
+      "captures": 4,
+      "requestBytes": 433,
+      "readWireBytes": 15186
+    }
+  },
+  "noPhysicalRuntimeOrCredentialOrPaidOrHeartbeatChanges": true
+}

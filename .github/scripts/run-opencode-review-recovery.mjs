@@ -1129,17 +1129,26 @@ Full-input assessment checkpoint before the first stage:
   retain staged-context reading and every evidence-stage requirement. Otherwise:
 - After reading the final full-input page, explicitly assess that final page with
   review_assess_diff_chunk using its actual id, including a shorter final page,
-  or include it once in review_assess_diff_batch using ACTUAL returned membership.
-- Prefer exposed review_read_diff_batch / review_assess_diff_batch when the host
-  reports the qualified profile. Request count 1–4 and follow actual batch.ids
+  or include it once in the selected batched assessor using actual delivered IDs.
+- When review_assess_delivered_diff_batch is exposed, select it for batched
+  judgments. Its request contains only assessments: an ordered vector of closed
+  {id,note} members. Use the actual original ID and one substantive nonblank note
+  per delivered page; the producer derives source, geometry and digests. Do not
+  add profile, source_sha256, start, end or sha256 fields to this operation.
+- Prefer exposed review_read_diff_batch when the host reports the qualified
+  profile. Request count 1–4 and follow actual batch.ids
   and next-id; the producer may select a smaller whole-page prefix. Assess every
   returned original page once with a distinct, nonblank substantive note and
-  its actual id/start/end/sha256. Include the shorter FINAL partial group.
+  its actual ID. Include the shorter FINAL partial group. Single-page reads may
+  also feed the exposed delivered-custody assessor after actual delivery.
   Keep each note within 2048 UTF8 bytes and the complete request within 16384
   UTF8 bytes. Do not reread a page already assessed, synthesize single-page
   calls, combine invocation history or replace per-page notes with one summary.
   Any failed/truncated/refused batch stops this invocation without submission.
-- Each review_assess_diff_batch call must contain 1–4 assessments from exactly
+- The old single-page assessor and review_assess_diff_batch remain explicit
+  compatibility protocols; do not silently downgrade or reinterpret a refused
+  delivered-assessment call. If the old strict batch protocol is explicitly
+  selected, each review_assess_diff_batch call contains 1–4 assessments from exactly
   one delivered read batch. Assess that batch before requesting the next read.
   Copy exact id/start/end/sha256 from that actual returned batch. Never combine
   batches or reconstruct metadata after compaction or from a compaction summary.
@@ -1363,7 +1372,7 @@ export async function runReviewRecovery({
   // Canonical eligibility belongs to the supplied Muse capture. This caller
   // only compares independent transport observations and retains chronology.
   const batches = strict && Array.isArray(expectedContext.reviewTools) && expectedContext.reviewTools.some((name) =>
-    name === "review_read_diff_batch" || name === "review_assess_diff_batch");
+    name === "review_read_diff_batch" || name === "review_assess_diff_batch" || name === "review_assess_delivered_diff_batch");
   if ((batches || captureBatchHost !== undefined) && typeof captureBatchHost !== "function") {
     throw new Error("canonical batch host capture is required before model execution");
   }
@@ -2009,7 +2018,8 @@ async function main() {
     throw error;
   }
   const contextPrompt = `${basePrompt}\n\nTrusted staged context: ${JSON.stringify(expectedContext.contextPath)}. Read the complete file with the native read tool before the first review_record_evidence; a zero-byte file is still present.`;
-  const batches = reviewTools.includes("review_read_diff_batch") || reviewTools.includes("review_assess_diff_batch");
+  const batches = reviewTools.includes("review_read_diff_batch") || reviewTools.includes("review_assess_diff_batch") ||
+    reviewTools.includes("review_assess_delivered_diff_batch");
   let discovery = null, configuration = null, launch = null, captureBatchHost;
   let modelDeadline;
   try {

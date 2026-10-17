@@ -1,14 +1,14 @@
 ---
 uuid: "8872994a-9a50-40a9-85a4-f4c6f5a6a21d"
 title: "Adopt delivered assessment custody in the shared ETA review caller"
-status: "in_progress"
+status: "testing"
 type: "task"
 priority: "P1"
 points: "3"
 labels: "cephalon, b3, review, delivered-custody"
 category: "tasks"
 dependency: ["30c9df92-e1fb-4043-8565-36f96ce2a978"]
-write-id: "1792223643818-0.lffogwulxsh96skytt"
+write-id: "1792224946721-0.qbdd5zjqneaaiev2ej"
 ---
 
 ## Context
@@ -138,5 +138,7 @@ Software/process documentation: GPL-3.0-or-later.
 
 ---
 Actual ownplanningETA30 qualifiedMERGE4d6bb628957571b4826b1f0c56479b0094b075a9 at07:52:56UTC, parents5bf/085 and exactreviewedtree20f8dc9a4c59ccc351202fee3cdb28e9a6cca37e. CodeRabbitfull6231363209/6231364296/summary6231017210 all5inputs/noactionable/exact085; MiMoAPPROVED5556881849/full7of7/41of41contextEOF/onecompletedinvocation/recoverynull/verifiednativebodymatch, producer7actualgatesexit0;9mandatorychecks/0threads/1availableplanningcohort/canonicalPASS; accountCodexquota0credit. Fair3pointcoupledadapterwiring1/native-strictregression1/qualificationcustody1; Muse3pointssourceareseparate/nosepicreestimate. Actualexternalqualified Muse14 codeMERGE f422d77cf9c6cea46b6791e3f54c98679e949d1f and nativeDone1d7a2cfe nowverified; historicalauthoredpendingidentityretained. Selectonlyactualf422 source forplugin+verifier atdefault/fallback/provenance/companiondiagnostic sites. Existingtestalreadyrequirescompaniondiagnostic sourceidentity: consumingthat samepin isalready-existingcoupledcontract, notnewbehavior. Exact25total11core registry/closednewid-notegrammar/bothinitialcorrectiveprompts/allbatchhostbranches including single-read/new-assessor; oldstrict andsingleAPIsremainexplicitnegative/positivecontrols. ActualReady-beforeRED, relevantfullowner0warnings/nativefixture/embeddedbyteequality/newexactheadreviewandMERGEbeforeDone. RootfiniteB1B2B3still0of3; OpenPlannerad41stillInProgress/all150inputnewheadnativeexitrequired120min/max2, no thirdunchanged92retry. No FieldnewAPI, resourcebudgetincrease/globalNode, providercredentials/paid/runtime/clock/cloud/deploy/heartbeat change.
+
+Caller GREEN candidate after actual Ready and causal RED829d6f7f/eb07b070. Select actualqualified Musef422 plugin/verifier consistently atdefault/fallback/provenance and existingcompaniondiagnostic pin. Actual25total11core tools; newclosed deliveredid/note operation exposed/allowed; bothinitialandcorrectivecheckpoints use newgrammar; all3batchhost-custody branches covernewassessor includingonlysinglereads. ExactembeddedrunnerbyteequalityPASS. Freshactualcanonicalfixturef422compiledbothbuilds0warnings/module328141BSHA99f2c0d69acd6b466326c364e2c4d4f9b5244016a1ec06771aab5a198063eaed. Fullworkflow392cases391pass1newtestcollectorTypeError: single result haschunk, notchunks. Correct onlytestcollector; productionbytesunchanged. Finalfocused8of8PASS includesbothactualphysicalOpenCode1.18.31 protocols/initialcorrectiveprompts/pins/missingcustody. Actualstrict17pages5groups andnewdeliveredmixed17pages6groups/finalonepage/closed17distinctnotes; each2isolatedinvocations4independentcaptures, actualcanonicalfinalverifier+inertpublicationmarker/negativecontrolsPASS. Actualnewmaxrequest433B/readwire15186B, no caps/profileincrease. These are scriptedlocalSSE diagnostics, notproviderjudgment/semanticreview/largeconsumerproof. Node syntax/hygiene andboundedactionlint syntax0; optionalfullactionlint nooutputterminated143, nofullShellCheck/Pyflakespassclaimed. Preservealloriginalfulllog/failedassertion/actualnativebytesprivateandcommittedsummarytier. MoveTesting forindependenthostedfullgates/currentfreeOpenCodefullinputcode review; sourceMERGE/Done remainspending. OpenPlannerad41stillInProgress/no thirdunchanged92retry, FieldnewAPIexcluded. No credentials/paid/globalNode/runtime/clock/cloud/deployment/heartbeatchange; served0of3/GoalACTIVE.
 
 ---

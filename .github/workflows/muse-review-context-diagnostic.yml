@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v6
         with:
           repository: riatzukiza/muse
-          ref: 259c76eee9ac2def944e9191c1da23d3647ba32e
+          ref: f422d77cf9c6cea46b6791e3f54c98679e949d1f
           path: muse
           persist-credentials: false
 

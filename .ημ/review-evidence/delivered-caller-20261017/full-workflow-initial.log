@@ -1,0 +1,2583 @@
+TAP version 13
+# Subtest: Discord actual adapter batches ten long Unicode comments by all embed text
+ok 1 - Discord actual adapter batches ten long Unicode comments by all embed text
+  ---
+  duration_ms: 4.873706
+  type: 'test'
+  ...
+# mock Discord accepted 3 embeds/4893 text units, 3 embeds/4893 text units, 3 embeds/4893 text units, 1 embeds/1632 text units
+# Subtest: Discord actual adapter retains the ten-embed count bound for short comments
+ok 2 - Discord actual adapter retains the ten-embed count bound for short comments
+  ---
+  duration_ms: 0.7071
+  type: 'test'
+  ...
+# Subtest: Discord actual adapter includes title and fields at the inclusive 6000 boundary
+ok 3 - Discord actual adapter includes title and fields at the inclusive 6000 boundary
+  ---
+  duration_ms: 0.46484
+  type: 'test'
+  ...
+# Subtest: Discord actual adapter propagates an HTTP failure and stops remaining sends
+ok 4 - Discord actual adapter propagates an HTTP failure and stops remaining sends
+  ---
+  duration_ms: 0.517084
+  type: 'test'
+  ...
+# Subtest: Discord actual adapter sends nothing without a webhook or fresh comments
+ok 5 - Discord actual adapter sends nothing without a webhook or fresh comments
+  ---
+  duration_ms: 0.186225
+  type: 'test'
+  ...
+# Subtest: workflow exposes one stable always-running terminal gate
+ok 6 - workflow exposes one stable always-running terminal gate
+  ---
+  duration_ms: 0.202679
+  type: 'test'
+  ...
+# Subtest: a required reusable head input drives both exact checkout guards
+ok 7 - a required reusable head input drives both exact checkout guards
+  ---
+  duration_ms: 0.187209
+  type: 'test'
+  ...
+# Subtest: staging preserves the full immutable diff beyond its bounded preview
+ok 8 - staging preserves the full immutable diff beyond its bounded preview
+  ---
+  duration_ms: 94.080532
+  type: 'test'
+  ...
+# Subtest: staging fails closed for an absent base or a mismatched selected head
+ok 9 - staging fails closed for an absent base or a mismatched selected head
+  ---
+  duration_ms: 37.439115
+  type: 'test'
+  ...
+# Subtest: staging preserves empty input and distinguishes the native base from the merge base
+ok 10 - staging preserves empty input and distinguishes the native base from the merge base
+  ---
+  duration_ms: 95.732663
+  type: 'test'
+  ...
+# Subtest: the compiled observer contract pins compatible Muse and allows both full-input tools
+ok 11 - the compiled observer contract pins compatible Muse and allows both full-input tools
+  ---
+  duration_ms: 3.350367
+  type: 'test'
+  ...
+# Subtest: context assembly records Muse and Agents inputs literally without executing ref text
+ok 12 - context assembly records Muse and Agents inputs literally without executing ref text
+  ---
+  duration_ms: 296.192047
+  type: 'test'
+  ...
+# Subtest: fresh and final input verification share one command before App mint and publication
+ok 13 - fresh and final input verification share one command before App mint and publication
+  ---
+  duration_ms: 0.350325
+  type: 'test'
+  ...
+# Subtest: post-guard input, manifest, proof and context mutation stops before publisher
+ok 14 - post-guard input, manifest, proof and context mutation stops before publisher
+  ---
+  duration_ms: 1353.266946
+  type: 'test'
+  ...
+# Subtest: final invocation binding rejects altered selected evidence before publication
+ok 15 - final invocation binding rejects altered selected evidence before publication
+  ---
+  duration_ms: 2046.439132
+  type: 'test'
+  ...
+# Subtest: final binding refuses absent, mismatched and incomplete submission metadata
+ok 16 - final binding refuses absent, mismatched and incomplete submission metadata
+  ---
+  duration_ms: 2520.502113
+  type: 'test'
+  ...
+# Subtest: final binding accepts complete empty, large, Unicode and retained producer input
+ok 17 - final binding accepts complete empty, large, Unicode and retained producer input
+  ---
+  duration_ms: 1084.536733
+  type: 'test'
+  ...
+# Subtest: final binding follows real omission-only recovery and freezes the unchanged submission
+ok 18 - final binding follows real omission-only recovery and freezes the unchanged submission
+  ---
+  duration_ms: 240.419172
+  type: 'test'
+  ...
+# Subtest: post-guard mutation during the recovery invocation still stops publication
+ok 19 - post-guard mutation during the recovery invocation still stops publication
+  ---
+  duration_ms: 197.973406
+  type: 'test'
+  ...
+# Subtest: a fresh review job verifies downloaded input before tools, model or publication
+ok 20 - a fresh review job verifies downloaded input before tools, model or publication
+  ---
+  duration_ms: 0.247404
+  type: 'test'
+  ...
+# Subtest: a successful malicious gate cannot replace full input and its matching manifest
+ok 21 - a successful malicious gate cannot replace full input and its matching manifest
+  ---
+  duration_ms: 222.12951
+  type: 'test'
+  ...
+# Subtest: fresh input rejects a genuine non-UTF8 Git text diff before proof and model
+ok 22 - fresh input rejects a genuine non-UTF8 Git text diff before proof and model
+  ---
+  duration_ms: 136.055016
+  type: 'test'
+  ...
+# Subtest: independent review accepts exact large, empty and divergent-base input
+ok 23 - independent review accepts exact large, empty and divergent-base input
+  ---
+  duration_ms: 443.507877
+  type: 'test'
+  ...
+# Subtest: failed-job rerun verifies retained producer input and records both attempts
+ok 24 - failed-job rerun verifies retained producer input and records both attempts
+  ---
+  duration_ms: 136.249876
+  type: 'test'
+  ...
+# Subtest: retained input refuses forged artifact scope, attempts and producer provenance before model
+ok 25 - retained input refuses forged artifact scope, attempts and producer provenance before model
+  ---
+  duration_ms: 1523.158262
+  type: 'test'
+  ...
+# Subtest: independent review refuses altered manifest identities, size, hash and provenance
+ok 26 - independent review refuses altered manifest identities, size, hash and provenance
+  ---
+  duration_ms: 1501.816899
+  type: 'test'
+  ...
+# Subtest: both checkout guards reject a valid caller SHA that is not the event PR head
+ok 27 - both checkout guards reject a valid caller SHA that is not the event PR head
+  ---
+  duration_ms: 90.481706
+  type: 'test'
+  ...
+# Subtest: toolchain setup defaults on when the input is absent and honors an explicit false
+ok 28 - toolchain setup defaults on when the input is absent and honors an explicit false
+  ---
+  duration_ms: 0.350779
+  type: 'test'
+  ...
+# Subtest: default deterministic gates mirror private Git dependencies without persisting auth
+ok 29 - default deterministic gates mirror private Git dependencies without persisting auth
+  ---
+  duration_ms: 0.242809
+  type: 'test'
+  ...
+# Subtest: the default reusable evidence script executes every declared gate
+ok 30 - the default reusable evidence script executes every declared gate
+  ---
+  duration_ms: 91.262205
+  type: 'test'
+  ...
+# Subtest: artifact names do not claim an unverified head revision
+ok 31 - artifact names do not claim an unverified head revision
+  ---
+  duration_ms: 0.268941
+  type: 'test'
+  ...
+# Subtest: review downloads the immutable artifact names emitted by prerequisite jobs
+ok 32 - review downloads the immutable artifact names emitted by prerequisite jobs
+  ---
+  duration_ms: 0.14794
+  type: 'test'
+  ...
+# Subtest: review context packages the exact runner for reusable-workflow callers
+ok 33 - review context packages the exact runner for reusable-workflow callers
+  ---
+  duration_ms: 1.103613
+  type: 'test'
+  ...
+# Subtest: native caller version: deterministic installation uses the same selected input as production
+ok 34 - native caller version: deterministic installation uses the same selected input as production
+  ---
+  duration_ms: 49.04865
+  type: 'test'
+  ...
+# Subtest: workflow bounds recovery before validating and publishing the submission
+ok 35 - workflow bounds recovery before validating and publishing the submission
+  ---
+  duration_ms: 0.420147
+  type: 'test'
+  ...
+# Subtest: operator docs distinguish in-job recovery from a failed-job rerun
+ok 36 - operator docs distinguish in-job recovery from a failed-job rerun
+  ---
+  duration_ms: 0.771657
+  type: 'test'
+  ...
+# Subtest: first-pass submission does not invoke recovery
+ok 37 - first-pass submission does not invoke recovery
+  ---
+  duration_ms: 1.371053
+  type: 'test'
+  ...
+# Subtest: one omitted submission receives exactly one corrective attempt
+ok 38 - one omitted submission receives exactly one corrective attempt
+  ---
+  duration_ms: 1.622862
+  type: 'test'
+  ...
+# Subtest: repeated omission fails closed after two retained attempts
+ok 39 - repeated omission fails closed after two retained attempts
+  ---
+  duration_ms: 1.363965
+  type: 'test'
+  ...
+# Subtest: malformed submission fails closed without consuming the recovery attempt
+ok 40 - malformed submission fails closed without consuming the recovery attempt
+  ---
+  duration_ms: 1.091967
+  type: 'test'
+  ...
+# Subtest: non-zero completed invocation records its evidence and does not retry
+ok 41 - non-zero completed invocation records its evidence and does not retry
+  ---
+  duration_ms: 0.924015
+  type: 'test'
+  ...
+# Subtest: rejected invocation is recorded once and rethrows the original error
+ok 42 - rejected invocation is recorded once and rethrows the original error
+  ---
+  duration_ms: 0.960331
+  type: 'test'
+  ...
+# Subtest: recovery CLI preserves both real child-process streams
+ok 43 - recovery CLI preserves both real child-process streams
+  ---
+  duration_ms: 169.305671
+  type: 'test'
+  ...
+# Subtest: recovery CLI finalizes streams and records a spawn failure
+ok 44 - recovery CLI finalizes streams and records a spawn failure
+  ---
+  duration_ms: 67.530565
+  type: 'test'
+  ...
+# Subtest: deterministic checkout guard records independently executed SHA
+ok 45 - deterministic checkout guard records independently executed SHA
+  ---
+  duration_ms: 37.681657
+  type: 'test'
+  ...
+# Subtest: deterministic checkout guard rejects a copied expected SHA mismatch
+ok 46 - deterministic checkout guard rejects a copied expected SHA mismatch
+  ---
+  duration_ms: 52.06964
+  type: 'test'
+  ...
+# Subtest: deterministic checkout guard rejects a non-commit reusable target
+ok 47 - deterministic checkout guard rejects a non-commit reusable target
+  ---
+  duration_ms: 35.105381
+  type: 'test'
+  ...
+# Subtest: deterministic checkout guard rejects a dirty tree
+ok 48 - deterministic checkout guard rejects a dirty tree
+  ---
+  duration_ms: 37.814051
+  type: 'test'
+  ...
+# Subtest: review checkout independently rejects an expected SHA mismatch
+ok 49 - review checkout independently rejects an expected SHA mismatch
+  ---
+  duration_ms: 45.863631
+  type: 'test'
+  ...
+# Subtest: deterministic summary reports success only for exact clean zero exits
+ok 50 - deterministic summary reports success only for exact clean zero exits
+  ---
+  duration_ms: 57.277798
+  type: 'test'
+  ...
+# Subtest: deterministic summary stays available and red when a gate fails
+ok 51 - deterministic summary stays available and red when a gate fails
+  ---
+  duration_ms: 61.481525
+  type: 'test'
+  ...
+# Subtest: deterministic summary never labels mismatched evidence exact-head
+ok 52 - deterministic summary never labels mismatched evidence exact-head
+  ---
+  duration_ms: 58.260186
+  type: 'test'
+  ...
+# Subtest: deterministic summary fails closed when status output is missing
+ok 53 - deterministic summary fails closed when status output is missing
+  ---
+  duration_ms: 71.763738
+  type: 'test'
+  ...
+# Subtest: build gate archives and restores every explicit tracked generated output
+ok 54 - build gate archives and restores every explicit tracked generated output
+  ---
+  duration_ms: 107.968833
+  type: 'test'
+  ...
+# Subtest: build gate never hides a generated-output mutation that predates the build
+ok 55 - build gate never hides a generated-output mutation that predates the build
+  ---
+  duration_ms: 70.487186
+  type: 'test'
+  ...
+# Subtest: review completion permits only review artifacts and preserves revision
+ok 56 - review completion permits only review artifacts and preserves revision
+  ---
+  duration_ms: 35.682894
+  type: 'test'
+  ...
+# Subtest: review completion rejects tracked mutation
+ok 57 - review completion rejects tracked mutation
+  ---
+  duration_ms: 36.172007
+  type: 'test'
+  ...
+# Subtest: review completion rejects untracked files outside bounded artifacts
+ok 58 - review completion rejects untracked files outside bounded artifacts
+  ---
+  duration_ms: 34.731931
+  type: 'test'
+  ...
+# Subtest: clean-tree review setup: empty tree (quotePath=true)
+ok 59 - clean-tree review setup: empty tree (quotePath=true)
+  ---
+  duration_ms: 47.757026
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"empty tree","quotePath":true,"porcelain":""}
+# Subtest: clean-tree review setup: generated ASCII under .opencode/review-evidence/ (quotePath=true)
+ok 60 - clean-tree review setup: generated ASCII under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 34.812574
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"generated ASCII under .opencode/review-evidence/","quotePath":true,"porcelain":"?? .opencode/review-evidence/artifact.txt\\n"}
+# Subtest: clean-tree review setup: generated Unicode filename under .opencode/review-evidence/ (quotePath=true)
+ok 61 - clean-tree review setup: generated Unicode filename under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 30.392344
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"generated Unicode filename under .opencode/review-evidence/","quotePath":true,"porcelain":"?? \\".opencode/review-evidence/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree review setup: generated Unicode directory under .opencode/review-evidence/ (quotePath=true)
+ok 62 - clean-tree review setup: generated Unicode directory under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 43.344418
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"generated Unicode directory under .opencode/review-evidence/","quotePath":true,"porcelain":"?? \\".opencode/review-evidence/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274/artifact.txt\\"\\n"}
+# Subtest: clean-tree review setup: reject tracked modified under .opencode/review-evidence/ (quotePath=true)
+ok 63 - clean-tree review setup: reject tracked modified under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 66.945917
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked modified under .opencode/review-evidence/","quotePath":true,"porcelain":" M .opencode/review-evidence/tracked.txt\\n"}
+# Subtest: clean-tree review setup: reject tracked Unicode modified under .opencode/review-evidence/ (quotePath=true)
+ok 64 - clean-tree review setup: reject tracked Unicode modified under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 55.155601
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked Unicode modified under .opencode/review-evidence/","quotePath":true,"porcelain":" M \\".opencode/review-evidence/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree review setup: reject tracked staged under .opencode/review-evidence/ (quotePath=true)
+ok 65 - clean-tree review setup: reject tracked staged under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 63.370104
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked staged under .opencode/review-evidence/","quotePath":true,"porcelain":"M  .opencode/review-evidence/tracked.txt\\n"}
+# Subtest: clean-tree review setup: reject tracked deleted under .opencode/review-evidence/ (quotePath=true)
+ok 66 - clean-tree review setup: reject tracked deleted under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 55.806614
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked deleted under .opencode/review-evidence/","quotePath":true,"porcelain":" D .opencode/review-evidence/tracked.txt\\n"}
+# Subtest: clean-tree review setup: reject tracked renamed under .opencode/review-evidence/ (quotePath=true)
+ok 67 - clean-tree review setup: reject tracked renamed under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 60.224153
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked renamed under .opencode/review-evidence/","quotePath":true,"porcelain":"R  .opencode/review-evidence/tracked.txt -> .opencode/review-evidence/renamed.txt\\n"}
+# Subtest: clean-tree review setup: generated ASCII under .review-context/ (quotePath=true)
+ok 68 - clean-tree review setup: generated ASCII under .review-context/ (quotePath=true)
+  ---
+  duration_ms: 41.04483
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"generated ASCII under .review-context/","quotePath":true,"porcelain":"?? .review-context/artifact.txt\\n"}
+# Subtest: clean-tree review setup: generated Unicode filename under .review-context/ (quotePath=true)
+ok 69 - clean-tree review setup: generated Unicode filename under .review-context/ (quotePath=true)
+  ---
+  duration_ms: 44.293708
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"generated Unicode filename under .review-context/","quotePath":true,"porcelain":"?? \\".review-context/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree review setup: generated Unicode directory under .review-context/ (quotePath=true)
+ok 70 - clean-tree review setup: generated Unicode directory under .review-context/ (quotePath=true)
+  ---
+  duration_ms: 43.885344
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"generated Unicode directory under .review-context/","quotePath":true,"porcelain":"?? \\".review-context/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274/artifact.txt\\"\\n"}
+# Subtest: clean-tree review setup: reject tracked modified under .review-context/ (quotePath=true)
+ok 71 - clean-tree review setup: reject tracked modified under .review-context/ (quotePath=true)
+  ---
+  duration_ms: 58.462137
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked modified under .review-context/","quotePath":true,"porcelain":" M .review-context/tracked.txt\\n"}
+# Subtest: clean-tree review setup: reject tracked Unicode modified under .review-context/ (quotePath=true)
+ok 72 - clean-tree review setup: reject tracked Unicode modified under .review-context/ (quotePath=true)
+  ---
+  duration_ms: 57.500299
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked Unicode modified under .review-context/","quotePath":true,"porcelain":" M \\".review-context/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree review setup: reject tracked staged under .review-context/ (quotePath=true)
+ok 73 - clean-tree review setup: reject tracked staged under .review-context/ (quotePath=true)
+  ---
+  duration_ms: 54.061408
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked staged under .review-context/","quotePath":true,"porcelain":"M  .review-context/tracked.txt\\n"}
+# Subtest: clean-tree review setup: reject tracked deleted under .review-context/ (quotePath=true)
+ok 74 - clean-tree review setup: reject tracked deleted under .review-context/ (quotePath=true)
+  ---
+  duration_ms: 54.445639
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked deleted under .review-context/","quotePath":true,"porcelain":" D .review-context/tracked.txt\\n"}
+# Subtest: clean-tree review setup: reject tracked renamed under .review-context/ (quotePath=true)
+ok 75 - clean-tree review setup: reject tracked renamed under .review-context/ (quotePath=true)
+  ---
+  duration_ms: 61.944285
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked renamed under .review-context/","quotePath":true,"porcelain":"R  .review-context/tracked.txt -> .review-context/renamed.txt\\n"}
+# Subtest: clean-tree review setup: reject unrelated ASCII (quotePath=true)
+ok 76 - clean-tree review setup: reject unrelated ASCII (quotePath=true)
+  ---
+  duration_ms: 39.279041
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject unrelated ASCII","quotePath":true,"porcelain":"?? unexpected.txt\\n"}
+# Subtest: clean-tree review setup: reject unrelated Unicode (quotePath=true)
+ok 77 - clean-tree review setup: reject unrelated Unicode (quotePath=true)
+  ---
+  duration_ms: 41.989626
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject unrelated Unicode","quotePath":true,"porcelain":"?? \\"\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree review setup: reject review-context prefix lookalike (quotePath=true)
+ok 78 - clean-tree review setup: reject review-context prefix lookalike (quotePath=true)
+  ---
+  duration_ms: 41.408761
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject review-context prefix lookalike","quotePath":true,"porcelain":"?? .review-context-extra/artifact.txt\\n"}
+# Subtest: clean-tree review setup: reject review-evidence prefix lookalike (quotePath=true)
+ok 79 - clean-tree review setup: reject review-evidence prefix lookalike (quotePath=true)
+  ---
+  duration_ms: 47.332211
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject review-evidence prefix lookalike","quotePath":true,"porcelain":"?? .opencode/review-evidence-extra/artifact.txt\\n"}
+# Subtest: clean-tree review setup: reject unrelated opencode sibling (quotePath=true)
+ok 80 - clean-tree review setup: reject unrelated opencode sibling (quotePath=true)
+  ---
+  duration_ms: 43.499741
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject unrelated opencode sibling","quotePath":true,"porcelain":"?? .opencode/unexpected.txt\\n"}
+# Subtest: clean-tree review setup: reject mixed generated and unrelated dirt (quotePath=true)
+ok 81 - clean-tree review setup: reject mixed generated and unrelated dirt (quotePath=true)
+  ---
+  duration_ms: 41.071967
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject mixed generated and unrelated dirt","quotePath":true,"porcelain":"?? .opencode/review-evidence/artifact.txt\\n?? .review-context/artifact.txt\\n?? \\"\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree review setup: empty tree (quotePath=false)
+ok 82 - clean-tree review setup: empty tree (quotePath=false)
+  ---
+  duration_ms: 40.507934
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"empty tree","quotePath":false,"porcelain":""}
+# Subtest: clean-tree review setup: generated ASCII under .opencode/review-evidence/ (quotePath=false)
+ok 83 - clean-tree review setup: generated ASCII under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 41.929516
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"generated ASCII under .opencode/review-evidence/","quotePath":false,"porcelain":"?? .opencode/review-evidence/artifact.txt\\n"}
+# Subtest: clean-tree review setup: generated Unicode filename under .opencode/review-evidence/ (quotePath=false)
+ok 84 - clean-tree review setup: generated Unicode filename under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 43.02713
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"generated Unicode filename under .opencode/review-evidence/","quotePath":false,"porcelain":"?? .opencode/review-evidence/尾-ημ.txt\\n"}
+# Subtest: clean-tree review setup: generated Unicode directory under .opencode/review-evidence/ (quotePath=false)
+ok 85 - clean-tree review setup: generated Unicode directory under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 43.757251
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"generated Unicode directory under .opencode/review-evidence/","quotePath":false,"porcelain":"?? .opencode/review-evidence/尾-ημ/artifact.txt\\n"}
+# Subtest: clean-tree review setup: reject tracked modified under .opencode/review-evidence/ (quotePath=false)
+ok 86 - clean-tree review setup: reject tracked modified under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 52.812256
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked modified under .opencode/review-evidence/","quotePath":false,"porcelain":" M .opencode/review-evidence/tracked.txt\\n"}
+# Subtest: clean-tree review setup: reject tracked Unicode modified under .opencode/review-evidence/ (quotePath=false)
+ok 87 - clean-tree review setup: reject tracked Unicode modified under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 59.035565
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked Unicode modified under .opencode/review-evidence/","quotePath":false,"porcelain":" M .opencode/review-evidence/尾-ημ.txt\\n"}
+# Subtest: clean-tree review setup: reject tracked staged under .opencode/review-evidence/ (quotePath=false)
+ok 88 - clean-tree review setup: reject tracked staged under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 54.219331
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked staged under .opencode/review-evidence/","quotePath":false,"porcelain":"M  .opencode/review-evidence/tracked.txt\\n"}
+# Subtest: clean-tree review setup: reject tracked deleted under .opencode/review-evidence/ (quotePath=false)
+ok 89 - clean-tree review setup: reject tracked deleted under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 48.600815
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked deleted under .opencode/review-evidence/","quotePath":false,"porcelain":" D .opencode/review-evidence/tracked.txt\\n"}
+# Subtest: clean-tree review setup: reject tracked renamed under .opencode/review-evidence/ (quotePath=false)
+ok 90 - clean-tree review setup: reject tracked renamed under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 61.711309
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked renamed under .opencode/review-evidence/","quotePath":false,"porcelain":"R  .opencode/review-evidence/tracked.txt -> .opencode/review-evidence/renamed.txt\\n"}
+# Subtest: clean-tree review setup: generated ASCII under .review-context/ (quotePath=false)
+ok 91 - clean-tree review setup: generated ASCII under .review-context/ (quotePath=false)
+  ---
+  duration_ms: 44.330247
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"generated ASCII under .review-context/","quotePath":false,"porcelain":"?? .review-context/artifact.txt\\n"}
+# Subtest: clean-tree review setup: generated Unicode filename under .review-context/ (quotePath=false)
+ok 92 - clean-tree review setup: generated Unicode filename under .review-context/ (quotePath=false)
+  ---
+  duration_ms: 39.512555
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"generated Unicode filename under .review-context/","quotePath":false,"porcelain":"?? .review-context/尾-ημ.txt\\n"}
+# Subtest: clean-tree review setup: generated Unicode directory under .review-context/ (quotePath=false)
+ok 93 - clean-tree review setup: generated Unicode directory under .review-context/ (quotePath=false)
+  ---
+  duration_ms: 39.922266
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"generated Unicode directory under .review-context/","quotePath":false,"porcelain":"?? .review-context/尾-ημ/artifact.txt\\n"}
+# Subtest: clean-tree review setup: reject tracked modified under .review-context/ (quotePath=false)
+ok 94 - clean-tree review setup: reject tracked modified under .review-context/ (quotePath=false)
+  ---
+  duration_ms: 43.522968
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked modified under .review-context/","quotePath":false,"porcelain":" M .review-context/tracked.txt\\n"}
+# Subtest: clean-tree review setup: reject tracked Unicode modified under .review-context/ (quotePath=false)
+ok 95 - clean-tree review setup: reject tracked Unicode modified under .review-context/ (quotePath=false)
+  ---
+  duration_ms: 47.986421
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked Unicode modified under .review-context/","quotePath":false,"porcelain":" M .review-context/尾-ημ.txt\\n"}
+# Subtest: clean-tree review setup: reject tracked staged under .review-context/ (quotePath=false)
+ok 96 - clean-tree review setup: reject tracked staged under .review-context/ (quotePath=false)
+  ---
+  duration_ms: 51.691936
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked staged under .review-context/","quotePath":false,"porcelain":"M  .review-context/tracked.txt\\n"}
+# Subtest: clean-tree review setup: reject tracked deleted under .review-context/ (quotePath=false)
+ok 97 - clean-tree review setup: reject tracked deleted under .review-context/ (quotePath=false)
+  ---
+  duration_ms: 55.119076
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked deleted under .review-context/","quotePath":false,"porcelain":" D .review-context/tracked.txt\\n"}
+# Subtest: clean-tree review setup: reject tracked renamed under .review-context/ (quotePath=false)
+ok 98 - clean-tree review setup: reject tracked renamed under .review-context/ (quotePath=false)
+  ---
+  duration_ms: 56.179747
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject tracked renamed under .review-context/","quotePath":false,"porcelain":"R  .review-context/tracked.txt -> .review-context/renamed.txt\\n"}
+# Subtest: clean-tree review setup: reject unrelated ASCII (quotePath=false)
+ok 99 - clean-tree review setup: reject unrelated ASCII (quotePath=false)
+  ---
+  duration_ms: 39.568799
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject unrelated ASCII","quotePath":false,"porcelain":"?? unexpected.txt\\n"}
+# Subtest: clean-tree review setup: reject unrelated Unicode (quotePath=false)
+ok 100 - clean-tree review setup: reject unrelated Unicode (quotePath=false)
+  ---
+  duration_ms: 40.427941
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject unrelated Unicode","quotePath":false,"porcelain":"?? 尾-ημ.txt\\n"}
+# Subtest: clean-tree review setup: reject review-context prefix lookalike (quotePath=false)
+ok 101 - clean-tree review setup: reject review-context prefix lookalike (quotePath=false)
+  ---
+  duration_ms: 45.164177
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject review-context prefix lookalike","quotePath":false,"porcelain":"?? .review-context-extra/artifact.txt\\n"}
+# Subtest: clean-tree review setup: reject review-evidence prefix lookalike (quotePath=false)
+ok 102 - clean-tree review setup: reject review-evidence prefix lookalike (quotePath=false)
+  ---
+  duration_ms: 45.161391
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject review-evidence prefix lookalike","quotePath":false,"porcelain":"?? .opencode/review-evidence-extra/artifact.txt\\n"}
+# Subtest: clean-tree review setup: reject unrelated opencode sibling (quotePath=false)
+ok 103 - clean-tree review setup: reject unrelated opencode sibling (quotePath=false)
+  ---
+  duration_ms: 42.785747
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject unrelated opencode sibling","quotePath":false,"porcelain":"?? .opencode/unexpected.txt\\n"}
+# Subtest: clean-tree review setup: reject mixed generated and unrelated dirt (quotePath=false)
+ok 104 - clean-tree review setup: reject mixed generated and unrelated dirt (quotePath=false)
+  ---
+  duration_ms: 44.425424
+  type: 'test'
+  ...
+# {"guard":"review setup","scenario":"reject mixed generated and unrelated dirt","quotePath":false,"porcelain":"?? .opencode/review-evidence/artifact.txt\\n?? .review-context/artifact.txt\\n?? 尾-ημ.txt\\n"}
+# Subtest: clean-tree review completion: empty tree (quotePath=true)
+ok 105 - clean-tree review completion: empty tree (quotePath=true)
+  ---
+  duration_ms: 40.899073
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"empty tree","quotePath":true,"porcelain":""}
+# Subtest: clean-tree review completion: generated ASCII under .opencode/review-evidence/ (quotePath=true)
+ok 106 - clean-tree review completion: generated ASCII under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 41.102899
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"generated ASCII under .opencode/review-evidence/","quotePath":true,"porcelain":"?? .opencode/review-evidence/artifact.txt\\n"}
+# Subtest: clean-tree review completion: generated Unicode filename under .opencode/review-evidence/ (quotePath=true)
+ok 107 - clean-tree review completion: generated Unicode filename under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 43.099079
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"generated Unicode filename under .opencode/review-evidence/","quotePath":true,"porcelain":"?? \\".opencode/review-evidence/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree review completion: generated Unicode directory under .opencode/review-evidence/ (quotePath=true)
+ok 108 - clean-tree review completion: generated Unicode directory under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 47.179993
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"generated Unicode directory under .opencode/review-evidence/","quotePath":true,"porcelain":"?? \\".opencode/review-evidence/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274/artifact.txt\\"\\n"}
+# Subtest: clean-tree review completion: reject tracked modified under .opencode/review-evidence/ (quotePath=true)
+ok 109 - clean-tree review completion: reject tracked modified under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 63.120705
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked modified under .opencode/review-evidence/","quotePath":true,"porcelain":" M .opencode/review-evidence/tracked.txt\\n"}
+# Subtest: clean-tree review completion: reject tracked Unicode modified under .opencode/review-evidence/ (quotePath=true)
+ok 110 - clean-tree review completion: reject tracked Unicode modified under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 65.905971
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked Unicode modified under .opencode/review-evidence/","quotePath":true,"porcelain":" M \\".opencode/review-evidence/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree review completion: reject tracked staged under .opencode/review-evidence/ (quotePath=true)
+ok 111 - clean-tree review completion: reject tracked staged under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 73.136601
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked staged under .opencode/review-evidence/","quotePath":true,"porcelain":"M  .opencode/review-evidence/tracked.txt\\n"}
+# Subtest: clean-tree review completion: reject tracked deleted under .opencode/review-evidence/ (quotePath=true)
+ok 112 - clean-tree review completion: reject tracked deleted under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 78.206033
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked deleted under .opencode/review-evidence/","quotePath":true,"porcelain":" D .opencode/review-evidence/tracked.txt\\n"}
+# Subtest: clean-tree review completion: reject tracked renamed under .opencode/review-evidence/ (quotePath=true)
+ok 113 - clean-tree review completion: reject tracked renamed under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 74.756537
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked renamed under .opencode/review-evidence/","quotePath":true,"porcelain":"R  .opencode/review-evidence/tracked.txt -> .opencode/review-evidence/renamed.txt\\n"}
+# Subtest: clean-tree review completion: generated ASCII under .review-context/ (quotePath=true)
+ok 114 - clean-tree review completion: generated ASCII under .review-context/ (quotePath=true)
+  ---
+  duration_ms: 51.400729
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"generated ASCII under .review-context/","quotePath":true,"porcelain":"?? .review-context/artifact.txt\\n"}
+# Subtest: clean-tree review completion: generated Unicode filename under .review-context/ (quotePath=true)
+ok 115 - clean-tree review completion: generated Unicode filename under .review-context/ (quotePath=true)
+  ---
+  duration_ms: 46.776939
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"generated Unicode filename under .review-context/","quotePath":true,"porcelain":"?? \\".review-context/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree review completion: generated Unicode directory under .review-context/ (quotePath=true)
+ok 116 - clean-tree review completion: generated Unicode directory under .review-context/ (quotePath=true)
+  ---
+  duration_ms: 47.48272
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"generated Unicode directory under .review-context/","quotePath":true,"porcelain":"?? \\".review-context/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274/artifact.txt\\"\\n"}
+# Subtest: clean-tree review completion: reject tracked modified under .review-context/ (quotePath=true)
+ok 117 - clean-tree review completion: reject tracked modified under .review-context/ (quotePath=true)
+  ---
+  duration_ms: 58.021551
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked modified under .review-context/","quotePath":true,"porcelain":" M .review-context/tracked.txt\\n"}
+# Subtest: clean-tree review completion: reject tracked Unicode modified under .review-context/ (quotePath=true)
+ok 118 - clean-tree review completion: reject tracked Unicode modified under .review-context/ (quotePath=true)
+  ---
+  duration_ms: 59.864335
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked Unicode modified under .review-context/","quotePath":true,"porcelain":" M \\".review-context/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree review completion: reject tracked staged under .review-context/ (quotePath=true)
+ok 119 - clean-tree review completion: reject tracked staged under .review-context/ (quotePath=true)
+  ---
+  duration_ms: 62.433691
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked staged under .review-context/","quotePath":true,"porcelain":"M  .review-context/tracked.txt\\n"}
+# Subtest: clean-tree review completion: reject tracked deleted under .review-context/ (quotePath=true)
+ok 120 - clean-tree review completion: reject tracked deleted under .review-context/ (quotePath=true)
+  ---
+  duration_ms: 56.094755
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked deleted under .review-context/","quotePath":true,"porcelain":" D .review-context/tracked.txt\\n"}
+# Subtest: clean-tree review completion: reject tracked renamed under .review-context/ (quotePath=true)
+ok 121 - clean-tree review completion: reject tracked renamed under .review-context/ (quotePath=true)
+  ---
+  duration_ms: 59.403551
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked renamed under .review-context/","quotePath":true,"porcelain":"R  .review-context/tracked.txt -> .review-context/renamed.txt\\n"}
+# Subtest: clean-tree review completion: reject unrelated ASCII (quotePath=true)
+ok 122 - clean-tree review completion: reject unrelated ASCII (quotePath=true)
+  ---
+  duration_ms: 43.541685
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject unrelated ASCII","quotePath":true,"porcelain":"?? unexpected.txt\\n"}
+# Subtest: clean-tree review completion: reject unrelated Unicode (quotePath=true)
+ok 123 - clean-tree review completion: reject unrelated Unicode (quotePath=true)
+  ---
+  duration_ms: 47.492731
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject unrelated Unicode","quotePath":true,"porcelain":"?? \\"\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree review completion: reject review-context prefix lookalike (quotePath=true)
+ok 124 - clean-tree review completion: reject review-context prefix lookalike (quotePath=true)
+  ---
+  duration_ms: 47.954383
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject review-context prefix lookalike","quotePath":true,"porcelain":"?? .review-context-extra/artifact.txt\\n"}
+# Subtest: clean-tree review completion: reject review-evidence prefix lookalike (quotePath=true)
+ok 125 - clean-tree review completion: reject review-evidence prefix lookalike (quotePath=true)
+  ---
+  duration_ms: 50.961264
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject review-evidence prefix lookalike","quotePath":true,"porcelain":"?? .opencode/review-evidence-extra/artifact.txt\\n"}
+# Subtest: clean-tree review completion: reject unrelated opencode sibling (quotePath=true)
+ok 126 - clean-tree review completion: reject unrelated opencode sibling (quotePath=true)
+  ---
+  duration_ms: 58.942811
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject unrelated opencode sibling","quotePath":true,"porcelain":"?? .opencode/unexpected.txt\\n"}
+# Subtest: clean-tree review completion: reject mixed generated and unrelated dirt (quotePath=true)
+ok 127 - clean-tree review completion: reject mixed generated and unrelated dirt (quotePath=true)
+  ---
+  duration_ms: 59.367464
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject mixed generated and unrelated dirt","quotePath":true,"porcelain":"?? .opencode/review-evidence/artifact.txt\\n?? .review-context/artifact.txt\\n?? \\"\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree review completion: empty tree (quotePath=false)
+ok 128 - clean-tree review completion: empty tree (quotePath=false)
+  ---
+  duration_ms: 63.28144
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"empty tree","quotePath":false,"porcelain":""}
+# Subtest: clean-tree review completion: generated ASCII under .opencode/review-evidence/ (quotePath=false)
+ok 129 - clean-tree review completion: generated ASCII under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 57.404539
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"generated ASCII under .opencode/review-evidence/","quotePath":false,"porcelain":"?? .opencode/review-evidence/artifact.txt\\n"}
+# Subtest: clean-tree review completion: generated Unicode filename under .opencode/review-evidence/ (quotePath=false)
+ok 130 - clean-tree review completion: generated Unicode filename under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 56.303669
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"generated Unicode filename under .opencode/review-evidence/","quotePath":false,"porcelain":"?? .opencode/review-evidence/尾-ημ.txt\\n"}
+# Subtest: clean-tree review completion: generated Unicode directory under .opencode/review-evidence/ (quotePath=false)
+ok 131 - clean-tree review completion: generated Unicode directory under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 58.434207
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"generated Unicode directory under .opencode/review-evidence/","quotePath":false,"porcelain":"?? .opencode/review-evidence/尾-ημ/artifact.txt\\n"}
+# Subtest: clean-tree review completion: reject tracked modified under .opencode/review-evidence/ (quotePath=false)
+ok 132 - clean-tree review completion: reject tracked modified under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 74.400941
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked modified under .opencode/review-evidence/","quotePath":false,"porcelain":" M .opencode/review-evidence/tracked.txt\\n"}
+# Subtest: clean-tree review completion: reject tracked Unicode modified under .opencode/review-evidence/ (quotePath=false)
+ok 133 - clean-tree review completion: reject tracked Unicode modified under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 71.425624
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked Unicode modified under .opencode/review-evidence/","quotePath":false,"porcelain":" M .opencode/review-evidence/尾-ημ.txt\\n"}
+# Subtest: clean-tree review completion: reject tracked staged under .opencode/review-evidence/ (quotePath=false)
+ok 134 - clean-tree review completion: reject tracked staged under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 62.139477
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked staged under .opencode/review-evidence/","quotePath":false,"porcelain":"M  .opencode/review-evidence/tracked.txt\\n"}
+# Subtest: clean-tree review completion: reject tracked deleted under .opencode/review-evidence/ (quotePath=false)
+ok 135 - clean-tree review completion: reject tracked deleted under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 53.619154
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked deleted under .opencode/review-evidence/","quotePath":false,"porcelain":" D .opencode/review-evidence/tracked.txt\\n"}
+# Subtest: clean-tree review completion: reject tracked renamed under .opencode/review-evidence/ (quotePath=false)
+ok 136 - clean-tree review completion: reject tracked renamed under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 53.926443
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked renamed under .opencode/review-evidence/","quotePath":false,"porcelain":"R  .opencode/review-evidence/tracked.txt -> .opencode/review-evidence/renamed.txt\\n"}
+# Subtest: clean-tree review completion: generated ASCII under .review-context/ (quotePath=false)
+ok 137 - clean-tree review completion: generated ASCII under .review-context/ (quotePath=false)
+  ---
+  duration_ms: 43.83722
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"generated ASCII under .review-context/","quotePath":false,"porcelain":"?? .review-context/artifact.txt\\n"}
+# Subtest: clean-tree review completion: generated Unicode filename under .review-context/ (quotePath=false)
+ok 138 - clean-tree review completion: generated Unicode filename under .review-context/ (quotePath=false)
+  ---
+  duration_ms: 42.27462
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"generated Unicode filename under .review-context/","quotePath":false,"porcelain":"?? .review-context/尾-ημ.txt\\n"}
+# Subtest: clean-tree review completion: generated Unicode directory under .review-context/ (quotePath=false)
+ok 139 - clean-tree review completion: generated Unicode directory under .review-context/ (quotePath=false)
+  ---
+  duration_ms: 45.557957
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"generated Unicode directory under .review-context/","quotePath":false,"porcelain":"?? .review-context/尾-ημ/artifact.txt\\n"}
+# Subtest: clean-tree review completion: reject tracked modified under .review-context/ (quotePath=false)
+ok 140 - clean-tree review completion: reject tracked modified under .review-context/ (quotePath=false)
+  ---
+  duration_ms: 57.833538
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked modified under .review-context/","quotePath":false,"porcelain":" M .review-context/tracked.txt\\n"}
+# Subtest: clean-tree review completion: reject tracked Unicode modified under .review-context/ (quotePath=false)
+ok 141 - clean-tree review completion: reject tracked Unicode modified under .review-context/ (quotePath=false)
+  ---
+  duration_ms: 58.175692
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked Unicode modified under .review-context/","quotePath":false,"porcelain":" M .review-context/尾-ημ.txt\\n"}
+# Subtest: clean-tree review completion: reject tracked staged under .review-context/ (quotePath=false)
+ok 142 - clean-tree review completion: reject tracked staged under .review-context/ (quotePath=false)
+  ---
+  duration_ms: 60.551931
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked staged under .review-context/","quotePath":false,"porcelain":"M  .review-context/tracked.txt\\n"}
+# Subtest: clean-tree review completion: reject tracked deleted under .review-context/ (quotePath=false)
+ok 143 - clean-tree review completion: reject tracked deleted under .review-context/ (quotePath=false)
+  ---
+  duration_ms: 56.470862
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked deleted under .review-context/","quotePath":false,"porcelain":" D .review-context/tracked.txt\\n"}
+# Subtest: clean-tree review completion: reject tracked renamed under .review-context/ (quotePath=false)
+ok 144 - clean-tree review completion: reject tracked renamed under .review-context/ (quotePath=false)
+  ---
+  duration_ms: 61.388052
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject tracked renamed under .review-context/","quotePath":false,"porcelain":"R  .review-context/tracked.txt -> .review-context/renamed.txt\\n"}
+# Subtest: clean-tree review completion: reject unrelated ASCII (quotePath=false)
+ok 145 - clean-tree review completion: reject unrelated ASCII (quotePath=false)
+  ---
+  duration_ms: 47.800584
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject unrelated ASCII","quotePath":false,"porcelain":"?? unexpected.txt\\n"}
+# Subtest: clean-tree review completion: reject unrelated Unicode (quotePath=false)
+ok 146 - clean-tree review completion: reject unrelated Unicode (quotePath=false)
+  ---
+  duration_ms: 47.743364
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject unrelated Unicode","quotePath":false,"porcelain":"?? 尾-ημ.txt\\n"}
+# Subtest: clean-tree review completion: reject review-context prefix lookalike (quotePath=false)
+ok 147 - clean-tree review completion: reject review-context prefix lookalike (quotePath=false)
+  ---
+  duration_ms: 50.674512
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject review-context prefix lookalike","quotePath":false,"porcelain":"?? .review-context-extra/artifact.txt\\n"}
+# Subtest: clean-tree review completion: reject review-evidence prefix lookalike (quotePath=false)
+ok 148 - clean-tree review completion: reject review-evidence prefix lookalike (quotePath=false)
+  ---
+  duration_ms: 49.693868
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject review-evidence prefix lookalike","quotePath":false,"porcelain":"?? .opencode/review-evidence-extra/artifact.txt\\n"}
+# Subtest: clean-tree review completion: reject unrelated opencode sibling (quotePath=false)
+ok 149 - clean-tree review completion: reject unrelated opencode sibling (quotePath=false)
+  ---
+  duration_ms: 61.946059
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject unrelated opencode sibling","quotePath":false,"porcelain":"?? .opencode/unexpected.txt\\n"}
+# Subtest: clean-tree review completion: reject mixed generated and unrelated dirt (quotePath=false)
+ok 150 - clean-tree review completion: reject mixed generated and unrelated dirt (quotePath=false)
+  ---
+  duration_ms: 58.119244
+  type: 'test'
+  ...
+# {"guard":"review completion","scenario":"reject mixed generated and unrelated dirt","quotePath":false,"porcelain":"?? .opencode/review-evidence/artifact.txt\\n?? .review-context/artifact.txt\\n?? 尾-ημ.txt\\n"}
+# Subtest: clean-tree deterministic completion: empty tree (quotePath=true)
+ok 151 - clean-tree deterministic completion: empty tree (quotePath=true)
+  ---
+  duration_ms: 99.172854
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"empty tree","quotePath":true,"porcelain":"?? .opencode/review-evidence/statuses.env\\n"}
+# Subtest: clean-tree deterministic completion: generated ASCII under .opencode/review-evidence/ (quotePath=true)
+ok 152 - clean-tree deterministic completion: generated ASCII under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 101.205831
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"generated ASCII under .opencode/review-evidence/","quotePath":true,"porcelain":"?? .opencode/review-evidence/artifact.txt\\n?? .opencode/review-evidence/statuses.env\\n"}
+# Subtest: clean-tree deterministic completion: generated Unicode filename under .opencode/review-evidence/ (quotePath=true)
+ok 153 - clean-tree deterministic completion: generated Unicode filename under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 71.240942
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"generated Unicode filename under .opencode/review-evidence/","quotePath":true,"porcelain":"?? .opencode/review-evidence/statuses.env\\n?? \\".opencode/review-evidence/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree deterministic completion: generated Unicode directory under .opencode/review-evidence/ (quotePath=true)
+ok 154 - clean-tree deterministic completion: generated Unicode directory under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 73.997421
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"generated Unicode directory under .opencode/review-evidence/","quotePath":true,"porcelain":"?? .opencode/review-evidence/statuses.env\\n?? \\".opencode/review-evidence/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274/artifact.txt\\"\\n"}
+# Subtest: clean-tree deterministic completion: reject tracked modified under .opencode/review-evidence/ (quotePath=true)
+ok 155 - clean-tree deterministic completion: reject tracked modified under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 83.394254
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject tracked modified under .opencode/review-evidence/","quotePath":true,"porcelain":" M .opencode/review-evidence/tracked.txt\\n?? .opencode/review-evidence/statuses.env\\n"}
+# Subtest: clean-tree deterministic completion: reject tracked Unicode modified under .opencode/review-evidence/ (quotePath=true)
+ok 156 - clean-tree deterministic completion: reject tracked Unicode modified under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 78.911435
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject tracked Unicode modified under .opencode/review-evidence/","quotePath":true,"porcelain":" M \\".opencode/review-evidence/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n?? .opencode/review-evidence/statuses.env\\n"}
+# Subtest: clean-tree deterministic completion: reject tracked staged under .opencode/review-evidence/ (quotePath=true)
+ok 157 - clean-tree deterministic completion: reject tracked staged under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 95.52869
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject tracked staged under .opencode/review-evidence/","quotePath":true,"porcelain":"M  .opencode/review-evidence/tracked.txt\\n?? .opencode/review-evidence/statuses.env\\n"}
+# Subtest: clean-tree deterministic completion: reject tracked deleted under .opencode/review-evidence/ (quotePath=true)
+ok 158 - clean-tree deterministic completion: reject tracked deleted under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 99.675855
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject tracked deleted under .opencode/review-evidence/","quotePath":true,"porcelain":" D .opencode/review-evidence/tracked.txt\\n?? .opencode/review-evidence/statuses.env\\n"}
+# Subtest: clean-tree deterministic completion: reject tracked renamed under .opencode/review-evidence/ (quotePath=true)
+ok 159 - clean-tree deterministic completion: reject tracked renamed under .opencode/review-evidence/ (quotePath=true)
+  ---
+  duration_ms: 98.706065
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject tracked renamed under .opencode/review-evidence/","quotePath":true,"porcelain":"R  .opencode/review-evidence/tracked.txt -> .opencode/review-evidence/renamed.txt\\n?? .opencode/review-evidence/statuses.env\\n"}
+# Subtest: clean-tree deterministic completion: reject unrelated ASCII (quotePath=true)
+ok 160 - clean-tree deterministic completion: reject unrelated ASCII (quotePath=true)
+  ---
+  duration_ms: 78.444606
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject unrelated ASCII","quotePath":true,"porcelain":"?? .opencode/review-evidence/statuses.env\\n?? unexpected.txt\\n"}
+# Subtest: clean-tree deterministic completion: reject unrelated Unicode (quotePath=true)
+ok 161 - clean-tree deterministic completion: reject unrelated Unicode (quotePath=true)
+  ---
+  duration_ms: 87.74578
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject unrelated Unicode","quotePath":true,"porcelain":"?? .opencode/review-evidence/statuses.env\\n?? \\"\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree deterministic completion: reject review-context prefix lookalike (quotePath=true)
+ok 162 - clean-tree deterministic completion: reject review-context prefix lookalike (quotePath=true)
+  ---
+  duration_ms: 81.181905
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject review-context prefix lookalike","quotePath":true,"porcelain":"?? .opencode/review-evidence/statuses.env\\n?? .review-context-extra/artifact.txt\\n"}
+# Subtest: clean-tree deterministic completion: reject review-evidence prefix lookalike (quotePath=true)
+ok 163 - clean-tree deterministic completion: reject review-evidence prefix lookalike (quotePath=true)
+  ---
+  duration_ms: 78.188581
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject review-evidence prefix lookalike","quotePath":true,"porcelain":"?? .opencode/review-evidence-extra/artifact.txt\\n?? .opencode/review-evidence/statuses.env\\n"}
+# Subtest: clean-tree deterministic completion: reject unrelated opencode sibling (quotePath=true)
+ok 164 - clean-tree deterministic completion: reject unrelated opencode sibling (quotePath=true)
+  ---
+  duration_ms: 73.849902
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject unrelated opencode sibling","quotePath":true,"porcelain":"?? .opencode/review-evidence/statuses.env\\n?? .opencode/unexpected.txt\\n"}
+# Subtest: clean-tree deterministic completion: reject mixed generated and unrelated dirt (quotePath=true)
+ok 165 - clean-tree deterministic completion: reject mixed generated and unrelated dirt (quotePath=true)
+  ---
+  duration_ms: 84.705684
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject mixed generated and unrelated dirt","quotePath":true,"porcelain":"?? .opencode/review-evidence/artifact.txt\\n?? .opencode/review-evidence/statuses.env\\n?? \\"\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree deterministic completion: reject review-context/artifact.txt (quotePath=true)
+ok 166 - clean-tree deterministic completion: reject review-context/artifact.txt (quotePath=true)
+  ---
+  duration_ms: 87.464218
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject review-context/artifact.txt","quotePath":true,"porcelain":"?? .opencode/review-evidence/statuses.env\\n?? .review-context/artifact.txt\\n"}
+# Subtest: clean-tree deterministic completion: reject review-context/尾-ημ.txt (quotePath=true)
+ok 167 - clean-tree deterministic completion: reject review-context/尾-ημ.txt (quotePath=true)
+  ---
+  duration_ms: 90.744087
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject review-context/尾-ημ.txt","quotePath":true,"porcelain":"?? .opencode/review-evidence/statuses.env\\n?? \\".review-context/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree deterministic completion: empty tree (quotePath=false)
+ok 168 - clean-tree deterministic completion: empty tree (quotePath=false)
+  ---
+  duration_ms: 98.1543
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"empty tree","quotePath":false,"porcelain":"?? .opencode/review-evidence/statuses.env\\n"}
+# Subtest: clean-tree deterministic completion: generated ASCII under .opencode/review-evidence/ (quotePath=false)
+ok 169 - clean-tree deterministic completion: generated ASCII under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 98.898357
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"generated ASCII under .opencode/review-evidence/","quotePath":false,"porcelain":"?? .opencode/review-evidence/artifact.txt\\n?? .opencode/review-evidence/statuses.env\\n"}
+# Subtest: clean-tree deterministic completion: generated Unicode filename under .opencode/review-evidence/ (quotePath=false)
+ok 170 - clean-tree deterministic completion: generated Unicode filename under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 91.264498
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"generated Unicode filename under .opencode/review-evidence/","quotePath":false,"porcelain":"?? .opencode/review-evidence/statuses.env\\n?? .opencode/review-evidence/尾-ημ.txt\\n"}
+# Subtest: clean-tree deterministic completion: generated Unicode directory under .opencode/review-evidence/ (quotePath=false)
+ok 171 - clean-tree deterministic completion: generated Unicode directory under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 87.6238
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"generated Unicode directory under .opencode/review-evidence/","quotePath":false,"porcelain":"?? .opencode/review-evidence/statuses.env\\n?? .opencode/review-evidence/尾-ημ/artifact.txt\\n"}
+# Subtest: clean-tree deterministic completion: reject tracked modified under .opencode/review-evidence/ (quotePath=false)
+ok 172 - clean-tree deterministic completion: reject tracked modified under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 126.140421
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject tracked modified under .opencode/review-evidence/","quotePath":false,"porcelain":" M .opencode/review-evidence/tracked.txt\\n?? .opencode/review-evidence/statuses.env\\n"}
+# Subtest: clean-tree deterministic completion: reject tracked Unicode modified under .opencode/review-evidence/ (quotePath=false)
+ok 173 - clean-tree deterministic completion: reject tracked Unicode modified under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 93.996717
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject tracked Unicode modified under .opencode/review-evidence/","quotePath":false,"porcelain":" M .opencode/review-evidence/尾-ημ.txt\\n?? .opencode/review-evidence/statuses.env\\n"}
+# Subtest: clean-tree deterministic completion: reject tracked staged under .opencode/review-evidence/ (quotePath=false)
+ok 174 - clean-tree deterministic completion: reject tracked staged under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 94.382131
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject tracked staged under .opencode/review-evidence/","quotePath":false,"porcelain":"M  .opencode/review-evidence/tracked.txt\\n?? .opencode/review-evidence/statuses.env\\n"}
+# Subtest: clean-tree deterministic completion: reject tracked deleted under .opencode/review-evidence/ (quotePath=false)
+ok 175 - clean-tree deterministic completion: reject tracked deleted under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 81.610317
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject tracked deleted under .opencode/review-evidence/","quotePath":false,"porcelain":" D .opencode/review-evidence/tracked.txt\\n?? .opencode/review-evidence/statuses.env\\n"}
+# Subtest: clean-tree deterministic completion: reject tracked renamed under .opencode/review-evidence/ (quotePath=false)
+ok 176 - clean-tree deterministic completion: reject tracked renamed under .opencode/review-evidence/ (quotePath=false)
+  ---
+  duration_ms: 79.788933
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject tracked renamed under .opencode/review-evidence/","quotePath":false,"porcelain":"R  .opencode/review-evidence/tracked.txt -> .opencode/review-evidence/renamed.txt\\n?? .opencode/review-evidence/statuses.env\\n"}
+# Subtest: clean-tree deterministic completion: reject unrelated ASCII (quotePath=false)
+ok 177 - clean-tree deterministic completion: reject unrelated ASCII (quotePath=false)
+  ---
+  duration_ms: 70.617701
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject unrelated ASCII","quotePath":false,"porcelain":"?? .opencode/review-evidence/statuses.env\\n?? unexpected.txt\\n"}
+# Subtest: clean-tree deterministic completion: reject unrelated Unicode (quotePath=false)
+ok 178 - clean-tree deterministic completion: reject unrelated Unicode (quotePath=false)
+  ---
+  duration_ms: 66.205319
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject unrelated Unicode","quotePath":false,"porcelain":"?? .opencode/review-evidence/statuses.env\\n?? 尾-ημ.txt\\n"}
+# Subtest: clean-tree deterministic completion: reject review-context prefix lookalike (quotePath=false)
+ok 179 - clean-tree deterministic completion: reject review-context prefix lookalike (quotePath=false)
+  ---
+  duration_ms: 66.125045
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject review-context prefix lookalike","quotePath":false,"porcelain":"?? .opencode/review-evidence/statuses.env\\n?? .review-context-extra/artifact.txt\\n"}
+# Subtest: clean-tree deterministic completion: reject review-evidence prefix lookalike (quotePath=false)
+ok 180 - clean-tree deterministic completion: reject review-evidence prefix lookalike (quotePath=false)
+  ---
+  duration_ms: 66.261497
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject review-evidence prefix lookalike","quotePath":false,"porcelain":"?? .opencode/review-evidence-extra/artifact.txt\\n?? .opencode/review-evidence/statuses.env\\n"}
+# Subtest: clean-tree deterministic completion: reject unrelated opencode sibling (quotePath=false)
+ok 181 - clean-tree deterministic completion: reject unrelated opencode sibling (quotePath=false)
+  ---
+  duration_ms: 81.878435
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject unrelated opencode sibling","quotePath":false,"porcelain":"?? .opencode/review-evidence/statuses.env\\n?? .opencode/unexpected.txt\\n"}
+# Subtest: clean-tree deterministic completion: reject mixed generated and unrelated dirt (quotePath=false)
+ok 182 - clean-tree deterministic completion: reject mixed generated and unrelated dirt (quotePath=false)
+  ---
+  duration_ms: 84.156284
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject mixed generated and unrelated dirt","quotePath":false,"porcelain":"?? .opencode/review-evidence/artifact.txt\\n?? .opencode/review-evidence/statuses.env\\n?? 尾-ημ.txt\\n"}
+# Subtest: clean-tree deterministic completion: reject review-context/artifact.txt (quotePath=false)
+ok 183 - clean-tree deterministic completion: reject review-context/artifact.txt (quotePath=false)
+  ---
+  duration_ms: 66.781102
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject review-context/artifact.txt","quotePath":false,"porcelain":"?? .opencode/review-evidence/statuses.env\\n?? .review-context/artifact.txt\\n"}
+# Subtest: clean-tree deterministic completion: reject review-context/尾-ημ.txt (quotePath=false)
+ok 184 - clean-tree deterministic completion: reject review-context/尾-ημ.txt (quotePath=false)
+  ---
+  duration_ms: 69.26662
+  type: 'test'
+  ...
+# {"guard":"deterministic completion","scenario":"reject review-context/尾-ημ.txt","quotePath":false,"porcelain":"?? .opencode/review-evidence/statuses.env\\n?? .review-context/尾-ημ.txt\\n"}
+# Subtest: clean-tree initial deterministic_evidence: accept empty tree (quotePath=true)
+ok 185 - clean-tree initial deterministic_evidence: accept empty tree (quotePath=true)
+  ---
+  duration_ms: 50.060773
+  type: 'test'
+  ...
+# {"guard":"initial deterministic_evidence","scenario":"accept empty tree","quotePath":true,"porcelain":""}
+# Subtest: clean-tree initial deterministic_evidence: reject generated .opencode/review-evidence/artifact.txt (quotePath=true)
+ok 186 - clean-tree initial deterministic_evidence: reject generated .opencode/review-evidence/artifact.txt (quotePath=true)
+  ---
+  duration_ms: 45.837271
+  type: 'test'
+  ...
+# {"guard":"initial deterministic_evidence","scenario":"reject generated .opencode/review-evidence/artifact.txt","quotePath":true,"porcelain":"?? .opencode/review-evidence/artifact.txt\\n"}
+# Subtest: clean-tree initial deterministic_evidence: reject generated .opencode/review-evidence/尾-ημ.txt (quotePath=true)
+ok 187 - clean-tree initial deterministic_evidence: reject generated .opencode/review-evidence/尾-ημ.txt (quotePath=true)
+  ---
+  duration_ms: 50.950476
+  type: 'test'
+  ...
+# {"guard":"initial deterministic_evidence","scenario":"reject generated .opencode/review-evidence/尾-ημ.txt","quotePath":true,"porcelain":"?? \\".opencode/review-evidence/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree initial deterministic_evidence: reject generated .review-context/artifact.txt (quotePath=true)
+ok 188 - clean-tree initial deterministic_evidence: reject generated .review-context/artifact.txt (quotePath=true)
+  ---
+  duration_ms: 51.019234
+  type: 'test'
+  ...
+# {"guard":"initial deterministic_evidence","scenario":"reject generated .review-context/artifact.txt","quotePath":true,"porcelain":"?? .review-context/artifact.txt\\n"}
+# Subtest: clean-tree initial deterministic_evidence: reject generated .review-context/尾-ημ.txt (quotePath=true)
+ok 189 - clean-tree initial deterministic_evidence: reject generated .review-context/尾-ημ.txt (quotePath=true)
+  ---
+  duration_ms: 53.300507
+  type: 'test'
+  ...
+# {"guard":"initial deterministic_evidence","scenario":"reject generated .review-context/尾-ημ.txt","quotePath":true,"porcelain":"?? \\".review-context/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree initial deterministic_evidence: accept empty tree (quotePath=false)
+ok 190 - clean-tree initial deterministic_evidence: accept empty tree (quotePath=false)
+  ---
+  duration_ms: 54.261344
+  type: 'test'
+  ...
+# {"guard":"initial deterministic_evidence","scenario":"accept empty tree","quotePath":false,"porcelain":""}
+# Subtest: clean-tree initial deterministic_evidence: reject generated .opencode/review-evidence/artifact.txt (quotePath=false)
+ok 191 - clean-tree initial deterministic_evidence: reject generated .opencode/review-evidence/artifact.txt (quotePath=false)
+  ---
+  duration_ms: 54.109957
+  type: 'test'
+  ...
+# {"guard":"initial deterministic_evidence","scenario":"reject generated .opencode/review-evidence/artifact.txt","quotePath":false,"porcelain":"?? .opencode/review-evidence/artifact.txt\\n"}
+# Subtest: clean-tree initial deterministic_evidence: reject generated .opencode/review-evidence/尾-ημ.txt (quotePath=false)
+ok 192 - clean-tree initial deterministic_evidence: reject generated .opencode/review-evidence/尾-ημ.txt (quotePath=false)
+  ---
+  duration_ms: 43.066881
+  type: 'test'
+  ...
+# {"guard":"initial deterministic_evidence","scenario":"reject generated .opencode/review-evidence/尾-ημ.txt","quotePath":false,"porcelain":"?? .opencode/review-evidence/尾-ημ.txt\\n"}
+# Subtest: clean-tree initial deterministic_evidence: reject generated .review-context/artifact.txt (quotePath=false)
+ok 193 - clean-tree initial deterministic_evidence: reject generated .review-context/artifact.txt (quotePath=false)
+  ---
+  duration_ms: 45.006413
+  type: 'test'
+  ...
+# {"guard":"initial deterministic_evidence","scenario":"reject generated .review-context/artifact.txt","quotePath":false,"porcelain":"?? .review-context/artifact.txt\\n"}
+# Subtest: clean-tree initial deterministic_evidence: reject generated .review-context/尾-ημ.txt (quotePath=false)
+ok 194 - clean-tree initial deterministic_evidence: reject generated .review-context/尾-ημ.txt (quotePath=false)
+  ---
+  duration_ms: 55.708157
+  type: 'test'
+  ...
+# {"guard":"initial deterministic_evidence","scenario":"reject generated .review-context/尾-ημ.txt","quotePath":false,"porcelain":"?? .review-context/尾-ημ.txt\\n"}
+# Subtest: clean-tree initial review: accept empty tree (quotePath=true)
+ok 195 - clean-tree initial review: accept empty tree (quotePath=true)
+  ---
+  duration_ms: 50.229318
+  type: 'test'
+  ...
+# {"guard":"initial review","scenario":"accept empty tree","quotePath":true,"porcelain":""}
+# Subtest: clean-tree initial review: reject generated .opencode/review-evidence/artifact.txt (quotePath=true)
+ok 196 - clean-tree initial review: reject generated .opencode/review-evidence/artifact.txt (quotePath=true)
+  ---
+  duration_ms: 39.088755
+  type: 'test'
+  ...
+# {"guard":"initial review","scenario":"reject generated .opencode/review-evidence/artifact.txt","quotePath":true,"porcelain":"?? .opencode/review-evidence/artifact.txt\\n"}
+# Subtest: clean-tree initial review: reject generated .opencode/review-evidence/尾-ημ.txt (quotePath=true)
+ok 197 - clean-tree initial review: reject generated .opencode/review-evidence/尾-ημ.txt (quotePath=true)
+  ---
+  duration_ms: 40.786054
+  type: 'test'
+  ...
+# {"guard":"initial review","scenario":"reject generated .opencode/review-evidence/尾-ημ.txt","quotePath":true,"porcelain":"?? \\".opencode/review-evidence/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree initial review: reject generated .review-context/artifact.txt (quotePath=true)
+ok 198 - clean-tree initial review: reject generated .review-context/artifact.txt (quotePath=true)
+  ---
+  duration_ms: 42.207737
+  type: 'test'
+  ...
+# {"guard":"initial review","scenario":"reject generated .review-context/artifact.txt","quotePath":true,"porcelain":"?? .review-context/artifact.txt\\n"}
+# Subtest: clean-tree initial review: reject generated .review-context/尾-ημ.txt (quotePath=true)
+ok 199 - clean-tree initial review: reject generated .review-context/尾-ημ.txt (quotePath=true)
+  ---
+  duration_ms: 41.294457
+  type: 'test'
+  ...
+# {"guard":"initial review","scenario":"reject generated .review-context/尾-ημ.txt","quotePath":true,"porcelain":"?? \\".review-context/\\\\345\\\\260\\\\276-\\\\316\\\\267\\\\316\\\\274.txt\\"\\n"}
+# Subtest: clean-tree initial review: accept empty tree (quotePath=false)
+ok 200 - clean-tree initial review: accept empty tree (quotePath=false)
+  ---
+  duration_ms: 36.966106
+  type: 'test'
+  ...
+# {"guard":"initial review","scenario":"accept empty tree","quotePath":false,"porcelain":""}
+# Subtest: clean-tree initial review: reject generated .opencode/review-evidence/artifact.txt (quotePath=false)
+ok 201 - clean-tree initial review: reject generated .opencode/review-evidence/artifact.txt (quotePath=false)
+  ---
+  duration_ms: 41.185311
+  type: 'test'
+  ...
+# {"guard":"initial review","scenario":"reject generated .opencode/review-evidence/artifact.txt","quotePath":false,"porcelain":"?? .opencode/review-evidence/artifact.txt\\n"}
+# Subtest: clean-tree initial review: reject generated .opencode/review-evidence/尾-ημ.txt (quotePath=false)
+ok 202 - clean-tree initial review: reject generated .opencode/review-evidence/尾-ημ.txt (quotePath=false)
+  ---
+  duration_ms: 50.571282
+  type: 'test'
+  ...
+# {"guard":"initial review","scenario":"reject generated .opencode/review-evidence/尾-ημ.txt","quotePath":false,"porcelain":"?? .opencode/review-evidence/尾-ημ.txt\\n"}
+# Subtest: clean-tree initial review: reject generated .review-context/artifact.txt (quotePath=false)
+ok 203 - clean-tree initial review: reject generated .review-context/artifact.txt (quotePath=false)
+  ---
+  duration_ms: 44.383928
+  type: 'test'
+  ...
+# {"guard":"initial review","scenario":"reject generated .review-context/artifact.txt","quotePath":false,"porcelain":"?? .review-context/artifact.txt\\n"}
+# Subtest: clean-tree initial review: reject generated .review-context/尾-ημ.txt (quotePath=false)
+ok 204 - clean-tree initial review: reject generated .review-context/尾-ημ.txt (quotePath=false)
+  ---
+  duration_ms: 43.462154
+  type: 'test'
+  ...
+# {"guard":"initial review","scenario":"reject generated .review-context/尾-ημ.txt","quotePath":false,"porcelain":"?? .review-context/尾-ημ.txt\\n"}
+# Subtest: terminal gate passes only the complete successful exact-head tuple
+ok 205 - terminal gate passes only the complete successful exact-head tuple
+  ---
+  duration_ms: 345.637982
+  type: 'test'
+  ...
+# Subtest: terminal gate treats unsupported pull requests as explicitly not applicable
+ok 206 - terminal gate treats unsupported pull requests as explicitly not applicable
+  ---
+  duration_ms: 59.304558
+  type: 'test'
+  ...
+# Subtest: terminal gate fails closed without pull request context
+ok 207 - terminal gate fails closed without pull request context
+  ---
+  duration_ms: 93.114908
+  type: 'test'
+  ...
+# Subtest: review metadata actual context carries rendered data and copies exact verified bytes
+ok 208 - review metadata actual context carries rendered data and copies exact verified bytes
+  ---
+  duration_ms: 163.616828
+  type: 'test'
+  ...
+# Subtest: review metadata actual generated wrapper preserves one plugin and all registry ABI identities
+ok 209 - review metadata actual generated wrapper preserves one plugin and all registry ABI identities
+  ---
+  duration_ms: 147.699587
+  type: 'test'
+  ...
+# Subtest: review metadata actual hook changes only four descriptions and preserves unknown own-key cases
+ok 210 - review metadata actual hook changes only four descriptions and preserves unknown own-key cases
+  ---
+  duration_ms: 148.494462
+  type: 'test'
+  ...
+# Subtest: review metadata actual hook awaits the prior hook once with original input and output
+ok 211 - review metadata actual hook awaits the prior hook once with original input and output
+  ---
+  duration_ms: 153.135373
+  type: 'test'
+  ...
+# Subtest: review metadata actual hook preserves prior rejection without overriding output
+ok 212 - review metadata actual hook preserves prior rejection without overriding output
+  ---
+  duration_ms: 128.252188
+  type: 'test'
+  ...
+# Subtest: review metadata actual wrapper propagates Muse activation failure once
+ok 213 - review metadata actual wrapper propagates Muse activation failure once
+  ---
+  duration_ms: 132.117244
+  type: 'test'
+  ...
+# Subtest: review metadata actual checksum rejects changed data before runtime or plugin copy
+ok 214 - review metadata actual checksum rejects changed data before runtime or plugin copy
+  ---
+  duration_ms: 109.947575
+  type: 'test'
+  ...
+# Subtest: review timeout defaults keep the direct PR route and other stage budgets unchanged
+ok 215 - review timeout defaults keep the direct PR route and other stage budgets unchanged
+  ---
+  duration_ms: 0.222171
+  type: 'test'
+  ...
+# Subtest: authored review job timeout clamps numeric requests before step validation
+ok 216 - authored review job timeout clamps numeric requests before step validation
+  ---
+  duration_ms: 0.308421
+  type: 'test'
+  ...
+# Subtest: authored timeout validation handles native absent input without overriding PR caller input
+ok 217 - authored timeout validation handles native absent input without overriding PR caller input
+  ---
+  duration_ms: 194.695063
+  type: 'test'
+  ...
+# Subtest: authored timeout validation accepts only default or whole minutes before any setup
+ok 218 - authored timeout validation accepts only default or whole minutes before any setup
+  ---
+  duration_ms: 1164.340459
+  type: 'test'
+  ...
+# Subtest: public job budget: pre-checkout ESM uses the exact runner owner and exports validated bindings
+ok 219 - public job budget: pre-checkout ESM uses the exact runner owner and exports validated bindings
+  ---
+  duration_ms: 180.661707
+  type: 'test'
+  ...
+# Subtest: public job budget: anonymous complete pagination selects only the exact current run/attempt/runner
+ok 220 - public job budget: anonymous complete pagination selects only the exact current run/attempt/runner
+  ---
+  duration_ms: 4.850232
+  type: 'test'
+  ...
+# Subtest: public job budget: 101 actual jobs accept repository-ID 1401249220 links but fetch only the original owner route
+ok 221 - public job budget: 101 actual jobs accept repository-ID 1401249220 links but fetch only the original owner route
+  ---
+  duration_ms: 1.223866
+  type: 'test'
+  ...
+# Subtest: public job budget: 101 actual jobs accept repository-ID 9007199254740991 links but fetch only the original owner route
+ok 222 - public job budget: 101 actual jobs accept repository-ID 9007199254740991 links but fetch only the original owner route
+  ---
+  duration_ms: 0.827327
+  type: 'test'
+  ...
+# Subtest: public job budget: repository-ID links refuse different run on every relation
+ok 223 - public job budget: repository-ID links refuse different run on every relation
+  ---
+  duration_ms: 1.643898
+  type: 'test'
+  ...
+# Subtest: public job budget: repository-ID links refuse different attempt on every relation
+ok 224 - public job budget: repository-ID links refuse different attempt on every relation
+  ---
+  duration_ms: 0.874958
+  type: 'test'
+  ...
+# Subtest: public job budget: repository-ID links refuse different endpoint on every relation
+ok 225 - public job budget: repository-ID links refuse different endpoint on every relation
+  ---
+  duration_ms: 0.647458
+  type: 'test'
+  ...
+# Subtest: public job budget: repository-ID links refuse job detail endpoint on every relation
+ok 226 - public job budget: repository-ID links refuse job detail endpoint on every relation
+  ---
+  duration_ms: 0.600094
+  type: 'test'
+  ...
+# Subtest: public job budget: repository-ID links refuse missing attempt on every relation
+ok 227 - public job budget: repository-ID links refuse missing attempt on every relation
+  ---
+  duration_ms: 0.544297
+  type: 'test'
+  ...
+# Subtest: public job budget: repository-ID links refuse malformed repository ID "0" on every relation
+ok 228 - public job budget: repository-ID links refuse malformed repository ID "0" on every relation
+  ---
+  duration_ms: 0.772563
+  type: 'test'
+  ...
+# Subtest: public job budget: repository-ID links refuse malformed repository ID "-1" on every relation
+ok 229 - public job budget: repository-ID links refuse malformed repository ID "-1" on every relation
+  ---
+  duration_ms: 0.551042
+  type: 'test'
+  ...
+# Subtest: public job budget: repository-ID links refuse malformed repository ID "01" on every relation
+ok 230 - public job budget: repository-ID links refuse malformed repository ID "01" on every relation
+  ---
+  duration_ms: 0.459632
+  type: 'test'
+  ...
+# Subtest: public job budget: repository-ID links refuse malformed repository ID "+1" on every relation
+ok 231 - public job budget: repository-ID links refuse malformed repository ID "+1" on every relation
+  ---
+  duration_ms: 0.443742
+  type: 'test'
+  ...
+# Subtest: public job budget: repository-ID links refuse malformed repository ID "1.0" on every relation
+ok 232 - public job budget: repository-ID links refuse malformed repository ID "1.0" on every relation
+  ---
+  duration_ms: 0.481087
+  type: 'test'
+  ...
+# Subtest: public job budget: repository-ID links refuse malformed repository ID "1e3" on every relation
+ok 233 - public job budget: repository-ID links refuse malformed repository ID "1e3" on every relation
+  ---
+  duration_ms: 0.393209
+  type: 'test'
+  ...
+# Subtest: public job budget: repository-ID links refuse malformed repository ID "9007199254740992" on every relation
+ok 234 - public job budget: repository-ID links refuse malformed repository ID "9007199254740992" on every relation
+  ---
+  duration_ms: 0.41094
+  type: 'test'
+  ...
+# Subtest: public job budget: repository-ID links refuse malformed repository ID "not-an-id" on every relation
+ok 235 - public job budget: repository-ID links refuse malformed repository ID "not-an-id" on every relation
+  ---
+  duration_ms: 0.437519
+  type: 'test'
+  ...
+# Subtest: public job budget: repository-ID links refuse malformed repository ID "" on every relation
+ok 236 - public job budget: repository-ID links refuse malformed repository ID "" on every relation
+  ---
+  duration_ms: 0.378502
+  type: 'test'
+  ...
+# Subtest: public job budget: repository-ID links refuse malformed repository ID "140124922%30" on every relation
+ok 237 - public job budget: repository-ID links refuse malformed repository ID "140124922%30" on every relation
+  ---
+  duration_ms: 0.372583
+  type: 'test'
+  ...
+# Subtest: public job budget: repository-ID links refuse foreign origin on every relation
+ok 238 - public job budget: repository-ID links refuse foreign origin on every relation
+  ---
+  duration_ms: 0.373588
+  type: 'test'
+  ...
+# Subtest: public job budget: repository-ID links refuse foreign port on every relation
+ok 239 - public job budget: repository-ID links refuse foreign port on every relation
+  ---
+  duration_ms: 0.373329
+  type: 'test'
+  ...
+# Subtest: public job budget: repository-ID links refuse insecure origin on every relation
+ok 240 - public job budget: repository-ID links refuse insecure origin on every relation
+  ---
+  duration_ms: 0.353299
+  type: 'test'
+  ...
+# Subtest: public job budget: repository-ID links refuse extra query on every relation
+ok 241 - public job budget: repository-ID links refuse extra query on every relation
+  ---
+  duration_ms: 0.368922
+  type: 'test'
+  ...
+# Subtest: public job budget: repository-ID links refuse duplicate page on every relation
+ok 242 - public job budget: repository-ID links refuse duplicate page on every relation
+  ---
+  duration_ms: 0.605451
+  type: 'test'
+  ...
+# Subtest: public job budget: repository-ID links refuse duplicate page size on every relation
+ok 243 - public job budget: repository-ID links refuse duplicate page size on every relation
+  ---
+  duration_ms: 0.420529
+  type: 'test'
+  ...
+# Subtest: public job budget: repository-ID links refuse missing page size on every relation
+ok 244 - public job budget: repository-ID links refuse missing page size on every relation
+  ---
+  duration_ms: 0.487706
+  type: 'test'
+  ...
+# Subtest: public job budget: repository-ID links refuse different page size on every relation
+ok 245 - public job budget: repository-ID links refuse different page size on every relation
+  ---
+  duration_ms: 0.35939
+  type: 'test'
+  ...
+# Subtest: public job budget: repository-ID links refuse invalid page 0 on every relation
+ok 246 - public job budget: repository-ID links refuse invalid page 0 on every relation
+  ---
+  duration_ms: 0.371315
+  type: 'test'
+  ...
+# Subtest: public job budget: repository-ID links refuse invalid page 01 on every relation
+ok 247 - public job budget: repository-ID links refuse invalid page 01 on every relation
+  ---
+  duration_ms: 0.38415
+  type: 'test'
+  ...
+# Subtest: public job budget: repository-ID links refuse invalid page 9007199254740992 on every relation
+ok 248 - public job budget: repository-ID links refuse invalid page 9007199254740992 on every relation
+  ---
+  duration_ms: 0.365917
+  type: 'test'
+  ...
+# Subtest: public job budget: repository-ID links refuse credentials on every relation
+ok 249 - public job budget: repository-ID links refuse credentials on every relation
+  ---
+  duration_ms: 0.409951
+  type: 'test'
+  ...
+# Subtest: public job budget: repository-ID links refuse username on every relation
+ok 250 - public job budget: repository-ID links refuse username on every relation
+  ---
+  duration_ms: 0.385275
+  type: 'test'
+  ...
+# Subtest: public job budget: repository-ID links refuse fragment on every relation
+ok 251 - public job budget: repository-ID links refuse fragment on every relation
+  ---
+  duration_ms: 0.388755
+  type: 'test'
+  ...
+# Subtest: public job budget: repository-ID links refuse a repeated next page
+ok 252 - public job budget: repository-ID links refuse a repeated next page
+  ---
+  duration_ms: 0.308622
+  type: 'test'
+  ...
+# Subtest: public job budget: repository-ID links refuse a skipped next page
+ok 253 - public job budget: repository-ID links refuse a skipped next page
+  ---
+  duration_ms: 0.148226
+  type: 'test'
+  ...
+# Subtest: public job budget: repository-ID pagination still refuses changed total after an early matching job
+ok 254 - public job budget: repository-ID pagination still refuses changed total after an early matching job
+  ---
+  duration_ms: 0.540657
+  type: 'test'
+  ...
+# Subtest: public job budget: repository-ID pagination still refuses duplicate job after an early matching job
+ok 255 - public job budget: repository-ID pagination still refuses duplicate job after an early matching job
+  ---
+  duration_ms: 0.380498
+  type: 'test'
+  ...
+# Subtest: public job budget: repository-ID pagination still refuses second matching job after an early matching job
+ok 256 - public job budget: repository-ID pagination still refuses second matching job after an early matching job
+  ---
+  duration_ms: 0.378835
+  type: 'test'
+  ...
+# Subtest: public job budget: repository-ID pagination still refuses partial final page after an early matching job
+ok 257 - public job budget: repository-ID pagination still refuses partial final page after an early matching job
+  ---
+  duration_ms: 0.386951
+  type: 'test'
+  ...
+# Subtest: public job budget refuses missing without fallback
+ok 258 - public job budget refuses missing without fallback
+  ---
+  duration_ms: 0.262315
+  type: 'test'
+  ...
+# Subtest: public job budget refuses ambiguous without fallback
+ok 259 - public job budget refuses ambiguous without fallback
+  ---
+  duration_ms: 0.130394
+  type: 'test'
+  ...
+# Subtest: public job budget refuses foreign-run without fallback
+ok 260 - public job budget refuses foreign-run without fallback
+  ---
+  duration_ms: 0.109199
+  type: 'test'
+  ...
+# Subtest: public job budget refuses foreign-attempt without fallback
+ok 261 - public job budget refuses foreign-attempt without fallback
+  ---
+  duration_ms: 0.172152
+  type: 'test'
+  ...
+# Subtest: public job budget refuses foreign-url without fallback
+ok 262 - public job budget refuses foreign-url without fallback
+  ---
+  duration_ms: 0.110818
+  type: 'test'
+  ...
+# Subtest: public job budget refuses future-start without fallback
+ok 263 - public job budget refuses future-start without fallback
+  ---
+  duration_ms: 0.119324
+  type: 'test'
+  ...
+# Subtest: public job budget refuses invalid-start without fallback
+ok 264 - public job budget refuses invalid-start without fallback
+  ---
+  duration_ms: 0.143358
+  type: 'test'
+  ...
+# Subtest: public job budget refuses partial without fallback
+ok 265 - public job budget refuses partial without fallback
+  ---
+  duration_ms: 0.107958
+  type: 'test'
+  ...
+# Subtest: public job budget refuses duplicate without fallback
+ok 266 - public job budget refuses duplicate without fallback
+  ---
+  duration_ms: 0.108696
+  type: 'test'
+  ...
+# Subtest: public job budget refuses repeated-page without fallback
+ok 267 - public job budget refuses repeated-page without fallback
+  ---
+  duration_ms: 0.185391
+  type: 'test'
+  ...
+# Subtest: public job budget refuses foreign-page without fallback
+ok 268 - public job budget refuses foreign-page without fallback
+  ---
+  duration_ms: 0.155668
+  type: 'test'
+  ...
+# Subtest: public job budget refuses wrong-response-url without fallback
+ok 269 - public job budget refuses wrong-response-url without fallback
+  ---
+  duration_ms: 0.200742
+  type: 'test'
+  ...
+# Subtest: public job budget refuses invalid-json without fallback
+ok 270 - public job budget refuses invalid-json without fallback
+  ---
+  duration_ms: 0.126685
+  type: 'test'
+  ...
+# Subtest: public job budget refuses unavailable without fallback
+ok 271 - public job budget refuses unavailable without fallback
+  ---
+  duration_ms: 0.091406
+  type: 'test'
+  ...
+# Subtest: public job budget: shared2MiB bound covers complete bodies across pages
+ok 272 - public job budget: shared2MiB bound covers complete bodies across pages
+  ---
+  duration_ms: 9.923704
+  type: 'test'
+  ...
+# Subtest: public job budget: incomplete body and total acquisition deadline refuse
+ok 273 - public job budget: incomplete body and total acquisition deadline refuse
+  ---
+  duration_ms: 0.777572
+  type: 'test'
+  ...
+# Subtest: public job budget: one held wall sample converts shared selected minutes with the existing tail reserve
+ok 274 - public job budget: one held wall sample converts shared selected minutes with the existing tail reserve
+  ---
+  duration_ms: 0.356721
+  type: 'test'
+  ...
+# Subtest: actual model cleanup: parent close terminates an owned helper without capture pipes
+ok 275 - actual model cleanup: parent close terminates an owned helper without capture pipes
+  ---
+  duration_ms: 317.164013
+  type: 'test'
+  ...
+# {"ownedPipeFreeHelperPID":667469,"liveAtSupervisorCompletion":false}
+# Subtest: bounded review budget keeps publication App mint after validated revision-bound completion
+ok 276 - bounded review budget keeps publication App mint after validated revision-bound completion
+  ---
+  duration_ms: 0.349927
+  type: 'test'
+  ...
+# Subtest: embedded review metadata JSON matches canonical tracked EDN rendering
+ok 277 - embedded review metadata JSON matches canonical tracked EDN rendering
+  ---
+  duration_ms: 80.793818
+  type: 'test'
+  ...
+# Subtest: delivered assessments after single reads require custody before any child
+ok 278 - delivered assessments after single reads require custody before any child
+  ---
+  duration_ms: 0.657755
+  type: 'test'
+  ...
+# Subtest: canonical bounded batches: unsupported host refuses before the model-attempt adapter
+ok 279 - canonical bounded batches: unsupported host refuses before the model-attempt adapter
+  ---
+  duration_ms: 177.737155
+  type: 'test'
+  ...
+# Subtest: canonical caller custody: first child mutation stops without acceptance
+ok 280 - canonical caller custody: first child mutation stops without acceptance
+  ---
+  duration_ms: 191.855486
+  type: 'test'
+  ...
+# Subtest: canonical caller custody: mutation before corrective child stops without acceptance
+ok 281 - canonical caller custody: mutation before corrective child stops without acceptance
+  ---
+  duration_ms: 200.757602
+  type: 'test'
+  ...
+# Subtest: canonical caller custody: corrective child mutation stops without acceptance
+ok 282 - canonical caller custody: corrective child mutation stops without acceptance
+  ---
+  duration_ms: 186.007677
+  type: 'test'
+  ...
+# Subtest: canonical caller custody: a throwing child still gets an independent after capture
+ok 283 - canonical caller custody: a throwing child still gets an independent after capture
+  ---
+  duration_ms: 187.641231
+  type: 'test'
+  ...
+# Subtest: actual context custody: the selected physical context has one complete byte owner
+ok 284 - actual context custody: the selected physical context has one complete byte owner
+  ---
+  duration_ms: 5008.340202
+  type: 'test'
+  ...
+# Subtest: actual context custody: sorted DFS JSON identity retains modes, empty bytes, Unicode and internal links
+ok 285 - actual context custody: sorted DFS JSON identity retains modes, empty bytes, Unicode and internal links
+  ---
+  duration_ms: 3451.53565
+  type: 'test'
+  ...
+# Subtest: actual context custody: root symlink cannot establish a census exemption
+ok 286 - actual context custody: root symlink cannot establish a census exemption
+  ---
+  duration_ms: 1981.369588
+  type: 'test'
+  ...
+# Subtest: actual context custody: escaping internal link cannot establish a census exemption
+ok 287 - actual context custody: escaping internal link cannot establish a census exemption
+  ---
+  duration_ms: 3632.584294
+  type: 'test'
+  ...
+# Subtest: actual context custody: special context input cannot establish a census exemption
+ok 288 - actual context custody: special context input cannot establish a census exemption
+  ---
+  duration_ms: 4031.965478
+  type: 'test'
+  ...
+# Subtest: actual source acquisition RED: finite streaming, shared deadline and aggregate metadata custody
+    # Subtest: whole-file
+    ok 1 - whole-file
+      ---
+      duration_ms: 8301.462654
+      type: 'test'
+      ...
+    # {"mode":"whole-file","outerExpired":false,"exit":{"code":0,"signal":null},"result":{"rejected":false,"sameContext":true,"sameRuntime":true,"wholeReads":0,"streamReads":1,"runtimeReadsAfterExpiry":0,"laterReads":1,"clockFault":false,"contextCharged":false,"runtimeCharged":false,"measurements":[],"rowHashed":false},"cleanup":[{"pid":669507,"live":false},{"pid":669686,"live":false},{"pid":670066,"live":false}],"stderr":"","stdoutBytes":0}
+    # Subtest: shared-deadline
+    ok 2 - shared-deadline
+      ---
+      duration_ms: 4854.261564
+      type: 'test'
+      ...
+    # {"mode":"shared-deadline","outerExpired":false,"exit":{"code":0,"signal":null},"result":{"rejected":true,"error":"review custody acquisition deadline expired","wholeReads":0,"streamReads":0,"runtimeReadsAfterExpiry":0,"laterReads":0,"clockFault":true,"contextCharged":true,"runtimeCharged":true,"measurements":[],"rowHashed":false},"cleanup":[{"pid":670160,"live":false},{"pid":670172,"live":false},{"pid":670425,"live":false}],"stderr":"","stdoutBytes":0}
+    # Subtest: stream-clock
+    ok 3 - stream-clock
+      ---
+      duration_ms: 4845.843022
+      type: 'test'
+      ...
+    # {"mode":"stream-clock","outerExpired":false,"exit":{"code":0,"signal":null},"result":{"rejected":true,"error":"review custody acquisition deadline expired","wholeReads":0,"streamReads":1,"runtimeReadsAfterExpiry":0,"laterReads":0,"clockFault":true,"contextCharged":false,"runtimeCharged":false,"measurements":[],"rowHashed":false},"cleanup":[{"pid":670513,"live":false},{"pid":670583,"live":false},{"pid":670769,"live":false}],"stderr":"","stdoutBytes":0}
+    # Subtest: metadata-name
+    ok 4 - metadata-name
+      ---
+      duration_ms: 4922.401649
+      type: 'test'
+      ...
+    # {"mode":"metadata-name","outerExpired":false,"exit":{"code":0,"signal":null},"result":{"rejected":true,"error":"review source acquisition metadata exceeds shared bound","wholeReads":0,"streamReads":0,"runtimeReadsAfterExpiry":0,"laterReads":0,"clockFault":false,"contextCharged":false,"runtimeCharged":false,"measurements":[{"kind":"name","role":"runtime","actual":22,"reported":67108865}],"rowHashed":false},"cleanup":[{"pid":670810,"live":false},{"pid":670903,"live":false},{"pid":671045,"live":false}],"stderr":"","stdoutBytes":0}
+    # Subtest: metadata-aggregate
+    ok 5 - metadata-aggregate
+      ---
+      duration_ms: 5000.194896
+      type: 'test'
+      ...
+    # {"mode":"metadata-aggregate","outerExpired":false,"exit":{"code":0,"signal":null},"result":{"rejected":true,"error":"review source acquisition metadata exceeds shared bound","wholeReads":0,"streamReads":1,"runtimeReadsAfterExpiry":0,"laterReads":0,"clockFault":false,"contextCharged":false,"runtimeCharged":false,"measurements":[{"kind":"row","role":"context","actual":120,"reported":33554432},{"kind":"row","role":"runtime","actual":120,"reported":33554432}],"rowHashed":false},"cleanup":[{"pid":671163,"live":false},{"pid":671191,"live":false},{"pid":671378,"live":false}],"stderr":"","stdoutBytes":0}
+    1..5
+ok 289 - actual source acquisition RED: finite streaming, shared deadline and aggregate metadata custody
+  ---
+  duration_ms: 29206.622652
+  type: 'test'
+  ...
+# Subtest: actual corrective capture: executable mutation before child two refuses
+ok 290 - actual corrective capture: executable mutation before child two refuses
+  ---
+  duration_ms: 7454.101199
+  type: 'test'
+  ...
+# Subtest: actual corrective capture: resolved-config mutation before child two refuses
+ok 291 - actual corrective capture: resolved-config mutation before child two refuses
+  ---
+  duration_ms: 6755.150465
+  type: 'test'
+  ...
+# Subtest: actual corrective capture: environment mutation before child two refuses
+ok 292 - actual corrective capture: environment mutation before child two refuses
+  ---
+  duration_ms: 5941.830129
+  type: 'test'
+  ...
+# Subtest: actual corrective capture: cwd mutation before child two refuses
+ok 293 - actual corrective capture: cwd mutation before child two refuses
+  ---
+  duration_ms: 5687.025733
+  type: 'test'
+  ...
+# Subtest: actual corrective capture: skills-link mutation before child two refuses
+ok 294 - actual corrective capture: skills-link mutation before child two refuses
+  ---
+  duration_ms: 4755.882376
+  type: 'test'
+  ...
+# Subtest: actual corrective capture: executable mutation after child two refuses
+ok 295 - actual corrective capture: executable mutation after child two refuses
+  ---
+  duration_ms: 6904.133896
+  type: 'test'
+  ...
+# Subtest: actual corrective capture: resolved-config mutation after child two refuses
+ok 296 - actual corrective capture: resolved-config mutation after child two refuses
+  ---
+  duration_ms: 6870.422023
+  type: 'test'
+  ...
+# Subtest: actual corrective capture: environment mutation after child two refuses
+ok 297 - actual corrective capture: environment mutation after child two refuses
+  ---
+  duration_ms: 6651.333075
+  type: 'test'
+  ...
+# Subtest: actual corrective capture: cwd mutation after child two refuses
+ok 298 - actual corrective capture: cwd mutation after child two refuses
+  ---
+  duration_ms: 7025.20348
+  type: 'test'
+  ...
+# Subtest: actual corrective capture: skills-link mutation after child two refuses
+ok 299 - actual corrective capture: skills-link mutation after child two refuses
+  ---
+  duration_ms: 6950.29346
+  type: 'test'
+  ...
+# Subtest: actual context custody: selected context mutation still stops after the actual child
+ok 300 - actual context custody: selected context mutation still stops after the actual child
+  ---
+  duration_ms: 4912.914251
+  type: 'test'
+  ...
+# {"entered":1,"changed":true,"accepted":false,"failure":"review source/host custody changed after child 1"}
+# Subtest: actual context custody: context prefix sibling mutation still stops after the actual child
+ok 301 - actual context custody: context prefix sibling mutation still stops after the actual child
+  ---
+  duration_ms: 4445.257979
+  type: 'test'
+  ...
+# {"entered":1,"changed":true,"accepted":false,"failure":"review source/host custody changed after child 1"}
+# Subtest: actual custody regression: untracked bytes refuses after the actual child
+ok 302 - actual custody regression: untracked bytes refuses after the actual child
+  ---
+  duration_ms: 4646.226233
+  type: 'test'
+  ...
+# {"entered":1,"changed":true,"accepted":false,"failure":"review source/host custody changed after child 1"}
+# Subtest: actual custody regression: ignored bytes refuses after the actual child
+ok 303 - actual custody regression: ignored bytes refuses after the actual child
+  ---
+  duration_ms: 4518.343928
+  type: 'test'
+  ...
+# {"entered":1,"changed":true,"accepted":false,"failure":"review source/host custody changed after child 1"}
+# Subtest: actual custody regression: immutable evidence neighbor refuses after the actual child
+ok 304 - actual custody regression: immutable evidence neighbor refuses after the actual child
+  ---
+  duration_ms: 4687.865696
+  type: 'test'
+  ...
+# {"entered":1,"changed":true,"accepted":false,"failure":"review source/host custody changed after child 1"}
+# Subtest: actual custody regression: new ignored input refuses after the actual child
+ok 305 - actual custody regression: new ignored input refuses after the actual child
+  ---
+  duration_ms: 5462.480906
+  type: 'test'
+  ...
+# {"entered":1,"changed":true,"accepted":false,"failure":"review source/host custody changed after child 1"}
+# Subtest: actual custody regression: deleted input refuses after the actual child
+ok 306 - actual custody regression: deleted input refuses after the actual child
+  ---
+  duration_ms: 5615.391283
+  type: 'test'
+  ...
+# {"entered":1,"changed":true,"accepted":false,"failure":"review source/host custody changed after child 1"}
+# Subtest: actual custody regression: symlink input refuses after the actual child
+ok 307 - actual custody regression: symlink input refuses after the actual child
+  ---
+  duration_ms: 4746.700352
+  type: 'test'
+  ...
+# {"entered":1,"changed":true,"accepted":false,"failure":"review custody requires regular files; symlink/special output or input refused"}
+# Subtest: actual custody regression: special input refuses after the actual child
+ok 308 - actual custody regression: special input refuses after the actual child
+  ---
+  duration_ms: 4578.443784
+  type: 'test'
+  ...
+# {"entered":1,"changed":true,"accepted":false,"failure":"review source/host custody changed after child 1"}
+# Subtest: actual custody regression: preplanted owned output recovery.json refuses before child
+ok 309 - actual custody regression: preplanted owned output recovery.json refuses before child
+  ---
+  duration_ms: 1820.124938
+  type: 'test'
+  ...
+# {"entered":0,"changed":false,"accepted":false,"failure":"refusing pre-existing owned output custody; retained history must not be overwritten"}
+# Subtest: actual custody regression: preplanted owned output model-response-attempt-1.txt refuses before child
+ok 310 - actual custody regression: preplanted owned output model-response-attempt-1.txt refuses before child
+  ---
+  duration_ms: 1604.53253
+  type: 'test'
+  ...
+# {"entered":0,"changed":false,"accepted":false,"failure":"refusing pre-existing owned output custody; retained history must not be overwritten"}
+# Subtest: actual custody regression: preplanted owned output model-response-attempt-2.txt refuses before child
+ok 311 - actual custody regression: preplanted owned output model-response-attempt-2.txt refuses before child
+  ---
+  duration_ms: 1661.735606
+  type: 'test'
+  ...
+# {"entered":0,"changed":false,"accepted":false,"failure":"refusing pre-existing owned output custody; retained history must not be overwritten"}
+# Subtest: actual custody regression: preplanted owned output opencode-stderr-attempt-1.log refuses before child
+ok 312 - actual custody regression: preplanted owned output opencode-stderr-attempt-1.log refuses before child
+  ---
+  duration_ms: 2087.771533
+  type: 'test'
+  ...
+# {"entered":0,"changed":false,"accepted":false,"failure":"refusing pre-existing owned output custody; retained history must not be overwritten"}
+# Subtest: actual custody regression: preplanted owned output opencode-stderr-attempt-2.log refuses before child
+ok 313 - actual custody regression: preplanted owned output opencode-stderr-attempt-2.log refuses before child
+  ---
+  duration_ms: 2731.36061
+  type: 'test'
+  ...
+# {"entered":0,"changed":false,"accepted":false,"failure":"refusing pre-existing owned output custody; retained history must not be overwritten"}
+# Subtest: actual custody regression: preplanted owned output submission.json refuses before child
+ok 314 - actual custody regression: preplanted owned output submission.json refuses before child
+  ---
+  duration_ms: 3412.399469
+  type: 'test'
+  ...
+# {"entered":0,"changed":false,"accepted":false,"failure":"refusing pre-existing owned output custody; retained history must not be overwritten"}
+# Subtest: actual custody regression: preplanted owned output submission-attempt-1.json refuses before child
+ok 315 - actual custody regression: preplanted owned output submission-attempt-1.json refuses before child
+  ---
+  duration_ms: 3643.222991
+  type: 'test'
+  ...
+# {"entered":0,"changed":false,"accepted":false,"failure":"refusing pre-existing owned output custody; retained history must not be overwritten"}
+# Subtest: actual custody regression: preplanted owned output review-submit-json-attempt-1.DERIVED.ndjson refuses before child
+ok 316 - actual custody regression: preplanted owned output review-submit-json-attempt-1.DERIVED.ndjson refuses before child
+  ---
+  duration_ms: 3088.046911
+  type: 'test'
+  ...
+# {"entered":0,"changed":false,"accepted":false,"failure":"refusing pre-existing owned output custody; retained history must not be overwritten"}
+# Subtest: actual custody regression: preplanted owned output review-submit-json-attempt-1.OMITTED.ndjson refuses before child
+ok 317 - actual custody regression: preplanted owned output review-submit-json-attempt-1.OMITTED.ndjson refuses before child
+  ---
+  duration_ms: 2325.885554
+  type: 'test'
+  ...
+# {"entered":0,"changed":false,"accepted":false,"failure":"refusing pre-existing owned output custody; retained history must not be overwritten"}
+# Subtest: actual custody regression: preplanted owned output final-input-coverage-attempt-1.DERIVED.ndjson refuses before child
+ok 318 - actual custody regression: preplanted owned output final-input-coverage-attempt-1.DERIVED.ndjson refuses before child
+  ---
+  duration_ms: 2530.005509
+  type: 'test'
+  ...
+# {"entered":0,"changed":false,"accepted":false,"failure":"refusing pre-existing owned output custody; retained history must not be overwritten"}
+# Subtest: actual custody regression: preplanted owned output final-input-coverage-attempt-1.OMITTED.ndjson refuses before child
+ok 319 - actual custody regression: preplanted owned output final-input-coverage-attempt-1.OMITTED.ndjson refuses before child
+  ---
+  duration_ms: 2320.291238
+  type: 'test'
+  ...
+# {"entered":0,"changed":false,"accepted":false,"failure":"refusing pre-existing owned output custody; retained history must not be overwritten"}
+# Subtest: actual custody regression: preplanted owned output review-events.jsonl refuses before child
+ok 320 - actual custody regression: preplanted owned output review-events.jsonl refuses before child
+  ---
+  duration_ms: 2307.864052
+  type: 'test'
+  ...
+# {"entered":0,"changed":false,"accepted":false,"failure":"refusing pre-existing owned output custody; retained history must not be overwritten"}
+# Subtest: actual custody regression: dangling response symlink refuses before child
+ok 321 - actual custody regression: dangling response symlink refuses before child
+  ---
+  duration_ms: 2239.476311
+  type: 'test'
+  ...
+# {"entered":0,"changed":false,"accepted":false,"failure":"review custody requires regular files; symlink/special output or input refused"}
+# Subtest: actual custody regression: projection symlink refuses before child
+ok 322 - actual custody regression: projection symlink refuses before child
+  ---
+  duration_ms: 1693.151167
+  type: 'test'
+  ...
+# {"entered":0,"changed":false,"accepted":false,"failure":"review custody requires regular files; symlink/special output or input refused"}
+# Subtest: actual custody regression: special event output refuses before child
+ok 323 - actual custody regression: special event output refuses before child
+  ---
+  duration_ms: 2412.245036
+  type: 'test'
+  ...
+# {"entered":0,"changed":false,"accepted":false,"failure":"review custody requires regular files; symlink/special output or input refused"}
+# Subtest: actual custody regression: sealed prior response change refuses before corrective child
+ok 324 - actual custody regression: sealed prior response change refuses before corrective child
+  ---
+  duration_ms: 6989.26015
+  type: 'test'
+  ...
+# {"entered":1,"changed":true,"accepted":false,"failure":"sealed output custody changed: model-response-attempt-1.txt"}
+# Subtest: actual custody regression: sealed prior stderr change refuses before corrective child
+ok 325 - actual custody regression: sealed prior stderr change refuses before corrective child
+  ---
+  duration_ms: 8671.78455
+  type: 'test'
+  ...
+# {"entered":1,"changed":true,"accepted":false,"failure":"sealed output custody changed: opencode-stderr-attempt-1.log"}
+# Subtest: actual custody regression: sealed prior retained submission change refuses before corrective child
+ok 326 - actual custody regression: sealed prior retained submission change refuses before corrective child
+  ---
+  duration_ms: 5218.054743
+  type: 'test'
+  ...
+# {"entered":1,"changed":true,"accepted":false,"failure":"retained output custody changed"}
+# Subtest: actual custody regression: sealed prior derived submit projection change refuses before corrective child
+ok 327 - actual custody regression: sealed prior derived submit projection change refuses before corrective child
+  ---
+  duration_ms: 4980.529377
+  type: 'test'
+  ...
+# {"entered":1,"changed":true,"accepted":false,"failure":"derived output custody changed"}
+# Subtest: actual custody regression: sealed prior omitted submit projection change refuses before corrective child
+ok 328 - actual custody regression: sealed prior omitted submit projection change refuses before corrective child
+  ---
+  duration_ms: 4754.279393
+  type: 'test'
+  ...
+# {"entered":1,"changed":true,"accepted":false,"failure":"derived output custody changed"}
+# Subtest: actual custody regression: sealed prior event prefix change refuses before corrective child
+ok 329 - actual custody regression: sealed prior event prefix change refuses before corrective child
+  ---
+  duration_ms: 5575.91429
+  type: 'test'
+  ...
+# {"entered":1,"changed":true,"accepted":false,"failure":"sealed output custody changed: review-events.jsonl"}
+# Subtest: actual custody regression: sealed prior raw recovery change refuses before corrective child
+ok 330 - actual custody regression: sealed prior raw recovery change refuses before corrective child
+  ---
+  duration_ms: 5204.648445
+  type: 'test'
+  ...
+# {"entered":1,"changed":true,"accepted":false,"failure":"raw recovery output custody changed since supervisor write"}
+# Subtest: actual custody refusal metadata: response at initial before output check is retained
+ok 331 - actual custody refusal metadata: response at initial before output check is retained
+  ---
+  duration_ms: 3497.59102
+  type: 'test'
+  ...
+# {"entered":1,"changed":false,"accepted":false,"failure":"sealed output custody changed: model-response-attempt-1.txt"}
+# Subtest: actual custody refusal metadata: event prefix at initial before output check is retained
+ok 332 - actual custody refusal metadata: event prefix at initial before output check is retained
+  ---
+  duration_ms: 3271.253944
+  type: 'test'
+  ...
+# {"entered":1,"changed":false,"accepted":false,"failure":"sealed output custody changed: review-events.jsonl"}
+# Subtest: actual custody refusal metadata: response at initial after output check is retained
+ok 333 - actual custody refusal metadata: response at initial after output check is retained
+  ---
+  duration_ms: 4742.437262
+  type: 'test'
+  ...
+# {"entered":2,"changed":false,"accepted":false,"failure":"sealed output custody changed: model-response-attempt-1.txt"}
+# Subtest: actual custody refusal metadata: event prefix at initial after output check is retained
+ok 334 - actual custody refusal metadata: event prefix at initial after output check is retained
+  ---
+  duration_ms: 4659.165077
+  type: 'test'
+  ...
+# {"entered":2,"changed":false,"accepted":false,"failure":"review output prefix was truncated"}
+# Subtest: actual custody refusal metadata: final accepted check revokes the persisted acceptance
+ok 335 - actual custody refusal metadata: final accepted check revokes the persisted acceptance
+  ---
+  duration_ms: 3380.775968
+  type: 'test'
+  ...
+# Subtest: actual model custody RED: unchanged tracked baseline across discovery
+ok 336 - actual model custody RED: unchanged tracked baseline across discovery
+  ---
+  duration_ms: 11789.405286
+  type: 'test'
+  ...
+# {"mode":"unchanged","minutes":60,"explicit":true,"elapsedMinutes":0,"outerExpired":false,"exit":{"code":1,"signal":null},"launches":1,"changed":false,"helperStarted":false,"cleanup":[{"pid":694280,"live":false},{"pid":694643,"live":false}],"captures":["before:1","after:1"],"attempts":[{"attempt":1,"state":"completed"}],"error":"owned model fault exits without a review\\n::error::OpenCode review attempt 1 exited 1\\n"}
+# Subtest: actual model custody RED: tracked tracked baseline across discovery
+ok 337 - actual model custody RED: tracked tracked baseline across discovery
+  ---
+  duration_ms: 8819.727294
+  type: 'test'
+  ...
+# {"mode":"tracked","minutes":60,"explicit":true,"elapsedMinutes":0,"outerExpired":false,"exit":{"code":1,"signal":null},"launches":0,"changed":true,"helperStarted":false,"cleanup":[{"pid":695178,"live":false}],"captures":[],"attempts":[],"error":"::error::review source custody changed since original preparation\\n"}
+# Subtest: actual model deadline RED: hang terminates before owned containment
+ok 338 - actual model deadline RED: hang terminates before owned containment
+  ---
+  duration_ms: 10979.62612
+  type: 'test'
+  ...
+# {"mode":"hang","minutes":60,"explicit":true,"elapsedMinutes":0,"outerExpired":false,"exit":{"code":1,"signal":null},"launches":1,"changed":false,"helperStarted":false,"cleanup":[{"pid":695914,"live":false},{"pid":696079,"live":false}],"captures":["before:1","after:1"],"attempts":[{"attempt":1,"state":"rejected","error":"OpenCode review job deadline expired"}],"error":"::error::OpenCode review job deadline expired\\n"}
+# Subtest: actual model deadline RED: helper terminates before owned containment
+ok 339 - actual model deadline RED: helper terminates before owned containment
+  ---
+  duration_ms: 11712.171618
+  type: 'test'
+  ...
+# {"mode":"helper","minutes":60,"explicit":true,"elapsedMinutes":0,"outerExpired":false,"exit":{"code":1,"signal":null},"launches":1,"changed":false,"helperStarted":true,"cleanup":[{"pid":696816,"live":false},{"pid":697043,"live":false},{"pid":697050,"live":false}],"captures":["before:1","after:1"],"attempts":[{"attempt":1,"state":"rejected","error":"OpenCode review descendant retained capture pipes"}],"error":"::error::OpenCode review descendant retained capture pipes\\n"}
+# Subtest: actual model shared budget RED: default60 minutes after 61 elapsed
+ok 340 - actual model shared budget RED: default60 minutes after 61 elapsed
+  ---
+  duration_ms: 7703.01073
+  type: 'test'
+  ...
+# {"mode":"retry","minutes":60,"explicit":false,"elapsedMinutes":61,"outerExpired":false,"exit":{"code":1,"signal":null},"launches":1,"changed":false,"helperStarted":false,"cleanup":[{"pid":697736,"live":false},{"pid":697910,"live":false}],"attempts":[{"attempt":1,"state":"rejected","error":"OpenCode review job deadline expired"}],"error":"::error::OpenCode review job deadline expired\\n"}
+# Subtest: actual model shared budget RED: 120 minutes after 61 elapsed
+ok 341 - actual model shared budget RED: 120 minutes after 61 elapsed
+  ---
+  duration_ms: 8253.695653
+  type: 'test'
+  ...
+# {"mode":"retry","minutes":120,"explicit":true,"elapsedMinutes":61,"outerExpired":false,"exit":{"code":1,"signal":null},"launches":2,"changed":false,"helperStarted":false,"cleanup":[{"pid":698331,"live":false},{"pid":698463,"live":false},{"pid":698470,"live":false}],"attempts":[{"attempt":1,"state":"completed"},{"attempt":2,"state":"completed"}],"error":"owned model fault exits without a review\\n::error::OpenCode review attempt 2 exited 1\\n"}
+# Subtest: actual model shared budget RED: 120 minutes after 121 elapsed
+ok 342 - actual model shared budget RED: 120 minutes after 121 elapsed
+  ---
+  duration_ms: 7872.978273
+  type: 'test'
+  ...
+# {"mode":"retry","minutes":120,"explicit":true,"elapsedMinutes":121,"outerExpired":false,"exit":{"code":1,"signal":null},"launches":1,"changed":false,"helperStarted":false,"cleanup":[{"pid":698900,"live":false},{"pid":699112,"live":false}],"attempts":[{"attempt":1,"state":"rejected","error":"OpenCode review job deadline expired"}],"error":"::error::OpenCode review job deadline expired\\n"}
+# Subtest: actual model shared budget RED: 180 minutes after 181 elapsed
+ok 343 - actual model shared budget RED: 180 minutes after 181 elapsed
+  ---
+  duration_ms: 8035.261127
+  type: 'test'
+  ...
+# {"mode":"retry","minutes":180,"explicit":true,"elapsedMinutes":181,"outerExpired":false,"exit":{"code":1,"signal":null},"launches":1,"changed":false,"helperStarted":false,"cleanup":[{"pid":699561,"live":false},{"pid":699777,"live":false}],"attempts":[{"attempt":1,"state":"rejected","error":"OpenCode review job deadline expired"}],"error":"::error::OpenCode review job deadline expired\\n"}
+# Subtest: actual model prelaunch budget RED: setup-expired refuses before the first child
+ok 344 - actual model prelaunch budget RED: setup-expired refuses before the first child
+  ---
+  duration_ms: 7454.498009
+  type: 'test'
+  ...
+# {"mode":"setup-expired","minutes":60,"explicit":true,"elapsedMinutes":61,"outerExpired":false,"exit":{"code":1,"signal":null},"launches":0,"changed":false,"helperStarted":false,"cleanup":[{"pid":700318,"live":false}],"captures":[],"attempts":[],"error":"::error::review job budget has insufficient remaining time for a model child and final custody reserve\\n"}
+# Subtest: actual model prelaunch budget RED: reserve refuses before the first child
+ok 345 - actual model prelaunch budget RED: reserve refuses before the first child
+  ---
+  duration_ms: 7303.444531
+  type: 'test'
+  ...
+# {"mode":"reserve","minutes":60,"explicit":true,"elapsedMinutes":59.666666666666664,"outerExpired":false,"exit":{"code":1,"signal":null},"launches":0,"changed":false,"helperStarted":false,"cleanup":[{"pid":701214,"live":false}],"captures":[],"attempts":[],"error":"::error::review job budget has insufficient remaining time for a model child and final custody reserve\\n"}
+# Subtest: actual model post-before clock boundary: refusal retains the deadline without a child or ENOENT
+ok 346 - actual model post-before clock boundary: refusal retains the deadline without a child or ENOENT
+  ---
+  duration_ms: 12033.652806
+  type: 'test'
+  ...
+# {"mode":"post-before","minutes":60,"explicit":true,"elapsedMinutes":0,"outerExpired":false,"exit":{"code":1,"signal":null},"launches":0,"changed":false,"helperStarted":false,"cleanup":[{"pid":702041,"live":false}],"captures":["before:1","after:1"],"attempts":[{"attempt":1,"state":"rejected","error":"OpenCode review job deadline expired before launch"}],"error":"::error::OpenCode review job deadline expired before launch\\n"}
+# Subtest: actual discovery deadline: --version TERM-resistant child closes before containment
+ok 347 - actual discovery deadline: --version TERM-resistant child closes before containment
+  ---
+  duration_ms: 30678.112502
+  type: 'test'
+  ...
+# {"command":"--version","descendant":false,"outerExpired":false,"exit":{"code":0,"signal":null},"launch":{"binary":"/tmp/eta-mu-review-input-iqMFZ1/captured-physical-opencode","args":["--version"],"detached":true},"result":{"rejected":true,"error":"OpenCode version discovery failed","faultAlive":false,"descendantAlive":false,"proofStatus":"refused"},"entered":true,"termObserved":true,"stderr":"","stdoutBytes":0}
+# Subtest: actual discovery deadline: --version TERM-resistant descendant closes before containment
+ok 348 - actual discovery deadline: --version TERM-resistant descendant closes before containment
+  ---
+  duration_ms: 30637.571239
+  type: 'test'
+  ...
+# {"command":"--version","descendant":true,"outerExpired":false,"exit":{"code":0,"signal":null},"launch":{"binary":"/tmp/eta-mu-review-input-PYhofs/captured-physical-opencode","args":["--version"],"detached":true},"result":{"rejected":true,"error":"OpenCode version discovery failed","faultAlive":false,"descendantAlive":false,"proofStatus":"refused"},"entered":true,"termObserved":true,"stderr":"","stdoutBytes":0}
+# Subtest: actual discovery deadline: models TERM-resistant child closes before containment
+ok 349 - actual discovery deadline: models TERM-resistant child closes before containment
+  ---
+  duration_ms: 30628.253012
+  type: 'test'
+  ...
+# {"command":"models","descendant":false,"outerExpired":false,"exit":{"code":0,"signal":null},"launch":{"binary":"/tmp/eta-mu-review-input-yQdQxP/captured-physical-opencode","args":["models","opencode","--verbose"],"detached":true},"result":{"rejected":true,"error":"OpenCode model catalog discovery failed","faultAlive":false,"descendantAlive":false,"proofStatus":"refused"},"entered":true,"termObserved":true,"stderr":"","stdoutBytes":0}
+# Subtest: actual discovery deadline: models TERM-resistant descendant closes before containment
+ok 350 - actual discovery deadline: models TERM-resistant descendant closes before containment
+  ---
+  duration_ms: 30639.526297
+  type: 'test'
+  ...
+# {"command":"models","descendant":true,"outerExpired":false,"exit":{"code":0,"signal":null},"launch":{"binary":"/tmp/eta-mu-review-input-tZh9gY/captured-physical-opencode","args":["models","opencode","--verbose"],"detached":true},"result":{"rejected":true,"error":"OpenCode model catalog discovery failed","faultAlive":false,"descendantAlive":false,"proofStatus":"refused"},"entered":true,"termObserved":true,"stderr":"","stdoutBytes":0}
+# Subtest: actual custody regression: TERM-resistant config child reaches bounded refusal
+ok 351 - actual custody regression: TERM-resistant config child reaches bounded refusal
+  ---
+  duration_ms: 30627.371391
+  type: 'test'
+  ...
+# {"descendant":false,"outerExpired":false,"exit":{"code":0,"signal":null},"result":{"rejected":true,"error":"independent resolved OpenCode config capture failed: {\\"exit_code\\":null,\\"signal\\":\\"SIGKILL\\",\\"error\\":\\"independent config capture deadline expired\\",\\"stdout_bytes\\":0,\\"stderr_bytes\\":0}","faultAlive":false,"descendantAlive":false},"entered":true,"termObserved":true,"stderr":"","stdoutBytes":0}
+# Subtest: actual custody regression: TERM-resistant config descendant reaches bounded refusal
+ok 352 - actual custody regression: TERM-resistant config descendant reaches bounded refusal
+  ---
+  duration_ms: 30471.180561
+  type: 'test'
+  ...
+# {"descendant":true,"outerExpired":false,"exit":{"code":0,"signal":null},"result":{"rejected":true,"error":"independent resolved OpenCode config capture failed: {\\"exit_code\\":0,\\"signal\\":null,\\"error\\":\\"independent config capture deadline expired\\",\\"stdout_bytes\\":0,\\"stderr_bytes\\":0}","faultAlive":false,"descendantAlive":false},"entered":true,"termObserved":true,"stderr":"","stdoutBytes":0}
+# Subtest: native bounded batches: actual standalone, physical CLI and compiled producer close a whole corrective invocation (strict)
+ok 353 - native bounded batches: actual standalone, physical CLI and compiled producer close a whole corrective invocation (strict)
+  ---
+  duration_ms: 35384.718175
+  type: 'test'
+  ...
+# real CLI/canonical producer: 17 pages, 5 whole groups, 2 isolated invocations, 4 captures; scripted local SSE, no provider judgment
+# Subtest: native bounded batches: actual standalone, physical CLI and compiled producer close a whole corrective invocation (delivered-mixed)
+not ok 354 - native bounded batches: actual standalone, physical CLI and compiled producer close a whole corrective invocation (delivered-mixed)
+  ---
+  duration_ms: 32581.68288
+  type: 'test'
+  location: '/home/err/spaces/cephalon-review-batch-consumer/eta-mu/.github/scripts/opencode-code-review-workflow.test.mjs:4272:1'
+  failureType: 'testCodeFailure'
+  error: "Cannot read properties of undefined (reading 'map')"
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    file:///home/err/spaces/cephalon-review-batch-consumer/eta-mu/.github/scripts/opencode-code-review-workflow.test.mjs:4474:59
+    Array.flatMap (<anonymous>)
+    TestContext.<anonymous> (file:///home/err/spaces/cephalon-review-batch-consumer/eta-mu/.github/scripts/opencode-code-review-workflow.test.mjs:4474:29)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: canonical staged context: supervisor supplies actual UTF8 bytes before its child
+ok 355 - canonical staged context: supervisor supplies actual UTF8 bytes before its child
+  ---
+  duration_ms: 300.930974
+  type: 'test'
+  ...
+# Subtest: canonical staged context: full final boundary rebinds actual UTF8 bytes before publication
+ok 356 - canonical staged context: full final boundary rebinds actual UTF8 bytes before publication
+  ---
+  duration_ms: 327.260248
+  type: 'test'
+  ...
+# Subtest: canonical staged context: supervisor supplies actual present-empty bytes before its child
+ok 357 - canonical staged context: supervisor supplies actual present-empty bytes before its child
+  ---
+  duration_ms: 326.841077
+  type: 'test'
+  ...
+# Subtest: canonical staged context: full final boundary rebinds actual present-empty bytes before publication
+ok 358 - canonical staged context: full final boundary rebinds actual present-empty bytes before publication
+  ---
+  duration_ms: 296.41591
+  type: 'test'
+  ...
+# Subtest: canonical staged context: supervisor refuses missing before starting a child
+ok 359 - canonical staged context: supervisor refuses missing before starting a child
+  ---
+  duration_ms: 241.812997
+  type: 'test'
+  ...
+# Subtest: canonical staged context: supervisor refuses unreadable directory before starting a child
+ok 360 - canonical staged context: supervisor refuses unreadable directory before starting a child
+  ---
+  duration_ms: 294.92608
+  type: 'test'
+  ...
+# Subtest: canonical staged context: supervisor refuses invalid UTF8 before starting a child
+ok 361 - canonical staged context: supervisor refuses invalid UTF8 before starting a child
+  ---
+  duration_ms: 257.7497
+  type: 'test'
+  ...
+# Subtest: canonical staged context: final reread refuses missing without publication
+ok 362 - canonical staged context: final reread refuses missing without publication
+  ---
+  duration_ms: 313.190718
+  type: 'test'
+  ...
+# Subtest: canonical staged context: final reread refuses changed bytes without publication
+ok 363 - canonical staged context: final reread refuses changed bytes without publication
+  ---
+  duration_ms: 300.25636
+  type: 'test'
+  ...
+# Subtest: canonical staged context: final reread refuses invalid UTF8 without publication
+ok 364 - canonical staged context: final reread refuses invalid UTF8 without publication
+  ---
+  duration_ms: 299.934778
+  type: 'test'
+  ...
+# Subtest: canonical staged context: initial and corrective prompts require final-page assessment before evidence (multi-page)
+ok 365 - canonical staged context: initial and corrective prompts require final-page assessment before evidence (multi-page)
+  ---
+  duration_ms: 1215.191983
+  type: 'test'
+  ...
+# Subtest: canonical staged context: initial and corrective prompts require final-page assessment before evidence (empty)
+ok 366 - canonical staged context: initial and corrective prompts require final-page assessment before evidence (empty)
+  ---
+  duration_ms: 193.56238
+  type: 'test'
+  ...
+# Subtest: canonical staged context: incomplete assessment never weakens first-stage custody (final)
+ok 367 - canonical staged context: incomplete assessment never weakens first-stage custody (final)
+  ---
+  duration_ms: 923.024089
+  type: 'test'
+  ...
+# Subtest: canonical staged context: incomplete assessment never weakens first-stage custody (earlier)
+ok 368 - canonical staged context: incomplete assessment never weakens first-stage custody (earlier)
+  ---
+  duration_ms: 837.850994
+  type: 'test'
+  ...
+# {"scenario":"native event origin","forged":false,"originStepPresent":true,"originStatus":0,"supervisorStatus":0,"childEntered":true}
+# {"scenario":"native event origin","forged":true,"originStepPresent":true,"originStatus":1,"supervisorStatus":null,"childEntered":false}
+# Subtest: canonical staged context: incomplete assessment never weakens first-stage custody (multiple)
+ok 369 - canonical staged context: incomplete assessment never weakens first-stage custody (multiple)
+  ---
+  duration_ms: 768.973518
+  type: 'test'
+  ...
+# Subtest: canonical staged context: matching qualified Muse pin supplies both plugin and verifier
+ok 370 - canonical staged context: matching qualified Muse pin supplies both plugin and verifier
+  ---
+  duration_ms: 0.199464
+  type: 'test'
+  ...
+# Subtest: canonical staged context: held supervisor preparation survives the two-child bound, final reread detects mutation
+ok 371 - canonical staged context: held supervisor preparation survives the two-child bound, final reread detects mutation
+  ---
+  duration_ms: 442.10927
+  type: 'test'
+  ...
+# Subtest: canonical staged context: final boundary refuses model-selected absence
+ok 372 - canonical staged context: final boundary refuses model-selected absence
+  ---
+  duration_ms: 274.692718
+  type: 'test'
+  ...
+# Subtest: canonical staged context: final boundary refuses model-selected foreign path
+ok 373 - canonical staged context: final boundary refuses model-selected foreign path
+  ---
+  duration_ms: 298.997638
+  type: 'test'
+  ...
+# Subtest: canonical staged context: deterministic CI supplies the actually compiled module to all regression tests
+ok 374 - canonical staged context: deterministic CI supplies the actually compiled module to all regression tests
+  ---
+  duration_ms: 0.305417
+  type: 'test'
+  ...
+# Subtest: canonical staged context: actual supervisor delegates omitted native read refusal to Muse
+ok 375 - canonical staged context: actual supervisor delegates omitted native read refusal to Muse
+  ---
+  duration_ms: 314.517407
+  type: 'test'
+  ...
+# Subtest: canonical staged context: actual supervisor delegates missing EOF refusal to Muse
+ok 376 - canonical staged context: actual supervisor delegates missing EOF refusal to Muse
+  ---
+  duration_ms: 353.240726
+  type: 'test'
+  ...
+# Subtest: canonical staged context: actual caller refuses an older verifier that ignores new arguments
+ok 377 - canonical staged context: actual caller refuses an older verifier that ignores new arguments
+  ---
+  duration_ms: 269.990609
+  type: 'test'
+  ...
+# Subtest: canonical staged context: sandbox supplies and preserves the real compiled fixture for its full test gate
+ok 378 - canonical staged context: sandbox supplies and preserves the real compiled fixture for its full test gate
+  ---
+  duration_ms: 4.638954
+  type: 'test'
+  ...
+# Subtest: native event context: actual native bytes reach child
+ok 379 - native event context: actual native bytes reach child
+  ---
+  duration_ms: 367.362571
+  type: 'test'
+  ...
+# Subtest: native event context: replaced valid UTF8 refuses before child
+ok 380 - native event context: replaced valid UTF8 refuses before child
+  ---
+  duration_ms: 217.692819
+  type: 'test'
+  ...
+# Subtest: native event context: identical producer formatter is the last step before the reviewer child
+ok 381 - native event context: identical producer formatter is the last step before the reviewer child
+  ---
+  duration_ms: 0.301172
+  type: 'test'
+  ...
+# Subtest: catalog label widening retains unrelated UNRELATED-v1 before valid MiMo selection
+ok 382 - catalog label widening retains unrelated UNRELATED-v1 before valid MiMo selection
+  ---
+  duration_ms: 0.954422
+  type: 'test'
+  ...
+# Subtest: catalog label widening retains unrelated unrelated:model before valid MiMo selection
+ok 383 - catalog label widening retains unrelated unrelated:model before valid MiMo selection
+  ---
+  duration_ms: 0.278078
+  type: 'test'
+  ...
+# Subtest: catalog label widening retains unrelated unrelated+fast before valid MiMo selection
+ok 384 - catalog label widening retains unrelated unrelated+fast before valid MiMo selection
+  ---
+  duration_ms: 0.291465
+  type: 'test'
+  ...
+# Subtest: catalog label widening preserves exact row identity, duplicate IDs and whitespace refusal
+ok 385 - catalog label widening preserves exact row identity, duplicate IDs and whitespace refusal
+  ---
+  duration_ms: 0.447887
+  type: 'test'
+  ...
+# Subtest: free MiMo selector uses numeric versions and coherent release maxima with verified explicit selection
+ok 386 - free MiMo selector uses numeric versions and coherent release maxima with verified explicit selection
+  ---
+  duration_ms: 0.407248
+  type: 'test'
+  ...
+# Subtest: free MiMo selection rejects paid branches, incompatible roles and malformed native catalog records
+ok 387 - free MiMo selection rejects paid branches, incompatible roles and malformed native catalog records
+  ---
+  duration_ms: 0.444715
+  type: 'test'
+  ...
+1..387
+# tests 392
+# suites 0
+# pass 391
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 642166.910642

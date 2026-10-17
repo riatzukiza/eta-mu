@@ -1,0 +1,60 @@
+TAP version 13
+# Subtest: the compiled observer contract pins compatible Muse and allows both full-input tools
+ok 1 - the compiled observer contract pins compatible Muse and allows both full-input tools
+  ---
+  duration_ms: 5.342132
+  type: 'test'
+  ...
+# Subtest: review context packages the exact runner for reusable-workflow callers
+ok 2 - review context packages the exact runner for reusable-workflow callers
+  ---
+  duration_ms: 0.980794
+  type: 'test'
+  ...
+# Subtest: delivered assessments after single reads require custody before any child
+ok 3 - delivered assessments after single reads require custody before any child
+  ---
+  duration_ms: 2.170683
+  type: 'test'
+  ...
+# Subtest: native bounded batches: actual standalone, physical CLI and compiled producer close a whole corrective invocation (strict)
+ok 4 - native bounded batches: actual standalone, physical CLI and compiled producer close a whole corrective invocation (strict)
+  ---
+  duration_ms: 35858.669733
+  type: 'test'
+  ...
+# real CLI/canonical producer: 17 pages, 5 whole groups, 2 isolated invocations, 4 captures; scripted local SSE, no provider judgment
+# Subtest: native bounded batches: actual standalone, physical CLI and compiled producer close a whole corrective invocation (delivered-mixed)
+ok 5 - native bounded batches: actual standalone, physical CLI and compiled producer close a whole corrective invocation (delivered-mixed)
+  ---
+  duration_ms: 36659.061181
+  type: 'test'
+  ...
+# real CLI/canonical producer: 17 pages, 6 whole groups, 2 isolated invocations, 4 captures; scripted local SSE, no provider judgment
+# Subtest: canonical staged context: initial and corrective prompts require final-page assessment before evidence (multi-page)
+ok 6 - canonical staged context: initial and corrective prompts require final-page assessment before evidence (multi-page)
+  ---
+  duration_ms: 1193.323206
+  type: 'test'
+  ...
+# Subtest: canonical staged context: initial and corrective prompts require final-page assessment before evidence (empty)
+ok 7 - canonical staged context: initial and corrective prompts require final-page assessment before evidence (empty)
+  ---
+  duration_ms: 198.433757
+  type: 'test'
+  ...
+# Subtest: canonical staged context: matching qualified Muse pin supplies both plugin and verifier
+ok 8 - canonical staged context: matching qualified Muse pin supplies both plugin and verifier
+  ---
+  duration_ms: 0.203279
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 74088.665542
