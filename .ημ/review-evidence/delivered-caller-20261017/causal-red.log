@@ -1,0 +1,97 @@
+TAP version 13
+# Subtest: the compiled observer contract pins compatible Muse and allows both full-input tools
+not ok 1 - the compiled observer contract pins compatible Muse and allows both full-input tools
+  ---
+  duration_ms: 4.020297
+  type: 'test'
+  location: '/home/err/spaces/cephalon-review-batch-consumer/eta-mu/.github/scripts/opencode-code-review-workflow.test.mjs:435:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    workflow-call default must select the corrected immutable Muse source
+    + actual - expected
+    
+    + '259c76eee9ac2def944e9191c1da23d3647ba32e'
+    - 'f422d77cf9c6cea46b6791e3f54c98679e949d1f'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'f422d77cf9c6cea46b6791e3f54c98679e949d1f'
+  actual: '259c76eee9ac2def944e9191c1da23d3647ba32e'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/err/spaces/cephalon-review-batch-consumer/eta-mu/.github/scripts/opencode-code-review-workflow.test.mjs:438:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: delivered assessments after single reads require custody before any child
+not ok 2 - delivered assessments after single reads require custody before any child
+  ---
+  duration_ms: 5.080301
+  type: 'test'
+  location: '/home/err/spaces/cephalon-review-batch-consumer/eta-mu/.github/scripts/opencode-code-review-workflow.test.mjs:3006:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /canonical batch host capture is required before model execution/. Input:
+    
+    'Error: child entered without required physical custody'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+  error: 'child entered without required physical custody'
+  stack: |-
+    invokeAttempt (file:///home/err/spaces/cephalon-review-batch-consumer/eta-mu/.github/scripts/opencode-code-review-workflow.test.mjs:3019:13)
+    runReviewRecovery (file:///home/err/spaces/cephalon-review-batch-consumer/eta-mu/.github/scripts/run-opencode-review-recovery.mjs:1445:24)
+    async waitForActual (node:assert:644:5)
+    async Function.rejects (node:assert:767:25)
+    async TestContext.<anonymous> (file:///home/err/spaces/cephalon-review-batch-consumer/eta-mu/.github/scripts/opencode-code-review-workflow.test.mjs:3011:3)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  operator: 'rejects'
+  stack: |-
+    async TestContext.<anonymous> (file:///home/err/spaces/cephalon-review-batch-consumer/eta-mu/.github/scripts/opencode-code-review-workflow.test.mjs:3011:3)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: canonical staged context: matching qualified Muse pin supplies both plugin and verifier
+not ok 3 - canonical staged context: matching qualified Muse pin supplies both plugin and verifier
+  ---
+  duration_ms: 0.523055
+  type: 'test'
+  location: '/home/err/spaces/cephalon-review-batch-consumer/eta-mu/.github/scripts/opencode-code-review-workflow.test.mjs:4783:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + '259c76eee9ac2def944e9191c1da23d3647ba32e'
+    - 'f422d77cf9c6cea46b6791e3f54c98679e949d1f'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'f422d77cf9c6cea46b6791e3f54c98679e949d1f'
+  actual: '259c76eee9ac2def944e9191c1da23d3647ba32e'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/err/spaces/cephalon-review-batch-consumer/eta-mu/.github/scripts/opencode-code-review-workflow.test.mjs:4785:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    node:internal/test_runner/test:981:31
+    node:internal/process/task_queues:149:7
+    AsyncResource.runInAsyncScope (node:async_hooks:214:14)
+    AsyncResource.runMicrotask (node:internal/process/task_queues:146:8)
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 0
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 167.464427

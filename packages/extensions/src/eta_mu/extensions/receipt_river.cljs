@@ -9,7 +9,8 @@
             [clojure.string :as str]
             [eta-mu.extensions.prompt-section :as prompt-section]
             [eta-mu.extensions.receipt-river.edn :as rr-edn]
-            [eta-mu.extensions.receipt-river.repo :as rr-repo]))
+            [eta-mu.extensions.receipt-river.repo :as rr-repo]
+            [eta-mu.receipt-river.api :as rr-api]))
 
 (def ^:const HOME (.homedir os))
 (def ^:const ETA-MU-STATE-ROOT (path/join HOME ".ημ" "state"))
@@ -88,44 +89,62 @@
 (defn line->event [line]
   (rr-edn/parse-edn-event line))
 
-(defn validate-edn-event [line line-number]
-  (let [event (line->event line)
-        record (if (and event (map? (:event/payload event)))
-                 (:event/payload event)
-                 event)
-        errors #js []]
-    (when-not event
-      (.push errors "invalid EDN event"))
-    (when record
-      (doseq [k [:ts :kind :repo :origin :owner :dod :pi :host :manifest :refs]]
-        (when-not (get record k)
-          (.push errors (str "missing required key: " (name k)))))
-      (when-let [kind (:kind record)]
-        (when (neg? (.indexOf KNOWN-KINDS (str kind)))
-          (.push errors (str "unknown kind: " kind))))
-      (when-let [ts (:ts record)]
-        (when (js/Number.isNaN (js/Date.parse ts))
-          (.push errors (str "invalid ts: " ts)))))
-    #js {:ok (zero? (.-length errors))
-         :lineNumber line-number
-         :event event
-         :errors errors
-         :line line}))
+(defn validate-edn-event
+  ([line line-number]
+   (let [event (line->event line)
+         record (if (and event (map? (:event/payload event)))
+                  (:event/payload event)
+                  event)
+         errors #js []]
+     (when-not event
+       (.push errors "invalid EDN event"))
+     (when record
+       (doseq [k [:ts :kind :repo :origin :owner :dod :pi :host :manifest :refs]]
+         (when-not (get record k)
+           (.push errors (str "missing required key: " (name k)))))
+       (when-let [kind (:kind record)]
+         (when (neg? (.indexOf KNOWN-KINDS (str kind)))
+           (.push errors (str "unknown kind: " kind))))
+       (when-let [ts (:ts record)]
+         (when (js/Number.isNaN (js/Date.parse ts))
+           (.push errors (str "invalid ts: " ts)))))
+     #js {:ok (zero? (.-length errors))
+          :lineNumber line-number
+          :event event
+          :errors errors
+          :line line}))
+  ([line line-number containing-repository]
+   (let [result (rr-api/validate-line line line-number containing-repository)]
+     #js {:ok (:ok result)
+          :lineNumber (:line-number result)
+          :event (:event result)
+          :errors (clj->js (:errors result))
+          :line (:line result)})))
 
-(defn validate-receipt-file [file-path lines]
+(defn- validate-receipt-file-with [file-path lines validate-row]
   (if-not (.existsSync fs file-path)
     #js {:ok false
          :file file-path
          :count 0
          :failures #js [#js {:lineNumber 0
                              :errors #js ["file does not exist"]}]}
-    (let [rows (js/Array.from (.map (tail-lines file-path lines) validate-edn-event))
+    (let [rows (js/Array.from (.map (tail-lines file-path lines) validate-row))
           failures (js/Array.from (.filter rows (fn [row] (not (aget row "ok")))))]
       #js {:ok (zero? (.-length failures))
            :file file-path
            :count (.-length rows)
            :failures failures
            :last (or (.at rows -1) nil)})))
+
+(defn validate-receipt-file
+  ([file-path lines]
+   (validate-receipt-file-with file-path lines
+                              (fn [line index]
+                                (validate-edn-event line index))))
+  ([file-path lines containing-repository]
+   (validate-receipt-file-with file-path lines
+                              (fn [line index]
+                                (validate-edn-event line index containing-repository)))))
 
 (defn model-label [ctx]
   (let [model (aget ctx "model")
@@ -367,9 +386,9 @@
                    (.split #"\s+")
                    (.filter (fn [x] x)))
         cmd (.toLowerCase (or (.at tokens 0) "status"))
-        repo-root (or (some identity (reverse (active-ledger-repos state)))
-                      (find-git-root (aget ctx "cwd"))
-                      (aget ctx "cwd"))
+        repository-context (or (some identity (reverse (active-ledger-repos state)))
+                               (find-git-root (aget ctx "cwd")))
+        repo-root (or repository-context (aget ctx "cwd"))
         file-path (repo-receipt-file repo-root)]
     (cond
       (= cmd "on")
@@ -390,7 +409,7 @@
 
       (= cmd "validate")
       (let [lines (clamp-int (.at tokens 1) 200 1 2000)
-            result (validate-receipt-file file-path lines)]
+            result (validate-receipt-file file-path lines repository-context)]
         (aset state "lastValidation" result)
         (set-status ctx state)
         (ui-set-widget ctx STATUS-KEY
@@ -419,10 +438,10 @@
 
 (defn execute-receipt-river-tool [_toolCallId params _signal _onUpdate ctx]
   (let [state (get-state)
-        repo-root (or (repo-root-from-path (aget ctx "cwd") (aget params "path"))
-                      (some identity (reverse (active-ledger-repos state)))
-                      (find-git-root (aget ctx "cwd"))
-                      (aget ctx "cwd"))
+        repository-context (or (repo-root-from-path (aget ctx "cwd") (aget params "path"))
+                               (some identity (reverse (active-ledger-repos state)))
+                               (find-git-root (aget ctx "cwd")))
+        repo-root (or repository-context (aget ctx "cwd"))
         file-path (repo-receipt-file repo-root)]
     (ensure-dir (path/dirname file-path))
     (cond
@@ -463,7 +482,7 @@
 
       (= (aget params "action") "validate")
       (let [lines (clamp-int (aget params "lines") 200 1 2000)
-            result (validate-receipt-file file-path lines)]
+            result (validate-receipt-file file-path lines repository-context)]
         (aset state "lastValidation" result)
         (log-event ctx state "validate" #js {:repo repo-root
                                               :file file-path

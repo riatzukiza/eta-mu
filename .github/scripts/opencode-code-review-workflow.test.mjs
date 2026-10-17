@@ -433,7 +433,7 @@ test("staging preserves empty input and distinguishes the native base from the m
 });
 
 test("the compiled observer contract pins compatible Muse and allows both full-input tools", () => {
-  const museSha = "259c76eee9ac2def944e9191c1da23d3647ba32e";
+  const museSha = "f422d77cf9c6cea46b6791e3f54c98679e949d1f";
   const expectedRef = "${{ inputs.muse_revision || '" + museSha + "' }}";
   assert.equal(workflow.on.workflow_call.inputs.muse_revision.default, museSha,
     "workflow-call default must select the corrected immutable Muse source");
@@ -452,7 +452,7 @@ test("the compiled observer contract pins compatible Muse and allows both full-i
     "the companion diagnostic must compile the production default repository");
   assert.equal(companionCheckout.with.ref, museSha,
     "the companion diagnostic must compile the production default revision");
-  for (const name of ["review_read_diff_chunk", "review_assess_diff_chunk", "review_read_diff_batch", "review_assess_diff_batch"]) {
+  for (const name of ["review_read_diff_chunk", "review_assess_diff_chunk", "review_read_diff_batch", "review_assess_diff_batch", "review_assess_delivered_diff_batch"]) {
     assert.ok(workflowText.includes(`:${name}`), `missing permission for ${name}`);
     assert.ok(workflowText.includes(`'${name}'`), `missing compiled registry assertion for ${name}`);
   }
@@ -2402,7 +2402,8 @@ test("review metadata actual generated wrapper preserves one plugin and all regi
   assert.equal(hooks, f.hooks);
   assert.equal(hooks.tool, f.tools);
   assert.deepEqual(Object.keys(hooks.tool).sort(), f.names);
-  assert.equal(f.names.length, 24);
+  assert.equal(f.names.length, 25);
+  assert.equal(f.names.filter(name => name.startsWith("review_")).length, 11);
   for (const name of f.names) {
     assert.equal(hooks.tool[name], f.tools[name]);
     assert.equal(hooks.tool[name].args, f.tools[name].args);
@@ -3002,6 +3003,26 @@ function canonicalSupervisor(fixture, { retryAfterMissingSubmit = false, respons
       OPENCODE_BIN: child, REVIEW_EVIDENCE_DIR: directory, REVIEW_PROMPT_FILE: prompt, ...fixture.env } });
   return { result, marker };
 }
+
+test("delivered assessments after single reads require custody before any child", async (t) => {
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), "eta-delivered-custody-red-"));
+  t.after(() => fs.rmSync(directory, { recursive: true, force: true }));
+  const tools = ["review_read_diff_chunk", "review_assess_delivered_diff_batch"];
+  let attempts = 0;
+  await assert.rejects(runReviewRecovery({
+    evidenceDirectory: directory,
+    basePrompt: "Missing physical custody control; no provider or publication.",
+    reviewTools: tools,
+    expectedContext: { reviewTools: tools },
+    verifyReviewInvocation: () => { throw new Error("verifier must not run without custody"); },
+    invokeAttempt: async () => {
+      attempts += 1;
+      throw new Error("child entered without required physical custody");
+    },
+  }), /canonical batch host capture is required before model execution/);
+  assert.equal(attempts, 0, "single reads do not remove the new assessor's host obligation");
+  assert.equal(fs.existsSync(path.join(directory, "submission.json")), false);
+});
 
 test("canonical bounded batches: unsupported host refuses before the model-attempt adapter", async (t) => {
   const checked = freshReviewInputCheck(fullInputFixture(t, { unicode: true }));
@@ -4247,7 +4268,8 @@ for (const descendant of [false, true]) {
   });
 }
 
-test("native bounded batches: actual standalone, physical CLI and compiled producer close a whole corrective invocation",
+for (const protocol of ["strict", "delivered-mixed"]) {
+test(`native bounded batches: actual standalone, physical CLI and compiled producer close a whole corrective invocation (${protocol})`,
   { timeout: 240_000, skip: process.platform !== "linux" || process.arch !== "x64" }, async (t) => {
   const owner = process.env.ETA_MU_CANONICAL_CONTEXT_MODULE;
   assert.ok(owner && path.isAbsolute(owner), "compiled Muse owner is required");
@@ -4269,8 +4291,9 @@ test("native bounded batches: actual standalone, physical CLI and compiled produ
   fs.copyFileSync(binary, ownedBinary, fs.constants.COPYFILE_FICLONE);
   fs.chmodSync(ownedBinary, 0o700);
   const registry = fs.readFileSync(registryFile, "utf8").trim().split("\n");
-  assert.equal(registry.length, 24);
-  assert.ok(registry.includes("review_read_diff_batch") && registry.includes("review_assess_diff_batch"));
+  assert.equal(registry.length, 25);
+  assert.ok(registry.includes("review_read_diff_batch") && registry.includes("review_assess_diff_batch") &&
+    registry.includes("review_assess_delivered_diff_batch"));
   fs.writeFileSync(f.registryFile, registry.join("\n") + "\n");
   const runtime = path.join(checked.env.RUNNER_TEMP, "native-runtime");
   fs.cpSync(profile, runtime, { recursive: true });
@@ -4302,6 +4325,9 @@ test("native bounded batches: actual standalone, physical CLI and compiled produ
   fs.writeFileSync(path.join(f.context, "SHA256SUMS"), sums);
   f.digest = transportSha256(sums);
   const names = new Map(), perAttempt = new Map(), observed = [];
+  const assessor = protocol === "strict" ? "review_assess_diff_batch" : "review_assess_delivered_diff_batch";
+  const nextRead = (id) => ({ "first-id": id, count: protocol === "strict" ? 4 :
+    Math.min(4, Math.max(1, f.expectedContext.pages.length - id)) });
   const stages = ["deterministic", "map-change", "generate-candidates", "adversarial-validate", "publish"];
   const server = http.createServer(async (request, response) => {
     try {
@@ -4317,18 +4343,28 @@ test("native bounded batches: actual standalone, physical CLI and compiled produ
       let name, args;
       if (!previousName) { name = "review_begin"; args = {}; }
       else if (previousName === "review_begin") { name = "read"; args = { filePath: f.contextFile, offset: 1, limit: 200 }; }
-      else if (previousName === "read") { name = "review_read_diff_batch"; args = { "first-id": 1, count: 4 }; }
-      else if (previousName === "review_read_diff_batch") {
+      else if (previousName === "read") {
+        name = protocol === "strict" ? "review_read_diff_batch" : "review_read_diff_chunk";
+        args = protocol === "strict" ? nextRead(1) : { id: 1 };
+      }
+      else if (previousName === "review_read_diff_batch" || previousName === "review_read_diff_chunk") {
         assert.equal(previous["ok?"], true, JSON.stringify(previous));
         sequence.push(previous);
-        name = "review_assess_diff_batch";
-        args = { profile: previous.custody.profile, source_sha256: previous.custody.source_sha256,
-          assessments: previous.chunks.map(page => ({ id: page.id, start: page.start, end: page.end, sha256: page.sha256,
-            note: `Original page ${page.id}: scripted native custody diagnostic; no substantive model judgment.` })) };
-      } else if (previousName === "review_assess_diff_batch") {
+        name = assessor;
+        const pages = previous.chunks ?? [previous.chunk];
+        const assessments = pages.map(page => ({ id: page.id,
+          note: `Original page ${page.id}: scripted native custody diagnostic; no substantive model judgment.` }));
+        args = protocol === "strict"
+          ? { profile: previous.custody.profile, source_sha256: previous.custody.source_sha256,
+              assessments: assessments.map((item, index) => ({ ...item, start: pages[index].start,
+                end: pages[index].end, sha256: pages[index].sha256 })) }
+          : { assessments };
+      } else if (previousName === assessor) {
         assert.equal(previous["ok?"], true, JSON.stringify(previous));
-        const next = sequence.at(-1).batch["next-id"];
-        if (next !== null) { name = "review_read_diff_batch"; args = { "first-id": next, count: 4 }; }
+        const last = sequence.at(-1);
+        const next = last.batch ? last.batch["next-id"] :
+          (last.chunk.id < f.expectedContext.pages.length ? last.chunk.id + 1 : null);
+        if (next !== null) { name = "review_read_diff_batch"; args = nextRead(next); }
         else { name = "review_record_evidence"; args = { stage: stages[0], note: "Scripted native stage control; no model judgment." }; }
       } else if (previousName === "review_record_evidence") {
         assert.equal(previous["ok?"], true, JSON.stringify(previous));
@@ -4391,7 +4427,7 @@ test("native bounded batches: actual standalone, physical CLI and compiled produ
   clearTimeout(timer);
   const diagnostic = Buffer.concat(stderr).toString("utf8");
   if (exit.code !== 0 && process.env.ETA_MU_NATIVE_PROOF_DIR) {
-    const failureDirectory = process.env.ETA_MU_NATIVE_PROOF_DIR + "-failure";
+    const failureDirectory = process.env.ETA_MU_NATIVE_PROOF_DIR + `-${protocol}-failure`;
     assert.ok(path.isAbsolute(failureDirectory)); fs.mkdirSync(failureDirectory, { mode: 0o700 });
     fs.writeFileSync(path.join(failureDirectory, "supervisor.stderr"), diagnostic, { mode: 0o600 });
     // This HOME is the credential-free, scripted fixture, never an operator HOME.
@@ -4424,10 +4460,18 @@ test("native bounded batches: actual standalone, physical CLI and compiled produ
   assert.equal(new Set(actual["input-assessments"].map(page => page.note)).size, actual["input-assessments"].length);
   for (const attempt of [1, 2]) {
     const groups = perAttempt.get(attempt);
-    assert.ok(groups.some(group => group.chunks.length > 1));
+    assert.ok(groups.some(group => group.chunks?.length > 1));
     assert.equal(groups.at(-1).batch["next-id"], null);
+    if (protocol === "delivered-mixed") {
+      assert.equal(groups[0].chunk.id, 1, "an actual single read feeds the delivered assessor");
+      assert.equal(groups.at(-1).chunks.length, 1, "the final one-page group is explicitly assessed");
+      for (const call of observed.filter(call => call.attempt === attempt && call.name === assessor)) {
+        assert.deepEqual(Object.keys(call.args), ["assessments"]);
+        assert.ok(call.args.assessments.every(item => Object.keys(item).sort().join(",") === "id,note"));
+      }
+    }
     assert.ok(groups.at(-1).chunks.length < 4, "actual final partial group is exercised");
-    assert.deepEqual(groups.flatMap(group => group.chunks.map(page => page.id)), actual["input-assessments"].map(page => page.id));
+    assert.deepEqual(groups.flatMap(group => (group.chunks ?? [group.chunk]).map(page => page.id)), actual["input-assessments"].map(page => page.id));
   }
   assert.ok(recovery.accepted_invocation.canonical_verdict.contextReadCoverage.eof);
   assert.equal(transportSha256(JSON.stringify(recovery.accepted_invocation)), parseOutput(f.output).review_invocation_sha256);
@@ -4497,7 +4541,7 @@ test("native bounded batches: actual standalone, physical CLI and compiled produ
     ["truncated native output", events => { firstRead(events).part.state.metadata.truncated = true; }],
     ["oversized complete wire", events => { firstRead(events).part.state.output += " ".repeat(48001); }],
     ["missing final partial assessment", events => {
-      const last = events.findLastIndex(event => event.part?.tool === "review_assess_diff_batch"); events.splice(last, 1);
+      const last = events.findLastIndex(event => event.part?.tool === assessor); events.splice(last, 1);
     }],
   ];
   for (const [label, mutate] of cases) {
@@ -4529,7 +4573,7 @@ test("native bounded batches: actual standalone, physical CLI and compiled produ
     }
   }
   if (process.env.ETA_MU_NATIVE_PROOF_DIR) {
-    const proofDirectory = process.env.ETA_MU_NATIVE_PROOF_DIR;
+    const proofDirectory = process.env.ETA_MU_NATIVE_PROOF_DIR + `-${protocol}`;
     assert.ok(path.isAbsolute(proofDirectory)); fs.mkdirSync(proofDirectory, { mode: 0o700 });
     for (const name of ["recovery.json", "model-response-attempt-1.txt", "model-response-attempt-2.txt", "submission.json",
       "opencode-stderr-attempt-1.log", "opencode-stderr-attempt-2.log", "model-discovery.json",
@@ -4539,7 +4583,7 @@ test("native bounded batches: actual standalone, physical CLI and compiled produ
     }
     fs.writeFileSync(path.join(proofDirectory, "proof.json"), JSON.stringify({
       tier: "actual physical CLI and compiled producer/verifier with scripted local SSE; no provider judgment or publication",
-      muse: "riatzukiza/muse@259c76eee9ac2def944e9191c1da23d3647ba32e", registry,
+      muse: "riatzukiza/muse@f422d77cf9c6cea46b6791e3f54c98679e949d1f", protocol, registry,
       verifier_sha256: transportSha256(fs.readFileSync(f.verifierFile)),
       binary_sha256: transportSha256(fs.readFileSync(ownedBinary)),
       pages: actual["input-assessments"].length, groups: perAttempt.get(2).length, attempts: 2, captures: 4,
@@ -4549,6 +4593,7 @@ test("native bounded batches: actual standalone, physical CLI and compiled produ
   }
   t.diagnostic(`real CLI/canonical producer: ${actual["input-assessments"].length} pages, ${perAttempt.get(2).length} whole groups, 2 isolated invocations, 4 captures; scripted local SSE, no provider judgment`);
 });
+}
 
 /** Bind a real canonical verdict to selected bytes before exercising the complete final command. */
 function bindCanonicalFixture(fixture, options = {}) {
@@ -4674,6 +4719,9 @@ for (const [inputKind, options] of [["multi-page", { large: true, unicode: true 
       assert.match(checkpoint[0], /coverage\.assessed must equal[^]*coverage\.chunks/);
       assert.match(checkpoint[0], /coverage\.missing must be empty before review_record_evidence/);
       assert.match(checkpoint[0], /Delivered\/read coverage alone does not prove assessment/);
+      assert.match(checkpoint[0], /review_assess_delivered_diff_batch[^]*closed[^]*\{id,note\}/);
+      assert.match(checkpoint[0], /producer derives source, geometry and digests/);
+      assert.match(checkpoint[0], /do not silently downgrade or reinterpret a refused/);
     }
   });
 }
@@ -4761,7 +4809,7 @@ for (const omission of ["final", "earlier", "multiple"]) {
 }
 
 test("canonical staged context: matching qualified Muse pin supplies both plugin and verifier", () => {
-  const pin = "259c76eee9ac2def944e9191c1da23d3647ba32e";
+  const pin = "f422d77cf9c6cea46b6791e3f54c98679e949d1f";
   assert.equal(workflow.on.workflow_call.inputs.muse_revision.default, pin);
   const checkout = namedStep("prepare_review_context", "Checkout Muse compatibility compiler");
   assert.equal(checkout.with.ref, "${{ inputs.muse_revision || '" + pin + "' }}");

@@ -1,0 +1,14 @@
+From https://github.com/riatzukiza/muse
+ * branch            f422d77cf9c6cea46b6791e3f54c98679e949d1f -> FETCH_HEAD
+
+added 118 packages in 1s
+{}
+shadow-cljs - config: /home/err/.local/share/codex/cephalon-field-restore-work-20261017/eta-delivered-caller-qualified-context/source/shadow-cljs.edn
+shadow-cljs - starting via "clojure"
+[:opencode-plugin] Compiling ...
+[:opencode-plugin] Build completed. (117 files, 66 compiled, 0 warnings, 10.47s)
+[:review-invocation] Compiling ...
+[:review-invocation] Build completed. (68 files, 21 compiled, 0 warnings, 4.43s)
+
+added 1 package in 4s
+Compiled canonical fixture f422d77cf9c6cea46b6791e3f54c98679e949d1f 328141 bytes 99f2c0d69acd6b466326c364e2c4d4f9b5244016a1ec06771aab5a198063eaed

@@ -3,7 +3,9 @@
 ;; Outputs go to target/runtime/<name>/runtime.js (gitignored).
 ;; DO NOT regenerate this file from build.mjs — it is source-controlled.
 ;; To add an extension: add a .cljs file under src/, add a build entry here.
-{:source-paths ["src" "lib"]
+{:source-paths ["src" "lib" "../receipt-river/src/cljs"
+                ;; The node-test target also runs the owner's existing suites.
+                "../receipt-river/test/cljs"]
 
  :dependencies [[metosin/malli "0.16.4"]]
 
