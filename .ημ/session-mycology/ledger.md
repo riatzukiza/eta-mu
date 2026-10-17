@@ -1697,3 +1697,23 @@
   spore: none
   receipt-refs: cephalon-eta-receipt-adapter-plan-verification-20261017
   note: Selected qualified native Rheos CLI SHA85369213440634989365f75929045d36eb69b6c6b1e7679f68d483374a0d526b read the new manually authored child as Incoming2, exact parent887, exit0/stderr0. This is loader readback only, not independent planning/admission/Ready. Native event bytes stay an exact prefix. Existing canonical API whole-ledger diagnostic FAILS34historical records on both committed099369rows and working376rows. Actual immutable-base/current comparison proves identical error vectors and original prefix; every new suffix row validates. Preserve all old malformed entries/timestamps and raw failure output, no whole-ledger-green claim or baseline waiver. No required gate was replaced. git diff --check passes. Free18.93GiB below20GiB: no full snapshot or dependency allocation. No production or regression test implementation before actual qualified planning and nativeReady; no runtime/paid/credential/automation change. Reflection p.8/.2/.1, no spore.
+
+- ts: 2026-10-17T15:40:14.884Z
+  session: /home/err/spaces/cephalon-review-batch-consumer/eta-mu
+  task: Accepted finite B1-B3 and human-included two-point receipt-validator adapter repair
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-eta33-receipt-adapter-planning-publication-20261017
+  note: Concrete four-input planning commit8a6994f6 is ordinary-pushed to personal branch and PR33createdready/attached with both head/base repos riatzukiza/eta-mu. Native exacthead8a/base099/4437bytewholebodyreadbackPASS/auto_merge:null. Full canonical planning request6235847980 returnedexit0; Bot6235849608 saysFullreviewtriggered, summary6235832542stillprocessing/all4selected. This is acknowledgement/pending, no completedreview/approval/cohort. AutomaticCodexquota6235832676 UNKNOWNreset supplies0credit/no unchangedduplicate. Actual native run39045569772 has compiledMuse117433485758completedSUCCESS, deterministicproducer117433740647IN_PROGRESS; no modeljobstart or fullfunctionalcompletion claimed. Other actual runs coverage39045569789 and sandbox39045569825 are active. Reuse same handles, never restart from observer timeout. Requiredpr-flowplanningqualification/nativeRheosReady precedes source/test changes. NewcardIncoming2, originalcallerTesting3unchanged, implementation099preserved and fullnewhead qualification laterrequired. Free18.93GiB: no snapshot/dependency install. Read-only cache inventory found only0.28GiB npm downloadcaches, insufficient to restore20GiB; no cache/source/evidence deleted. Sourceandboard remainuntouchedafterplanningpublication. Alloldreceipts/reflections exact; this observation staysheld for next concrete owned source/lifecycle change, no observation-onlypush. Human pendingquestion resolved, no further scope decision needed for this repair; nativegoalservice lastblocked remains distinct from actual authorized resumed work. B1-B3served0of3, heartbeat savedACTIVE/nochange, no spore.
+
+- ts: 2026-10-17T15:47:13.476Z
+  session: /home/err/spaces/cephalon-review-batch-consumer/eta-mu
+  task: Accepted finite B1-B3 and human-included two-point receipt-validator adapter
+  p-efficiency: 0.8
+  p-friction: 0.2
+  p-skill-candidate: 0.1
+  spore: none
+  receipt-refs: cephalon-eta33-plan-separate-location-and-context-20261017
+  note: Native full request6235847980 actually completed via6235849608updated15:39:42UTC; review5558542545 COMMENTED/all4inputs/oneP2, not approval. Verified actual handlecommand364 and executetool420 both include finalcwd fallback in repo-root. Forwardingthat value would improperlyderive repositorycontext outsideGit. Adopt exact native suggestedAC2 and clarify scope/AC3 with both realcompiledroutes outsideGit/noactive repo controls; actualcontextroot fromexistingGit/active selection is separatefrom fallbackfilelocation, absentcontext retainscanonicalmissingrepo refusal. CanonicalAPI pathcontext isderivedattribution, notauthenticatedidentity. Same wiring1/regression1two-pointscope; manualIncomingbodyeditedbeforebreakdown, entirefrontmatterbyte-identical, no status/points/relationships orcodechanged. Originalsource8a retains oldprose; currenthistory preserved and prior378receipt/reflection staysprefix. Nativeproducer117433740647stillIN_PROGRESS atread; no modelreviewstarted/fullfunctionalpass. Current fullCRcompletednoapproval, allowance0remaining/dynamic1perhour; no earlyfullrequest or paidusage. Nativehead8a/base099untilconcretepush; no oldapprovaltransfer. No newhuman scope decision, runtime/credential/automation change or spore.

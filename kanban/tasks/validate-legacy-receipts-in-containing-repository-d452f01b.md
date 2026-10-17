@@ -40,8 +40,10 @@ missing repository. This closes the real consumer defect before ETA31 can qualif
 ## Scope
 
 - Add the existing Receipt River package source path to the extension compiler.
-- Pass the repository root already resolved by both existing command and tool
-  routes to the owner API. Keep the legacy two-argument validator and file-reader
+- Keep receipt file location separate from repository context in both existing
+  command and tool routes. Use the existing Git-root or active-repository result
+  for context; a final `cwd` fallback may locate the file but supplies no context.
+  Keep the legacy two-argument validator and file-reader
   surfaces compatible; preserve the JS result casing, arrays, event and line data.
   Invalid or absent attribution on the context-bearing route uses the owner's
   context-free refusal, never a blanket missing-field exemption.
@@ -66,16 +68,22 @@ automation change. B1–B3 live proof remains separately required.
    Ready → Todo → InProgress before production or regression-test implementation.
    The existing canonical API is part of the pinned same-repository base; no
    invented cross-board dependency or bypass of an unfinished prerequisite.
-2. Both actual validation entry points supply their resolved Git root. A valid
-   unversioned repo-less row succeeds only with nonblank containing context; no
-   context, blank context or a nonstring context cannot exempt missing repo.
+2. Both actual validation entry points keep receipt file location separate from
+   repository context. A valid unversioned repo-less row succeeds only with
+   nonblank containing context from an actual repository root. When Git-root
+   resolution fails and no active repository is selected, use cwd only to locate
+   receipts.edn and pass absent context; no context, blank context or a
+   nonstring context can exempt missing repo.
    Explicit legacy `:repo` remains unchanged. Input file bytes are identical
    before/after each operation. Existing two-argument function behavior and JS
    keys (`ok`, `lineNumber`, `event`, `errors`, `line`) remain compatible.
 3. Causal RED demonstrates the existing live command/tool refusal before adapter
    GREEN, not merely a mocked delegation or missing-symbol compile failure.
-   Execute the real compiled extension routes against temporary Git roots and
-   frozen receipt bytes. Preserve malformed EDN/non-map, missing ordinary field,
+   Execute the real compiled extension routes against temporary Git roots and a
+   receipt file outside Git, using frozen receipt bytes. With no active repository
+   and no Git root, both actual routes must retain absent context and reject a
+   repo-less row while preserving the receipt file location and bytes. Preserve
+   malformed EDN/non-map, missing ordinary field,
    unsupported kind, invalid timestamp and invalid versioned-envelope refusals;
    valid explicit legacy and owner-valid versioned controls remain passing.
    Missing-file and mixed valid/invalid row results retain count/failure/last
@@ -110,3 +118,13 @@ or tests that only assert a mock call would conceal the defect. Native readiness
 and independent planning remain prerequisites, not consequences of this document.
 
 Software/process documentation: GPL-3.0-or-later.
+
+## Planning clarification — 2026-10-17
+
+CodeRabbit review5558542545/root4303285737 identified that the current command
+and tool use `cwd` as the final location fallback. The active scope and criteria
+now explicitly separate that file location from actual repository context and
+require both outside-Git controls. The canonical API accepts a nonblank supplied
+path; it does not authenticate repository identity. This is the same two-point
+adapter and regression scope, with no owner-law or legacy-writer change. No
+production implementation, native Ready or settlement of ETA31 follows here.
