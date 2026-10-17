@@ -62,13 +62,13 @@ This document describes the centralized GitHub automation system owned by `open-
 3. Optionally publish changed packages to npm.
 
 ### 5. `opencode-code-review.yml` reference implementation
-**Purpose**: Produce a bounded, evidence-first pull-request review with OpenCode and `opencode/mimo-v2.6-flash-free`.
+**Purpose**: Produce a bounded, evidence-first pull-request review through OpenCode's latest catalog-eligible free MiMo Flash model. An empty model input discovers that model; an explicit override must satisfy the same current eligibility checks.
 
 **Triggers**: Non-draft, same-repository pull requests opened, updated, reopened, or marked ready.
 
 **Logic**:
 1. Run deterministic dependency, lint, test, and build gates and serialize their exit codes and logs.
-2. Check out pinned revisions of `octave-commons/muse` and `riatzukiza/.agents`.
+2. Check out pinned revisions of `riatzukiza/muse` and `riatzukiza/.agents`.
 3. Use Muse to compile a review-only OpenCode projection containing observer tools over existing Muse, phase, actor, task, and agent state.
 4. Package the compiled tools, source revisions, checksums, and external skill inventory into a review-context artifact.
 5. Mount the `.agents` checkout at `~/.agents`, OpenCode's external skill discovery root.
@@ -81,11 +81,11 @@ This document describes the centralized GitHub automation system owned by `open-
 
 The Muse projection intentionally omits write/network-capable multiplexed tools such as `receipt_river`, `edn_ledger`, `session_mycology`, and web search. It also omits actor/agent spawn, actor tell, task execution/control, and phase recording. Observer tools do not make Muse the owner of actor, event, policy, session, or workflow semantics.
 
-The reviewer cannot edit files, browse the web, or spawn subagents. Bash commands are denied except the exact no-op `true`, which retains tool registration without permitting file writes or command chaining. Skills provide process and environment adaptation, but never count as defect evidence. This avoids same-model consensus theater and limits free-tier quota use. The workflow needs no OpenCode credential — `opencode/mimo-v2.6-flash-free` uses the anonymous public-provider path — and disables public session sharing.
+The reviewer cannot edit files, browse the web, or spawn subagents. Bash commands are denied except the exact no-op `true`, which retains tool registration without permitting file writes or command chaining. Skills provide process and environment adaptation, but never count as defect evidence. This avoids same-model consensus theater and limits free-tier quota use. The workflow needs no OpenCode credential: it invokes the eligible free model through OpenCode's anonymous public-provider path, subject to IP-based rate limits, and disables public session sharing. Model slugs are dated catalog observations; a fixed slug or direct provider request cannot replace discovery through OpenCode.
 
 The current default pins are explicit inside the workflow so review runs are revision-bound:
 
-- Muse: `0b9a91492c8355e6933dc2164d35668cb76d9e60`
+- Muse: `259c76eee9ac2def944e9191c1da23d3647ba32e`
 - `.agents`: `7fd3252e7663ad5e68be5e90429d126aa66c38c8`
 
 The reusable workflow accepts repository-specific deterministic gates. Its full-input observer registry includes the immutable diff reader and assessment tools; the companion Muse diagnostic uses the same source revision but compiles the Muse, phase, actor, task, and agent observer subset without the immutable diff reader or assessment tools, so it does not qualify the full review contract or supply approval evidence. Existing callers retain their recorded pin until the new Eta/Muse pair qualifies and merges.

@@ -1,0 +1,89 @@
+{
+  "tier": "Observed tool-output transcription with retained raw private artifacts; not raw REST, provider approval or hosted qualification of the changed source",
+  "finding": 4299928479,
+  "nativeReview": 5554371391,
+  "originalHead": "767ab889885ed1599ff3bfaf068fba3fd1b35ecb",
+  "testCommit": "fef2402901baa44776509a4ae599e821aaf7cf30",
+  "observedAt": "2026-10-16T22:40:03.731795+00:00",
+  "handoffPath": "/home/err/.local/share/codex/cephalon-field-settlement-20261016/eta-pagination/handoff-final.json",
+  "handoffSHA256": "7d996a029720e29d41a34a7a7e5a6fa86c638d34d61a8a66e500a6c347e4c234",
+  "source": {
+    ".github/scripts/run-opencode-review-recovery.mjs": {
+      "bytes": 125432,
+      "sha256": "585b20e59f99c6297ed71d68dae2325ad913fadd2ca46d41406a132dab8ce1a9"
+    },
+    ".github/workflows/opencode-code-review.yml": {
+      "bytes": 277519,
+      "sha256": "d5fe372e3019c6d909daf476c43834f23520d1c241785791fdc15821613b06f5"
+    },
+    ".github/scripts/opencode-code-review-workflow.test.mjs": {
+      "bytes": 296376,
+      "sha256": "2b88c539a99802159216e38c743e8d2bf44765f7370f34d1fe66869206fbb191"
+    }
+  },
+  "pagination": {
+    "primaryObservation": "Official anonymous GitHub jobs response Link header used repository-ID1401249220 next/last alias; two actual native jobs requested one/page, not101 actual hosted jobs",
+    "primaryURL": "https://api.github.com/repos/riatzukiza/eta-mu/actions/runs/38974044799/attempts/1/jobs?per_page=1&page=1",
+    "rawHeadersSHA256": "7e80f19cc233193faeed07e96f9be47707ca9395bcf54ca905419c4b1bb681ad",
+    "RED": {
+      "tests": 56,
+      "pass": 48,
+      "fail": 8,
+      "cancelled": 0,
+      "exit": 1,
+      "stdoutSHA256": "b370eccadee222bb3cb45f6648b5a3481366facabbfbb71934df57523181d304"
+    },
+    "GREEN": {
+      "tests": 56,
+      "pass": 56,
+      "fail": 0,
+      "cancelled": 0,
+      "exit": 0,
+      "stdoutSHA256": "5249b6c61fdf6e4f118d3a2b7ed0e39f741adc1167573c9d13340e7fbdf82762"
+    },
+    "fix": "Validate exact same run/attempt/jobs owner route or canonical positive safe-integer repository-ID alias; consume only page number; always fetch original trusted owner route",
+    "syntheticCoverage": "101 actual job objects in a local fixture across100+1 records; origin/queries/credentials/fragments/repeated/skipped pages/full totals/duplicates/ambiguity refused; single30s/2MiB acquisition and anonymous headers retained"
+  },
+  "nativeSandboxRED": {
+    "run": 38974045176,
+    "job": 117219081840,
+    "head": "767ab889885ed1599ff3bfaf068fba3fd1b35ecb",
+    "checkout": "GitHub native PR merge includes767; not a bare head checkout",
+    "total": 353,
+    "pass": 352,
+    "fail": 0,
+    "cancelled": 1,
+    "cause": "Enclosing post-before fixture timeout20000ms; actual20179.980751ms; no statement that the changed source passed native CI",
+    "rawLogSHA256": "085be69d7e629c360ca84d9e43acb7fd4591f34617f827ed5091b10b85ba279a"
+  },
+  "fixtureCorrection": {
+    "scope": "ONLY one post-before test enclosing timeout20_000->45_000, including setup; same allowance as hang/helper siblings",
+    "preserved": [
+      "all assertions",
+      "12_000ms owned containment inside actualModelDeadlineRegression",
+      "production/shared model deadlines",
+      "retry/skip behavior",
+      "no new model or paid usage"
+    ],
+    "actualFocusedGREEN": {
+      "total": 1,
+      "pass": 1,
+      "fail": 0,
+      "cancelled": 0,
+      "milliseconds": 18666.257743,
+      "outerExpired": false,
+      "modelLaunches": 0,
+      "nativeFailure": "OpenCode review job deadline expired before launch",
+      "ENOENT": false,
+      "ownedLivePIDs": 0,
+      "stderrBytes": 0,
+      "stdoutSHA256": "9ae27548cc097aef948cf44369785393fede7154c42708630f052cff3297149c"
+    }
+  },
+  "limits": [
+    "Full workflow suite on the final committed source is still required after this record",
+    "Old767353PASS local proof remains old-head only; old native Sandbox cancellation is preserved",
+    "Fresh reviews and native checks required after ordinary push",
+    "No application runtime, credentials, provider model, board, ownership, publication or source main changed"
+  ]
+}

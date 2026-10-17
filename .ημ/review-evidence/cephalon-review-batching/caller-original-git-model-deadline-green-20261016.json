@@ -1,0 +1,179 @@
+{
+  "kind": "observed local GREEN integration; not native provider approval or deployment proof",
+  "recordedAt": "2026-10-16T08:36:50.429463+00:00",
+  "redCommit": "7b51344978a4e59f3abcd088fd8f1c37613128ef",
+  "sourceFiles": {
+    ".github/scripts/run-opencode-review-recovery.mjs": {
+      "bytes": 117931,
+      "sha256": "0d7b6f4f79e2ad3b192d53a981d851c3c23f4dab2472b1ed2fc2b3c195bb3c44"
+    },
+    ".github/scripts/opencode-code-review-workflow.test.mjs": {
+      "bytes": 270197,
+      "sha256": "835bcbbd8372a65c16d685a32d4438b188b3859ffbd49a9399d58a8b33b513a3"
+    },
+    ".github/workflows/opencode-code-review.yml": {
+      "bytes": 266394,
+      "sha256": "8aa7d4b3d7b595d28e31f1b46077f12dfa604418d4cdc9e3d8cfa9360655e69c"
+    },
+    ".github/workflows/muse-review-context-diagnostic.yml": {
+      "bytes": 4552,
+      "sha256": "2c7c008a3938f66c53546dc3ab6ba4c88a5b301087f6ccf533bc3b0bbaf901b8"
+    }
+  },
+  "full": {
+    "command": [
+      "/home/err/.volta/tools/image/node/22.23.3/bin/node",
+      "--test",
+      "--test-reporter=tap",
+      ".github/scripts/opencode-code-review-workflow.test.mjs"
+    ],
+    "head": "7b51344978a4e59f3abcd088fd8f1c37613128ef",
+    "startedAt": "2026-10-16T08:12:46.724100+00:00",
+    "finishedAt": "2026-10-16T08:21:43.006441+00:00",
+    "elapsedSeconds": 536.2823421970243,
+    "exit": 0,
+    "logs": {
+      "stdout": {
+        "bytes": 120458,
+        "sha256": "6d0fca1a0d4887d8fdbf004d7992c29ec200a80676d9985fab1d2f8009c4f850"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "summary": [
+      "# tests 339",
+      "# suites 0",
+      "# pass 339",
+      "# fail 0",
+      "# cancelled 0",
+      "# skipped 0",
+      "# todo 0",
+      "# duration_ms 536178.281132"
+    ],
+    "sourceDrift": []
+  },
+  "fullRawResultSHA256": "580c5b81d906d5f03c8f82e845497067dcf03813154fad3ef58d4a890e24e61c",
+  "checks": [
+    {
+      "command": [
+        "/home/err/.volta/tools/image/node/22.23.3/bin/node",
+        "--check",
+        ".github/scripts/run-opencode-review-recovery.mjs"
+      ],
+      "exit": 0,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "command": [
+        "/home/err/.volta/tools/image/node/22.23.3/bin/node",
+        "--check",
+        ".github/scripts/opencode-code-review-workflow.test.mjs"
+      ],
+      "exit": 0,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "command": [
+        "/home/err/.volta/tools/image/node/22.23.3/bin/node",
+        "--input-type=module",
+        "--eval",
+        "import fs from 'node:fs';import {createRequire} from 'node:module';\nconst require=createRequire(process.cwd()+'/packages/eta-mu/package.json');const YAML=require('yaml');\nconst results=process.argv.slice(1).map(file=>{const d=YAML.parseDocument(fs.readFileSync(file,'utf8'));if(d.errors.length)throw Error(d.errors.map(x=>x.message).join('\\n'));return {file,errors:d.errors.length,warnings:d.warnings.length};});\nconsole.log(JSON.stringify(results));",
+        ".github/workflows/opencode-code-review.yml",
+        ".github/workflows/muse-review-context-diagnostic.yml"
+      ],
+      "exit": 0,
+      "stdout": {
+        "bytes": 168,
+        "sha256": "a934cfd85e4eb2c2a61c4cb112bd92d8d4b1ccd85d253cf7469c0a6fa7498bdb"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "--",
+        ".github/scripts/run-opencode-review-recovery.mjs",
+        ".github/scripts/opencode-code-review-workflow.test.mjs",
+        ".github/workflows/opencode-code-review.yml"
+      ],
+      "exit": 0,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "wiring": {
+    "exact120ColumnRunnerEmbedding": true,
+    "exactPreCheckoutBudgetESMBlock": true,
+    "outerWorkflowEqualExceptFirstValidationAndCarrier": true,
+    "allPriorAssertionLinesRetained": true,
+    "companionUnchanged": true
+  },
+  "observedPhysicalControl": {
+    "pages": 17,
+    "groups": 5,
+    "isolatedInvocations": 2,
+    "captures": 4,
+    "scope": "actual qualified physical CLI with scripted local SSE; no provider judgment"
+  },
+  "cleanup": {
+    "ownedPIDCount": 48,
+    "allAbsent": true,
+    "markerResiduals": [],
+    "observerErrors": []
+  },
+  "preservedEarlierFailure": {
+    "actual": "337PASS1EEXISTFAIL",
+    "cause": "shared optional proof-export directory precreated by my independent fault archival",
+    "resultUnchanged": true,
+    "finalRequiredRepeat": "339PASS0FAIL unique absent export destination, source unchanged"
+  },
+  "nativeCard": {
+    "actualOpsExit": [
+      0,
+      0,
+      0
+    ],
+    "status": "in_progress",
+    "points": "5",
+    "oldLedgerBytes": 1889947,
+    "actualAppendBytes": 2165,
+    "oldPrefixExact": true,
+    "commentReadbackExact": true,
+    "qualifiedRheosSHA256": "85369213440634989365f75929045d36eb69b6c6b1e7679f68d483374a0d526b"
+  },
+  "operatorCorrection": "Initial verification mistakenly looked for comments rather than native sections/content and stopped after successful three native operations. Reused retained successful outputs, verified exact comment in sections/content; no repeat native write.",
+  "limits": [
+    "Official-shaped API and synthetic clock faults are local controls, not hosted availability.",
+    "Existing selected budget and two-attempt maximum remain unchanged; reserve partitions that budget.",
+    "Owned group close/reap is not daemon escape isolation, hard realtime, or OS-pause availability.",
+    "No native current-head approval, publication, MERGE, adoption or deployment credit.",
+    "B1-B3 live proofs0of3; heartbeat HUMAN-PAUSED."
+  ]
+}

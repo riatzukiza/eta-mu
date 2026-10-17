@@ -32,12 +32,12 @@ Kimi must not close ambiguous issues or make broad/destructive changes.
 
 ## MiMo evidence-first PR review
 
-`.github/workflows/opencode-code-review.yml` reviews non-draft, same-repository pull requests with the project-local `github-reviewer` OpenCode agent and the `opencode/mimo-v2.6-flash-free` model.
+`.github/workflows/opencode-code-review.yml` reviews non-draft, same-repository pull requests with the project-local `github-reviewer` OpenCode agent and the latest active, tool-capable, wholly free OpenCode MiMo Flash model from a fresh catalog. Discovery and inference run anonymously through OpenCode; no model API key is required. A caller may explicitly select a currently eligible free model; a dated slug is not the default.
 
 The workflow has three bounded stages:
 
 1. **Deterministic evidence** — install from the committed lockfile, then run the repository lint, test, and build gates. Exit codes and logs are serialized under `.opencode/review-evidence/`. A failed environment or dependency install is evidence about the run, not automatically evidence of a code defect.
-2. **Review-context compilation** — check out pinned revisions of `octave-commons/muse` and `riatzukiza/.agents`. Muse compiles a review-specific OpenCode projection containing only observer tools; the `.agents` repository is packaged as the global skill source. Both revisions and the skill inventory are recorded in the context artifact.
+2. **Review-context compilation** — check out pinned revisions of `riatzukiza/muse` and `riatzukiza/.agents`. Muse compiles a review-specific OpenCode projection containing only observer tools; the `.agents` repository is packaged as the global skill source. Both revisions and the skill inventory are recorded in the context artifact.
 3. **Model review with omission-only recovery** — map the change, reconstruct relevant contracts and invariants, generate candidate findings, attempt to disprove each candidate, and publish only findings that survive the evidence threshold. A completed first invocation that leaves a missing `review_submit` artifact receives exactly one corrective model invocation. The recovery starts the state machine again and must finish with a real tool-written submission; it never synthesizes a review from free-form output. A malformed submission does not consume the recovery attempt, and malformed or repeatedly missing submissions fail closed before publication.
 
 Diff staging preserves the complete Git merge-base/head bytes in `basehead.diff`
@@ -56,11 +56,30 @@ hunk, reading unchanged surrounding code as needed to assess its contracts.
 This does not require exhaustive proof or reading every unchanged file.
 
 The workflow-call default and both direct-PR fallbacks select immutable Muse
-`0b9a91492c8355e6933dc2164d35668cb76d9e60`, including context provenance.
+`259c76eee9ac2def944e9191c1da23d3647ba32e`, the independently qualified personal Muse PR12 merge. Plugin and verifier compile from the same selected source.
 This candidate pair still requires native hosted qualification. Existing
 production callers select the pair only after both candidates qualify and
 merge; historical callers pinned to b5 retain their original functional source
 until a separately reviewed revision update selects the new pair.
+
+The profile has 24 tools: fourteen existing-state observers and ten review
+pipeline tools, including both single-page and bounded batch delivery. Batch
+selection preserves every original page and every distinct per-page assessment;
+follow actual returned membership and the final partial group. Complete native
+context-read evidence and all five stages still precede actual submission.
+
+The review job installs the physical Linux x64 OpenCode 1.18.31 executable in an
+owned temporary directory. Canonical Muse authenticates its batch profile using
+the actual executable, resolved configuration, child environment and cwd. The
+supervisor captures these independently before and after **each** actual model
+child, including failed children. Original source, full config, registry,
+context and Git identities remain bound; the first change or failed capture
+stops retry and acceptance. `recovery.json` retains the original observation and
+all actual capture pairs. Its digest is bound by the trusted invocation output.
+The separate final workflow command checks those exact original pairs and makes
+an independent terminal capture before freezing the unchanged publisher bytes.
+Model-written reports or a new capture cannot replace the original authority.
+Configuration/environment contents remain private; retained evidence uses hashes.
 
 The two model invocations write separate response and stderr files plus a small
 `recovery.json` decision record. The attempt artifact therefore preserves the
@@ -236,7 +255,7 @@ A reportable inline finding must:
 
 Test gaps and unresolved questions belong in one concise non-blocking summary. If no candidate survives validation, the agent leaves a short passing summary instead of inventing comments.
 
-The reviewer runs `opencode/mimo-v2.6-flash-free` over OpenCode's anonymous public-provider path, so no `OPENCODE_API_KEY` secret is required — when no OpenCode credential is connected, OpenCode supplies the public credential and disables only models with a non-zero input cost. Inline review comments are mirrored to Discord by the workflow's final notification step.
+The reviewer runs the discovered free OpenCode MiMo Flash model over OpenCode's anonymous public-provider path, so no `OPENCODE_API_KEY` secret is required — when no OpenCode credential is connected, OpenCode supplies the public credential and disables only models with a non-zero input cost. Inline review comments are mirrored to Discord by the workflow's final notification step.
 
 ## CodeRabbit and review gates
 
@@ -294,3 +313,77 @@ When working on this repo:
 3. Keep status labels consistent with actual task progress.
 4. Mention or link the synced issue/PR relationship when opening fixes.
 5. Preserve auditability: receipts, PR descriptions, and comments should explain what changed and why.
+
+
+## Public job pagination and native fixture containment — 2026-10-16
+
+CodeRabbit finding4299928479 on767ab889 identified a real public metadata
+compatibility defect. An anonymous official GitHub jobs response returned
+repository-ID1401249220 Link URLs, while the caller accepted only the original
+owner/repository path. The caller now permits that positive safe-integer ID
+alias for the exact same run/attempt/jobs suffix. It uses the link only to
+validate pagination and select the next consecutive page number; every fetch
+still uses the original trusted owner/repository URL. Anonymous transport,
+origin/credential/fragment/query checks, full inventory validation and the
+single shared30-second/2MiB acquisition remain unchanged. The pre-checkout
+embedded implementation is byte-identical to the runner's budget block.
+
+Actual focused RED ran56 tests:48 passed/8 failed; the same pagination tests
+then passed56/56. The101-job cases are local synthetic job objects over two
+pages, distinct from the two-job primary response requested one per page.
+Refusal controls retain foreign routes, malformed IDs, altered queries,
+duplicate/partial inventories, ambiguity and repeated/skipped pages.
+
+Separately, native Sandbox38974045176/job117219081840 on the merge containing
+767 ran353 workflow tests:352 passed,0 failed and1 cancelled. Its post-before
+clock-boundary test exceeded its enclosing20-second setup-plus-test timeout
+at20179.98ms. That one enclosing allowance is now45 seconds, matching existing
+hang/helper fixtures. The inner12-second owned containment, every assertion
+and production/shared deadlines are unchanged. The actual focused corrected
+test passed in18.67 seconds, with outerExpired:false, zero model launches,
+before/after custody captures, the expected deadline refusal without ENOENT
+and no live owned process. This is an observed harness correction, not proof
+of future runner speed or relaxed application limits.
+
+The source record at
+`.ημ/review-evidence/cephalon-review-batching/pagination-link-and-fixture-timeout-20261016.json`
+retains exact source/log hashes and limits. The earlier local353PASS remains
+bound to767; a complete final-source suite and fresh hosted reviews/checks are
+still required. No application runtime, credentials, model, board state,
+publication or deployment changed.
+
+
+### Complete packaged-runner synchronization
+
+The actual final-source bf4e47ff full run completed390 tests:389 passed and
+one failed (the existing exact packaged-runner equality assertion), with
+zero cancellations/skips/stderr, stable source hashes,205 raw observations
+and no live owned helper. The runner source and pre-checkout block had been
+updated, but the existing full base64 payload still contained the old runner.
+This failure is retained; it is not a390PASS result.
+
+The existing payload now decodes byte-for-byte to the actual runner, preserving
+its original120-column wrapping and all workflow text outside that payload.
+The existing exact-copy assertion and56 public-job controls pass together
+57/57 with empty stderr. A complete current-source rerun and fresh native
+checks/reviews remain required. The separate transcription
+`.ημ/review-evidence/cephalon-review-batching/packaged-runner-sync-red-green-20261016.json`
+retains the exact failed-run and corrected-payload source/log hashes.
+
+### Native batch assessment clarification — 2026-10-16
+
+At PR21 head `4c75ae37135db35a7a39af37283f08dbb0ac7409`, native MiMo
+job117239750732/run38978467666 failed after an eight-member assessment call
+for pages53–60 also supplied incorrect delivered-page hashes for pages53–56.
+Pinned Muse refused that call; the runner retained one completed child with
+exit0, empty stderr, no submission and `unestablished-review-trace`. Its last
+successful tool coverage was60 delivered/52 assessed of122 pages. The separate
+native deterministic producer's390/390 passing tests remain valid evidence.
+
+The caller prompt now explicitly requires1–4 assessments from exactly one
+delivered read batch, assessed before the next read, with exact returned
+id/start/end/sha256 metadata. Combining batches or reconstructing metadata after
+compaction is forbidden; unavailable exact metadata requires stopping. This
+clarifies the existing contract without changing guards, limits, recovery,
+verifier, publication or timeouts. Future model compliance still requires
+native qualification on the successor head.

@@ -1,0 +1,81 @@
+{
+  "kind": "observed-command-output-transcription",
+  "observedAt": "2026-10-16T02:59:51.934448+00:00",
+  "notRawRESTOrProviderApproval": true,
+  "nativeFinding": 4290297418,
+  "nativeReview": 5542350011,
+  "precedingHead": "04bb88861f1ed876732e050a299bbfaabe1752af",
+  "sourceFile": ".github/scripts/opencode-code-review-workflow.test.mjs",
+  "exactTwoEditsOnly": true,
+  "beforeSHA256": "8925313f17d009f8ff8fcef4c1e87cae0fcd5c558d8e79f824e56c131e70fc5a",
+  "afterSHA256": "c30824c236b0cf6f338f2050a6022cb9ed5c888699b07f13283c9ec9f227069c",
+  "testTimeoutMs": {
+    "before": 150000,
+    "after": 240000
+  },
+  "unchangedInstallTimeoutMs": 60000,
+  "unchangedSupervisorTimeoutMs": 120000,
+  "cleanup": "t.after clears existing timer and terminates only detached owned fixture child process group",
+  "assertionsAndProductionBehaviorUnchanged": true,
+  "syntax": {
+    "node": "22.23.3",
+    "exit": 0
+  },
+  "diffHygiene": {
+    "exit": 0
+  },
+  "focusedAttempts": [
+    {
+      "exit": 1,
+      "boundary": "missing local yaml module at load; not timeout reproduction"
+    },
+    {
+      "exit": 1,
+      "seconds": 60.29959372401936,
+      "tests": 1,
+      "pass": 0,
+      "fail": 1,
+      "cancelled": 0,
+      "boundary": "existing independent OpenCode debug config capture ETIMEDOUT/SIGTERM, stdout/stderr0, before first model attempt",
+      "noGreenClaim": true
+    }
+  ],
+  "scopedBiome": {
+    "exit": 126,
+    "boundary": "Volta executable unavailable; current owning includes omit .github/scripts, no lint pass claimed"
+  },
+  "owningCard": "30c9df92-e1fb-4043-8565-36f96ce2a978",
+  "nativeComment": "Actual qualified85369213 operative comment succeeded; status not changed",
+  "nativeLedgerOldPrefixExact": true,
+  "nativeLedgerAppendBytes": 1220,
+  "rawLogs": {
+    "focused-native.stdout": {
+      "bytes": 1717,
+      "sha256": "886ad1c615880490297f72409eed96d21d05e50a773d815e13c2292c3bc5f9cd"
+    },
+    "focused-native-with-yaml.stdout": {
+      "bytes": 8236,
+      "sha256": "ef8860616e41802e1dafa3e18279f7ebb4337c206edb9e32a3b8536ba501f700"
+    },
+    "syntax.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "scoped-biome.stderr": {
+      "bytes": 162,
+      "sha256": "1fd7dafe9505360e7fe1a8c5a9cfe4129c4ebb5c40ddd320b0e8711bc8effb9e"
+    },
+    "post-test-owned-process-observation.json": {
+      "bytes": 250,
+      "sha256": "d646f4d6aef25e7c5eb7162ebe665350a85a56feb511d66e4ec67a6f1dc1c845"
+    },
+    "actual-native-card-comment.stdout": {
+      "bytes": 873,
+      "sha256": "76a9d17d52f9cba44f93af5d74219f1aaecbdca8ace60018133f649e5c51600f"
+    }
+  },
+  "noOwnedFixtureProcessesRemain": true,
+  "requiredHostedCurrentHeadVerificationStillNeeded": true,
+  "prior04bbReviewsHistoricalAfterPush": true,
+  "noCredentialsProviderPaidRuntimeDeploymentOrHeartbeatChange": true
+}

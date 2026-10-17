@@ -1,0 +1,339 @@
+{
+  "schema": "cephalon.eta-caller-correction-evidence/v1",
+  "kind": "observed-command-output-transcription-not-provider-approval",
+  "observedAt": "2026-10-16T04:23:29.987235+00:00",
+  "nativeFindings": {
+    "review": 5542589429,
+    "head": "7b0b37abc6bf34fe006e89356fc812de514ab062",
+    "roots": [
+      4290502930,
+      4290502936,
+      4290502945
+    ]
+  },
+  "nativePlan": "Actual qualified Rheos85369213 operative comment on existing InProgress5 task30c9df92-e1fb-4043-8565-36f96ce2a978; current points/relationships unchanged. No extra Muse story is required by actual fresh layout/input/output ownership discovery.",
+  "actualNativeLedger": {
+    "oldPrefixBytes": 1879505,
+    "oldPrefixExact": true,
+    "actualAppendBytes": 1665
+  },
+  "actualRedProof": {
+    "observedUtc": "2026-10-16T04:21:12.059123+00:00",
+    "scope": "ETA5 causal RED; only registered workflow test source edited; main owns receipts/commit/native event and any later GREEN authorization",
+    "head": "7b0b37abc6bf34fe006e89356fc812de514ab062",
+    "sources": {
+      ".github/scripts/opencode-code-review-workflow.test.mjs": {
+        "bytes": 222108,
+        "sha256": "c8369e51a7b6461ecac24ec32fade2f2b81428da714efaa4f88437988cf86fa7",
+        "unchangedFromBefore": false
+      },
+      ".github/scripts/run-opencode-review-recovery.mjs": {
+        "bytes": 88980,
+        "sha256": "54394621ddb277ce7f462a408a9c0bd45160e86e953645d7f9519ad4ac52370a",
+        "unchangedFromBefore": true
+      },
+      ".github/workflows/opencode-code-review.yml": {
+        "bytes": 212883,
+        "sha256": "d38a1df13bca4c478fe9cd63f3cef76184c8ee22c0dcfa7b3e4a451787e359b0",
+        "unchangedFromBefore": true
+      },
+      ".github/workflows/muse-review-context-diagnostic.yml": {
+        "bytes": 4556,
+        "sha256": "bf8018f82fc0b64ed3417f7d288840db8956d15e7c5c60f351be613016702368",
+        "unchangedFromBefore": true
+      }
+    },
+    "baselineAllLinesPreserved": true,
+    "ownedDiff": {
+      "insertions": 274,
+      "deletions": 0,
+      "diffCheckExit": 0
+    },
+    "distinctFinalCaseResults": {
+      "tests": 32,
+      "pass": 8,
+      "fail": 24,
+      "cancelled": 0,
+      "skipped": 0,
+      "note": "Union of selected runs with corrected missing-retry and strengthened timeout outcomes replacing earlier same-case oracle results. Not a single full-suite execution.",
+      "cases": {
+        "actual custody regression: untracked bytes refuses after the actual child": {
+          "status": "not ok",
+          "log": "initial.stdout.log"
+        },
+        "actual custody regression: sealed prior retained submission change refuses before corrective child": {
+          "status": "not ok",
+          "log": "initial.stdout.log"
+        },
+        "actual custody regression: sealed prior derived submit projection change refuses before corrective child": {
+          "status": "not ok",
+          "log": "initial.stdout.log"
+        },
+        "the compiled observer contract pins compatible Muse and allows both full-input tools": {
+          "status": "not ok",
+          "log": "remaining.stdout.log"
+        },
+        "actual custody regression: ignored bytes refuses after the actual child": {
+          "status": "not ok",
+          "log": "remaining.stdout.log"
+        },
+        "actual custody regression: immutable evidence neighbor refuses after the actual child": {
+          "status": "not ok",
+          "log": "remaining.stdout.log"
+        },
+        "actual custody regression: new ignored input refuses after the actual child": {
+          "status": "not ok",
+          "log": "remaining.stdout.log"
+        },
+        "actual custody regression: deleted input refuses after the actual child": {
+          "status": "ok",
+          "log": "remaining.stdout.log"
+        },
+        "actual custody regression: symlink input refuses after the actual child": {
+          "status": "not ok",
+          "log": "remaining.stdout.log"
+        },
+        "actual custody regression: special input refuses after the actual child": {
+          "status": "ok",
+          "log": "remaining.stdout.log"
+        },
+        "actual custody regression: preplanted owned output recovery.json refuses before child": {
+          "status": "ok",
+          "log": "remaining.stdout.log"
+        },
+        "actual custody regression: preplanted owned output model-response-attempt-1.txt refuses before child": {
+          "status": "ok",
+          "log": "remaining.stdout.log"
+        },
+        "actual custody regression: preplanted owned output model-response-attempt-2.txt refuses before child": {
+          "status": "ok",
+          "log": "remaining.stdout.log"
+        },
+        "actual custody regression: preplanted owned output opencode-stderr-attempt-1.log refuses before child": {
+          "status": "ok",
+          "log": "remaining.stdout.log"
+        },
+        "actual custody regression: preplanted owned output opencode-stderr-attempt-2.log refuses before child": {
+          "status": "ok",
+          "log": "remaining.stdout.log"
+        },
+        "actual custody regression: preplanted owned output submission.json refuses before child": {
+          "status": "ok",
+          "log": "remaining.stdout.log"
+        },
+        "actual custody regression: preplanted owned output submission-attempt-1.json refuses before child": {
+          "status": "not ok",
+          "log": "remaining.stdout.log"
+        },
+        "actual custody regression: preplanted owned output review-submit-json-attempt-1.DERIVED.ndjson refuses before child": {
+          "status": "not ok",
+          "log": "remaining.stdout.log"
+        },
+        "actual custody regression: preplanted owned output review-submit-json-attempt-1.OMITTED.ndjson refuses before child": {
+          "status": "not ok",
+          "log": "remaining.stdout.log"
+        },
+        "actual custody regression: preplanted owned output final-input-coverage-attempt-1.DERIVED.ndjson refuses before child": {
+          "status": "not ok",
+          "log": "remaining.stdout.log"
+        },
+        "actual custody regression: preplanted owned output final-input-coverage-attempt-1.OMITTED.ndjson refuses before child": {
+          "status": "not ok",
+          "log": "remaining.stdout.log"
+        },
+        "actual custody regression: preplanted owned output review-events.jsonl refuses before child": {
+          "status": "not ok",
+          "log": "remaining.stdout.log"
+        },
+        "actual custody regression: dangling response symlink refuses before child": {
+          "status": "not ok",
+          "log": "remaining.stdout.log"
+        },
+        "actual custody regression: projection symlink refuses before child": {
+          "status": "not ok",
+          "log": "remaining.stdout.log"
+        },
+        "actual custody regression: special event output refuses before child": {
+          "status": "not ok",
+          "log": "remaining.stdout.log"
+        },
+        "actual custody regression: sealed prior response change refuses before corrective child": {
+          "status": "not ok",
+          "log": "missing-retry-final.stdout.log"
+        },
+        "actual custody regression: sealed prior stderr change refuses before corrective child": {
+          "status": "not ok",
+          "log": "missing-retry-final.stdout.log"
+        },
+        "actual custody regression: sealed prior omitted submit projection change refuses before corrective child": {
+          "status": "not ok",
+          "log": "remaining.stdout.log"
+        },
+        "actual custody regression: sealed prior event prefix change refuses before corrective child": {
+          "status": "not ok",
+          "log": "missing-retry-final.stdout.log"
+        },
+        "actual custody regression: sealed prior raw recovery change refuses before corrective child": {
+          "status": "not ok",
+          "log": "missing-retry-final.stdout.log"
+        },
+        "actual custody regression: TERM-resistant config child reaches bounded refusal": {
+          "status": "not ok",
+          "log": "timeout-cleanup-final.stdout.log"
+        },
+        "actual custody regression: TERM-resistant config descendant reaches bounded refusal": {
+          "status": "not ok",
+          "log": "timeout-cleanup-final.stdout.log"
+        }
+      }
+    },
+    "runs": {
+      "initial": {
+        "command": [
+          "/home/err/.volta/tools/image/node/22.23.3/bin/node",
+          "--test",
+          "--test-reporter=tap",
+          "--test-name-pattern=actual custody regression: (untracked bytes|sealed prior (retained submission|derived submit projection))",
+          ".github/scripts/opencode-code-review-workflow.test.mjs"
+        ],
+        "node": "22.23.3",
+        "startedUtc": "2026-10-16T04:11:10.934380+00:00",
+        "finishedUtc": "2026-10-16T04:11:38.534556+00:00",
+        "elapsedSeconds": 27.600184934970457,
+        "exit": 1,
+        "logs": {
+          "stdout": {
+            "bytes": 3013,
+            "sha256": "784fe3d027302f0f63c862160ab292ca70e81aefbcd226abb870c7d9b9912783"
+          },
+          "stderr": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      },
+      "remaining": {
+        "command": [
+          "/home/err/.volta/tools/image/node/22.23.3/bin/node",
+          "--test",
+          "--test-reporter=tap",
+          "--test-name-pattern=actual custody regression: (?!untracked bytes|sealed prior (?:retained submission|derived submit projection)|TERM-resistant)|the compiled observer contract pins compatible Muse",
+          ".github/scripts/opencode-code-review-workflow.test.mjs"
+        ],
+        "node": "22.23.3",
+        "startedUtc": "2026-10-16T04:14:10.511772+00:00",
+        "finishedUtc": "2026-10-16T04:16:19.683533+00:00",
+        "elapsedSeconds": 129.17177558201365,
+        "exit": 1,
+        "logs": {
+          "stdout": {
+            "bytes": 22323,
+            "sha256": "7e22ec5dab9949a342171ad4c96ad1845cd92fce262a675a24c246d55bab1226"
+          },
+          "stderr": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      },
+      "timeout-cleanup-final": {
+        "command": [
+          "/home/err/.volta/tools/image/node/22.23.3/bin/node",
+          "--test",
+          "--test-reporter=tap",
+          "--test-name-pattern=actual custody regression: TERM-resistant",
+          ".github/scripts/opencode-code-review-workflow.test.mjs"
+        ],
+        "node": "22.23.3",
+        "startedUtc": "2026-10-16T04:17:23.895915+00:00",
+        "finishedUtc": "2026-10-16T04:18:33.489098+00:00",
+        "elapsedSeconds": 69.59319215099094,
+        "exit": 1,
+        "logs": {
+          "stdout": {
+            "bytes": 2686,
+            "sha256": "9910b6f356d2bde2e55b1bc737b5437256cbd4704ff546a9c8e6230d9a0759d1"
+          },
+          "stderr": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      },
+      "missing-retry-final": {
+        "command": [
+          "/home/err/.volta/tools/image/node/22.23.3/bin/node",
+          "--test",
+          "--test-reporter=tap",
+          "--test-name-pattern=actual custody regression: sealed prior (response|stderr|event prefix|raw recovery) change",
+          ".github/scripts/opencode-code-review-workflow.test.mjs"
+        ],
+        "node": "22.23.3",
+        "startedUtc": "2026-10-16T04:19:00.963023+00:00",
+        "finishedUtc": "2026-10-16T04:19:44.779178+00:00",
+        "elapsedSeconds": 43.81614823901327,
+        "exit": 1,
+        "logs": {
+          "stdout": {
+            "bytes": 4009,
+            "sha256": "8151b6a52b47e18a9ab67432ee6e60f48e6792edf78b13b060a80a6a1487a381"
+          },
+          "stderr": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      }
+    },
+    "syntaxFinal": {
+      "command": [
+        "/home/err/.volta/tools/image/node/22.23.3/bin/node",
+        "--check",
+        ".github/scripts/opencode-code-review-workflow.test.mjs"
+      ],
+      "node": "22.23.3",
+      "startedUtc": "2026-10-16T04:19:57.704247+00:00",
+      "finishedUtc": "2026-10-16T04:19:57.735965+00:00",
+      "elapsedSeconds": 0.031717631965875626,
+      "exit": 0,
+      "logs": {
+        "stdout": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "historicalOracleCorrections": [
+      "The remaining run originally persisted candidate submission bytes for an omitted-submit trace in four missing-retry cases. They failed before the intended recovery boundary; those four historical results are NOT causal custody evidence. The corrected missing-retry-final run genuinely reached before child two, mutated prior bytes, then observed child two and acceptance in all four cases.",
+      "The preliminary descendant fault only asserted timeout rejection, so it passed without proving cleanup. timeout-cleanup-final observes descendant process state before fixture cleanup and fails because production returned with a live descendant. Direct TERM trap reached owned outer 35-second containment. Terminated zombies are not treated as live descendants.",
+      "An initial syntax-final private wrapper call had an IndexError before launching Node because only exact syntax label was supported. Wrapper label matching was corrected; final Node syntax check exit0. This operator wrapper error is not causal RED."
+    ],
+    "cleanup": {
+      "remainingOwnedConfigFaultProcesses": [],
+      "outerTimeoutMs": 35000,
+      "perFaultTestTimeoutMs": 45000,
+      "productionConfigTimeoutMs": 30000
+    },
+    "evidenceLimits": [
+      "Synthetic offline model-call frames only; actual local qualified Muse verifier, physical CLI capture and real owned Git/files were used. Fault tests inject only config subprocess failure; no passing host configuration/verdict is stubbed.",
+      "No model/provider calls, native approvals, review/board mutations, production edits, receipts, commits or pushes. Existing main-owned ledger/card dirt preserved.",
+      "Full repository suite and expensive unchanged native positive not rerun. No new lint pass claimed. File syntax and diff hygiene pass.",
+      "Non-timeout cases were executed before the final Linux/x64 eligibility metadata and omitted-submit fixture correction; only the four affected missing-retry cases required rerun. Existing protected assertions remain byte-preserved. Final timeout tests ran with live-process assertions; subsequent omitted-submit-only helper correction does not affect them."
+    ],
+    "qualifiedLocalCarriers": {
+      "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/openplanner-context-consumer-20261014/continuation-20261014T2234/eta-current-platform-fixture/review-invocation.cjs": {
+        "bytes": 326796,
+        "sha256": "9c6519c1320ae5c6b5123e72610b7d4899c9c1fc62327713e032ee18183ca33b"
+      },
+      "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/openplanner-context-consumer-20261014/continuation-20261014T2234/eta-current-platform-fixture/native-cli/node_modules/opencode-linux-x64/bin/opencode": {
+        "bytes": 185030784,
+        "sha256": "f9dab32248695e9ebd56b16a1921798fd85112cf5a69c7dfd0cabc1e17be4a11"
+      }
+    }
+  },
+  "limits": "Actual targeted RED union only, not full suite/GREEN/approval/MERGE/adoption. Earlier actual7b all7 deterministic gates and native fixture positive remain historical/current-head execution, not a fix for these confirmed defects. No model/provider/runtime/credential/paid/deployment/social/heartbeat changes."
+}

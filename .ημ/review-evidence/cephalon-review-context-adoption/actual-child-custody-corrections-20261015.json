@@ -1,0 +1,81 @@
+{
+  "tier": "observed-command-output transcription with retained native CLI output; no raw provider judgment or approval",
+  "codeReview": {
+    "id": 5539054696,
+    "head": "30ed480c5115a3eae6f41dc42177151b85304cdf",
+    "findingIds": [
+      4287614645,
+      4287614656,
+      4287614667
+    ]
+  },
+  "causalRed": {
+    "commit": "1f4702a4f5a90eea1b61a91040132cee5660dfb4",
+    "actualTest": "real production capture with physical CLI/compiled owner, retarget actual HOME/.agents before corrective child; one failed assertion: actual2invocations versus required1",
+    "log": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/openplanner-context-consumer-20261014/continuation-20261014T2234/eta-global-skills-link-causal-red.log"
+  },
+  "implementation": {
+    "globalSkills": "Bind actual symlink lstat(bigint)/readlink/realpath and expected target in original and each before/after/final observation; hash full original skill target tree as before",
+    "binaryPreflight": "Reuse canonical prepareReviewBatchHost only for eligibility before executing debug config; discard preflight observation and supply actual resolved config for real host authority",
+    "correctiveBoundaryMatrix": "10 actual production-capture cases: before/after second child x executable/resolved-config/environment/cwd/global-skills-link; actual isolated physical CLI config and compiled host gate; inert invocation adapters, no model-positive credit"
+  },
+  "verification": {
+    "command": "bb scripts/test.bb --only review-workflow",
+    "tests": 268,
+    "passed": 268,
+    "failed": 0,
+    "skipped": 0,
+    "duration_ms": 153189.163906,
+    "log": "/home/err/.local/share/codex/cephalon-review-artifacts/receipt-river-fixture-20261009/openplanner-context-consumer-20261014/continuation-20261014T2234/eta-actual-capture-full-green-20261015.log",
+    "bytes": 93088,
+    "sha256": "b469ad4d0b6fafd8c2f5b4bc25714c01d6710c8c54a073b61b3442c6bdf40c6c",
+    "syntax": "both changed Node modules PASS",
+    "embeddedRunner": "exact standalone decoded bytes PASS",
+    "scopedKondo": "scripts/test.bb:0errors0warnings",
+    "diffHygiene": "PASS"
+  },
+  "cardCorrection": {
+    "kanban/tasks/adopt-qualified-lossless-review-batching-in-the-shared-eta-caller-6ce2a978.md": {
+      "preserved_frontmatter_except_native_write_id": true,
+      "prior_contract_and_comments_preserved": true,
+      "status": "in_progress",
+      "write_id": "1792095470068-0.tix97gywhytu1b6m2q3",
+      "bytes": 27149,
+      "sha256": "6f0a23217de15d45ed89c0a914fcc1a284eaaaf995aaf11c9a5f3a3497994af8"
+    },
+    "kanban/tasks/adopt-qualified-review-context-custody-in-personal-openplanner-32c94e9f.md": {
+      "preserved_frontmatter_except_native_write_id": true,
+      "prior_contract_and_comments_preserved": true,
+      "status": "incoming",
+      "write_id": "1792095471630-0.36z7i9wdvnjtkckoh5e",
+      "bytes": 21154,
+      "sha256": "2cc878553c0299fb8a1bdba8c466ef4bd85ef1c516a6fa1a5c0ad3acabdd9df2"
+    },
+    "event_ledger": {
+      "old_exact_prefix": true,
+      "native_appends": 2,
+      "bytes": 1872465,
+      "sha256": "0cc60adbac6333a53b60522432e47ea1c347f5ae765db3330105f389f54acd2d"
+    }
+  },
+  "operatorCorrections": [
+    "Initial source audit did not find the body convention in skills/AGENTS; owning Rheos docs/cli.md explicitly documents preserving agreed scope after Breakdown. Existing primary plan is preserved under a dated historical label, not rewritten or changed in scope; current state appended through actual native comments. Receipt329 remains unchanged.",
+    "First native comment command omitted NODE_PATH and failed before loading yaml; no native mutation. Correctly bound owning CLI invocation and independent native readbacks succeeded; failed stderr retained.",
+    "Archived Codex comments are sequential JSON values, not a single array; initial JSON loader failed with Extra data before any mutation; subsequent exact decoding read all three."
+  ],
+  "sourceHashes": {
+    ".github/scripts/run-opencode-review-recovery.mjs": "2fd133ba724136485e20eb760278d96e8d97f2b0010831186f1d1d4acc2492c9",
+    ".github/scripts/opencode-code-review-workflow.test.mjs": "f8f40b13c8a82fd7dbf33fd3f5e25b45eb1f0b35d614044630de4f61043cc903",
+    ".github/workflows/opencode-code-review.yml": "1ab7975b0a1e583ae8f62963424462f83caab8d07049e146134ce4d8c81b95cf"
+  },
+  "runtimeChanged": false,
+  "heartbeat": "human-paused",
+  "goal": "ACTIVE",
+  "liveB": "0/3",
+  "hosted": {
+    "currentWholeRun": 38795987216,
+    "currentHead": "30ed480c5115a3eae6f41dc42177151b85304cdf",
+    "stateAtPreparation": "model job in progress; no cancellation/push until actual whole attempt terminal",
+    "noApprovalTransfer": true
+  }
+}
