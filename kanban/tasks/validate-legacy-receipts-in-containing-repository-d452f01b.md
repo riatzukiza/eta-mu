@@ -1,13 +1,14 @@
 ---
 uuid: "d452f01b-70d7-46aa-90ec-5ffd709e79bd"
 title: "Validate legacy receipts in their containing repository"
-status: "incoming"
+status: "in_progress"
 type: "task"
 priority: "P1"
 points: "2"
 labels: "cephalon, receipts, compatibility, validation"
 category: "tasks"
 parent: "8872994a-9a50-40a9-85a4-f4c6f5a6a21d"
+write-id: "1792255929382-0.1q9napdywzrp178ui9w"
 ---
 
 ## Context

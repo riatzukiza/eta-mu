@@ -19,6 +19,10 @@
   Create stub namespaces returning nil/empty to enter green phase,
   then implement to pass."
   (:require [cljs.test :refer [deftest is testing]]
+            ["node:child_process" :as child-process]
+            ["node:fs" :as fs]
+            ["node:os" :as os]
+            ["node:path" :as path]
             [eta-mu.extensions.receipt-river :as receipt-river]
             [eta-mu.extensions.receipt-river.edn  :as rr-edn]
             [eta-mu.extensions.receipt-river.repo :as rr-repo]))
@@ -254,3 +258,76 @@
           receipts #{}
           result   (rr-repo/contract-violations touched receipts)]
       (is (= (sort result) result)))))
+
+;; ============================================================
+;; Actual compiled validation command/tool attribution
+;; ============================================================
+
+(defn with-validation-directory [git? run]
+  (let [root (.mkdtempSync fs (path/join (.tmpdir os) "receipt-validation-"))
+        nested (path/join root "nested")]
+    (try
+      (.mkdirSync fs nested)
+      (when git?
+        (.execFileSync child-process "git" #js ["init" "--quiet" root]))
+      (run root nested)
+      (finally
+        (.rmSync fs root #js {:recursive true :force true})))))
+
+(defn isolated-validation-routes [cwd file]
+  (let [state #js {:enabled true :currentTurn 0 :activeLedgerRepos #js []}
+        ctx #js {:cwd cwd :hasUI false}]
+    ;; Isolate host state/event publication; use real root resolution,
+    ;; filesystem reads, validation, command dispatch and tool dispatch.
+    (with-redefs [receipt-river/get-state (fn [] state)
+                  receipt-river/log-event (fn [_ctx _state _action _extra] nil)]
+      (receipt-river/handle-receipt-river-command "validate 200" ctx)
+      (let [command (aget state "lastValidation")
+            tool (receipt-river/execute-receipt-river-tool
+                  "receipt-validation-test" #js {:action "validate" :path file}
+                  nil nil ctx)]
+        [command (aget tool "details")]))))
+
+(defn assert-validation-result-shape [result file line]
+  (is (= file (aget result "file")))
+  (is (= 1 (aget result "count")))
+  (is (js/Array.isArray (aget result "failures")))
+  (is (js/Array.isArray (aget (aget result "last") "errors")))
+  (is (= line (aget (aget result "last") "line")))
+  (is (= 0 (aget (aget result "last") "lineNumber"))))
+
+(deftest compiled-command-and-tool-use-real-containing-git-root
+  (with-validation-directory
+    true
+    (fn [root nested]
+      (let [file (path/join root "receipts.edn")
+            line (pr-str (dissoc sample-event :repo))
+            before-global (aget js/globalThis receipt-river/GLOBAL-KEY)]
+        (.writeFileSync fs file (str line "\n") #js {:mode 384})
+        (let [before (.readFileSync fs file)]
+          (is (= root (receipt-river/find-git-root nested)))
+          (doseq [[route result] (map vector [:command :tool]
+                                    (isolated-validation-routes nested file))]
+            (testing (name route)
+              ;; Causal RED: the current routes still demand a row-level :repo.
+              (is (true? (aget result "ok"))
+                  "A valid repo-less row must use its actual containing Git root")
+              (assert-validation-result-shape result file line)))
+          (is (.equals before (.readFileSync fs file)))
+          (is (identical? before-global
+                          (aget js/globalThis receipt-river/GLOBAL-KEY))))))))
+
+(deftest compiled-command-and-tool-refuse-cwd-as-repository-context
+  (with-validation-directory
+    false
+    (fn [root _nested]
+      (let [file (path/join root "receipts.edn")
+            line (pr-str (dissoc sample-event :repo))]
+        (.writeFileSync fs file (str line "\n") #js {:mode 384})
+        (let [before (.readFileSync fs file)]
+          (is (nil? (receipt-river/find-git-root root)))
+          (doseq [result (isolated-validation-routes root file)]
+            (is (false? (aget result "ok")))
+            (is (= 1 (.-length (aget result "failures"))))
+            (assert-validation-result-shape result file line))
+          (is (.equals before (.readFileSync fs file))))))))
