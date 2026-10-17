@@ -1006,3 +1006,12 @@ These are readable renderings of the recorded historical values. Each belongs to
   spore: none
   receipt-refs: receipts.edn#3d206448-b9a7-4111-9955-894b81c95fcd,.ημ/session-reflections.edn#b80809d6-323c-4347-81d6-fef9e26264ee
   note: ETA355 fixture startup jitter must be qualified through the actual registered concurrent owner. A 2 second fixture-only deadline accommodates fresh Node startup while retaining the progressing first-child timeout, exact stdout/stderr, owned PID/start cleanup, accepted attempt 2 and no attempt 3. Keep pure 400ms refusal controls and production budgets unchanged. Both genuine unchanged and exact five-edit owners passed 329 tests; retain the baseline PASS without manufacturing RED. Source b21cbb93b3d2eb7fe75e4a4783c9acb444f15182; Receipt River receipts.edn#3d206448-b9a7-4111-9955-894b81c95fcd. Preserve private ignore-path and typed-UUID metadata guard failures separately: dependent effects stopped, actual native semantics remained intact, and authoritative validation succeeded before continuation. No model, provider, hosted rerun, public publication, approval or deployment credit. Candidate 0; no spore.
+- ts: 2026-10-17T00:39:41.196291181Z
+  session: /home/err/.local/share/openhax-codex/20261010/eta-CodeRabbit-lockfilter-standalone1-plan-over4eaa-v1
+  task: Separate one-point plan for complete CodeRabbit pnpm lockfile input
+  p-efficiency: 0.86
+  p-friction: 0.24
+  p-skill-candidate: 0
+  spore: none
+  receipt-refs: receipts.edn#f1ffb81d-13e7-4956-b1a2-c849634d6c2e,.ημ/session-reflections.edn#2f2546e9-11c8-44b5-bbeb-5f471c1ac5f2
+  note: Provider review configuration has independent ownership from a root dependency repair. Keep the frozen5051B incoming1point card source0352f55 over4eaa separate from implementation. Native13of14 exclusion and expired quota are distinct; the exact native configuration information comment6227396409 has no observedbotresponse at00:35:00Z, so resolvedorigins/privacy/rules preservation and implementation remain blocked. Inheritance defaultsfalse; inheritednegative/globaloverrides and feature-vs-base consumedconfiguration must be qualified. No model/sourceYAML/account/spend/approval/readiness claim. Planning publication remains PREP under root; candidate0/no spore.
