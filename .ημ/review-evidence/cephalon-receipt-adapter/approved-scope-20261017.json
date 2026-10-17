@@ -1,0 +1,24 @@
+{
+  "version": "cephalon-approved-receipt-adapter-scope/1",
+  "recordedAt": "2026-10-17T15:30:00.586493+00:00",
+  "source": "explicit human scope-question reply in this chat on2026-10-17",
+  "answer": "Include the narrow adapter repair (Recommended)",
+  "proposal": "/home/err/.local/share/codex/cephalon-field-restore-work-20261017/eta31-receipt-adapter-scope/scope-proposal.md",
+  "includedPoints": 2,
+  "card": "d452f01b-70d7-46aa-90ec-5ffd709e79bd",
+  "implementationBase": "0993581ac8ee602eb928375c15b29ea3e5425618",
+  "scope": [
+    "reuse existing canonical context-aware validator",
+    "pass actual resolved root through existing validation command and tool",
+    "existing compiler source path",
+    "causal RED/GREEN and real compiled command/tool regression coverage"
+  ],
+  "excluded": [
+    "historical receipt rewrite",
+    "owner-law relaxation",
+    "writer migration",
+    "credential or paid model change",
+    "runtime or deployment change"
+  ],
+  "state": "Human inclusion only; planning qualification and native Ready still required; no implementation applied."
+}
