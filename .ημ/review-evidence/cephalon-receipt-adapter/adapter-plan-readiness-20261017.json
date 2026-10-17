@@ -1,0 +1,171 @@
+{
+  "epistemicTier": "observed-command-output transcriptions and derived artifact checks; not rawREST or synthesized provider approval",
+  "planningAndFunctional": {
+    "type": "actual native hosted full functional and review artifact custody; not merge admission",
+    "head": "ae511bbae9a7e9af28669b200a41a9d5595a1c14",
+    "base": "0993581ac8ee602eb928375c15b29ea3e5425618",
+    "run": 39046632568,
+    "producerJob": 117437819585,
+    "reviewJob": 117443872385,
+    "review": 5558780424,
+    "state": "APPROVED",
+    "bodyEqualsActualSubmission": true,
+    "fullInput": {
+      "bytes": 64741,
+      "sha256": "9949f653044c4dbc5725cba9487d8befe4e8a3f724131e91b096abe27d2f0602",
+      "equalsLocalCommittedDiff": true,
+      "coverage": {
+        "chunks": 8,
+        "delivered": 8,
+        "assessed": 8,
+        "missing": []
+      },
+      "pageWitnesses": 16,
+      "contextReadCoverage": {
+        "status": "present",
+        "totalLines": 63,
+        "deliveredLines": 63,
+        "eof": true
+      },
+      "contextBytes": 5903
+    },
+    "attempts": 1,
+    "recovery": null,
+    "model": "opencode/mimo-v2.6-flash-free",
+    "allSevenGates": {
+      "install": 0,
+      "bootstrap_extensions": 0,
+      "lint": 0,
+      "test": 0,
+      "generated_outputs_baseline": 0,
+      "build": 0,
+      "generated_outputs_restore": 0
+    },
+    "allAttempted": {
+      "install": true,
+      "bootstrap_extensions": true,
+      "lint": true,
+      "test": true,
+      "generated_outputs_baseline": true,
+      "build": true,
+      "generated_outputs_restore": true
+    },
+    "reviewWorkflowTests": {
+      "tests": 392,
+      "pass": 392,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "logSHA256": "059212930dc071b66e00912a579a96bcd05e3bdd1766eb77b362ede9a06b0451",
+    "completeCompilerContext": {
+      "files": 542,
+      "manifestFiles": 467,
+      "allManifestHashesPass": true,
+      "all542DownloadedBytesAndModesMatchNativeOriginalAndBeforeAfterCaptures": true,
+      "treeSHA256": "b8362f6af14a0c59b6d413362f9892b6e3c752a9c4f577c1b64b7e9e6da3c821",
+      "downloadedFileMode": 420,
+      "sourceZIPFileModes": "5140644+280755; actual downloaded context0644, all438 captured canonicalcontext regular modes0644",
+      "museRevision": "f422d77cf9c6cea46b6791e3f54c98679e949d1f",
+      "agentsRevision": "7fd3252e7663ad5e68be5e90429d126aa66c38c8"
+    },
+    "archiveProofs": [
+      {
+        "file": "review-attempt-33-39046632568-1.zip",
+        "bytes": 834746,
+        "sha256": "5e305e64697bb8a306db2b9ddcd3c0f2b7524a3ff91745442a613f4634b5dfa5"
+      },
+      {
+        "file": "review-evidence-33-39046632568-1.zip",
+        "bytes": 2992269,
+        "sha256": "01fcfc29a556af10f325dfeb31e7d38b6ee9faa191e98a81d4189c69276b6d8b"
+      },
+      {
+        "file": "review-context-39046632568-1.zip",
+        "bytes": 2109018,
+        "sha256": "5412c18a28844a3d199112ab9ff9b38ee545ab8677c814df8fd07078a3e90037"
+      }
+    ],
+    "operatorChecks": [
+      "Initial privateinspectionPythonSyntaxError, corrected without sourceeffects.",
+      "UnadjusteduploadZIPmodetreef38361bd9e28acc7bb93590e2c6a820a736b6d6a3549161aad579331587eba96 and readonlyhypothesisf6b20234f970810fa2cc7fdb30b227a3a00f5f78b8790e0e4103c37ce6845193 didnotmatch; actualdownloaded0644 reconstructionmatchesnativeoriginal/before/after.",
+      "One privateproofassertionexpected adjacenttests/passlines; actualNodeTAP includes #suites0 between. Correctedderivativeparserretainsactual392/3920fail0skip; no producer/productfailure."
+    ],
+    "limits": "Planningapproval only; no implementation/Ready/ETA31 settlement/sourceMERGE/servedBproof. CurrentCRrequest6236943397 separatelypending at request. Historical34receiptfailures preserved, no waiver. Below20GiB no fullsnapshot/install; boundedexistingartifacts only."
+  },
+  "nativeReadiness": {
+    "type": "observed canonical planning gate command-output transcription and actual native Rheos operations",
+    "planningHead": "ae511bbae9a7e9af28669b200a41a9d5595a1c14",
+    "base": "0993581ac8ee602eb928375c15b29ea3e5425618",
+    "planningGate": "PASS:9PASS/one settled thread/currentCodeRabbit+MiMo/one unanimous available cohort; actual gate session36809 exit0",
+    "codeRabbit": {
+      "request": 6236943397,
+      "reply": 6236944730,
+      "summary": 6235832542,
+      "finishedAt": "2026-10-17T16:49:00Z",
+      "noActionable": true,
+      "all4inputs": true,
+      "notFormalApproved": true
+    },
+    "mimo": 5558780424,
+    "card": "d452f01b-70d7-46aa-90ec-5ffd709e79bd",
+    "RheosCLI_SHA256": "85369213440634989365f75929045d36eb69b6c6b1e7679f68d483374a0d526b",
+    "configSHA256": "b2067056d4b15e32a57a3fe3e239896d312d1ce9d26db2f8a5aec8407bed045c",
+    "beforeSourceImplementation": true,
+    "operations": [
+      {
+        "to": "accepted",
+        "exit": 0,
+        "stdoutSHA256": "c90a2b8ff4c14e56265cf50dc19631eaa62135e98f353f72a7db9126dc0ac5a6",
+        "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "to": "breakdown",
+        "exit": 0,
+        "stdoutSHA256": "bee68419254245c2efd93e78d17e85ad6e03d820063bb1fa448bace004a2e5e2",
+        "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "to": "ready",
+        "exit": 0,
+        "stdoutSHA256": "912d27f146378d16547eed6d98175c3be78dcfabfa3923965149d53f33915c84",
+        "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "to": "todo",
+        "exit": 0,
+        "stdoutSHA256": "6c6d6daeedfc04332105731c1b671504895635db18545337195994436796c05c",
+        "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "to": "in_progress",
+        "exit": 0,
+        "stdoutSHA256": "bcd2d4fbc81b4b2e03546e8470bc59b9979e5e09df5e95f8a4cdd68813d18e8f",
+        "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "allNativeTransitionsExitZero": true,
+    "nativeFinalState": "in_progress",
+    "nativeFinalReadback": {
+      "category": "tasks",
+      "labels": "cephalon, receipts, compatibility, validation",
+      "parent": "8872994a-9a50-40a9-85a4-f4c6f5a6a21d",
+      "type": "task",
+      "write-id": "1792255929382-0.1q9napdywzrp178ui9w",
+      "points": "2",
+      "title": "Validate legacy receipts in their containing repository",
+      "priority": "P1",
+      "status": "in_progress",
+      "uuid": "d452f01b-70d7-46aa-90ec-5ffd709e79bd"
+    },
+    "eventPrefixExact": true,
+    "appendedEventLines": 5,
+    "at": "2026-10-17T16:52:09.900469+00:00",
+    "noCodeYet": true
+  },
+  "sourceProofs": {
+    "/home/err/.local/share/codex/cephalon-field-restore-work-20261017/eta-receipt-adapter-approved-plan/eta33-ae511bba-current-full-functional-and-mimo-proof.json": "5e7fcc395a5e0724c08ebe953c61085ade1742d04a555b4210a4aa3926c3c488",
+    "/home/err/.local/share/codex/cephalon-field-restore-work-20261017/eta-receipt-adapter-approved-plan/native-ready-before-red-20261017T165204.234475Z/native-ready-before-red-proof.json": "73a108da2ed83a03dceb0c7bd493d1f0c8f1bff0c0b0854d92eeaa7db13d81ed"
+  },
+  "implementationBoundary": "Real compiled command/tool causal regression is now authored after verified native Ready/InProgress. No production validator/compiler source path change. Local test-file kondo0errors0warnings and diff hygiene0; actual compiled RED execution pending existing hosted workflow. No causal failure or GREEN claimed yet."
+}
