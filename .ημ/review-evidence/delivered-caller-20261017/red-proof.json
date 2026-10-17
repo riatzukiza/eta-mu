@@ -1,0 +1,49 @@
+{
+  "tier": "observed command-output transcription; not native review approval",
+  "observedAt": "2026-10-17T07:57:22.312848+00:00",
+  "base": "4d6bb628957571b4826b1f0c56479b0094b075a9",
+  "qualifiedMuseMerge": "f422d77cf9c6cea46b6791e3f54c98679e949d1f",
+  "nativeReadyBeforeRed": {
+    "observedAt": "2026-10-17T07:55:24.660976+00:00",
+    "task": "8872994a-9a50-40a9-85a4-f4c6f5a6a21d",
+    "predecessorDone": "30c9df92-e1fb-4043-8565-36f96ce2a978",
+    "nativePath": [
+      "incoming",
+      "accepted",
+      "breakdown",
+      "ready",
+      "todo",
+      "in_progress"
+    ],
+    "writeId": "1792223643818-0.lffogwulxsh96skytt",
+    "sourceQualifiedMerge": "f422d77cf9c6cea46b6791e3f54c98679e949d1f",
+    "sourceNativeDone": true,
+    "ownPlanQualifiedMerge": "4d6bb628957571b4826b1f0c56479b0094b075a9",
+    "allOperationsExitZero": true
+  },
+  "node": "22.23.3",
+  "yaml": "2.9.0 private test dependency prefix",
+  "causalRed": {
+    "tests": 3,
+    "pass": 0,
+    "fail": 3,
+    "reason": "two old-source pin contracts; actual single-read/new-assessor case entered inert child before required host capture",
+    "noProviderOrPublication": true
+  },
+  "initialFailures": "First test could not load yaml; public install then hit stale global npm-cache ENOENT. Fresh private npm cache installed exact yaml2.9.0; actual three causal failures are separate. No credential/global install/runtime change.",
+  "raw": [
+    {
+      "file": ".\u03b7\u03bc/review-evidence/delivered-caller-20261017/causal-red.log",
+      "bytes": 4470,
+      "sha256": "672412768f20b20acf3f4279e03793c939e16a137eb611bd2ed3526bcb760bae"
+    },
+    {
+      "file": ".\u03b7\u03bc/review-evidence/delivered-caller-20261017/initial-missing-yaml.log",
+      "bytes": 1718,
+      "sha256": "4ce4f7070657537838399e9dbc7f3cfb097ad1bf36380ccc3f1e3035dccaf0f1"
+    }
+  ],
+  "cleanupProof": "/home/err/.local/share/codex/cephalon-field-restore-work-20261017/completed-native-fixture-npm-download-cache-cleanup.json",
+  "freeAfterCacheCleanupBytes": 23274602496,
+  "notGoalCompletion": true
+}

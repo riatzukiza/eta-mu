@@ -433,7 +433,7 @@ test("staging preserves empty input and distinguishes the native base from the m
 });
 
 test("the compiled observer contract pins compatible Muse and allows both full-input tools", () => {
-  const museSha = "259c76eee9ac2def944e9191c1da23d3647ba32e";
+  const museSha = "f422d77cf9c6cea46b6791e3f54c98679e949d1f";
   const expectedRef = "${{ inputs.muse_revision || '" + museSha + "' }}";
   assert.equal(workflow.on.workflow_call.inputs.muse_revision.default, museSha,
     "workflow-call default must select the corrected immutable Muse source");
@@ -452,7 +452,7 @@ test("the compiled observer contract pins compatible Muse and allows both full-i
     "the companion diagnostic must compile the production default repository");
   assert.equal(companionCheckout.with.ref, museSha,
     "the companion diagnostic must compile the production default revision");
-  for (const name of ["review_read_diff_chunk", "review_assess_diff_chunk", "review_read_diff_batch", "review_assess_diff_batch"]) {
+  for (const name of ["review_read_diff_chunk", "review_assess_diff_chunk", "review_read_diff_batch", "review_assess_diff_batch", "review_assess_delivered_diff_batch"]) {
     assert.ok(workflowText.includes(`:${name}`), `missing permission for ${name}`);
     assert.ok(workflowText.includes(`'${name}'`), `missing compiled registry assertion for ${name}`);
   }
@@ -3003,6 +3003,26 @@ function canonicalSupervisor(fixture, { retryAfterMissingSubmit = false, respons
   return { result, marker };
 }
 
+test("delivered assessments after single reads require custody before any child", async (t) => {
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), "eta-delivered-custody-red-"));
+  t.after(() => fs.rmSync(directory, { recursive: true, force: true }));
+  const tools = ["review_read_diff_chunk", "review_assess_delivered_diff_batch"];
+  let attempts = 0;
+  await assert.rejects(runReviewRecovery({
+    evidenceDirectory: directory,
+    basePrompt: "Missing physical custody control; no provider or publication.",
+    reviewTools: tools,
+    expectedContext: { reviewTools: tools },
+    verifyReviewInvocation: () => { throw new Error("verifier must not run without custody"); },
+    invokeAttempt: async () => {
+      attempts += 1;
+      throw new Error("child entered without required physical custody");
+    },
+  }), /canonical batch host capture is required before model execution/);
+  assert.equal(attempts, 0, "single reads do not remove the new assessor's host obligation");
+  assert.equal(fs.existsSync(path.join(directory, "submission.json")), false);
+});
+
 test("canonical bounded batches: unsupported host refuses before the model-attempt adapter", async (t) => {
   const checked = freshReviewInputCheck(fullInputFixture(t, { unicode: true }));
   assert.equal(checked.result.status, 0, checked.result.stderr);
@@ -4761,7 +4781,7 @@ for (const omission of ["final", "earlier", "multiple"]) {
 }
 
 test("canonical staged context: matching qualified Muse pin supplies both plugin and verifier", () => {
-  const pin = "259c76eee9ac2def944e9191c1da23d3647ba32e";
+  const pin = "f422d77cf9c6cea46b6791e3f54c98679e949d1f";
   assert.equal(workflow.on.workflow_call.inputs.muse_revision.default, pin);
   const checkout = namedStep("prepare_review_context", "Checkout Muse compatibility compiler");
   assert.equal(checkout.with.ref, "${{ inputs.muse_revision || '" + pin + "' }}");
