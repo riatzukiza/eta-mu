@@ -1,14 +1,14 @@
 ---
 uuid: "d452f01b-70d7-46aa-90ec-5ffd709e79bd"
 title: "Validate legacy receipts in their containing repository"
-status: "testing"
+status: "done"
 type: "task"
 priority: "P1"
 points: "2"
 labels: "cephalon, receipts, compatibility, validation"
 category: "tasks"
 parent: "8872994a-9a50-40a9-85a4-f4c6f5a6a21d"
-write-id: "1792265203230-0.1d51ejsss1qwxzkovug"
+write-id: "1792270205216-0.mho3f36r2641xjdadz"
 ---
 
 ## Context
@@ -133,5 +133,7 @@ production implementation, native Ready or settlement of ETA31 follows here.
 
 ---
 Qualified source repair PR33 actually MERGED b0962a3dbbac7bf5c09f6826072d65bab8519d0c at2026-10-17T19:24:01Z. Actual parents0993581ac8ee602eb928375c15b29ea3e5425618+4eb071a1c7c7c83384054de98c2ec450481bf81e; merge tree948458095ecdcbac1b7555a775fc2efc8e2209f8 equals reviewed4eb. Canonical gatePASS11checks/currentCodeRabbit+MiMo/oneunanimousavailablecodecohort/boththreadssettled. Full hosted39053706370attempt2SUCCESS/all7attempted0/workflow392of392/compiled126tests473assertions0failures,errors,compilerwarnings; causalRED97tests294assertions2positive-routefailures retained. Complete integrated parentETA31 qualification and original finding4302111496 settlement remain pending AC5. Keep childTesting2 and parentTesting3 until that boundary is verified. No nativeDone, runtime/deployment or liveB1-B3 proof claimed. Original receipt/event bytes and full native review/context custody retained.
+
+Actual complete parent PR31 qualified and MERGED8b8ebeb323ad4e90bddf4c31082cbaf45d684a3d at2026-10-17T20:48:35Z; parents4d6bb628957571b4826b1f0c56479b0094b075a9+ac6b9f2e9215b8d861918d2b772902af636de09f, treedf7d166649b08ac1fff01810ac2206b2dece8fe9 exactlyreviewedac6. CanonicalgatePASS17checks/currentCodeRabbit+MiMo/oneunanimousavailablecodecohort/0unresolved; originalP2root4302111496Fixed4304235114/resolved. Actualcurrentfullworkflow39062586463SUCCESS/all7attempted0/392workflowPASS/fullcompiled126tests473assertions0fail-error/compilerwarnings0. MiMoAPPROVED5559901761exactac6/all72pagesreadandassessed/89contextlinesEOF/onecompletedinvocation/norecovery/fiveorderedstages/nativebodyexactsubmission; full542compilercontexttree0bf91b7b matchesnativeoriginal+before+after. FreshCodeRabbitfull6240366024 finished6240368467at20:24:09/summary6231649322updated20:24:05/all24/noactionable/currentreviewedcoverage. Completeoriginal26receipt260reflection15eventchangedinputretained. Priorloader/collector/optionalanalyzerlimitsandpreexistingpathdeprecationnoticespreserved. Source delivery only; no OpenPlanner150-inputreview/consumerMERGEorB1-B3liveproof. Existingconsumerad41stillInProgress/pinsadoptactualETA8b+Musef422throughownreviewcontract/120min2attemptbounds. FieldnewAPIexcluded; no runtime/credential/paid/clock/cloud/deployment/automationchange.
 
 ---
