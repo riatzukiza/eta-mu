@@ -7,9 +7,9 @@ priority: "P1"
 points: "1"
 labels: "cephalon, b3, review, context-custody"
 epic: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
-dependency: ["30c9df92-e1fb-4043-8565-36f96ce2a978","b9c591fb-95a8-4e4e-b2a5-39eb988cb996","c84f0b33-7527-443a-a9ff-5ee2e2dfed48"]
+dependency: ["185000a4-6b8d-4140-b3fe-fc6eb999598c","30c9df92-e1fb-4043-8565-36f96ce2a978","b9c591fb-95a8-4e4e-b2a5-39eb988cb996","c84f0b33-7527-443a-a9ff-5ee2e2dfed48"]
 category: "tasks"
-write-id: "1792307970174-0.7ecs8rj2l1j28ngirf4"
+write-id: "1792309575137-0.y1hg78kwx8fyjxhnl2t"
 created_at: "2026-10-12T22:46:27.730Z"
 parent: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 ---
@@ -154,5 +154,7 @@ Later-batch candidate with scope decision pending, 2026-10-17UTC: current OpenPl
 Refreshed pending later-candidate evidence, not scope adoption: native OpenPlanner7c MiMo39088307104 completed both configured attempts with no submission/accepted review. First healthy invocation stopped after52/1512 pages to ask for a human workflow choice. Second used a native id/note array with one misspelled " note" key; batch45-48 was refused (44assessed48delivered). Notes were below hard byte caps; no timeout/auth error observed. Current prepared one-point ETA instruction repair adds exact-key checking, concise judgments and continued authorized full-input review in the same invocation; matching embedded copy and every runtime/coverage/custody/attempt/deadline guard remain unchanged. Patch SHA256 f49d8f15f40254111c4591d601bb5a2b6c24b93076107b865d38513b1db56e72; no-effect apply and syntax checks pass, actual source untouched. Refined scope proposal: /home/err/.local/share/codex/cephalon-field-restore-work-20261017/concise-bounded-review-scope-20261017/current7c-refined-preparation-20261018T0220/scope-proposal.md. Human inclusion question is pending; no new point, status, dependency, implementation, qualified source adoption or complete-review throughput claim. This consumer remains its existing pin-only scope until lawful inclusion/owning source qualification.
 
 Human inclusion now APPROVED: “Include the one-point instruction repair (Recommended)”. Exact prepared eleven-line ETA prompt+matching embedded copy scope recorded in new native Incoming1 task185000a4-6b8d-4140-b3fe-fc6eb999598c, depending on Done source8872994a-9a50-40a9-85a4-f4c6f5a6a21d. Existing current consumer remainsInProgress1 and pin-only: new source requires genuine planning/code qualification and lawful Ready/Done before its qualified ETA revision can be propagated here. All strict input/context/assessment/publication/merge guards,4pagecap,2048/16384hardbytes,max2invocations,120minutes,freeOpenCode discovery and Musef422 remain unchanged. Prior pending-scope history remains truthful at its original time. No production source patch, consumer pin, dependency, point, status, credential, paid model or runtime changed by this correction; future1512-page completion remains unproven.
+
+Planning correction for native Codex root4306191444: the fourth native dependency185000a4-6b8d-4140-b3fe-fc6eb999598c now joins the three preserved dependencies. Consumer stays InProgress1 under its existing pin-only scope; replacement-pin adoption and Done require the independently qualified/merged/Done instruction source. Old primary-body Incoming/three-source/pin observations remain historical. This does not complete the source or consumer, change runtime, or add a point.
 
 ---

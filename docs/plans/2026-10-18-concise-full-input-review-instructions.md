@@ -26,6 +26,16 @@ Change only the runner prompt in `.github/scripts/run-opencode-review-recovery.m
 
 Prepared patchSHA256 `f49d8f15f40254111c4591d601bb5a2b6c24b93076107b865d38513b1db56e72` is a custody reference to the earlier unapplied proposal. This plan exposes the complete proposed instruction text; production files remain unchanged during planning. The embedded base64 may reflow when regenerated; its decoded bytes must equal the changed runner exactly.
 
+### Verification from a fresh checkout
+
+The private prepared patch is optional historical custody, not a required build or verification input. Derive the change from the eleven lines above and the committed runner at `8b8ebeb323ad4e90bddf4c31082cbaf45d684a3d`:
+
+1. In `strictInvocationPrompt`, insert the eleven lines immediately after `  also feed the exposed delivered-custody assessor after actual delivery.` and immediately before `  Keep each note within 2048 UTF8 bytes and the complete request within 16384`. Match this unique adjacent pair before editing; refuse an ambiguous or changed source rather than moving the insertion speculatively.
+2. Re-encode the resulting complete runner into the workflow's existing `ETA_MU_RECOVERY_RUNNER_BASE64` heredoc. Preserve the surrounding workflow and all other bytes. Base64 line wrapping is representational; compare decoded bytes rather than treating reflow as a second semantic change.
+3. Inspect the runner diff: exactly the eleven additions above, with no removed or changed executable line. Inspect the workflow diff: only that existing encoded payload may change. Run `node --check .github/scripts/run-opencode-review-recovery.mjs` and the existing complete `node --test .github/scripts/opencode-code-review-workflow.test.mjs` suite. Its existing test “review context packages the exact runner for reusable-workflow callers” verifies actual decoded equality.
+
+Record actual commands and results against the final source identity. The old private patch hash need not be reproduced to verify this publicly specified change; it grants no coverage or approval. These checks establish source and packaging integrity, not model obedience or full-input throughput.
+
 ## Preserved contracts
 
 - Every declared input and per-page assessment, complete coverage and submission validation remain required.
@@ -42,6 +52,8 @@ One point covers the eleven-line prompt update, matching embedded runner regener
 After current-head planning review and native Ready, demonstrate the missing instruction text in the unchanged source, apply the exact scoped update, inspect the decoded source delta and execute the existing full workflow/runner regression suite plus syntax/equality checks with zero warnings. Preserve all failures. Obtain genuine current-head code review and required checks before a head-guarded MERGE.
 
 The delivered result is a qualified ETA source revision. The existing consumer remains a separate pin-only card; it may later consume that qualified revision through its own gates. No current OpenPlanner review is restarted, no application is deployed, and no model invocation outside existing authorized review workflows is added.
+
+The consumer's native dependency set includes this source task in addition to its three prior dependencies. Its current InProgress1 status and implementation scope remain unchanged; it cannot finish adoption against a pre-repair pin. The Incoming parent epic `de02c921-e23c-4d83-87e8-b32c6c3160ff` now lists seven local deliveries and a provisional non-additive13-point roll-up (the prior12 plus this already approved1). This is accounting for the included source child, not an additional execution allocation or a new batch.
 
 ## Evidence and limits
 

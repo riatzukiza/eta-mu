@@ -10,7 +10,7 @@ parent: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 epic: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 dependency: ["8872994a-9a50-40a9-85a4-f4c6f5a6a21d"]
 category: "tasks"
-write-id: "1792307882107-0.1je5sru017e80m9954n"
+write-id: "1792309671326-0.4unlgdh062ugmy7onm4"
 created_at: "2026-10-18T07:18:02.107Z"
 ---
 
@@ -38,11 +38,11 @@ Change Muse, native guards, identities, source/context custody, review publicati
 2. It tells the worker to continue the already authorized complete input review in the same invocation while healthy tools/pages remain, without asking for a workflow choice, progress-summary stop or partial-review permission. Existing failed/refused-tool stop, full-coverage submission gate and host deadline remain intact.
 3. The workflow's decoded embedded runner is byte-identical to the changed source. All executable guard/recovery/model/budget behavior is unchanged; the source delta is exactly eleven prompt lines.
 4. Existing workflow/runner regression suites, actual embedded-source equality checks and Node syntax verification pass under the existing qualified source/runtime with zero compiler warnings. Retain actual failed checks and exact scope limits. Instruction-only guidance is the deliverable; deterministic tests do not establish model compliance or1512-page completion.
-5. Obtain genuine exact-head planning/code qualification and lawful native Ready before implementation; preserve append-only receipts/events and all merge gates. Source completion supplies a qualified ETA revision only. Existing consumer propagation later changes its qualified pin under its original card; this story performs no consumer/runtime rollout.
+5. Obtain genuine current-head planning qualification and lawful native Ready before implementation. After the implementation exists, obtain genuine exact-head code qualification and all required checks before a head-guarded MERGE. Preserve append-only receipts/events and every merge gate. Source completion supplies a qualified ETA revision only. Existing consumer propagation later changes its qualified pin under its original card; this story performs no consumer/runtime rollout.
 
 ## Verification
 
-Inspect the exact prepared patchSHAf49d8f15f40254111c4591d601bb5a2b6c24b93076107b865d38513b1db56e72 and actual unchanged base before implementation. Use existing meaningful runner/context/embedded-copy checks; no new policy validator, pretend inference proof or weakened assertion. Record exact source/configuration, commands, results and evidence. Any failed/incomplete native review remains failed/incomplete without synthetic approval or automatic budget increase.
+Derive the change from the complete eleven lines, unique insertion anchors and embedded-heredoc instructions committed in `docs/plans/2026-10-18-concise-full-input-review-instructions.md`, using exact base8b8ebeb323ad4e90bddf4c31082cbaf45d684a3d. A fresh checkout needs no private patch or machine-local evidence. The earlier prepared patchSHAf49d8f15f40254111c4591d601bb5a2b6c24b93076107b865d38513b1db56e72 remains optional historical custody only. Use existing meaningful runner/context/embedded-copy checks; no new policy validator, pretend inference proof or weakened assertion. Record exact source/configuration, commands, results and evidence. Any failed/incomplete native review remains failed/incomplete without synthetic approval or automatic budget increase.
 
 Before snapshots/installations measure free space; retain20GiB floor and at most3 expensive jobs across the goal. Reuse this owned worktree; preserve existing held receipts399/reflection1919 and native events3472 before new appends. Qualify actual source before any consumer uses a new pin.
 
@@ -51,3 +51,9 @@ Before snapshots/installations measure free space; retain20GiB floor and at most
 Prompt guidance may still fail to produce a complete review within120minutes. The512-byte target may be exceeded without changing actual acceptance. Full-input review, mandatory checks and native identity remain independent obligations.
 
 License: GPL-3.0-or-later.
+
+
+---
+Planning correction for native Codex roots4306191449/4306191452: Incoming Markdown AC5 now requires planning qualification and lawful Ready BEFORE implementation, then current exact-head code qualification and required checks BEFORE MERGE. Verification is self-contained from the committed eleven-line text, exact8b base, unique insertion anchors and existing encoded heredoc/test; the private f49 patch is optional historical custody. Incoming authoring only; no source implementation or native Ready. All hard guards/bounds unchanged.
+
+---
