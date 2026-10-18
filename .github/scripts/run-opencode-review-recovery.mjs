@@ -1141,6 +1141,17 @@ Full-input assessment checkpoint before the first stage:
   returned original page once with a distinct, nonblank substantive note and
   its actual ID. Include the shorter FINAL partial group. Single-page reads may
   also feed the exposed delivered-custody assessor after actual delivery.
+  Prefer the native ordered assessments array of {id,note} objects. Check
+  each member has exactly the id and note keys, with no whitespace aliases,
+  before calling; do not manually serialize the array into a JSON string.
+  Write one or two concise judgment sentences per page, targeting at most
+  512 UTF8 bytes without transcribing test lists or historical prose. This
+  is a brevity target, not coverage permission or a new hard limit.
+  This job already authorizes the complete declared input review within its
+  existing bounds. While pages remain, continue the same invocation's next
+  allowed read/assessment batch; do not stop for a human choice, a progress
+  summary or permission to accept partial input. Keep the existing stop on
+  failed/refused tools, full-coverage submission gate and host deadline.
   Keep each note within 2048 UTF8 bytes and the complete request within 16384
   UTF8 bytes. Do not reread a page already assessed, synthesize single-page
   calls, combine invocation history or replace per-page notes with one summary.
