@@ -5,7 +5,7 @@ status: incoming
 priority: P1
 points: "13"
 labels: "epics,cephalon,b3,review,context-custody,batching,13sp"
-write-id: "1792327668822-0.3tj2crlo7yxe8l5a0nh"
+write-id: "1792329249937-0.ierypd3g3idz5w8qysu"
 type: "epic"
 ---
 
@@ -66,7 +66,7 @@ This repair preserves known original review provenance while requiring current-h
 
 ## Risks
 
-Earlier native4284770730 linked the former six deliveries. The current human-included one-point source makes seven; native frontmatter now enforces the new instruction dependency before consumer completion. Original issue25 source repair is actually qualified/installed, and ETA parent15 is already MERGED; original pending-risk statements survive in Git/native comments as history and grant no source waiver. Current batching and consumer independent gates remain unfinished. A separate outdated-location extension in another plan is not included here.
+Earlier native4284770730 linked the former six deliveries. The current human-included one-point source makes seven; native frontmatter now enforces the new instruction dependency before consumer completion. Original issue25 source repair is actually qualified/installed, and ETA parent15 is already MERGED; original pending-risk statements survive in Git/native comments as history and grant no source waiver. The batching source task is Done, but consumer batching adoption, the concise instruction source, and the consumer’s independent gates remain unfinished. A separate outdated-location extension in another plan is not included here.
 
 The external eight-point Muse source and local thirteen-point epic are different owners. The same consumer1 appears in both old context and current14-point batching accounting and is counted once; no native global aggregate is adopted here. Actual current source/model/host capability, complete large native review and permissions remain independently verified, and no extra budget or credentials are introduced. No source preparation can establish live B1/B2/B3. Every estimate remains provisional for review before native Ready.
 
@@ -122,5 +122,7 @@ Current child-state correction for CodeRabbit review5554746499/comment4300266581
 Planning correction for native Codex root4306191446: the already human-included instruction source185000a4 is the seventh local child. Native Incoming epic points13/13sp and authored Outcome/Scope/child inventory/ACs now reflect12+approved1 exactly once, non-additive. No new scope, extra execution allocation or whole-goal/physical estimate adoption. Consumer remains InProgress1 and has four actual dependencies; exact source qualification/Done must precede replacement-pin completion. Incoming Markdown body authoring is separately inspectable in this planning diff; this native comment does not invent a body-edit event or planning approval.
 
 Current correction for Codex review5562026988, roots4306258029/4306258031/4306258036. The primary Incoming epic now binds the remaining qualified concise-instruction ETA workflow to preserved compatible Muse f422d77cf9c6cea46b6791e3f54c98679e949d1f; Muse259 remains historical original batching custody. The new source gates future replacement-pin implementation/completion, preserving the consumer's actual past admission and current InProgress1. I restored the original root4285646942 historical comment to its exact twelve-point observation: my earlier broad body replacement had incorrectly changed that historical word to thirteen. The later current thirteen-point correction remains appended and the parent stays Incoming13/13sp; no estimate increase, backward status move, implementation, approval transfer or live B1/B2/B3 credit. Native ordered-section readback verified every earlier comment and secondary body, with only that exact historical restoration; production runner/workflow bytes remain unchanged. This comment records the correction, not an invented body-edit event.
+
+Current correction for CodeRabbit root4307100627/review5563077148: primary Incoming Risks now says the batching source task is Done, while consumer batching adoption, the concise instruction source and the consumer's independent gates remain unfinished. Exact native batching30c9 readback is Done5. Preserved surrounding historical context/exclusion, all original comments and current Incoming13/13sp. No new scope, lifecycle advance or implementation.
 
 ---

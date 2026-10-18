@@ -32,7 +32,33 @@ The private prepared patch is optional historical custody, not a required build 
 
 1. In `strictInvocationPrompt`, insert the eleven lines immediately after `  also feed the exposed delivered-custody assessor after actual delivery.` and immediately before `  Keep each note within 2048 UTF8 bytes and the complete request within 16384`. Match this unique adjacent pair before editing; refuse an ambiguous or changed source rather than moving the insertion speculatively.
 2. Re-encode the resulting complete runner into the workflow's existing `ETA_MU_RECOVERY_RUNNER_BASE64` heredoc. Preserve the surrounding workflow and all other bytes. Base64 line wrapping is representational; compare decoded bytes rather than treating reflow as a second semantic change.
-3. Inspect the runner diff: exactly the eleven additions above, with no removed or changed executable line. Inspect the workflow diff: only that existing encoded payload may change. Run `node --check .github/scripts/run-opencode-review-recovery.mjs` and the existing complete `node --test .github/scripts/opencode-code-review-workflow.test.mjs` suite. Its existing test “review context packages the exact runner for reusable-workflow callers” verifies actual decoded equality.
+3. Inspect the runner diff: exactly the eleven additions above, with no removed or changed executable line. Inspect the workflow diff: only that existing encoded payload may change. Before qualification, run the read-only exact comparison below from the repository root. It compares the actual inserted block directly with the canonical eleven-line text in this plan, including whitespace and the final newline. Both runtime copies containing the same incorrect text must not qualify.
+4. Run `node --check .github/scripts/run-opencode-review-recovery.mjs` and the existing complete `node --test .github/scripts/opencode-code-review-workflow.test.mjs` suite. Retain its existing “review context packages the exact runner for reusable-workflow callers” check for decoded packaged-runner equality. The canonical-text comparison and packaging comparison establish separate obligations; neither substitutes for the other.
+
+```sh
+node --input-type=module <<'NODE'
+import assert from "node:assert/strict";
+import fs from "node:fs";
+import { createHash } from "node:crypto";
+const plan = fs.readFileSync("docs/plans/2026-10-18-concise-full-input-review-instructions.md", "utf8");
+const blocks = [...plan.matchAll(/^```text\n([\s\S]*?)^```$/gm)];
+assert.equal(blocks.length, 1, "one canonical instruction block is required");
+const expected = blocks[0][1];
+assert.equal(expected.split("\n").length, 12, "eleven lines plus final newline");
+const runner = fs.readFileSync(".github/scripts/run-opencode-review-recovery.mjs", "utf8");
+const before = "  also feed the exposed delivered-custody assessor after actual delivery.\n";
+const after = "  Keep each note within 2048 UTF8 bytes and the complete request within 16384";
+assert.equal(runner.split(before).length, 2, "unique preceding anchor");
+assert.equal(runner.split(after).length, 2, "unique following anchor");
+const start = runner.indexOf(before) + before.length;
+const end = runner.indexOf(after, start);
+assert.ok(end >= start, "ordered anchors");
+assert.equal(runner.slice(start, end), expected, "delivered text must equal the approved block");
+console.log("Exact approved instruction block:", createHash("sha256").update(expected).digest("hex"));
+NODE
+```
+
+This one-time qualification command checks the independently approved source text. It adds no repository test or inference claim. On the unchanged planning source it must fail because the approved block is absent; after lawful Ready and implementation it must pass. Record actual command/output and source identity before qualification.
 
 Record actual commands and results against the final source identity. The old private patch hash need not be reproduced to verify this publicly specified change; it grants no coverage or approval. These checks establish source and packaging integrity, not model obedience or full-input throughput.
 
