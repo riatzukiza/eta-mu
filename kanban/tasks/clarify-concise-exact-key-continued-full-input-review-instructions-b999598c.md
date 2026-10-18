@@ -1,7 +1,7 @@
 ---
 uuid: "185000a4-6b8d-4140-b3fe-fc6eb999598c"
 title: "Clarify concise exact-key continued full-input review instructions"
-status: "incoming"
+status: "in_progress"
 type: "task"
 priority: "P1"
 points: "1"
@@ -10,7 +10,7 @@ parent: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 epic: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 dependency: ["8872994a-9a50-40a9-85a4-f4c6f5a6a21d"]
 category: "tasks"
-write-id: "1792329251317-0.dymmsm2iwpzv32u199"
+write-id: "1792333780955-0.xpvd7vmffla8kw0z3xr"
 created_at: "2026-10-18T07:18:02.107Z"
 ---
 
@@ -57,5 +57,7 @@ License: GPL-3.0-or-later.
 Planning correction for native Codex roots4306191449/4306191452: Incoming Markdown AC5 now requires planning qualification and lawful Ready BEFORE implementation, then current exact-head code qualification and required checks BEFORE MERGE. Verification is self-contained from the committed eleven-line text, exact8b base, unique insertion anchors and existing encoded heredoc/test; the private f49 patch is optional historical custody. Incoming authoring only; no source implementation or native Ready. All hard guards/bounds unchanged.
 
 Current correction for CodeRabbit root4307100639/review5563077148: AC4 and the public plan now require a direct exact byte comparison of the delivered runner's inserted block against the canonical approved eleven lines, separately from existing packaged-runner equality. The complete one-time read-only command is committed in the plan; current unchanged source refuses because the block is absent, as the planning precondition. After lawful Ready/implementation it must pass before qualification. Existing regression suite/packaging/syntax checks remain; no repository test, production source, new budget, point or inference-compliance claim is added. Native Incoming1/frontmatter/history remain unchanged.
+
+Planning PR34 actually merged at2026-10-18T14:25:08Z as9bc436a2454519c399b0798975d537d67fae26ae, exact parents8b8ebeb323ad4e90bddf4c31082cbaf45d684a3d and reviewed6e1d04ea2911f7c462abc8928b02bb77b8b5b502; merge tree equals reviewed tree. Canonical guarded gate twice PASS:9checks/all9findings settled/one unanimous available planning cohort CodeRabbit+Codex+MiMo. Full CodeRabbit request6250916199 completed via6250917239 and exact no-actionable summary6247130081/all9inputs/no declared omissions; MiMo APPROVED5563324043/actual20page completed invocation and Codex passing6250406536. Predecessor8872994a natively Done. Existing human-approved1point scope now advances lawfully to Ready before implementation, with unchanged11line text, guards/bounds/free anonymous dynamic routing and standalone source/embedded-copy verification. No consumer pin, runtime or live B1/B2/B3 completion.
 
 ---
