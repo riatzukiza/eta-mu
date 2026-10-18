@@ -9,7 +9,7 @@ labels: "cephalon, b3, review, context-custody"
 epic: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 dependency: ["185000a4-6b8d-4140-b3fe-fc6eb999598c","30c9df92-e1fb-4043-8565-36f96ce2a978","b9c591fb-95a8-4e4e-b2a5-39eb988cb996","c84f0b33-7527-443a-a9ff-5ee2e2dfed48"]
 category: "tasks"
-write-id: "1792309575137-0.y1hg78kwx8fyjxhnl2t"
+write-id: "1792354521711-0.ndit8eu6gqi8pxvivi"
 created_at: "2026-10-12T22:46:27.730Z"
 parent: "de02c921-e23c-4d83-87e8-b32c6c3160ff"
 ---
@@ -156,5 +156,7 @@ Refreshed pending later-candidate evidence, not scope adoption: native OpenPlann
 Human inclusion now APPROVED: “Include the one-point instruction repair (Recommended)”. Exact prepared eleven-line ETA prompt+matching embedded copy scope recorded in new native Incoming1 task185000a4-6b8d-4140-b3fe-fc6eb999598c, depending on Done source8872994a-9a50-40a9-85a4-f4c6f5a6a21d. Existing current consumer remainsInProgress1 and pin-only: new source requires genuine planning/code qualification and lawful Ready/Done before its qualified ETA revision can be propagated here. All strict input/context/assessment/publication/merge guards,4pagecap,2048/16384hardbytes,max2invocations,120minutes,freeOpenCode discovery and Musef422 remain unchanged. Prior pending-scope history remains truthful at its original time. No production source patch, consumer pin, dependency, point, status, credential, paid model or runtime changed by this correction; future1512-page completion remains unproven.
 
 Planning correction for native Codex root4306191444: the fourth native dependency185000a4-6b8d-4140-b3fe-fc6eb999598c now joins the three preserved dependencies. Consumer stays InProgress1 under its existing pin-only scope; replacement-pin adoption and Done require the independently qualified/merged/Done instruction source. Old primary-body Incoming/three-source/pin observations remain historical. This does not complete the source or consumer, change runtime, or add a point.
+
+Current qualified pin binding after actual source Done: ETA instruction source185000a4 is natively Done1/write1792354432053-0.31x8ayyckidp7sbeyc4 at2026-10-18T20:13:52Z following full native build/lint/test14suitesPASS and lawful review/document/done hops. All four existing predecessor UUIDs independently read nativeDone. Consume actual qualified personal ETA PR35 MERGE fad2aeee3803157a63cb4612125ce2007b10178f, reviewed8d6 tree exact; Muse remains f422d77cf9c6cea46b6791e3f54c98679e949d1f. This existing InProgress1 pin-only consumer now changes only its existing ETA workflow selector8b->fad; reviewNode22.23.3, agentsface3009a, OpenCode1.18.31, empty dynamic anonymous freeMiMo model,120minute/twoinvocation/fullinput/guard contracts remain unchanged. No thirdGitpin/application/physicalNode22.20.0 change. Source MiMo26of26+61context completion is source-only evidence, not future150input/1515page throughput or currentconsumerapproval. Existing OP3/current404 must receive one genuine new immutable head and its own full actual input/source/rawevidence/functionalchecks/reviews/canonicalMERGE before consumerDone. Preserve primary body,points,epic,parent,dependencies,all earlier commentcontent/events as history. B1/B2/B3live0of3.
 
 ---
