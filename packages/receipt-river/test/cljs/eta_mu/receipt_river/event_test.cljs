@@ -38,9 +38,17 @@
       "bumping the package must not rewrite when schema v1 was introduced"))
 
 (deftest receipt-relative-path-test
-  (is (= ".ημ/receipts.edn" (receipt/receipt-relative-path true)))
-  (is (= "receipts.edn" (receipt/receipt-relative-path false)))
-  (is (= "receipts.edn" (receipt/receipt-relative-path nil))))
+  (testing "the project ledger is used only when no root ledger exists"
+    (is (= ".ημ/receipts.edn"
+           (receipt/receipt-relative-path {:eta-mu-ledger-exists? true}))))
+  (testing "an existing root ledger always wins, so it is never shadowed"
+    (is (= "receipts.edn"
+           (receipt/receipt-relative-path {:root-ledger-exists? true
+                                           :eta-mu-ledger-exists? true})))
+    (is (= "receipts.edn"
+           (receipt/receipt-relative-path {:root-ledger-exists? true}))))
+  (testing "neither ledger: root is the bootstrap location"
+    (is (= "receipts.edn" (receipt/receipt-relative-path {})))))
 
 (deftest version-stamped-event-test
   (testing "the package, application composition, and schema versions are distinct"

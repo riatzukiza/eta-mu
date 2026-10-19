@@ -51,7 +51,8 @@
 (defn- receipt-file [repo-root]
   (fs/join repo-root
            (receipt/receipt-relative-path
-            (fs/path-exists? (fs/join repo-root receipt/eta-mu-receipt-path)))))
+            {:root-ledger-exists? (fs/path-exists? (fs/join repo-root receipt/root-receipt-path))
+             :eta-mu-ledger-exists? (fs/path-exists? (fs/join repo-root receipt/eta-mu-receipt-path))})))
 
 (defn- read-lines [file]
   (if-not (fs/path-exists? file)

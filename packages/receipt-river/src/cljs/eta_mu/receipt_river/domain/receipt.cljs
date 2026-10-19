@@ -14,11 +14,14 @@
 (def root-receipt-path "receipts.edn")
 
 (defn receipt-relative-path
-  "Ledger path relative to the repository root: the project `.ημ` ledger when
-  it already exists, otherwise the root `receipts.edn` (also the bootstrap
-  location)."
-  [eta-mu-ledger-exists?]
-  (if eta-mu-ledger-exists? eta-mu-receipt-path root-receipt-path))
+  "Ledger path relative to the repository root. An existing root `receipts.edn`
+  always wins, so a repository that already has one keeps reading and writing
+  it; the project `.ημ` ledger is used only when it exists and no root ledger
+  does. With neither present, the root file is the bootstrap location."
+  [{:keys [root-ledger-exists? eta-mu-ledger-exists?]}]
+  (if (and eta-mu-ledger-exists? (not root-ledger-exists?))
+    eta-mu-receipt-path
+    root-receipt-path))
 
 (defn clean-field
   ([value] (clean-field value "none"))
