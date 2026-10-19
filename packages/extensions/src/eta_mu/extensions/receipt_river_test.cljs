@@ -449,3 +449,32 @@
                 (is (true? (aget result "ok")))
                 (assert-validation-result-shape result file line))
               (is (.equals before (.readFileSync fs file))))))))))
+
+;; ============================================================
+;; Ledger resolution shared with the CLI
+;; ============================================================
+
+(defn- with-temp-repo [setup f]
+  (let [dir (.mkdtempSync fs (path/join (.tmpdir os) "rr-ledger-"))]
+    (try
+      (setup dir)
+      (f dir)
+      (finally (.rmSync fs dir #js {:recursive true :force true})))))
+
+(defn- touch! [dir rel]
+  (let [file (path/join dir rel)]
+    (.mkdirSync fs (path/dirname file) #js {:recursive true})
+    (.writeFileSync fs file "")))
+
+(deftest repo-receipt-file-follows-the-cli-ledger-rule-test
+  (testing "neither ledger: the root file is the bootstrap location"
+    (with-temp-repo (fn [_])
+      #(is (= (path/join % "receipts.edn") (receipt-river/repo-receipt-file %)))))
+  (testing ".ημ-only repository: the extension writes the project ledger and never bootstraps a root file"
+    (with-temp-repo #(touch! % ".ημ/receipts.edn")
+      #(is (= (path/join % ".ημ" "receipts.edn") (receipt-river/repo-receipt-file %)))))
+  (testing "an existing root ledger always wins, even beside .ημ"
+    (with-temp-repo (fn [d] (touch! d "receipts.edn") (touch! d ".ημ/receipts.edn"))
+      #(is (= (path/join % "receipts.edn") (receipt-river/repo-receipt-file %)))))
+  (testing "no repository: no ledger"
+    (is (nil? (receipt-river/repo-receipt-file nil)))))
