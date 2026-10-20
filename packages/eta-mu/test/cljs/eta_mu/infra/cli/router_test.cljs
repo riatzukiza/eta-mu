@@ -189,6 +189,8 @@
                                           (receipt-api/validate-line line (+ 259 index)))
                                         (range 4) control-lines)
                 suffix (str (str/join "\n" control-lines) "\n")]
+            (is (= "2.0.1" (get-in declared [:event/producer :eta-mu/version]))
+                "the production manifest stamps the released version on emitted events")
             (.appendFileSync fs ledger suffix "utf8")
             (let [mixed (await (observe-receipt-route nested))
                   mixed-rows (:rows mixed)
