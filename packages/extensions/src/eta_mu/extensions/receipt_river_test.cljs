@@ -478,3 +478,16 @@
       #(is (= (path/join % "receipts.edn") (receipt-river/repo-receipt-file %)))))
   (testing "no repository: no ledger"
     (is (nil? (receipt-river/repo-receipt-file nil)))))
+
+(deftest ledger-prompt-names-the-selected-ledger-test
+  (testing ".ημ-only repository: the instruction points at the project ledger, not a root file"
+    (with-temp-repo #(touch! % ".ημ/receipts.edn")
+      (fn [dir]
+        (let [prompt (receipt-river/inject-ledger-prompt "" [dir] false)]
+          (is (re-find #"Maintain append-only \.ημ/receipts\.edn in this repo root" prompt))
+          (is (not (re-find #"append-only receipts\.edn" prompt)))))))
+  (testing "root ledger present: the instruction names the root ledger"
+    (with-temp-repo #(touch! % "receipts.edn")
+      (fn [dir]
+        (is (re-find #"Maintain append-only receipts\.edn in this repo root"
+                     (receipt-river/inject-ledger-prompt "" [dir] false)))))))

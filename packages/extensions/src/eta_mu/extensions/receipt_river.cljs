@@ -292,6 +292,13 @@
                          (do (vreset! kept-one true) true))))))
         (.reverse))))
 
+(defn ledger-instruction-path
+  "Repo-relative path of the ledger the extension will actually append to, so
+  the agent is never told to create a root ledger that would shadow the
+  project .ημ ledger."
+  [repo-root]
+  (path/relative repo-root (repo-receipt-file repo-root)))
+
 (defn inject-ledger-prompt
   ([system-prompt repos pending-reminder?]
    (inject-ledger-prompt system-prompt repos pending-reminder? nil))
@@ -301,7 +308,8 @@
         repo-blocks (->> repos
                          (map (fn [repo-root]
                                 (str "[RECEIPT LEDGER ACTIVE]\nRepo: " repo-root
-                                     "\n- Maintain append-only receipts.edn in this repo root."
+                                     "\n- Maintain append-only " (ledger-instruction-path repo-root)
+                                     " in this repo root."
                                      "\n- If you touch this repo substantively during the turn, ensure a receipt_river call records it in this repo."
                                      "\n- The implicit fulfillment contract fails if a touched repo ends the turn without a receipt."
                                      "\n- Never edit past events. Never log secrets.")))
