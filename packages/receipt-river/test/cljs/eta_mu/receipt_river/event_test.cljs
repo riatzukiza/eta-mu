@@ -32,6 +32,24 @@
    :manifest "none"
    :refs "none"})
 
+(deftest schema-introduction-version-is-historical-test
+  (is (= "0.1.0" (get-in law/receipt-recorded-document
+                         [:schema/introduced-by :package/version]))
+      "bumping the package must not rewrite when schema v1 was introduced"))
+
+(deftest receipt-relative-path-test
+  (testing "the project ledger is used only when no root ledger exists"
+    (is (= ".ημ/receipts.edn"
+           (receipt/receipt-relative-path {:eta-mu-ledger-exists? true}))))
+  (testing "an existing root ledger always wins, so it is never shadowed"
+    (is (= "receipts.edn"
+           (receipt/receipt-relative-path {:root-ledger-exists? true
+                                           :eta-mu-ledger-exists? true})))
+    (is (= "receipts.edn"
+           (receipt/receipt-relative-path {:root-ledger-exists? true}))))
+  (testing "neither ledger: root is the bootstrap location"
+    (is (= "receipts.edn" (receipt/receipt-relative-path {})))))
+
 (deftest version-stamped-event-test
   (testing "the package, application composition, and schema versions are distinct"
     (let [payload (receipt/build-payload {:kind "test-run" :note "green"}
@@ -42,7 +60,7 @@
       (is (= "1.1.1" (get-in record [:event/producer :eta-mu/version])))
       (is (= "@eta-mu/receipt-river"
              (get-in record [:event/producer :package/name])))
-      (is (= "0.1.0" (get-in record [:event/producer :package/version])))
+      (is (= "0.1.1" (get-in record [:event/producer :package/version])))
       (is (= {:id :eta-mu.receipt-river/receipt-recorded :version 1}
              (:event/schema record)))
       (is (= "green" (get-in record [:event/payload :note])))
@@ -121,7 +139,7 @@
         92))))
 
 (deftest law-owned-registry-test
-  (is (= "0.1.0" law/package-version))
+  (is (= "0.1.1" law/package-version))
   (is (= 1 (get law/current-versions
                 :eta-mu.receipt-river/receipt-recorded)))
   (is (= :current

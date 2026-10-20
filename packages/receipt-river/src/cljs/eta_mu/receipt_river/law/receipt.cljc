@@ -8,7 +8,11 @@
 (def receipt-recorded-version 1)
 
 (def package-name "@eta-mu/receipt-river")
-(def package-version "0.1.0")
+(def package-version "0.1.1")
+
+(def receipt-recorded-introduced-by-package-version
+  "Package release that introduced receipt-recorded schema version 1; historical."
+  "0.1.0")
 
 (def known-kinds
   #{:push-truth :artifact-hash :test-run :build :decision :drift :catalog
@@ -26,7 +30,7 @@
    :schema/version receipt-recorded-version
    :schema/status :current
    :schema/introduced-by
-   {:package/version package-version
+   {:package/version receipt-recorded-introduced-by-package-version
     :eta-mu/version "1.1.1"}
    :schema/predecessors []
    :schema/required legacy-required-keys

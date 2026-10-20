@@ -7,6 +7,22 @@
 
 (def legacy-required-keys law/legacy-required-keys)
 
+(def eta-mu-receipt-path
+  "Project meta-state ledger, preferred when the project already keeps one."
+  ".ημ/receipts.edn")
+
+(def root-receipt-path "receipts.edn")
+
+(defn receipt-relative-path
+  "Ledger path relative to the repository root. An existing root `receipts.edn`
+  always wins, so a repository that already has one keeps reading and writing
+  it; the project `.ημ` ledger is used only when it exists and no root ledger
+  does. With neither present, the root file is the bootstrap location."
+  [{:keys [root-ledger-exists? eta-mu-ledger-exists?]}]
+  (if (and eta-mu-ledger-exists? (not root-ledger-exists?))
+    eta-mu-receipt-path
+    root-receipt-path))
+
 (defn clean-field
   ([value] (clean-field value "none"))
   ([value fallback]

@@ -10,7 +10,8 @@
             [eta-mu.extensions.prompt-section :as prompt-section]
             [eta-mu.extensions.receipt-river.edn :as rr-edn]
             [eta-mu.extensions.receipt-river.repo :as rr-repo]
-            [eta-mu.receipt-river.api :as rr-api]))
+            [eta-mu.receipt-river.api :as rr-api]
+            [eta-mu.receipt-river.domain.receipt :as rr-receipt]))
 
 (def ^:const HOME (.homedir os))
 (def ^:const ETA-MU-STATE-ROOT (path/join HOME ".ημ" "state"))
@@ -156,9 +157,19 @@
   (let [last (.at (tail-lines file-path 1) 0)]
     (if last (clean-field last "") "none")))
 
-(defn repo-receipt-file [repo-root]
+(defn repo-receipt-file
+  "Ledger path for a repository, resolved by the same rule as the CLI
+  (`receipt-relative-path`): an existing root receipts.edn wins; the project
+  .ημ ledger is used only when it exists and there is no root ledger. Sharing
+  the rule keeps both writers on one ledger in a .ημ-only repository."
+  [repo-root]
   (when repo-root
-    (path/join repo-root RECEIPT-FILE-NAME)))
+    (path/join repo-root
+               (rr-receipt/receipt-relative-path
+                {:root-ledger-exists?
+                 (.existsSync fs (path/join repo-root rr-receipt/root-receipt-path))
+                 :eta-mu-ledger-exists?
+                 (.existsSync fs (path/join repo-root rr-receipt/eta-mu-receipt-path))}))))
 
 (defn dirname-safe [p]
   (let [d (path/dirname p)]
@@ -281,6 +292,13 @@
                          (do (vreset! kept-one true) true))))))
         (.reverse))))
 
+(defn ledger-instruction-path
+  "Repo-relative path of the ledger the extension will actually append to, so
+  the agent is never told to create a root ledger that would shadow the
+  project .ημ ledger."
+  [repo-root]
+  (path/relative repo-root (repo-receipt-file repo-root)))
+
 (defn inject-ledger-prompt
   ([system-prompt repos pending-reminder?]
    (inject-ledger-prompt system-prompt repos pending-reminder? nil))
@@ -290,7 +308,8 @@
         repo-blocks (->> repos
                          (map (fn [repo-root]
                                 (str "[RECEIPT LEDGER ACTIVE]\nRepo: " repo-root
-                                     "\n- Maintain append-only receipts.edn in this repo root."
+                                     "\n- Maintain append-only " (ledger-instruction-path repo-root)
+                                     " in this repo root."
                                      "\n- If you touch this repo substantively during the turn, ensure a receipt_river call records it in this repo."
                                      "\n- The implicit fulfillment contract fails if a touched repo ends the turn without a receipt."
                                      "\n- Never edit past events. Never log secrets.")))

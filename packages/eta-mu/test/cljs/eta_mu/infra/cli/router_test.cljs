@@ -15,8 +15,8 @@
 
 (deftest cljs-component-manifest-test
   (let [manifest component-manifest/manifest]
-    (is (= "1.1.1" (:eta-mu/version manifest)))
-    (is (= {"@eta-mu/receipt-river" "0.1.0"
+    (is (= "2.0.1" (:eta-mu/version manifest)))
+    (is (= {"@eta-mu/receipt-river" "0.1.1"
             "@eta-mu/session-mycology" "0.1.0"
             "@eta-mu/fork-tax" "0.1.0"}
            (:components manifest)))
@@ -24,6 +24,12 @@
             :eta-mu.session-mycology/reflection-recorded 1
             :eta-mu.fork-tax/handoff-recorded 1}
            (:schemas manifest)))))
+
+(deftest manifest-version-matches-package-json-test
+  (let [fs (js/require "node:fs")
+        pkg (js/JSON.parse (.readFileSync fs "package.json" "utf8"))]
+    (is (= (.-version pkg) (:eta-mu/version component-manifest/manifest))
+        "the producer version stamped into receipts is the published version")))
 
 (deftest ledger-command-surface-test
   (let [registry (cli-router/command-registry)]
@@ -183,6 +189,8 @@
                                           (receipt-api/validate-line line (+ 259 index)))
                                         (range 4) control-lines)
                 suffix (str (str/join "\n" control-lines) "\n")]
+            (is (= "2.0.1" (get-in declared [:event/producer :eta-mu/version]))
+                "the production manifest stamps the released version on emitted events")
             (.appendFileSync fs ledger suffix "utf8")
             (let [mixed (await (observe-receipt-route nested))
                   mixed-rows (:rows mixed)
