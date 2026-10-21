@@ -39,6 +39,8 @@
     :cmd ["node" "--test" ".github/scripts/opencode-code-review-workflow.test.mjs"]}
    {:label "review-model-preference"
     :cmd ["node" "--test" ".github/scripts/review-model-preference.test.mjs"]}
+   {:label "review-model-preference-sync"
+    :cmd ["node" ".github/scripts/sync-review-model-preference.mjs" "--check"]}
    {:label "legacy-ai-catalog"
     :cmd ["pnpm" "--dir" "packages/legacy/ai" "exec" "vitest" "run"
           "test/model-catalog-types.test.ts"]}

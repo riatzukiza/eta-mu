@@ -1,0 +1,76 @@
+name: Review model benchmark
+
+# Weekly benchmark of OpenCode's free models on a known review diff. It writes a ranked
+# preference to .github/review-model-preference.json, which becomes the review runner's
+# default model_preference after a reviewed PR. The same script runs outside Actions
+# (for example on a Knoxx host): node .github/scripts/benchmark-free-review-models.mjs
+on:
+  schedule:
+    - cron: "17 11 * * 1"
+  workflow_dispatch:
+    inputs:
+      trials:
+        description: Trials per model (1-10).
+        required: false
+        default: "3"
+      open_pr:
+        description: Open a PR when the ranked preference changes.
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: review-model-benchmark
+  cancel-in-progress: false
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install pinned OpenCode
+        run: |
+          npm install --global --ignore-scripts=false opencode-ai@1.19.3
+          opencode --version
+      - name: Benchmark free models (anonymous free tier, empty HOME per run)
+        env:
+          TRIALS: ${{ inputs.trials || '3' }}
+        run: |
+          node .github/scripts/benchmark-free-review-models.mjs --trials "$TRIALS" \
+            --out review-model-benchmark.json --preference-out .github/review-model-preference.json
+          node .github/scripts/sync-review-model-preference.mjs
+          node -e 'const r=require("./review-model-benchmark.json");for(const m of r.ranked)console.log(`| ${m.model} | ${m.score} | ${m.success_rate} | ${m.mean_recall.toFixed(2)} | ${m.median_latency_ms} |`)' | tee -a "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: review-model-benchmark-${{ github.run_id }}
+          path: |
+            review-model-benchmark.json
+            .github/review-model-preference.json
+      - name: Open preference PR when the ranking changed
+        if: github.event_name == 'schedule' || inputs.open_pr
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          if git diff --quiet -- .github/review-model-preference.json; then echo "Preference unchanged."; exit 0; fi
+          branch="bench/review-model-preference-$(date -u +%Y%m%d)-${GITHUB_RUN_ID}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$branch"
+          git add .github/review-model-preference.json .github/scripts/run-opencode-review-recovery.mjs .github/workflows/opencode-code-review.yml
+          git commit -m "review: update free model preference from weekly benchmark"
+          git push "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git" "$branch"
+          gh pr create -R "$REPO" --head "$branch" --base "${{ github.event.repository.default_branch }}" \
+            --title "review: update free model preference from weekly benchmark" \
+            --body "Ranked by the weekly free-model benchmark (run ${GITHUB_RUN_ID}). Full results are in the run artifact. Goes through the normal review gate; not auto-merged."

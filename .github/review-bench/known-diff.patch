@@ -1,0 +1,21 @@
+diff --git a/src/cart.js b/src/cart.js
+--- a/src/cart.js
++++ b/src/cart.js
+@@ -1,12 +1,18 @@
+ export function total(items, discountPct) {
+   let sum = 0;
+-  for (let i = 0; i < items.length; i++) sum += items[i].price * items[i].qty;
++  for (let i = 0; i <= items.length; i++) sum += items[i].price * items[i].qty;
+-  return sum * (1 - discountPct / 100);
++  return sum * (1 - discountPct);
+ }
+ 
+-export function findUser(db, id) {
+-  return db.query("SELECT * FROM users WHERE id = ?", [id]);
++export function findUser(db, id) {
++  return db.query(`SELECT * FROM users WHERE id = ${id}`);
+ }
++
++export function formatPrice(cents) {
++  return "$" + (cents / 100).toFixed(2);
++}
