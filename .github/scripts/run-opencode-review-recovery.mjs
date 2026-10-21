@@ -15,7 +15,9 @@ const MAX_ATTEMPTS = 2;
 
 // Compatible discovery source from qualified ETA PR18 MERGEfcdf356d6e1dfc802e60c09f3f36c18819124f81.
 // Preserve this caller's mandatory complete context and finite attempt budgets.
-const MODEL_DISCOVERY_MODE = "opencode-free-mimo-flash-v1";
+const MODEL_DISCOVERY_MODE = "opencode-free-preference-v1";
+// The previous mode name stays accepted so pinned callers keep working during rollout.
+const MODEL_DISCOVERY_MODES = new Set([MODEL_DISCOVERY_MODE, "opencode-free-mimo-flash-v1"]);
 const MODEL_DISCOVERY_BUDGET_MS = 30_000;
 const MODEL_CATALOG_URL = "https://models.opencode.ai/api.json";
 const MODEL_CATALOG_MAX_BYTES = 16 * 1024 * 1024;
@@ -167,7 +169,7 @@ function outputRoles(directory, submissionFile = path.join(directory, "submissio
 
 function discoveryNames() {
   return ["model-discovery.json", "model-version.stdout", "model-version.stderr", "model-catalog.stdout", "model-catalog.stderr",
-    "model-catalog-source.json", "model-catalog-source-response.json"];
+    "model-catalog-source.json", "model-catalog-source-response.json", "model-fallback.json"];
 }
 
 function physicalStat(file) {
@@ -432,6 +434,90 @@ export function selectFreeMiMoFlash(rows, requested = "") {
   return byDate[0].row;
 }
 
+/** Default model preference: newest free MiMo Flash, any free MiMo, Big Pickle, then any other free model. */
+export const DEFAULT_REVIEW_MODEL_PREFERENCE = Object.freeze(["mimo-*-flash-free", "mimo-*-free", "big-pickle", "*-free"]);
+const MAX_MODEL_FALLBACKS = 3;
+
+/** Parse a comma/newline separated preference list of exact IDs or `*` globs (an `opencode/` prefix is allowed). */
+export function parseModelPreference(text) {
+  if (text === undefined || text === null || String(text).trim() === "") return [...DEFAULT_REVIEW_MODEL_PREFERENCE];
+  const entries = String(text).split(/[,\n]/).map(entry => entry.trim().replace(/^opencode\//, "")).filter(Boolean);
+  for (const entry of entries) if (!/^[a-z0-9*][a-z0-9.*_-]*$/i.test(entry)) throw new Error("invalid review model preference entry");
+  return entries.length ? entries : [...DEFAULT_REVIEW_MODEL_PREFERENCE];
+}
+
+function preferenceMatcher(entry) {
+  const source = entry.split("*").map(part => part.replace(/[.+?^${}()|[\]\\]/g, "\\$&")).join("[a-z0-9._-]*");
+  return new RegExp(`^${source}$`, "i");
+}
+
+/** Only OpenCode's free tier: `big-pickle` and `*-free`, active, tool-capable, text in/out, wholly zero cost. */
+export function isFreeReviewModelRow(row) {
+  const zeroPrice = (price) => price && price.input === 0 && price.output === 0 &&
+    (price.cache === undefined || (price.cache.read === 0 && price.cache.write === 0));
+  return !!row && row.providerID === "opencode" && typeof row.id === "string" &&
+    (row.id === "big-pickle" || /^[a-z0-9][a-z0-9._-]*-free$/i.test(row.id)) &&
+    row.status === "active" && row.capabilities?.toolcall === true &&
+    row.capabilities.input?.text === true && row.capabilities.output?.text === true &&
+    zeroPrice(row.cost) && (row.cost.tiers === undefined || (Array.isArray(row.cost.tiers) && row.cost.tiers.every(zeroPrice))) &&
+    (row.cost.experimentalOver200K === undefined || !!zeroPrice(row.cost.experimentalOver200K));
+}
+
+/**
+ * Rank every free catalog row by the preference list (first matching entry wins), newest release first
+ * within an entry, then ID. An eligible explicit request goes first; an unavailable one is skipped.
+ */
+export function rankFreeReviewModels(rows, { requested = "", preference = DEFAULT_REVIEW_MODEL_PREFERENCE } = {}) {
+  if (typeof requested !== "string") throw new Error("explicit review model must be a string");
+  const matchers = preference.map(preferenceMatcher);
+  const seen = new Set(), ranked = [];
+  for (const row of rows) {
+    if (!isFreeReviewModelRow(row) || seen.has(row.id)) continue;
+    const rank = matchers.findIndex(matcher => matcher.test(row.id));
+    if (rank < 0) continue;
+    seen.add(row.id); ranked.push({ row, rank });
+  }
+  ranked.sort((left, right) => left.rank - right.rank ||
+    String(right.row.release_date ?? "").localeCompare(String(left.row.release_date ?? "")) ||
+    (left.row.id < right.row.id ? -1 : left.row.id > right.row.id ? 1 : 0));
+  const ordered = ranked.map(({ row }) => row);
+  const explicit = ordered.findIndex(row => `opencode/${row.id}` === requested);
+  if (explicit > 0) ordered.unshift(...ordered.splice(explicit, 1));
+  return ordered;
+}
+
+/** Select the first preferred free model; the remaining ranked IDs are the fallback chain. */
+export function selectFreeReviewModel(rows, requested = "", preference = DEFAULT_REVIEW_MODEL_PREFERENCE) {
+  const ranked = rankFreeReviewModels(rows, { requested, preference });
+  if (ranked.length === 0) throw new Error("no eligible free OpenCode review model");
+  return ranked[0];
+}
+
+/** Classify retained attempt output as a model/provider/credential failure that justifies the next model. */
+export function classifyModelFailure(evidenceDirectory, errorMessage = "") {
+  const pattern = /(ProviderModelNotFoundError|ModelNotFound|model[^\n]{0,40}not (?:found|available|supported)|ProviderAuthError|invalid (?:credential|api key)|unauthori[sz]ed|\b40[134]\b|\b429\b|rate[ -]?limit|quota|insufficient|ProviderInitError|APIError|overloaded|\b50[234]\b)/i;
+  for (const name of ["opencode-stderr-attempt-1.log", "model-response-attempt-1.txt", "opencode-stderr-attempt-2.log", "model-response-attempt-2.txt"]) {
+    const file = path.join(evidenceDirectory, name);
+    let text;
+    try { text = fs.readFileSync(file, "utf8"); } catch { continue; }
+    for (const line of text.split(/\r?\n/)) {
+      let event = null;
+      try { event = JSON.parse(line); } catch { /* stderr text */ }
+      if (event && typeof event === "object") {
+        // Only host error events count; model prose inside text/tool parts never selects a fallback.
+        if (event.type !== "error") continue;
+        const detail = `${event.error?.name ?? ""} ${event.error?.data?.message ?? ""} ${event.error?.data?.statusCode ?? ""}`;
+        const match = pattern.exec(detail);
+        if (match) return { source: name, match: match[0] };
+      } else if (name.startsWith("opencode-stderr")) {
+        const match = pattern.exec(line);
+        if (match) return { source: name, match: match[0] };
+      }
+    }
+  }
+  return null;
+}
+
 /** Capture one catalog command under the shared discovery deadline, retaining all output bytes. */
 async function captureModelCommand({ binary, args, environment, cwd, deadline, directory, stem }) {
   const stdoutFile = path.join(directory, `${stem}.stdout`), stderrFile = path.join(directory, `${stem}.stderr`);
@@ -573,8 +659,8 @@ function sourceModelRows(catalog) {
 }
 
 /** Reuse the existing selector on both datasets so a bundled stale subset cannot downgrade selection. */
-function assertCatalogSelection(catalog, selected, requested) {
-  const expected = selectFreeMiMoFlash(sourceModelRows(catalog), requested);
+function assertCatalogSelection(catalog, selected, requested, preference = DEFAULT_REVIEW_MODEL_PREFERENCE) {
+  const expected = selectFreeReviewModel(sourceModelRows(catalog), requested, preference);
   const effective = { id: selected.id, providerID: selected.providerID, family: selected.family,
     status: selected.status, release_date: selected.release_date,
     api: { id: selected.api.id, url: selected.api.url, npm: selected.api.npm },
@@ -657,10 +743,14 @@ function discoveryArtifactProof(directory, expectedSHA256, expectedVersion) {
   // recorded bytes remain bound; assess separately enforces private custody.
   const source = { ...proof.catalog_source, path: path.join(directory, "model-catalog-source.json") };
   const catalog = readCatalogSource(source, directory, false);
-  const selected = selectFreeMiMoFlash(parseOpenCodeModelCatalog(read("model-catalog.stdout", proof.catalog_sha256)), proof.requested_model);
+  const preference = proof.preference ?? DEFAULT_REVIEW_MODEL_PREFERENCE;
+  const rows = parseOpenCodeModelCatalog(read("model-catalog.stdout", proof.catalog_sha256));
+  const selected = selectFreeReviewModel(rows, proof.requested_model, preference);
   if (!isDeepStrictEqual(selected, proof.selected_row) ||
       sha256(JSON.stringify(selected)) !== proof.selected_row_sha256 ||
-      assertCatalogSelection(catalog, selected, proof.requested_model) !== proof.selected_source_row_sha256 ||
+      (proof.candidates !== undefined && !isDeepStrictEqual(proof.candidates,
+        rankFreeReviewModels(rows, { requested: proof.requested_model, preference }).map(row => `opencode/${row.id}`))) ||
+      assertCatalogSelection(catalog, selected, proof.requested_model, preference) !== proof.selected_source_row_sha256 ||
       proof.selected_model !== `opencode/${selected.id}`) {
     throw new Error("OpenCode retained model selection mismatch");
   }
@@ -751,8 +841,8 @@ function assertModelDiscovery(binding) {
 }
 
 /** Discover a fresh anonymous OpenCode catalog once; selection is provenance, never review admission. */
-export async function discoverFreeMiMoFlash({ evidenceDirectory, requested = "", expectedVersion,
-  binary = process.env.OPENCODE_BIN || "opencode", environment = { ...process.env }, inferenceConfiguration = null }) {
+export async function discoverFreeReviewModel({ evidenceDirectory, requested = "", expectedVersion,
+  preference = DEFAULT_REVIEW_MODEL_PREFERENCE, binary = process.env.OPENCODE_BIN || "opencode", environment = { ...process.env }, inferenceConfiguration = null }) {
   if (typeof expectedVersion !== "string" || !/^\d+\.\d+\.\d+(?:-[a-zA-Z0-9.-]+)?$/.test(expectedVersion)) {
     throw new Error("declared OpenCode version is required for model discovery");
   }
@@ -769,6 +859,7 @@ export async function discoverFreeMiMoFlash({ evidenceDirectory, requested = "",
   const childEnvironment = { ...isolatedModelEnvironment(environment, home), OPENCODE_PURE: "true" };
   const proof = { schema: "open-hax.review-model-discovery/v1", mode: requested === "" ? "latest" : "explicit",
     requested_model: requested, declared_version: expectedVersion, status: "refused", commands: [], selected_model: null,
+    preference: [...preference],
     discovery_context: { cwd, home, project_configuration: "disabled", inherited_environment: false },
     inference_configuration: inferenceConfiguration };
   const deadline = performance.now() + MODEL_DISCOVERY_BUDGET_MS;
@@ -789,8 +880,9 @@ export async function discoverFreeMiMoFlash({ evidenceDirectory, requested = "",
     proof.commands.push(catalog);
     if (catalog.exit_code !== 0 || catalog.signal !== null || catalog.timed_out || !catalog.captures_closed || catalog.capture_error) throw new Error("OpenCode model catalog discovery failed");
     const rows = parseOpenCodeModelCatalog(fs.readFileSync(path.join(evidenceDirectory, catalog.stdout_file)));
-    const selected = selectFreeMiMoFlash(rows, requested);
-    proof.selected_source_row_sha256 = assertCatalogSelection(readCatalogSource(proof.catalog_source, evidenceDirectory), selected, requested);
+    const selected = selectFreeReviewModel(rows, requested, preference);
+    proof.candidates = rankFreeReviewModels(rows, { requested, preference }).map(row => `opencode/${row.id}`);
+    proof.selected_source_row_sha256 = assertCatalogSelection(readCatalogSource(proof.catalog_source, evidenceDirectory), selected, requested, preference);
     proof.catalog_sha256 = catalog.stdout_sha256;
     proof.selected_row = selected; proof.selected_row_sha256 = sha256(JSON.stringify(selected));
     proof.selected_model = `opencode/${selected.id}`; proof.status = "selected";
@@ -811,6 +903,9 @@ export async function discoverFreeMiMoFlash({ evidenceDirectory, requested = "",
   return binding;
 }
 
+
+/** Previous name, kept for callers of the MiMo-only discovery entry point. */
+export const discoverFreeMiMoFlash = discoverFreeReviewModel;
 
 /**
  * Hash captured bytes without interpreting their contents.
@@ -1964,6 +2059,30 @@ async function invokeOpenCode({ prompt, responseFile, stderrFile,
   }
 }
 
+/** Move one failed model's owned outputs to a private temporary archive, returning their digests. */
+function archiveFailedModelEvidence(evidenceDirectory, submissionFile, index) {
+  const archive = fs.mkdtempSync(path.join(os.tmpdir(), `review-model-fallback-${index}-`));
+  const moved = {};
+  const names = [...new Set([...outputRoles(evidenceDirectory, submissionFile).values(),
+    path.resolve(evidenceDirectory, "submission-verification.json"),
+    ...discoveryNames().map(name => path.resolve(evidenceDirectory, name))])];
+  for (const file of names) {
+    if (!physicalStat(file)) continue;
+    const relative = path.relative(evidenceDirectory, file);
+    moved[relative] = sha256(fs.readFileSync(file));
+    const target = path.join(archive, relative.replaceAll(path.sep, "__"));
+    fs.copyFileSync(file, target); fs.rmSync(file);
+  }
+  return { directory: archive, files: moved };
+}
+
+/** Record the preference, candidate chain, failed models and the model that produced the review. */
+function writeModelFallbackTrace(evidenceDirectory, preference, candidates, attempts, selected) {
+  const file = path.join(evidenceDirectory, "model-fallback.json");
+  fs.writeFileSync(file, `${JSON.stringify({ schema: "open-hax.review-model-fallback/v1", preference,
+    candidates, failed_models: attempts, selected_model: selected }, null, 2)}\n`, { mode: 0o600 });
+}
+
 /** Read the configured prompt and tool registry, then run bounded review recovery. */
 async function main() {
   const prNumber = process.env.PR_NUMBER;
@@ -2031,16 +2150,16 @@ async function main() {
   const contextPrompt = `${basePrompt}\n\nTrusted staged context: ${JSON.stringify(expectedContext.contextPath)}. Read the complete file with the native read tool before the first review_record_evidence; a zero-byte file is still present.`;
   const batches = reviewTools.includes("review_read_diff_batch") || reviewTools.includes("review_assess_diff_batch") ||
     reviewTools.includes("review_assess_delivered_diff_batch");
-  let discovery = null, configuration = null, launch = null, captureBatchHost;
+  let discovery = null, configuration = null, launch = null, captureBatchHost, discover = null, preference, candidates = [];
   let modelDeadline;
   try {
     modelDeadline = reviewJobDeadline();
     if (performance.now() >= modelDeadline) throw new Error("review job budget has no model time remaining after final custody reserve");
-    if (batches && process.env.REVIEW_MODEL_DISCOVERY !== MODEL_DISCOVERY_MODE) {
+    if (batches && !MODEL_DISCOVERY_MODES.has(process.env.REVIEW_MODEL_DISCOVERY)) {
       throw new Error("batch review requires checked anonymous model discovery");
     }
     if (process.env.REVIEW_MODEL_DISCOVERY !== undefined) {
-      if (process.env.REVIEW_MODEL_DISCOVERY !== MODEL_DISCOVERY_MODE) throw new Error("unsupported model discovery mode");
+      if (!MODEL_DISCOVERY_MODES.has(process.env.REVIEW_MODEL_DISCOVERY)) throw new Error("unsupported model discovery mode");
       configuration = ordinaryInferenceConfiguration();
       // Retain source custody before the first asynchronous catalog/host work.
       // A changed file cannot become the original merely by changing early.
@@ -2064,9 +2183,14 @@ async function main() {
         await recheckSourceDirectory(runtime, deadline);
         captureDeadline(deadline);
       }
-      discovery = await discoverFreeMiMoFlash({ evidenceDirectory, requested: process.env.REVIEW_MODEL || "",
-        expectedVersion: process.env.REVIEW_EXPECTED_OPENCODE_VERSION, inferenceConfiguration: configuration });
-      launch = reviewChildLaunch(discovery, configuration, process.env, evidenceDirectory);
+      preference = parseModelPreference(process.env.REVIEW_MODEL_PREFERENCE);
+      discover = async requested => {
+        discovery = await discoverFreeReviewModel({ evidenceDirectory, requested, preference,
+          expectedVersion: process.env.REVIEW_EXPECTED_OPENCODE_VERSION, inferenceConfiguration: configuration });
+        launch = reviewChildLaunch(discovery, configuration, process.env, evidenceDirectory);
+      };
+      await discover(process.env.REVIEW_MODEL || "");
+      candidates = discovery.proof.candidates;
       if (batches) {
         captureBatchHost = async ({ deadline = performance.now() + MODEL_DISCOVERY_BUDGET_MS } = {}) => {
           assertModelDiscovery(discovery);
@@ -2102,12 +2226,38 @@ async function main() {
         reviewModel: discovery.proof.selected_model, environment: launch.environment, cwd: launch.cwd, deadline: modelDeadline });
     } finally { assertModelDiscovery(discovery); }
   } : arguments_ => invokeOpenCode({ ...arguments_, deadline: modelDeadline });
-  const metadata = await runReviewRecovery({ evidenceDirectory, basePrompt: contextPrompt, reviewTools,
-    submissionFile, invokeAttempt: invoke, captureBatchHost, modelDeadline,
-    modelDiscovery: discovery ? { file: "model-discovery.json", sha256: discovery.sha256,
-      selected_model: discovery.proof.selected_model } : null,
-    verifyReviewInvocation: verifier.verifyReviewInvocation, expectedContext,
-    verifierSha256: sha256(verifierBytes) });
+  const fallbackTrace = [];
+  let metadata;
+  for (;;) {
+    try {
+      metadata = await runReviewRecovery({ evidenceDirectory, basePrompt: contextPrompt, reviewTools,
+        submissionFile, invokeAttempt: invoke, captureBatchHost, modelDeadline,
+        modelDiscovery: discovery ? { file: "model-discovery.json", sha256: discovery.sha256,
+          selected_model: discovery.proof.selected_model } : null,
+        verifyReviewInvocation: verifier.verifyReviewInvocation, expectedContext,
+        verifierSha256: sha256(verifierBytes) });
+      break;
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      const failed = discovery?.proof.selected_model ?? null;
+      const classification = discover ? classifyModelFailure(evidenceDirectory, message) : null;
+      const next = failed ? candidates[candidates.indexOf(failed) + 1] : undefined;
+      const entry = { model: failed, error: message, classification, next_model: next ?? null };
+      if (!classification || !next || fallbackTrace.length >= MAX_MODEL_FALLBACKS ||
+          modelDeadline - performance.now() < 2 * MODEL_DISCOVERY_BUDGET_MS) {
+        fallbackTrace.push({ ...entry, next_model: null });
+        writeModelFallbackTrace(evidenceDirectory, preference, candidates, fallbackTrace, failed);
+        throw error;
+      }
+      // Move the failed model's owned evidence out of the custody directory so the next
+      // model starts from the original preparation state; keep its digests in the trace.
+      entry.archived = archiveFailedModelEvidence(evidenceDirectory, submissionFile, fallbackTrace.length + 1);
+      fallbackTrace.push(entry);
+      console.error(`::warning::OpenCode review model ${failed} failed (${classification.match}); falling back to ${next}`);
+      await discover(next);
+    }
+  }
+  if (discovery) writeModelFallbackTrace(evidenceDirectory, preference, candidates, fallbackTrace, discovery.proof.selected_model);
   const accepted = metadata.accepted_invocation;
   try {
     const deadline = performance.now() + MODEL_DISCOVERY_BUDGET_MS;
