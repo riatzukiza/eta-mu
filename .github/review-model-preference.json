@@ -1,0 +1,15 @@
+{
+  "schema": "open-hax.review-model-preference/v1",
+  "source": "seed: public evidence 2026-10-21, no hands-on trial (box IP rate-limited)",
+  "preference": [
+    "mimo-*-flash-free",
+    "big-pickle",
+    "deepseek-v4.1-flash-free",
+    "glm-5.3-flash-free",
+    "minimax-m3.1-flash-free",
+    "longcat-2.5-preview-free",
+    "nemotron-3-ultra-free",
+    "mimo-*-free",
+    "*-free"
+  ]
+}
