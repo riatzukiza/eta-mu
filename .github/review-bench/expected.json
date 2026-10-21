@@ -1,0 +1,9 @@
+{
+  "comment": "Seeded defects in known-diff.patch. A finding matches when its text matches any pattern. formatPrice is correct and is the false-positive bait.",
+  "defects": [
+    { "id": "off-by-one", "patterns": ["<=", "off[- ]by[- ]one", "out of bounds", "undefined"] },
+    { "id": "discount-percent", "patterns": ["discount", "percent", "/ ?100"] },
+    { "id": "sql-injection", "patterns": ["sql", "injection", "interpolat", "parameteri"] }
+  ],
+  "bait": ["formatPrice", "toFixed"]
+}

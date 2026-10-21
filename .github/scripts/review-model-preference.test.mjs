@@ -23,9 +23,9 @@ const catalog = [
   row("minimax-m3.1-flash-free", "2026-10-19"),
 ];
 
-test("default preference puts the newest free MiMo first, then Big Pickle, then other free models by release", () => {
+test("default preference: newest free MiMo Flash, Big Pickle, the vetted free list, then other free models by release", () => {
   assert.deepEqual(rankFreeReviewModels(catalog).map(r => r.id), ["mimo-v2.6-flash-free", "big-pickle",
-    "flint-40b-free", "minimax-m3.1-flash-free", "beam-free", "glm-5.3-flash-free"]);
+    "glm-5.3-flash-free", "minimax-m3.1-flash-free", "flint-40b-free", "beam-free"]);
   assert.equal(selectFreeReviewModel(catalog).id, "mimo-v2.6-flash-free");
 });
 
@@ -71,4 +71,42 @@ test("fallback classification reads host error events and stderr, never model pr
   assert.match(classifyModelFailure(dir).match, /invalid credential/i);
   write("opencode-stderr-attempt-1.log", "review_submit missing\n");
   assert.equal(classifyModelFailure(dir), null);
+});
+
+import { readPreference, syncedSources } from "./sync-review-model-preference.mjs";
+import { finalText, preferenceFromRanking, rankResults, scoreReview } from "./benchmark-free-review-models.mjs";
+
+test("committed preference file is the runner default and the packaged runner is in sync", () => {
+  const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), "../..");
+  const preference = readPreference();
+  assert.deepEqual([...DEFAULT_REVIEW_MODEL_PREFERENCE], preference);
+  const runner = fs.readFileSync(path.join(root, ".github/scripts/run-opencode-review-recovery.mjs"), "utf8");
+  const workflow = fs.readFileSync(path.join(root, ".github/workflows/opencode-code-review.yml"), "utf8");
+  const next = syncedSources(runner, workflow, preference);
+  assert.equal(next.runner, runner); assert.equal(next.workflow, workflow);
+});
+
+test("benchmark scoring: seeded defects, bait false positives and invalid output", () => {
+  const expected = JSON.parse(fs.readFileSync(new URL("../review-bench/expected.json", import.meta.url), "utf8"));
+  const good = JSON.stringify({ findings: [
+    { file: "src/cart.js", line: 3, severity: "high", summary: "Loop uses <= so it reads past the end" },
+    { file: "src/cart.js", line: 4, severity: "medium", summary: "discountPct is a percent but no longer divided" },
+    { file: "src/cart.js", line: 9, severity: "high", summary: "SQL injection via template string" },
+    { file: "src/cart.js", line: 13, severity: "low", summary: "formatPrice should use Intl" }] });
+  const scored = scoreReview("```json\n" + good + "\n```", expected);
+  assert.equal(scored.valid, true); assert.equal(scored.recall, 1); assert.equal(scored.false_positives, 1);
+  assert.equal(scoreReview("no json here", expected).valid, false);
+  const events = [{ type: "text", part: { text: good } }, { type: "error", error: { name: "APIError", data: { message: "Rate limit" } } }]
+    .map(e => JSON.stringify(e)).join("\n");
+  assert.deepEqual(finalText(events), { text: good, error: "APIError: Rate limit" });
+});
+
+test("benchmark ranking prefers reliability, then recall, and keeps catch-all globs", () => {
+  const trial = (ok, recall, latency) => ({ ok, valid: ok, recall, false_positives: 0, latency_ms: latency });
+  const ranked = rankResults([
+    { model: "mimo-v2.6-flash-free", trials: [trial(false, 0, 0), trial(true, 1, 30_000), trial(true, 1, 31_000)] },
+    { model: "big-pickle", trials: [trial(true, 2 / 3, 20_000), trial(true, 2 / 3, 20_000), trial(true, 2 / 3, 20_000)] },
+    { model: "dead-free", trials: [trial(false, 0, 0)] }]);
+  assert.deepEqual(ranked.map(r => r.model), ["big-pickle", "mimo-v2.6-flash-free", "dead-free"]);
+  assert.deepEqual(preferenceFromRanking(ranked), ["big-pickle", "mimo-v2.6-flash-free", "mimo-*-free", "*-free"]);
 });

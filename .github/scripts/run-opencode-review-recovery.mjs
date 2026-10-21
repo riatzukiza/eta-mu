@@ -435,7 +435,7 @@ export function selectFreeMiMoFlash(rows, requested = "") {
 }
 
 /** Default model preference: newest free MiMo Flash, any free MiMo, Big Pickle, then any other free model. */
-export const DEFAULT_REVIEW_MODEL_PREFERENCE = Object.freeze(["mimo-*-flash-free", "mimo-*-free", "big-pickle", "*-free"]);
+export const DEFAULT_REVIEW_MODEL_PREFERENCE = Object.freeze(["mimo-*-flash-free","big-pickle","deepseek-v4.1-flash-free","glm-5.3-flash-free","minimax-m3.1-flash-free","longcat-2.5-preview-free","nemotron-3-ultra-free","mimo-*-free","*-free"]);
 const MAX_MODEL_FALLBACKS = 3;
 
 /** Parse a comma/newline separated preference list of exact IDs or `*` globs (an `opencode/` prefix is allowed). */
