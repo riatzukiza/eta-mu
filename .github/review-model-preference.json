@@ -1,6 +1,6 @@
 {
   "schema": "open-hax.review-model-preference/v1",
-  "source": "seed: public evidence 2026-10-21, no hands-on trial (box IP rate-limited)",
+  "source": "seed: public evidence 2026-10-21; reconfirmed live catalog 2026-11-09 (mimo-v2.6-flash-free still active+free+tool-capable; many older *-free rows now deprecated)",
   "preference": [
     "mimo-*-flash-free",
     "big-pickle",
